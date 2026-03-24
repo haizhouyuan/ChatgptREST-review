@@ -1,0 +1,21 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-guardian.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-guardian.timer
+#
+[Unit]
+Description=ChatgptREST OpenClaw guardian (inspect -> optional autofix -> optional notify)
+After=network-online.target chatgptrest-api.service chatgptrest-mcp.service
+Wants=network-online.target chatgptrest-api.service chatgptrest-mcp.service
+
+[Service]
+Type=oneshot
+# guardian exits 2 when needs_attention remains unresolved (report is still valid).
+SuccessExitStatus=2
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+Environment=HOME=/home/yuanhaizhou/.home-codex-official
+Environment=OPENCLAW_STATE_DIR=/home/yuanhaizhou/.home-codex-official/.openclaw
+Environment=OPENCLAW_CMD=/home/yuanhaizhou/.home-codex-official/.local/bin/openclaw
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python ops/openclaw_guardian_run.py --no-include-orch-report

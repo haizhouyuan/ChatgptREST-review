@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatgptREST Call"
+  short_description: "Queue Pro/DeepResearch/Gemini calls with JSON outputs"
+  default_prompt: "Use $chatgptrest-call to run a ChatgptREST job, save artifacts, and return job_id/status/paths."

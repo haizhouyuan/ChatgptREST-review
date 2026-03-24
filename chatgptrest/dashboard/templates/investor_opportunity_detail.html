@@ -1,0 +1,525 @@
+{% extends "investor_base.html" %}
+
+{% block content %}
+  <section class="hero-grid canonical-state">
+    <article class="hero-card tone-accent" style="flex: 2;">
+      <span class="hero-label">Decision</span>
+      <strong class="hero-value" style="font-size: 28px;">{{ snapshot.opportunity.route|upper }}</strong>
+      <div class="subtle" style="margin-top: 8px;">{{ snapshot.opportunity.next_action or snapshot.opportunity.brief_next_action or 'keep_scanning' }}</div>
+    </article>
+  </section>
+
+  <section class="hero-grid" style="margin-top: -8px;">
+    <article class="hero-card tone-neutral">
+      <span class="hero-label">Candidate</span>
+      <strong class="hero-value" style="font-size: 18px;">{{ snapshot.opportunity.candidate_id }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label" title="residual_class: {{ snapshot.opportunity.residual_class }}">Type</span>
+      <strong class="hero-value" style="font-size: 18px;">{{ snapshot.opportunity.residual_class }}</strong>
+    </article>
+    <article class="hero-card tone-success">
+      <span class="hero-label" title="Ranking Score: opportunity quality ranking">Score</span>
+      <strong class="hero-value" title="Ranking Score: {{ '%.3f'|format(snapshot.opportunity.ranking_score or 0) }}">{{ '%.3f'|format(snapshot.opportunity.ranking_score or 0) }}</strong>
+    </article>
+  </section>
+
+  <section class="panel" style="margin-bottom: 16px;">
+    {% set raw_action = snapshot.opportunity.next_action or snapshot.opportunity.brief_next_action or 'keep_scanning' %}
+    {% set action_map = {
+      'deepen_now': 'Deepen Research',
+      'wait_for_signal': 'Wait for Signal',
+      'promote_expression': 'Promote Expression',
+      'drop_thesis': 'Drop Thesis',
+      'prepare_candidate': 'Prepare Candidate',
+      'track_milestone': 'Track Milestone'
+    } %}
+    {% set next_action = action_map[raw_action] if raw_action in action_map else raw_action %}
+    {% set route = snapshot.opportunity.route %}
+    {% set cta_label = next_action if raw_action != 'keep_scanning' else ('Continue Research' if route == 'opportunity' else ('Wait' if route == 'watch' else 'Drop Thesis')) %}
+    {% set cta_href = snapshot.opportunity.detail_href or snapshot.research_package.reader_href %}
+    {% if cta_href %}<a href="{{ cta_href }}" class="primary-button">{{ cta_label }}</a>{% endif %}
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Opportunity Thesis</h2>
+          <p>Why this opportunity surfaced and what to prove next.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        <div class="timeline-item"><strong>Thesis</strong><div>{{ snapshot.opportunity.thesis_name }}</div></div>
+        <div class="timeline-item"><strong>Why now</strong><div>{{ snapshot.opportunity.note or 'No supporting note yet.' }}</div></div>
+        <div class="timeline-item"><strong>Next proving milestone</strong><div>{{ snapshot.opportunity.brief_next_proving_milestone or snapshot.opportunity.next_proving_milestone or 'Not specified yet.' }}</div></div>
+        {% if snapshot.opportunity.brief_summary %}
+          <div class="timeline-item"><strong>Deepening brief</strong><div>{{ snapshot.opportunity.brief_summary }}</div></div>
+        {% endif %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Absorption Path</h2>
+          <p>Which tracked theme this opportunity should merge into.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for theme in snapshot.opportunity.related_themes %}
+          <div class="timeline-item">
+            <div class="timeline-meta"><span>{{ theme.theme_slug }}</span><span>{{ theme.best_expression or 'n/a' }}</span></div>
+            <strong><a class="table-link" href="{{ theme.detail_href }}">{{ theme.title }}</a></strong>
+          </div>
+        {% else %}
+          <div class="empty-state">This opportunity is not yet attached to a tracked theme.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Epistemic Tear-Sheet</h2>
+          <p><strong>Decision Card.</strong> Start with delta, conviction bottleneck, kill box and best expression to decide whether to continue reading.</p>
+        </div>
+      </header>
+      {% if snapshot.research_package %}
+        <div class="card-grid">
+          {% if snapshot.research_package.history and snapshot.research_package.history.summary_lines %}
+            <div class="hero-card tone-warning">
+              <span class="hero-label">Semantic Delta</span>
+              <strong style="display: block; margin-top: 8px;">{{ snapshot.research_package.history.summary_lines[0] }}</strong>
+            </div>
+          {% endif %}
+          <div class="hero-card tone-accent">
+            <span class="hero-label">Headline / Thesis Truth</span>
+            <strong style="display: block; margin-top: 8px;">{{ snapshot.research_package.headline or snapshot.opportunity.thesis_name }}</strong>
+            {% if snapshot.research_package.decision_card and snapshot.research_package.decision_card.thesis_status %}
+              <div class="subtle" style="margin-top: 8px; line-height: 1.4;">{{ snapshot.research_package.decision_card.thesis_status }}</div>
+            {% endif %}
+          </div>
+          {% if snapshot.research_package.decision_card and snapshot.research_package.decision_card.expression_tradability %}
+          <div class="hero-card tone-success">
+            <span class="hero-label">Expression Tradability</span>
+            <strong style="display: block; margin-top: 8px; line-height: 1.4; font-weight: normal;">{{ snapshot.research_package.decision_card.expression_tradability }}</strong>
+          </div>
+          {% endif %}
+          <div class="hero-card tone-neutral">
+            <span class="hero-label">Conviction Bottleneck</span>
+            <strong style="display: block; margin-top: 8px; line-height: 1.4; font-weight: normal;">{{ snapshot.research_package.why_not_investable_yet or 'n/a' }}</strong>
+          </div>
+          <div class="hero-card tone-neutral">
+            <span class="hero-label">Next Proving Milestone</span>
+            <strong style="display: block; margin-top: 8px; line-height: 1.4; font-weight: normal;">{{ snapshot.research_package.next_proving_milestone or 'n/a' }}</strong>
+          </div>
+          {% if snapshot.research_package.disconfirming_signals %}
+            <div class="hero-card tone-warning">
+              <span class="hero-label">Kill Box (Disconfirming Signals)</span>
+              <ul style="margin-top: 8px; padding-left: 16px; margin-bottom: 0;">
+                {% for row in snapshot.research_package.disconfirming_signals %}
+                  <li style="margin-bottom: 4px;">{{ row }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="empty-state">No research package has been generated for this opportunity yet.</div>
+      {% endif %}
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Thesis Evolution</h2>
+          <p>Not a changelog, but whether we are closer to or farther from action.</p>
+        </div>
+      </header>
+      {% if snapshot.research_package.history %}
+        <div class="stack-list">
+          {% if snapshot.research_package.history.distance_label %}
+            <div class="timeline-item">
+              <strong>Distance to action</strong>
+              <div>
+                {{ snapshot.research_package.history.action_distance_before if snapshot.research_package.history.action_distance_before is not none else '∅' }}
+                → {{ snapshot.research_package.history.action_distance_after if snapshot.research_package.history.action_distance_after is not none else '∅' }}
+                ({{ snapshot.research_package.history.distance_label }})
+              </div>
+            </div>
+          {% endif %}
+          {% if snapshot.research_package.history.goalpost_shifted %}
+            <div class="timeline-item"><strong>Goalpost shift</strong><div>Next proving milestone moved without improving decision distance.</div></div>
+          {% endif %}
+          {% for row in snapshot.research_package.history.summary_lines %}
+            <div class="timeline-item">{{ row }}</div>
+          {% else %}
+            <div class="empty-state">No material change logged yet.</div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty-state">No history diff available yet.</div>
+      {% endif %}
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Evolution Timeline</h2>
+        <p>Track how this opportunity's decision, expression, and blockers have changed over time.</p>
+      </div>
+    </header>
+    <div class="stack-list">
+      {% for item in snapshot.research_package.opportunity_history %}
+        <div class="timeline-item">
+          <div class="timeline-meta"><span>{{ item.current_decision }}</span><span>{{ item.best_expression_today or 'n/a' }}</span></div>
+          <strong>{{ item.next_proving_milestone or 'No milestone recorded' }}</strong>
+          <div class="subtle">{{ item.why_not_investable_yet or 'No blocker recorded' }}</div>
+          {% if item.history.summary_lines %}
+            <div class="subtle">{{ item.history.summary_lines[0] }}</div>
+          {% endif %}
+          {% if item.reader_href %}<div class="badge-row"><a class="ghost-button" href="{{ item.reader_href }}">Open Snapshot</a></div>{% endif %}
+        </div>
+      {% else %}
+        <div class="empty-state">No multi-run evolution timeline yet.</div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="single-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Package Links</h2>
+          <p>Jump directly to the research package body and context.</p>
+        </div>
+      </header>
+      <div class="badge-row">
+        {% if snapshot.research_package.reader_href %}<a class="ghost-button" href="{{ snapshot.research_package.reader_href }}">Open Dossier</a>{% endif %}
+        {% if snapshot.research_package.json_reader_href %}<a class="ghost-button" href="{{ snapshot.research_package.json_reader_href }}">Open Dossier JSON</a>{% endif %}
+        {% if snapshot.research_package.context_reader_href %}<a class="ghost-button" href="{{ snapshot.research_package.context_reader_href }}">Open Context</a>{% endif %}
+        {% if snapshot.opportunity.reader_href %}<a class="ghost-button" href="{{ snapshot.opportunity.reader_href }}">Open Brief</a>{% endif %}
+        <a class="ghost-button" href="{{ snapshot.planning_doc_reader_href }}">Open Planning Doc</a>
+      </div>
+    </article>
+  </section>
+
+  {% if snapshot.research_package and snapshot.research_package.lanes %}
+  <details class="panel" style="margin-top: 16px;" open>
+    <summary style="cursor: pointer; font-weight: bold; padding: 12px; background: var(--bg-subtle, #f5f7fa); border-radius: 4px;">Research Lanes (Claim / Skeptic / Expression) & Citation Register</summary>
+  <section class="double-grid">
+    {% set claim_lane = snapshot.research_package.lanes.claim or {} %}
+    {% set skeptic_lane = snapshot.research_package.lanes.skeptic or {} %}
+    {% set expression_lane = snapshot.research_package.lanes.expression or {} %}
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Claim Lane</h2>
+          <p>The core thesis arguments most worth continuing to invest in.</p>
+        </div>
+      </header>
+      {% if claim_lane %}
+        <div class="stack-list">
+          {% if claim_lane.core_claims %}
+            <div class="timeline-item">
+              <strong>Core claims</strong>
+              <ul>
+                {% for row in claim_lane.core_claims %}
+                  <li>{{ row }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if claim_lane.claim_ledger %}
+            <div class="timeline-item">
+              <strong>Claim ledger</strong>
+              <ul>
+                {% for row in claim_lane.claim_ledger %}
+                  <li>
+                    <strong>{{ row.claim }}</strong>
+                    {% if row.claim_id %}<span> · id={{ row.claim_id }}</span>{% endif %}
+                    {% if row.evidence_grade %}<span> · grade={{ row.evidence_grade }}</span>{% endif %}
+                    {% if row.importance %}<span> · importance={{ row.importance }}</span>{% endif %}
+                    {% if row.falsification_condition %}<div><em>Falsified if:</em> {{ row.falsification_condition }}</div>{% endif %}
+                    {% if row.why_it_matters %}<div>{{ row.why_it_matters }}</div>{% endif %}
+                    {% if row.next_check %}<div><em>Next check:</em> {{ row.next_check }}</div>{% endif %}
+                    {% if snapshot.research_package.claim_support_map and snapshot.research_package.claim_support_map[row.claim_id] %}
+                      <div><em>Citations:</em>
+                        {% for edge in snapshot.research_package.claim_support_map[row.claim_id] %}
+                          {% if not loop.first %}, {% endif %}
+                          {% if edge.citation.detail_href %}<a class="table-link" href="{{ edge.citation.detail_href }}">{{ edge.citation.source_name }}</a>{% else %}{{ edge.citation.source_name }}{% endif %}
+                          {% if edge.support_type %}<span class="subtle"> ({{ edge.support_type }})</span>{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% elif row.supporting_sources %}
+                      <div><em>Supporting sources:</em>
+                        {% for source in row.supporting_sources %}
+                          {% if not loop.first %}, {% endif %}
+                          {% if source.detail_href %}<a class="table-link" href="{{ source.detail_href }}">{{ source.name }}</a>{% else %}{{ source.name }}{% endif %}
+                          {% if source.contribution_role %}<span class="subtle"> ({{ source.contribution_role }})</span>{% endif %}
+                        {% endfor %}
+                      </div>
+                    {% elif snapshot.research_package.source_scorecard %}
+                      {% set fallback_source = snapshot.research_package.source_scorecard[0] %}
+                      <div><em>Supporting sources:</em>
+                        {% if fallback_source.detail_href %}<a class="table-link" href="{{ fallback_source.detail_href }}">{{ fallback_source.name }}</a>{% else %}{{ fallback_source.name }}{% endif %}
+                        {% if fallback_source.contribution_role %}<span class="subtle"> ({{ fallback_source.contribution_role }})</span>{% endif %}
+                      </div>
+                      {% if fallback_source.reason %}<div class="subtle">{{ fallback_source.reason }}</div>{% endif %}
+                    {% endif %}
+                    {% if row.support_note %}<div class="subtle">{{ row.support_note }}</div>{% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if claim_lane.critical_unknowns %}
+            <div class="timeline-item">
+              <strong>Critical unknowns</strong>
+              <ul>
+                {% for row in claim_lane.critical_unknowns %}
+                  <li>{{ row }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if claim_lane.key_sources %}
+            <div class="timeline-item">
+              <strong>Key sources</strong>
+              <ul>
+                {% for row in claim_lane.key_sources %}
+                  <li>{{ row }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="empty-state">Claim lane is not available yet.</div>
+      {% endif %}
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Skeptic Lane</h2>
+          <p>Current thesis strongest opposing views, competition, and timing constraints.</p>
+        </div>
+      </header>
+      {% if skeptic_lane %}
+        <div class="stack-list">
+          {% if skeptic_lane.bear_case %}
+            <div class="timeline-item"><strong>Bear case</strong><div>{{ skeptic_lane.bear_case }}</div></div>
+          {% endif %}
+          {% if skeptic_lane.risk_register %}
+            <div class="timeline-item">
+              <strong>Risk register</strong>
+              <ul>
+                {% for row in skeptic_lane.risk_register %}
+                  <li>
+                    <strong>{{ row.risk }}</strong>
+                    {% if row.severity %}<span> · severity={{ row.severity }}</span>{% endif %}
+                    {% if row.horizon %}<span> · horizon={{ row.horizon }}</span>{% endif %}
+                    {% if row.what_confirms %}<div><em>What confirms:</em> {{ row.what_confirms }}</div>{% endif %}
+                    {% if row.what_refutes %}<div><em>What refutes:</em> {{ row.what_refutes }}</div>{% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if skeptic_lane.thesis_breakers %}
+            <div class="timeline-item">
+              <strong>Thesis breakers</strong>
+              <ul>
+                {% for row in skeptic_lane.thesis_breakers %}
+                  <li>{{ row }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if skeptic_lane.disconfirming_signals %}
+            <div class="timeline-item">
+              <strong>Disconfirming signals</strong>
+              <ul>
+                {% for row in skeptic_lane.disconfirming_signals %}
+                  <li>{{ row }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="empty-state">Skeptic lane is not available yet.</div>
+      {% endif %}
+    </article>
+  </section>
+
+  <section class="single-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Expression Lane</h2>
+          <p>Current most worthwhile expression candidates to prepare, not generic theme discussion.</p>
+        </div>
+      </header>
+      {% if expression_lane %}
+        <div class="stack-list">
+          {% if expression_lane.leader %}
+            <div class="timeline-item"><strong>Leader</strong><div>{{ expression_lane.leader }}</div></div>
+          {% endif %}
+          {% if expression_lane.valuation_frame %}
+            <div class="timeline-item">
+              <strong>Valuation frame</strong>
+              {% set vf = expression_lane.valuation_frame %}
+              <ul>
+                {% if vf.current_view %}<li><strong>Current view</strong>: {{ vf.current_view }}</li>{% endif %}
+                {% if vf.base_case %}<li><strong>Base case</strong>: {{ vf.base_case }}</li>{% endif %}
+                {% if vf.bull_case %}<li><strong>Bull case</strong>: {{ vf.bull_case }}</li>{% endif %}
+                {% if vf.bear_case %}<li><strong>Bear case</strong>: {{ vf.bear_case }}</li>{% endif %}
+                {% if vf.key_variable %}<li><strong>Key variable</strong>: {{ vf.key_variable }}</li>{% endif %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if expression_lane.ranked_expressions %}
+            <div class="timeline-item">
+              <strong>Ranking</strong>
+              <ul>
+                {% for row in expression_lane.ranked_expressions %}
+                  <li>
+                    {{ row.rank }}. {{ row.expression }}{% if row.why_best %} — {{ row.why_best }}{% endif %}
+                    {% if row.valuation_anchor %}<div><em>Valuation anchor:</em> {{ row.valuation_anchor }}</div>{% endif %}
+                    {% if row.scenario_base %}<div><em>Base:</em> {{ row.scenario_base }}</div>{% endif %}
+                    {% if row.scenario_bull %}<div><em>Bull:</em> {{ row.scenario_bull }}</div>{% endif %}
+                    {% if row.scenario_bear %}<div><em>Bear:</em> {{ row.scenario_bear }}</div>{% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% if expression_lane.comparison_logic %}
+            <div class="timeline-item">
+              <strong>Comparison logic</strong>
+              <ul>
+                {% for row in expression_lane.comparison_logic %}
+                  <li>{{ row }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="empty-state">Expression lane is not available yet.</div>
+      {% endif %}
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Citation Register</h2>
+        <p>Map each claim to stable citation objects, not just heuristic source names.</p>
+      </div>
+    </header>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Citation</th>
+            <th>Source</th>
+            <th>Role</th>
+            <th>Evidence</th>
+            <th>Quality</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in snapshot.research_package.citation_register %}
+            <tr>
+              <td class="mono">{{ row.citation_id }}</td>
+              <td>{% if row.detail_href %}<a class="table-link" href="{{ row.detail_href }}">{{ row.source_name }}</a>{% else %}{{ row.source_name }}{% endif %}</td>
+              <td>{{ row.contribution_role or 'n/a' }}{% if row.information_role %} · {{ row.information_role }}{% endif %}</td>
+              <td>{{ row.evidence_snippet or row.reason or 'n/a' }}</td>
+              <td>{{ row.quality_band or 'n/a' }}{% if row.trend_label %} · {{ row.trend_label }}{% endif %}</td>
+            </tr>
+          {% else %}
+            <tr><td colspan="5" class="empty-state">No citation register available yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  </details>
+  {% endif %}
+
+  <details class="panel" style="margin-top: 16px;">
+    <summary style="cursor: pointer; font-weight: bold; padding: 12px; background: var(--bg-subtle, #f5f7fa); border-radius: 4px;">Source Scorecard & Historical Changes</summary>
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Source Scorecard</h2>
+          <p>Only keep sources most relevant to the current thesis, and explain why they matter.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for source in snapshot.research_package.source_scorecard or snapshot.related_sources %}
+          <div class="signal-card tone-success">
+            <div>
+              <div><a class="table-link" href="{{ source.detail_href }}">{{ source.name }}</a></div>
+              <div class="subtle" title="Track record: historical accuracy of this source">
+                {{ source.source_type }} · {{ source.source_trust_tier }} · {{ source.track_record_label }}
+                {% if source.contribution_role %} · {{ source.contribution_role }}{% endif %}
+                {% if source.information_role %} · {{ source.information_role }}{% endif %}
+              </div>
+              {% if source.quality_band %}<div class="subtle">quality={{ source.quality_band }} · trend={{ source.trend_label or 'flat' }} · packages={{ source.packages_seen or 0 }}</div>{% endif %}
+              {% if source.reason %}<div>{{ source.reason }}</div>{% endif %}
+              {% if source.focus %}<div class="subtle"><em>Focus:</em> {{ source.focus }}</div>{% endif %}
+            </div>
+            <div class="align-right">
+              <div class="mono">accepted {{ source.accepted_route_count }}</div>
+              <div class="subtle">validated {{ source.validated_case_count }}</div>
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No suggested sources were linked to this candidate yet.</div>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>What Changed</h2>
+          <p>Semantic diffs in the opportunity thesis and expressions over time.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for item in snapshot.research_package.opportunity_history %}
+        <div class="timeline-item">
+          <strong>Decision: {{ item.current_decision or 'n/a' }}</strong>
+          <div class="subtle">Expression: {{ item.best_expression_today or 'n/a' }}</div>
+          <div class="subtle">Action Distance: {{ item.distance_to_action or 'n/a' }}</div>
+          {% if item.why_not_investable_yet %}<div class="subtle">Blocker: {{ item.why_not_investable_yet }}</div>{% endif %}
+        </div>
+        {% else %}
+        <div class="empty-state">No historical changes recorded yet.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Document Links</h2>
+        <p>Return to the planning table and candidate brief original text.</p>
+      </div>
+    </header>
+    <div class="subtle">Use the package links above as the primary investor entrypoint.</div>
+  </section>
+  </details>
+{% endblock %}

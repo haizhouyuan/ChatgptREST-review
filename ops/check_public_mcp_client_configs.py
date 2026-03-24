@@ -1,0 +1,214 @@
+#!/usr/bin/env python3
+"""Check that known coding-agent configs use the systemd-managed public MCP."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+
+PUBLIC_MCP_URL = "http://127.0.0.1:18712/mcp"
+SKILL_WRAPPER_PATH = Path("/vol1/1000/projects/ChatgptREST/skills-src/chatgptrest-call/scripts/chatgptrest_call.py")
+
+KNOWN_CODEX_CONFIGS = [
+    Path("/home/yuanhaizhou/.codex/config.toml"),
+    Path("/vol1/1000/home-yuanhaizhou/.codex-shared/config.toml"),
+    Path("/vol1/1000/home-yuanhaizhou/.home-codex-official/.codex/config.toml"),
+    Path("/vol1/1000/home-yuanhaizhou/.codex2/config.toml"),
+]
+
+KNOWN_CLAUDE_CONFIGS = [
+    Path("/home/yuanhaizhou/.claude.json"),
+    Path("/vol1/1000/home-yuanhaizhou/.home-codex-official/.claude.json"),
+    Path("/vol1/1000/home-yuanhaizhou/.claude-minimax/.claude.json"),
+]
+
+KNOWN_ANTIGRAVITY_CONFIGS = [
+    Path("/home/yuanhaizhou/.gemini/antigravity/mcp_config.json"),
+    Path("/vol1/1000/home-yuanhaizhou/.home-codex-official/.antigravity/mcp_config.json"),
+]
+
+
+def extract_chatgptrest_block(text: str) -> str:
+    lines = text.splitlines()
+    in_block = False
+    collected: list[str] = []
+    for line in lines:
+        if line.strip() == "[mcp_servers.chatgptrest]":
+            in_block = True
+            collected.append(line)
+            continue
+        if in_block and line.startswith("[") and line.strip() != "[mcp_servers.chatgptrest]":
+            break
+        if in_block:
+            collected.append(line)
+    return "\n".join(collected)
+
+
+def inspect_config(path: Path) -> dict[str, object]:
+    if not path.exists():
+        return {
+            "path": str(path),
+            "exists": False,
+            "ok": False,
+            "reason": "missing",
+        }
+    block = extract_chatgptrest_block(path.read_text())
+    url_ok = f'url = "{PUBLIC_MCP_URL}"' in block
+    has_stdio = "chatgptrest_agent_mcp_server.py" in block or "--transport\", \"stdio\"" in block
+    enabled = "enabled = true" in block
+    ok = bool(block) and enabled and url_ok and not has_stdio
+    reason = "ok"
+    if not block:
+        reason = "missing_chatgptrest_block"
+    elif not enabled:
+        reason = "disabled"
+    elif has_stdio:
+        reason = "uses_local_stdio_server"
+    elif not url_ok:
+        reason = "wrong_or_missing_public_url"
+    return {
+        "path": str(path),
+        "exists": True,
+        "ok": ok,
+        "reason": reason,
+        "uses_public_url": url_ok,
+        "enabled": enabled,
+    }
+
+
+def inspect_json_http_mcp(path: Path, *, server_names: tuple[str, ...]) -> dict[str, object]:
+    if not path.exists():
+        return {
+            "path": str(path),
+            "exists": False,
+            "ok": False,
+            "reason": "missing",
+        }
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {
+            "path": str(path),
+            "exists": True,
+            "ok": False,
+            "reason": "invalid_json",
+        }
+    servers = payload.get("mcpServers")
+    if not isinstance(servers, dict):
+        return {
+            "path": str(path),
+            "exists": True,
+            "ok": False,
+            "reason": "missing_mcp_servers",
+        }
+    server_name = next((name for name in server_names if name in servers), None)
+    if server_name is None:
+        return {
+            "path": str(path),
+            "exists": True,
+            "ok": False,
+            "reason": "missing_chatgptrest_server",
+        }
+    server = servers.get(server_name)
+    if not isinstance(server, dict):
+        return {
+            "path": str(path),
+            "exists": True,
+            "ok": False,
+            "reason": "invalid_server_block",
+        }
+    server_type = str(server.get("type", ""))
+    url = str(server.get("url", ""))
+    server_blob = json.dumps(server, ensure_ascii=False)
+    has_stdio = server_type == "stdio" or "chatgptrest_agent_mcp_server.py" in server_blob
+    url_ok = url == PUBLIC_MCP_URL
+    ok = server_type == "http" and url_ok and not has_stdio
+    reason = "ok"
+    if has_stdio:
+        reason = "uses_local_stdio_server"
+    elif server_type != "http":
+        reason = "wrong_transport"
+    elif not url_ok:
+        reason = "wrong_or_missing_public_url"
+    return {
+        "path": str(path),
+        "exists": True,
+        "ok": ok,
+        "reason": reason,
+        "server_name": server_name,
+        "server_type": server_type,
+        "uses_public_url": url_ok,
+    }
+
+
+def inspect_claude_config(path: Path) -> dict[str, object]:
+    return inspect_json_http_mcp(path, server_names=("chatgptrest", "chatgptrest-mcp"))
+
+
+def inspect_antigravity_config(path: Path) -> dict[str, object]:
+    return inspect_json_http_mcp(path, server_names=("chatgptrest",))
+
+
+def inspect_skill_wrapper(path: Path) -> dict[str, object]:
+    if not path.exists():
+        return {
+            "path": str(path),
+            "exists": False,
+            "ok": False,
+            "reason": "missing",
+        }
+    text = path.read_text(encoding="utf-8", errors="replace")
+    uses_public_default = 'DEFAULT_PUBLIC_MCP_URL = "http://127.0.0.1:18712/mcp"' in text
+    routes_agent_mode_via_mcp = "_run_mcp_tool(" in text
+    avoids_agent_rest_submit = 'cmd.extend([' not in text.split("def _run_agent_turn", 1)[-1].split("def _run_legacy_jobs", 1)[0]
+    supports_workspace_request = "--workspace-request-json" in text and "--workspace-request-file" in text
+    ok = uses_public_default and routes_agent_mode_via_mcp and avoids_agent_rest_submit and supports_workspace_request
+    reason = "ok"
+    if not uses_public_default:
+        reason = "missing_public_mcp_default"
+    elif not routes_agent_mode_via_mcp:
+        reason = "agent_mode_not_using_public_mcp"
+    elif not avoids_agent_rest_submit:
+        reason = "agent_mode_still_builds_rest_cli"
+    elif not supports_workspace_request:
+        reason = "missing_workspace_request_support"
+    return {
+        "path": str(path),
+        "exists": True,
+        "ok": ok,
+        "reason": reason,
+        "uses_public_mcp_default": uses_public_default,
+        "routes_agent_mode_via_mcp": routes_agent_mode_via_mcp,
+        "supports_workspace_request": supports_workspace_request,
+    }
+
+
+def main() -> int:
+    codex_checks = [inspect_config(path) for path in KNOWN_CODEX_CONFIGS]
+    claude_checks = [inspect_claude_config(path) for path in KNOWN_CLAUDE_CONFIGS]
+    antigravity_checks = [inspect_antigravity_config(path) for path in KNOWN_ANTIGRAVITY_CONFIGS]
+    wrapper_check = inspect_skill_wrapper(SKILL_WRAPPER_PATH)
+    all_checks = codex_checks + claude_checks + antigravity_checks
+    overall_ok = all(item["ok"] for item in all_checks) and bool(wrapper_check["ok"])
+    print(
+        json.dumps(
+            {
+                "ok": overall_ok,
+                "public_mcp_url": PUBLIC_MCP_URL,
+                "num_checked": len(all_checks) + 1,
+                "num_failed": sum(1 for item in all_checks if not item["ok"]) + (0 if wrapper_check["ok"] else 1),
+                "codex_configs": codex_checks,
+                "claude_configs": claude_checks,
+                "antigravity_configs": antigravity_checks,
+                "checks": all_checks,
+                "skill_wrapper": wrapper_check,
+            },
+            ensure_ascii=False,
+        )
+    )
+    return 0 if overall_ok else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

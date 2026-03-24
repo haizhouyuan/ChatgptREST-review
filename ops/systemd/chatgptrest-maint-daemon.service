@@ -1,0 +1,35 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-maint-daemon.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-maint-daemon.service
+#
+[Unit]
+Description=ChatgptREST maint daemon (monitor + incident evidence packs)
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+Environment=CHATGPTREST_DB_PATH=state/jobdb.sqlite3
+Environment=CHATGPTREST_ARTIFACTS_DIR=artifacts
+Environment=CHATGPTREST_CHATGPT_MCP_URL=http://127.0.0.1:18701/mcp
+Environment=CHATGPT_CDP_URL=http://127.0.0.1:9222
+Environment=MIHOMO_DELAY_LOG_DIR=artifacts/monitor/mihomo_delay
+
+# Default: monitor + incident packs + auto-pause + auto repair.check + Codex SRE analysis.
+# Note: Codex actions stay fail-closed here; use `ops/systemd/enable_maint_self_heal.sh`
+# when you intentionally want guarded runtime autofix enabled in production.
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python ops/maint_daemon.py --enable-auto-pause --auto-pause-mode send --enable-chatgptmcp-evidence --enable-chatgptmcp-capture-ui --enable-auto-repair-check --enable-codex-sre-analyze --enable-ui-canary
+
+Restart=always
+RestartSec=3
+StartLimitIntervalSec=120
+StartLimitBurst=5
+WatchdogSec=30
+MemoryMax=3G
+
+[Install]
+WantedBy=default.target

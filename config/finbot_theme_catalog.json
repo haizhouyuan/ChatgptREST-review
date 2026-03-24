@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "description": "Finbot theme batch catalog. Covers major investment themes across sectors.",
+  "themes": [
+    {
+      "theme_slug": "transformer",
+      "title": "变压器超级周期",
+      "spec_path": "specs/theme_runs/2026-03-14_transformer_sentinel_v2.yaml",
+      "events_path": "imports/theme_runs/2026-03-14_transformer_events_v2.json",
+      "as_of": "2026-03-15",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "ai_energy_onsite_power",
+      "title": "AI 能源 / 现场发电",
+      "spec_path": "specs/theme_runs/2026-03-14_ai_energy_onsite_power_sentinel_v2.yaml",
+      "events_path": "imports/theme_runs/2026-03-14_ai_energy_onsite_power_events_v2.json",
+      "as_of": "2026-03-15",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "silicon_photonics",
+      "title": "硅光 / CPO",
+      "spec_path": "specs/theme_runs/2026-03-15_silicon_photonics_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-15_silicon_photonics_events_v2.json",
+      "as_of": "2026-03-15",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "memory_bifurcation",
+      "title": "存储分化",
+      "spec_path": "specs/theme_runs/2026-03-15_memory_bifurcation_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-15_memory_bifurcation_events_v1.json",
+      "as_of": "2026-03-15",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "commercial_space",
+      "title": "商业航天",
+      "spec_path": "specs/theme_runs/2026-03-14_commercial_space_sentinel_v2.yaml",
+      "events_path": "imports/theme_runs/2026-03-14_commercial_space_events_v2.json",
+      "as_of": "2026-03-15",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "ai_compute_gpu",
+      "title": "AI 算力 / GPU 供应链",
+      "spec_path": "specs/theme_runs/2026-03-16_ai_compute_gpu_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_ai_compute_gpu_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "humanoid_robot",
+      "title": "人形机器人 / 减速器 / 伺服",
+      "spec_path": "specs/theme_runs/2026-03-16_humanoid_robot_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_humanoid_robot_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "low_altitude_economy",
+      "title": "低空经济 / eVTOL / 无人机",
+      "spec_path": "specs/theme_runs/2026-03-16_low_altitude_economy_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_low_altitude_economy_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "solid_state_battery",
+      "title": "固态电池 / 下一代锂电",
+      "spec_path": "specs/theme_runs/2026-03-16_solid_state_battery_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_solid_state_battery_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "nuclear_smr",
+      "title": "核电 / 小型堆 / 乏燃料",
+      "spec_path": "specs/theme_runs/2026-03-16_nuclear_smr_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_nuclear_smr_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "ai_datacenter_cooling",
+      "title": "AIDC / 液冷 / 电力",
+      "spec_path": "specs/theme_runs/2026-03-16_ai_datacenter_cooling_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_ai_datacenter_cooling_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "satellite_internet",
+      "title": "卫星互联网 / 低轨组网",
+      "spec_path": "specs/theme_runs/2026-03-16_satellite_internet_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_satellite_internet_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "offshore_wind",
+      "title": "风电出海 / 海上风电",
+      "spec_path": "specs/theme_runs/2026-03-16_offshore_wind_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_offshore_wind_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "ev_two_three_wheel",
+      "title": "电动两轮 / 三轮车供应链",
+      "spec_path": "specs/theme_runs/2026-03-16_ev_two_three_wheel_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_ev_two_three_wheel_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    },
+    {
+      "theme_slug": "quant_hft_infra",
+      "title": "量化 / 高频交易基础设施",
+      "spec_path": "specs/theme_runs/2026-03-16_quant_hft_infra_sentinel_v1.yaml",
+      "events_path": "imports/theme_runs/2026-03-16_quant_hft_infra_events_v1.json",
+      "as_of": "2026-03-16",
+      "timeout_seconds": 600
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+[Unit]
+Description=Feishu Bot WebSocket Gateway (long connection)
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target
+
+[Service]
+Type=notify
+WatchdogSec=120
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+Environment=ADVISOR_API_URL=http://127.0.0.1:18711/v2/advisor/advise
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+EnvironmentFile=-/vol1/maint/MAIN/secrets/credentials.env
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python -m chatgptrest.advisor.feishu_ws_gateway
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
