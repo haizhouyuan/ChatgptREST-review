@@ -1,0 +1,114 @@
+# ChatgptREST Plane Registry — Machine-Readable
+# Canonical source: docs/ops/2026-03-25_agent_maintainer_entry_v1.md §2/§4
+#
+# 5-plane model. Keyword matching is heuristic — returns ranked confidence,
+# never a single authoritative answer.
+
+planes:
+  execution:
+    description: "/v1/jobs, send/wait, blocked/cooldown, job artifacts, worker loop"
+    canonical_docs:
+      - docs/runbook.md
+      - docs/contract_v1.md
+      - docs/handoff_chatgptrest_history.md
+    key_dirs:
+      - chatgptrest/api/routes_jobs.py
+      - chatgptrest/worker/
+      - chatgptrest/executors/
+    keywords:
+      - job
+      - send
+      - wait
+      - worker
+      - executor
+      - blocked
+      - cooldown
+      - artifact
+      - queue
+      - retry
+      - lease
+      - throttle
+      - idempotent
+      - answer
+      - completion
+      - export
+
+  public_agent:
+    description: "Codex/Claude/Antigravity default entry, public MCP surface, agent v3 routes"
+    canonical_docs:
+      - AGENTS.md
+      - docs/ops/2026-03-25_agent_maintainer_entry_v1.md
+      - docs/contract_v1.md
+    key_dirs:
+      - chatgptrest/mcp/agent_mcp.py
+      - chatgptrest/api/routes_agent_v3.py
+    keywords:
+      - mcp
+      - public
+      - agent
+      - codex
+      - claude
+      - antigravity
+      - surface
+      - tool
+      - northbound
+      - advisor_agent_turn
+
+  advisor:
+    description: "Advisor runtime, report, funnel, memory, KB, cognitive services"
+    canonical_docs:
+      - docs/runbook.md
+    key_dirs:
+      - chatgptrest/advisor/
+      - chatgptrest/kernel/
+      - chatgptrest/kb/
+      - chatgptrest/cognitive/
+    keywords:
+      - advisor
+      - report
+      - funnel
+      - memory
+      - kb
+      - knowledge
+      - kernel
+      - cognitive
+      - evomap
+      - graph
+      - context
+      - recall
+      - retrieval
+
+  controller_finbot:
+    description: "Guardian, orch, finbot, controller lane, issue ledger"
+    canonical_docs:
+      - docs/runbook.md
+    key_dirs:
+      - ops/openclaw_guardian_run.py
+      - ops/openclaw_orch_agent.py
+      - chatgptrest/finbot.py
+      - ops/controller_lane_continuity.py
+    keywords:
+      - guardian
+      - orch
+      - finbot
+      - controller
+      - openclaw
+      - lane
+      - issue
+      - coordination
+      - wake
+
+  dashboard:
+    description: "8787 dashboard, control plane read model, DashboardService"
+    canonical_docs:
+      - docs/runbook.md
+    key_dirs:
+      - chatgptrest/dashboard/
+      - chatgptrest/api/app_dashboard.py
+    keywords:
+      - dashboard
+      - "8787"
+      - control plane
+      - read model
+      - projection
+      - DashboardService

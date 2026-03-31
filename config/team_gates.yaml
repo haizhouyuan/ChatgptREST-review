@@ -1,0 +1,19 @@
+gates:
+  team_failure:
+    description: "Any failed team result must be reviewed before acceptance."
+    trigger: result_not_ok
+
+  low_quality:
+    description: "Low-quality outputs require manual review."
+    trigger: min_quality
+    threshold: 0.70
+
+  writer_review:
+    description: "Any topology containing a writer role requires merge review."
+    trigger: role_present
+    roles: [implementer, integrator]
+
+  explicit_input:
+    description: "Explicit approval/input markers should raise a checkpoint."
+    trigger: marker
+    markers: [NEEDS_INPUT, NEEDS_APPROVAL, BLOCKED]

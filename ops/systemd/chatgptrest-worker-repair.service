@@ -1,0 +1,27 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-worker-repair.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-worker-repair.service
+#
+[Unit]
+Description=ChatgptREST worker (repair.* only; diagnostics/autofix; no prompt send)
+After=network-online.target chatgptrest-api.service chatgptrest-driver.service
+Wants=network-online.target chatgptrest-api.service chatgptrest-driver.service
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+Environment=CHATGPTREST_DB_PATH=state/jobdb.sqlite3
+Environment=CHATGPTREST_ARTIFACTS_DIR=artifacts
+Environment=CHATGPTREST_DRIVER_URL=http://127.0.0.1:18701/mcp
+# Autofix tuning: keep Codex fast + reliable by default.
+Environment=CHATGPTREST_CODEX_AUTOFIX_MODEL_DEFAULT=gpt-5.3-codex-spark
+Environment=CHATGPTREST_CODEX_AUTOFIX_REASONING_EFFORT=low
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python -m chatgptrest.worker.worker --role all --kind-prefix repair.
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,27 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-chrome.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-chrome.service
+#
+# This service keeps a CDP-enabled Chrome alive for ChatGPT/Gemini drivers.
+# The actual CDP port may be overridden by the env file.
+#
+[Unit]
+Description=ChatgptREST Chrome watchdog (CDP Chrome)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+Environment=CHROME_DEBUG_PORT=9222
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+# Default display for the noVNC/Xvfb Chrome. Override in env file if needed.
+Environment=DISPLAY=:99
+ExecStart=__CHATGPTREST_ROOT__/ops/chrome_watchdog.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,352 @@
+# ChatgptREST Issues Registry (machine-readable)
+#
+# Purpose
+# - Curate recurring incidents / known failure modes in one high-signal place.
+# - Provide context for `ops/maint_daemon.py` incident packs and Codex SRE analysis.
+#
+# Integration
+# - maint_daemon snapshots this file into each incident pack:
+#   `artifacts/monitor/maint_daemon/incidents/<incident_id>/snapshots/issues_registry.yaml`
+# - The snapshot content is included in the incident's Codex input fingerprint, so any
+#   change here can retrigger Codex SRE analysis for open incidents (subject to rate limits).
+#
+# Notes
+# - Keep this file small and actionable; link to deeper writeups instead of pasting long logs.
+# - Prefer stable `id` values; do not renumber IDs (append new ones).
+version: 1
+
+source_docs:
+  - docs/handoff_chatgptrest_history.md
+  - docs/runbook.md
+  - docs/maint_daemon.md
+
+issues:
+  - id: ISSUE-0001
+    title: "Pro thinking skipped / instant answer"
+    status: "mitigated"
+    signals:
+      - "worker:thought_guard_abnormal"
+      - "driver:thinking_observation.skipping=true"
+    mitigations:
+      - "thought guard + regenerate guard"
+      - "conversation_export reconcile as fallback source of truth"
+    references:
+      - "docs/runbook.md (thought guard section)"
+      - "docs/handoff_chatgptrest_history.md (thought guard entries)"
+
+  - id: ISSUE-0002
+    title: "Deep Research ack-only / too-short completion"
+    status: "mitigated"
+    signals:
+      - "worker:completion_guard_downgraded"
+      - "answer length < min_chars for deep_research jobs"
+    mitigations:
+      - "completion guard downgrades to in_progress and keeps waiting"
+      - "export-based completion verification"
+    references:
+      - "docs/handoff_chatgptrest_history.md (deep research guard entries)"
+
+  - id: ISSUE-0003
+    title: "Attachment upload path/idempotency mismatch"
+    status: "mitigated"
+    signals:
+      - "HTTP 409 idempotency conflict with different file path spellings"
+    mitigations:
+      - "require absolute paths for input.file_paths; normalize upload hashing"
+    references:
+      - "docs/handoff_chatgptrest_history.md (attachments + idempotency entries)"
+
+  - id: ISSUE-0004
+    title: "Deep Research widget failure ('Research failed')"
+    status: "mitigated"
+    signals:
+      - "UI: message contains 'Research failed'"
+    mitigations:
+      - "detect widget failure and treat as retryable / needs followup"
+    references:
+      - "tests/test_deep_research_widget_failure.py"
+      - "chatgpt_web_mcp/_tools_impl.py (deep research failure regex)"
+
+  - id: ISSUE-0005
+    title: "Playwright TargetClosed/Target crashed during send/upload"
+    status: "observed"
+    signals:
+      - "last_error_type: InfraError"
+      - "last_error contains 'Target page, context or browser has been closed'"
+      - "last_error contains 'Target crashed'"
+    mitigations:
+      - "infra healer can restart Chrome/driver (guarded)"
+      - "retry with cooldown backoff"
+    references:
+      - "docs/handoff_chatgptrest_history.md (infra healer entries)"
+      - "ops/maint_daemon.py (infra healer + incident packs)"
+
+  - id: ISSUE-0006
+    title: "connect_over_cdp returned null browser (contexts AttributeError)"
+    status: "mitigated"
+    signals:
+      - "driver error contains 'connect_over_cdp returned null browser'"
+      - "driver error contains \"object has no attribute 'contexts'\""
+    mitigations:
+      - "treat null browser as CDP connect failure; retry after Chrome restart"
+      - "fallback to storage_state when explicitly enabled"
+    references:
+      - "chatgpt_web_mcp/_tools_impl.py (_open_*_page CDP open)"
+      - "docs/runbook.md (driver/chrome restart guidance)"
+
+  - id: ISSUE-0007
+    title: "maint_daemon restart_driver spawned orphan driver (singleton lock held)"
+    status: "mitigated"
+    signals:
+      - "systemd: chatgptrest-driver.service restart loop"
+      - "driver stderr contains 'singleton lock held'"
+      - "maint_daemon has child process: chatgptrest_driver_server.py"
+    mitigations:
+      - "prefer systemd restart for driver; stop unit before script fallback"
+      - "drain-guard + rate limit for infra healer actions"
+      - "when systemd unit is loaded, disable script fallback for restart_driver (avoid orphan singleton-lock conflicts)"
+      - "pin MCP_SERVER_LOCK_FILE to state/driver path to avoid mixed lock locations"
+    references:
+      - "ops/maint_daemon.py (_start_driver_if_down)"
+      - "chatgpt_web_mcp/locks.py (singleton lock)"
+
+  - id: ISSUE-0008
+    title: "Gemini Web app unreachable (ERR_CONNECTION_CLOSED)"
+    status: "observed"
+    signals:
+      - "worker/driver: Page.goto https://gemini.google.com/app -> net::ERR_CONNECTION_CLOSED"
+      - "send-phase retry loop (cooldown) with conversation_url=null"
+    mitigations:
+      - "Add Gemini reachability probes (with/without proxy) into incident snapshots"
+      - "Time-boxed pause of gemini_web send retries during routing diagnosis"
+      - "Verify proxy routing/node for Google domains; then retry with one guarded navigation"
+    references:
+      - "docs/runbook.md (Gemini Web section; proxy/region troubleshooting)"
+      - "ops/maint_daemon.py (incident packs + proxy snapshots)"
+
+  - id: ISSUE-0009
+    title: "Gemini Pro mode selector drift (selector/menu role changed)"
+    status: "mitigated"
+    signals:
+      - "last_error_type: GeminiModeSelectorNotFound"
+      - "last_error_type: GeminiModeSwitchDidNotApply"
+      - "run_meta.mode_text remains 思考 while preset=pro"
+    mitigations:
+      - "expand mode trigger detection to include 模式/Mode and menu trigger variants"
+      - "mode menu option click supports menuitemradio/menuitem/button"
+      - "fail-closed when Pro switch not applied (no silent fallback to thinking)"
+    references:
+      - "chatgpt_web_mcp/providers/gemini/core.py (_gemini_find_mode_button/_gemini_click_mode_option)"
+      - "artifacts/jobs/7f72fac414264080a68eb28587c441dd/run_meta.json"
+      - "artifacts/jobs/2373f166e3ff40a382fb4e22c3919cf7/run_meta.json"
+
+  - id: ISSUE-0010
+    title: "Gemini Deep Think overload/crowded message returns no useful answer"
+    status: "mitigated"
+    signals:
+      - "result.answer contains deep_think overloaded text (A lot of people are using Deep Think right now...)"
+      - "status=completed but answer is short overload/crowded notice"
+    mitigations:
+      - "driver clicks Deep Think retry control up to 3 times by default"
+      - "if still overloaded after retries, ChatgptREST executor falls back to Gemini Pro"
+    references:
+      - "chatgpt_web_mcp/providers/gemini/core.py (_gemini_retry_deep_think_overloaded_answer)"
+      - "chatgpt_web_mcp/providers/gemini/ask.py (gemini_web_ask_pro_deep_think)"
+      - "chatgptrest/executors/gemini_web_mcp.py (deep_think overloaded fallback)"
+
+  - id: ISSUE-0011
+    title: "ChatgptREST API start-limit-hit causes MCP Connection refused"
+    status: "mitigated"
+    signals:
+      - "MCP submit error contains '[Errno 111] Connection refused'"
+      - "systemd: chatgptrest-api.service status=failed(start-limit-hit)"
+      - "port 18711 not listening while 18712 still up"
+    mitigations:
+      - "MCP auto-heal API autostart enabled by default (CHATGPTREST_MCP_AUTO_START_API=1)"
+      - "runbook recovery: reset-failed + restart api + health check"
+    references:
+      - "docs/handoff_chatgptrest_history.md (entry 48)"
+      - "docs/runbook.md (systemd section)"
+
+  - id: ISSUE-0012
+    title: "Pro trivial/smoke prompts increase wind-control risk"
+    status: "mitigated"
+    signals:
+      - "request question is trivial (e.g. 请回复OK/reply ok) on Pro preset"
+      - "params.purpose=smoke/test with Pro preset"
+    mitigations:
+      - "API hard guard: trivial_pro_prompt_blocked"
+      - "API hard guard: pro_smoke_test_blocked"
+      - "client wrapper enforces 61s interval for ChatGPT Pro sends"
+    references:
+      - "chatgptrest/api/routes_jobs.py (Pro guard checks)"
+      - "skills-src/chatgptrest-call/scripts/chatgptrest_call.py"
+      - "docs/runbook.md (prompt safety guardrails)"
+
+  - id: ISSUE-0013
+    title: "Client issue ledger stale open items not auto-mitigated"
+    status: "mitigated"
+    signals:
+      - "GET /v1/issues?source=worker_auto&status=open,in_progress shows long-tail stale rows"
+      - "no recurrence for >72h but status remains open/in_progress"
+    mitigations:
+      - "openclaw guardian periodic TTL sweep sets stale items to mitigated"
+      - "tunable via CHATGPTREST_CLIENT_ISSUE_AUTOCLOSE_*"
+    references:
+      - "ops/openclaw_guardian_run.py (_sweep_client_issue_autoclose)"
+      - "docs/runbook.md (Client Issue Ledger / OpenClaw Guardian)"
+
+  - id: ISSUE-0014
+    title: "OpenClaw orch agents drift (registered but local agentDir missing/mismatched)"
+    status: "mitigated"
+    signals:
+      - "openclaw agents list includes chatgptrest-codex-w* but agentDir path missing"
+      - "orch wake/dispatch fails despite agent id existing in registry"
+    mitigations:
+      - "orch doctor reconcile: delete+recreate mismatched or missing-dir agents"
+      - "optional timer keeps orch/codex worker agent registration aligned"
+    references:
+      - "ops/openclaw_orch_agent.py"
+      - "ops/systemd/chatgptrest-orch-doctor.service"
+      - "docs/runbook.md (OpenClaw Orch Agent)"
+
+  - id: ISSUE-0015
+    title: "UI selector drift is only discovered after first failing production job"
+    status: "mitigated"
+    signals:
+      - "no periodic provider self_check baseline"
+      - "incident evidence exists but only after job failure"
+    mitigations:
+      - "maint_daemon periodic ui_canary (chatgpt/gemini/qwen self_check)"
+      - "consecutive-failure threshold opens category=ui_canary incident"
+      - "failure-triggered capture_ui with cooldown; no prompt send"
+      - "orch/guardian consume ui_canary report for proactive attention"
+    references:
+      - "ops/maint_daemon.py (ui_canary loop + incident packs)"
+      - "artifacts/monitor/ui_canary/latest.json"
+      - "ops/openclaw_orch_agent.py"
+      - "ops/openclaw_guardian_run.py"
+
+  - id: ISSUE-0016
+    title: "Rescue follow-up race misses parent completion and falls into cooldown"
+    status: "mitigated"
+    signals:
+      - "rescue-style follow-up with parent_job_id enters cooldown even though parent completed during grace"
+      - "test_rescue_followup_guard intermittently observes follow-up status=cooldown"
+    mitigations:
+      - "rescue guard accepts completed-parent race when parent.updated_at >= follow_job.created_at"
+      - "short-circuit payload records initial parent status/timestamps for audit"
+    references:
+      - "chatgptrest/worker/worker.py (rescue follow-up guard)"
+      - "tests/test_rescue_followup_guard.py"
+
+  - id: ISSUE-0017
+    title: "OpenClaw guardian crashes when openclaw binary is missing"
+    status: "mitigated"
+    signals:
+      - "chatgptrest-guardian.service stack trace ends with FileNotFoundError: openclaw"
+      - "guardian oneshot exits before writing structured agent_result"
+    mitigations:
+      - "_run_guardian_agent/_notify_feishu_channel catch FileNotFoundError and return structured failure"
+      - "runbook documents --openclaw-cmd override and expected error field"
+    references:
+      - "ops/openclaw_guardian_run.py"
+      - "tests/test_openclaw_guardian_issue_sweep.py"
+      - "docs/runbook.md"
+
+  - id: ISSUE-0018
+    title: "Viewer Chrome repeated GPU exit_code=15 while noVNC ports still look healthy"
+    status: "mitigated"
+    signals:
+      - "chrome.log contains repeated 'GPU process exited unexpectedly: exit_code=15'"
+      - "viewer appears unstable/black while status endpoints still report healthy ports"
+    mitigations:
+      - "viewer_watchdog scans recent chrome.log window and treats exit_code=15 burst as unhealthy"
+      - "on threshold hit, watchdog forces full viewer restart (X/VNC/Chrome)"
+    references:
+      - "ops/viewer_watchdog.py"
+      - "tests/test_viewer_watchdog.py"
+      - "docs/runbook.md (viewer watchdog tunables)"
+
+  - id: ISSUE-0019
+    title: "Public advisor-agent MCP long-run client ergonomics are still rough"
+    status: "observed"
+    signals:
+      - "advisor_agent_turn validation rejects scalar attachments with list_type error"
+      - "delivery_mode_requested=sync but delivery_mode_effective=deferred for long report turns"
+      - "client must poll advisor_agent_status repeatedly with no dedicated wait primitive"
+      - "status remains running without granular phase or ETA for long report-grade jobs"
+    mitigations:
+      - "accept scalar attachment sugar or return explicit remediation hint"
+      - "surface clearer sync-to-background handoff semantics and recommended client action"
+      - "add a public advisor wait primitive or equivalent long-poll terminal answer helper"
+      - "expose richer execution phases / partial readiness for long-running advisor sessions"
+      - "strengthen public MCP schema alignment as northbound capabilities evolve"
+    references:
+      - "docs/dev_log/2026-03-25_public_agent_mcp_client_experience_issue_pack_v1.md"
+      - "docs/client_interactions_v3.md"
+      - "docs/contract_v1.md"
+
+  - id: ISSUE-0020
+    title: "Agent wrapper labels local validation failures as still-running advisor sessions"
+    status: "observed"
+    signals:
+      - "chatgptrest_call.py rejects --request-timeout-seconds < --timeout-seconds before submission"
+      - "returned error payload still says still_running_possible=true"
+      - "recovery_hint tells client to use advisor_agent_status/advisor_agent_wait even though no remote turn started"
+    mitigations:
+      - "differentiate local_validation_failure from transport_timeout in agent-mode error classification"
+      - "set still_running_possible=false for preflight validation failures"
+      - "return a recovery hint that explicitly says the turn was rejected before submission"
+    references:
+      - "skills-src/chatgptrest-call/scripts/chatgptrest_call.py"
+      - "docs/dev_log/2026-03-25_public_agent_live_client_validation_followup_v1.md"
+
+  - id: ISSUE-0021
+    title: "Live chatgptrest_call wrapper path is less reliable/observable than the repo's validated public MCP path"
+    status: "observed"
+    signals:
+      - "valid live advisor_agent_turn wrapper calls can remain blocked with no early summary file"
+      - "explicit session_id not visible in controller_runs/advisor_runs during initial observation window"
+      - "chatgptrest-mcp.service journal still records POST /mcp and CallToolRequest"
+      - "repo validation path performs initialize before tools/call while wrapper currently posts tools/call directly"
+    mitigations:
+      - "unify chatgptrest_call.py with the shared MCP HTTP client / initialize handshake path"
+      - "or explicitly bootstrap initialize/session semantics in the wrapper before tools/call"
+      - "make advisor_agent_turn expose faster accepted-state / durable session visibility for recovery"
+    references:
+      - "skills-src/chatgptrest-call/scripts/chatgptrest_call.py"
+      - "chatgptrest/eval/public_agent_mcp_validation.py"
+      - "docs/dev_log/2026-03-25_public_agent_live_client_validation_followup_v1.md"
+
+  - id: ISSUE-0022
+    title: "Sync planning path can write initialize-only summary instead of accepted turn summary"
+    status: "observed"
+    signals:
+      - "wrapper summary file shows status=initialized and submission_started=false"
+      - "wrapper process is still running after that summary is written"
+      - "summary does not advance from initialized state during the initial observation window"
+      - "problem reproduced on a sync planning request, not on deferred ChatGPT/Gemini repo-review paths"
+    mitigations:
+      - "inspect early-summary state machine in chatgptrest_call.py"
+      - "ensure out-summary is written from the accepted turn result, not raw MCP initialize/bootstrap state"
+      - "keep sync/deferred summary branches separate so initialize metadata cannot leak into turn summary"
+    references:
+      - "skills-src/chatgptrest-call/scripts/chatgptrest_call.py"
+      - "docs/dev_log/2026-03-25_public_agent_wrapper_live_retest_findings_v1.md"
+
+  - id: ISSUE-0023
+    title: "Live wrapper path still persists generic mcp-agent/public-mcp caller identity"
+    status: "observed"
+    signals:
+      - "live wrapper request is accepted and persisted"
+      - "state/agent_sessions/<session>.json task_intake.context.client remains {name: mcp-agent, instance: public-mcp}"
+      - "richer upstream caller identity is not visible in persisted live session state"
+    mitigations:
+      - "trace end-to-end caller identity from live MCP transport into agent_mcp and onward into /v3/agent/turn"
+      - "prove that the standard wrapper path persists actual upstream caller metadata instead of generic mcp-agent/public-mcp"
+      - "prevent later session-persistence collapse/overwrite of richer client identity if it already exists earlier in the request chain"
+    references:
+      - "chatgptrest/mcp/agent_mcp.py"
+      - "chatgptrest/api/routes_agent_v3.py"
+      - "docs/dev_log/2026-03-25_public_agent_misuse_guardrails_live_client_retest_v1.md"

@@ -1,0 +1,736 @@
+{
+  "authority": {
+    "registry_id": "chatgptrest-skill-platform",
+    "schema_version": "1.0",
+    "registry_version": "2026.03.28.v1",
+    "owner": "ChatgptREST/OpenMind",
+    "source_of_truth": "ops/policies/skill_platform_registry_v1.json",
+    "write_authority": [
+      "chatgptrest-platform-maintainers"
+    ],
+    "classification_contract": [
+      "canonical",
+      "local",
+      "infra",
+      "legacy"
+    ],
+    "version_policy": "append-only versioned files; do not overwrite prior canonical registry versions",
+    "projection_policy": "frontends consume projections only; advisor skill_registry and OpenClaw config are read-only projections"
+  },
+  "capabilities": {
+    "market_research": "Conduct structured market research with multi-source data collection",
+    "code_review": "Review code changes for quality, security, and best practices",
+    "code_development": "Write production-quality code with tests",
+    "data_analysis": "Analyze datasets and produce structured reports",
+    "document_writing": "Write structured documents, reports, and walkthroughs",
+    "investment_research": "Research stocks, markets, and investment opportunities",
+    "system_ops": "Perform system operations, monitoring, and maintenance",
+    "web_search": "Search the web for information and synthesize findings",
+    "deep_research": "Conduct deep research using ChatGPT/Gemini Deep Research mode",
+    "presentation_authoring": "Produce deck-ready slide narratives and presentation artifacts",
+    "styled_pdf": "Render high-fidelity PDF output with explicit HTML/CSS styling",
+    "collab_publish": "Publish canonical documents and ledgers to collaborative surfaces",
+    "remote_storage": "Check and fetch remote files through managed storage backends",
+    "incident_response": "Run incident-triggered diagnostics and escalation workflows"
+  },
+  "task_profiles": {
+    "market_research": {
+      "description": "Market and competitive research tasks",
+      "required_capabilities": [
+        "market_research",
+        "web_search",
+        "document_writing"
+      ],
+      "preferred_agents": [
+        "finbot"
+      ],
+      "preferred_bundles": [
+        "research_core"
+      ],
+      "fallback_bundles": [
+        "general_core"
+      ]
+    },
+    "investment_research": {
+      "description": "Investment research, watchlist, and opportunity assessment",
+      "required_capabilities": [
+        "investment_research",
+        "data_analysis",
+        "web_search"
+      ],
+      "preferred_agents": [
+        "finbot"
+      ],
+      "preferred_bundles": [
+        "research_core"
+      ],
+      "fallback_bundles": [
+        "general_core"
+      ]
+    },
+    "code_review": {
+      "description": "Code review and technical critique",
+      "required_capabilities": [
+        "code_review"
+      ],
+      "preferred_agents": [
+        "main"
+      ],
+      "preferred_bundles": [
+        "general_core",
+        "planning_review"
+      ],
+      "fallback_bundles": [
+        "general_core"
+      ]
+    },
+    "code_development": {
+      "description": "Implementation, refactor, and delivery work",
+      "required_capabilities": [
+        "code_development"
+      ],
+      "preferred_agents": [
+        "main"
+      ],
+      "preferred_bundles": [
+        "general_core"
+      ],
+      "fallback_bundles": [
+        "planning_delivery"
+      ]
+    },
+    "data_analysis": {
+      "description": "Data-heavy analysis and reporting",
+      "required_capabilities": [
+        "data_analysis",
+        "document_writing"
+      ],
+      "preferred_agents": [
+        "main",
+        "finbot"
+      ],
+      "preferred_bundles": [
+        "general_core",
+        "research_core"
+      ],
+      "fallback_bundles": [
+        "planning_delivery"
+      ]
+    },
+    "ops_maintenance": {
+      "description": "Maintenance, health, and operations tasks",
+      "required_capabilities": [
+        "system_ops"
+      ],
+      "preferred_agents": [
+        "maintagent",
+        "main"
+      ],
+      "preferred_bundles": [
+        "maint_core"
+      ],
+      "fallback_bundles": [
+        "general_core"
+      ]
+    },
+    "deep_research": {
+      "description": "Deep research and long-form investigation",
+      "required_capabilities": [
+        "deep_research",
+        "document_writing"
+      ],
+      "preferred_agents": [
+        "finbot",
+        "main"
+      ],
+      "preferred_bundles": [
+        "research_core",
+        "planning_review"
+      ],
+      "fallback_bundles": [
+        "general_core"
+      ]
+    },
+    "general": {
+      "description": "General requests and direct execution",
+      "required_capabilities": [
+        "document_writing"
+      ],
+      "preferred_agents": [
+        "main"
+      ],
+      "preferred_bundles": [
+        "general_core"
+      ],
+      "fallback_bundles": [
+        "planning_delivery"
+      ]
+    }
+  },
+  "skills": [
+    {
+      "skill_id": "chatgptrest-call",
+      "version": "1.0.0",
+      "description": "Platform access skill for public-agent MCP, wrapper, and advisor control-plane calls.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "skills-src/chatgptrest-call/SKILL.md",
+      "platform_support": [
+        "openclaw",
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "bundle_membership": [
+        "general_core",
+        "maint_core",
+        "research_core",
+        "planning_delivery",
+        "planning_review",
+        "market_scan_quarantine"
+      ],
+      "dependencies": [],
+      "failure_modes": [
+        "mcp_unavailable",
+        "advisor_route_rejected",
+        "provider_lane_cooldown"
+      ],
+      "telemetry_keys": [
+        "advisor_agent_turn",
+        "advisor_agent_status",
+        "public_agent_mcp"
+      ],
+      "provides_capabilities": [
+        "document_writing",
+        "web_search",
+        "code_review",
+        "code_development",
+        "data_analysis",
+        "system_ops",
+        "deep_research"
+      ]
+    },
+    {
+      "skill_id": "document-pro-suite",
+      "version": "1.0.0",
+      "description": "Document understanding suite for PDF, OCR, tables, and research intake.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://document-pro-suite",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity",
+        "openclaw"
+      ],
+      "bundle_membership": [
+        "research_core",
+        "planning_delivery"
+      ],
+      "dependencies": [],
+      "failure_modes": [
+        "backend_missing",
+        "ocr_unavailable"
+      ],
+      "telemetry_keys": [
+        "document_ingest",
+        "ocr_fallback"
+      ],
+      "provides_capabilities": [
+        "document_writing",
+        "data_analysis"
+      ]
+    },
+    {
+      "skill_id": "web-content-extractor",
+      "version": "1.0.0",
+      "description": "Tiered web content extraction for articles, docs, and research material.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://web-content-extractor",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity",
+        "openclaw"
+      ],
+      "bundle_membership": [
+        "research_core",
+        "market_scan_quarantine"
+      ],
+      "dependencies": [],
+      "failure_modes": [
+        "extractor_unavailable",
+        "remote_fetch_failed"
+      ],
+      "telemetry_keys": [
+        "web_extract",
+        "web_extract_fallback"
+      ],
+      "provides_capabilities": [
+        "web_search",
+        "market_research"
+      ]
+    },
+    {
+      "skill_id": "work-audio-transcribe",
+      "version": "1.0.0",
+      "description": "Professional ASR workflow for meetings and work audio.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://work-audio-transcribe",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "bundle_membership": [
+        "research_core",
+        "planning_delivery"
+      ],
+      "dependencies": [],
+      "failure_modes": [
+        "asr_provider_unavailable",
+        "speaker_diarization_missing"
+      ],
+      "telemetry_keys": [
+        "asr_job",
+        "asr_compare"
+      ],
+      "provides_capabilities": [
+        "document_writing",
+        "data_analysis"
+      ]
+    },
+    {
+      "skill_id": "report-spec-builder",
+      "version": "1.0.0",
+      "description": "Adaptive report specification builder.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://report-spec-builder",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "bundle_membership": [
+        "planning_delivery",
+        "planning_review"
+      ],
+      "dependencies": [],
+      "failure_modes": [
+        "spec_schema_invalid"
+      ],
+      "telemetry_keys": [
+        "report_spec"
+      ],
+      "provides_capabilities": [
+        "document_writing"
+      ]
+    },
+    {
+      "skill_id": "report-pro-suite",
+      "version": "1.0.0",
+      "description": "Report production suite with workspace, export, and fallback lanes.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://report-pro-suite",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "bundle_membership": [
+        "research_core",
+        "planning_delivery",
+        "planning_review"
+      ],
+      "dependencies": [
+        "report-spec-builder"
+      ],
+      "failure_modes": [
+        "export_backend_failed",
+        "workspace_missing"
+      ],
+      "telemetry_keys": [
+        "report_workspace",
+        "report_export"
+      ],
+      "provides_capabilities": [
+        "document_writing",
+        "market_research",
+        "investment_research"
+      ]
+    },
+    {
+      "skill_id": "ppt-pro-suite",
+      "version": "1.0.0",
+      "description": "Presentation suite for deck specs, generation, QA, and export.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://ppt-pro-suite",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "bundle_membership": [
+        "planning_delivery"
+      ],
+      "dependencies": [],
+      "failure_modes": [
+        "ppt_backend_failed",
+        "template_missing"
+      ],
+      "telemetry_keys": [
+        "deck_workspace",
+        "deck_export"
+      ],
+      "provides_capabilities": [
+        "presentation_authoring",
+        "document_writing"
+      ]
+    },
+    {
+      "skill_id": "weasyprint-html-pdf-builder",
+      "version": "1.0.0",
+      "description": "Styled PDF rendering lane using HTML/CSS and WeasyPrint.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://weasyprint-html-pdf-builder",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "bundle_membership": [
+        "planning_delivery",
+        "planning_review"
+      ],
+      "dependencies": [],
+      "failure_modes": [
+        "weasyprint_missing",
+        "html_render_failed"
+      ],
+      "telemetry_keys": [
+        "pdf_render"
+      ],
+      "provides_capabilities": [
+        "styled_pdf",
+        "document_writing"
+      ]
+    },
+    {
+      "skill_id": "dingtalk-collab-publish",
+      "version": "1.0.0",
+      "description": "Publish Markdown and ledger artifacts to DingTalk collaborative surfaces.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://dingtalk-collab-publish",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "bundle_membership": [
+        "planning_delivery"
+      ],
+      "dependencies": [
+        "report-pro-suite"
+      ],
+      "failure_modes": [
+        "publish_auth_failed",
+        "remote_sheet_write_failed"
+      ],
+      "telemetry_keys": [
+        "dingtalk_publish"
+      ],
+      "provides_capabilities": [
+        "collab_publish",
+        "document_writing"
+      ]
+    },
+    {
+      "skill_id": "gdrive-remote-check",
+      "version": "1.0.0",
+      "description": "Managed Google Drive remote check and fetch workflow.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://gdrive-remote-check",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity",
+        "openclaw"
+      ],
+      "bundle_membership": [
+        "maint_core",
+        "market_scan_quarantine"
+      ],
+      "dependencies": [],
+      "failure_modes": [
+        "rclone_unavailable",
+        "remote_not_found"
+      ],
+      "telemetry_keys": [
+        "remote_check"
+      ],
+      "provides_capabilities": [
+        "remote_storage",
+        "system_ops"
+      ]
+    },
+    {
+      "skill_id": "proxy-incident-runner",
+      "version": "1.0.0",
+      "description": "Event-driven proxy incident diagnostics and escalation workflow.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "source_of_truth": "shared://proxy-incident-runner",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "openclaw"
+      ],
+      "bundle_membership": [
+        "maint_core"
+      ],
+      "dependencies": [
+        "chatgptrest-call"
+      ],
+      "failure_modes": [
+        "incident_not_triggered",
+        "proxy_probe_failed"
+      ],
+      "telemetry_keys": [
+        "incident_run"
+      ],
+      "provides_capabilities": [
+        "incident_response",
+        "system_ops"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "bundle_id": "general_core",
+      "version": "1.0.0",
+      "description": "Default general execution bundle for the primary agent.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "platform_support": [
+        "openclaw",
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "skill_ids": [
+        "chatgptrest-call"
+      ],
+      "provided_capabilities": [
+        "code_review",
+        "code_development",
+        "document_writing",
+        "system_ops",
+        "data_analysis"
+      ],
+      "dependencies": []
+    },
+    {
+      "bundle_id": "maint_core",
+      "version": "1.0.0",
+      "description": "Maintenance and watchdog bundle with remote and incident primitives.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "platform_support": [
+        "openclaw",
+        "codex",
+        "claude_code"
+      ],
+      "skill_ids": [
+        "chatgptrest-call",
+        "gdrive-remote-check",
+        "proxy-incident-runner"
+      ],
+      "provided_capabilities": [
+        "system_ops",
+        "document_writing",
+        "remote_storage",
+        "incident_response"
+      ],
+      "dependencies": []
+    },
+    {
+      "bundle_id": "research_core",
+      "version": "1.0.0",
+      "description": "Research, evidence, and synthesis bundle for finbot-like lanes.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "platform_support": [
+        "openclaw",
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "skill_ids": [
+        "chatgptrest-call",
+        "document-pro-suite",
+        "web-content-extractor",
+        "work-audio-transcribe",
+        "report-pro-suite"
+      ],
+      "provided_capabilities": [
+        "market_research",
+        "investment_research",
+        "web_search",
+        "document_writing",
+        "data_analysis",
+        "deep_research"
+      ],
+      "dependencies": []
+    },
+    {
+      "bundle_id": "planning_delivery",
+      "version": "1.0.0",
+      "description": "Planning-oriented delivery bundle for reports, decks, PDF, and publish workflows.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "skill_ids": [
+        "document-pro-suite",
+        "report-spec-builder",
+        "report-pro-suite",
+        "ppt-pro-suite",
+        "weasyprint-html-pdf-builder",
+        "dingtalk-collab-publish"
+      ],
+      "provided_capabilities": [
+        "document_writing",
+        "presentation_authoring",
+        "styled_pdf",
+        "collab_publish",
+        "data_analysis"
+      ],
+      "dependencies": []
+    },
+    {
+      "bundle_id": "planning_review",
+      "version": "1.0.0",
+      "description": "Review-oriented planning bundle for structured critique and deliverable preparation.",
+      "classification": "canonical",
+      "maturity": "stable",
+      "owner": "ChatgptREST/OpenMind",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity"
+      ],
+      "skill_ids": [
+        "chatgptrest-call",
+        "report-spec-builder",
+        "report-pro-suite",
+        "weasyprint-html-pdf-builder"
+      ],
+      "provided_capabilities": [
+        "document_writing",
+        "code_review",
+        "market_research",
+        "styled_pdf"
+      ],
+      "dependencies": []
+    },
+    {
+      "bundle_id": "market_scan_quarantine",
+      "version": "1.0.0",
+      "description": "Quarantine bundle for externally sourced market-scan skills under evaluation.",
+      "classification": "canonical",
+      "maturity": "experimental",
+      "owner": "ChatgptREST/OpenMind",
+      "platform_support": [
+        "codex",
+        "claude_code",
+        "antigravity",
+        "openclaw"
+      ],
+      "skill_ids": [
+        "chatgptrest-call",
+        "web-content-extractor",
+        "gdrive-remote-check"
+      ],
+      "provided_capabilities": [
+        "market_research",
+        "web_search",
+        "remote_storage"
+      ],
+      "dependencies": []
+    }
+  ],
+  "agent_profiles": [
+    {
+      "agent_id": "main",
+      "platform": "openclaw",
+      "default_bundles": [
+        "general_core"
+      ],
+      "preferred_model": "auto"
+    },
+    {
+      "agent_id": "maintagent",
+      "platform": "openclaw",
+      "default_bundles": [
+        "maint_core"
+      ],
+      "preferred_model": "auto"
+    },
+    {
+      "agent_id": "finbot",
+      "platform": "openclaw",
+      "default_bundles": [
+        "research_core"
+      ],
+      "preferred_model": "auto"
+    }
+  ],
+  "platform_adapters": {
+    "openclaw": {
+      "projection_mode": "agent_bundles_with_runtime_skills",
+      "bundle_field": "skillBundles",
+      "skill_field": "skills"
+    },
+    "codex": {
+      "projection_mode": "shared_catalog_reference",
+      "bundle_field": "bundles",
+      "skill_field": "skills"
+    },
+    "claude_code": {
+      "projection_mode": "shared_catalog_reference",
+      "bundle_field": "bundles",
+      "skill_field": "skills"
+    },
+    "antigravity": {
+      "projection_mode": "shared_catalog_reference",
+      "bundle_field": "bundles",
+      "skill_field": "skills"
+    }
+  }
+}

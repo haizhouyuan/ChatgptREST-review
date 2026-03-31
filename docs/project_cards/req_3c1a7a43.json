@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "project_id": "0d9ceb0f58ef4150bdbc8a2fe2d28829",
+  "trace_id": "",
+  "created_at": "2026-02-27T18:32:38.774129+00:00",
+  "title": "核心目标",
+  "problem_statement": "去关注它，因为呃未来呢，它可能会是一个增长点，但增长点在哪里不知道，肯定。已经不是比特币，那具体是哪（以及相关的 呃，我想要去。实现。 发言人 1 00:13:00 那我们的目标呢，实际上就是呃，第一呢，就是掌握信、把它捡起来，就从断点开始，一直到现在，把所有的这个视频工作的分析呢。 发言人 1 00:05:00）",
+  "job_to_be_done": "When 去关注它，因为呃未来呢，它可能会是一个增长点，但增长点在哪里不知道，肯定。已经不是比特币，那具体是哪（以及相关的 呃，我想要去。实现。 发言人 1 00:13:00 那我们的目标呢，实际上就是呃，第一, help me achieve the desired outcome effectively",
+  "success_metrics": [
+    {
+      "metric": "用户满意度",
+      "target": ">80%",
+      "measurement_method": "用户反馈评分"
+    }
+  ],
+  "in_scope": [
+    "去关注它，因为呃未来呢，它可能会是一个增长点，但增长点在哪里不知道，肯定。已经不是比特币，那具体是哪 | 呃，我想要去。实现。 发言人 1 00:13:00 那我们的目标呢，实际上就是呃，第一呢，就是掌握信 | 把它捡起来，就从断点开始，一直到现在，把所有的这个视频工作的分析呢。 发言人 1 00:05:00 | 能够呃通过几方面来做美股投资的一些指导吧。因为美股是一个非常大的市场，呃，全球的投资者都在关注美股 | 啊，我我觉得要设置一个目标，就是在呃A股和美股这两个领域里面，我要实现的目标是呃首先投资的时点时间和"
+  ],
+  "out_of_scope": [],
+  "assumptions": [],
+  "constraints": [],
+  "dependencies": [],
+  "deliverables": [],
+  "tasks": [
+    {
+      "task_id": "8663eb77c0c94f98923cc1aa29bd0292",
+      "title": "MVP 快速验证",
+      "description": "",
+      "depends_on": [],
+      "estimated_effort_hours": 4,
+      "agent_role": "executor",
+      "outputs": [],
+      "verification": []
+    },
+    {
+      "task_id": "ee9b0941ed6c41ab81aa21a415b6fc99",
+      "title": "全面开发",
+      "description": "",
+      "depends_on": [],
+      "estimated_effort_hours": 4,
+      "agent_role": "executor",
+      "outputs": [],
+      "verification": []
+    },
+    {
+      "task_id": "e8f22ea3639b4d1d807deb48e163dc2f",
+      "title": "分阶段迭代",
+      "description": "",
+      "depends_on": [],
+      "estimated_effort_hours": 4,
+      "agent_role": "executor",
+      "outputs": [],
+      "verification": []
+    }
+  ],
+  "acceptance_tests": [],
+  "definition_of_done": [],
+  "risks": [
+    {
+      "risk_id": "70eaf15069b143bd9fa6f70b443cefdd",
+      "description": "需求理解偏差 - 原始输入模糊可能导致方向错误",
+      "probability": 0.4,
+      "impact": 0.7,
+      "mitigation": "迭代确认，分阶段验证",
+      "detection_signal": "用户反馈不符合预期",
+      "owner": "human"
+    },
+    {
+      "risk_id": "f95ffb16ca2e47638e63e7aff8de3b29",
+      "description": "资源不足 - 执行方案所需资源可能超出预期",
+      "probability": 0.3,
+      "impact": 0.5,
+      "mitigation": "先做MVP验证核心假设",
+      "detection_signal": "进度延迟超过20%",
+      "owner": "human"
+    }
+  ],
+  "premortem_summary": "",
+  "red_team_findings": "",
+  "evidence_pack_id": "",
+  "decision_record": {
+    "chosen_option": "",
+    "alternatives_considered": [],
+    "rationale": [],
+    "consequences": []
+  },
+  "rubric_snapshot": {
+    "total": 70.82,
+    "information_completeness": 0.0,
+    "controversy_convergence": 0.0,
+    "risk_controllability": 0.0,
+    "scope_boundary_clarity": 0.0,
+    "executability": 0.0,
+    "evidence_sufficiency": 0.0,
+    "gate": "A"
+  }
+}

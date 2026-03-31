@@ -1,0 +1,186 @@
+"""Tests for CLI-Anything market manifest builder."""
+
+import json
+from pathlib import Path
+
+import pytest
+
+from ops.build_cli_anything_market_manifest import build_manifest
+
+
+def test_build_manifest_minimal():
+    """Test building manifest with minimal fields."""
+    manifest = build_manifest(
+        skill_id="test-skill",
+        capability_ids=["test_capability"],
+        source_uri="file:///test/path",
+        summary="Test skill",
+    )
+
+    assert manifest["schema_version"] == "market_skill_candidates.v1"
+    assert manifest["source_market"] == "cli-anything"
+    assert "generated_at" in manifest
+    assert len(manifest["candidates"]) == 1
+
+    candidate = manifest["candidates"][0]
+    assert candidate["skill_id"] == "test-skill"
+    assert candidate["capability_ids"] == ["test_capability"]
+    assert candidate["source_uri"] == "file:///test/path"
+    assert candidate["summary"] == "Test skill"
+    assert candidate["source_market"] == "cli-anything"
+    assert candidate["status"] == "quarantine"
+    assert candidate["trust_level"] == "unreviewed"
+    assert candidate["quarantine_state"] == "pending"
+    assert candidate["linked_gap_id"] == ""
+    assert candidate["evidence"] == {}
+    assert "candidate_id" in candidate
+    assert "created_at" in candidate
+    assert "updated_at" in candidate
+
+
+def test_build_manifest_with_evidence():
+    """Test building manifest with validation bundle and package dir."""
+    manifest = build_manifest(
+        skill_id="test-skill",
+        capability_ids=["cap1", "cap2"],
+        source_uri="file:///test/path",
+        summary="Test skill with evidence",
+        validation_bundle_dir="/path/to/validation",
+        package_dir="/path/to/package",
+    )
+
+    candidate = manifest["candidates"][0]
+    assert candidate["capability_ids"] == ["cap1", "cap2"]
+    assert candidate["evidence"]["validation_bundle_dir"] == "/path/to/validation"
+    assert candidate["evidence"]["package_dir"] == "/path/to/package"
+
+
+def test_build_manifest_multiple_capabilities():
+    """Test building manifest with multiple capability IDs."""
+    manifest = build_manifest(
+        skill_id="multi-cap-skill",
+        capability_ids=["cap1", "cap2", "cap3"],
+        source_uri="file:///test/path",
+        summary="Multi-capability skill",
+    )
+
+    candidate = manifest["candidates"][0]
+    assert len(candidate["capability_ids"]) == 3
+    assert "cap1" in candidate["capability_ids"]
+    assert "cap2" in candidate["capability_ids"]
+    assert "cap3" in candidate["capability_ids"]
+
+
+def test_candidate_id_uniqueness():
+    """Test that candidate IDs are unique."""
+    manifest1 = build_manifest(
+        skill_id="test-skill",
+        capability_ids=["test"],
+        source_uri="file:///test",
+        summary="Test",
+    )
+    manifest2 = build_manifest(
+        skill_id="test-skill",
+        capability_ids=["test"],
+        source_uri="file:///test",
+        summary="Test",
+    )
+
+    assert manifest1["candidates"][0]["candidate_id"] != manifest2["candidates"][0]["candidate_id"]
+
+
+def test_manifest_structure():
+    """Test that manifest has all required fields for market_skill_candidates."""
+    manifest = build_manifest(
+        skill_id="test-skill",
+        capability_ids=["test"],
+        source_uri="file:///test",
+        summary="Test",
+    )
+
+    candidate = manifest["candidates"][0]
+
+    # Required fields for market_skill_candidates table
+    required_fields = [
+        "candidate_id",
+        "skill_id",
+        "source_market",
+        "source_uri",
+        "capability_ids",
+        "status",
+        "trust_level",
+        "quarantine_state",
+        "linked_gap_id",
+        "summary",
+        "evidence",
+        "created_at",
+        "updated_at",
+    ]
+
+    for field in required_fields:
+        assert field in candidate, f"Missing required field: {field}"
+
+
+def test_manifest_json_serializable():
+    """Test that manifest is JSON serializable."""
+    manifest = build_manifest(
+        skill_id="test-skill",
+        capability_ids=["test"],
+        source_uri="file:///test",
+        summary="Test",
+        validation_bundle_dir="/path/to/validation",
+    )
+
+    # Should not raise
+    json_str = json.dumps(manifest)
+    restored = json.loads(json_str)
+
+    assert restored["candidates"][0]["skill_id"] == manifest["candidates"][0]["skill_id"]
+    assert restored["candidates"][0]["capability_ids"] == manifest["candidates"][0]["capability_ids"]
+
+
+def test_manifest_is_compatible_with_importer(tmp_path, monkeypatch):
+    """Test that generated manifest can be consumed by the existing importer."""
+    monkeypatch.setenv("OPENMIND_SKILL_PLATFORM_DB", str(tmp_path / "skill_platform.db"))
+
+    manifest = build_manifest(
+        skill_id="cli-anything-test-skill",
+        capability_ids=["public_web_read"],
+        source_uri="file:///tmp/cli-anything/test-skill",
+        summary="Generated by CLI-Anything",
+        validation_bundle_dir="/tmp/bundle",
+        package_dir="/tmp/package",
+    )
+
+    manifest_path = tmp_path / "cli_anything_manifest.json"
+    manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    sources_path = tmp_path / "skill_market_sources.json"
+    sources_path.write_text(
+        json.dumps(
+            {
+                "authority": {"registry_id": "test", "schema_version": "1.0"},
+                "sources": [
+                    {
+                        "source_id": "cli_anything_market",
+                        "enabled": True,
+                        "kind": "json_manifest",
+                        "source_market": "cli-anything",
+                        "trust_level": "unreviewed",
+                        "manifest_uri": manifest_path.as_uri(),
+                        "allowed_uri_prefixes": ["file://"],
+                    }
+                ],
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+    from ops.import_skill_market_candidates import import_market_source
+
+    result = import_market_source("cli_anything_market", policy_path=str(sources_path))
+    assert result["imported_count"] == 1
+    assert result["imported"][0]["skill_id"] == "cli-anything-test-skill"
+    assert result["imported"][0]["source_market"] == "cli-anything"

@@ -1,0 +1,198 @@
+{
+    "version": "2.0",
+    "providers": {
+        "chatgpt-web": {
+            "type": "mcp_web",
+            "display_name": "ChatGPT Web (o3)",
+            "tier": 1,
+            "capabilities": [
+                "chat",
+                "deep_research",
+                "code_gen",
+                "web_search"
+            ],
+            "avg_latency_ms": 15000,
+            "max_concurrent": 1,
+            "requires": [
+                "CDP_PORT_9222"
+            ],
+            "presets": {
+                "auto": {},
+                "pro": {
+                    "model_hint": "o3-pro"
+                },
+                "deep_research": {
+                    "mode": "deep_research"
+                }
+            }
+        },
+        "gemini-web": {
+            "type": "mcp_web",
+            "display_name": "Gemini Web (2.5 Pro)",
+            "tier": 1,
+            "capabilities": [
+                "chat",
+                "deep_research",
+                "image_gen",
+                "web_search"
+            ],
+            "avg_latency_ms": 12000,
+            "max_concurrent": 1,
+            "requires": [
+                "CDP_PORT_9222"
+            ]
+        },
+        "qwen-api": {
+            "type": "api",
+            "display_name": "Qwen 3.5+ (Coding Plan API)",
+            "tier": 3,
+            "capabilities": [
+                "chat",
+                "code_gen"
+            ],
+            "avg_latency_ms": 3000,
+            "max_concurrent": 10,
+            "models": [
+                "qwen3.5-plus",
+                "qwen3-coder-plus"
+            ]
+        },
+        "claude-api": {
+            "type": "native_api",
+            "display_name": "Claude Sonnet 4 (Anthropic)",
+            "tier": 2,
+            "capabilities": [
+                "chat",
+                "code_gen",
+                "analysis",
+                "tool_use"
+            ],
+            "avg_latency_ms": 5000,
+            "max_concurrent": 5,
+            "models": [
+                "claude-sonnet-4-20250514"
+            ]
+        },
+        "kimi-api": {
+            "type": "api",
+            "display_name": "Kimi K2.5 (Coding Plan API)",
+            "tier": 3,
+            "capabilities": [
+                "chat"
+            ],
+            "avg_latency_ms": 4000,
+            "max_concurrent": 10,
+            "models": [
+                "kimi-k2.5"
+            ]
+        },
+        "minimax-api": {
+            "type": "api",
+            "display_name": "MiniMax M2.5 (Coding Plan API)",
+            "tier": 3,
+            "capabilities": [
+                "chat"
+            ],
+            "avg_latency_ms": 2000,
+            "max_concurrent": 10,
+            "models": [
+                "MiniMax-M2.5"
+            ]
+        }
+    },
+    "task_profiles": {
+        "report_writing": {
+            "required_caps": [
+                "chat"
+            ],
+            "preferred_caps": [
+                "web_search"
+            ],
+            "quality_weight": 0.7,
+            "latency_weight": 0.1,
+            "cost_weight": 0.2,
+            "min_tier": 1,
+            "description": "Report writing — use flagship providers"
+        },
+        "deep_research": {
+            "required_caps": [
+                "chat"
+            ],
+            "preferred_caps": [
+                "deep_research",
+                "web_search"
+            ],
+            "quality_weight": 0.8,
+            "latency_weight": 0.0,
+            "cost_weight": 0.2,
+            "min_tier": 3,
+            "description": "Deep research — prefers flagship but allows API fallback"
+        },
+        "quick_qa": {
+            "required_caps": [
+                "chat"
+            ],
+            "quality_weight": 0.3,
+            "latency_weight": 0.5,
+            "cost_weight": 0.2,
+            "max_latency_ms": 30000,
+            "min_tier": 3,
+            "description": "Quick Q&A, speed matters"
+        },
+        "coding": {
+            "required_caps": [
+                "code_gen"
+            ],
+            "preferred_caps": [
+                "tool_use"
+            ],
+            "quality_weight": 0.5,
+            "latency_weight": 0.2,
+            "cost_weight": 0.3,
+            "min_tier": 3,
+            "description": "Code generation / CC tasks"
+        },
+        "analysis": {
+            "required_caps": [
+                "chat"
+            ],
+            "preferred_caps": [
+                "web_search",
+                "analysis"
+            ],
+            "quality_weight": 0.6,
+            "latency_weight": 0.2,
+            "cost_weight": 0.2,
+            "min_tier": 3,
+            "description": "Analysis tasks — prefers flagship but allows API fallback"
+        },
+        "default": {
+            "required_caps": [
+                "chat"
+            ],
+            "quality_weight": 0.4,
+            "latency_weight": 0.3,
+            "cost_weight": 0.3,
+            "min_tier": 3,
+            "description": "Default fallback profile"
+        }
+    },
+    "intent_mapping": {
+        "report": "report_writing",
+        "deep_research": "deep_research",
+        "kb_answer": "quick_qa",
+        "hybrid": "analysis",
+        "funnel": "analysis",
+        "action": "coding",
+        "cc_task": "coding",
+        "clarify": "quick_qa",
+        "direct_answer": "quick_qa"
+    },
+    "health": {
+        "window_seconds": 600,
+        "degraded_failure_rate": 0.3,
+        "exhausted_failure_rate": 0.6,
+        "recovery_successes": 3,
+        "cooldown_default_seconds": 120
+    }
+}

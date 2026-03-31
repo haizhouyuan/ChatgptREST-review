@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic controller lane continuity sweep
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=2min
+Persistent=true
+Unit=chatgptrest-controller-lanes.service
+
+[Install]
+WantedBy=timers.target

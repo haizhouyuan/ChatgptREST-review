@@ -1,0 +1,15 @@
+- [x] Create clean worktree/branch from current `origin/master`
+- [x] Record execution plan before coding
+- [x] Cherry-pick `2cb04b5` onto clean branch
+- [x] Run GitNexus impact/context for `dispatch_team`, `_run_team_roles`, `resolve_team_spec`, `_resolve_checkpoint`
+- [x] Fix checkpoint resolution semantics
+- [x] Fix `topology_id + explicit team` overlay semantics
+- [x] Enforce `max_concurrent` in parallel team fan-out
+- [x] Add regression tests for all three fixes
+- [x] Run targeted test matrix
+- [x] Run broader advisor/kernel regression matrix
+- [ ] Run full repo `pytest -q`
+- [ ] Write adjudication + walkthrough
+- [ ] Run change-scope check and summarize affected symbols/files
+- [ ] Push branch and open PR
+- [ ] Closeout
