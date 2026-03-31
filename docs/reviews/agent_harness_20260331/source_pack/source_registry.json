@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-03-31",
+  "base_dir": "/vol1/1000/projects/planning/docs/sources/agent_harness_2026-03-31",
+  "sources": [
+    {
+      "file": "anthropic_evals.md",
+      "title": "Anthropic - Demystifying evals for AI agents",
+      "source_url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+      "fetched_at": "2026-03-31T12:44:29+08:00",
+      "extract_method": "scrapling"
+    },
+    {
+      "file": "anthropic_harness.md",
+      "title": "Anthropic - Harness design for long-running application development",
+      "source_url": "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+      "fetched_at": "2026-03-31T12:44:16+08:00",
+      "extract_method": "jina"
+    },
+    {
+      "file": "claude_prompting.md",
+      "title": "Claude Docs - Prompting best practices",
+      "source_url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "fetched_at": "2026-03-31T12:44:37+08:00",
+      "extract_method": "jina"
+    },
+    {
+      "file": "inngest_durable_execution.md",
+      "title": "Inngest - Durable Execution: The Key to Harnessing AI Agents in Production",
+      "source_url": "https://www.inngest.com/blog/durable-execution-key-to-harnessing-ai-agents",
+      "fetched_at": "2026-03-31T12:45:07+08:00",
+      "extract_method": "jina"
+    },
+    {
+      "file": "inngest_harness.md",
+      "title": "Inngest - Your Agent Needs a Harness, Not a Framework",
+      "source_url": "https://www.inngest.com/blog/your-agent-needs-a-harness-not-a-framework",
+      "fetched_at": "2026-03-31T12:45:01+08:00",
+      "extract_method": "jina"
+    },
+    {
+      "file": "langchain_deep_agents.md",
+      "title": "LangChain - Deep Agents",
+      "source_url": "https://www.langchain.com/deep-agents",
+      "fetched_at": "2026-03-31T12:46:13+08:00",
+      "extract_method": "jina"
+    },
+    {
+      "file": "langgraph_platform_ga.md",
+      "title": "LangGraph - Platform GA",
+      "source_url": "https://blog.langchain.dev/langgraph-platform-ga/",
+      "fetched_at": "2026-03-31T12:46:13+08:00",
+      "extract_method": "jina"
+    },
+    {
+      "file": "microsoft_sre_harness.md",
+      "title": "Microsoft - Harness Engineering for Azure SRE Agent",
+      "source_url": "https://techcommunity.microsoft.com/blog/appsonazureblog/the-agent-that-investigates-itself/4500073",
+      "fetched_at": "2026-03-31T12:45:47+08:00",
+      "extract_method": "scrapling"
+    },
+    {
+      "file": "openai_codex_harness.md",
+      "title": "OpenAI - Unlocking the Codex harness: how we built the App Server",
+      "source_url": "https://openai.com/index/unlocking-the-codex-harness/",
+      "fetched_at": "2026-03-31T12:44:49+08:00",
+      "extract_method": "jina"
+    },
+    {
+      "file": "openai_harness_engineering.md",
+      "title": "OpenAI - Harness engineering: leveraging Codex in an agent-first world",
+      "source_url": "https://openai.com/index/harness-engineering/",
+      "fetched_at": "2026-03-31T12:44:42+08:00",
+      "extract_method": "jina"
+    },
+    {
+      "file": "openai_responses_background.md",
+      "title": "OpenAI - New tools and features in the Responses API",
+      "source_url": "https://openai.com/index/new-tools-and-features-in-the-responses-api/",
+      "fetched_at": "2026-03-31T12:44:55+08:00",
+      "extract_method": "jina"
+    }
+  ]
+}

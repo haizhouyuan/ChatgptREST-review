@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatgptREST Call"
+  short_description: "Use the public advisor-agent MCP, with maintenance-only legacy fallback"
+  default_prompt: "Use $chatgptrest-call in agent/public-MCP mode first; only mention legacy jobs when maintenance work explicitly requires it."

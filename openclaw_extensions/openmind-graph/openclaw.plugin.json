@@ -1,0 +1,33 @@
+{
+  "id": "openmind-graph",
+  "name": "OpenMind Graph",
+  "description": "Structured graph retrieval for personal graph and repo_graph federation.",
+  "version": "2026.3.8",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "endpoint": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "baseUrl": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "timeoutMs": { "type": "number", "minimum": 1000, "maximum": 300000 }
+        },
+        "required": ["baseUrl"]
+      },
+      "defaultRepo": {
+        "type": "string"
+      },
+      "defaultScopes": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["personal_graph", "repo_graph"]
+        }
+      }
+    },
+    "required": ["endpoint"]
+  }
+}

@@ -1,0 +1,16 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-guardian.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-guardian.timer
+#
+[Unit]
+Description=ChatgptREST OpenClaw guardian (every 15 minutes)
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+RandomizedDelaySec=30
+
+[Install]
+WantedBy=timers.target
+

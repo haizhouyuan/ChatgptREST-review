@@ -1,0 +1,309 @@
+{% extends "investor_base.html" %}
+
+{% block content %}
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>What Moved</h2>
+        <p>Recent research updates that need your attention.</p>
+      </div>
+    </header>
+    <div class="stack-list">
+      {% if snapshot.research_updates %}
+        {% for update in snapshot.research_updates[:5] %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span class="badge tone-{{ 'accent' if update.kind == 'opportunity' else 'warning' }}">{{ update.kind }}</span>
+              <span>{{ update.summary }}</span>
+            </div>
+            <strong><a class="table-link" href="{{ update.detail_href }}">{{ update.title }}</a></strong>
+            <div class="subtle">{{ update.subtitle }}</div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-state">No recent research updates.</div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>What to Watch</h2>
+        <p>Active themes and opportunities requiring attention.</p>
+      </div>
+      <a class="ghost-button" href="{{ snapshot.planning_doc_reader_href }}">Planning Doc</a>
+    </header>
+    <div class="double-grid">
+      <div class="stack-list">
+        <div class="stat-row"><span>Active Themes</span><strong>{{ snapshot.summary.theme_count }}</strong></div>
+        <div class="stat-row"><span>Opportunities</span><strong>{{ snapshot.summary.opportunity_count }}</strong></div>
+      </div>
+      <div class="stack-list">
+        <div class="stat-row"><span>Strong Sources</span><strong>{{ snapshot.summary.strong_source_count }}</strong></div>
+        <div class="stat-row"><span>KOLs</span><strong>{{ snapshot.summary.kol_count }}</strong></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Research Coverage Table</h2>
+        <p>Compress current themes into a sortable overview: what we're watching, why not investable yet, what to check next.</p>
+      </div>
+    </header>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Theme</th>
+            <th>Posture</th>
+            <th>Best expression</th>
+            <th>Why now</th>
+            <th>Why not yet</th>
+            <th>Latest change</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for theme in snapshot.themes %}
+            <tr>
+              <td>
+                <strong>{{ theme.title }}</strong>
+                <div class="subtle">{{ theme.investor_question }}</div>
+              </td>
+              <td>
+                <a href="{{ theme.detail_href }}" class="badge tone-{{ 'accent' if theme.recommended_posture == 'watch_with_prepare_candidate' else 'warning' if 'prepare' in (theme.recommended_posture or '') else 'neutral' }}">{{ theme.recommended_posture or theme.current_posture }}</a>
+              </td>
+              <td>{{ theme.best_expression or 'n/a' }}</td>
+              <td>{{ theme.why_now or theme.summary_excerpt }}</td>
+              <td>
+                {% if theme.related_opportunities and theme.related_opportunities[0].research_package %}
+                  {{ theme.related_opportunities[0].research_package.why_not_investable_yet or 'n/a' }}
+                {% else %}
+                  <div class="subtle">{{ theme.current_posture or 'n/a' }}</div>
+                {% endif %}
+              </td>
+              <td>
+                {{ theme.latest_change or 'No material change logged yet.' }}
+              </td>
+              <td>
+                <a class="table-link" href="{{ theme.detail_href }}">Theme</a>
+                {% if theme.run_doc_reader_href %}<div><a class="table-link" href="{{ theme.run_doc_reader_href }}">Run</a></div>{% endif %}
+                {% if theme.spec_reader_href %}<div><a class="table-link" href="{{ theme.spec_reader_href }}">Spec</a></div>{% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Opportunity Radar</h2>
+          <p>Newly emerged opportunities - only keep route, opportunity type, why now, and tokenization notes.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for item in snapshot.opportunities %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span class="mono">{{ item.candidate_id }}</span>
+              <span title="residual_class: {{ item.residual_class }}">Type</span>
+            </div>
+            <strong><a class="table-link" href="{{ item.detail_href or '/v2/dashboard/investor' }}">{{ item.thesis_name }}</a></strong>
+            <div class="badge-row">
+              <span class="badge tone-{{ 'accent' if item.route == 'opportunity' else 'neutral' }}">{{ item.route }}</span>
+              <span class="badge tone-neutral" title="residual_class: {{ item.residual_class }}">Type</span>
+              <span class="badge tone-neutral" title="Ranking Score: {{ '%.3f'|format(item.ranking_score or 0) }}">score {{ '%.3f'|format(item.ranking_score or 0) }}</span>
+            </div>
+            <div class="subtle">{{ item.note or 'No note' }}</div>
+            {% if item.brief_next_proving_milestone %}
+              <div class="subtle">next milestone: {{ item.brief_next_proving_milestone }}</div>
+            {% endif %}
+            {% if item.related_themes %}
+              <div class="subtle">absorbs into:
+                {% for theme in item.related_themes %}
+                  <a class="table-link" href="{{ theme.detail_href }}">{{ theme.title }}</a>{% if not loop.last %} / {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+            <div class="badge-row">
+              <a class="ghost-button" href="{{ item.detail_href or '/v2/dashboard/investor' }}">Open Opportunity</a>
+              {% if item.research_package.reader_href %}<a class="ghost-button" href="{{ item.research_package.reader_href }}">Open Package</a>{% endif %}
+              {% if item.reader_href %}<a class="ghost-button" href="{{ item.reader_href }}">Open Brief</a>{% endif %}
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No current opportunities from theme radar.</div>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Latest Research Updates</h2>
+          <p>Only show themes or opportunities that have actually changed and are worth revisiting.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for item in snapshot.research_updates %}
+          <div class="timeline-item">
+            <div class="timeline-meta"><span>{{ item.kind }}</span><span>{{ item.subtitle }}</span>{% if item.updated_at or item.created_at %}<span>{{ item.updated_at or item.created_at }}</span>{% endif %}</div>
+            <strong>{% if item.detail_href %}<a class="table-link" href="{{ item.detail_href }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</strong>
+            <div class="subtle">{{ item.summary or 'No material change logged yet.' }}</div>
+            <div class="badge-row">
+              {% if item.reader_href %}<a class="ghost-button" href="{{ item.reader_href }}">Open Report</a>{% endif %}
+              {% if item.detail_href %}<a class="ghost-button" href="{{ item.detail_href }}">Open Detail</a>{% endif %}
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No recent research updates.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Finbot Inbox</h2>
+          <p>Items that finbot has recently produced and are awaiting main entry review.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for item in snapshot.finbot_inbox %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span>{{ item.category or item.type or 'inbox' }}</span>
+              <span>{{ item.updated_at or item.created_at }}</span>
+            </div>
+            <strong>{{ item.title }}</strong>
+            <div class="subtle">{{ item.summary or item.thesis or item.topic or 'No thesis text' }}</div>
+            <div class="badge-row">
+              {% if item.next_action %}<span class="badge tone-warning">{{ item.next_action }}</span>{% endif %}
+              {% if item.detail_href %}<a class="ghost-button" href="{{ item.detail_href }}">Open Theme</a>{% endif %}
+              {% if item.opportunity_href %}<a class="ghost-button" href="{{ item.opportunity_href }}">Open Opportunity</a>{% endif %}
+              <a class="ghost-button" href="{{ item.reader_href }}">Open Item</a>
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">Finbot inbox currently empty.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Strong Sources</h2>
+          <p>Current primary sources most worth using as anchors.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for item in snapshot.strong_sources %}
+          <div class="signal-card tone-success">
+            <div>
+              <div><a class="table-link" href="{{ item.detail_href }}">{{ item.name }}</a></div>
+              <div class="subtle" title="Track record: historical accuracy of this source's predictions">{{ item.source_type }} · {{ item.source_trust_tier }} · {{ item.track_record_label }}</div>
+            </div>
+            <div class="align-right">
+              <div class="mono">accepted {{ item.accepted_route_count }}</div>
+              <div class="subtle">validated {{ item.validated_case_count }}</div>
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No strong source rows available.</div>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>KOL Coverage</h2>
+          <p>Keep KOLs worth digging deeper into - do not show noise pool.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for item in snapshot.kols %}
+          <div class="signal-card tone-warning">
+            <div>
+              <div><a class="table-link" href="{{ item.detail_href }}">{{ item.name }}</a></div>
+              <div class="subtle" title="Track record: historical accuracy">{{ item.source_priority_label }} · {{ item.track_record_label }}</div>
+            </div>
+            <div class="align-right">
+              <div class="mono">accepted {{ item.accepted_route_count }}</div>
+              <div class="subtle">validated {{ item.validated_case_count }}</div>
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No KOL rows available.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <details class="panel">
+    <summary class="panel-header" style="cursor: pointer;">
+      <div>
+        <h2>Advanced: Theme Graph</h2>
+        <p>Interactive relationship visualization (for advanced analysis).</p>
+      </div>
+      <span class="ghost-button">Toggle</span>
+    </summary>
+    <div class="split-grid" data-graph-api="/v2/dashboard/api/investor/graph">
+      <div class="panel tone-neutral">
+        <div data-graph-selection class="empty-state">Select a node to inspect details here.</div>
+      </div>
+      <div class="panel">
+        <div data-graph-canvas style="min-height: 460px;"></div>
+      </div>
+    </div>
+  </details>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Planning Options</h2>
+        <p>Current explicit next-step options - no need to recall old discussions.</p>
+      </div>
+      <a class="ghost-button" href="{{ snapshot.planning_doc_reader_href }}">Open Planning Table</a>
+    </header>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Theme</th>
+            <th>Core Logic</th>
+            <th>Target / Expression</th>
+            <th>Priority</th>
+            <th>Why Selected</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in snapshot.planning_rows %}
+            <tr>
+              <td>{{ row["Source"] or row["KOL / 源"] }}</td>
+              <td>{{ row["Theme"] or row["主题"] }}</td>
+              <td>{{ row["Core Logic"] or row["核心逻辑"] }}</td>
+              <td>{{ row["Target / Expression"] or row["标的 / 表达"] }}</td>
+              <td><span class="badge tone-{{ 'accent' if row["Priority"] == 'P0' else 'warning' if row["Priority"] == 'P1' else 'neutral' }}">{{ row["Priority"] or row["优先级"] }}</span></td>
+              <td>{{ row["Why Selected"] or row["为什么选"] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+{% endblock %}

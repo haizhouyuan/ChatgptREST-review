@@ -1,0 +1,15 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-orch-doctor.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-orch-doctor.timer
+#
+[Unit]
+Description=ChatgptREST OpenClaw orch doctor (every 30 minutes)
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=true
+RandomizedDelaySec=30
+
+[Install]
+WantedBy=timers.target
