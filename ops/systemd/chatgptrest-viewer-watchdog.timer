@@ -1,0 +1,16 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-viewer-watchdog.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-viewer-watchdog.timer
+#
+[Unit]
+Description=ChatgptREST viewer watchdog trigger (every 2 minutes)
+
+[Timer]
+OnBootSec=90
+OnUnitActiveSec=2min
+Persistent=true
+RandomizedDelaySec=20
+
+[Install]
+WantedBy=timers.target

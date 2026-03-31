@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChatgptREST Codex SRE Actions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "hypotheses", "actions", "risks", "next_steps"],
+  "properties": {
+    "summary": { "type": "string", "minLength": 1 },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "evidence", "confidence"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "type": "string", "enum": ["low", "medium", "high"] }
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "reason", "risk", "guardrails", "success_signal"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "no_action",
+              "capture_ui",
+              "enable_netlog",
+              "disable_netlog",
+              "refresh",
+              "regenerate",
+              "clear_blocked",
+              "restart_chrome",
+              "restart_driver",
+              "pause_processing"
+            ]
+          },
+          "reason": { "type": "string", "minLength": 1 },
+          "risk": { "type": "string", "enum": ["low", "medium", "high"] },
+          "guardrails": { "type": "array", "items": { "type": "string" } },
+          "success_signal": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "risks": { "type": "array", "items": { "type": "string" } },
+    "next_steps": { "type": "array", "items": { "type": "string" } }
+  }
+}

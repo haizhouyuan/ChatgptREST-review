@@ -1,0 +1,188 @@
+{% extends "investor_base.html" %}
+
+{% block content %}
+  {% set keep_downgrade = snapshot.source.keep_downgrade %}
+  <section class="hero-grid canonical-state">
+    <article class="hero-card tone-accent" style="flex: 2;">
+      <span class="hero-label">Recommendation</span>
+      <strong class="hero-value" style="font-size: 28px;">
+        {% if keep_downgrade %}
+          {% if keep_downgrade.decision == 'keep' %}<span class="tone-success">Keep</span>
+          {% elif keep_downgrade.decision == 'downgrade' %}<span class="tone-warning">Downgrade</span>
+          {% else %}<span class="tone-neutral">Review</span>{% endif %}
+        {% else %}
+          {{ snapshot.source.source_priority_label|title or 'Review' }}
+        {% endif %}
+      </strong>
+      <div class="subtle" style="margin-top: 8px;">
+        {% if keep_downgrade %}{{ keep_downgrade.reason | truncate(80) }}{% else %}Based on quality score and track record{% endif %}
+      </div>
+    </article>
+  </section>
+
+  <section class="hero-grid" style="margin-top: -8px;">
+    <article class="hero-card tone-success">
+      <span class="hero-label">Source</span>
+      <strong class="hero-value" style="font-size: 24px;">{{ snapshot.source.name }}</strong>
+    </article>
+    <article class="hero-card tone-accent">
+      <span class="hero-label" title="Routes where this source's claims were accepted after validation">Accepted routes</span>
+      <strong class="hero-value">{{ snapshot.source.accepted_route_count }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label" title="Cases where this source's predictions were validated against outcomes">Validated cases</span>
+      <strong class="hero-value">{{ snapshot.source.validated_case_count }}</strong>
+    </article>
+    <article class="hero-card tone-neutral">
+      <span class="hero-label" title="Trust tier: reliability classification. Track: historical prediction accuracy">Trust / track</span>
+      <strong class="hero-value" style="font-size: 20px;">{{ snapshot.source.source_trust_tier }} · {{ snapshot.source.track_record_label }}</strong>
+    </article>
+    <article class="hero-card tone-accent">
+      <span class="hero-label" title="Total claims extracted from this source">Claim count</span>
+      <strong class="hero-value">{{ snapshot.source.claim_count }}</strong>
+    </article>
+    <article class="hero-card tone-success">
+      <span class="hero-label" title="Quality: source reliability score based on claim validation. Trend: recent performance trajectory.">Quality / Trend</span>
+      <strong class="hero-value" style="font-size: 20px;">{{ snapshot.source.quality_band or 'n/a' }} · {{ snapshot.source.trend_label or 'flat' }}</strong>
+    </article>
+  </section>
+
+  {% if snapshot.source.detail_href %}
+  <section class="panel" style="margin-bottom: 16px;">
+    {% set priority = snapshot.source.source_priority_label %}
+    {% set cta_label = 'Continue Watching' if priority == 'watch' else ('Drop Source' if priority == 'drop' else 'Review Source') %}
+    <a href="{{ snapshot.source.detail_href }}" class="primary-button">{{ cta_label }}</a>
+  </section>
+  {% endif %}
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Why this source matters</h2>
+          <p>Only keep source information useful for theme research.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        <div class="timeline-item"><strong>Type</strong><div>{{ snapshot.source.source_type }} · {{ snapshot.source.primaryness }}</div></div>
+        {% if snapshot.source.information_role %}
+          <div class="timeline-item"><strong>Information role</strong><div>{{ snapshot.source.information_role }}</div></div>
+        {% endif %}
+        <div class="timeline-item"><strong>Priority</strong><div>{{ snapshot.source.source_priority_label }}</div></div>
+        <div class="timeline-item"><strong>Latest viewpoint</strong><div>{{ snapshot.source.latest_viewpoint_summary or 'No latest viewpoint summary.' }}</div></div>
+        <div class="timeline-item"><strong>Expert validation</strong><div>{{ snapshot.source.effective_operator_feedback_score }}</div></div>
+        <div class="timeline-item"><strong>Long-term reliability</strong><div>Score {{ snapshot.source.quality_score }} · {{ snapshot.source.packages_seen }} packages · {{ snapshot.source.supported_claim_count }} supported claims</div></div>
+        {% if snapshot.source.quality_explanation %}
+          <div class="timeline-item"><strong>Score explanation</strong><div>{{ snapshot.source.quality_explanation }}</div></div>
+        {% endif %}
+        <div class="timeline-item">
+          <strong>How to use this source</strong>
+          <div>
+            {% if snapshot.source.source_trust_tier == 'anchor' %}
+              As an anchor source, prioritize confirming thesis key nodes and major developments, then use secondary sources for cross-validation.
+            {% elif snapshot.source.source_type == 'kol' %}
+              As a derived/KOL source, better suited for supplementing expected differentials, industry chain perspectives, and opposing views - should not be the sole basis for thesis.
+            {% else %}
+              As a corroborating source, suitable for supplementing context and rhythm judgment, but still needs anchor source coordination.
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Planning Context</h2>
+          <p>Which themes this source/KOL serves in future planning.</p>
+        </div>
+        <a class="ghost-button" href="{{ snapshot.links.planning_doc_reader_href }}">Open Planning Doc</a>
+      </header>
+      <div class="stack-list">
+        {% for row in snapshot.source.related_rows %}
+          <div class="timeline-item">
+            <div class="timeline-meta"><span>{{ row.priority }}</span><span>{{ row.theme }}</span></div>
+            <strong>{{ row.logic }}</strong>
+            <div class="subtle">{{ row.why }}</div>
+            <div class="subtle">Expressions: {{ row.expressions | join(" / ") }}</div>
+          </div>
+        {% else %}
+          <div class="empty-state">This source is not yet pinned into the current planning table.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Keep / Downgrade Decision</h2>
+        <p>Dynamic retention recommendations based on quality score, contradiction rate, and Elo rating.</p>
+      </div>
+    </header>
+    <div class="stack-list">
+      {% if snapshot.source.keep_downgrade %}
+      <div class="timeline-item">
+        <strong>Recommendation: 
+          {% if snapshot.source.keep_downgrade.decision == 'keep' %}<span class="tone-success">Keep</span>
+          {% elif snapshot.source.keep_downgrade.decision == 'downgrade' %}<span class="tone-warning">Downgrade</span>
+          {% else %}<span class="tone-neutral">Review Needed</span>{% endif %}
+        </strong>
+        <div>{{ snapshot.source.keep_downgrade.reason }}</div>
+      </div>
+      <div class="timeline-item">
+        <strong>Scoring Parameters</strong>
+        <div class="subtle">
+          Band: {{ snapshot.source.keep_downgrade.band }} · Blend Score: {{ snapshot.source.keep_downgrade.score }} 
+          {% if snapshot.source.keep_downgrade.elo_confidence and snapshot.source.keep_downgrade.elo_confidence != 'no_elo_data' %}
+          · Elo Confidence: {{ snapshot.source.keep_downgrade.elo_confidence | replace('_', ' ') | title }}
+          {% endif %}
+        </div>
+      </div>
+      {% else %}
+      <div class="empty-state">No keep/downgrade evaluation available.</div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Score Timeline</h2>
+        <p>Whether this source's long-term quality is improving or deteriorating.</p>
+      </div>
+    </header>
+    <div class="stack-list">
+      {% for row in snapshot.source.score_history %}
+        <div class="timeline-item">
+          <div class="timeline-meta"><span>{{ row.quality_band or 'n/a' }}</span><span>{{ row.trend_label or 'flat' }}</span></div>
+          <strong>score {{ row.quality_score }}</strong>
+          <div class="subtle">packages={{ row.packages_seen }} · supported={{ row.supported_claim_count }} · load_bearing={{ row.load_bearing_claim_count }}</div>
+          {% if row.quality_explanation %}<div class="subtle">{{ row.quality_explanation }}</div>{% endif %}
+        </div>
+      {% else %}
+        <div class="empty-state">No score timeline recorded yet.</div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Claim Support History</h2>
+        <p>Which opportunities this source has recently supported and which themes it has been absorbed into.</p>
+      </div>
+    </header>
+    <div class="stack-list">
+      {% for row in snapshot.source.support_history %}
+        <div class="timeline-item">
+          <div class="timeline-meta"><span>{{ row.candidate_id }}</span><span>{{ row.contribution_role }}</span></div>
+          <strong>{{ row.supported_claim_delta }} claim(s)</strong>
+          <div class="subtle">{{ row.theme_slugs | join(' / ') }}</div>
+        </div>
+      {% else %}
+        <div class="empty-state">No long-term support history recorded yet.</div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

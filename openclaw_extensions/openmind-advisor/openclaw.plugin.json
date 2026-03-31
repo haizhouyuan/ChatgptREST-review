@@ -1,0 +1,48 @@
+{
+  "id": "openmind-advisor",
+  "name": "OpenMind Advisor",
+  "description": "Slow-path research/report/funnel bridge into OpenMind advisor APIs.",
+  "version": "2026.3.12",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "endpoint": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "baseUrl": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "timeoutMs": { "type": "number", "minimum": 1000, "maximum": 300000 }
+        },
+        "required": ["baseUrl"]
+      },
+      "defaultGoalHint": {
+        "type": "string"
+      },
+      "defaultRoleId": {
+        "type": "string"
+      }
+    },
+    "required": ["endpoint"]
+  },
+  "uiHints": {
+    "endpoint.baseUrl": {
+      "label": "OpenMind Base URL",
+      "placeholder": "http://127.0.0.1:18711",
+      "help": "OpenMind v3 advisor API base URL."
+    },
+    "endpoint.apiKey": {
+      "label": "OpenMind API Key",
+      "sensitive": true
+    },
+    "endpoint.timeoutMs": {
+      "label": "Request Timeout (ms)",
+      "advanced": true
+    },
+    "defaultGoalHint": {
+      "label": "Default Goal Hint",
+      "help": "Optional default goal hint for agent routing, for example research, code_review, report, image, or repair."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "source_repo": "https://github.com/haizhouyuan/ChatgptREST",
+  "source_commit": "596066da831addf92bfcf48263002e66b1769e20",
+  "source_commit_url": "https://github.com/haizhouyuan/ChatgptREST/commit/596066da831addf92bfcf48263002e66b1769e20",
+  "generated_at": "2026-04-01T01:03:42.352550",
+  "review_branch": "review-20260331-harness-round4",
+  "pr_branch": "tmp/integration-20260331-round3"
+}

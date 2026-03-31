@@ -1,0 +1,26 @@
+{
+  "authority": {
+    "version": "2026-03-31.v1",
+    "owner": "ChatgptREST/OpenMind"
+  },
+  "commands": [
+    {
+      "capability_id": "public_web_read",
+      "command_id": "hackernews.top",
+      "command": ["hackernews", "top"],
+      "output_format": "json",
+      "risk_level": "low",
+      "auth_mode": "public",
+      "browser_mode": "none",
+      "allowed_args": {
+        "limit": {
+          "type": "int",
+          "min": 1,
+          "max": 20
+        }
+      },
+      "retryable_exit_codes": [69, 75],
+      "capture_doctor_on_failure": true
+    }
+  ]
+}

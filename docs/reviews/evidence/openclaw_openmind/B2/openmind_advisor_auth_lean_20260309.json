@@ -1,0 +1,7 @@
+{
+  "url": "http://127.0.0.1:18711/v2/advisor/ask",
+  "unauthenticated_status": 401,
+  "unauthenticated_body": "{\"detail\":\"Invalid or missing API key\"}",
+  "authenticated_status": 200,
+  "authenticated_body": "{\"by_type\":{\"advisor_ask.kb_direct\":1,\"delivery.failed\":21,\"dispatch.task_completed\":2,\"dispatch.task_started\":2,\"kb.writeback\":1,\"llm.call_completed\":3,\"llm.call_failed\":1,\"memory.capture\":16,\"route.candidate_outcome\":4,\"route.fallback\":1,\"route.selected\":1,\"team.role.completed\":2,\"team.run.completed\":2,\"team.run.created\":2,\"tool.completed\":95,\"tool.failed\":10,\"workflow.completed\":137,\"workflow.failed\":6},\"by_domain\":{\"advisor_ask\":1,\"delivery\":21,\"dispatch\":4,\"kb\":1,\"llm\":8,\"memory\":16,\"routing\":2,\"team\":6,\"tool\":105,\"workflow\":143},\"total\":307}"
+}

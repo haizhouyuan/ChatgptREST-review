@@ -1,0 +1,20 @@
+{
+  "scope": "planning_reviewed_runtime_pack_internal_opt_in",
+  "docs": [],
+  "atoms": [
+    {
+      "atom_id": "at__1e9a86ee2bc6_25_0",
+      "doc_id": "doc_planning_28ce1e9a86ee2bc6",
+      "disposition": "approved_for_internal_opt_in",
+      "reason": "Internal-only planning atom about reusable milestone/contract clause structure. No personal data or secret values.",
+      "reviewed_at": "2026-03-11T19:15:00+08:00"
+    },
+    {
+      "atom_id": "at__7e0c81575519_35_2",
+      "doc_id": "doc_planning_c71d7e0c81575519",
+      "disposition": "approved_for_internal_opt_in",
+      "reason": "Internal-only planning atom about commercial guardrails. Token match is contextual rather than sensitive disclosure.",
+      "reviewed_at": "2026-03-11T19:15:00+08:00"
+    }
+  ]
+}

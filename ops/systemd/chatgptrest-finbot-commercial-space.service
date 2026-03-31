@@ -1,0 +1,17 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-finbot-commercial-space.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-finbot-commercial-space.timer
+#
+[Unit]
+Description=ChatgptREST finbot commercial space lane
+After=network-online.target chatgptrest-api.service chatgptrest-dashboard.service
+Wants=network-online.target chatgptrest-api.service chatgptrest-dashboard.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=/bin/bash __CHATGPTREST_ROOT__/ops/run_finbot_commercial_space_lane.sh
+TimeoutStartSec=45min
