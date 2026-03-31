@@ -1,0 +1,17 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-finbot-theme-batch.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-finbot-theme-batch.timer
+#
+[Unit]
+Description=ChatgptREST finbot nightly multi-theme batch
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=/vol1/1000/projects/ChatgptREST/.venv/bin/python __CHATGPTREST_ROOT__/ops/openclaw_finbot.py theme-batch-run --format json --limit 5
+TimeoutStartSec=45min

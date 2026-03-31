@@ -1,0 +1,20 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-finbotfree-theme-batch.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-finbotfree-theme-batch.timer
+#
+[Unit]
+Description=ChatgptREST finbotfree (free tier) nightly multi-theme batch
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+EnvironmentFile=-/vol1/maint/MAIN/secrets/credentials.env
+Environment=FINBOT_TIER=free
+Environment=OPENROUTER_DEFAULT_MODEL=nvidia/nemotron-3-super-120b-a12b:free
+ExecStart=/vol1/1000/projects/ChatgptREST/.venv/bin/python __CHATGPTREST_ROOT__/ops/openclaw_finbot.py theme-batch-run --format json --limit 5
+TimeoutStartSec=45min

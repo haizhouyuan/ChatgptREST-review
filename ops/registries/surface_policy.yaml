@@ -1,0 +1,65 @@
+# ChatgptREST Surface Policy — Machine-Readable
+#
+# Defines which surfaces are safe for coding agents to use by default,
+# which are maintenance-only, and which are probe-only.
+#
+# CRITICAL: This prevents agents from defaulting to bare MCP root (18712/)
+# or low-level REST endpoints when they should use the public MCP surface.
+
+default_for_coding_agents: "http://127.0.0.1:18712/mcp"
+
+disallowed_default_surfaces:
+  - url: "http://127.0.0.1:18711"
+    reason: "Low-level REST API — requires explicit job lifecycle management"
+    allowed_for: ["maintenance", "explicit_job_submission"]
+
+  - url: "http://127.0.0.1:18712/"
+    reason: "Bare MCP root — probe-only, not a tool surface"
+    allowed_for: ["health_check", "liveness_probe"]
+
+  - url: "http://127.0.0.1:18711/v3/agent/*"
+    reason: "Internal advisor v3 routes — wrapped by public MCP surface"
+    allowed_for: ["maintenance", "debugging"]
+
+maintenance_only_surfaces:
+  - url: "http://127.0.0.1:18711/v1/jobs"
+    description: "Low-level job queue operations"
+    use_instead: "http://127.0.0.1:18712/mcp (advisor_agent_turn)"
+
+  - url: "http://127.0.0.1:18711/v1/ops/*"
+    description: "Operational maintenance endpoints"
+    use_instead: "ops/health_probe.py or ops/health_checks.py"
+
+probe_only_urls:
+  - url: "http://127.0.0.1:18712/"
+    description: "MCP adapter root — liveness check only"
+
+  - url: "http://127.0.0.1:18711/v1/ops/status"
+    description: "API status endpoint"
+
+  - url: "http://127.0.0.1:18711/health"
+    description: "API health endpoint"
+
+  - url: "http://127.0.0.1:8787/health"
+    description: "Dashboard health endpoint"
+
+public_mcp_ingress_contract:
+  canonical_surface: "http://127.0.0.1:18712/mcp"
+  primary_tools:
+    - advisor_agent_turn
+    - advisor_agent_status
+    - advisor_agent_cancel
+    - advisor_agent_wait
+
+  northbound_objects:
+    - task_intake
+    - contract_patch
+    - workspace_request
+
+  execution_profiles:
+    - depth: ["light", "standard", "deep", "heavy"]
+    - execution_profile: ["thinking_heavy", "deep_research", "report_grade"]
+
+  notes: |
+    This is the ONLY surface coding agents should use by default.
+    All other surfaces require explicit justification or are maintenance-only.

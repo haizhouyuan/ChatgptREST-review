@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "artifact-manifest-v1",
+  "title": "Artifact Manifest v1",
+  "description": "Minimal manifest schema for ChatgptREST artifact governance. Phase 0: 5 required fields. Phase 1 optional extensions are defined but not required.",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "artifact_type",
+    "canonical_path",
+    "created_at",
+    "schema_version"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "description": "Globally unique identifier. For job artifacts: job_id. For KB artifacts: registry artifact_id. For review artifacts: stable digest.",
+      "minLength": 1
+    },
+    "artifact_type": {
+      "type": "string",
+      "description": "Object type from ADR-001.",
+      "enum": [
+        "runtime_evidence",
+        "evidence_artifact",
+        "governed_claim",
+        "profile_memory",
+        "episodic_feedback"
+      ]
+    },
+    "canonical_path": {
+      "type": "string",
+      "description": "Primary file or directory path relative to repo root. For job dirs: 'artifacts/jobs/<job_id>'. For KB: 'knowledge/<bucket>/<filename>'.",
+      "minLength": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 creation timestamp."
+    },
+    "schema_version": {
+      "type": "string",
+      "const": "artifact-manifest-v1",
+      "description": "Schema version. Must be 'artifact-manifest-v1' for this version."
+    },
+    "trace_id": {
+      "type": "string",
+      "description": "Optional. Trace/conversation ID for provenance."
+    },
+    "job_id": {
+      "type": "string",
+      "description": "Optional. Associated job ID."
+    },
+    "task_ref": {
+      "type": "string",
+      "description": "Optional. Task or milestone reference."
+    },
+    "source_system": {
+      "type": "string",
+      "description": "Optional. System that produced this artifact (e.g., 'advisor', 'finbot', 'maint_daemon')."
+    },
+    "producer": {
+      "type": "string",
+      "description": "Optional. Agent or human that created this artifact."
+    },
+    "object_role": {
+      "type": "string",
+      "description": "Optional. Role within the system (e.g., 'answer', 'evidence_pack', 'scorecard')."
+    },
+    "retention_class": {
+      "type": "string",
+      "enum": ["hot", "warm", "archive_only"],
+      "description": "Optional. Retention tier. Defaults to 'hot' on creation."
+    },
+    "review_status": {
+      "type": "string",
+      "enum": ["draft", "candidate", "approved", "expired", "archived"],
+      "description": "Optional. Current review lifecycle status."
+    },
+    "related_paths": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Optional. Related artifact paths for cross-reference."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional. Last modification timestamp."
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Optional. Expiration timestamp for retention."
+    },
+    "content_hash": {
+      "type": "string",
+      "description": "Optional. SHA-256 hash of primary content for integrity verification."
+    }
+  },
+  "additionalProperties": true
+}

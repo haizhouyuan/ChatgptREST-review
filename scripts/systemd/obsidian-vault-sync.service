@@ -1,0 +1,13 @@
+[Unit]
+Description=Obsidian Vault Google Drive bisync
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=yuanhaizhou
+ExecStart=/vol1/1000/projects/ChatgptREST/scripts/sync_vault_gdrive.sh
+Environment=OPENMIND_OBSIDIAN_VAULT_PATH=/vol1/1000/data/obsidian-vault
+WorkingDirectory=/vol1/1000/projects/ChatgptREST
+StandardOutput=journal
+StandardError=journal

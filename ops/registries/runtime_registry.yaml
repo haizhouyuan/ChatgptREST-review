@@ -1,0 +1,50 @@
+# ChatgptREST Runtime Registry — Machine-Readable
+#
+# CRITICAL: liveness_url is for health checks only.
+# agent_entry_url is what the bootstrap packet exposes to agents.
+# For MCP, agent_entry_url MUST end with /mcp — never bare root.
+# See: docs/ops/2026-03-25_agent_maintainer_entry_v1.md §3
+
+services:
+  - name: api_v1
+    liveness_url: "http://127.0.0.1:18711/v1/ops/status"
+    agent_entry_url: "http://127.0.0.1:18711"
+    port: 18711
+    required: true
+    notes: "FastAPI REST API — job queue + advisor v3"
+
+  - name: public_mcp
+    liveness_url: "http://127.0.0.1:18712/"
+    agent_entry_url: "http://127.0.0.1:18712/mcp"
+    port: 18712
+    required: true
+    notes: "Public advisor-agent MCP — coding agent default northbound surface"
+
+  - name: advisor_v3
+    liveness_url: "http://127.0.0.1:18713/v2/advisor/health"
+    agent_entry_url: "http://127.0.0.1:18713"
+    port: 18713
+    required: false
+    notes: "Advisor API (v3) — uvicorn"
+
+  - name: dashboard
+    liveness_url: "http://127.0.0.1:8787/health"
+    port: 8787
+    required: false
+    notes: "Dashboard read model"
+
+databases:
+  - name: jobdb
+    env_var: CHATGPTREST_DB_PATH
+    default_path: state/jobdb.sqlite3
+    required: true
+
+  - name: kb_fts
+    env_var: OPENMIND_KB_PATH
+    default_path: "~/.openmind/kb_search.db"
+    required: false
+
+  - name: memory
+    env_var: OPENMIND_MEMORY_DB
+    default_path: "~/.openmind/memory.db"
+    required: false

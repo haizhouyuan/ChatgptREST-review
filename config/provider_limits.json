@@ -1,0 +1,253 @@
+{
+    "version": 2,
+    "updated_at": "2026-03-03",
+    "notes": "限制类型: hard_limit=官方文档确认, official_doc=官方文档但可能过时, observed=运行中观察到, mitigated=已有缓解措施",
+    "providers": {
+        "chatgpt_web": {
+            "display_name": "ChatGPT Web",
+            "file_upload": {
+                "zip_supported": {
+                    "value": true,
+                    "type": "observed",
+                    "last_verified": "2026-03-01"
+                },
+                "max_files_per_message": {
+                    "value": null,
+                    "type": "unknown",
+                    "notes": "需要从官方文档确认"
+                },
+                "max_file_size_mb": {
+                    "value": null,
+                    "type": "unknown"
+                },
+                "code_repo_import": {
+                    "supported": true,
+                    "pro_model_supported": {
+                        "value": false,
+                        "type": "observed",
+                        "last_verified": "2026-03-02"
+                    },
+                    "notes": "Pro模型(pro_extended)无法使用代码库导入功能，仅普通模型可用"
+                }
+            },
+            "rate_limit": {
+                "min_interval_seconds": {
+                    "value": 61,
+                    "type": "hard_limit"
+                },
+                "notes": "ChatGPT强制61秒间隔，同一浏览器profile内作用"
+            },
+            "presets": {
+                "auto": {
+                    "description": "GPT-4o, 快速响应"
+                },
+                "pro_extended": {
+                    "description": "ChatGPT Pro, 深度思考",
+                    "caveats": [
+                        "file_paths触发code sandbox时answer只有preamble"
+                    ]
+                },
+                "thinking_heavy": {
+                    "description": "o1-pro, 长思考"
+                },
+                "thinking_extended": {
+                    "description": "o1-pro extended, 超长思考"
+                }
+            },
+            "deep_research": {
+                "supported": true,
+                "notes": "DR报告通过embedded UI widget交付，conversation export拿不到内容，但answer endpoint正常"
+            },
+            "known_issues": [
+                {
+                    "issue": "pro_extended + file_paths → code sandbox → answer只有preamble",
+                    "type": "observed",
+                    "status": "open",
+                    "issue_id": "iss_f9ba992f91ac4fddad6431e324830a52"
+                },
+                {
+                    "issue": "conversation export中code/thoughts/execution_output空parts",
+                    "type": "observed",
+                    "status": "open",
+                    "issue_id": "iss_dfd852eea6fb4e69bdb39c652bb63970"
+                },
+                {
+                    "issue": "DR报告不在conversation export中",
+                    "type": "observed",
+                    "status": "open",
+                    "issue_id": "iss_075fd1211b0741ab8d48ebe6fda2d4e9"
+                },
+                {
+                    "issue": "TargetClosedError (浏览器context关闭)",
+                    "type": "observed",
+                    "status": "mitigated",
+                    "mitigation": "auto retry"
+                }
+            ]
+        },
+        "gemini_web": {
+            "display_name": "Gemini Web",
+            "file_upload": {
+                "zip_supported": {
+                    "value": false,
+                    "type": "observed",
+                    "status": "mitigated",
+                    "notes": "DeepThink读zip时部分读不出，当前已有缓解"
+                },
+                "max_files_per_message": {
+                    "value": 10,
+                    "type": "default_config",
+                    "config_range": "1..50",
+                    "notes": "代码默认值10，非硬限制，可在gemini_web_mcp.py:165调整"
+                },
+                "max_file_size_mb": {
+                    "value": null,
+                    "type": "unknown"
+                },
+                "code_repo_import": {
+                    "supported": true,
+                    "notes": "有未确认的大小/数量限制"
+                },
+                "drive_upload": {
+                    "method": "rclone → Google Drive → Gemini",
+                    "quota_risk": {
+                        "type": "observed",
+                        "notes": "Google Drive API 403 rate limit"
+                    }
+                }
+            },
+            "rate_limit": {
+                "min_interval_seconds": {
+                    "value": 5,
+                    "type": "default_config"
+                }
+            },
+            "presets": {
+                "pro": {
+                    "description": "Gemini Pro, 标准模式"
+                },
+                "deep_think": {
+                    "description": "Gemini DeepThink, 深度推理"
+                }
+            },
+            "deep_research": {
+                "supported": true,
+                "caveats": [
+                    {
+                        "issue": "UI改版后按钮定位失败",
+                        "type": "observed",
+                        "mitigation": "刷新/重启driver"
+                    }
+                ]
+            },
+            "known_issues": [
+                {
+                    "issue": "WaitNoProgressTimeout 2h+",
+                    "type": "observed",
+                    "status": "open"
+                },
+                {
+                    "issue": "WaitNoThreadUrlTimeout 30min+",
+                    "type": "observed",
+                    "status": "open"
+                },
+                {
+                    "issue": "DR tool UI定位失败",
+                    "type": "observed",
+                    "status": "open"
+                },
+                {
+                    "issue": "Drive upload quota 403",
+                    "type": "observed",
+                    "status": "open"
+                }
+            ]
+        },
+        "qwen_web": {
+            "display_name": "Qwen Web",
+            "file_upload": {
+                "zip_supported": {
+                    "value": null,
+                    "type": "unknown"
+                },
+                "max_files_per_message": {
+                    "value": null,
+                    "type": "unknown"
+                }
+            },
+            "rate_limit": {
+                "min_interval_seconds": {
+                    "value": 5,
+                    "type": "default_config"
+                }
+            },
+            "presets": {
+                "deep_thinking": {
+                    "description": "Qwen DeepThink, 深度推理"
+                }
+            },
+            "deep_research": {
+                "supported": false
+            },
+            "known_issues": [
+                {
+                    "issue": "登录状态过期",
+                    "type": "observed",
+                    "status": "open"
+                },
+                {
+                    "issue": "CDP连接失败",
+                    "type": "observed",
+                    "status": "open"
+                }
+            ]
+        }
+    },
+    "issue_patterns": {
+        "browser_crash": {
+            "description": "TargetClosedError — 浏览器page/context被关闭",
+            "affected": [
+                "chatgpt_web",
+                "gemini_web"
+            ],
+            "mitigation": "auto retry with max_attempts + retryable_extension"
+        },
+        "wait_timeout": {
+            "description": "模型响应时间超出wait phase阈值",
+            "affected": [
+                "chatgpt_web",
+                "gemini_web"
+            ],
+            "count_by_provider": {
+                "gemini_web": 4,
+                "chatgpt_web": 2
+            }
+        },
+        "answer_truncation": {
+            "description": "answer endpoint只拿到部分回答",
+            "affected": [
+                "chatgpt_web"
+            ],
+            "trigger": "pro_extended + file_paths → code sandbox",
+            "root_cause": "completion guard对preamble场景无降级规则"
+        }
+    },
+    "client_mcp_status": {
+        "antigravity": {
+            "chatgptrest": "configured",
+            "port": 18712,
+            "config": "~/.gemini/antigravity/mcp_config.json"
+        },
+        "codex": {
+            "chatgptrest": "configured",
+            "port": 18712,
+            "config": "~/.codex/config.toml:157"
+        },
+        "claude_code": {
+            "chatgptrest": "configured",
+            "port": 18712,
+            "config": "~/.claude.json:566",
+            "fixed_from": 18701
+        }
+    }
+}

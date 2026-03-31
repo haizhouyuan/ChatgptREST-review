@@ -1,0 +1,29 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-driver.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-driver.service
+#
+[Unit]
+Description=ChatgptREST embedded driver (chatgpt_web_mcp via Playwright+CDP)
+After=network-online.target chatgptrest-chrome.service
+Wants=network-online.target chatgptrest-chrome.service
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+Environment=FASTMCP_HOST=127.0.0.1
+Environment=FASTMCP_PORT=18701
+# CDP Chrome defaults; allow env file/drop-in override.
+Environment=CHROME_DEBUG_PORT=9222
+Environment=QWEN_CDP_URL=http://127.0.0.1:9335
+# Persist driver state across restarts.
+Environment=CHATGPTREST_DRIVER_STATE_DIR=__CHATGPTREST_ROOT__/state/driver
+Environment=MCP_SERVER_LOCK_FILE=__CHATGPTREST_ROOT__/state/driver/chatgpt_web_mcp_server.lock
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=__CHATGPTREST_ROOT__/ops/start_driver.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

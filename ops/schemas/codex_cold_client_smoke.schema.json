@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Codex Cold Client Smoke Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ok",
+    "provider",
+    "preset",
+    "question",
+    "docs_read",
+    "commands",
+    "job_succeeded",
+    "gaps",
+    "recommendations"
+  ],
+  "properties": {
+    "ok": { "type": "boolean" },
+    "provider": { "type": "string", "minLength": 1 },
+    "preset": { "type": "string", "minLength": 1 },
+    "question": { "type": "string", "minLength": 1 },
+    "docs_read": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "commands": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "job_succeeded": { "type": "boolean" },
+    "job_id": { "type": "string" },
+    "final_status": { "type": "string" },
+    "answer_state": { "type": "string" },
+    "authoritative_answer_path": { "type": "string" },
+    "answer_provenance": { "type": "object" },
+    "answer_path": { "type": "string" },
+    "conversation_path": { "type": "string" },
+    "answer_preview": { "type": "string" },
+    "gaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

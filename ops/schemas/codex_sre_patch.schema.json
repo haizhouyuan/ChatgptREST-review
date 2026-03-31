@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChatgptREST Codex Patch Proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "root_cause", "plan", "diff", "tests", "commit_message", "pr_title", "pr_body"],
+  "properties": {
+    "summary": { "type": "string", "minLength": 1 },
+    "root_cause": { "type": "string", "minLength": 1 },
+    "plan": { "type": "array", "items": { "type": "string" } },
+    "diff": { "type": "string", "minLength": 1, "description": "Unified diff (git apply compatible), with file paths relative to repo root." },
+    "tests": { "type": "array", "items": { "type": "string" } },
+    "commit_message": { "type": "string", "minLength": 1 },
+    "pr_title": { "type": "string", "minLength": 1 },
+    "pr_body": { "type": "string", "minLength": 1 }
+  }
+}
+

@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SreFixRequestDecision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "summary",
+    "root_cause",
+    "route",
+    "confidence",
+    "rationale",
+    "recommended_actions",
+    "gitnexus_queries",
+    "runtime_fix",
+    "open_pr",
+    "notes"
+  ],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "root_cause": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "route": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "repair.autofix",
+        "repair.open_pr"
+      ]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 8000
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 200
+      },
+      "maxItems": 20
+    },
+    "gitnexus_queries": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 400
+      },
+      "maxItems": 10
+    },
+    "runtime_fix": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "allow_actions",
+        "max_risk",
+        "reason"
+      ],
+      "properties": {
+        "allow_actions": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "maxItems": 20
+        },
+        "max_risk": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            null
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      }
+    },
+    "open_pr": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "instructions",
+        "run_tests"
+      ],
+      "properties": {
+        "mode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "p0",
+            "p1",
+            "p2",
+            null
+          ]
+        },
+        "instructions": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "run_tests": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "maxItems": 20
+    }
+  }
+}

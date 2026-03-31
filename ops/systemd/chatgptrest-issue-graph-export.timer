@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodic ChatgptREST issue graph export
+
+[Timer]
+OnBootSec=7m
+OnUnitActiveSec=20m
+Unit=chatgptrest-issue-graph-export.service
+
+[Install]
+WantedBy=timers.target

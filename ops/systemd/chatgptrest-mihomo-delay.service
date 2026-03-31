@@ -1,0 +1,23 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-mihomo-delay.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-mihomo-delay.timer
+#
+[Unit]
+Description=ChatgptREST mihomo proxy delay snapshot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+Environment=MIHOMO_CONTROLLER_URL=http://127.0.0.1:9090
+# Prefer business-path probes over generic connectivity URLs.
+Environment=MIHOMO_DELAY_TARGETS=🤖 ChatGPT=https://chatgpt.com/cdn-cgi/trace,💻 Codex=https://api.openai.com/v1/models
+# Fallback URL used when a group has no override in MIHOMO_DELAY_TARGETS.
+Environment=MIHOMO_DELAY_URL=https://www.gstatic.com/generate_204
+Environment=MIHOMO_DELAY_TIMEOUT_MS=8000
+Environment=MIHOMO_DELAY_LOG_DIR=artifacts/monitor/mihomo_delay
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python ops/mihomo_delay_snapshot.py

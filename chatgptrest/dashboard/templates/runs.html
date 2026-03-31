@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero-grid">
+    <article class="hero-card tone-accent">
+      <span class="hero-label">Total Roots</span>
+      <strong class="hero-value">{{ snapshot.summary.total }}</strong>
+    </article>
+    <article class="hero-card tone-accent">
+      <span class="hero-label">Active</span>
+      <strong class="hero-value">{{ snapshot.summary.active }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Attention</span>
+      <strong class="hero-value">{{ snapshot.summary.attention }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Job Problems</span>
+      <strong class="hero-value">{{ snapshot.summary.job_problems }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Lane Problems</span>
+      <strong class="hero-value">{{ snapshot.summary.lane_problems }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Team/Checkpoint</span>
+      <strong class="hero-value">{{ snapshot.summary.team_problems }}</strong>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Execution Query</h2>
+        <p>Search by run, task, trace, tenant, team, user, or ingress. The browser hits one BFF endpoint, never the source systems directly.</p>
+      </div>
+    </header>
+    <form class="filter-form" method="get" action="/v2/dashboard/runs">
+      <label class="wide">
+        Search
+        <input type="text" name="q" value="{{ snapshot.filters.q }}" placeholder="root_run_id / task_id / trace_id / team / tenant / user">
+      </label>
+      <label>
+        Status
+        <input type="text" name="status" value="{{ snapshot.filters.status }}" placeholder="in_progress / blocked / completed">
+      </label>
+      <label>
+        Problem
+        <input type="text" name="problem" value="{{ snapshot.filters.problem }}" placeholder="job / lane_continuity / team_role_or_checkpoint">
+      </label>
+      <label>
+        Ingress
+        <input type="text" name="ingress" value="{{ snapshot.filters.ingress }}" placeholder="openclaw / feishu / scheduler">
+      </label>
+      <label class="checkbox">
+        <input type="checkbox" name="running_only" value="true" {% if snapshot.filters.running_only %}checked{% endif %}>
+        <span>Running only</span>
+      </label>
+      <button class="primary-button" type="submit">Apply</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Unified Run Index</h2>
+        <p>One row per execution lineage, with task, run, job, lane, team role, checkpoint, issue, and incident projected into the same view.</p>
+      </div>
+    </header>
+    {% if snapshot.runs %}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Run</th>
+              <th>State</th>
+              <th>Upstream</th>
+              <th>Downstream</th>
+              <th>Entity Counts</th>
+              <th>Recent Progress</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for run in snapshot.runs %}
+              <tr>
+                <td>
+                  <a class="table-link mono" href="/v2/dashboard/runs/{{ run.root_run_id }}">{{ run.root_run_id }}</a>
+                  <div>{{ run.title }}</div>
+                  <div class="subtle">task={{ run.task_id or 'n/a' }} job={{ run.job_id or 'n/a' }} lane={{ run.lane_id or 'n/a' }}</div>
+                </td>
+                <td>
+                  <div class="badge-row">
+                    <span class="badge tone-{{ run.health_tone }}">{{ run.current_status }}</span>
+                    <span class="badge tone-neutral">{{ run.current_layer }}</span>
+                    <span class="badge tone-neutral">{{ run.problem_class }}</span>
+                  </div>
+                  <div class="subtle">owner={{ run.current_owner or 'n/a' }}</div>
+                </td>
+                <td>
+                  <div class="stack-list compact">
+                    {% for item in run.upstream %}
+                      <div><span class="subtle">{{ item.label }}</span> <span class="mono">{{ item.value }}</span></div>
+                    {% else %}
+                      <div class="subtle">none</div>
+                    {% endfor %}
+                  </div>
+                </td>
+                <td>
+                  <div class="stack-list compact">
+                    {% for item in run.downstream %}
+                      <div>
+                        <span class="subtle">{{ item.label }}</span>
+                        <span class="mono">{{ item.value }}</span>
+                        {% if item.status %}
+                          <span class="subtle">({{ item.status }})</span>
+                        {% endif %}
+                      </div>
+                    {% else %}
+                      <div class="subtle">none</div>
+                    {% endfor %}
+                  </div>
+                </td>
+                <td>
+                  <div class="stack-list compact mono">
+                    <div>tasks={{ run.entity_counts.tasks or 0 }}</div>
+                    <div>runs={{ run.entity_counts.runs or 0 }}</div>
+                    <div>jobs={{ run.entity_counts.jobs or 0 }}</div>
+                    <div>lanes={{ run.entity_counts.lanes or 0 }}</div>
+                    <div>roles={{ run.entity_counts.team_role_runs or 0 }}</div>
+                    <div>checkpoints={{ run.entity_counts.team_checkpoints or 0 }}</div>
+                  </div>
+                </td>
+                <td>
+                  <div>{{ run.updated_at | fmt_ts }}</div>
+                  <div class="subtle">last progress {{ run.last_progress_at | age_label }}</div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty-state">No runs matched the current filters.</div>
+    {% endif %}
+  </section>
+{% endblock %}
