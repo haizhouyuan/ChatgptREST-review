@@ -1,0 +1,40 @@
+{
+  "authority": {
+    "registry_id": "chatgptrest-skill-market-sources",
+    "schema_version": "1.0",
+    "version": "2026-03-29",
+    "owner": "ChatgptREST/OpenMind",
+    "source_of_truth": "ops/policies/skill_market_sources_v1.json",
+    "projection_policy": "market candidates must enter quarantine via operator-reviewed sources before any promotion"
+  },
+  "sources": [
+    {
+      "source_id": "openclaw_official_registry",
+      "enabled": false,
+      "kind": "json_manifest",
+      "source_market": "openclaw-official",
+      "trust_level": "official_registry",
+      "manifest_uri": "",
+      "allowed_uri_prefixes": [
+        "https://docs.openclaw.ai/",
+        "https://clawhub.ai/",
+        "file://"
+      ],
+      "notes": "Fill manifest_uri only after operator approves a stable official source."
+    },
+    {
+      "source_id": "curated_github_registry",
+      "enabled": false,
+      "kind": "json_manifest",
+      "source_market": "curated-github",
+      "trust_level": "curated_registry",
+      "manifest_uri": "",
+      "allowed_uri_prefixes": [
+        "https://github.com/",
+        "https://raw.githubusercontent.com/",
+        "file://"
+      ],
+      "notes": "Operator-maintained curated GitHub manifest; quarantine-only import."
+    }
+  ]
+}

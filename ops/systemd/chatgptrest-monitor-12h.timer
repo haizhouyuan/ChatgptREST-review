@@ -1,0 +1,15 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-monitor-12h.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-monitor-12h.timer
+#
+[Unit]
+Description=ChatgptREST periodic monitor trigger (daily 12h run)
+
+[Timer]
+OnCalendar=*-*-* 00:05:00
+Persistent=true
+RandomizedDelaySec=120
+
+[Install]
+WantedBy=timers.target

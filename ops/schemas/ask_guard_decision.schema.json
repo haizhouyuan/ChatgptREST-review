@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChatgptREST Ask Guard Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "decision",
+    "reason_code",
+    "intent_class",
+    "substantive",
+    "allow_live_chatgpt",
+    "allow_deep_research",
+    "allow_pro",
+    "short_answer_ok",
+    "min_chars_override",
+    "remediation",
+    "notes"
+  ],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["allow", "allow_with_limits", "block", "require_public_agent"]
+    },
+    "reason_code": {
+      "type": "string",
+      "enum": [
+        "substantive_registered_automation",
+        "interactive_client_must_use_public_agent",
+        "unknown_or_unregistered_client",
+        "testing_client_live_chatgpt_blocked",
+        "trivial_ping",
+        "synthetic_smoke",
+        "structured_microtask",
+        "sufficiency_gate",
+        "json_only_extractor",
+        "unclear_intent_blocked",
+        "maintenance_bypass"
+      ]
+    },
+    "intent_class": {
+      "type": "string",
+      "enum": [
+        "substantive_human_like_task",
+        "structured_microtask",
+        "sufficiency_gate",
+        "smoke_test",
+        "trivial_ping",
+        "maintenance",
+        "unknown"
+      ]
+    },
+    "substantive": {
+      "type": "boolean"
+    },
+    "allow_live_chatgpt": {
+      "type": "boolean"
+    },
+    "allow_deep_research": {
+      "type": "boolean"
+    },
+    "allow_pro": {
+      "type": "boolean"
+    },
+    "short_answer_ok": {
+      "type": "boolean"
+    },
+    "min_chars_override": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "remediation": {
+      "type": ["string", "null"],
+      "maxLength": 400
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 200
+      },
+      "maxItems": 12
+    }
+  }
+}

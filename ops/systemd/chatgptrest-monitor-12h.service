@@ -1,0 +1,17 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-monitor-12h.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-monitor-12h.timer
+#
+[Unit]
+Description=ChatgptREST periodic monitor (12h window + summary)
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=__CHATGPTREST_ROOT__/ops/run_monitor_12h.sh
+TimeoutStartSec=13h

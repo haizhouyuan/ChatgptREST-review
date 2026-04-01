@@ -1,0 +1,27 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-dashboard.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-dashboard.service
+#
+[Unit]
+Description=ChatgptREST Dashboard Control Plane (read-only operator UI)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+Environment=CHATGPTREST_DB_PATH=state/jobdb.sqlite3
+Environment=CHATGPTREST_ARTIFACTS_DIR=artifacts
+Environment=CHATGPTREST_DASHBOARD_HOST=127.0.0.1
+Environment=CHATGPTREST_DASHBOARD_PORT=8787
+Environment=CHATGPTREST_DASHBOARD_DB_PATH=state/dashboard_control_plane.sqlite3
+Environment=CHATGPTREST_DASHBOARD_REFRESH_INTERVAL_SECONDS=15
+ExecStart=__CHATGPTREST_ROOT__/ops/start_dashboard.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

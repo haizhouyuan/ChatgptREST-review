@@ -1,0 +1,104 @@
+{
+  "providers": {
+    "coding_plan_openai": {
+      "kind": "openai_compatible",
+      "base_url_env": "QWEN_BASE_URL",
+      "api_key_env": "QWEN_API_KEY"
+    },
+    "minimax_anthropic": {
+      "kind": "anthropic_compatible",
+      "base_url_env": "MINIMAX_ANTHROPIC_BASE_URL",
+      "api_key_env": "MINIMAX_API_KEY"
+    },
+    "codex_cli": {
+      "kind": "cli",
+      "bin": "codex2"
+    },
+    "gemini_cli": {
+      "kind": "cli",
+      "bin": "gemini"
+    },
+    "claude_cli": {
+      "kind": "cli",
+      "bin": "claude"
+    },
+    "chatgptrest_chatgpt_pro": {
+      "kind": "chatgptrest",
+      "backend": "chatgpt",
+      "mode": "pro_extended"
+    },
+    "chatgptrest_chatgpt_deepresearch": {
+      "kind": "chatgptrest",
+      "backend": "chatgpt",
+      "mode": "deep_research"
+    },
+    "chatgptrest_gemini_deepresearch": {
+      "kind": "chatgptrest",
+      "backend": "gemini",
+      "mode": "deep_research"
+    }
+  },
+  "routes": {
+    "planning_orchestration": {
+      "primary": {"provider": "coding_plan_openai", "model": "MiniMax-M2.5"},
+      "fallback": [
+        {"provider": "coding_plan_openai", "model": "glm-5"},
+        {"provider": "coding_plan_openai", "model": "qwen3.5-plus"}
+      ]
+    },
+    "coding_implementation": {
+      "primary": {"provider": "coding_plan_openai", "model": "qwen3-coder-plus"},
+      "fallback": [
+        {"provider": "coding_plan_openai", "model": "kimi-k2.5"},
+        {"provider": "coding_plan_openai", "model": "glm-5"}
+      ]
+    },
+    "debug_rootcause": {
+      "primary": {"provider": "coding_plan_openai", "model": "kimi-k2.5"},
+      "fallback": [
+        {"provider": "coding_plan_openai", "model": "glm-5"},
+        {"provider": "coding_plan_openai", "model": "MiniMax-M2.5"}
+      ]
+    },
+    "review_and_polish_minimax_direct": {
+      "primary": {"provider": "minimax_anthropic", "model": "MiniMax-M2.5"},
+      "fallback": [
+        {"provider": "coding_plan_openai", "model": "qwen3.5-plus"},
+        {"provider": "coding_plan_openai", "model": "glm-5"}
+      ]
+    },
+    "research_quick": {
+      "primary": {"provider": "coding_plan_openai", "model": "qwen3.5-plus"},
+      "fallback": [
+        {"provider": "coding_plan_openai", "model": "glm-5"},
+        {"provider": "gemini_cli"}
+      ]
+    },
+    "research_deep_public_web": {
+      "primary": {"provider": "chatgptrest_chatgpt_deepresearch"},
+      "fallback": [
+        {"provider": "chatgptrest_gemini_deepresearch"},
+        {"provider": "coding_plan_openai", "model": "qwen3.5-plus"}
+      ]
+    },
+    "architecture_high_risk_review": {
+      "primary": {"provider": "chatgptrest_chatgpt_pro"},
+      "fallback": [
+        {"provider": "coding_plan_openai", "model": "MiniMax-M2.5"},
+        {"provider": "coding_plan_openai", "model": "glm-5"}
+      ]
+    },
+    "code_execution_repo_loop": {
+      "primary": {"provider": "codex_cli"},
+      "fallback": [
+        {"provider": "coding_plan_openai", "model": "qwen3-coder-plus"},
+        {"provider": "coding_plan_openai", "model": "kimi-k2.5"}
+      ]
+    }
+  },
+  "health_policy": {
+    "consecutive_failures_to_cooldown": 2,
+    "cooldown_seconds": 600,
+    "timeout_seconds": 45
+  }
+}

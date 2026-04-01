@@ -1,0 +1,33 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-admin-mcp.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-admin-mcp.service
+# Note:
+#   Low-level /v1/jobs ask calls from this admin surface now require
+#   CHATGPTREST_ASK_HMAC_SECRET_ADMIN_MCP in the EnvironmentFile (or an
+#   equivalent drop-in secret source) so requests can be signed.
+#
+[Unit]
+Description=ChatgptREST admin MCP adapter (legacy broad tool surface)
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+Environment=FASTMCP_HOST=127.0.0.1
+Environment=FASTMCP_PORT=18715
+Environment=CHATGPTREST_BASE_URL=http://127.0.0.1:18711
+Environment=CHATGPTREST_MCP_PERSIST_RATE_LIMITS=1
+Environment=CHATGPTREST_CLIENT_NAME=chatgptrest-admin-mcp
+Environment=CHATGPTREST_CLIENT_INSTANCE=%H-chatgptrest-admin-mcp
+Environment=CHATGPTREST_REQUEST_ID_PREFIX=chatgptrest-admin-mcp
+Environment=CHATGPTREST_MCP_AUTO_START_API=1
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python __CHATGPTREST_ROOT__/chatgptrest_admin_mcp_server.py --transport streamable-http
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

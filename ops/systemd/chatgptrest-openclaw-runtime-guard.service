@@ -1,0 +1,18 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-openclaw-runtime-guard.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-openclaw-runtime-guard.timer
+#
+[Unit]
+Description=ChatgptREST OpenClaw runtime guard (observe-first sidecar)
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python ops/openclaw_runtime_guard.py --base-url http://127.0.0.1:18711
+# runtime guard uses exit 2 when detectors fired; keep the unit green while preserving operator signal.
+SuccessExitStatus=2
