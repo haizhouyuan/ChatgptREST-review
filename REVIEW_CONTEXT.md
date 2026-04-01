@@ -1,6 +1,6 @@
 # Code Review Context
 ## Review Branch: `review-20260401-harness-gap-audit`
-Created: 2026-04-01T08:08:25.446194
+Created: 2026-04-01T08:11:11.468852
 
 ## Source Commit
 
@@ -9,7 +9,7 @@ Created: 2026-04-01T08:08:25.446194
 
 ## Review Instructions
 
-High-standard external audit of current Agent Harness Runtime maturity against Anthropic harness best practices; focus on remaining gaps, missing skeptical evaluator / sprint contract / durable execution / authoritative delivery-memory integration, and whether current implementation is overclaiming maturity.
+High-standard external audit of current Agent Harness Runtime maturity against Anthropic harness best practices; include planning docs, validation docs, and the new gap review packet; focus on remaining gaps, overclaiming, skeptical evaluator / sprint contract / durable execution / authoritative delivery-memory integration.
 
 ## Project Overview
 
