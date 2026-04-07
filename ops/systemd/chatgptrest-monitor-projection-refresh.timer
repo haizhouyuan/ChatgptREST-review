@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodic ChatgptREST monitor projection refresh
+
+[Timer]
+OnBootSec=4m
+OnUnitActiveSec=15m
+Unit=chatgptrest-monitor-projection-refresh.service
+
+[Install]
+WantedBy=timers.target

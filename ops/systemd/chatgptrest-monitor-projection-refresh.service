@@ -1,0 +1,9 @@
+[Unit]
+Description=ChatgptREST monitor projection refresh (open issue list + guardian report)
+After=chatgptrest-api.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+EnvironmentFile=%h/.config/chatgptrest/chatgptrest.env
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python __CHATGPTREST_ROOT__/ops/refresh_monitor_projections.py

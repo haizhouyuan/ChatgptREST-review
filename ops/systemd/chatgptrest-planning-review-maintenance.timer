@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic planning review maintenance harness (refresh-only)
+
+[Timer]
+OnBootSec=15min
+OnUnitInactiveSec=24h
+Persistent=true
+Unit=chatgptrest-planning-review-maintenance.service
+
+[Install]
+WantedBy=timers.target
