@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+
+__pycache__/
+*.py[cod]
+.python-version
+.venv/
+venv/
+
+.DS_Store
+.codex
+.playwright-mcp/
+
+# Downloaded product image corpus; regenerate with scrape_labebe.py.
+data/labebe/images/
