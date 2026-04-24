@@ -1,0 +1,3134 @@
+{
+  "captured_at": "2026-04-24T05:51:34Z",
+  "chief_state": {
+    "agent_id": "48251656-cdc5-48e3-804d-4fd338614b7b",
+    "mcp_config": null,
+    "model": "gpt-5.5",
+    "reasoning_effort": "xhigh",
+    "skills": []
+  },
+  "hermes_config_summary": {
+    "agent": {
+      "reasoning_effort": "xhigh"
+    },
+    "mcp_server_names": [
+      "chatgptrest"
+    ],
+    "model": {
+      "api_mode": "anthropic_messages",
+      "base_url": "https://api.minimaxi.com/anthropic",
+      "default": "gpt-5.5",
+      "provider": "openai-codex"
+    },
+    "skills": {
+      "external_dirs": [
+        "/vol1/1000/projects/planning/hermes-skills"
+      ]
+    }
+  },
+  "issues": [
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:43:56+08:00",
+      "dependencies": [],
+      "id": "7009c945-3bbb-43c7-a7f2-4a9565d096d5",
+      "identifier": "ASF-26",
+      "number": 26,
+      "priority": "high",
+      "project_id": "49739a3a-c385-4178-9174-534fdc9470c0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Build cross-workspace evidence bundle exporter",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:20:43+08:00",
+      "dependencies": [],
+      "id": "0e5bd1ff-bed2-4821-bccd-d4b6353150f6",
+      "identifier": "ASF-25",
+      "number": 25,
+      "priority": "high",
+      "project_id": "49739a3a-c385-4178-9174-534fdc9470c0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Compile proof ledger and sidecar knowledge register",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T11:58:46+08:00",
+      "dependencies": [],
+      "id": "a5112244-2f3f-4444-a335-59466d18d656",
+      "identifier": "ASF-24",
+      "number": 24,
+      "priority": "high",
+      "project_id": "49739a3a-c385-4178-9174-534fdc9470c0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Implement read-only chief live snapshot exporter",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T11:31:59+08:00",
+      "dependencies": [],
+      "id": "d9891a85-976c-4427-99fa-041762319d6c",
+      "identifier": "ASF-23",
+      "number": 23,
+      "priority": "high",
+      "project_id": "49739a3a-c385-4178-9174-534fdc9470c0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Implement runnable chief manifest and advance_one dry-run harness",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T23:16:34+08:00",
+      "dependencies": [],
+      "id": "289487e8-cc5f-447d-a5f7-0268f390176e",
+      "identifier": "ASF-22",
+      "number": 22,
+      "priority": "high",
+      "project_id": "9e7e7c7c-54ec-4208-af60-543aad42d2a6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Harness0 golden path: executable planning-memory case_01 proof",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T16:29:31+08:00",
+      "dependencies": [],
+      "id": "e8b8198f-16bc-4254-af1f-a1ed2b889998",
+      "identifier": "ASF-21",
+      "number": 21,
+      "priority": "none",
+      "project_id": "9e7e7c7c-54ec-4208-af60-543aad42d2a6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Cross-workspace dispatch smoke worker ack",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "3f691de2-01b4-483f-a6bc-d03b9d3ad697",
+      "identifier": "ASF-20",
+      "number": 20,
+      "priority": "medium",
+      "project_id": "f005948f-c46e-4c5f-a645-f4bf94432baa",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "梳理儿子语音助手设想与依赖",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "60a3fb3e-bc79-4fbd-9dcf-8b434547d5cc",
+      "identifier": "ASF-19",
+      "number": 19,
+      "priority": "medium",
+      "project_id": "f005948f-c46e-4c5f-a645-f4bf94432baa",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "梳理教育专家助理需求与现有材料",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "c9cd4e0a-a36d-40a0-9eee-ff045c89439b",
+      "identifier": "ASF-18",
+      "number": 18,
+      "priority": "medium",
+      "project_id": "49739a3a-c385-4178-9174-534fdc9470c0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief manifest and transition checker design baseline",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "e370354b-6de1-40f1-8122-58b44a4bca20",
+      "identifier": "ASF-17",
+      "number": 17,
+      "priority": "medium",
+      "project_id": "49739a3a-c385-4178-9174-534fdc9470c0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "设计 Hermes 总控 prompt 与 specialist routing",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "4dde4d9c-b41b-4e24-9626-946812992beb",
+      "identifier": "ASF-16",
+      "number": 16,
+      "priority": "medium",
+      "project_id": "49739a3a-c385-4178-9174-534fdc9470c0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "切 Hermes 主入口到独立 Codex auth 方案",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "470ddc15-0c41-469f-8090-0672c83de51a",
+      "identifier": "ASF-15",
+      "number": 15,
+      "priority": "medium",
+      "project_id": "49739a3a-c385-4178-9174-534fdc9470c0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "确认 Hermes 主入口 provider model MCP skill 现状",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "a5ef121b-bdf2-454f-b8e5-c498fed32ff8",
+      "identifier": "ASF-14",
+      "number": 14,
+      "priority": "medium",
+      "project_id": "083a66ba-7fd8-4744-a9eb-ad058544dc49",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "设计 UI 自动化升级方案",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "58fb507a-ce8b-4121-8437-e30267776947",
+      "identifier": "ASF-13",
+      "number": 13,
+      "priority": "medium",
+      "project_id": "083a66ba-7fd8-4744-a9eb-ad058544dc49",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "调研 anything-cli 与 opencli 升级路径",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "85556622-859b-42ff-9c69-e3829297c03a",
+      "identifier": "ASF-12",
+      "number": 12,
+      "priority": "medium",
+      "project_id": "083a66ba-7fd8-4744-a9eb-ad058544dc49",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "执行 capability regression matrix",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "6b9f0eaf-5153-498c-8734-4e87a2b4e452",
+      "identifier": "ASF-11",
+      "number": 11,
+      "priority": "medium",
+      "project_id": "083a66ba-7fd8-4744-a9eb-ad058544dc49",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "列出现有 web 自动化能力清单",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "6523d67d-29dc-45c9-a944-4cc4250a684e",
+      "identifier": "ASF-10",
+      "number": 10,
+      "priority": "medium",
+      "project_id": "06e4b9d3-7823-46e9-9710-0d6838000f9d",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "设计 finbot agent system",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "b1604f02-bba0-4911-83e7-69195624bdc6",
+      "identifier": "ASF-9",
+      "number": 9,
+      "priority": "medium",
+      "project_id": "06e4b9d3-7823-46e9-9710-0d6838000f9d",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "blocked",
+      "title": "按 ChatGPT Pro 方案抽新框架",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "5fb8bd0b-ac03-4111-b00d-e4807bf014bd",
+      "identifier": "ASF-8",
+      "number": 8,
+      "priority": "medium",
+      "project_id": "06e4b9d3-7823-46e9-9710-0d6838000f9d",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "归档已有投研产物与工作框架",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "469b8fb0-f50f-4aed-b00e-2a62bde54707",
+      "identifier": "ASF-7",
+      "number": 7,
+      "priority": "medium",
+      "project_id": "06e4b9d3-7823-46e9-9710-0d6838000f9d",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "梳理 codexread -> finagent -> finbot 历史链",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "15f8f87f-a161-4f58-b7b1-02faed88dc1c",
+      "identifier": "ASF-6",
+      "number": 6,
+      "priority": "medium",
+      "project_id": "9e7e7c7c-54ec-4208-af60-543aad42d2a6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "blocked",
+      "title": "开 GBrain sandbox lane",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "4ae43f6c-daad-411d-b987-d0119cd36e43",
+      "identifier": "ASF-5",
+      "number": 5,
+      "priority": "medium",
+      "project_id": "9e7e7c7c-54ec-4208-af60-543aad42d2a6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "补 LLM Wiki 编译知识层对比计划",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "a99be52e-1736-41f9-ac57-a5ede38438ae",
+      "identifier": "ASF-4",
+      "number": 4,
+      "priority": "high",
+      "project_id": "9e7e7c7c-54ec-4208-af60-543aad42d2a6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "定义 memory delta 结构",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "be65013d-f17c-4f28-a6ae-9c6436206172",
+      "identifier": "ASF-3",
+      "number": 3,
+      "priority": "high",
+      "project_id": "9e7e7c7c-54ec-4208-af60-543aad42d2a6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "为 Case 01 04 07 生成正式 rubric",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "ed6867a7-73a0-4b79-a70c-dcd1867a2d0c",
+      "identifier": "ASF-2",
+      "number": 2,
+      "priority": "high",
+      "project_id": "9e7e7c7c-54ec-4208-af60-543aad42d2a6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "为 Case 01 04 07 生成标准输入包",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "9c8e29ec-f924-4252-b0cd-96cc24bfa0c4",
+      "identifier": "ASF-1",
+      "number": 1,
+      "priority": "high",
+      "project_id": "9e7e7c7c-54ec-4208-af60-543aad42d2a6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "盘点 planning ArmS 已测与未测对象",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T13:41:46+08:00",
+      "dependencies": [],
+      "id": "47cc05fd-7aed-4f76-a367-520fc88c1087",
+      "identifier": "AOP-80",
+      "number": 80,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "Codify Pro No-Go gate for chief MCP/skills reconciliation",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T13:28:44+08:00",
+      "dependencies": [],
+      "id": "4c9f9904-e7fd-4d4b-ad5e-24134d9218f3",
+      "identifier": "AOP-79",
+      "number": 79,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Prepare chief MCP/skills metadata reconciliation proposal",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T13:16:34+08:00",
+      "dependencies": [],
+      "id": "b712535d-ecb2-4c3d-b4c4-6c6d1ce7591a",
+      "identifier": "AOP-78",
+      "number": 78,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Install read-only chief dry-run reporter timer",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T13:14:31+08:00",
+      "dependencies": [],
+      "id": "65228206-583d-439f-8954-02c938dd80ad",
+      "identifier": "AOP-77",
+      "number": 77,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Pause create-issue governance autopilot pending dry-run reporter",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:58:52+08:00",
+      "dependencies": [],
+      "id": "f1d783b9-9b32-404c-898c-9075c51e6903",
+      "identifier": "AOP-76",
+      "number": 76,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Fallback review ASF-26 implementation artifacts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:57:56+08:00",
+      "dependencies": [],
+      "id": "623202b4-8a1c-4f36-9c05-d785dddb7727",
+      "identifier": "AOP-75",
+      "number": 75,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Red-team review ASF-26 implementation artifacts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:45:02+08:00",
+      "dependencies": [],
+      "id": "aed4c45a-38bd-4555-bc8d-b045101b21a5",
+      "identifier": "AOP-74",
+      "number": 74,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Fallback review ASF-26 evidence bundle contract",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:44:12+08:00",
+      "dependencies": [],
+      "id": "97bee74e-177a-43ef-99f9-f7130bcb2701",
+      "identifier": "AOP-73",
+      "number": 73,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Red-team review ASF-26 evidence bundle contract",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:34:58+08:00",
+      "dependencies": [],
+      "id": "8edbc40c-491c-4d55-82a7-ef22c368bf2a",
+      "identifier": "AOP-72",
+      "number": 72,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Fallback review ASF-25 implementation artifacts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:30:36+08:00",
+      "dependencies": [],
+      "id": "54d6dd1d-e7c3-45f9-885e-83ddeab414bb",
+      "identifier": "AOP-71",
+      "number": 71,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Red-team review ASF-25 implementation artifacts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:20:59+08:00",
+      "dependencies": [],
+      "id": "0dcfdb1c-024d-46a4-9f9a-cdc3e0dbcd6c",
+      "identifier": "AOP-70",
+      "number": 70,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Red-team review ASF-25 proof ledger contract",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T12:11:01+08:00",
+      "dependencies": [],
+      "id": "065ca642-a51e-4931-9ca1-f97b66b0cb4e",
+      "identifier": "AOP-69",
+      "number": 69,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Red-team review ASF-24 implementation artifacts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T11:59:07+08:00",
+      "dependencies": [],
+      "id": "5a289675-fe24-4ae6-bd65-d02d51b923d4",
+      "identifier": "AOP-68",
+      "number": 68,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Red-team review ASF-24 read-only snapshot exporter contract",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T11:52:51+08:00",
+      "dependencies": [],
+      "id": "d9d397b1-0e5b-41e8-8429-133b0507edd1",
+      "identifier": "AOP-67",
+      "number": 67,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Red-team review ASF-23 implementation artifacts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T11:32:15+08:00",
+      "dependencies": [],
+      "id": "6acff020-9ce9-4cbd-9dc5-31f8fc496a63",
+      "identifier": "AOP-66",
+      "number": 66,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Red-team review ASF-23 runnable manifest dry-run harness contract",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T11:01:54+08:00",
+      "dependencies": [],
+      "id": "ef6e8fd0-48cf-47ad-a1c9-013711e3e135",
+      "identifier": "AOP-65",
+      "number": 65,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Red-team review ASF-18 chief manifest transition checker checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T09:30:28+08:00",
+      "dependencies": [],
+      "id": "85f95447-0eea-401b-a659-23654c9b2ae5",
+      "identifier": "AOP-64",
+      "number": 64,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief governance sweep",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T09:15:32+08:00",
+      "dependencies": [],
+      "id": "883b1758-85f6-48be-90cc-faa152d85625",
+      "identifier": "AOP-63",
+      "number": 63,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief governance sweep",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T09:13:38+08:00",
+      "dependencies": [],
+      "id": "7764d202-63db-4169-846a-13b1050915d8",
+      "identifier": "AOP-62",
+      "number": 62,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Governance sweep: hold next lanes pending ASF-17 review",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T09:13:23+08:00",
+      "dependencies": [],
+      "id": "0d73d48e-1c3f-4e26-af08-74337528ae4f",
+      "identifier": "AOP-61",
+      "number": 61,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Red-team review ASF-17 Hermes chief prompt routing contract checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T08:22:54+08:00",
+      "dependencies": [],
+      "id": "ba246e44-e457-4272-aafe-b295550b0c31",
+      "identifier": "AOP-60",
+      "number": 60,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Fallback red-team review ASF-16 Hermes auth lane proof checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T07:19:38+08:00",
+      "dependencies": [],
+      "id": "da2af7f8-3f4e-45af-8a97-41f75efba6a8",
+      "identifier": "AOP-59",
+      "number": 59,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Red-team review ASF-16 Hermes auth lane proof checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T01:00:01+08:00",
+      "dependencies": [],
+      "id": "c6040698-a21c-46b7-9a72-26e24ae0aade",
+      "identifier": "AOP-58",
+      "number": 58,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Fallback red-team review ASF-15 Hermes control plane inventory checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T00:58:04+08:00",
+      "dependencies": [],
+      "id": "a2fb6b16-f956-4fd2-b446-6e9e11299cf6",
+      "identifier": "AOP-57",
+      "number": 57,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Red-team review ASF-15 Hermes control plane inventory checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T00:43:41+08:00",
+      "dependencies": [],
+      "id": "b64d38b7-4a4e-4a98-9368-1c6f2ecd982b",
+      "identifier": "AOP-56",
+      "number": 56,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Fallback red-team review ASF-8 OpportunityCase backtest checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T00:42:55+08:00",
+      "dependencies": [],
+      "id": "e09f9933-9a55-4050-80c4-66b8231f8559",
+      "identifier": "AOP-55",
+      "number": 55,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Red-team review ASF-8 OpportunityCase backtest checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T00:10:41+08:00",
+      "dependencies": [],
+      "id": "61d638e3-b518-40f4-8018-12a0a555037c",
+      "identifier": "AOP-54",
+      "number": 54,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Fallback redteam review: ASF-7 finbot history checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-24T00:03:52+08:00",
+      "dependencies": [],
+      "id": "e4d7daf6-cd11-4657-9d88-4f423914a253",
+      "identifier": "AOP-53",
+      "number": 53,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Redteam review: ASF-7 finbot history checkpoint",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T23:47:37+08:00",
+      "dependencies": [],
+      "id": "0103b5f1-090a-4baa-a22c-1631237b2e19",
+      "identifier": "AOP-52",
+      "number": 52,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Independent rubric scoring: ASF-22 Harness0 case_01",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T23:39:51+08:00",
+      "dependencies": [],
+      "id": "190a5eba-a821-41d7-a95c-121845fb6773",
+      "identifier": "AOP-51",
+      "number": 51,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam final verify: ASF-22 Harness0 fixes",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T23:33:10+08:00",
+      "dependencies": [],
+      "id": "b06fc578-d83d-4e90-b084-09d9fb045174",
+      "identifier": "AOP-50",
+      "number": 50,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-22 Harness0 artifact bundle",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T23:16:58+08:00",
+      "dependencies": [],
+      "id": "d65f8582-889a-4422-b8c9-26464417fe9b",
+      "identifier": "AOP-49",
+      "number": 49,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-22 executable Harness0 contract",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T23:09:12+08:00",
+      "dependencies": [],
+      "id": "bdaa8fbe-83d8-45c2-a0b9-15d23640f185",
+      "identifier": "AOP-48",
+      "number": 48,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Chief packet: ASF-6 GBrain sandbox gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T23:01:53+08:00",
+      "dependencies": [],
+      "id": "87219a76-ec2f-404b-b503-351c3c1a844d",
+      "identifier": "AOP-47",
+      "number": 47,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-5 checkpoint artifact",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T22:51:57+08:00",
+      "dependencies": [],
+      "id": "dafad63d-9995-45c2-b2b0-24c6782f645d",
+      "identifier": "AOP-46",
+      "number": 46,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-5 LLM Wiki gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T22:43:52+08:00",
+      "dependencies": [],
+      "id": "c91e5378-29cb-4117-a232-13d9b37c2a0e",
+      "identifier": "AOP-45",
+      "number": 45,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief packet: ASF-5 LLM Wiki comparison plan gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T22:36:31+08:00",
+      "dependencies": [],
+      "id": "c7dc058b-9d6d-4912-a1e5-8d9f7a6c45a0",
+      "identifier": "AOP-44",
+      "number": 44,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-3 checkpoint artifact",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T22:25:06+08:00",
+      "dependencies": [],
+      "id": "5dcea207-ad6b-485f-b2a0-be350e00ee64",
+      "identifier": "AOP-43",
+      "number": 43,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-3 rubric gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T22:15:51+08:00",
+      "dependencies": [],
+      "id": "178350d3-ce8d-4a76-ad2a-21abc78352d0",
+      "identifier": "AOP-42",
+      "number": 42,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief packet: ASF-3 rubric execution gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T22:03:37+08:00",
+      "dependencies": [],
+      "id": "ce209c7f-0244-408f-9be4-076c8a77b12c",
+      "identifier": "AOP-41",
+      "number": 41,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-4 checkpoint artifact",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T21:50:52+08:00",
+      "dependencies": [],
+      "id": "e3a0930d-5476-49f7-8b19-62d0a8168a89",
+      "identifier": "AOP-40",
+      "number": 40,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Fallback redteam review: ASF-4 memory delta gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T21:49:14+08:00",
+      "dependencies": [],
+      "id": "38cfbeb1-236d-4078-990f-b82bea47663d",
+      "identifier": "AOP-39",
+      "number": 39,
+      "priority": "low",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Smoke test: Codex xhigh fallback red-team",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T21:29:25+08:00",
+      "dependencies": [],
+      "id": "667303f2-df0c-4848-b756-804408473997",
+      "identifier": "AOP-38",
+      "number": 38,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "blocked",
+      "title": "Redteam review: ASF-4 memory delta gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T21:24:04+08:00",
+      "dependencies": [],
+      "id": "0dac2129-b181-4fc5-9ef1-d23cbb915a56",
+      "identifier": "AOP-37",
+      "number": 37,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief packet: ASF-4 memory delta execution gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T21:15:40+08:00",
+      "dependencies": [],
+      "id": "9fc775e9-da20-4d51-b9d1-52273ff943ed",
+      "identifier": "AOP-36",
+      "number": 36,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-2 checkpoint artifact",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T20:59:30+08:00",
+      "dependencies": [],
+      "id": "5419d35c-9ab1-4aa4-9025-f50b495587f2",
+      "identifier": "AOP-35",
+      "number": 35,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-2 execution gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T20:54:19+08:00",
+      "dependencies": [],
+      "id": "5eaa3038-7c8d-4fc1-9699-2f6502f45530",
+      "identifier": "AOP-34",
+      "number": 34,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief packet: ASF-2 execution gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T20:40:38+08:00",
+      "dependencies": [],
+      "id": "15512937-4b14-43bf-8421-aaf312d15168",
+      "identifier": "AOP-33",
+      "number": 33,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam final verify: ASF-1 schema revision",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T20:27:06+08:00",
+      "dependencies": [],
+      "id": "6876b4d6-f301-4161-bc2b-b6a1f1c52d60",
+      "identifier": "AOP-32",
+      "number": 32,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-1 checkpoint artifact",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T20:14:48+08:00",
+      "dependencies": [],
+      "id": "8020fa5f-adda-44b5-ae0b-e871129fd29e",
+      "identifier": "AOP-31",
+      "number": 31,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-1 amended execution gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T20:09:07+08:00",
+      "dependencies": [],
+      "id": "49020b2a-0846-4c13-8efa-b0c76bbe5c97",
+      "identifier": "AOP-30",
+      "number": 30,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief amended packet: ASF-1 execution gate",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T19:57:18+08:00",
+      "dependencies": [],
+      "id": "3efbd9f9-c64a-4ee9-a233-d7b732c128fd",
+      "identifier": "AOP-29",
+      "number": 29,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: ASF-1 pre-execution packet",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T19:50:55+08:00",
+      "dependencies": [],
+      "id": "b8908367-1d55-4b85-b5fb-b2be479d061c",
+      "identifier": "AOP-28",
+      "number": 28,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief packet: ASF-1 pre-execution review scope",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T19:44:24+08:00",
+      "dependencies": [],
+      "id": "48ca5285-642b-4aff-9b26-4a4f469ea43f",
+      "identifier": "AOP-27",
+      "number": 27,
+      "priority": "high",
+      "project_id": null,
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: AOP-26 Tier 3 decision packet",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T19:35:03+08:00",
+      "dependencies": [],
+      "id": "031b2384-fa63-433e-ba1b-32205761aca1",
+      "identifier": "AOP-26",
+      "number": 26,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief decision packet: planning-memory Tier 3 scope and order",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:59:36+08:00",
+      "dependencies": [],
+      "id": "7c90a168-a876-4b77-8316-c7e53f81aed0",
+      "identifier": "AOP-25",
+      "number": 25,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam evidence review via packet: rewritten ASF-1..ASF-6 contracts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:49:45+08:00",
+      "dependencies": [],
+      "id": "37e37157-3b03-48e3-891b-461f40b53382",
+      "identifier": "AOP-24",
+      "number": 24,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "blocked",
+      "title": "Redteam evidence review: rewritten ASF-1..ASF-6 contracts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:36:44+08:00",
+      "dependencies": [],
+      "id": "88c62f27-ddc5-4939-b188-8462a6e4312c",
+      "identifier": "AOP-23",
+      "number": 23,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Rewrite-only: planning-memory pilot ASF-1..ASF-6 issue contracts",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:31:38+08:00",
+      "dependencies": [],
+      "id": "8fc23027-fb1a-4f92-ab57-d7c74a78f9d0",
+      "identifier": "AOP-22",
+      "number": 22,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam evidence review: Governance v0 Package AOP-21",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:24:55+08:00",
+      "dependencies": [],
+      "id": "ed67e3b3-7859-4718-8823-15fc260950dc",
+      "identifier": "AOP-21",
+      "number": 21,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Governance v0 Package consistency pass",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:18:06+08:00",
+      "dependencies": [],
+      "id": "e8c75957-967e-441d-ac89-7876401ae013",
+      "identifier": "AOP-20",
+      "number": 20,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam evidence review: PRD0 Harness0 Issue Contract Template",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:08:12+08:00",
+      "dependencies": [],
+      "id": "fb51d032-3d12-4731-9b88-30f0d4540f13",
+      "identifier": "AOP-19",
+      "number": 19,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Issue Contract Template v0 for all non-smoke work",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:08:12+08:00",
+      "dependencies": [],
+      "id": "5878221e-b60d-4c56-bd28-85625f9033d4",
+      "identifier": "AOP-18",
+      "number": 18,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Harness0: Multica Hermes continuity and review loop",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:08:12+08:00",
+      "dependencies": [],
+      "id": "e04934f1-3cf4-40b3-bdc7-1a52e6c4e47a",
+      "identifier": "AOP-17",
+      "number": 17,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "PRD0: Personal assistant development operating system",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T18:03:11+08:00",
+      "dependencies": [],
+      "id": "fedbf901-eef2-4077-ad77-cd5c908f4225",
+      "identifier": "AOP-16",
+      "number": 16,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam review: live cleanup proposal before PRD0",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T17:58:46+08:00",
+      "dependencies": [],
+      "id": "4781cfb3-af36-4a97-aa24-85365d7ed50d",
+      "identifier": "AOP-15",
+      "number": 15,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Live cleanup proposal for Multica/Hermes v2 gates",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T17:48:58+08:00",
+      "dependencies": [],
+      "id": "fb6e5d3c-5c44-4985-b4c9-a9707fd7f68a",
+      "identifier": "AOP-14",
+      "number": 14,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Redteam GAC smoke test",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T17:41:50+08:00",
+      "dependencies": [],
+      "id": "16c79bfd-7bad-4ed3-9634-2f15e5b0ad5b",
+      "identifier": "AOP-13",
+      "number": 13,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief 接手 v2 operating spec 并先做治理收口",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T16:27:45+08:00",
+      "dependencies": [],
+      "id": "4efc7113-f236-46e7-8dcf-586bd11abfea",
+      "identifier": "AOP-12",
+      "number": 12,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief cross-workspace smoke: read monitor dispatch",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T16:15:57+08:00",
+      "dependencies": [],
+      "id": "51f3110d-4b65-4d23-8e37-f9f44bd99cb1",
+      "identifier": "AOP-11",
+      "number": 11,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Chief of Staff 正式接手路线图（收紧版）",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T16:12:49+08:00",
+      "dependencies": [],
+      "id": "961aaa5b-6921-4618-82b9-345a1985c6a8",
+      "identifier": "AOP-10",
+      "number": 10,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Chief of Staff 正式接收路线图与任务管理边界（本地读取版）",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T16:11:12+08:00",
+      "dependencies": [],
+      "id": "5523937b-d9ee-4e57-ab1e-7030a3e659ba",
+      "identifier": "AOP-9",
+      "number": 9,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Chief of Staff 正式接收路线图与任务管理边界",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T16:09:59+08:00",
+      "dependencies": [],
+      "id": "85315264-e62e-4521-b44f-4cf2a057ab64",
+      "identifier": "AOP-8",
+      "number": 8,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "done",
+      "title": "Hermes chief-of-staff smoke test",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:25+08:00",
+      "dependencies": [],
+      "id": "00129c9a-2bab-4f0b-95bf-824c71e03a9c",
+      "identifier": "AOP-7",
+      "number": 7,
+      "priority": "high",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "cancelled",
+      "title": "Chief of Staff 读取路线图并接管后续任务管理",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "fa317810-04db-4935-9070-7e3d23122f19",
+      "identifier": "AOP-6",
+      "number": 6,
+      "priority": "medium",
+      "project_id": "355cb19b-ce20-48f4-a450-33df4b5465dd",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "教育助理长期运行方案设计",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "8e67c1e1-441c-4fe7-b307-ac6c56bfe2a4",
+      "identifier": "AOP-5",
+      "number": 5,
+      "priority": "medium",
+      "project_id": "1d81b997-e85a-4825-979e-f6882a991cf0",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "个人投研助理长期运行方案设计",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "54511266-4f26-47f0-bc77-dfd2f878d876",
+      "identifier": "AOP-4",
+      "number": 4,
+      "priority": "medium",
+      "project_id": "4d013a25-6885-4a33-8422-d730f73597e6",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "战略与项目评审 specialist 运行契约设计",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "30dba69d-e2b2-4b2f-bee7-5bc5fc4c58e5",
+      "identifier": "AOP-3",
+      "number": 3,
+      "priority": "medium",
+      "project_id": "a9452b85-91d1-4785-944a-3d28c6f5f878",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "Meeting intelligence specialist 运行契约设计",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "5ccf5931-2f6c-430b-adca-36e5cad7c6a8",
+      "identifier": "AOP-2",
+      "number": 2,
+      "priority": "medium",
+      "project_id": "15a2b0ea-6c74-4e78-95b9-128e282e2aa4",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "HR specialist 运行契约设计",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    },
+    {
+      "action_class": "implementation",
+      "contract": {
+        "full": false
+      },
+      "created_at": "2026-04-23T15:58:05+08:00",
+      "dependencies": [],
+      "id": "c45209c9-281d-4e7c-ad5d-87578fe857fa",
+      "identifier": "AOP-1",
+      "number": 1,
+      "priority": "medium",
+      "project_id": "15e2aa93-929f-4d9c-9003-2887f76e337f",
+      "project_priority": "none",
+      "red_team": {
+        "independence_grade": "C",
+        "status": "not_started"
+      },
+      "risk_class": "high",
+      "sidecar_unlock_order": null,
+      "source_defaults": {
+        "action_class": "conservative_default",
+        "contract.full": "conservative_default",
+        "red_team": "conservative_default",
+        "risk_class": "conservative_default"
+      },
+      "status": "todo",
+      "title": "Chief of Staff 日常汇报与风险升级机制设计",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    }
+  ],
+  "snapshot_id": "chief-live-2026-04-24T05:51:34Z",
+  "source": {
+    "exporter_version": "0.1.0",
+    "issue_count_by_workspace": {
+      "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580": 26,
+      "bbc33e1b-a6d8-4724-b29f-b35ac8372572": 80
+    },
+    "issue_field_defaults": {
+      "action_class": "implementation",
+      "contract.full": false,
+      "red_team.independence_grade": "C",
+      "red_team.status": "not_started",
+      "risk_class": "high",
+      "sidecar_unlock_order": null
+    },
+    "multica_workspace_ids": [
+      "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580",
+      "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+    ],
+    "omitted": [
+      "auth_store_contents",
+      "environment_variables",
+      "credential_values",
+      "session_material",
+      "mcp_urls",
+      "mcp_headers"
+    ],
+    "ops_workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572"
+  }
+}

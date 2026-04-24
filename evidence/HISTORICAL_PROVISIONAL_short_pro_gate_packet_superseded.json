@@ -1,0 +1,130 @@
+{
+  "packet_id": "chief-mcp-skills-gate-packet-2026-04-24",
+  "schema_version": "0.1.0",
+  "created_at": "2026-04-24T13:45:00+08:00",
+  "scope": "static_gate_packet_only",
+  "source_issue": {
+    "identifier": "AOP-80",
+    "id": "47cc05fd-7aed-4f76-a367-520fc88c1087"
+  },
+  "external_advisory": {
+    "provider": "chatgpt_pro_extended",
+    "job_id": "3460226e79c1493fae0c91596cdc916c",
+    "conversation_url": "https://chatgpt.com/c/69eb008f-5dc4-83e8-b3c3-c0d730b65887",
+    "decision": "no_go_for_live_reconciliation",
+    "summary": "Live Hermes chief MCP/skills reconciliation must remain blocked while independent GAC/Claude gate is unavailable. Codex GPT-5.5 xhigh fallback is Grade-C and cannot clear high-risk live control-plane changes."
+  },
+  "current_state": {
+    "agent_id": "48251656-cdc5-48e3-804d-4fd338614b7b",
+    "agent_name": "hermes-chief-of-staff",
+    "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572",
+    "model": "gpt-5.5",
+    "reasoning_effort": "xhigh",
+    "runtime_provider": "hermes",
+    "multica_agent_mcp_config": null,
+    "multica_agent_skills": [],
+    "dry_run": {
+      "allowed_action": "no_op",
+      "dry_run_only": true,
+      "eligible_count": 0,
+      "drift_count": 2,
+      "proposed_issue_id": null
+    }
+  },
+  "blocked_live_actions": [
+    {
+      "action": "write_agent_mcp_config",
+      "risk": "high",
+      "reason": "agent.mcp_config has executable-config semantics in at least one backend and must not be used for summary metadata without an approved schema and independent gate."
+    },
+    {
+      "action": "create_or_assign_chief_workspace_skills",
+      "risk": "high",
+      "reason": "Even restrictive or boundary-only skills change live chief prompt and behavior surface."
+    },
+    {
+      "action": "relax_checker_source_of_truth",
+      "risk": "high",
+      "reason": "Treating Hermes local config as Multica-visible truth weakens the current source-of-truth rule and may create false compliance."
+    },
+    {
+      "action": "mark_high_drift_resolved",
+      "risk": "high",
+      "reason": "The live drift is unresolved; static proposal work cannot change the dry-run decision."
+    },
+    {
+      "action": "use_codex_grade_c_as_independent_gate",
+      "risk": "high",
+      "reason": "Grade-C fallback may critique static artifacts but cannot approve high-risk live control-plane mutation."
+    }
+  ],
+  "allowed_static_actions": [
+    "read_live_snapshot",
+    "run_no_op_dry_run",
+    "write_static_reconciliation_proposal",
+    "write_gate_packet",
+    "update_proof_ledger",
+    "update_sidecar_knowledge_register",
+    "prepare_independent_gate_review_materials",
+    "prepare_rollback_plan_without_applying_it"
+  ],
+  "source_of_truth_matrix": [
+    {
+      "domain": "chief_model",
+      "current_truth": "Hermes local config plus Multica agent model field",
+      "current_state": "aligned on gpt-5.5 xhigh",
+      "risk": "low",
+      "live_change_allowed_now": false
+    },
+    {
+      "domain": "chief_mcp_visibility",
+      "current_truth": "unresolved split between Hermes local config and Multica-visible metadata",
+      "current_state": "Hermes local config names chatgptrest; Multica agent.mcp_config is null",
+      "risk": "high",
+      "live_change_allowed_now": false
+    },
+    {
+      "domain": "chief_skills_visibility",
+      "current_truth": "unresolved split between Hermes local skills/external dirs and Multica workspace skill assignment",
+      "current_state": "Hermes has local/external skills; Multica agent skills are empty",
+      "risk": "high",
+      "live_change_allowed_now": false
+    },
+    {
+      "domain": "transition_authority",
+      "current_truth": "chief_advance_one_dry_run.py",
+      "current_state": "no_op while high drift remains",
+      "risk": "high",
+      "live_change_allowed_now": false
+    }
+  ],
+  "required_before_any_live_reconciliation": [
+    "Independent GAC/Claude gate recovers or user explicitly authorizes an equivalent independent high-risk gate.",
+    "Approved source-of-truth decision for Hermes MCP and skills visibility.",
+    "Approved schema separating non-executable metadata from executable MCP config.",
+    "Skill content review with hashes, assignment scope, and rollback plan.",
+    "Secret-safe MCP contract if executable MCP config is ever used.",
+    "Pre-change and post-change dry-run expectations.",
+    "Rollback command or manual rollback runbook.",
+    "Recorded user approval if independent gate remains unavailable."
+  ],
+  "rollback_plan_draft": {
+    "status": "draft_only",
+    "mcp_config": "If a future approved change writes agent.mcp_config, rollback must restore the exact previous null state and rerun live snapshot plus dry-run.",
+    "skills": "If a future approved change assigns skills, rollback must restore the exact previous empty assignment list and rerun live snapshot plus dry-run.",
+    "checker": "If a future approved change relaxes checker source-of-truth rules, rollback must restore high-drift blocking and rerun self-tests plus live no-op dry-run."
+  },
+  "user_confirmation_required": [
+    "Whether a named alternative independent gate may replace GAC while GAC has quota failures.",
+    "Whether the user explicitly authorizes any live chief metadata mutation under degraded review.",
+    "Whether Multica or Hermes local config should be source of truth for Hermes MCP and skills visibility.",
+    "Whether agent.mcp_config is allowed to store only executable MCP config or can also store non-executable metadata.",
+    "Whether workspace skills may be assigned to chief before GAC recovers."
+  ],
+  "current_decision": {
+    "go_no_go": "no_go_for_live_reconciliation",
+    "allowed_action": "static_only",
+    "dry_run_must_remain": "no_op",
+    "live_mutation": false
+  }
+}

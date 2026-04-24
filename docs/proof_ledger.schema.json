@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yogas2.local/schemas/multica/proof_ledger.v0.json",
+  "title": "Chief Control Plane Proof Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "ledger_id",
+    "compiled_at",
+    "compiled_against",
+    "secret_policy",
+    "entries",
+    "known_gaps"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "ledger_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "compiled_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "compiled_against": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chief_manifest_version",
+        "chief_manifest_ref",
+        "live_snapshot_ref",
+        "latest_commits"
+      ],
+      "properties": {
+        "chief_manifest_version": {
+          "type": "string"
+        },
+        "chief_manifest_ref": {
+          "type": "string"
+        },
+        "live_snapshot_ref": {
+          "type": "string"
+        },
+        "latest_commits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "secret_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "no_secret_values",
+        "allowed_ref_types",
+        "forbidden_material"
+      ],
+      "properties": {
+        "no_secret_values": {
+          "const": true
+        },
+        "allowed_ref_types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "file",
+              "directory",
+              "issue",
+              "comment",
+              "commit",
+              "command"
+            ]
+          }
+        },
+        "forbidden_material": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/proof_entry"
+      }
+    },
+    "known_gaps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/known_gap"
+      }
+    }
+  },
+  "$defs": {
+    "proof_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref_type",
+        "ref",
+        "verification_status"
+      ],
+      "properties": {
+        "ref_type": {
+          "enum": [
+            "file",
+            "directory",
+            "issue",
+            "comment",
+            "commit",
+            "command"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification_status": {
+          "enum": [
+            "verified",
+            "not_found",
+            "not_rechecked",
+            "external_repo",
+            "reported_by_issue_comment"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "proof_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "proof_type",
+        "status",
+        "summary",
+        "artifact_refs",
+        "review_refs",
+        "decision",
+        "enabled",
+        "blocked",
+        "risk_notes"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proof_type": {
+          "enum": [
+            "inventory",
+            "auth_proof",
+            "role_contract",
+            "control_contract",
+            "executable_harness",
+            "implementation",
+            "red_team_review",
+            "sidecar_ruling",
+            "commit"
+          ]
+        },
+        "status": {
+          "enum": [
+            "accepted",
+            "conditional_go",
+            "blocked",
+            "gap_recorded",
+            "committed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/proof_ref"
+          }
+        },
+        "review_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/proof_ref"
+          }
+        },
+        "decision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "enabled": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blocked": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "risk_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "known_gap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "severity",
+        "description",
+        "current_handling"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "current_handling": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

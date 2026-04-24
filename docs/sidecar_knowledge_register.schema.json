@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yogas2.local/schemas/multica/sidecar_knowledge_register.v0.json",
+  "title": "Chief Control Plane Sidecar Knowledge Register",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "register_id",
+    "compiled_at",
+    "compiled_against",
+    "human_only_boundary_policy",
+    "items"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "register_id": {
+      "type": "string"
+    },
+    "compiled_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "compiled_against": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proof_ledger_ref",
+        "chief_manifest_ref",
+        "dry_run_harness_ref"
+      ],
+      "properties": {
+        "proof_ledger_ref": {
+          "type": "string"
+        },
+        "chief_manifest_ref": {
+          "type": "string"
+        },
+        "dry_run_harness_ref": {
+          "type": "string"
+        }
+      }
+    },
+    "human_only_boundary_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_max_ratio",
+        "requires_rationale",
+        "requires_next_externalization_candidate"
+      ],
+      "properties": {
+        "target_max_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "requires_rationale": {
+          "const": true
+        },
+        "requires_next_externalization_candidate": {
+          "const": true
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/item"
+      }
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "classification",
+        "title",
+        "rule",
+        "source_refs",
+        "machine_action",
+        "implementation_status",
+        "target_artifacts",
+        "human_only_rationale",
+        "next_externalization_candidate"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "classification": {
+          "enum": [
+            "manifest_field",
+            "checker_rule",
+            "escalation_policy",
+            "audit_reference",
+            "human_only_judgment"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "rule": {
+          "type": "string"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "machine_action": {
+          "enum": [
+            "block_transition",
+            "allow_dry_run_only",
+            "require_independent_gate",
+            "record_audit_ref",
+            "emit_drift",
+            "require_human_decision",
+            "no_op"
+          ]
+        },
+        "implementation_status": {
+          "enum": [
+            "encoded",
+            "documented",
+            "partially_encoded",
+            "pending"
+          ]
+        },
+        "target_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "human_only_rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "next_externalization_candidate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

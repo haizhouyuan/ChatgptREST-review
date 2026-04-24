@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-04-24T13:59:00+08:00",
+  "review_repo_branch": "https://github.com/haizhouyuan/ChatgptREST-review/tree/review-20260424-multica-chief-control-plane",
+  "review_repo_import": "https://github.com/haizhouyuan/ChatgptREST-review",
+  "local_packet": "/vol1/maint/exports/pro_review_packets/2026-04-24_multica_chief_control_plane_review",
+  "chatgpt_attachment_path": "/vol1/1000/projects/ChatgptREST/tmp/review_packets/2026-04-24_multica_chief_control_plane_review.zip",
+  "jobs": [
+    {
+      "provider": "chatgpt",
+      "preset": "pro_extended",
+      "job_id": "3182daaea4fa4e0e98f70bef2236e133",
+      "kind": "chatgpt_web.ask",
+      "status": "queued"
+    },
+    {
+      "provider": "gemini",
+      "preset": "deep_think",
+      "job_id": "4738a5e56073484ca8c8a91b5e60d6f1",
+      "kind": "gemini_web.ask",
+      "status": "queued"
+    }
+  ]
+}

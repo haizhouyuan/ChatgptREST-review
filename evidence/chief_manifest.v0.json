@@ -1,0 +1,97 @@
+{
+  "manifest_id": "chief-control-plane",
+  "manifest_version": "0.1.0",
+  "updated_at": "2026-04-24T11:55:00+08:00",
+  "actor": {
+    "agent_id": "48251656-cdc5-48e3-804d-4fd338614b7b",
+    "name": "hermes-chief-of-staff",
+    "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572",
+    "role_contract_ref": "/vol1/maint/docs/checkpoints/2026-04-24_asf17_hermes_chief_prompt_routing_contract_checkpoint.md"
+  },
+  "runtime": {
+    "runtime_provider": "hermes",
+    "runtime_mode": "local",
+    "runtime_status_expected": "online"
+  },
+  "model": {
+    "provider": "openai-codex",
+    "name": "gpt-5.5",
+    "reasoning_effort": "xhigh",
+    "api_mode": "anthropic_messages",
+    "base_url": "https://api.minimaxi.com/anthropic",
+    "source_of_truth": "hermes_home_config",
+    "multica_visible": "partial"
+  },
+  "auth": {
+    "lane_id": "hermes-auth-only-codex",
+    "proof_ref": "/vol1/maint/docs/checkpoints/2026-04-24_asf16_hermes_auth_lane_proof_checkpoint.md",
+    "proof_strength": "current_state_strong",
+    "daily_lane_overlap": false,
+    "secret_policy": "fingerprints_or_proof_refs_only"
+  },
+  "mcp": {
+    "lanes": [
+      {
+        "name": "chatgptrest",
+        "source_of_truth": "hermes_home_config",
+        "multica_visible_expected": true,
+        "permission_scope": "app-specific runtime automation lane",
+        "drift_if_missing": "high"
+      }
+    ]
+  },
+  "skills": {
+    "bundled_local": true,
+    "external_dirs": [
+      "/vol1/1000/projects/planning/hermes-skills"
+    ],
+    "multica_visible_agent_skills_expected": true,
+    "source_of_truth": "split",
+    "drift_if_empty_in_multica": "high"
+  },
+  "tool_scope": {
+    "default_mode": "governance_only",
+    "scheduled_sweep_allowlist": [
+      "multica issue list/get",
+      "multica project list/get",
+      "multica agent get",
+      "multica runtime list",
+      "multica issue status/comment"
+    ],
+    "prohibited": [
+      "multica --help",
+      "pwd",
+      "broad file discovery",
+      "environment probing",
+      "blocked-lane unfreeze",
+      "agent/project/workspace expansion"
+    ]
+  },
+  "transitions": {
+    "may_propose": [
+      "no_op",
+      "drift_report_only",
+      "propose_transition"
+    ],
+    "dry_run_only": true,
+    "forbidden": [
+      "execute_transition",
+      "unblock_blocked_lane",
+      "implementation_start_without_gate",
+      "live_prompt_mutation",
+      "live_mcp_mutation"
+    ]
+  },
+  "red_team": {
+    "primary_gate": "redteam-gpt55-xhigh-primary",
+    "primary_gate_agent_id": "e06e5f10-b8be-472a-936f-85b0bea2ab2c",
+    "primary_gate_model": "gpt-5.5",
+    "primary_gate_reasoning_effort": "xhigh",
+    "replaced_gate": "redteam-claudegac",
+    "replacement_reason": "user_decision_after_repeated_gac_quota_failures",
+    "fallback_gate": "redteam-codex-xhigh-fallback",
+    "fallback_independence": "C",
+    "model_independence": "degraded_same_family",
+    "policy_ref": "/vol1/maint/docs/checkpoints/2026-04-24_asf18_chief_manifest_transition_checker_checkpoint.md"
+  }
+}

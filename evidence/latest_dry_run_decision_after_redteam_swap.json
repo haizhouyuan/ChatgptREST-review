@@ -1,0 +1,2524 @@
+{
+  "allowed_action": "no_op",
+  "board_state_hash": "sha256:1330950a171ef4edc68522a783cae3275690405d08930076a93c0aae562ffe0e",
+  "drift_items": [
+    {
+      "actual": "absent",
+      "expected": "present",
+      "field": "mcp.lanes.chatgptrest.multica_visible",
+      "required_action": "block_transition",
+      "severity": "high"
+    },
+    {
+      "actual": [],
+      "expected": "non_empty_summary",
+      "field": "skills.multica_visible_agent_skills",
+      "required_action": "block_transition",
+      "severity": "high"
+    }
+  ],
+  "dry_run_only": true,
+  "eligible_candidates": [],
+  "evaluated_issues": [
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-26",
+      "issue_id": "7009c945-3bbb-43c7-a7f2-4a9565d096d5",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        26,
+        "2026-04-24T12:43:56+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-25",
+      "issue_id": "0e5bd1ff-bed2-4821-bccd-d4b6353150f6",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        25,
+        "2026-04-24T12:20:43+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-24",
+      "issue_id": "a5112244-2f3f-4444-a335-59466d18d656",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        24,
+        "2026-04-24T11:58:46+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-23",
+      "issue_id": "d9891a85-976c-4427-99fa-041762319d6c",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        23,
+        "2026-04-24T11:31:59+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-22",
+      "issue_id": "289487e8-cc5f-447d-a5f7-0268f390176e",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        22,
+        "2026-04-23T23:16:34+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-21",
+      "issue_id": "e8b8198f-16bc-4254-af1f-a1ed2b889998",
+      "sort_key": [
+        999999,
+        3,
+        4,
+        21,
+        "2026-04-23T16:29:31+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-20",
+      "issue_id": "3f691de2-01b4-483f-a6bc-d03b9d3ad697",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        20,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-19",
+      "issue_id": "60a3fb3e-bc79-4fbd-9dcf-8b434547d5cc",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        19,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-18",
+      "issue_id": "c9cd4e0a-a36d-40a0-9eee-ff045c89439b",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        18,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-17",
+      "issue_id": "e370354b-6de1-40f1-8122-58b44a4bca20",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        17,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-16",
+      "issue_id": "4dde4d9c-b41b-4e24-9626-946812992beb",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        16,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-15",
+      "issue_id": "470ddc15-0c41-469f-8090-0672c83de51a",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        15,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-14",
+      "issue_id": "a5ef121b-bdf2-454f-b8e5-c498fed32ff8",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        14,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-13",
+      "issue_id": "58fb507a-ce8b-4121-8437-e30267776947",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        13,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-12",
+      "issue_id": "85556622-859b-42ff-9c69-e3829297c03a",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        12,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-11",
+      "issue_id": "6b9f0eaf-5153-498c-8734-4e87a2b4e452",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        11,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-10",
+      "issue_id": "6523d67d-29dc-45c9-a944-4cc4250a684e",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        10,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-9",
+      "issue_id": "b1604f02-bba0-4911-83e7-69195624bdc6",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        9,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-8",
+      "issue_id": "5fb8bd0b-ac03-4111-b00d-e4807bf014bd",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        8,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-7",
+      "issue_id": "469b8fb0-f50f-4aed-b00e-2a62bde54707",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        7,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-6",
+      "issue_id": "15f8f87f-a161-4f58-b7b1-02faed88dc1c",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        6,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-5",
+      "issue_id": "4ae43f6c-daad-411d-b987-d0119cd36e43",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        5,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-4",
+      "issue_id": "a99be52e-1736-41f9-ac57-a5ede38438ae",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        4,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-3",
+      "issue_id": "be65013d-f17c-4f28-a6ae-9c6436206172",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        3,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-2",
+      "issue_id": "ed6867a7-73a0-4b79-a70c-dcd1867a2d0c",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        2,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "ASF-1",
+      "issue_id": "9c8e29ec-f924-4252-b0cd-96cc24bfa0c4",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        1,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-79",
+      "issue_id": "4c9f9904-e7fd-4d4b-ad5e-24134d9218f3",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        79,
+        "2026-04-24T13:28:44+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-78",
+      "issue_id": "b712535d-ecb2-4c3d-b4c4-6c6d1ce7591a",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        78,
+        "2026-04-24T13:16:34+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-77",
+      "issue_id": "65228206-583d-439f-8954-02c938dd80ad",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        77,
+        "2026-04-24T13:14:31+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-76",
+      "issue_id": "f1d783b9-9b32-404c-898c-9075c51e6903",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        76,
+        "2026-04-24T12:58:52+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-75",
+      "issue_id": "623202b4-8a1c-4f36-9c05-d785dddb7727",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        75,
+        "2026-04-24T12:57:56+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-74",
+      "issue_id": "aed4c45a-38bd-4555-bc8d-b045101b21a5",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        74,
+        "2026-04-24T12:45:02+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-73",
+      "issue_id": "97bee74e-177a-43ef-99f9-f7130bcb2701",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        73,
+        "2026-04-24T12:44:12+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-72",
+      "issue_id": "8edbc40c-491c-4d55-82a7-ef22c368bf2a",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        72,
+        "2026-04-24T12:34:58+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-71",
+      "issue_id": "54d6dd1d-e7c3-45f9-885e-83ddeab414bb",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        71,
+        "2026-04-24T12:30:36+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-70",
+      "issue_id": "0dcfdb1c-024d-46a4-9f9a-cdc3e0dbcd6c",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        70,
+        "2026-04-24T12:20:59+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-69",
+      "issue_id": "065ca642-a51e-4931-9ca1-f97b66b0cb4e",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        69,
+        "2026-04-24T12:11:01+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-68",
+      "issue_id": "5a289675-fe24-4ae6-bd65-d02d51b923d4",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        68,
+        "2026-04-24T11:59:07+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-67",
+      "issue_id": "d9d397b1-0e5b-41e8-8429-133b0507edd1",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        67,
+        "2026-04-24T11:52:51+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-66",
+      "issue_id": "6acff020-9ce9-4cbd-9dc5-31f8fc496a63",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        66,
+        "2026-04-24T11:32:15+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-65",
+      "issue_id": "ef6e8fd0-48cf-47ad-a1c9-013711e3e135",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        65,
+        "2026-04-24T11:01:54+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-64",
+      "issue_id": "85f95447-0eea-401b-a659-23654c9b2ae5",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        64,
+        "2026-04-24T09:30:28+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-63",
+      "issue_id": "883b1758-85f6-48be-90cc-faa152d85625",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        63,
+        "2026-04-24T09:15:32+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-62",
+      "issue_id": "7764d202-63db-4169-846a-13b1050915d8",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        62,
+        "2026-04-24T09:13:38+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-61",
+      "issue_id": "0d73d48e-1c3f-4e26-af08-74337528ae4f",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        61,
+        "2026-04-24T09:13:23+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-60",
+      "issue_id": "ba246e44-e457-4272-aafe-b295550b0c31",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        60,
+        "2026-04-24T08:22:54+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-59",
+      "issue_id": "da2af7f8-3f4e-45af-8a97-41f75efba6a8",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        59,
+        "2026-04-24T07:19:38+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-58",
+      "issue_id": "c6040698-a21c-46b7-9a72-26e24ae0aade",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        58,
+        "2026-04-24T01:00:01+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-57",
+      "issue_id": "a2fb6b16-f956-4fd2-b446-6e9e11299cf6",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        57,
+        "2026-04-24T00:58:04+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-56",
+      "issue_id": "b64d38b7-4a4e-4a98-9368-1c6f2ecd982b",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        56,
+        "2026-04-24T00:43:41+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-55",
+      "issue_id": "e09f9933-9a55-4050-80c4-66b8231f8559",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        55,
+        "2026-04-24T00:42:55+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-54",
+      "issue_id": "61d638e3-b518-40f4-8018-12a0a555037c",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        54,
+        "2026-04-24T00:10:41+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-53",
+      "issue_id": "e4d7daf6-cd11-4657-9d88-4f423914a253",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        53,
+        "2026-04-24T00:03:52+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-52",
+      "issue_id": "0103b5f1-090a-4baa-a22c-1631237b2e19",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        52,
+        "2026-04-23T23:47:37+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-51",
+      "issue_id": "190a5eba-a821-41d7-a95c-121845fb6773",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        51,
+        "2026-04-23T23:39:51+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-50",
+      "issue_id": "b06fc578-d83d-4e90-b084-09d9fb045174",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        50,
+        "2026-04-23T23:33:10+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-49",
+      "issue_id": "d65f8582-889a-4422-b8c9-26464417fe9b",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        49,
+        "2026-04-23T23:16:58+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-48",
+      "issue_id": "bdaa8fbe-83d8-45c2-a0b9-15d23640f185",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        48,
+        "2026-04-23T23:09:12+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-47",
+      "issue_id": "87219a76-ec2f-404b-b503-351c3c1a844d",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        47,
+        "2026-04-23T23:01:53+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-46",
+      "issue_id": "dafad63d-9995-45c2-b2b0-24c6782f645d",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        46,
+        "2026-04-23T22:51:57+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-45",
+      "issue_id": "c91e5378-29cb-4117-a232-13d9b37c2a0e",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        45,
+        "2026-04-23T22:43:52+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-44",
+      "issue_id": "c7dc058b-9d6d-4912-a1e5-8d9f7a6c45a0",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        44,
+        "2026-04-23T22:36:31+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-43",
+      "issue_id": "5dcea207-ad6b-485f-b2a0-be350e00ee64",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        43,
+        "2026-04-23T22:25:06+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-42",
+      "issue_id": "178350d3-ce8d-4a76-ad2a-21abc78352d0",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        42,
+        "2026-04-23T22:15:51+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-41",
+      "issue_id": "ce209c7f-0244-408f-9be4-076c8a77b12c",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        41,
+        "2026-04-23T22:03:37+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-40",
+      "issue_id": "e3a0930d-5476-49f7-8b19-62d0a8168a89",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        40,
+        "2026-04-23T21:50:52+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-39",
+      "issue_id": "38cfbeb1-236d-4078-990f-b82bea47663d",
+      "sort_key": [
+        999999,
+        2,
+        4,
+        39,
+        "2026-04-23T21:49:14+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-38",
+      "issue_id": "667303f2-df0c-4848-b756-804408473997",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        38,
+        "2026-04-23T21:29:25+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-37",
+      "issue_id": "0dac2129-b181-4fc5-9ef1-d23cbb915a56",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        37,
+        "2026-04-23T21:24:04+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-36",
+      "issue_id": "9fc775e9-da20-4d51-b9d1-52273ff943ed",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        36,
+        "2026-04-23T21:15:40+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-35",
+      "issue_id": "5419d35c-9ab1-4aa4-9025-f50b495587f2",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        35,
+        "2026-04-23T20:59:30+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-34",
+      "issue_id": "5eaa3038-7c8d-4fc1-9699-2f6502f45530",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        34,
+        "2026-04-23T20:54:19+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-33",
+      "issue_id": "15512937-4b14-43bf-8421-aaf312d15168",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        33,
+        "2026-04-23T20:40:38+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-32",
+      "issue_id": "6876b4d6-f301-4161-bc2b-b6a1f1c52d60",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        32,
+        "2026-04-23T20:27:06+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-31",
+      "issue_id": "8020fa5f-adda-44b5-ae0b-e871129fd29e",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        31,
+        "2026-04-23T20:14:48+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-30",
+      "issue_id": "49020b2a-0846-4c13-8efa-b0c76bbe5c97",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        30,
+        "2026-04-23T20:09:07+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-29",
+      "issue_id": "3efbd9f9-c64a-4ee9-a233-d7b732c128fd",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        29,
+        "2026-04-23T19:57:18+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-28",
+      "issue_id": "b8908367-1d55-4b85-b5fb-b2be479d061c",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        28,
+        "2026-04-23T19:50:55+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-27",
+      "issue_id": "48ca5285-642b-4aff-9b26-4a4f469ea43f",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        27,
+        "2026-04-23T19:44:24+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-26",
+      "issue_id": "031b2384-fa63-433e-ba1b-32205761aca1",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        26,
+        "2026-04-23T19:35:03+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-25",
+      "issue_id": "7c90a168-a876-4b77-8316-c7e53f81aed0",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        25,
+        "2026-04-23T18:59:36+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-24",
+      "issue_id": "37e37157-3b03-48e3-891b-461f40b53382",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        24,
+        "2026-04-23T18:49:45+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-23",
+      "issue_id": "88c62f27-ddc5-4939-b188-8462a6e4312c",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        23,
+        "2026-04-23T18:36:44+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-22",
+      "issue_id": "8fc23027-fb1a-4f92-ab57-d7c74a78f9d0",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        22,
+        "2026-04-23T18:31:38+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-21",
+      "issue_id": "ed67e3b3-7859-4718-8823-15fc260950dc",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        21,
+        "2026-04-23T18:24:55+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-20",
+      "issue_id": "e8c75957-967e-441d-ac89-7876401ae013",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        20,
+        "2026-04-23T18:18:06+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-19",
+      "issue_id": "fb51d032-3d12-4731-9b88-30f0d4540f13",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        19,
+        "2026-04-23T18:08:12+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-18",
+      "issue_id": "5878221e-b60d-4c56-bd28-85625f9033d4",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        18,
+        "2026-04-23T18:08:12+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-17",
+      "issue_id": "e04934f1-3cf4-40b3-bdc7-1a52e6c4e47a",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        17,
+        "2026-04-23T18:08:12+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-16",
+      "issue_id": "fedbf901-eef2-4077-ad77-cd5c908f4225",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        16,
+        "2026-04-23T18:03:11+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-15",
+      "issue_id": "4781cfb3-af36-4a97-aa24-85365d7ed50d",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        15,
+        "2026-04-23T17:58:46+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-14",
+      "issue_id": "fb6e5d3c-5c44-4985-b4c9-a9707fd7f68a",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        14,
+        "2026-04-23T17:48:58+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-13",
+      "issue_id": "16c79bfd-7bad-4ed3-9634-2f15e5b0ad5b",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        13,
+        "2026-04-23T17:41:50+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-12",
+      "issue_id": "4efc7113-f236-46e7-8dcf-586bd11abfea",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        12,
+        "2026-04-23T16:27:45+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-11",
+      "issue_id": "51f3110d-4b65-4d23-8e37-f9f44bd99cb1",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        11,
+        "2026-04-23T16:15:57+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-10",
+      "issue_id": "961aaa5b-6921-4618-82b9-345a1985c6a8",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        10,
+        "2026-04-23T16:12:49+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-9",
+      "issue_id": "5523937b-d9ee-4e57-ab1e-7030a3e659ba",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        9,
+        "2026-04-23T16:11:12+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-8",
+      "issue_id": "85315264-e62e-4521-b44f-4cf2a057ab64",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        8,
+        "2026-04-23T16:09:59+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "issue_status_is_todo",
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-7",
+      "issue_id": "00129c9a-2bab-4f0b-95bf-824c71e03a9c",
+      "sort_key": [
+        999999,
+        0,
+        4,
+        7,
+        "2026-04-23T15:58:25+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-6",
+      "issue_id": "fa317810-04db-4935-9070-7e3d23122f19",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        6,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-5",
+      "issue_id": "8e67c1e1-441c-4fe7-b307-ac6c56bfe2a4",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        5,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-4",
+      "issue_id": "54511266-4f26-47f0-bc77-dfd2f878d876",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        4,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-3",
+      "issue_id": "30dba69d-e2b2-4b2f-bee7-5bc5fc4c58e5",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        3,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-2",
+      "issue_id": "5ccf5931-2f6c-430b-adca-36e5cad7c6a8",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        2,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    },
+    {
+      "eligible": false,
+      "failed_checks": [
+        "full_issue_contract_present",
+        "no_live_drift_severity_high_or_above",
+        "action_class_not_implementation",
+        "high_risk_requires_independent_red_team_gate"
+      ],
+      "identifier": "AOP-1",
+      "issue_id": "c45209c9-281d-4e7c-ad5d-87578fe857fa",
+      "sort_key": [
+        999999,
+        1,
+        4,
+        1,
+        "2026-04-23T15:58:05+08:00"
+      ]
+    }
+  ],
+  "failed_checks": [
+    "high_or_critical_drift_present",
+    "ASF-26:issue_status_is_todo",
+    "ASF-26:full_issue_contract_present",
+    "ASF-26:no_live_drift_severity_high_or_above",
+    "ASF-26:action_class_not_implementation",
+    "ASF-26:high_risk_requires_independent_red_team_gate",
+    "ASF-25:issue_status_is_todo",
+    "ASF-25:full_issue_contract_present",
+    "ASF-25:no_live_drift_severity_high_or_above",
+    "ASF-25:action_class_not_implementation",
+    "ASF-25:high_risk_requires_independent_red_team_gate",
+    "ASF-24:issue_status_is_todo",
+    "ASF-24:full_issue_contract_present",
+    "ASF-24:no_live_drift_severity_high_or_above",
+    "ASF-24:action_class_not_implementation",
+    "ASF-24:high_risk_requires_independent_red_team_gate",
+    "ASF-23:issue_status_is_todo",
+    "ASF-23:full_issue_contract_present",
+    "ASF-23:no_live_drift_severity_high_or_above",
+    "ASF-23:action_class_not_implementation",
+    "ASF-23:high_risk_requires_independent_red_team_gate",
+    "ASF-22:issue_status_is_todo",
+    "ASF-22:full_issue_contract_present",
+    "ASF-22:no_live_drift_severity_high_or_above",
+    "ASF-22:action_class_not_implementation",
+    "ASF-22:high_risk_requires_independent_red_team_gate",
+    "ASF-21:issue_status_is_todo",
+    "ASF-21:full_issue_contract_present",
+    "ASF-21:no_live_drift_severity_high_or_above",
+    "ASF-21:action_class_not_implementation",
+    "ASF-21:high_risk_requires_independent_red_team_gate",
+    "ASF-20:full_issue_contract_present",
+    "ASF-20:no_live_drift_severity_high_or_above",
+    "ASF-20:action_class_not_implementation",
+    "ASF-20:high_risk_requires_independent_red_team_gate",
+    "ASF-19:full_issue_contract_present",
+    "ASF-19:no_live_drift_severity_high_or_above",
+    "ASF-19:action_class_not_implementation",
+    "ASF-19:high_risk_requires_independent_red_team_gate",
+    "ASF-18:issue_status_is_todo",
+    "ASF-18:full_issue_contract_present",
+    "ASF-18:no_live_drift_severity_high_or_above",
+    "ASF-18:action_class_not_implementation",
+    "ASF-18:high_risk_requires_independent_red_team_gate",
+    "ASF-17:issue_status_is_todo",
+    "ASF-17:full_issue_contract_present",
+    "ASF-17:no_live_drift_severity_high_or_above",
+    "ASF-17:action_class_not_implementation",
+    "ASF-17:high_risk_requires_independent_red_team_gate",
+    "ASF-16:issue_status_is_todo",
+    "ASF-16:full_issue_contract_present",
+    "ASF-16:no_live_drift_severity_high_or_above",
+    "ASF-16:action_class_not_implementation",
+    "ASF-16:high_risk_requires_independent_red_team_gate",
+    "ASF-15:issue_status_is_todo",
+    "ASF-15:full_issue_contract_present",
+    "ASF-15:no_live_drift_severity_high_or_above",
+    "ASF-15:action_class_not_implementation",
+    "ASF-15:high_risk_requires_independent_red_team_gate",
+    "ASF-14:full_issue_contract_present",
+    "ASF-14:no_live_drift_severity_high_or_above",
+    "ASF-14:action_class_not_implementation",
+    "ASF-14:high_risk_requires_independent_red_team_gate",
+    "ASF-13:full_issue_contract_present",
+    "ASF-13:no_live_drift_severity_high_or_above",
+    "ASF-13:action_class_not_implementation",
+    "ASF-13:high_risk_requires_independent_red_team_gate",
+    "ASF-12:full_issue_contract_present",
+    "ASF-12:no_live_drift_severity_high_or_above",
+    "ASF-12:action_class_not_implementation",
+    "ASF-12:high_risk_requires_independent_red_team_gate",
+    "ASF-11:full_issue_contract_present",
+    "ASF-11:no_live_drift_severity_high_or_above",
+    "ASF-11:action_class_not_implementation",
+    "ASF-11:high_risk_requires_independent_red_team_gate",
+    "ASF-10:full_issue_contract_present",
+    "ASF-10:no_live_drift_severity_high_or_above",
+    "ASF-10:action_class_not_implementation",
+    "ASF-10:high_risk_requires_independent_red_team_gate",
+    "ASF-9:issue_status_is_todo",
+    "ASF-9:full_issue_contract_present",
+    "ASF-9:no_live_drift_severity_high_or_above",
+    "ASF-9:action_class_not_implementation",
+    "ASF-9:high_risk_requires_independent_red_team_gate",
+    "ASF-8:issue_status_is_todo",
+    "ASF-8:full_issue_contract_present",
+    "ASF-8:no_live_drift_severity_high_or_above",
+    "ASF-8:action_class_not_implementation",
+    "ASF-8:high_risk_requires_independent_red_team_gate",
+    "ASF-7:issue_status_is_todo",
+    "ASF-7:full_issue_contract_present",
+    "ASF-7:no_live_drift_severity_high_or_above",
+    "ASF-7:action_class_not_implementation",
+    "ASF-7:high_risk_requires_independent_red_team_gate",
+    "ASF-6:issue_status_is_todo",
+    "ASF-6:full_issue_contract_present",
+    "ASF-6:no_live_drift_severity_high_or_above",
+    "ASF-6:action_class_not_implementation",
+    "ASF-6:high_risk_requires_independent_red_team_gate",
+    "ASF-5:issue_status_is_todo",
+    "ASF-5:full_issue_contract_present",
+    "ASF-5:no_live_drift_severity_high_or_above",
+    "ASF-5:action_class_not_implementation",
+    "ASF-5:high_risk_requires_independent_red_team_gate",
+    "ASF-4:issue_status_is_todo",
+    "ASF-4:full_issue_contract_present",
+    "ASF-4:no_live_drift_severity_high_or_above",
+    "ASF-4:action_class_not_implementation",
+    "ASF-4:high_risk_requires_independent_red_team_gate",
+    "ASF-3:issue_status_is_todo",
+    "ASF-3:full_issue_contract_present",
+    "ASF-3:no_live_drift_severity_high_or_above",
+    "ASF-3:action_class_not_implementation",
+    "ASF-3:high_risk_requires_independent_red_team_gate",
+    "ASF-2:issue_status_is_todo",
+    "ASF-2:full_issue_contract_present",
+    "ASF-2:no_live_drift_severity_high_or_above",
+    "ASF-2:action_class_not_implementation",
+    "ASF-2:high_risk_requires_independent_red_team_gate",
+    "ASF-1:issue_status_is_todo",
+    "ASF-1:full_issue_contract_present",
+    "ASF-1:no_live_drift_severity_high_or_above",
+    "ASF-1:action_class_not_implementation",
+    "ASF-1:high_risk_requires_independent_red_team_gate",
+    "AOP-79:issue_status_is_todo",
+    "AOP-79:full_issue_contract_present",
+    "AOP-79:no_live_drift_severity_high_or_above",
+    "AOP-79:action_class_not_implementation",
+    "AOP-79:high_risk_requires_independent_red_team_gate",
+    "AOP-78:issue_status_is_todo",
+    "AOP-78:full_issue_contract_present",
+    "AOP-78:no_live_drift_severity_high_or_above",
+    "AOP-78:action_class_not_implementation",
+    "AOP-78:high_risk_requires_independent_red_team_gate",
+    "AOP-77:issue_status_is_todo",
+    "AOP-77:full_issue_contract_present",
+    "AOP-77:no_live_drift_severity_high_or_above",
+    "AOP-77:action_class_not_implementation",
+    "AOP-77:high_risk_requires_independent_red_team_gate",
+    "AOP-76:issue_status_is_todo",
+    "AOP-76:full_issue_contract_present",
+    "AOP-76:no_live_drift_severity_high_or_above",
+    "AOP-76:action_class_not_implementation",
+    "AOP-76:high_risk_requires_independent_red_team_gate",
+    "AOP-75:issue_status_is_todo",
+    "AOP-75:full_issue_contract_present",
+    "AOP-75:no_live_drift_severity_high_or_above",
+    "AOP-75:action_class_not_implementation",
+    "AOP-75:high_risk_requires_independent_red_team_gate",
+    "AOP-74:issue_status_is_todo",
+    "AOP-74:full_issue_contract_present",
+    "AOP-74:no_live_drift_severity_high_or_above",
+    "AOP-74:action_class_not_implementation",
+    "AOP-74:high_risk_requires_independent_red_team_gate",
+    "AOP-73:issue_status_is_todo",
+    "AOP-73:full_issue_contract_present",
+    "AOP-73:no_live_drift_severity_high_or_above",
+    "AOP-73:action_class_not_implementation",
+    "AOP-73:high_risk_requires_independent_red_team_gate",
+    "AOP-72:issue_status_is_todo",
+    "AOP-72:full_issue_contract_present",
+    "AOP-72:no_live_drift_severity_high_or_above",
+    "AOP-72:action_class_not_implementation",
+    "AOP-72:high_risk_requires_independent_red_team_gate",
+    "AOP-71:issue_status_is_todo",
+    "AOP-71:full_issue_contract_present",
+    "AOP-71:no_live_drift_severity_high_or_above",
+    "AOP-71:action_class_not_implementation",
+    "AOP-71:high_risk_requires_independent_red_team_gate",
+    "AOP-70:issue_status_is_todo",
+    "AOP-70:full_issue_contract_present",
+    "AOP-70:no_live_drift_severity_high_or_above",
+    "AOP-70:action_class_not_implementation",
+    "AOP-70:high_risk_requires_independent_red_team_gate",
+    "AOP-69:issue_status_is_todo",
+    "AOP-69:full_issue_contract_present",
+    "AOP-69:no_live_drift_severity_high_or_above",
+    "AOP-69:action_class_not_implementation",
+    "AOP-69:high_risk_requires_independent_red_team_gate",
+    "AOP-68:issue_status_is_todo",
+    "AOP-68:full_issue_contract_present",
+    "AOP-68:no_live_drift_severity_high_or_above",
+    "AOP-68:action_class_not_implementation",
+    "AOP-68:high_risk_requires_independent_red_team_gate",
+    "AOP-67:issue_status_is_todo",
+    "AOP-67:full_issue_contract_present",
+    "AOP-67:no_live_drift_severity_high_or_above",
+    "AOP-67:action_class_not_implementation",
+    "AOP-67:high_risk_requires_independent_red_team_gate",
+    "AOP-66:issue_status_is_todo",
+    "AOP-66:full_issue_contract_present",
+    "AOP-66:no_live_drift_severity_high_or_above",
+    "AOP-66:action_class_not_implementation",
+    "AOP-66:high_risk_requires_independent_red_team_gate",
+    "AOP-65:issue_status_is_todo",
+    "AOP-65:full_issue_contract_present",
+    "AOP-65:no_live_drift_severity_high_or_above",
+    "AOP-65:action_class_not_implementation",
+    "AOP-65:high_risk_requires_independent_red_team_gate",
+    "AOP-64:issue_status_is_todo",
+    "AOP-64:full_issue_contract_present",
+    "AOP-64:no_live_drift_severity_high_or_above",
+    "AOP-64:action_class_not_implementation",
+    "AOP-64:high_risk_requires_independent_red_team_gate",
+    "AOP-63:issue_status_is_todo",
+    "AOP-63:full_issue_contract_present",
+    "AOP-63:no_live_drift_severity_high_or_above",
+    "AOP-63:action_class_not_implementation",
+    "AOP-63:high_risk_requires_independent_red_team_gate",
+    "AOP-62:issue_status_is_todo",
+    "AOP-62:full_issue_contract_present",
+    "AOP-62:no_live_drift_severity_high_or_above",
+    "AOP-62:action_class_not_implementation",
+    "AOP-62:high_risk_requires_independent_red_team_gate",
+    "AOP-61:issue_status_is_todo",
+    "AOP-61:full_issue_contract_present",
+    "AOP-61:no_live_drift_severity_high_or_above",
+    "AOP-61:action_class_not_implementation",
+    "AOP-61:high_risk_requires_independent_red_team_gate",
+    "AOP-60:issue_status_is_todo",
+    "AOP-60:full_issue_contract_present",
+    "AOP-60:no_live_drift_severity_high_or_above",
+    "AOP-60:action_class_not_implementation",
+    "AOP-60:high_risk_requires_independent_red_team_gate",
+    "AOP-59:issue_status_is_todo",
+    "AOP-59:full_issue_contract_present",
+    "AOP-59:no_live_drift_severity_high_or_above",
+    "AOP-59:action_class_not_implementation",
+    "AOP-59:high_risk_requires_independent_red_team_gate",
+    "AOP-58:issue_status_is_todo",
+    "AOP-58:full_issue_contract_present",
+    "AOP-58:no_live_drift_severity_high_or_above",
+    "AOP-58:action_class_not_implementation",
+    "AOP-58:high_risk_requires_independent_red_team_gate",
+    "AOP-57:issue_status_is_todo",
+    "AOP-57:full_issue_contract_present",
+    "AOP-57:no_live_drift_severity_high_or_above",
+    "AOP-57:action_class_not_implementation",
+    "AOP-57:high_risk_requires_independent_red_team_gate",
+    "AOP-56:issue_status_is_todo",
+    "AOP-56:full_issue_contract_present",
+    "AOP-56:no_live_drift_severity_high_or_above",
+    "AOP-56:action_class_not_implementation",
+    "AOP-56:high_risk_requires_independent_red_team_gate",
+    "AOP-55:issue_status_is_todo",
+    "AOP-55:full_issue_contract_present",
+    "AOP-55:no_live_drift_severity_high_or_above",
+    "AOP-55:action_class_not_implementation",
+    "AOP-55:high_risk_requires_independent_red_team_gate",
+    "AOP-54:issue_status_is_todo",
+    "AOP-54:full_issue_contract_present",
+    "AOP-54:no_live_drift_severity_high_or_above",
+    "AOP-54:action_class_not_implementation",
+    "AOP-54:high_risk_requires_independent_red_team_gate",
+    "AOP-53:issue_status_is_todo",
+    "AOP-53:full_issue_contract_present",
+    "AOP-53:no_live_drift_severity_high_or_above",
+    "AOP-53:action_class_not_implementation",
+    "AOP-53:high_risk_requires_independent_red_team_gate",
+    "AOP-52:issue_status_is_todo",
+    "AOP-52:full_issue_contract_present",
+    "AOP-52:no_live_drift_severity_high_or_above",
+    "AOP-52:action_class_not_implementation",
+    "AOP-52:high_risk_requires_independent_red_team_gate",
+    "AOP-51:issue_status_is_todo",
+    "AOP-51:full_issue_contract_present",
+    "AOP-51:no_live_drift_severity_high_or_above",
+    "AOP-51:action_class_not_implementation",
+    "AOP-51:high_risk_requires_independent_red_team_gate",
+    "AOP-50:issue_status_is_todo",
+    "AOP-50:full_issue_contract_present",
+    "AOP-50:no_live_drift_severity_high_or_above",
+    "AOP-50:action_class_not_implementation",
+    "AOP-50:high_risk_requires_independent_red_team_gate",
+    "AOP-49:issue_status_is_todo",
+    "AOP-49:full_issue_contract_present",
+    "AOP-49:no_live_drift_severity_high_or_above",
+    "AOP-49:action_class_not_implementation",
+    "AOP-49:high_risk_requires_independent_red_team_gate",
+    "AOP-48:issue_status_is_todo",
+    "AOP-48:full_issue_contract_present",
+    "AOP-48:no_live_drift_severity_high_or_above",
+    "AOP-48:action_class_not_implementation",
+    "AOP-48:high_risk_requires_independent_red_team_gate",
+    "AOP-47:issue_status_is_todo",
+    "AOP-47:full_issue_contract_present",
+    "AOP-47:no_live_drift_severity_high_or_above",
+    "AOP-47:action_class_not_implementation",
+    "AOP-47:high_risk_requires_independent_red_team_gate",
+    "AOP-46:issue_status_is_todo",
+    "AOP-46:full_issue_contract_present",
+    "AOP-46:no_live_drift_severity_high_or_above",
+    "AOP-46:action_class_not_implementation",
+    "AOP-46:high_risk_requires_independent_red_team_gate",
+    "AOP-45:issue_status_is_todo",
+    "AOP-45:full_issue_contract_present",
+    "AOP-45:no_live_drift_severity_high_or_above",
+    "AOP-45:action_class_not_implementation",
+    "AOP-45:high_risk_requires_independent_red_team_gate",
+    "AOP-44:issue_status_is_todo",
+    "AOP-44:full_issue_contract_present",
+    "AOP-44:no_live_drift_severity_high_or_above",
+    "AOP-44:action_class_not_implementation",
+    "AOP-44:high_risk_requires_independent_red_team_gate",
+    "AOP-43:issue_status_is_todo",
+    "AOP-43:full_issue_contract_present",
+    "AOP-43:no_live_drift_severity_high_or_above",
+    "AOP-43:action_class_not_implementation",
+    "AOP-43:high_risk_requires_independent_red_team_gate",
+    "AOP-42:issue_status_is_todo",
+    "AOP-42:full_issue_contract_present",
+    "AOP-42:no_live_drift_severity_high_or_above",
+    "AOP-42:action_class_not_implementation",
+    "AOP-42:high_risk_requires_independent_red_team_gate",
+    "AOP-41:issue_status_is_todo",
+    "AOP-41:full_issue_contract_present",
+    "AOP-41:no_live_drift_severity_high_or_above",
+    "AOP-41:action_class_not_implementation",
+    "AOP-41:high_risk_requires_independent_red_team_gate",
+    "AOP-40:issue_status_is_todo",
+    "AOP-40:full_issue_contract_present",
+    "AOP-40:no_live_drift_severity_high_or_above",
+    "AOP-40:action_class_not_implementation",
+    "AOP-40:high_risk_requires_independent_red_team_gate",
+    "AOP-39:issue_status_is_todo",
+    "AOP-39:full_issue_contract_present",
+    "AOP-39:no_live_drift_severity_high_or_above",
+    "AOP-39:action_class_not_implementation",
+    "AOP-39:high_risk_requires_independent_red_team_gate",
+    "AOP-38:issue_status_is_todo",
+    "AOP-38:full_issue_contract_present",
+    "AOP-38:no_live_drift_severity_high_or_above",
+    "AOP-38:action_class_not_implementation",
+    "AOP-38:high_risk_requires_independent_red_team_gate",
+    "AOP-37:issue_status_is_todo",
+    "AOP-37:full_issue_contract_present",
+    "AOP-37:no_live_drift_severity_high_or_above",
+    "AOP-37:action_class_not_implementation",
+    "AOP-37:high_risk_requires_independent_red_team_gate",
+    "AOP-36:issue_status_is_todo",
+    "AOP-36:full_issue_contract_present",
+    "AOP-36:no_live_drift_severity_high_or_above",
+    "AOP-36:action_class_not_implementation",
+    "AOP-36:high_risk_requires_independent_red_team_gate",
+    "AOP-35:issue_status_is_todo",
+    "AOP-35:full_issue_contract_present",
+    "AOP-35:no_live_drift_severity_high_or_above",
+    "AOP-35:action_class_not_implementation",
+    "AOP-35:high_risk_requires_independent_red_team_gate",
+    "AOP-34:issue_status_is_todo",
+    "AOP-34:full_issue_contract_present",
+    "AOP-34:no_live_drift_severity_high_or_above",
+    "AOP-34:action_class_not_implementation",
+    "AOP-34:high_risk_requires_independent_red_team_gate",
+    "AOP-33:issue_status_is_todo",
+    "AOP-33:full_issue_contract_present",
+    "AOP-33:no_live_drift_severity_high_or_above",
+    "AOP-33:action_class_not_implementation",
+    "AOP-33:high_risk_requires_independent_red_team_gate",
+    "AOP-32:issue_status_is_todo",
+    "AOP-32:full_issue_contract_present",
+    "AOP-32:no_live_drift_severity_high_or_above",
+    "AOP-32:action_class_not_implementation",
+    "AOP-32:high_risk_requires_independent_red_team_gate",
+    "AOP-31:issue_status_is_todo",
+    "AOP-31:full_issue_contract_present",
+    "AOP-31:no_live_drift_severity_high_or_above",
+    "AOP-31:action_class_not_implementation",
+    "AOP-31:high_risk_requires_independent_red_team_gate",
+    "AOP-30:issue_status_is_todo",
+    "AOP-30:full_issue_contract_present",
+    "AOP-30:no_live_drift_severity_high_or_above",
+    "AOP-30:action_class_not_implementation",
+    "AOP-30:high_risk_requires_independent_red_team_gate",
+    "AOP-29:issue_status_is_todo",
+    "AOP-29:full_issue_contract_present",
+    "AOP-29:no_live_drift_severity_high_or_above",
+    "AOP-29:action_class_not_implementation",
+    "AOP-29:high_risk_requires_independent_red_team_gate",
+    "AOP-28:issue_status_is_todo",
+    "AOP-28:full_issue_contract_present",
+    "AOP-28:no_live_drift_severity_high_or_above",
+    "AOP-28:action_class_not_implementation",
+    "AOP-28:high_risk_requires_independent_red_team_gate",
+    "AOP-27:issue_status_is_todo",
+    "AOP-27:full_issue_contract_present",
+    "AOP-27:no_live_drift_severity_high_or_above",
+    "AOP-27:action_class_not_implementation",
+    "AOP-27:high_risk_requires_independent_red_team_gate",
+    "AOP-26:issue_status_is_todo",
+    "AOP-26:full_issue_contract_present",
+    "AOP-26:no_live_drift_severity_high_or_above",
+    "AOP-26:action_class_not_implementation",
+    "AOP-26:high_risk_requires_independent_red_team_gate",
+    "AOP-25:issue_status_is_todo",
+    "AOP-25:full_issue_contract_present",
+    "AOP-25:no_live_drift_severity_high_or_above",
+    "AOP-25:action_class_not_implementation",
+    "AOP-25:high_risk_requires_independent_red_team_gate",
+    "AOP-24:issue_status_is_todo",
+    "AOP-24:full_issue_contract_present",
+    "AOP-24:no_live_drift_severity_high_or_above",
+    "AOP-24:action_class_not_implementation",
+    "AOP-24:high_risk_requires_independent_red_team_gate",
+    "AOP-23:issue_status_is_todo",
+    "AOP-23:full_issue_contract_present",
+    "AOP-23:no_live_drift_severity_high_or_above",
+    "AOP-23:action_class_not_implementation",
+    "AOP-23:high_risk_requires_independent_red_team_gate",
+    "AOP-22:issue_status_is_todo",
+    "AOP-22:full_issue_contract_present",
+    "AOP-22:no_live_drift_severity_high_or_above",
+    "AOP-22:action_class_not_implementation",
+    "AOP-22:high_risk_requires_independent_red_team_gate",
+    "AOP-21:issue_status_is_todo",
+    "AOP-21:full_issue_contract_present",
+    "AOP-21:no_live_drift_severity_high_or_above",
+    "AOP-21:action_class_not_implementation",
+    "AOP-21:high_risk_requires_independent_red_team_gate",
+    "AOP-20:issue_status_is_todo",
+    "AOP-20:full_issue_contract_present",
+    "AOP-20:no_live_drift_severity_high_or_above",
+    "AOP-20:action_class_not_implementation",
+    "AOP-20:high_risk_requires_independent_red_team_gate",
+    "AOP-19:issue_status_is_todo",
+    "AOP-19:full_issue_contract_present",
+    "AOP-19:no_live_drift_severity_high_or_above",
+    "AOP-19:action_class_not_implementation",
+    "AOP-19:high_risk_requires_independent_red_team_gate",
+    "AOP-18:issue_status_is_todo",
+    "AOP-18:full_issue_contract_present",
+    "AOP-18:no_live_drift_severity_high_or_above",
+    "AOP-18:action_class_not_implementation",
+    "AOP-18:high_risk_requires_independent_red_team_gate",
+    "AOP-17:issue_status_is_todo",
+    "AOP-17:full_issue_contract_present",
+    "AOP-17:no_live_drift_severity_high_or_above",
+    "AOP-17:action_class_not_implementation",
+    "AOP-17:high_risk_requires_independent_red_team_gate",
+    "AOP-16:issue_status_is_todo",
+    "AOP-16:full_issue_contract_present",
+    "AOP-16:no_live_drift_severity_high_or_above",
+    "AOP-16:action_class_not_implementation",
+    "AOP-16:high_risk_requires_independent_red_team_gate",
+    "AOP-15:issue_status_is_todo",
+    "AOP-15:full_issue_contract_present",
+    "AOP-15:no_live_drift_severity_high_or_above",
+    "AOP-15:action_class_not_implementation",
+    "AOP-15:high_risk_requires_independent_red_team_gate",
+    "AOP-14:issue_status_is_todo",
+    "AOP-14:full_issue_contract_present",
+    "AOP-14:no_live_drift_severity_high_or_above",
+    "AOP-14:action_class_not_implementation",
+    "AOP-14:high_risk_requires_independent_red_team_gate",
+    "AOP-13:issue_status_is_todo",
+    "AOP-13:full_issue_contract_present",
+    "AOP-13:no_live_drift_severity_high_or_above",
+    "AOP-13:action_class_not_implementation",
+    "AOP-13:high_risk_requires_independent_red_team_gate",
+    "AOP-12:issue_status_is_todo",
+    "AOP-12:full_issue_contract_present",
+    "AOP-12:no_live_drift_severity_high_or_above",
+    "AOP-12:action_class_not_implementation",
+    "AOP-12:high_risk_requires_independent_red_team_gate",
+    "AOP-11:issue_status_is_todo",
+    "AOP-11:full_issue_contract_present",
+    "AOP-11:no_live_drift_severity_high_or_above",
+    "AOP-11:action_class_not_implementation",
+    "AOP-11:high_risk_requires_independent_red_team_gate",
+    "AOP-10:issue_status_is_todo",
+    "AOP-10:full_issue_contract_present",
+    "AOP-10:no_live_drift_severity_high_or_above",
+    "AOP-10:action_class_not_implementation",
+    "AOP-10:high_risk_requires_independent_red_team_gate",
+    "AOP-9:issue_status_is_todo",
+    "AOP-9:full_issue_contract_present",
+    "AOP-9:no_live_drift_severity_high_or_above",
+    "AOP-9:action_class_not_implementation",
+    "AOP-9:high_risk_requires_independent_red_team_gate",
+    "AOP-8:issue_status_is_todo",
+    "AOP-8:full_issue_contract_present",
+    "AOP-8:no_live_drift_severity_high_or_above",
+    "AOP-8:action_class_not_implementation",
+    "AOP-8:high_risk_requires_independent_red_team_gate",
+    "AOP-7:issue_status_is_todo",
+    "AOP-7:full_issue_contract_present",
+    "AOP-7:no_live_drift_severity_high_or_above",
+    "AOP-7:action_class_not_implementation",
+    "AOP-7:high_risk_requires_independent_red_team_gate",
+    "AOP-6:full_issue_contract_present",
+    "AOP-6:no_live_drift_severity_high_or_above",
+    "AOP-6:action_class_not_implementation",
+    "AOP-6:high_risk_requires_independent_red_team_gate",
+    "AOP-5:full_issue_contract_present",
+    "AOP-5:no_live_drift_severity_high_or_above",
+    "AOP-5:action_class_not_implementation",
+    "AOP-5:high_risk_requires_independent_red_team_gate",
+    "AOP-4:full_issue_contract_present",
+    "AOP-4:no_live_drift_severity_high_or_above",
+    "AOP-4:action_class_not_implementation",
+    "AOP-4:high_risk_requires_independent_red_team_gate",
+    "AOP-3:full_issue_contract_present",
+    "AOP-3:no_live_drift_severity_high_or_above",
+    "AOP-3:action_class_not_implementation",
+    "AOP-3:high_risk_requires_independent_red_team_gate",
+    "AOP-2:full_issue_contract_present",
+    "AOP-2:no_live_drift_severity_high_or_above",
+    "AOP-2:action_class_not_implementation",
+    "AOP-2:high_risk_requires_independent_red_team_gate",
+    "AOP-1:full_issue_contract_present",
+    "AOP-1:no_live_drift_severity_high_or_above",
+    "AOP-1:action_class_not_implementation",
+    "AOP-1:high_risk_requires_independent_red_team_gate"
+  ],
+  "manifest_hash": "sha256:319441d02a0283a7dc231f1a67c160ebbeb39a10961d2fbf4a37f5ed22dd925c",
+  "proposed_issue_id": null,
+  "run_id": "sidecar-redteam-swap-fixed-20260424T1352Z"
+}

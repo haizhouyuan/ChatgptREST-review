@@ -1,0 +1,519 @@
+{
+  "captured_at": "2026-04-24T13:55:00+08:00",
+  "workspaces": [
+    {
+      "name": "assistant-ops",
+      "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572",
+      "agents": [
+        {
+          "id": "48251656-cdc5-48e3-804d-4fd338614b7b",
+          "name": "hermes-chief-of-staff",
+          "model": "gpt-5.5",
+          "runtime_id": "c27532f7-13f2-44fe-82da-a1660f421def",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 3,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "8752a9bc-d709-41dc-8231-e00af858a93e",
+          "name": "hr-recruiting-specialist",
+          "model": "gpt-5.5",
+          "runtime_id": "c27532f7-13f2-44fe-82da-a1660f421def",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "bf95e9ff-be1a-43a4-bf6d-7d89e5eb54d3",
+          "name": "meeting-intelligence-specialist",
+          "model": "gpt-5.5",
+          "runtime_id": "c27532f7-13f2-44fe-82da-a1660f421def",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "8ab081ca-a936-48e6-8107-9e006b882b35",
+          "name": "strategy-project-review-specialist",
+          "model": "gpt-5.5",
+          "runtime_id": "c27532f7-13f2-44fe-82da-a1660f421def",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "e27ebc56-7e7d-4fc4-896d-bbbb3f6b639f",
+          "name": "finbot-assistant",
+          "model": "kimi-for-coding",
+          "runtime_id": "aaa52b8d-e95f-43d7-8e07-1f315f48d26f",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "ca7d2f33-8138-4425-9064-3d890f5fa534",
+          "name": "education-assistant",
+          "model": "gpt-5.5",
+          "runtime_id": "c27532f7-13f2-44fe-82da-a1660f421def",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "e06e5f10-b8be-472a-936f-85b0bea2ab2c",
+          "name": "redteam-gpt55-xhigh-primary",
+          "model": "gpt-5.5",
+          "runtime_id": "a206eb0a-eb4c-4175-8619-6972ee25e9fd",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 1,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": [
+            "-c",
+            "model_reasoning_effort=\"xhigh\""
+          ]
+        },
+        {
+          "id": "6a03af07-62a3-4a1c-b8e1-90a81a42e89b",
+          "name": "redteam-codex-xhigh-fallback",
+          "model": "gpt-5.5",
+          "runtime_id": "a206eb0a-eb4c-4175-8619-6972ee25e9fd",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 1,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": [
+            "-c",
+            "model_reasoning_effort=\"xhigh\""
+          ]
+        }
+      ],
+      "runtimes": [
+        {
+          "id": "aaa52b8d-e95f-43d7-8e07-1f315f48d26f",
+          "name": "Kimi (YogaS2)",
+          "provider": "kimi",
+          "status": "online"
+        },
+        {
+          "id": "b7194748-296a-4215-8fb7-fb3c3426b850",
+          "name": "Claude (YogaS2)",
+          "provider": "claude",
+          "status": "online"
+        },
+        {
+          "id": "a206eb0a-eb4c-4175-8619-6972ee25e9fd",
+          "name": "Codex (YogaS2)",
+          "provider": "codex",
+          "status": "online"
+        },
+        {
+          "id": "135207b6-1799-4218-bfe8-bf254028bdfa",
+          "name": "Openclaw (YogaS2)",
+          "provider": "openclaw",
+          "status": "online"
+        },
+        {
+          "id": "c27532f7-13f2-44fe-82da-a1660f421def",
+          "name": "Hermes (YogaS2)",
+          "provider": "hermes",
+          "status": "online"
+        },
+        {
+          "id": "47eb14ba-0398-4f6e-8750-c0155e27333e",
+          "name": "Gemini (YogaS2)",
+          "provider": "gemini",
+          "status": "online"
+        },
+        {
+          "id": "900bc676-4d86-419f-b2d5-e4ee2f86d419",
+          "name": "Claude (YogaS2 GAC Redteam)",
+          "provider": "claude",
+          "status": "online"
+        }
+      ],
+      "issues_summary": {
+        "count_in_current_page": 50,
+        "by_status": {
+          "blocked": 1,
+          "cancelled": 8,
+          "done": 40,
+          "todo": 1
+        },
+        "top_identifiers": [
+          "AOP-80",
+          "AOP-79",
+          "AOP-78",
+          "AOP-77",
+          "AOP-76",
+          "AOP-75",
+          "AOP-74",
+          "AOP-73",
+          "AOP-72",
+          "AOP-71",
+          "AOP-70",
+          "AOP-69",
+          "AOP-68",
+          "AOP-67",
+          "AOP-66",
+          "AOP-65",
+          "AOP-64",
+          "AOP-63",
+          "AOP-62",
+          "AOP-61",
+          "AOP-60",
+          "AOP-59",
+          "AOP-58",
+          "AOP-57",
+          "AOP-56",
+          "AOP-55",
+          "AOP-54",
+          "AOP-53",
+          "AOP-52",
+          "AOP-51"
+        ],
+        "top_titles": [
+          {
+            "identifier": "AOP-80",
+            "status": "todo",
+            "title": "Codify Pro No-Go gate for chief MCP/skills reconciliation"
+          },
+          {
+            "identifier": "AOP-79",
+            "status": "done",
+            "title": "Prepare chief MCP/skills metadata reconciliation proposal"
+          },
+          {
+            "identifier": "AOP-78",
+            "status": "done",
+            "title": "Install read-only chief dry-run reporter timer"
+          },
+          {
+            "identifier": "AOP-77",
+            "status": "done",
+            "title": "Pause create-issue governance autopilot pending dry-run reporter"
+          },
+          {
+            "identifier": "AOP-76",
+            "status": "done",
+            "title": "Fallback review ASF-26 implementation artifacts"
+          },
+          {
+            "identifier": "AOP-75",
+            "status": "cancelled",
+            "title": "Red-team review ASF-26 implementation artifacts"
+          },
+          {
+            "identifier": "AOP-74",
+            "status": "done",
+            "title": "Fallback review ASF-26 evidence bundle contract"
+          },
+          {
+            "identifier": "AOP-73",
+            "status": "cancelled",
+            "title": "Red-team review ASF-26 evidence bundle contract"
+          },
+          {
+            "identifier": "AOP-72",
+            "status": "done",
+            "title": "Fallback review ASF-25 implementation artifacts"
+          },
+          {
+            "identifier": "AOP-71",
+            "status": "cancelled",
+            "title": "Red-team review ASF-25 implementation artifacts"
+          },
+          {
+            "identifier": "AOP-70",
+            "status": "done",
+            "title": "Red-team review ASF-25 proof ledger contract"
+          },
+          {
+            "identifier": "AOP-69",
+            "status": "done",
+            "title": "Red-team review ASF-24 implementation artifacts"
+          },
+          {
+            "identifier": "AOP-68",
+            "status": "done",
+            "title": "Red-team review ASF-24 read-only snapshot exporter contract"
+          },
+          {
+            "identifier": "AOP-67",
+            "status": "done",
+            "title": "Red-team review ASF-23 implementation artifacts"
+          },
+          {
+            "identifier": "AOP-66",
+            "status": "done",
+            "title": "Red-team review ASF-23 runnable manifest dry-run harness contract"
+          }
+        ]
+      }
+    },
+    {
+      "name": "assistant-factory",
+      "workspace_id": "6aa0f38c-1f97-4fbb-a4ff-d48eb0d3a580",
+      "agents": [
+        {
+          "id": "bd89563c-be41-4953-b62a-4b9f67a3c19f",
+          "name": "planning-memory-architect",
+          "model": "gpt-5.5",
+          "runtime_id": "f269be12-5ef7-4337-a923-d0fa84427771",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": [
+            "-c",
+            "model_reasoning_effort=\"xhigh\""
+          ]
+        },
+        {
+          "id": "d1f11e6c-eb2b-431c-842d-fa801654eec8",
+          "name": "planning-arms-evaluator",
+          "model": "",
+          "runtime_id": "b42c66b3-833a-4a26-b90a-409d7c59d91f",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "038a914b-ff53-49bc-859d-c57e83d3eae4",
+          "name": "finbot-architect",
+          "model": "gpt-5.5",
+          "runtime_id": "f269be12-5ef7-4337-a923-d0fa84427771",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": [
+            "-c",
+            "model_reasoning_effort=\"xhigh\""
+          ]
+        },
+        {
+          "id": "1a17bb9e-cb12-48a6-bcfa-624da3127acb",
+          "name": "finbot-research-specialist",
+          "model": "kimi-for-coding",
+          "runtime_id": "9ebc8fb8-a443-4431-9e09-7347acd28b05",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "50df3740-dc85-43b6-a781-f19d16c38964",
+          "name": "chatgptrest-runtime-auditor",
+          "model": "",
+          "runtime_id": "e55df817-85e7-4f46-aeb9-3b715d53c433",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": []
+        },
+        {
+          "id": "750abdb0-2e2c-4d50-8b30-e8fba35c37d9",
+          "name": "chatgptrest-browser-refactor",
+          "model": "gpt-5.5",
+          "runtime_id": "f269be12-5ef7-4337-a923-d0fa84427771",
+          "runtime_mode": "local",
+          "status": "idle",
+          "max_concurrent_tasks": 6,
+          "skills_count": 0,
+          "mcp_config_present": false,
+          "custom_args": [
+            "-c",
+            "model_reasoning_effort=\"xhigh\""
+          ]
+        }
+      ],
+      "runtimes": [
+        {
+          "id": "f269be12-5ef7-4337-a923-d0fa84427771",
+          "name": "Codex (YogaS2)",
+          "provider": "codex",
+          "status": "online"
+        },
+        {
+          "id": "f2ebee90-331a-4ade-af45-d9cd088b0c43",
+          "name": "Openclaw (YogaS2)",
+          "provider": "openclaw",
+          "status": "online"
+        },
+        {
+          "id": "b22e2561-7c6d-4538-850f-5b502e8dbf2f",
+          "name": "Hermes (YogaS2)",
+          "provider": "hermes",
+          "status": "online"
+        },
+        {
+          "id": "b42c66b3-833a-4a26-b90a-409d7c59d91f",
+          "name": "Gemini (YogaS2)",
+          "provider": "gemini",
+          "status": "online"
+        },
+        {
+          "id": "9ebc8fb8-a443-4431-9e09-7347acd28b05",
+          "name": "Kimi (YogaS2)",
+          "provider": "kimi",
+          "status": "online"
+        },
+        {
+          "id": "e55df817-85e7-4f46-aeb9-3b715d53c433",
+          "name": "Claude (YogaS2)",
+          "provider": "claude",
+          "status": "online"
+        },
+        {
+          "id": "621af4ea-95e7-40ec-b9c5-c0f65dc2e8bb",
+          "name": "Claude (YogaS2 GAC Redteam)",
+          "provider": "claude",
+          "status": "online"
+        }
+      ],
+      "issues_summary": {
+        "count_in_current_page": 26,
+        "by_status": {
+          "blocked": 2,
+          "done": 17,
+          "todo": 7
+        },
+        "top_identifiers": [
+          "ASF-26",
+          "ASF-25",
+          "ASF-24",
+          "ASF-23",
+          "ASF-22",
+          "ASF-21",
+          "ASF-20",
+          "ASF-19",
+          "ASF-18",
+          "ASF-17",
+          "ASF-16",
+          "ASF-15",
+          "ASF-14",
+          "ASF-13",
+          "ASF-12",
+          "ASF-11",
+          "ASF-10",
+          "ASF-9",
+          "ASF-8",
+          "ASF-7",
+          "ASF-6",
+          "ASF-5",
+          "ASF-4",
+          "ASF-3",
+          "ASF-2",
+          "ASF-1"
+        ],
+        "top_titles": [
+          {
+            "identifier": "ASF-26",
+            "status": "done",
+            "title": "Build cross-workspace evidence bundle exporter"
+          },
+          {
+            "identifier": "ASF-25",
+            "status": "done",
+            "title": "Compile proof ledger and sidecar knowledge register"
+          },
+          {
+            "identifier": "ASF-24",
+            "status": "done",
+            "title": "Implement read-only chief live snapshot exporter"
+          },
+          {
+            "identifier": "ASF-23",
+            "status": "done",
+            "title": "Implement runnable chief manifest and advance_one dry-run harness"
+          },
+          {
+            "identifier": "ASF-22",
+            "status": "done",
+            "title": "Harness0 golden path: executable planning-memory case_01 proof"
+          },
+          {
+            "identifier": "ASF-21",
+            "status": "done",
+            "title": "Cross-workspace dispatch smoke worker ack"
+          },
+          {
+            "identifier": "ASF-20",
+            "status": "todo",
+            "title": "梳理儿子语音助手设想与依赖"
+          },
+          {
+            "identifier": "ASF-19",
+            "status": "todo",
+            "title": "梳理教育专家助理需求与现有材料"
+          },
+          {
+            "identifier": "ASF-18",
+            "status": "done",
+            "title": "Chief manifest and transition checker design baseline"
+          },
+          {
+            "identifier": "ASF-17",
+            "status": "done",
+            "title": "设计 Hermes 总控 prompt 与 specialist routing"
+          },
+          {
+            "identifier": "ASF-16",
+            "status": "done",
+            "title": "切 Hermes 主入口到独立 Codex auth 方案"
+          },
+          {
+            "identifier": "ASF-15",
+            "status": "done",
+            "title": "确认 Hermes 主入口 provider model MCP skill 现状"
+          },
+          {
+            "identifier": "ASF-14",
+            "status": "todo",
+            "title": "设计 UI 自动化升级方案"
+          },
+          {
+            "identifier": "ASF-13",
+            "status": "todo",
+            "title": "调研 anything-cli 与 opencli 升级路径"
+          },
+          {
+            "identifier": "ASF-12",
+            "status": "todo",
+            "title": "执行 capability regression matrix"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,464 @@
+{
+  "schema_version": "0.1.0",
+  "ledger_id": "chief-control-plane-proof-ledger-v0",
+  "note": "Excerpt only. AOP-80-pro-no-go came from an insufficient short Pro ask and is superseded for decision-making by this fuller dual-review request.",
+  "entries": [
+    {
+      "id": "ASF-15",
+      "proof_type": "inventory",
+      "status": "accepted",
+      "summary": "Hermes control-plane inventory identified the central drift: live Multica chief metadata did not expose the true model, MCP, and skills capability surface.",
+      "artifact_refs": [
+        {
+          "ref_type": "file",
+          "ref": "docs/checkpoints/2026-04-24_asf15_hermes_control_plane_inventory_checkpoint.md",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "docs/control_plane/snapshots/chief_live_2026-04-24T1212.json",
+          "verification_status": "verified",
+          "note": "Later live snapshot confirms MCP and skills drift remains high."
+        }
+      ],
+      "review_refs": [],
+      "decision": "Use inventory drift as a hard input to the manifest and transition checker work.",
+      "enabled": [
+        "ASF-16 auth proof",
+        "ASF-17 chief contract",
+        "ASF-18 manifest/checker design"
+      ],
+      "blocked": [
+        "chief self-advance",
+        "autopilot transition execution"
+      ],
+      "risk_notes": [
+        "Multica-visible metadata is not yet complete enough to be the sole source of truth."
+      ]
+    },
+    {
+      "id": "ASF-16",
+      "proof_type": "auth_proof",
+      "status": "accepted",
+      "summary": "Hermes auth lane was proven isolated from daily Codex/Codex2 TUI lanes by token fingerprint comparison.",
+      "artifact_refs": [
+        {
+          "ref_type": "file",
+          "ref": "docs/checkpoints/2026-04-24_asf16_hermes_auth_lane_proof_checkpoint.md",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [],
+      "decision": "Treat auth isolation as necessary but insufficient; behavior still needs manifest, command scope, and transition policy.",
+      "enabled": [
+        "chief runtime hardening",
+        "manifest auth section"
+      ],
+      "blocked": [
+        "shared-token chief setup",
+        "secret material in control-plane docs"
+      ],
+      "risk_notes": [
+        "This ledger stores only proof references and does not store auth fingerprints or token values."
+      ]
+    },
+    {
+      "id": "ASF-17",
+      "proof_type": "role_contract",
+      "status": "accepted",
+      "summary": "Hermes chief prompt/routing/escalation contract separated chief, red-team, sidecar, and worker responsibilities.",
+      "artifact_refs": [
+        {
+          "ref_type": "file",
+          "ref": "docs/checkpoints/2026-04-24_asf17_hermes_chief_prompt_routing_contract_checkpoint.md",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "AOP-61",
+          "verification_status": "verified"
+        }
+      ],
+      "decision": "Accept as role design baseline only; execution authority remains blocked pending manifest/checker artifacts.",
+      "enabled": [
+        "ASF-18 manifest/checker design"
+      ],
+      "blocked": [
+        "free-form chief execution",
+        "implicit specialist handoff without issue contract"
+      ],
+      "risk_notes": [
+        "A role prompt is not an enforcement boundary; the checker must carry hard gates."
+      ]
+    },
+    {
+      "id": "ASF-18",
+      "proof_type": "control_contract",
+      "status": "accepted",
+      "summary": "Chief manifest, drift detector contract, transition checker contract, no-op rule, and red-team independence policy were accepted as design baseline.",
+      "artifact_refs": [
+        {
+          "ref_type": "file",
+          "ref": "docs/checkpoints/2026-04-24_asf18_chief_manifest_transition_checker_checkpoint.md",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "AOP-65",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "comment",
+          "ref": "AOP-65/comment/090513fb-c956-4089-920f-538b74510e5b",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "comment",
+          "ref": "AOP-65/comment/a596bf58-1562-48f9-9735-7335fc0e04c4",
+          "verification_status": "verified",
+          "note": "Sidecar narrowed ASF-18 to design-baseline acceptance."
+        },
+        {
+          "ref_type": "comment",
+          "ref": "AOP-65/comment/8a7bf911-faff-4f13-a76f-1ebce1e4342f",
+          "verification_status": "verified",
+          "note": "GAC converted conditional no-go to go for design baseline."
+        }
+      ],
+      "decision": "Proceed to runnable dry-run harness; do not treat ASF-18 markdown as compiled policy.",
+      "enabled": [
+        "ASF-23 runnable manifest and advance_one dry-run harness"
+      ],
+      "blocked": [
+        "trusted chief self-advance",
+        "live transition execution",
+        "autopilot wiring"
+      ],
+      "risk_notes": [
+        "The original red-team concern was overclaiming; this is recorded as design, not implementation."
+      ]
+    },
+    {
+      "id": "ASF-22",
+      "proof_type": "executable_harness",
+      "status": "gap_recorded",
+      "summary": "Planning-memory Harness0 case_01 produced a red-team-review-ready artifact bundle in the planning repo; no maint checkpoint file was found.",
+      "artifact_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "ASF-22/289487e8-cc5f-447d-a5f7-0268f390176e",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "comment",
+          "ref": "ASF-22/comment/baa5ec09-741b-437e-8687-1054c516b454",
+          "verification_status": "verified",
+          "note": "Completion comment names the artifact directory and file list."
+        },
+        {
+          "ref_type": "directory",
+          "ref": "/vol1/1000/projects/planning/docs/harness0/golden_path_case01/",
+          "verification_status": "external_repo",
+          "note": "Directory listing verified with README.md, input pack, run manifest, rubric result, memory delta candidate, and resume proof."
+        },
+        {
+          "ref_type": "file",
+          "ref": "docs/checkpoints/*asf22*",
+          "verification_status": "not_found",
+          "note": "AOP-70 blocker resolved by recording the planning artifact bundle rather than inventing a checkpoint."
+        }
+      ],
+      "review_refs": [],
+      "decision": "Use the planning artifact bundle as the proof artifact and keep the missing maint checkpoint as an explicit known gap.",
+      "enabled": [
+        "proof ledger can include ASF-22 with gap rationale"
+      ],
+      "blocked": [
+        "claiming ASF-22 has a maint checkpoint",
+        "using ASF-22 as production memory proof"
+      ],
+      "risk_notes": [
+        "This proof lives outside maint; future bridge work should import a stable summary or evidence pointer."
+      ]
+    },
+    {
+      "id": "ASF-23",
+      "proof_type": "implementation",
+      "status": "accepted",
+      "summary": "Runnable chief manifest and advance_one dry-run harness implemented fixture-only no-op/propose-transition policy checks with no live mutation.",
+      "artifact_refs": [
+        {
+          "ref_type": "file",
+          "ref": "docs/checkpoints/2026-04-24_asf23_chief_manifest_dry_run_harness_checkpoint.md",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "docs/control_plane/chief_manifest.v0.json",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "ops/scripts/chief_advance_one_dry_run.py",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "AOP-67",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "comment",
+          "ref": "AOP-67/comment/646a3124-5181-4f29-ae1d-2d0d2c0da247",
+          "verification_status": "verified"
+        }
+      ],
+      "decision": "Accept dry-run harness as compiled policy proof, but only for static snapshots and fixtures.",
+      "enabled": [
+        "ASF-24 live snapshot exporter"
+      ],
+      "blocked": [
+        "live self-advance",
+        "status mutation",
+        "scheduled autopilot execution"
+      ],
+      "risk_notes": [
+        "The harness does not acquire live state by itself; ASF-24 adds read-only input acquisition."
+      ]
+    },
+    {
+      "id": "ASF-24",
+      "proof_type": "implementation",
+      "status": "accepted",
+      "summary": "Read-only live snapshot exporter implemented sanitized Multica/Hermes input acquisition for the dry-run harness.",
+      "artifact_refs": [
+        {
+          "ref_type": "file",
+          "ref": "docs/checkpoints/2026-04-24_asf24_read_only_live_snapshot_exporter_checkpoint.md",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "docs/control_plane/live_snapshot.schema.json",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "docs/control_plane/snapshots/chief_live_2026-04-24T1212.json",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "ops/scripts/chief_collect_live_snapshot.py",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "AOP-69",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "comment",
+          "ref": "AOP-69/comment/545051fe-4662-47f8-8d23-8c236d976cf4",
+          "verification_status": "verified"
+        }
+      ],
+      "decision": "Accept read-only snapshot exporter. Continue to block transitions while MCP/skills drift remains high.",
+      "enabled": [
+        "live snapshot dry-run reports",
+        "proof ledger and sidecar knowledge extraction"
+      ],
+      "blocked": [
+        "autopilot wiring",
+        "live issue mutation by exporter",
+        "secret-bearing config export"
+      ],
+      "risk_notes": [
+        "Live issue fields use conservative defaults; every live candidate fails closed until richer contracts are encoded."
+      ]
+    },
+    {
+      "id": "AOP-65",
+      "proof_type": "red_team_review",
+      "status": "accepted",
+      "summary": "GAC red-team review challenged ASF-18 overclaiming and forced design-spec framing, input acquisition caveat, and deterministic candidate ordering.",
+      "artifact_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "AOP-65/ef6e8fd0-48cf-47ad-a1c9-013711e3e135",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [
+        {
+          "ref_type": "comment",
+          "ref": "AOP-65/comment/090513fb-c956-4089-920f-538b74510e5b",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "comment",
+          "ref": "AOP-65/comment/8a7bf911-faff-4f13-a76f-1ebce1e4342f",
+          "verification_status": "verified"
+        }
+      ],
+      "decision": "Accept GAC as independent gate for ASF-18 design baseline.",
+      "enabled": [
+        "ASF-23 implementation contract"
+      ],
+      "blocked": [
+        "claiming markdown contract is compiled policy"
+      ],
+      "risk_notes": [
+        "Initial no-go was useful; gate quality depends on not downgrading high-risk reviews to Codex fallback."
+      ]
+    },
+    {
+      "id": "AOP-67",
+      "proof_type": "red_team_review",
+      "status": "accepted",
+      "summary": "GAC implementation review accepted ASF-23 dry-run harness with no blocking concerns.",
+      "artifact_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "AOP-67/d9d397b1-0e5b-41e8-8429-133b0507edd1",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [
+        {
+          "ref_type": "comment",
+          "ref": "AOP-67/comment/646a3124-5181-4f29-ae1d-2d0d2c0da247",
+          "verification_status": "verified"
+        }
+      ],
+      "decision": "Accept ASF-23 implementation as fixture-only dry-run proof.",
+      "enabled": [
+        "ASF-24 read-only live snapshot exporter"
+      ],
+      "blocked": [
+        "live self-advance"
+      ],
+      "risk_notes": [
+        "Review noted low-severity schema tightening opportunities for future revisions."
+      ]
+    },
+    {
+      "id": "AOP-69",
+      "proof_type": "red_team_review",
+      "status": "accepted",
+      "summary": "GAC implementation review accepted ASF-24 snapshot exporter with no blocking concerns.",
+      "artifact_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "AOP-69/065ca642-a51e-4931-9ca1-f97b66b0cb4e",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [
+        {
+          "ref_type": "comment",
+          "ref": "AOP-69/comment/545051fe-4662-47f8-8d23-8c236d976cf4",
+          "verification_status": "verified"
+        }
+      ],
+      "decision": "Accept ASF-24 and proceed to proof ledger / sidecar knowledge extraction.",
+      "enabled": [
+        "ASF-25 contract"
+      ],
+      "blocked": [
+        "autopilot wiring",
+        "transition execution"
+      ],
+      "risk_notes": [
+        "Non-blocking concerns include API proxy endpoint visibility, UUID validation, and value scanning if allowlist expands."
+      ]
+    },
+    {
+      "id": "AOP-80-pro-no-go",
+      "proof_type": "red_team_review",
+      "status": "blocked",
+      "summary": "Pro extended advisory ruled No-Go for live Hermes chief MCP/skills reconciliation while independent GAC/Claude gate is unavailable.",
+      "artifact_refs": [
+        {
+          "ref_type": "issue",
+          "ref": "AOP-80/47cc05fd-7aed-4f76-a367-520fc88c1087",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "docs/control_plane/metadata_reconciliation/chief_mcp_skills_reconciliation_proposal_2026-04-24.json",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "docs/control_plane/metadata_reconciliation/chief_mcp_skills_gate_packet_2026-04-24.json",
+          "verification_status": "verified"
+        },
+        {
+          "ref_type": "file",
+          "ref": "docs/checkpoints/2026-04-24_aop79_chief_mcp_skills_reconciliation_proposal_checkpoint.md",
+          "verification_status": "verified"
+        }
+      ],
+      "review_refs": [
+        {
+          "ref_type": "command",
+          "ref": "chatgptrest automation_result job_id=3460226e79c1493fae0c91596cdc916c",
+          "verification_status": "verified",
+          "note": "Pro extended answer completed with No-Go for live reconciliation and Go only for static/read-only work."
+        }
+      ],
+      "decision": "Do not write agent.mcp_config, create or assign chief workspace skills, relax source-of-truth checks, or mark high drift resolved until an independent gate or explicit user authorization exists.",
+      "enabled": [
+        "static gate packet",
+        "read-only no-op dry-run",
+        "future independent review package"
+      ],
+      "blocked": [
+        "live MCP reconciliation",
+        "live skills reconciliation",
+        "using Codex Grade-C fallback as high-risk approval",
+        "treating GAC 402 as approval downgrade"
+      ],
+      "risk_notes": [
+        "MCP/skills drift touches the chief capability surface and source-of-truth contract.",
+        "Restrictive skill assignment is still live prompt and behavior mutation.",
+        "Writing non-executable summaries into mcp_config would pollute an executable-semantics field."
+      ]
+    }
+  ],
+  "known_gaps": [
+    {
+      "id": "gap-asf22-no-maint-checkpoint",
+      "severity": "medium",
+      "description": "ASF-22 has no maint checkpoint file matching docs/checkpoints/*asf22*, but it has an external planning artifact bundle and a Multica completion comment.",
+      "current_handling": "Record the planning artifact directory and completion comment as proof refs; do not claim a maint checkpoint exists."
+    },
+    {
+      "id": "gap-cross-workspace-review-visibility",
+      "severity": "medium",
+      "description": "GAC reviews in assistant-ops sometimes cannot directly read assistant-factory issue bodies unless target context is copied into the review issue.",
+      "current_handling": "Copy required contracts and artifact paths into every red-team review issue until a cross-workspace evidence bridge exists."
+    },
+    {
+      "id": "gap-no-live-transition-authority",
+      "severity": "high",
+      "description": "The dry-run harness and live snapshot exporter are intentionally not wired to execute transitions.",
+      "current_handling": "Treat no-op as success; require a separate reviewed implementation before any live mutation path is added."
+    },
+    {
+      "id": "gap-independent-gate-unavailable-for-chief-metadata",
+      "severity": "high",
+      "description": "GAC/Claude red-team currently fails with quota/402 for high-risk chief metadata review, and Codex GPT-5.5 xhigh fallback is only Grade-C.",
+      "current_handling": "Keep Hermes chief MCP/skills reconciliation blocked; allow only static proposal, evidence, proof-ledger, and gate-packet work until independent gate or explicit user authorization exists."
+    }
+  ]
+}

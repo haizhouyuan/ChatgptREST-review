@@ -1,0 +1,196 @@
+{
+  "schema_version": "0.1.0",
+  "register_id": "chief-control-plane-sidecar-knowledge-register-v0",
+  "compiled_at": "2026-04-24T12:30:00+08:00",
+  "compiled_against": {
+    "proof_ledger_ref": "docs/control_plane/proof_ledger.v0.json",
+    "chief_manifest_ref": "docs/control_plane/chief_manifest.v0.json",
+    "dry_run_harness_ref": "ops/scripts/chief_advance_one_dry_run.py"
+  },
+  "human_only_boundary_policy": {
+    "target_max_ratio": 0.25,
+    "requires_rationale": true,
+    "requires_next_externalization_candidate": true
+  },
+  "items": [
+    {
+      "id": "SKR-001",
+      "classification": "checker_rule",
+      "title": "Blocked lanes remain blocked until their named contract gap is resolved",
+      "rule": "If an issue has blocked dependencies, missing contract, implementation action class, or high drift, dry-run must return no_op and must not move the lane to in_review.",
+      "source_refs": [
+        "docs/checkpoints/2026-04-24_asf18_chief_manifest_transition_checker_checkpoint.md",
+        "ops/scripts/chief_advance_one_dry_run.py",
+        "docs/control_plane/fixtures/current_high_drift_asf9_blocked.json"
+      ],
+      "machine_action": "block_transition",
+      "implementation_status": "encoded",
+      "target_artifacts": [
+        "ops/scripts/chief_advance_one_dry_run.py"
+      ],
+      "human_only_rationale": null,
+      "next_externalization_candidate": null
+    },
+    {
+      "id": "SKR-002",
+      "classification": "manifest_field",
+      "title": "Scheduled sweep command scope is explicit and narrow",
+      "rule": "Scheduled governance reporters may use only targeted board/status commands declared in manifest tool scope; broad environment probing and help/discovery commands are forbidden.",
+      "source_refs": [
+        "docs/control_plane/chief_manifest.v0.json",
+        "docs/checkpoints/2026-04-24_asf18_chief_manifest_transition_checker_checkpoint.md"
+      ],
+      "machine_action": "allow_dry_run_only",
+      "implementation_status": "documented",
+      "target_artifacts": [
+        "docs/control_plane/chief_manifest.v0.json"
+      ],
+      "human_only_rationale": null,
+      "next_externalization_candidate": "Add a command-policy validator before any scheduled live executor exists."
+    },
+    {
+      "id": "SKR-003",
+      "classification": "escalation_policy",
+      "title": "Grade-C red-team fallback cannot clear high-risk blockers alone",
+      "rule": "If reviewer independence grade is C or D and the issue is high risk, the gate may produce critique but cannot unblock implementation or live automation.",
+      "source_refs": [
+        "docs/checkpoints/2026-04-24_asf18_chief_manifest_transition_checker_checkpoint.md",
+        "docs/control_plane/fixtures/fallback_grade_c_high_risk.json",
+        "AOP-65/comment/090513fb-c956-4089-920f-538b74510e5b"
+      ],
+      "machine_action": "require_independent_gate",
+      "implementation_status": "encoded",
+      "target_artifacts": [
+        "ops/scripts/chief_advance_one_dry_run.py",
+        "docs/control_plane/chief_manifest.v0.json"
+      ],
+      "human_only_rationale": null,
+      "next_externalization_candidate": null
+    },
+    {
+      "id": "SKR-004",
+      "classification": "checker_rule",
+      "title": "No-op is a valid successful sweep outcome",
+      "rule": "If no candidate satisfies all checks, the correct output is no_op with failed checks and drift reasons; creating an issue is not progress by itself.",
+      "source_refs": [
+        "docs/checkpoints/2026-04-24_asf18_chief_manifest_transition_checker_checkpoint.md",
+        "docs/checkpoints/2026-04-24_asf23_chief_manifest_dry_run_harness_checkpoint.md",
+        "AOP-67/comment/646a3124-5181-4f29-ae1d-2d0d2c0da247"
+      ],
+      "machine_action": "no_op",
+      "implementation_status": "encoded",
+      "target_artifacts": [
+        "ops/scripts/chief_advance_one_dry_run.py"
+      ],
+      "human_only_rationale": null,
+      "next_externalization_candidate": null
+    },
+    {
+      "id": "SKR-005",
+      "classification": "checker_rule",
+      "title": "High MCP or skills drift blocks transition proposals",
+      "rule": "If live snapshot reports high or critical drift, transition proposal must be blocked even when individual issue data looks eligible.",
+      "source_refs": [
+        "docs/control_plane/snapshots/chief_live_2026-04-24T1212.json",
+        "docs/control_plane/fixtures/metadata_drift_missing_mcp_skills.json",
+        "AOP-69/comment/545051fe-4662-47f8-8d23-8c236d976cf4"
+      ],
+      "machine_action": "emit_drift",
+      "implementation_status": "encoded",
+      "target_artifacts": [
+        "ops/scripts/chief_advance_one_dry_run.py",
+        "ops/scripts/chief_collect_live_snapshot.py"
+      ],
+      "human_only_rationale": null,
+      "next_externalization_candidate": null
+    },
+    {
+      "id": "SKR-006",
+      "classification": "manifest_field",
+      "title": "Live issue defaults are conservative until issue contracts are machine-readable",
+      "rule": "Live-exported issues default to implementation/high-risk/contract-incomplete/red-team-not-started so no live issue can pass accidentally.",
+      "source_refs": [
+        "ops/scripts/chief_collect_live_snapshot.py",
+        "docs/checkpoints/2026-04-24_asf24_read_only_live_snapshot_exporter_checkpoint.md",
+        "AOP-69/comment/545051fe-4662-47f8-8d23-8c236d976cf4"
+      ],
+      "machine_action": "block_transition",
+      "implementation_status": "encoded",
+      "target_artifacts": [
+        "ops/scripts/chief_collect_live_snapshot.py",
+        "docs/control_plane/live_snapshot.schema.json"
+      ],
+      "human_only_rationale": null,
+      "next_externalization_candidate": "Replace conservative defaults only after Multica issues carry machine-readable contract metadata."
+    },
+    {
+      "id": "SKR-007",
+      "classification": "audit_reference",
+      "title": "Cross-workspace evidence is not transparent enough for red-team by default",
+      "rule": "When a review issue lives in assistant-ops and target issue lives in assistant-factory, the contract and artifact refs must be copied into the review issue until a cross-workspace evidence bridge exists.",
+      "source_refs": [
+        "AOP-67/comment/646a3124-5181-4f29-ae1d-2d0d2c0da247",
+        "AOP-69/comment/545051fe-4662-47f8-8d23-8c236d976cf4",
+        "AOP-70/comment/40da6b9f-252c-445a-a833-9a46e43769fc"
+      ],
+      "machine_action": "record_audit_ref",
+      "implementation_status": "documented",
+      "target_artifacts": [
+        "docs/control_plane/proof_ledger.v0.json"
+      ],
+      "human_only_rationale": null,
+      "next_externalization_candidate": "Implement a cross-workspace evidence bridge that attaches target issue snapshots to red-team tasks."
+    },
+    {
+      "id": "SKR-008",
+      "classification": "escalation_policy",
+      "title": "User approval boundary for authority expansion and direction changes",
+      "rule": "Chief, workers, and sidecar may not decide product-direction changes, secret expansion, permission expansion, financial production behavior, or external user-facing actions without explicit user approval.",
+      "source_refs": [
+        "docs/2026-04-23_multica_hermes_operating_spec_v2.md",
+        "docs/control_plane/chief_manifest.v0.json"
+      ],
+      "machine_action": "require_human_decision",
+      "implementation_status": "documented",
+      "target_artifacts": [
+        "docs/control_plane/chief_manifest.v0.json"
+      ],
+      "human_only_rationale": null,
+      "next_externalization_candidate": "Add issue risk taxonomy fields so the checker can detect authority-expansion classes automatically."
+    },
+    {
+      "id": "SKR-009",
+      "classification": "human_only_judgment",
+      "title": "Whether a deferred architecture choice is direction-level",
+      "rule": "When evidence is complete but the decision changes the product architecture or operating model, sidecar must summarize tradeoffs and ask the user rather than converting it into a machine gate.",
+      "source_refs": [
+        "AOP-65/comment/090513fb-c956-4089-920f-538b74510e5b",
+        "docs/2026-04-23_multica_hermes_operating_spec_v2.md"
+      ],
+      "machine_action": "require_human_decision",
+      "implementation_status": "documented",
+      "target_artifacts": [
+        "docs/control_plane/sidecar_knowledge_register.v0.json"
+      ],
+      "human_only_rationale": "Direction-level product and architecture choices require user intent, not just evidence completeness.",
+      "next_externalization_candidate": "Define a small direction-change taxonomy so obvious cases can be auto-escalated without sidecar interpretation."
+    },
+    {
+      "id": "SKR-010",
+      "classification": "human_only_judgment",
+      "title": "Whether a Pro/GAC recommendation misunderstood local context",
+      "rule": "If external review conflicts with verified local state, sidecar must either supply more context and re-ask or record a reasoned override; it cannot silently follow the review.",
+      "source_refs": [
+        "AOP-70/comment/40da6b9f-252c-445a-a833-9a46e43769fc",
+        "docs/control_plane/proof_ledger.v0.json"
+      ],
+      "machine_action": "require_human_decision",
+      "implementation_status": "documented",
+      "target_artifacts": [
+        "docs/control_plane/sidecar_knowledge_register.v0.json"
+      ],
+      "human_only_rationale": "This is a meta-review judgment about context sufficiency and cannot be safely reduced to a field check yet.",
+      "next_externalization_candidate": "Track missing-evidence items and require a documented resolution field before accepting conditional reviews."
+    }
+  ]
+}

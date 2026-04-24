@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.yogas2/control-plane/chief_manifest.schema.json",
+  "title": "Hermes Chief Control Plane Manifest",
+  "type": "object",
+  "required": [
+    "manifest_id",
+    "manifest_version",
+    "actor",
+    "runtime",
+    "model",
+    "auth",
+    "mcp",
+    "skills",
+    "tool_scope",
+    "transitions",
+    "red_team"
+  ],
+  "properties": {
+    "manifest_id": {
+      "const": "chief-control-plane"
+    },
+    "manifest_version": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "object",
+      "required": ["agent_id", "name", "workspace_id", "role_contract_ref"]
+    },
+    "runtime": {
+      "type": "object",
+      "required": ["runtime_provider", "runtime_mode", "runtime_status_expected"]
+    },
+    "model": {
+      "type": "object",
+      "required": ["provider", "name", "reasoning_effort", "source_of_truth"],
+      "properties": {
+        "provider": {
+          "const": "openai-codex"
+        },
+        "name": {
+          "const": "gpt-5.5"
+        },
+        "reasoning_effort": {
+          "const": "xhigh"
+        }
+      }
+    },
+    "auth": {
+      "type": "object",
+      "required": ["lane_id", "proof_ref", "daily_lane_overlap", "secret_policy"]
+    },
+    "mcp": {
+      "type": "object",
+      "required": ["lanes"],
+      "properties": {
+        "lanes": {
+          "type": "array",
+          "minItems": 1
+        }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "required": ["bundled_local", "external_dirs", "multica_visible_agent_skills_expected"]
+    },
+    "tool_scope": {
+      "type": "object",
+      "required": ["default_mode", "scheduled_sweep_allowlist", "prohibited"]
+    },
+    "transitions": {
+      "type": "object",
+      "required": ["may_propose", "dry_run_only", "forbidden"],
+      "properties": {
+        "dry_run_only": {
+          "const": true
+        },
+        "forbidden": {
+          "type": "array",
+          "contains": {
+            "const": "execute_transition"
+          }
+        }
+      }
+    },
+    "red_team": {
+      "type": "object",
+      "required": ["primary_gate", "fallback_gate", "fallback_independence", "policy_ref"]
+    }
+  },
+  "additionalProperties": true
+}

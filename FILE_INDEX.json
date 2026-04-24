@@ -1,0 +1,151 @@
+{
+  "packet_id": "2026-04-24_multica_chief_control_plane_review",
+  "file_count": 29,
+  "files": [
+    {
+      "path": "PROMPT_FOR_REVIEWERS.md",
+      "bytes": 4054,
+      "sha256": "sha256:ac4fee136324b02bfe1065c4f9924ef5e2d141ef79c4742657fbb51b0dd42231"
+    },
+    {
+      "path": "REVIEW_CONTEXT.md",
+      "bytes": 3971,
+      "sha256": "sha256:c3f86866747731f864123c8391e850b680dcf511d73ae3262df41e68aa35c569"
+    },
+    {
+      "path": "SECRET_SCAN.json",
+      "bytes": 41,
+      "sha256": "sha256:cba7b37dc9ac0742279b57831789bce4a33318747a6ede9d09fe3aa3e05df9ec"
+    },
+    {
+      "path": "checkpoints/2026-04-24_aop77_pause_create_issue_autopilot_checkpoint.md",
+      "bytes": 2704,
+      "sha256": "sha256:a296dd9cbb1c131056591735ee4c616fd5e82c7e67231c18a1a4664295d8dc80"
+    },
+    {
+      "path": "checkpoints/2026-04-24_aop78_chief_dry_run_report_timer_checkpoint.md",
+      "bytes": 5092,
+      "sha256": "sha256:7d2e597e6e4642a022663b855a2b7b8e3dadaede5482d58fb8c5bcb06a2ebff0"
+    },
+    {
+      "path": "checkpoints/2026-04-24_aop79_chief_mcp_skills_reconciliation_proposal_checkpoint.md",
+      "bytes": 4124,
+      "sha256": "sha256:4f07442bdb36b9f0ce9ef53753a527865631409d80ef0dd3952c7f48d6ecd29e"
+    },
+    {
+      "path": "checkpoints/2026-04-24_asf17_hermes_chief_prompt_routing_contract_checkpoint.md",
+      "bytes": 8165,
+      "sha256": "sha256:388985addf976323ed253738480db51594733e6b220c218d59747fc41aa7fa37"
+    },
+    {
+      "path": "checkpoints/2026-04-24_asf18_chief_manifest_transition_checker_checkpoint.md",
+      "bytes": 14629,
+      "sha256": "sha256:cec6a34d8231778328bada1ecd2e591aa5e0249e7161860f71397c90b720fbdc"
+    },
+    {
+      "path": "checkpoints/2026-04-24_asf23_chief_manifest_dry_run_harness_checkpoint.md",
+      "bytes": 5835,
+      "sha256": "sha256:305faebc6e7cb329bd476f95237d1db1071ead69b906c28819b3f316d5c1b6bf"
+    },
+    {
+      "path": "docs/chief_manifest.schema.json",
+      "bytes": 2241,
+      "sha256": "sha256:b691820c9a19bcefcb6c86ffbb751365d68d973b22bddd93cfafd8a6a0ae90f7"
+    },
+    {
+      "path": "docs/live_snapshot.schema.json",
+      "bytes": 2869,
+      "sha256": "sha256:5133ecf5064727ed14240ea77f069c3d85851cdb6d237be5cc37fa68cbfe9aa6"
+    },
+    {
+      "path": "docs/planning_hermes_skills_hermes_workbench_SKILL.md",
+      "bytes": 8110,
+      "sha256": "sha256:166e50ebe15ae08ba255bed1fb7e44a0790b16afd2668f1838db2aec8db2bc77"
+    },
+    {
+      "path": "docs/planning_hermes_skills_planning_openmind_bridge_SKILL.md",
+      "bytes": 5086,
+      "sha256": "sha256:078c0991aef7ebc3119986ea771e6a6c360d3b4f0986e1f010dafcd61fabcc3a"
+    },
+    {
+      "path": "docs/proof_ledger.schema.json",
+      "bytes": 5264,
+      "sha256": "sha256:b2730cfbbdcccb50b701f85389bce794dfa9109409131c7c6aed74beacbfce95"
+    },
+    {
+      "path": "docs/sidecar_knowledge_register.schema.json",
+      "bytes": 3515,
+      "sha256": "sha256:b467397072f5c56cfca7ea7e6aacdfa2ccbb24c5d512d9bd62d64dd9bbf7a7b0"
+    },
+    {
+      "path": "evidence/HISTORICAL_PROVISIONAL_short_pro_gate_packet_superseded.json",
+      "bytes": 5789,
+      "sha256": "sha256:21e2281e2d812628cdaaebb283f441fd27b4b771895a833c35f0e89bd3d7502a"
+    },
+    {
+      "path": "evidence/chief_live_snapshot_after_redteam_swap.json",
+      "bytes": 100080,
+      "sha256": "sha256:8f0c24c71b3de69fb732ba4233a33b998d3db300f7390eef7aae327d734c1447"
+    },
+    {
+      "path": "evidence/chief_manifest.v0.json",
+      "bytes": 3018,
+      "sha256": "sha256:4496a8f7ff3d9969b52ad7728a1207bb3323af99adffdbe2f396599db9032669"
+    },
+    {
+      "path": "evidence/chief_mcp_skills_reconciliation_proposal_2026-04-24.json",
+      "bytes": 6492,
+      "sha256": "sha256:e4c015264eade0983c7f41eb930e6c77725bbb2631f9147f6039787929a3841c"
+    },
+    {
+      "path": "evidence/latest_dry_run_decision_after_redteam_swap.json",
+      "bytes": 75895,
+      "sha256": "sha256:2f95038742024d6927cc67b24ec1b925c62969b50107fa361e2e24139127047a"
+    },
+    {
+      "path": "evidence/multica_live_summary_sanitized.json",
+      "bytes": 15605,
+      "sha256": "sha256:6e1c0026502530cc8f918c2d06cfa5511b6498d0687e83e96a62fa4e9bdf66fe"
+    },
+    {
+      "path": "evidence/proof_ledger_relevant_excerpt.json",
+      "bytes": 17655,
+      "sha256": "sha256:1b09b8f37d71de781ed06ab86dd3a51cb859fe622d41dbd733800697ba5297bc"
+    },
+    {
+      "path": "evidence/sidecar_knowledge_register.v0.json",
+      "bytes": 9682,
+      "sha256": "sha256:5bed876d8762c3839dfa9311573871a66915cacda187a7c454f387d772fd313a"
+    },
+    {
+      "path": "external_review_jobs.json",
+      "bytes": 869,
+      "sha256": "sha256:29241e608d545fc0eb0355e1690bc5d98c22556274c4660dd3bb00e2ed9347f4"
+    },
+    {
+      "path": "open_source_refs/README.md",
+      "bytes": 987,
+      "sha256": "sha256:d50f1252e6af3183a45f98c1baccefc9105c12d3bdb95056f0b3a0e91a42b8b3"
+    },
+    {
+      "path": "pro_chatgpt_summary.json",
+      "bytes": 667,
+      "sha256": "sha256:d18d3b0eeaa750aed88f35b53712391f22cdf608eb260139b9a0ff2db90a78dd"
+    },
+    {
+      "path": "source/chief_advance_one_dry_run.py",
+      "bytes": 18349,
+      "sha256": "sha256:6e592984ae076b5d05a9001e73f31a4bef2e15f0a08a51debdd6a94812a4c0da"
+    },
+    {
+      "path": "source/chief_collect_live_snapshot.py",
+      "bytes": 13453,
+      "sha256": "sha256:cf0fc5588dfc4ba5a3d57d338a7709504c8c128c6f4133c2d06ad5612bd152b4"
+    },
+    {
+      "path": "source/chief_scheduled_dry_run_report.py",
+      "bytes": 7900,
+      "sha256": "sha256:409bca4145f2409e13d08dff01d17ced4f875723b0b7f094d0dc91ba5f38d5fb"
+    }
+  ]
+}

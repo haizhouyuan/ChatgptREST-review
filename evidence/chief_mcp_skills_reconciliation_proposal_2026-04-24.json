@@ -1,0 +1,152 @@
+{
+  "proposal_id": "chief-mcp-skills-reconciliation-2026-04-24",
+  "schema_version": "0.1.0",
+  "created_at": "2026-04-24T13:35:00+08:00",
+  "scope": "static_proposal_only",
+  "workspace_id": "bbc33e1b-a6d8-4724-b29f-b35ac8372572",
+  "agent_id": "48251656-cdc5-48e3-804d-4fd338614b7b",
+  "agent_name": "hermes-chief-of-staff",
+  "source_issue": {
+    "identifier": "AOP-79",
+    "id": "4c9f9904-e7fd-4d4b-ad5e-24134d9218f3"
+  },
+  "current_state": {
+    "model": "gpt-5.5",
+    "reasoning_effort": "xhigh",
+    "runtime_provider": "hermes",
+    "multica_agent_mcp_config": null,
+    "multica_agent_skills": [],
+    "hermes_config_allowlist": {
+      "model_provider": "openai-codex",
+      "model_default": "gpt-5.5",
+      "reasoning_effort": "xhigh",
+      "mcp_server_names": [
+        "chatgptrest"
+      ],
+      "external_skill_dirs": [
+        "/vol1/1000/projects/planning/hermes-skills"
+      ]
+    }
+  },
+  "current_drift": [
+    {
+      "field": "mcp.lanes.chatgptrest.multica_visible",
+      "severity": "high",
+      "required_action": "block_transition",
+      "observed": "absent"
+    },
+    {
+      "field": "skills.multica_visible_agent_skills",
+      "severity": "high",
+      "required_action": "block_transition",
+      "observed": "empty"
+    }
+  ],
+  "risk_policy": {
+    "gac_primary_available": false,
+    "gac_failure_mode": "API Error 402 insufficient credits",
+    "codex_fallback_grade": "C",
+    "codex_fallback_allowed_for": [
+      "static_read_only_artifacts",
+      "low_risk_review",
+      "medium_risk_review_with_deterministic_checks"
+    ],
+    "codex_fallback_not_allowed_for": [
+      "live_control_plane_unblock",
+      "live_mcp_change",
+      "live_skill_assignment",
+      "permission_expansion",
+      "autonomy_enablement"
+    ]
+  },
+  "candidate_actions": [
+    {
+      "id": "mcp-summary-in-mcp-config",
+      "description": "Write a non-secret summary such as {\"lanes\":[\"chatgptrest\"],\"source\":\"hermes_home_config_summary\",\"secret_policy\":\"omitted\"} into agent.mcp_config.",
+      "status": "not_recommended",
+      "risk": "high",
+      "reason": "The Multica field name mcp_config is intended for executable MCP configuration. Using it as metadata summary may pollute field semantics and could be passed to backends that expect full MCP config.",
+      "requires_independent_gate": true
+    },
+    {
+      "id": "mcp-executable-config",
+      "description": "Write an actual executable MCP config into agent.mcp_config.",
+      "status": "blocked",
+      "risk": "high",
+      "reason": "This may alter tool access and can contain endpoint or credential references. It requires independent review, a secret-safe config contract, and rollback.",
+      "requires_independent_gate": true
+    },
+    {
+      "id": "mcp-runtime-local-source-contract",
+      "description": "Change the checker/manifest to explicitly accept Hermes local config allowlist as the control-plane source for Hermes MCP lanes while Multica mcp_config stays null.",
+      "status": "blocked",
+      "risk": "high",
+      "reason": "This weakens the prior requirement that Multica-visible metadata be the source of truth. It may be correct for Hermes specifically, but it changes the control-plane contract.",
+      "requires_independent_gate": true
+    },
+    {
+      "id": "workspace-skill-create-boundary-only",
+      "description": "Create a restrictive workspace skill that only states chief control-plane boundaries, then assign it to hermes-chief-of-staff.",
+      "status": "blocked",
+      "risk": "high",
+      "reason": "Even restrictive skill assignment is live prompt/behavior mutation for the chief agent. It should not be used to clear the drift gate under Grade-C fallback alone.",
+      "requires_independent_gate": true
+    },
+    {
+      "id": "workspace-skill-import-planning-external",
+      "description": "Create workspace skill records from /vol1/1000/projects/planning/hermes-skills/hermes-workbench and planning-openmind-bridge, then assign them to chief.",
+      "status": "blocked",
+      "risk": "high",
+      "reason": "This changes chief available skill context and may route planning/workbench behavior. It needs content review, allowlist, and independent gate.",
+      "requires_independent_gate": true
+    },
+    {
+      "id": "static-proposal-and-wait",
+      "description": "Keep live state unchanged, preserve no-op dry-run, attach this proposal to AOP-79, and wait for independent Pro/GAC decision before any live reconciliation.",
+      "status": "recommended_now",
+      "risk": "low",
+      "reason": "This preserves the current safety boundary while making the next mutation reviewable.",
+      "requires_independent_gate": false
+    }
+  ],
+  "proposed_live_payloads": {
+    "agent_mcp_config": {
+      "status": "not_prepared_for_execution",
+      "reason": "No secret-safe executable MCP config contract has been approved. Metadata summaries should not be stored in mcp_config without independent approval."
+    },
+    "workspace_skills": [
+      {
+        "name": "chief-control-plane-boundary",
+        "status": "draft_only",
+        "content_source": "to_be_authored_after_independent_gate",
+        "intended_effect": "Restrict chief to manifest/policy/checker-driven governance behavior."
+      },
+      {
+        "name": "hermes-workbench",
+        "status": "candidate_only",
+        "content_source": "/vol1/1000/projects/planning/hermes-skills/hermes-workbench/SKILL.md"
+      },
+      {
+        "name": "planning-openmind-bridge",
+        "status": "candidate_only",
+        "content_source": "/vol1/1000/projects/planning/hermes-skills/planning-openmind-bridge/SKILL.md"
+      }
+    ],
+    "agent_skill_assignment": {
+      "status": "not_prepared_for_execution",
+      "reason": "No workspace skill has been created or independently approved."
+    }
+  },
+  "required_before_live_change": [
+    "Independent GAC/Claude gate recovered or equivalent user-approved independent gate.",
+    "Decision on whether Hermes local config or Multica mcp_config is the source of truth for Hermes MCP lanes.",
+    "Secret-safe executable MCP config contract if agent.mcp_config will be used.",
+    "Workspace skill content review with hashes and rollback plan.",
+    "Dry-run expected result update approved before any self-advance is allowed."
+  ],
+  "current_decision": {
+    "allowed_action": "no_op",
+    "live_mutation": false,
+    "next_safe_action": "attach proposal to AOP-79 and keep high drift blocked"
+  }
+}

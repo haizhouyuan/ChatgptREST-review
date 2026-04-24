@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.yogas2/control-plane/live_snapshot.schema.json",
+  "title": "Hermes Chief Live Snapshot",
+  "type": "object",
+  "required": ["snapshot_id", "captured_at", "chief_state", "issues"],
+  "properties": {
+    "snapshot_id": {
+      "type": "string"
+    },
+    "captured_at": {
+      "type": "string"
+    },
+    "chief_state": {
+      "type": "object",
+      "required": ["agent_id", "model", "reasoning_effort", "mcp_config", "skills"],
+      "properties": {
+        "agent_id": {
+          "type": "string"
+        },
+        "model": {
+          "type": ["string", "null"]
+        },
+        "reasoning_effort": {
+          "type": ["string", "null"]
+        },
+        "mcp_config": {
+          "type": ["object", "null"]
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "hermes_config_summary": {
+      "type": "object",
+      "description": "Allowlist-only local config summary. No auth values, URLs for MCP servers, env vars, or raw secret values."
+    },
+    "source": {
+      "type": "object"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "identifier",
+          "number",
+          "title",
+          "status",
+          "priority",
+          "project_priority",
+          "created_at",
+          "action_class",
+          "risk_class",
+          "contract",
+          "dependencies",
+          "red_team",
+          "sidecar_unlock_order"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "identifier": {
+            "type": ["string", "null"]
+          },
+          "number": {
+            "type": ["integer", "null"]
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "project_priority": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": ["string", "null"]
+          },
+          "action_class": {
+            "type": "string"
+          },
+          "risk_class": {
+            "type": "string"
+          },
+          "contract": {
+            "type": "object",
+            "required": ["full"]
+          },
+          "dependencies": {
+            "type": "array"
+          },
+          "red_team": {
+            "type": "object",
+            "required": ["status", "independence_grade"]
+          },
+          "sidecar_unlock_order": {
+            "type": ["integer", "null"]
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

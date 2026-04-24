@@ -1,0 +1,21 @@
+{
+  "error_type": "JSONDecodeError",
+  "idempotency_key": "maint-multica-chief-control-plane-pro-20260424-v2",
+  "job_id": "",
+  "message": "Expecting value: line 1 column 1 (char 0)",
+  "ok": false,
+  "preset": "pro_extended",
+  "provider": "chatgpt",
+  "resolved_runtime": {
+    "agent_timeout_seconds": 3600,
+    "interval_enforced": {
+      "last_send_ts": 1776655223.2238302,
+      "min_interval_seconds": 61.0,
+      "sent_at": 1777010265.0623589,
+      "state_file": "/vol1/1000/projects/ChatgptREST/state/skill/chatgptrest_call_interval.json",
+      "waited_seconds": 0.0
+    },
+    "request_timeout_seconds": 3630.0
+  },
+  "surface": "automation-kernel-v1"
+}
