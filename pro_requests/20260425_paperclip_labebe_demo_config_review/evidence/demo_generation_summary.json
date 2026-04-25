@@ -142,7 +142,7 @@
       "expectedStatus": "in_review",
       "artifactDisplayPath": "outputs/case-LAB-3-voc-intelligence-analyst.md",
       "artifactPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-3-voc-intelligence-analyst.md",
-      "artifactBytes": 1373,
+      "artifactBytes": 1366,
       "heartbeatPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-3-voc-intelligence-analyst.json",
       "latestCommentId": "499aa6ce-93d5-41b8-8174-1f5364265cc6",
       "latestCommentCreatedAt": "2026-04-26 01:10:51.227233+08",
@@ -164,7 +164,7 @@
       "runError": null,
       "livenessState": "needs_followup",
       "livenessReason": "Run produced useful output but no concrete action evidence",
-      "postProArtifactSha256": "376c454b11489fe9e3e62f750e8e16b3f00c0fb4f6770b0d995038e3ebcc39aa"
+      "postProArtifactSha256": "950befe80a6cd9ba8f8ed145e62408c1f94ff375c8413bc636a434930bcbce95"
     },
     {
       "identifier": "LAB-4",
@@ -542,6 +542,20 @@
       "LAB-7",
       "LAB-8",
       "LAB-9"
+    ]
+  },
+  "postProFollowup": {
+    "applied": true,
+    "generatedAt": "2026-04-25T18:38:38.050Z",
+    "pro_job_id": "a8dd0ce6a1b74d60aff7918b249da36f",
+    "pro_verdict": "approved_for_internal_boss_demo",
+    "fixes_applied": [
+      "changed launch-story wording",
+      "changed safer-feeling wording",
+      "changed onepager score metric",
+      "added follow-up request/result to packet",
+      "added frontstage-pack-verification.md",
+      "posted LAB-9 Paperclip verification comment"
     ]
   }
 }

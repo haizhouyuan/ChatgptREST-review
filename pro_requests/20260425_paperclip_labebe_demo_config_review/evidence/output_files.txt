@@ -1,5 +1,5 @@
 labebe-ai-design-studio/workspace/outputs/agent-handoff-map.md	2841
-labebe-ai-design-studio/workspace/outputs/boss-demo-onepager.html	8548
+labebe-ai-design-studio/workspace/outputs/boss-demo-onepager.html	8531
 labebe-ai-design-studio/workspace/outputs/boss-demo-wow/90-second-script.md	1371
 labebe-ai-design-studio/workspace/outputs/boss-demo-wow/README.md	1011
 labebe-ai-design-studio/workspace/outputs/boss-demo-wow/assets/ai-studio-hero.jpg	97472
@@ -7,13 +7,13 @@ labebe-ai-design-studio/workspace/outputs/boss-demo-wow/assets/cream-wooden-play
 labebe-ai-design-studio/workspace/outputs/boss-demo-wow/assets/foldable-learning-tower-montessori-kitchen-tower-log-color.jpg	825990
 labebe-ai-design-studio/workspace/outputs/boss-demo-wow/assets/room-playroom.jpg	201378
 labebe-ai-design-studio/workspace/outputs/boss-demo-wow/assets/wooden-bakery-toy-food-playset.jpg	682370
-labebe-ai-design-studio/workspace/outputs/boss-demo-wow/index.html	6915
+labebe-ai-design-studio/workspace/outputs/boss-demo-wow/index.html	6926
 labebe-ai-design-studio/workspace/outputs/boss-demo-wow/script.js	3864
 labebe-ai-design-studio/workspace/outputs/boss-demo-wow/style.css	7369
 labebe-ai-design-studio/workspace/outputs/case-LAB-0-product-innovation-director.md	1431
 labebe-ai-design-studio/workspace/outputs/case-LAB-1-data-truth-guard.md	1244
 labebe-ai-design-studio/workspace/outputs/case-LAB-2-competitive-radar-analyst.md	1519
-labebe-ai-design-studio/workspace/outputs/case-LAB-3-voc-intelligence-analyst.md	1373
+labebe-ai-design-studio/workspace/outputs/case-LAB-3-voc-intelligence-analyst.md	1366
 labebe-ai-design-studio/workspace/outputs/case-LAB-4-design-strategy-agent.md	2862
 labebe-ai-design-studio/workspace/outputs/case-LAB-5-design-strategy-agent.md	1261
 labebe-ai-design-studio/workspace/outputs/case-LAB-6-design-director-agent.md	2307
@@ -24,6 +24,7 @@ labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md
 labebe-ai-design-studio/workspace/outputs/claim-lineage-matrix.md	2079
 labebe-ai-design-studio/workspace/outputs/demo_generation_summary.json	22944
 labebe-ai-design-studio/workspace/outputs/final-smoke-verification.json	3836
+labebe-ai-design-studio/workspace/outputs/frontstage-pack-verification.md	2317
 labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-0-product-innovation-director-followup.json	928
 labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-0-product-innovation-director.json	996
 labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-1-data-truth-guard-followup.json	912
@@ -52,7 +53,7 @@ labebe-ai-design-studio/workspace/outputs/heartbeat-concept-to-market-agent.json
 labebe-ai-design-studio/workspace/outputs/heartbeat-data-truth-guard-followup.json	912
 labebe-ai-design-studio/workspace/outputs/heartbeat-data-truth-guard.json	1020
 labebe-ai-design-studio/workspace/outputs/heartbeat-demo-producer-agent-followup.json	909
-labebe-ai-design-studio/workspace/outputs/heartbeat-demo-producer-agent.json	977
+labebe-ai-design-studio/workspace/outputs/heartbeat-demo-producer-agent.json	1043
 labebe-ai-design-studio/workspace/outputs/heartbeat-design-director-agent-followup.json	905
 labebe-ai-design-studio/workspace/outputs/heartbeat-design-director-agent.json	973
 labebe-ai-design-studio/workspace/outputs/heartbeat-design-strategy-agent-followup.json	921

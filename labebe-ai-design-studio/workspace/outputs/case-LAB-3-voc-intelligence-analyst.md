@@ -15,7 +15,7 @@
 - Target use case: small-kitchen parent helper workflow.
 - Core design move: foldable tower body with visible stable-lock review gate.
 - Parent value: reduce storage footprint and cleaning friction, based only on RS-001 to RS-003 demo samples.
-- Child play value: safer-feeling participation at counter height, pending engineering review.
+- Child play value: guided participation at counter height, pending engineering review.
 - Evidence label: demo_sample.
 - Assumptions: parent pain points and competitor positions are sample rows, not live evidence.
 

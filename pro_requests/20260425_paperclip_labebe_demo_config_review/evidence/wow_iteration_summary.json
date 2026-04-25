@@ -1,47 +1,39 @@
 {
-  "generated_at": "2026-04-25T18:11:52.099Z",
+  "generated_at": "2026-04-25T18:38:38.050Z",
   "pro": {
-    "job_id": "c45a1105c7a44bdaad606a33c78bfc4d",
-    "conversation_url": "https://chatgpt.com/c/69ecffd4-4890-83e8-8a63-ec4c75b7f62a",
-    "verdict_before_iteration": "Governance loop credible, but not yet high-quality plus wow boss demo.",
-    "baseline_scores": {
-      "orchestration_credibility": 8,
-      "product_story_clarity": 6.5,
-      "artifact_quality": 5,
-      "wow_factor": 3.5,
-      "executive_demo_readiness": 6,
-      "overall": 6.1
-    },
-    "target_after_iteration": {
-      "orchestration_credibility": 8.5,
-      "product_story_clarity": 8,
-      "artifact_quality": 7.5,
+    "first_job_id": "c45a1105c7a44bdaad606a33c78bfc4d",
+    "followup_job_id": "a8dd0ce6a1b74d60aff7918b249da36f",
+    "followup_conversation_url": "https://chatgpt.com/c/69ed0572-9f08-83e8-a52d-cea2ad2c0e4a",
+    "followup_verdict": "Approved for internal boss demo; high quality passed; wow just passed.",
+    "followup_scores": {
+      "orchestration_credibility": 8.2,
+      "product_story_clarity": 8.1,
+      "artifact_quality": 7.6,
       "wow_factor": 7,
-      "executive_demo_readiness": 8
-    }
+      "executive_demo_readiness": 8,
+      "overall": 7.8
+    },
+    "remaining_caveat": "Do not claim launch readiness, certification, safety proof, real demand proof, or external campaign execution."
   },
   "actions_taken": [
     "Added boss-demo-onepager.html as the single-screen front-stage artifact.",
     "Added boss-demo-wow visual console with local Labebe assets.",
-    "Added agent-handoff-map.md to make downstream use of agent output visible.",
-    "Added space-smart-concept-card.md to make the product hero memorable.",
-    "Added claim-lineage-matrix.md with an explicit blocked-claim demo.",
-    "Enhanced LAB-4, LAB-6, LAB-7, LAB-8, and LAB-9 into decision artifacts."
+    "Added agent-handoff-map.md, space-smart-concept-card.md, and claim-lineage-matrix.md.",
+    "Enhanced LAB-4, LAB-6, LAB-7, LAB-8, and LAB-9 into decision artifacts.",
+    "Applied second Pro wording fixes: launch-story wording removed, safer-feeling wording removed, onepager Pro score replaced with business metric.",
+    "Added frontstage-pack-verification.md and posted a Paperclip LAB-9 verification comment.",
+    "Included Pro follow-up request/result in the final review packet."
   ],
   "acceptance": {
-    "pro_answer_recorded": true,
-    "boss_onepager_present": true,
-    "boss_onepager_has_inputs_timeline_output_blocked_claims": true,
-    "visible_gates_at_least_three": true,
-    "handoff_map_covers_lab1_to_lab8": true,
-    "concept_card_has_can_say_and_cannot_say": true,
-    "claim_lineage_has_blocked_demo": true,
-    "lab4_route_cards": true,
-    "lab7_stop_go_gate": true,
-    "lab8_asset_preview_board": true,
-    "lab9_live_script_and_click_path": true,
+    "second_pro_answer_recorded": true,
+    "second_pro_approved_internal_boss_demo": true,
+    "onepager_uses_business_metric": true,
+    "no_launch_story_wording_in_wow_hero": true,
+    "lab3_safer_feeling_removed": true,
+    "frontstage_pack_verification_present": true,
+    "paperclip_lab9_verification_comment_posted": true,
+    "followup_request_included_in_packet_manifest_source": true,
     "screenshots_nonempty": true,
-    "paperclip_health_ok": true,
     "demo_generation_all_passed": true,
     "secret_scan_hits": 0,
     "secret_scan_hits_zero": true
@@ -49,32 +41,32 @@
   "screenshots": [
     {
       "path": "qa/paperclip-wow/boss-demo-wow-desktop.png",
-      "size_bytes": 1989997,
-      "sha256": "cebdb04db81011fd920e0232ded6dc17eb36b1dae57a6185622fbf4b646acf2e",
+      "size_bytes": 1996204,
+      "sha256": "efcb6d2427ab17692b96fcdd33fcc9b20980b95f480652ce5ce45debf0020882",
       "width": 1440,
       "height": 3850
     },
     {
       "path": "qa/paperclip-wow/boss-demo-wow-mobile.png",
-      "size_bytes": 881910,
-      "sha256": "bb32acf88b1e86ba46792d037795e172e703211e44ab9aeab29757ae7c819d7e",
+      "size_bytes": 882959,
+      "sha256": "f45e0531a87b587f1f5b66c5ff77c4c8ad4e76f9c158f461844567e04e9f88bd",
       "width": 390,
       "height": 6528
     },
     {
       "path": "qa/paperclip-wow/boss-demo-onepager-desktop.png",
-      "size_bytes": 348248,
-      "sha256": "586a7823bfb8712d9daeec0d9d3e8e7e9f2ac93748ca32ea46514f6cfa30a90d",
+      "size_bytes": 346639,
+      "sha256": "ff4505e9c977705f984345863c1bedd72bd5863b8a5f09c318a09aece89cface",
       "width": 1440,
       "height": 1263
     },
     {
       "path": "qa/paperclip-wow/boss-demo-onepager-mobile.png",
-      "size_bytes": 279490,
-      "sha256": "00781935699243beaaa4fbebfe8ac6b5503ef5a501762dddf0c702b449acb951",
+      "size_bytes": 277055,
+      "sha256": "60f1353fd20386a1ecd2eb251779502f7468b729c30a2076f8a3e6cbe80ae851",
       "width": 390,
-      "height": 2817
+      "height": 2799
     }
   ],
-  "status": "passed"
+  "status": "passed_pro_followup"
 }

@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-04-25T18:11:52.099Z",
-  "pro_job_id": "c45a1105c7a44bdaad606a33c78bfc4d",
+  "generated_at": "2026-04-25T18:41:43.402Z",
+  "pro_followup_job_id": "a8dd0ce6a1b74d60aff7918b249da36f",
   "artifacts": [
     {
       "path": "labebe-ai-design-studio/workspace/outputs/boss-demo-onepager.html",
-      "sha256": "ebce5f25b54c0d00806c5827fb5617f40282bc2e1ef0e95390d2ae1849ad3254",
-      "size_bytes": 8548,
+      "sha256": "cb2eac4eb864c99e0053ba39a140721d4f9e6b2a93dffbe0642e7513261ba6cc",
+      "size_bytes": 8531,
       "role": "boss_frontstage_artifact"
     },
     {
       "path": "labebe-ai-design-studio/workspace/outputs/boss-demo-wow/index.html",
-      "sha256": "eadc387fe2426d9acdbdca85bf010de8793584e12703812141e880c665b0d787",
-      "size_bytes": 6915,
+      "sha256": "03e862abdf7a3238599c606987784318b4be828f3fefc7d3bb60841233c3f9b4",
+      "size_bytes": 6926,
       "role": "boss_frontstage_artifact"
     },
     {
@@ -57,27 +57,51 @@
       "role": "boss_frontstage_artifact"
     },
     {
+      "path": "labebe-ai-design-studio/workspace/outputs/frontstage-pack-verification.md",
+      "sha256": "affecdd473c460d3d66ad31673cb96cd6eb3b95eb1eb233bb0e51160c720778d",
+      "size_bytes": 2317,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "pro_requests/20260425_paperclip_labebe_demo_config_review/PRO_WOW_REVIEW_FOLLOWUP_REQUEST.md",
+      "sha256": "56ec168abc52b922001f3433126ad73be32eed647135d3edefaa127436d5bba0",
+      "size_bytes": 2394,
+      "role": "pro_review_artifact"
+    },
+    {
+      "path": "pro_requests/20260425_paperclip_labebe_demo_config_review/PRO_WOW_REVIEW_FOLLOWUP_RESULT.md",
+      "sha256": "ffed0d5f2924a8575cd621ceaafbcbcdb1d9d2822764f30cf5da60539e8ad322",
+      "size_bytes": 24005,
+      "role": "pro_review_artifact"
+    },
+    {
+      "path": "pro_requests/20260425_paperclip_labebe_demo_config_review/evidence/frontstage_pack_verification.json",
+      "sha256": "fb06bef549657b664ab0f762f77db4e84d5929933592c3a873c1fa4122aa22cd",
+      "size_bytes": 574,
+      "role": "boss_frontstage_artifact"
+    },
+    {
       "path": "qa/paperclip-wow/boss-demo-wow-desktop.png",
-      "sha256": "cebdb04db81011fd920e0232ded6dc17eb36b1dae57a6185622fbf4b646acf2e",
-      "size_bytes": 1989997,
+      "sha256": "efcb6d2427ab17692b96fcdd33fcc9b20980b95f480652ce5ce45debf0020882",
+      "size_bytes": 1996204,
       "role": "visual_verification_screenshot"
     },
     {
       "path": "qa/paperclip-wow/boss-demo-wow-mobile.png",
-      "sha256": "bb32acf88b1e86ba46792d037795e172e703211e44ab9aeab29757ae7c819d7e",
-      "size_bytes": 881910,
+      "sha256": "f45e0531a87b587f1f5b66c5ff77c4c8ad4e76f9c158f461844567e04e9f88bd",
+      "size_bytes": 882959,
       "role": "visual_verification_screenshot"
     },
     {
       "path": "qa/paperclip-wow/boss-demo-onepager-desktop.png",
-      "sha256": "586a7823bfb8712d9daeec0d9d3e8e7e9f2ac93748ca32ea46514f6cfa30a90d",
-      "size_bytes": 348248,
+      "sha256": "ff4505e9c977705f984345863c1bedd72bd5863b8a5f09c318a09aece89cface",
+      "size_bytes": 346639,
       "role": "visual_verification_screenshot"
     },
     {
       "path": "qa/paperclip-wow/boss-demo-onepager-mobile.png",
-      "sha256": "00781935699243beaaa4fbebfe8ac6b5503ef5a501762dddf0c702b449acb951",
-      "size_bytes": 279490,
+      "sha256": "60f1353fd20386a1ecd2eb251779502f7468b729c30a2076f8a3e6cbe80ae851",
+      "size_bytes": 277055,
       "role": "visual_verification_screenshot"
     }
   ]

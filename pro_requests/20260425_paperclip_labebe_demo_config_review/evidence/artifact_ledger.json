@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T18:11:52.099Z",
+  "generated_at": "2026-04-25T18:38:38.050Z",
   "artifacts": [
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-0-product-innovation-director.md",
@@ -55,8 +55,8 @@
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-3-voc-intelligence-analyst.md",
       "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-3-voc-intelligence-analyst.md",
-      "sha256": "376c454b11489fe9e3e62f750e8e16b3f00c0fb4f6770b0d995038e3ebcc39aa",
-      "size_bytes": 1373,
+      "sha256": "950befe80a6cd9ba8f8ed145e62408c1f94ff375c8413bc636a434930bcbce95",
+      "size_bytes": 1366,
       "source_labels": [
         "demo_policy",
         "demo_sample"
@@ -194,5 +194,10 @@
     "pro_job_id": "c45a1105c7a44bdaad606a33c78bfc4d",
     "pro_conversation_url": "https://chatgpt.com/c/69ecffd4-4890-83e8-8a63-ec4c75b7f62a",
     "note": "Hashes refreshed after enhancing LAB-4, LAB-6, LAB-7, LAB-8, and LAB-9 into decision artifacts."
+  },
+  "post_pro_followup": {
+    "applied": true,
+    "pro_job_id": "a8dd0ce6a1b74d60aff7918b249da36f",
+    "note": "Second Pro review approved the internal boss demo; wording fixes and frontstage verification artifact were added."
   }
 }

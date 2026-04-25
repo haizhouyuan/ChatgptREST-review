@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-04-25T18:36:36.808Z",
+  "paperclip_issue_id": "68edbe40-7f7e-45fb-beed-e9f6e234539c",
+  "paperclip_issue_identifier": "LAB-9",
+  "paperclip_status_after": "in_review",
+  "comment_id": "1b4303d1-be9b-4657-b557-2964a2b3364e",
+  "artifact_path": "labebe-ai-design-studio/workspace/outputs/frontstage-pack-verification.md",
+  "artifact_sha256": "affecdd473c460d3d66ad31673cb96cd6eb3b95eb1eb233bb0e51160c720778d",
+  "post_pro_run_id": "post-pro-frontstage-verification-20260426",
+  "result": "posted_to_paperclip_lab9_as_frontstage_pack_verification"
+}
