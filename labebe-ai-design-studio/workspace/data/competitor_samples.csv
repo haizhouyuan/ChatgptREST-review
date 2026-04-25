@@ -1,0 +1,5 @@
+sample_id,category,feature,observed_position,source_label
+CS-001,learning_tower,foldability,Sample competitor claims foldable storage,demo sample
+CS-002,learning_tower,anti-tip_design,Sample competitor emphasizes wide base,demo sample
+CS-003,pretend_play,module_customization,Sample competitor offers themed add-ons,demo sample
+CS-004,pretend_play,space_saving,Sample competitor uses corner layout,demo sample

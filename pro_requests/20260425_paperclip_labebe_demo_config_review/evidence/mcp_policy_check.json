@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "generated_at": "2026-04-25T16:36:00.869Z",
+  "policy_path": "labebe-ai-design-studio/workspace/config/mcp-tool-policy.yaml",
+  "tool_count": 34,
+  "default_deny": true,
+  "target_issue_identifier": "LAB-SMOKE-001",
+  "allow_mutation_only_for_target_smoke": [
+    {
+      "name": "paperclipCheckoutIssue",
+      "present_in_tools_list": true,
+      "present_in_policy": true
+    },
+    {
+      "name": "paperclipAddComment",
+      "present_in_tools_list": true,
+      "present_in_policy": true
+    },
+    {
+      "name": "paperclipUpdateIssue",
+      "present_in_tools_list": true,
+      "present_in_policy": true
+    }
+  ],
+  "denied_mutation_surfaces": [
+    {
+      "name": "paperclipCreateIssue",
+      "present_in_tools_list": true,
+      "present_in_policy": true
+    },
+    {
+      "name": "paperclipApiRequest",
+      "present_in_tools_list": true,
+      "present_in_policy": true
+    },
+    {
+      "name": "paperclipCreateApproval",
+      "present_in_tools_list": true,
+      "present_in_policy": true
+    },
+    {
+      "name": "paperclipApprovalDecision",
+      "present_in_tools_list": true,
+      "present_in_policy": true
+    }
+  ],
+  "forbidden_categories_present": [
+    {
+      "label": "update agent adapter config",
+      "present_in_policy": true
+    },
+    {
+      "label": "delete company",
+      "present_in_policy": true
+    },
+    {
+      "label": "update secret",
+      "present_in_policy": true
+    },
+    {
+      "label": "expose secret",
+      "present_in_policy": true
+    },
+    {
+      "label": "external account action",
+      "present_in_policy": true
+    }
+  ]
+}

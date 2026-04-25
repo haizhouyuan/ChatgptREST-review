@@ -1,0 +1,543 @@
+{
+  "ok": true,
+  "generated_at": "2026-04-25T16:34:29.650Z",
+  "server": "paperclip-labebe-demo",
+  "api_url": "http://127.0.0.1:3100",
+  "company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
+  "agent_id_present": true,
+  "api_key_present": true,
+  "tool_count": 34,
+  "tools": [
+    {
+      "name": "paperclipAddApprovalComment",
+      "description": "Add a comment to an approval",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "approvalId",
+          "body"
+        ],
+        "required": [
+          "approvalId",
+          "body"
+        ]
+      }
+    },
+    {
+      "name": "paperclipAddComment",
+      "description": "Add a comment to an issue",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "body",
+          "reopen",
+          "interrupt"
+        ],
+        "required": [
+          "issueId",
+          "body"
+        ]
+      }
+    },
+    {
+      "name": "paperclipApiRequest",
+      "description": "Make a JSON request to an existing Paperclip /api endpoint for unsupported operations",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "method",
+          "path",
+          "jsonBody"
+        ],
+        "required": [
+          "method",
+          "path"
+        ]
+      }
+    },
+    {
+      "name": "paperclipApprovalDecision",
+      "description": "Approve, reject, request revision, or resubmit an approval",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "approvalId",
+          "action",
+          "decisionNote",
+          "payloadJson"
+        ],
+        "required": [
+          "approvalId",
+          "action"
+        ]
+      }
+    },
+    {
+      "name": "paperclipCheckoutIssue",
+      "description": "Checkout an issue for an agent",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "agentId",
+          "expectedStatuses"
+        ],
+        "required": [
+          "issueId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipCreateApproval",
+      "description": "Create a board approval request, optionally linked to one or more issues",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "companyId",
+          "type",
+          "requestedByAgentId",
+          "payload",
+          "issueIds"
+        ],
+        "required": [
+          "type",
+          "payload"
+        ]
+      }
+    },
+    {
+      "name": "paperclipCreateIssue",
+      "description": "Create a new issue",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "companyId",
+          "projectId",
+          "projectWorkspaceId",
+          "goalId",
+          "parentId",
+          "blockedByIssueIds",
+          "inheritExecutionWorkspaceFromIssueId",
+          "title",
+          "description",
+          "status",
+          "priority",
+          "assigneeAgentId",
+          "assigneeUserId",
+          "requestDepth",
+          "billingCode",
+          "assigneeAdapterOverrides",
+          "executionPolicy",
+          "executionWorkspaceId",
+          "executionWorkspacePreference",
+          "executionWorkspaceSettings",
+          "labelIds"
+        ],
+        "required": [
+          "title"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetAgent",
+      "description": "Get a single agent by id",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "agentId",
+          "companyId"
+        ],
+        "required": [
+          "agentId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetApproval",
+      "description": "Get an approval by id",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "approvalId"
+        ],
+        "required": [
+          "approvalId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetApprovalIssues",
+      "description": "List issues linked to an approval",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "approvalId"
+        ],
+        "required": [
+          "approvalId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetComment",
+      "description": "Get a specific issue comment by id",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "commentId"
+        ],
+        "required": [
+          "issueId",
+          "commentId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetDocument",
+      "description": "Get one issue document by key",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "key"
+        ],
+        "required": [
+          "issueId",
+          "key"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetGoal",
+      "description": "Get a goal by id",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "goalId"
+        ],
+        "required": [
+          "goalId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetHeartbeatContext",
+      "description": "Get compact heartbeat context for an issue",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "wakeCommentId"
+        ],
+        "required": [
+          "issueId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetIssue",
+      "description": "Get a single issue by UUID or identifier",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId"
+        ],
+        "required": [
+          "issueId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipGetProject",
+      "description": "Get a project by id or company-scoped short reference",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "projectId",
+          "companyId"
+        ],
+        "required": [
+          "projectId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipInboxLite",
+      "description": "Get the current authenticated agent inbox-lite assignment list",
+      "inputSchema": {
+        "type": "object",
+        "properties": [],
+        "required": []
+      }
+    },
+    {
+      "name": "paperclipLinkIssueApproval",
+      "description": "Link an approval to an issue",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "approvalId"
+        ],
+        "required": [
+          "issueId",
+          "approvalId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipListAgents",
+      "description": "List agents in a company",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "companyId"
+        ],
+        "required": []
+      }
+    },
+    {
+      "name": "paperclipListApprovalComments",
+      "description": "List comments for an approval",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "approvalId"
+        ],
+        "required": [
+          "approvalId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipListApprovals",
+      "description": "List approvals in a company",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "companyId",
+          "status"
+        ],
+        "required": []
+      }
+    },
+    {
+      "name": "paperclipListComments",
+      "description": "List issue comments with incremental options",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "after",
+          "order",
+          "limit"
+        ],
+        "required": [
+          "issueId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipListDocumentRevisions",
+      "description": "List revisions for an issue document",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "key"
+        ],
+        "required": [
+          "issueId",
+          "key"
+        ]
+      }
+    },
+    {
+      "name": "paperclipListDocuments",
+      "description": "List issue documents",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId"
+        ],
+        "required": [
+          "issueId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipListGoals",
+      "description": "List goals in a company",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "companyId"
+        ],
+        "required": []
+      }
+    },
+    {
+      "name": "paperclipListIssueApprovals",
+      "description": "List approvals linked to an issue",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId"
+        ],
+        "required": [
+          "issueId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipListIssues",
+      "description": "List issues for a company with optional filters",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "companyId",
+          "status",
+          "projectId",
+          "assigneeAgentId",
+          "participantAgentId",
+          "assigneeUserId",
+          "touchedByUserId",
+          "inboxArchivedByUserId",
+          "unreadForUserId",
+          "labelId",
+          "executionWorkspaceId",
+          "originKind",
+          "originId",
+          "includeRoutineExecutions",
+          "q"
+        ],
+        "required": []
+      }
+    },
+    {
+      "name": "paperclipListProjects",
+      "description": "List projects in a company",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "companyId"
+        ],
+        "required": []
+      }
+    },
+    {
+      "name": "paperclipMe",
+      "description": "Get the current authenticated Paperclip actor details",
+      "inputSchema": {
+        "type": "object",
+        "properties": [],
+        "required": []
+      }
+    },
+    {
+      "name": "paperclipReleaseIssue",
+      "description": "Release an issue checkout",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId"
+        ],
+        "required": [
+          "issueId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipRestoreIssueDocumentRevision",
+      "description": "Restore a prior revision of an issue document",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "key",
+          "revisionId"
+        ],
+        "required": [
+          "issueId",
+          "key",
+          "revisionId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipUnlinkIssueApproval",
+      "description": "Unlink an approval from an issue",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "approvalId"
+        ],
+        "required": [
+          "issueId",
+          "approvalId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipUpdateIssue",
+      "description": "Patch an issue, optionally including a comment",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "projectId",
+          "projectWorkspaceId",
+          "goalId",
+          "parentId",
+          "blockedByIssueIds",
+          "inheritExecutionWorkspaceFromIssueId",
+          "title",
+          "description",
+          "status",
+          "priority",
+          "assigneeAgentId",
+          "assigneeUserId",
+          "requestDepth",
+          "billingCode",
+          "assigneeAdapterOverrides",
+          "executionPolicy",
+          "executionWorkspaceId",
+          "executionWorkspacePreference",
+          "executionWorkspaceSettings",
+          "labelIds",
+          "comment",
+          "reopen",
+          "interrupt",
+          "hiddenAt"
+        ],
+        "required": [
+          "issueId"
+        ]
+      }
+    },
+    {
+      "name": "paperclipUpsertIssueDocument",
+      "description": "Create or update an issue document",
+      "inputSchema": {
+        "type": "object",
+        "properties": [
+          "issueId",
+          "key",
+          "title",
+          "format",
+          "body",
+          "changeSummary",
+          "baseRevisionId"
+        ],
+        "required": [
+          "issueId",
+          "key",
+          "body"
+        ]
+      }
+    }
+  ]
+}

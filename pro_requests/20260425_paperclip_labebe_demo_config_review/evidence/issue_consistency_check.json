@@ -1,0 +1,101 @@
+{
+  "ok": true,
+  "generated_at": "2026-04-25T16:36:00.524Z",
+  "expected_issue_count": 11,
+  "actual_issue_count": 11,
+  "checks": [
+    {
+      "identifier": "LAB-0",
+      "expected_title": "EPIC 0 - CEO Strategy Approval",
+      "actual_title": "EPIC 0 - CEO Strategy Approval",
+      "status": "in_review",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-1",
+      "expected_title": "EPIC 1 - Data Truth Foundation",
+      "actual_title": "EPIC 1 - Data Truth Foundation",
+      "status": "in_review",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-2",
+      "expected_title": "EPIC 2 - Product Opportunity Radar",
+      "actual_title": "EPIC 2 - Product Opportunity Radar",
+      "status": "todo",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-3",
+      "expected_title": "EPIC 3 - VOC to Product Concept",
+      "actual_title": "EPIC 3 - VOC to Product Concept",
+      "status": "todo",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-4",
+      "expected_title": "EPIC 4 - Sketch-to-Concept Lab",
+      "actual_title": "EPIC 4 - Sketch-to-Concept Lab",
+      "status": "backlog",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-5",
+      "expected_title": "EPIC 5 - Custom Toy Kitchen Builder",
+      "actual_title": "EPIC 5 - Custom Toy Kitchen Builder",
+      "status": "backlog",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-6",
+      "expected_title": "EPIC 6 - Design Director Review",
+      "actual_title": "EPIC 6 - Design Director Review",
+      "status": "backlog",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-7",
+      "expected_title": "EPIC 7 - DFM / Safety / Cost Preflight",
+      "actual_title": "EPIC 7 - DFM / Safety / Cost Preflight",
+      "status": "blocked",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-8",
+      "expected_title": "EPIC 8 - Concept-to-Market Asset Matrix",
+      "actual_title": "EPIC 8 - Concept-to-Market Asset Matrix",
+      "status": "backlog",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-9",
+      "expected_title": "EPIC 9 - Boss Demo Production",
+      "actual_title": "EPIC 9 - Boss Demo Production",
+      "status": "todo",
+      "ok": true
+    },
+    {
+      "identifier": "LAB-SMOKE-001",
+      "expected_title": "CASE 1 - Data Truth Guard end-to-end smoke",
+      "actual_title": "CASE 1 - Data Truth Guard end-to-end smoke",
+      "status": "done",
+      "ok": true
+    }
+  ],
+  "smoke": {
+    "id": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
+    "identifier": "LAB-SMOKE-001",
+    "title": "CASE 1 - Data Truth Guard end-to-end smoke",
+    "status": "done",
+    "assigneeAgentId": "205c3052-effa-422c-939f-38d3dbfa85ff",
+    "completedAt": "2026-04-25T16:33:26.334Z",
+    "latest_comment": {
+      "id": "741d845b-7761-4a60-9698-c273965b47e7",
+      "body_has_artifact_path": true,
+      "body_preview": "Demo heartbeat completed.\n\n- Agent: `data-truth-guard`\n- Artifact: `outputs/case-LAB-SMOKE-001-data-truth-guard.md`\n- Source labels: `demo_sample`, `demo_policy`\n- Human review required for strategy/safety/cost/external actions.",
+      "createdAt": "2026-04-25T16:33:26.371Z",
+      "authorAgentId": null,
+      "authorUserId": "local-board"
+    }
+  }
+}

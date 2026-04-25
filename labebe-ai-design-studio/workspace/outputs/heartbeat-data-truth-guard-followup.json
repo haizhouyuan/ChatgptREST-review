@@ -1,0 +1,22 @@
+{
+  "agent": "data-truth-guard",
+  "status": "ok",
+  "timestamp_utc": "2026-04-25T16:33:27+00:00",
+  "summary": "checked Data Truth, forbidden claims, and demo sample labels",
+  "skip_reason": "target_smoke_already_done_followup",
+  "missing_required_docs": [],
+  "paperclip_agent_id": "205c3052-effa-422c-939f-38d3dbfa85ff",
+  "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
+  "target_issue_identifier": "LAB-SMOKE-001",
+  "smoke_run_token": "20260426-p0p1-final",
+  "selected_issue": {
+    "identifier": "LAB-SMOKE-001",
+    "title": "CASE 1 - Data Truth Guard end-to-end smoke",
+    "status": "done"
+  },
+  "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
+  "artifact_display_path": "outputs/case-LAB-SMOKE-001-data-truth-guard.md",
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
+}

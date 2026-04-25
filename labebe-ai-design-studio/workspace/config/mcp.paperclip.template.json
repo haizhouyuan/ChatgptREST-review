@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "paperclip-labebe-demo": {
+      "command": "node",
+      "args": [
+        "/vol1/1000/projects/paperclip/cli/node_modules/tsx/dist/cli.mjs",
+        "/vol1/1000/projects/paperclip/packages/mcp-server/src/stdio.ts"
+      ],
+      "env": {
+        "PAPERCLIP_API_URL": "http://127.0.0.1:3100",
+        "PAPERCLIP_API_KEY": "${PAPERCLIP_API_KEY}",
+        "PAPERCLIP_COMPANY_ID": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
+        "PAPERCLIP_AGENT_ID": "${PAPERCLIP_AGENT_ID}"
+      }
+    }
+  }
+}

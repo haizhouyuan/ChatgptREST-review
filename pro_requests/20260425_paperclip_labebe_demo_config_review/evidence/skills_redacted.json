@@ -1,0 +1,389 @@
+[
+  {
+    "id": "5bf06620-1ef8-4fd7-a6d7-c4fbae4750c6",
+    "key": "local/7aac7f62b2/android-native-dev",
+    "slug": "android-native-dev",
+    "name": "android-native-dev",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "5197e5e2-29c3-4334-8f1d-697fe0f1db8b",
+    "key": "local/91752b13a3/autoresearch",
+    "slug": "autoresearch",
+    "name": "autoresearch",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "54673b37-4c4a-4615-a118-abe884059b8f",
+    "key": "local/9293dad421/claudecode-agent-runner",
+    "slug": "claudecode-agent-runner",
+    "name": "claudecode-agent-runner",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "aa3d6746-3c25-46d3-8cb8-a192e3a94f9f",
+    "key": "local/52b88d6955/color-font-skill",
+    "slug": "color-font-skill",
+    "name": "color-font-skill",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "1777b90c-d2c9-4c83-a7da-077339854ad1",
+    "key": "local/ab80aba41f/design-style-skill",
+    "slug": "design-style-skill",
+    "name": "design-style-skill",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "d88fe02f-7605-4950-8f7a-eec29b1ec5d0",
+    "key": "local/3a509a8d4d/document-pro-suite",
+    "slug": "document-pro-suite",
+    "name": "document-pro-suite",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "5e9f40fd-856d-45ba-b263-1383606d71fd",
+    "key": "local/fba6a96136/flutter-dev",
+    "slug": "flutter-dev",
+    "name": "flutter-dev",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "301317d4-c1db-4d38-b3b9-cdb15fd3887d",
+    "key": "local/ebcaa75a12/frontend-dev",
+    "slug": "frontend-dev",
+    "name": "frontend-dev",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "e83d5364-e7ea-49c9-91ef-3a4c8e278624",
+    "key": "local/59470441a9/fullstack-dev",
+    "slug": "fullstack-dev",
+    "name": "fullstack-dev",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "48180371-616a-4e59-ab89-16eb09f1a4a3",
+    "key": "local/a0821a57ef/gif-sticker-maker",
+    "slug": "gif-sticker-maker",
+    "name": "gif-sticker-maker",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "bf59fa6b-3bad-4019-b23d-91b3ca3c099a",
+    "key": "local/5fb50ef529/hcom-agent-teams",
+    "slug": "hcom-agent-teams",
+    "name": "hcom-agent-teams",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "66844277-2054-439d-9998-b93b2a56834f",
+    "key": "local/dabd8810e6/ios-application-dev",
+    "slug": "ios-application-dev",
+    "name": "ios-application-dev",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "55eaa97f-7338-482a-b830-7e3e07fde64f",
+    "key": "local/c25256c296/labebe-demo-governance",
+    "slug": "labebe-demo-governance",
+    "name": "labebe-demo-governance",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 9
+  },
+  {
+    "id": "2dd0eecb-7e92-4659-9769-8d855d60af09",
+    "key": "local/eb381c0339/labebe-product-concept-workflow",
+    "slug": "labebe-product-concept-workflow",
+    "name": "labebe-product-concept-workflow",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 7
+  },
+  {
+    "id": "19646516-9ce0-4485-b057-a2c1e94accb3",
+    "key": "local/cd2c92af83/minimax-docx",
+    "slug": "minimax-docx",
+    "name": "minimax-docx",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "99184ac2-16c4-4dcc-98d4-33591836125f",
+    "key": "local/c62b322427/minimax-multimodal-toolkit",
+    "slug": "minimax-multimodal-toolkit",
+    "name": "minimax-multimodal-toolkit",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "a9d7cd7b-0ecd-4a62-9869-2f03d772bf1a",
+    "key": "local/6a69ced5a8/minimax-pdf",
+    "slug": "minimax-pdf",
+    "name": "minimax-pdf",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "7e0cc61e-e87f-4575-a393-07b95502119e",
+    "key": "local/ba8e431ffc/minimax-xlsx",
+    "slug": "minimax-xlsx",
+    "name": "minimax-xlsx",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "8206f21a-b4a4-4bf4-b5ee-0697e1b3439b",
+    "key": "paperclipai/paperclip/paperclip",
+    "slug": "paperclip",
+    "name": "paperclip",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 9
+  },
+  {
+    "id": "2f5b4ef7-3857-445e-bdd7-896f8f25f550",
+    "key": "paperclipai/paperclip/paperclip-create-agent",
+    "slug": "paperclip-create-agent",
+    "name": "paperclip-create-agent",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 9
+  },
+  {
+    "id": "f0eb2998-5a5c-4749-aeec-3ba6c5e48e45",
+    "key": "paperclipai/paperclip/paperclip-create-plugin",
+    "slug": "paperclip-create-plugin",
+    "name": "paperclip-create-plugin",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 9
+  },
+  {
+    "id": "31e42c15-b892-47f4-911c-a78b82a693a9",
+    "key": "local/a6d9633ebd/paperclip-demo-operator",
+    "slug": "paperclip-demo-operator",
+    "name": "paperclip-demo-operator",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 9
+  },
+  {
+    "id": "0348ff68-6096-4777-bbd2-12b8a6c4dfd4",
+    "key": "paperclipai/paperclip/para-memory-files",
+    "slug": "para-memory-files",
+    "name": "para-memory-files",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 9
+  },
+  {
+    "id": "f445ec0d-2e8f-4397-b087-0400336d8d39",
+    "key": "local/1c6beb2727/planning-four-terminal-acceptance",
+    "slug": "planning-four-terminal-acceptance",
+    "name": "planning-four-terminal-acceptance",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "5bcd38d2-04a3-44a5-a0a0-11c39916a609",
+    "key": "local/b7eaeffd70/ppt-editing-skill",
+    "slug": "ppt-editing-skill",
+    "name": "ppt-editing-skill",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "7ec9ef66-b139-47cf-a355-2e06bcfd545c",
+    "key": "local/af48e83b55/ppt-orchestra-skill",
+    "slug": "ppt-orchestra-skill",
+    "name": "ppt-orchestra-skill",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "edfa25a8-d953-45fb-9ba5-7a075163e4c9",
+    "key": "local/9cfe6c98e5/ppt-pro-suite",
+    "slug": "ppt-pro-suite",
+    "name": "ppt-pro-suite",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "2ee276f9-37df-4b06-a9e2-c3dfb3312e26",
+    "key": "local/b9e16c954f/pptx-generator",
+    "slug": "pptx-generator",
+    "name": "pptx-generator",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "9378cdfc-52f8-421f-bad9-53bd8dadeca9",
+    "key": "local/7c9db2f7b6/pr-review",
+    "slug": "pr-review",
+    "name": "pr-review",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "5a91f0ef-7023-4eab-b740-9406429a9cb3",
+    "key": "local/c9de5953bc/react-native-dev",
+    "slug": "react-native-dev",
+    "name": "react-native-dev",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "3bc0b471-6394-40de-b955-75af7d60193d",
+    "key": "local/733698a0eb/report-pro-suite",
+    "slug": "report-pro-suite",
+    "name": "report-pro-suite",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "bc385251-85f6-494f-9b7c-4b0c3ca67f9b",
+    "key": "local/0a35ac8815/report-spec-builder",
+    "slug": "report-spec-builder",
+    "name": "report-spec-builder",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "15a8aa86-8a81-47d6-b036-ed59ea02ea38",
+    "key": "local/a0cc617d17/research-claim-ledger",
+    "slug": "research-claim-ledger",
+    "name": "research-claim-ledger",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "27e0e81c-4c49-48c0-99da-59afe50beafb",
+    "key": "local/0842f0eb49/research-conflict-freezer",
+    "slug": "research-conflict-freezer",
+    "name": "research-conflict-freezer",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "0d1f83de-12cd-4d65-a645-17f17ea0275f",
+    "key": "local/af01c92d0c/research-report-framework",
+    "slug": "research-report-framework",
+    "name": "research-report-framework",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "576cfd01-8dcc-4c8a-a741-20751f6cecb8",
+    "key": "local/1e7c9a809e/research-source-registry",
+    "slug": "research-source-registry",
+    "name": "research-source-registry",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "c62cbc5d-f689-4f12-acb1-62e4162e27de",
+    "key": "local/c67d51684b/shader-dev",
+    "slug": "shader-dev",
+    "name": "shader-dev",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "dfa85b7c-1c82-4da7-ba5b-113c14efac58",
+    "key": "local/3f89e2f61f/slide-making-skill",
+    "slug": "slide-making-skill",
+    "name": "slide-making-skill",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "2ee8c41e-11fb-4d8e-9886-d0274ab56c32",
+    "key": "local/4bfb4ea057/ultraqa",
+    "slug": "ultraqa",
+    "name": "ultraqa",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "1911d3a3-716d-4ff4-bab3-22feac0212aa",
+    "key": "local/e11a160fa8/vision-analysis",
+    "slug": "vision-analysis",
+    "name": "vision-analysis",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "8bb76681-3c84-4431-bab9-7baac701c115",
+    "key": "local/bd2a7b7420/weasyprint-html-pdf-builder",
+    "slug": "weasyprint-html-pdf-builder",
+    "name": "weasyprint-html-pdf-builder",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "f82b418b-10e7-43ed-8fb0-654c5ce38a0c",
+    "key": "local/bbd87173bd/web-content-extractor",
+    "slug": "web-content-extractor",
+    "name": "web-content-extractor",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  },
+  {
+    "id": "1e777cc6-401d-4eb2-96a5-7c00a43547f1",
+    "key": "local/7ab5f95876/wiki",
+    "slug": "wiki",
+    "name": "wiki",
+    "sourceType": "local_path",
+    "compatibility": "compatible",
+    "attachedAgentCount": 0
+  }
+]

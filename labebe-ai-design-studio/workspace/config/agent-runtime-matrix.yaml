@@ -1,0 +1,114 @@
+schema: labebe-paperclip-demo/agent-runtime-matrix/v1
+company:
+  name: Labebe AI Design Studio
+  paperclip_company_id: 1cb6d439-2bdf-4f63-ad9a-b5326d5546df
+  paperclip_url: http://127.0.0.1:3100
+  deployment_mode: local_trusted
+  exposure: private_loopback
+runtime:
+  adapter_type: process
+  command: /usr/bin/env
+  args:
+    - python3
+    - /vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py
+  cwd: /vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace
+  timeout_sec: 60
+  scheduled_timer_enabled: false
+  on_demand_enabled: true
+  wake_on_assignment: true
+  smoke_target_issue_identifier: LAB-SMOKE-001
+  process_env_contract:
+    PAPERCLIP_API_URL: injected_by_paperclip_or_local_env
+    PAPERCLIP_API_KEY: local_secret_outside_packet
+    PAPERCLIP_COMPANY_ID: 1cb6d439-2bdf-4f63-ad9a-b5326d5546df
+    PAPERCLIP_AGENT_ID: injected_by_paperclip
+    PAPERCLIP_RUN_ID: injected_by_paperclip_for_heartbeat_runs
+    LABEBE_AGENT_SLUG: per_agent_plain_env
+    LABEBE_TARGET_ISSUE_IDENTIFIER: LAB-SMOKE-001_for_data_truth_smoke
+    LABEBE_SMOKE_RUN_TOKEN: 20260426-p0p1-final_for_current_audit_run
+guardrails:
+  real_external_accounts: disabled
+  real_customer_data: disabled
+  raw_secrets_in_portable_config: forbidden
+  human_review_required_for:
+    - strategy
+    - product_opportunity
+    - safety
+    - dfm
+    - cost
+    - compliance_adjacent_language
+    - external_publication
+agents:
+  product-innovation-director:
+    role: ceo
+    issue_focus: strategy, approvals, board-ready demo narrative
+    skills:
+      - paperclip
+      - paperclip-create-agent
+      - labebe-demo-governance
+      - labebe-product-concept-workflow
+      - paperclip-demo-operator
+  data-truth-guard:
+    role: reviewer
+    issue_focus: source labels, claim gate, forbidden claims
+    smoke_target_issue_identifier: LAB-SMOKE-001
+    smoke_run_token: 20260426-p0p1-final
+    skills:
+      - paperclip
+      - labebe-demo-governance
+      - paperclip-demo-operator
+  voc-intelligence-analyst:
+    role: analyst
+    issue_focus: review samples to requirements
+    skills:
+      - paperclip
+      - labebe-demo-governance
+      - labebe-product-concept-workflow
+      - paperclip-demo-operator
+  competitive-radar-analyst:
+    role: analyst
+    issue_focus: competitor sample matrix and opportunity hypotheses
+    skills:
+      - paperclip
+      - labebe-demo-governance
+      - labebe-product-concept-workflow
+      - paperclip-demo-operator
+  design-strategy-agent:
+    role: designer
+    issue_focus: concept briefs and image prompt routes
+    skills:
+      - paperclip
+      - labebe-demo-governance
+      - labebe-product-concept-workflow
+      - paperclip-demo-operator
+  design-director-agent:
+    role: reviewer
+    issue_focus: brand-fit and concept quality review
+    skills:
+      - paperclip
+      - labebe-demo-governance
+      - labebe-product-concept-workflow
+      - paperclip-demo-operator
+  dfm-safety-preflight-agent:
+    role: reviewer
+    issue_focus: preliminary safety, DFM, cost, engineering questions
+    skills:
+      - paperclip
+      - labebe-demo-governance
+      - labebe-product-concept-workflow
+      - paperclip-demo-operator
+  concept-to-market-agent:
+    role: marketer
+    issue_focus: local draft launch-test asset matrix
+    skills:
+      - paperclip
+      - labebe-demo-governance
+      - labebe-product-concept-workflow
+      - paperclip-demo-operator
+  demo-producer-agent:
+    role: producer
+    issue_focus: boss demo walkthrough, short video, presentation outline
+    skills:
+      - paperclip
+      - labebe-demo-governance
+      - paperclip-demo-operator

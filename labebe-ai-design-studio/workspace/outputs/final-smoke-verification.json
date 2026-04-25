@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-04-25T16:36:46.577Z",
+  "paperclip": {
+    "base_url": "http://127.0.0.1:3100",
+    "health": {
+      "status": "ok",
+      "version": "0.3.1",
+      "deploymentMode": "local_trusted",
+      "deploymentExposure": "private",
+      "authReady": true,
+      "bootstrapStatus": "ready",
+      "bootstrapInviteActive": false,
+      "features": {
+        "companyDeletionEnabled": true
+      }
+    },
+    "company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
+    "live_runs_active_count": 0,
+    "latest_smoke_run": {
+      "id": "025f3561-8531-439e-863b-cf6f997b9e41",
+      "companyId": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
+      "agentId": "205c3052-effa-422c-939f-38d3dbfa85ff",
+      "invocationSource": "on_demand",
+      "triggerDetail": "manual",
+      "status": "succeeded",
+      "startedAt": "2026-04-25T16:33:25.344Z",
+      "finishedAt": "2026-04-25T16:33:26.451Z",
+      "error": null,
+      "wakeupRequestId": "159221d2-005a-4672-9dff-b9d62ebdbb01",
+      "exitCode": 0,
+      "signal": null,
+      "usageJson": null,
+      "sessionIdBefore": null,
+      "sessionIdAfter": null,
+      "logStore": "local_file",
+      "logRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/205c3052-effa-422c-939f-38d3dbfa85ff/025f3561-8531-439e-863b-cf6f997b9e41.ndjson",
+      "logBytes": 1364,
+      "logSha256": "bfd79599f55491ac496cc645d1a1cce90526569916be51aff3113e4cfa95d5ff",
+      "logCompressed": false,
+      "stdoutExcerpt": null,
+      "stderrExcerpt": null,
+      "errorCode": null,
+      "externalRunId": null,
+      "processPid": null,
+      "processGroupId": null,
+      "processStartedAt": null,
+      "retryOfRunId": null,
+      "processLossRetryCount": 0,
+      "livenessState": "completed",
+      "livenessReason": "Issue is done",
+      "continuationAttempt": 0,
+      "lastUsefulActionAt": null,
+      "nextAction": null,
+      "createdAt": "2026-04-25T16:33:25.125Z",
+      "updatedAt": "2026-04-25T16:33:26.522Z",
+      "contextSnapshot": {
+        "issueId": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
+        "taskId": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
+        "taskKey": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
+        "wakeReason": "labebe_target_smoke_closeout_20260426",
+        "wakeSource": "on_demand",
+        "wakeTriggerDetail": "manual"
+      },
+      "resultJson": null
+    }
+  },
+  "smoke_case": {
+    "issue_id": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
+    "key": "LAB-SMOKE-001",
+    "title": "CASE 1 - Data Truth Guard end-to-end smoke",
+    "status": "done",
+    "completed_at": "2026-04-25T16:33:26.334Z",
+    "artifact_path": "labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
+    "artifact_exists": true,
+    "artifact_sha256": "ccea28262a852aef697d4733702521cbda093a3f8be67c832bb20915a2186d5f",
+    "heartbeat_json": {
+      "agent": "data-truth-guard",
+      "status": "ok",
+      "timestamp_utc": "2026-04-25T16:33:26+00:00",
+      "summary": "checked Data Truth, forbidden claims, and demo sample labels",
+      "missing_required_docs": [],
+      "paperclip_agent_id": "205c3052-effa-422c-939f-38d3dbfa85ff",
+      "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
+      "target_issue_identifier": "LAB-SMOKE-001",
+      "smoke_run_token": "20260426-p0p1-final",
+      "wake_reason": null,
+      "selected_issue": {
+        "identifier": "LAB-SMOKE-001",
+        "title": "CASE 1 - Data Truth Guard end-to-end smoke",
+        "status": "in_progress"
+      },
+      "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
+      "artifact_display_path": "outputs/case-LAB-SMOKE-001-data-truth-guard.md",
+      "paperclip_update": {
+        "issue_id": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
+        "next_status": "done",
+        "updated_identifier": "LAB-SMOKE-001"
+      },
+      "api_error": null
+    },
+    "latest_comment_has_artifact_path": true
+  },
+  "evidence": {
+    "issues_redacted_non_empty": true,
+    "issue_consistency_ok": true,
+    "mcp_tools_exported": true,
+    "mcp_policy_ok": true,
+    "artifact_ledger_present": true,
+    "secret_scan_hits": 0
+  },
+  "conclusion": {
+    "closed_loop": true
+  }
+}

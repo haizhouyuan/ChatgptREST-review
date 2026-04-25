@@ -11,6 +11,7 @@ venv/
 .DS_Store
 .codex
 .playwright-mcp/
+.paperclip-labebe/
 
 # Downloaded product image corpus; regenerate with scrape_labebe.py.
 data/labebe/images/

@@ -1,0 +1,254 @@
+[
+  {
+    "id": "636fc974-2d4e-4e19-9c4e-d918c02b2b22",
+    "name": "Competitive Radar Analyst",
+    "urlKey": "competitive-radar-analyst",
+    "role": "analyst",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/eb381c0339/labebe-product-concept-workflow",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG"
+    ],
+    "heartbeatEnabled": null
+  },
+  {
+    "id": "b13ca279-5945-47a7-8722-c95ef15d00cc",
+    "name": "Concept-to-Market Agent",
+    "urlKey": "concept-to-market-agent",
+    "role": "marketer",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/eb381c0339/labebe-product-concept-workflow",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG"
+    ],
+    "heartbeatEnabled": null
+  },
+  {
+    "id": "205c3052-effa-422c-939f-38d3dbfa85ff",
+    "name": "Data Truth Guard",
+    "urlKey": "data-truth-guard",
+    "role": "reviewer",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG",
+      "LABEBE_SMOKE_RUN_TOKEN",
+      "LABEBE_TARGET_ISSUE_IDENTIFIER"
+    ],
+    "heartbeatEnabled": null
+  },
+  {
+    "id": "fe6a8e49-a61c-4298-88b6-dd5a60f44b45",
+    "name": "Demo Producer Agent",
+    "urlKey": "demo-producer-agent",
+    "role": "producer",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG"
+    ],
+    "heartbeatEnabled": null
+  },
+  {
+    "id": "f2d79982-2af8-4223-92f4-905aaedcba68",
+    "name": "Design Director Agent",
+    "urlKey": "design-director-agent",
+    "role": "reviewer",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/eb381c0339/labebe-product-concept-workflow",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG"
+    ],
+    "heartbeatEnabled": null
+  },
+  {
+    "id": "c02f100d-fa49-40be-8ba2-aa99479ee731",
+    "name": "Design Strategy Agent",
+    "urlKey": "design-strategy-agent",
+    "role": "designer",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/eb381c0339/labebe-product-concept-workflow",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG"
+    ],
+    "heartbeatEnabled": null
+  },
+  {
+    "id": "8f02fcc8-3384-4cb1-a55f-8d131955f6e8",
+    "name": "DFM & Safety Preflight Agent",
+    "urlKey": "dfm-safety-preflight-agent",
+    "role": "reviewer",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/eb381c0339/labebe-product-concept-workflow",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG"
+    ],
+    "heartbeatEnabled": null
+  },
+  {
+    "id": "21bb4465-6cc8-4b1e-bfe7-99ca18cceb63",
+    "name": "Product Innovation Director",
+    "urlKey": "product-innovation-director",
+    "role": "ceo",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/eb381c0339/labebe-product-concept-workflow",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG"
+    ],
+    "heartbeatEnabled": null
+  },
+  {
+    "id": "dbe06d12-5752-4e35-b243-c8655cb5d4f0",
+    "name": "VOC Intelligence Analyst",
+    "urlKey": "voc-intelligence-analyst",
+    "role": "analyst",
+    "adapterType": "process",
+    "status": "idle",
+    "desiredSkills": [
+      "paperclipai/paperclip/paperclip",
+      "paperclipai/paperclip/paperclip-create-agent",
+      "paperclipai/paperclip/paperclip-create-plugin",
+      "paperclipai/paperclip/para-memory-files",
+      "local/c25256c296/labebe-demo-governance",
+      "local/eb381c0339/labebe-product-concept-workflow",
+      "local/a6d9633ebd/paperclip-demo-operator"
+    ],
+    "command": "/usr/bin/env",
+    "args": [
+      "python3",
+      "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+    ],
+    "cwd": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace",
+    "timeoutSec": 60,
+    "envKeys": [
+      "LABEBE_AGENT_SLUG"
+    ],
+    "heartbeatEnabled": null
+  }
+]

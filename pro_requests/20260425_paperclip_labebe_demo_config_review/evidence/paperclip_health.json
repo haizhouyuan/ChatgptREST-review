@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "version": "0.3.1",
+  "deploymentMode": "local_trusted",
+  "deploymentExposure": "private",
+  "authReady": true,
+  "bootstrapStatus": "ready",
+  "bootstrapInviteActive": false,
+  "features": {
+    "companyDeletionEnabled": true
+  }
+}

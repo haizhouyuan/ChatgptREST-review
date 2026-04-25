@@ -1,0 +1,9 @@
+{
+  "agent": "concept-to-market-agent",
+  "status": "ok",
+  "timestamp_utc": "2026-04-25T10:50:22+00:00",
+  "summary": "checked asset matrix gate dependencies",
+  "missing_required_docs": [],
+  "paperclip_agent_id": "b13ca279-5945-47a7-8722-c95ef15d00cc",
+  "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df"
+}

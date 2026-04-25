@@ -1,0 +1,196 @@
+schema: "paperclip/v1"
+company:
+  brandColor: "#2f6f5e"
+  requireBoardApprovalForNewAgents: true
+sidebar:
+  agents:
+    - "product-innovation-director"
+    - "data-truth-guard"
+    - "voc-intelligence-analyst"
+    - "competitive-radar-analyst"
+    - "design-strategy-agent"
+    - "design-director-agent"
+    - "dfm-safety-preflight-agent"
+    - "concept-to-market-agent"
+    - "demo-producer-agent"
+  projects:
+    - "labebe-ai-design-studio"
+agents:
+  product-innovation-director:
+    icon: "crown"
+    capabilities: "Owns the demo strategy, board-ready narrative, approvals, and issue sequencing."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "product-innovation-director"
+  data-truth-guard:
+    icon: "shield"
+    capabilities: "Separates verified facts from demo samples and blocks unsupported claims."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "data-truth-guard"
+          LABEBE_TARGET_ISSUE_IDENTIFIER: "LAB-SMOKE-001"
+          LABEBE_SMOKE_RUN_TOKEN: "20260426-p0p1-final"
+  voc-intelligence-analyst:
+    icon: "message-square"
+    capabilities: "Clusters review signals into design requirements without inventing source evidence."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "voc-intelligence-analyst"
+  competitive-radar-analyst:
+    icon: "radar"
+    capabilities: "Builds a conservative competitor feature matrix from local sample data."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "competitive-radar-analyst"
+  design-strategy-agent:
+    icon: "lightbulb"
+    capabilities: "Turns opportunity clusters into concept briefs and design routes."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "design-strategy-agent"
+  design-director-agent:
+    icon: "eye"
+    capabilities: "Scores concept fit, flags off-brand routes, and requests next-iteration prompts."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "design-director-agent"
+  dfm-safety-preflight-agent:
+    icon: "wrench"
+    capabilities: "Identifies safety, DFM, cost, and human engineering review needs."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "dfm-safety-preflight-agent"
+  concept-to-market-agent:
+    icon: "rocket"
+    capabilities: "Packages approved concepts into PDP, Amazon A+, social, and waitlist assets."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "concept-to-market-agent"
+  demo-producer-agent:
+    icon: "sparkles"
+    capabilities: "Prepares the Paperclip dashboard walkthrough, war room notes, short video plan, and boss deck outline."
+    adapter:
+      type: "process"
+      config:
+        command: "/usr/bin/env"
+        args:
+          - "python3"
+          - "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/scripts/paperclip_demo_agent.py"
+        cwd: "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace"
+        timeoutSec: 60
+        env:
+          LABEBE_AGENT_SLUG: "demo-producer-agent"
+projects:
+  labebe-ai-design-studio:
+    leadAgentSlug: "product-innovation-director"
+    status: "in_progress"
+    color: "#2f6f5e"
+tasks:
+  00-ceo-strategy-approval:
+    identifier: "LAB-0"
+    status: "in_review"
+    priority: "critical"
+  01-data-truth-foundation:
+    identifier: "LAB-1"
+    status: "in_progress"
+    priority: "critical"
+  02-product-opportunity-radar:
+    identifier: "LAB-2"
+    status: "todo"
+    priority: "high"
+  03-voc-to-product-concept:
+    identifier: "LAB-3"
+    status: "todo"
+    priority: "high"
+  04-sketch-to-concept-lab:
+    identifier: "LAB-4"
+    status: "backlog"
+    priority: "medium"
+  05-custom-toy-kitchen-builder:
+    identifier: "LAB-5"
+    status: "backlog"
+    priority: "medium"
+  06-design-director-review:
+    identifier: "LAB-6"
+    status: "backlog"
+    priority: "high"
+  07-dfm-safety-cost-preflight:
+    identifier: "LAB-7"
+    status: "blocked"
+    priority: "critical"
+  08-concept-to-market-asset-matrix:
+    identifier: "LAB-8"
+    status: "backlog"
+    priority: "medium"
+  09-boss-demo-production:
+    identifier: "LAB-9"
+    status: "todo"
+    priority: "high"
+  smoke-data-truth-guard:
+    identifier: "LAB-SMOKE-001"
+    status: "todo"
+    priority: "high"

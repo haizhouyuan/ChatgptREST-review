@@ -1,0 +1,16 @@
+[
+  {
+    "sku": "LABEBE-DEMO-LT-001",
+    "name": "Learning Tower Seed",
+    "category": "learning_tower",
+    "source_label": "demo sample",
+    "notes": "Used to demonstrate opportunity and concept flow only."
+  },
+  {
+    "sku": "LABEBE-DEMO-KIT-001",
+    "name": "Pretend Play Kitchen Seed",
+    "category": "pretend_play",
+    "source_label": "demo sample",
+    "notes": "Used to demonstrate modular toy kitchen builder only."
+  }
+]

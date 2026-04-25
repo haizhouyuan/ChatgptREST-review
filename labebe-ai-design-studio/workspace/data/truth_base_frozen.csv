@@ -1,0 +1,7 @@
+claim_id,claim,source_label,status,notes
+DT-001,Paperclip demo runs locally on loopback,verified fact,allowed,Verified by local health endpoint during setup
+DT-002,Labebe AI Design Studio company goal,user-provided source,allowed,From red-team issue tree
+DT-003,Review signal rows are demo samples,demo sample,allowed,Use only for workflow demonstration
+DT-004,Competitor rows are demo samples,demo sample,allowed,Use only for matrix shape
+DT-005,Safety and DFM outputs are preliminary,demo policy,allowed,Human engineering review required
+DT-006,Demo samples prove market demand,demo sample,forbidden,Must not be claimed

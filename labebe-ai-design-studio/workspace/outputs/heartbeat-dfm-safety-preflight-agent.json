@@ -1,0 +1,9 @@
+{
+  "agent": "dfm-safety-preflight-agent",
+  "status": "ok",
+  "timestamp_utc": "2026-04-25T10:50:45+00:00",
+  "summary": "checked safety, DFM, and cost review gates",
+  "missing_required_docs": [],
+  "paperclip_agent_id": "8f02fcc8-3384-4cb1-a55f-8d131955f6e8",
+  "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df"
+}

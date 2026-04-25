@@ -1,0 +1,26 @@
+schema: labebe-paperclip-demo/brief/v1
+demo_name: Labebe AI Design Studio Paperclip Demo
+intake: /vol1/1000/projects/toyresearch/my - 红队审核与建议.md
+background:
+  purpose: Show Paperclip as a local control plane for a red-team-gated AI product design studio.
+  business_context: Labebe toy/home product concept workflow demonstration.
+  control_plane_context: Paperclip owns company, org chart, issues, agent config, skills, MCP template, heartbeats, and run evidence.
+main_goal: Build a board-ready demo that turns local customer, competitor, and product signals into review-ready product design concepts and launch-test assets.
+operating_conditions:
+  network_exposure: loopback only
+  external_accounts: disabled
+  real_customer_data: disabled
+  demo_samples: allowed with explicit labels
+  human_review: required for strategy, opportunity, safety, cost, compliance-adjacent language, and external_publication
+  paid_model_runtime: not required for the process-adapter demo case
+success_criteria:
+  - Paperclip health is ok at http://127.0.0.1:3100/api/health.
+  - Company, agents, project, issues, skills, and MCP template are configured.
+  - A process-adapter heartbeat can select a Paperclip issue, write a local artifact, and update Paperclip.
+  - The demo packet can be reviewed without raw secrets.
+  - Open risks are visible as review gates, not hidden.
+known_limits:
+  - The process adapter is deterministic and does not perform real AI reasoning.
+  - Process adapter skill sync is recorded as desired skills but not injected into the child process.
+  - MCP config needs a local API key stored outside the portable packet.
+  - Safety, cost, and compliance outputs remain preliminary.

@@ -1,0 +1,62 @@
+schema: labebe-paperclip-demo/mcp-tool-policy/v1
+default: deny
+scope:
+  server: paperclip-labebe-demo
+  api_url: http://127.0.0.1:3100
+  company_id: 1cb6d439-2bdf-4f63-ad9a-b5326d5546df
+  target_issue_identifier: LAB-SMOKE-001
+  require_paperclip_run_id_for_mutation: true
+allow_read_only:
+  - paperclipMe
+  - paperclipInboxLite
+  - paperclipListAgents
+  - paperclipGetAgent
+  - paperclipListIssues
+  - paperclipGetIssue
+  - paperclipGetHeartbeatContext
+  - paperclipListComments
+  - paperclipGetComment
+  - paperclipListIssueApprovals
+  - paperclipListDocuments
+  - paperclipGetDocument
+  - paperclipListDocumentRevisions
+  - paperclipListProjects
+  - paperclipGetProject
+  - paperclipListGoals
+  - paperclipGetGoal
+  - paperclipListApprovals
+  - paperclipGetApproval
+  - paperclipGetApprovalIssues
+  - paperclipListApprovalComments
+allow_mutation_only_for_target_smoke:
+  - paperclipCheckoutIssue
+  - paperclipAddComment
+  - paperclipUpdateIssue
+mutation_conditions:
+  issue_identifier: LAB-SMOKE-001
+  allowed_status_updates:
+    - in_progress
+    - done
+  allowed_comment_marker: Demo heartbeat completed.
+deny:
+  - paperclipCreateIssue
+  - paperclipReleaseIssue
+  - paperclipUpsertIssueDocument
+  - paperclipRestoreIssueDocumentRevision
+  - paperclipCreateApproval
+  - paperclipLinkIssueApproval
+  - paperclipUnlinkIssueApproval
+  - paperclipApprovalDecision
+  - paperclipAddApprovalComment
+  - paperclipApiRequest
+  - create agent
+  - update agent adapter config
+  - delete agent
+  - delete company
+  - import unreviewed skill
+  - update secret
+  - expose secret
+  - external account action
+notes:
+  - The policy is an audit contract for the Labebe demo lane. It does not alter Paperclip server code.
+  - Mutating MCP/API calls in the demo must be limited to the fixed Data Truth smoke issue.

@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-04-25T16:36:00.870Z",
+  "artifacts": [
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
+      "sha256": "ccea28262a852aef697d4733702521cbda093a3f8be67c832bb20915a2186d5f",
+      "size_bytes": 696,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-SMOKE-001",
+      "paperclip_status_after": "done",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-data-truth-guard.json"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+schema: labebe-paperclip-demo/skill-registry/v1
+company_id: 1cb6d439-2bdf-4f63-ad9a-b5326d5546df
+skills:
+  paperclip:
+    key: paperclipai/paperclip/paperclip
+    source: /vol1/1000/projects/paperclip/skills/paperclip
+    purpose: Paperclip heartbeat, issue, comment, approval, and coordination protocol.
+    assignment: all_agents
+  paperclip-create-agent:
+    key: paperclipai/paperclip/paperclip-create-agent
+    source: /vol1/1000/projects/paperclip/skills/paperclip-create-agent
+    purpose: Hiring/delegation guidance for the Product Innovation Director only.
+    assignment:
+      - product-innovation-director
+  labebe-demo-governance:
+    key: local/c25256c296/labebe-demo-governance
+    source: paperclip_labebe_demo_package/skills/labebe-demo-governance
+    purpose: Evidence labels, forbidden claims, review gates, local-only action policy.
+    assignment: all_agents
+  labebe-product-concept-workflow:
+    key: local/eb381c0339/labebe-product-concept-workflow
+    source: paperclip_labebe_demo_package/skills/labebe-product-concept-workflow
+    purpose: VOC, competitor, opportunity, concept, review, DFM, and asset-matrix workflow.
+    assignment:
+      - product-innovation-director
+      - voc-intelligence-analyst
+      - competitive-radar-analyst
+      - design-strategy-agent
+      - design-director-agent
+      - dfm-safety-preflight-agent
+      - concept-to-market-agent
+  paperclip-demo-operator:
+    key: local/a6d9633ebd/paperclip-demo-operator
+    source: paperclip_labebe_demo_package/skills/paperclip-demo-operator
+    purpose: Demo replay, heartbeat evidence, local artifact paths, issue status hygiene.
+    assignment: all_agents
+notes:
+  - Process adapter currently records desired skills but does not inject skill files into the child process.
+  - The local process script reads workspace docs directly, so the demo remains runnable without paid model adapters.
+  - If switching to codex_local or claude_local later, these same company skills should be injected by adapter skill sync.

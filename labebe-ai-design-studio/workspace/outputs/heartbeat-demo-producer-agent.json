@@ -1,0 +1,9 @@
+{
+  "agent": "demo-producer-agent",
+  "status": "ok",
+  "timestamp_utc": "2026-04-25T10:50:41+00:00",
+  "summary": "checked boss demo recording and presentation path",
+  "missing_required_docs": [],
+  "paperclip_agent_id": "fe6a8e49-a61c-4298-88b6-dd5a60f44b45",
+  "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df"
+}
