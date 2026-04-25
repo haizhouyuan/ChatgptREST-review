@@ -1,15 +1,15 @@
 {
   "agent": "demo-producer-agent",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T17:11:43+00:00",
+  "timestamp_utc": "2026-04-25T17:11:44+00:00",
   "summary": "checked boss demo recording and presentation path",
+  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "fe6a8e49-a61c-4298-88b6-dd5a60f44b45",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-9",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-9",
-  "smoke_run_token": null,
-  "wake_reason": null,
+  "smoke_run_token": "",
   "selected_issue": {
     "identifier": "LAB-9",
     "title": "EPIC 9 - Boss Demo Production",
@@ -17,10 +17,7 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-9-demo-producer-agent.md",
   "artifact_display_path": "outputs/case-LAB-9-demo-producer-agent.md",
-  "paperclip_update": {
-    "issue_id": "68edbe40-7f7e-45fb-beed-e9f6e234539c",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-9"
-  },
-  "api_error": null
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
 }

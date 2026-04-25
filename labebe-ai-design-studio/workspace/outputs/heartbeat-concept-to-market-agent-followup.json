@@ -1,15 +1,15 @@
 {
   "agent": "concept-to-market-agent",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T17:11:37+00:00",
+  "timestamp_utc": "2026-04-25T17:11:38+00:00",
   "summary": "checked asset matrix gate dependencies",
+  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "b13ca279-5945-47a7-8722-c95ef15d00cc",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-8",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-8",
-  "smoke_run_token": null,
-  "wake_reason": null,
+  "smoke_run_token": "",
   "selected_issue": {
     "identifier": "LAB-8",
     "title": "EPIC 8 - Concept-to-Market Asset Matrix",
@@ -17,10 +17,7 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-8-concept-to-market-agent.md",
   "artifact_display_path": "outputs/case-LAB-8-concept-to-market-agent.md",
-  "paperclip_update": {
-    "issue_id": "812018a6-1f22-4c31-9cbd-8ae42a500ba5",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-8"
-  },
-  "api_error": null
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
 }

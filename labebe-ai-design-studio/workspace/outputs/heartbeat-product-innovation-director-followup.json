@@ -1,15 +1,15 @@
 {
   "agent": "product-innovation-director",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T17:10:32+00:00",
+  "timestamp_utc": "2026-04-25T17:10:33+00:00",
   "summary": "checked strategy gates and issue sequencing",
+  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "21bb4465-6cc8-4b1e-bfe7-99ca18cceb63",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-0",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-0",
-  "smoke_run_token": null,
-  "wake_reason": null,
+  "smoke_run_token": "",
   "selected_issue": {
     "identifier": "LAB-0",
     "title": "EPIC 0 - CEO Strategy Approval",
@@ -17,10 +17,7 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-0-product-innovation-director.md",
   "artifact_display_path": "outputs/case-LAB-0-product-innovation-director.md",
-  "paperclip_update": {
-    "issue_id": "20712e68-2181-465f-967e-18b943aed3c4",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-0"
-  },
-  "api_error": null
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
 }

@@ -25,7 +25,7 @@
     "envKeys": [
       "LABEBE_AGENT_SLUG"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   },
   {
     "id": "b13ca279-5945-47a7-8722-c95ef15d00cc",
@@ -53,7 +53,7 @@
     "envKeys": [
       "LABEBE_AGENT_SLUG"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   },
   {
     "id": "205c3052-effa-422c-939f-38d3dbfa85ff",
@@ -82,7 +82,7 @@
       "LABEBE_SMOKE_RUN_TOKEN",
       "LABEBE_TARGET_ISSUE_IDENTIFIER"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   },
   {
     "id": "fe6a8e49-a61c-4298-88b6-dd5a60f44b45",
@@ -109,7 +109,7 @@
     "envKeys": [
       "LABEBE_AGENT_SLUG"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   },
   {
     "id": "f2d79982-2af8-4223-92f4-905aaedcba68",
@@ -137,7 +137,7 @@
     "envKeys": [
       "LABEBE_AGENT_SLUG"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   },
   {
     "id": "c02f100d-fa49-40be-8ba2-aa99479ee731",
@@ -165,7 +165,7 @@
     "envKeys": [
       "LABEBE_AGENT_SLUG"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   },
   {
     "id": "8f02fcc8-3384-4cb1-a55f-8d131955f6e8",
@@ -193,7 +193,7 @@
     "envKeys": [
       "LABEBE_AGENT_SLUG"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   },
   {
     "id": "21bb4465-6cc8-4b1e-bfe7-99ca18cceb63",
@@ -221,7 +221,7 @@
     "envKeys": [
       "LABEBE_AGENT_SLUG"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   },
   {
     "id": "dbe06d12-5752-4e35-b243-c8655cb5d4f0",
@@ -249,6 +249,6 @@
     "envKeys": [
       "LABEBE_AGENT_SLUG"
     ],
-    "heartbeatEnabled": null
+    "heartbeatEnabled": false
   }
 ]

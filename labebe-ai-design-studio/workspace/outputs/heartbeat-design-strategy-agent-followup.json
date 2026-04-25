@@ -1,15 +1,15 @@
 {
   "agent": "design-strategy-agent",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T17:11:05+00:00",
+  "timestamp_utc": "2026-04-25T17:11:06+00:00",
   "summary": "checked concept brief and route generation inputs",
+  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "c02f100d-fa49-40be-8ba2-aa99479ee731",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-5",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-5",
-  "smoke_run_token": null,
-  "wake_reason": null,
+  "smoke_run_token": "",
   "selected_issue": {
     "identifier": "LAB-5",
     "title": "EPIC 5 - Custom Toy Kitchen Builder",
@@ -17,10 +17,7 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-5-design-strategy-agent.md",
   "artifact_display_path": "outputs/case-LAB-5-design-strategy-agent.md",
-  "paperclip_update": {
-    "issue_id": "b69154fd-e3eb-4910-a63d-ef9d480a5a64",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-5"
-  },
-  "api_error": null
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
 }

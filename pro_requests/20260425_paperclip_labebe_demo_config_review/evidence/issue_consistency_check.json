@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "generated_at": "2026-04-25T16:36:00.524Z",
+  "generated_at": "2026-04-25T17:13:26.266Z",
   "expected_issue_count": 11,
   "actual_issue_count": 11,
   "checks": [
@@ -8,6 +8,7 @@
       "identifier": "LAB-0",
       "expected_title": "EPIC 0 - CEO Strategy Approval",
       "actual_title": "EPIC 0 - CEO Strategy Approval",
+      "expected_status": "in_review",
       "status": "in_review",
       "ok": true
     },
@@ -15,6 +16,7 @@
       "identifier": "LAB-1",
       "expected_title": "EPIC 1 - Data Truth Foundation",
       "actual_title": "EPIC 1 - Data Truth Foundation",
+      "expected_status": "in_review",
       "status": "in_review",
       "ok": true
     },
@@ -22,62 +24,71 @@
       "identifier": "LAB-2",
       "expected_title": "EPIC 2 - Product Opportunity Radar",
       "actual_title": "EPIC 2 - Product Opportunity Radar",
-      "status": "todo",
+      "expected_status": "in_review",
+      "status": "in_review",
       "ok": true
     },
     {
       "identifier": "LAB-3",
       "expected_title": "EPIC 3 - VOC to Product Concept",
       "actual_title": "EPIC 3 - VOC to Product Concept",
-      "status": "todo",
+      "expected_status": "in_review",
+      "status": "in_review",
       "ok": true
     },
     {
       "identifier": "LAB-4",
       "expected_title": "EPIC 4 - Sketch-to-Concept Lab",
       "actual_title": "EPIC 4 - Sketch-to-Concept Lab",
-      "status": "backlog",
+      "expected_status": "in_review",
+      "status": "in_review",
       "ok": true
     },
     {
       "identifier": "LAB-5",
       "expected_title": "EPIC 5 - Custom Toy Kitchen Builder",
       "actual_title": "EPIC 5 - Custom Toy Kitchen Builder",
-      "status": "backlog",
+      "expected_status": "in_review",
+      "status": "in_review",
       "ok": true
     },
     {
       "identifier": "LAB-6",
       "expected_title": "EPIC 6 - Design Director Review",
       "actual_title": "EPIC 6 - Design Director Review",
-      "status": "backlog",
+      "expected_status": "in_review",
+      "status": "in_review",
       "ok": true
     },
     {
       "identifier": "LAB-7",
       "expected_title": "EPIC 7 - DFM / Safety / Cost Preflight",
       "actual_title": "EPIC 7 - DFM / Safety / Cost Preflight",
-      "status": "blocked",
+      "expected_status": "in_review",
+      "status": "in_review",
       "ok": true
     },
     {
       "identifier": "LAB-8",
       "expected_title": "EPIC 8 - Concept-to-Market Asset Matrix",
       "actual_title": "EPIC 8 - Concept-to-Market Asset Matrix",
-      "status": "backlog",
+      "expected_status": "in_review",
+      "status": "in_review",
       "ok": true
     },
     {
       "identifier": "LAB-9",
       "expected_title": "EPIC 9 - Boss Demo Production",
       "actual_title": "EPIC 9 - Boss Demo Production",
-      "status": "todo",
+      "expected_status": "in_review",
+      "status": "in_review",
       "ok": true
     },
     {
       "identifier": "LAB-SMOKE-001",
       "expected_title": "CASE 1 - Data Truth Guard end-to-end smoke",
       "actual_title": "CASE 1 - Data Truth Guard end-to-end smoke",
+      "expected_status": "done",
       "status": "done",
       "ok": true
     }
@@ -88,12 +99,12 @@
     "title": "CASE 1 - Data Truth Guard end-to-end smoke",
     "status": "done",
     "assigneeAgentId": "205c3052-effa-422c-939f-38d3dbfa85ff",
-    "completedAt": "2026-04-25T16:33:26.334Z",
+    "completedAt": "2026-04-25T17:11:52.396Z",
     "latest_comment": {
-      "id": "741d845b-7761-4a60-9698-c273965b47e7",
+      "id": "b041beb3-7039-4d65-9a21-7d751d8f6447",
       "body_has_artifact_path": true,
-      "body_preview": "Demo heartbeat completed.\n\n- Agent: `data-truth-guard`\n- Artifact: `outputs/case-LAB-SMOKE-001-data-truth-guard.md`\n- Source labels: `demo_sample`, `demo_policy`\n- Human review required for strategy/safety/cost/external actions.",
-      "createdAt": "2026-04-25T16:33:26.371Z",
+      "body_preview": "Demo artifact completed.\n\n- Agent: `data-truth-guard`\n- Artifact: `outputs/case-LAB-SMOKE-001-data-truth-guard.md`\n- Source labels: `demo_sample`, `demo_policy`\n- Human review required for strategy/safety/cost/external actions.",
+      "createdAt": "2026-04-26 01:11:52.419459+08",
       "authorAgentId": null,
       "authorUserId": "local-board"
     }

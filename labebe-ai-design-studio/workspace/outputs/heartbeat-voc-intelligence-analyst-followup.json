@@ -1,15 +1,15 @@
 {
   "agent": "voc-intelligence-analyst",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T17:10:51+00:00",
+  "timestamp_utc": "2026-04-25T17:10:52+00:00",
   "summary": "checked review signal samples and VOC-to-requirement path",
+  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "dbe06d12-5752-4e35-b243-c8655cb5d4f0",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-3",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-3",
-  "smoke_run_token": null,
-  "wake_reason": null,
+  "smoke_run_token": "",
   "selected_issue": {
     "identifier": "LAB-3",
     "title": "EPIC 3 - VOC to Product Concept",
@@ -17,10 +17,7 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-3-voc-intelligence-analyst.md",
   "artifact_display_path": "outputs/case-LAB-3-voc-intelligence-analyst.md",
-  "paperclip_update": {
-    "issue_id": "45807314-df5d-4855-9cdd-9ed1a6d1ff02",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-3"
-  },
-  "api_error": null
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
 }

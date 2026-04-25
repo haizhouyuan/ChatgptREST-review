@@ -1,15 +1,15 @@
 {
   "agent": "data-truth-guard",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T17:10:39+00:00",
+  "timestamp_utc": "2026-04-25T17:10:38+00:00",
   "summary": "checked Data Truth, forbidden claims, and demo sample labels",
-  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "205c3052-effa-422c-939f-38d3dbfa85ff",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-1",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-1",
-  "smoke_run_token": "",
+  "smoke_run_token": null,
+  "wake_reason": null,
   "selected_issue": {
     "identifier": "LAB-1",
     "title": "EPIC 1 - Data Truth Foundation",
@@ -17,7 +17,10 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-1-data-truth-guard.md",
   "artifact_display_path": "outputs/case-LAB-1-data-truth-guard.md",
-  "paperclip_update": null,
-  "api_error": null,
-  "wake_reason": null
+  "paperclip_update": {
+    "issue_id": "6092dd9b-3a48-42d3-b1da-680f3a170eec",
+    "next_status": "in_review",
+    "updated_identifier": "LAB-1"
+  },
+  "api_error": null
 }

@@ -3,13 +3,13 @@
   "status": "ok",
   "timestamp_utc": "2026-04-25T17:10:45+00:00",
   "summary": "checked competitor matrix sample boundaries",
+  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "636fc974-2d4e-4e19-9c4e-d918c02b2b22",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-2",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-2",
-  "smoke_run_token": null,
-  "wake_reason": null,
+  "smoke_run_token": "",
   "selected_issue": {
     "identifier": "LAB-2",
     "title": "EPIC 2 - Product Opportunity Radar",
@@ -17,10 +17,7 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-2-competitive-radar-analyst.md",
   "artifact_display_path": "outputs/case-LAB-2-competitive-radar-analyst.md",
-  "paperclip_update": {
-    "issue_id": "a1e244f8-b57b-4375-961a-c3a3afe94700",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-2"
-  },
-  "api_error": null
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
 }

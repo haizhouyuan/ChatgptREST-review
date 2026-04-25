@@ -1,15 +1,15 @@
 {
   "agent": "design-director-agent",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T17:11:24+00:00",
+  "timestamp_utc": "2026-04-25T17:11:25+00:00",
   "summary": "checked brand-fit review expectations",
+  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "f2d79982-2af8-4223-92f4-905aaedcba68",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-6",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-6",
-  "smoke_run_token": null,
-  "wake_reason": null,
+  "smoke_run_token": "",
   "selected_issue": {
     "identifier": "LAB-6",
     "title": "EPIC 6 - Design Director Review",
@@ -17,10 +17,7 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-6-design-director-agent.md",
   "artifact_display_path": "outputs/case-LAB-6-design-director-agent.md",
-  "paperclip_update": {
-    "issue_id": "1e062ff7-7cff-472b-a34c-a42d2c6f3167",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-6"
-  },
-  "api_error": null
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
 }

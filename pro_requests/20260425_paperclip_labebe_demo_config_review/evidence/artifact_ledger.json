@@ -1,11 +1,181 @@
 {
-  "generated_at": "2026-04-25T16:36:00.870Z",
+  "generated_at": "2026-04-25T17:13:26.266Z",
   "artifacts": [
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-0-product-innovation-director.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-0-product-innovation-director.md",
+      "sha256": "4232b1e94d6e070d3c164537ca5ecf60c7681c36799e66de30131d075bc9da3a",
+      "size_bytes": 1431,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-0",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-0-product-innovation-director.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-product-innovation-director.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-1-data-truth-guard.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-1-data-truth-guard.md",
+      "sha256": "ed7a9146eb61e6340d6a3b3574d8e61759df2024923e44620d7c7515b0f8e025",
+      "size_bytes": 1244,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-1",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-1-data-truth-guard.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-data-truth-guard.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-2-competitive-radar-analyst.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-2-competitive-radar-analyst.md",
+      "sha256": "acfc75bc3e649408b7d2cac5c14513adec1aa357a0da5fd73649380fc1657685",
+      "size_bytes": 1519,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-2",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-2-competitive-radar-analyst.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-competitive-radar-analyst.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-3-voc-intelligence-analyst.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-3-voc-intelligence-analyst.md",
+      "sha256": "376c454b11489fe9e3e62f750e8e16b3f00c0fb4f6770b0d995038e3ebcc39aa",
+      "size_bytes": 1373,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-3",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-3-voc-intelligence-analyst.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-voc-intelligence-analyst.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-4-design-strategy-agent.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-4-design-strategy-agent.md",
+      "sha256": "d6f54e42a87aca44f093382cb017ba7494073e965f74e1401e6fa84e54e50934",
+      "size_bytes": 1463,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-4",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-4-design-strategy-agent.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-design-strategy-agent.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-5-design-strategy-agent.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-5-design-strategy-agent.md",
+      "sha256": "963f0c856de93cab5ad01bbe7357ad9f6aebef9273d67c0d1da09c4b57dde376",
+      "size_bytes": 1261,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-5",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-5-design-strategy-agent.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-design-strategy-agent.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-6-design-director-agent.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-6-design-director-agent.md",
+      "sha256": "0c3dcbe3c4ee73c0e3a7ef5d9fd4b39dc00ebbec66d0b16ff727cf9c807bda31",
+      "size_bytes": 1298,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-6",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-6-design-director-agent.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-design-director-agent.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-7-dfm-safety-preflight-agent.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-7-dfm-safety-preflight-agent.md",
+      "sha256": "4802cbe239af5958401a1261b7ed3873cc9428d2452f286e9840b5d99197cf76",
+      "size_bytes": 1372,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-7",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-7-dfm-safety-preflight-agent.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-dfm-safety-preflight-agent.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-8-concept-to-market-agent.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-8-concept-to-market-agent.md",
+      "sha256": "95166501930ae9f389ecfe0af6519e9c0de1c172318660a23dc109d2824aa4c0",
+      "size_bytes": 1545,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-8",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-8-concept-to-market-agent.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-concept-to-market-agent.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
+    {
+      "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-9-demo-producer-agent.md",
+      "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-9-demo-producer-agent.md",
+      "sha256": "28f4c9974a72847e21c9ed61add2cbf2f6fd13ee58fd57921eef72f58069e1c7",
+      "size_bytes": 1353,
+      "source_labels": [
+        "demo_policy",
+        "demo_sample"
+      ],
+      "contains_raw_secret": false,
+      "paperclip_issue_identifier": "LAB-9",
+      "paperclip_status_after": "in_review",
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-9-demo-producer-agent.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-demo-producer-agent.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
+    },
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
       "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
-      "sha256": "ccea28262a852aef697d4733702521cbda093a3f8be67c832bb20915a2186d5f",
-      "size_bytes": 696,
+      "sha256": "e355339c053591fb6440bdc71f6a9b883f04663e9a8123952a8da15270b593f4",
+      "size_bytes": 928,
       "source_labels": [
         "demo_policy",
         "demo_sample"
@@ -13,7 +183,10 @@
       "contains_raw_secret": false,
       "paperclip_issue_identifier": "LAB-SMOKE-001",
       "paperclip_status_after": "done",
-      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-data-truth-guard.json"
+      "heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-SMOKE-001-data-truth-guard.json",
+      "canonical_heartbeat_json": "labebe-ai-design-studio/workspace/outputs/heartbeat-data-truth-guard.json",
+      "content_has_demo_label": true,
+      "content_is_task_level_demo": true
     }
   ]
 }

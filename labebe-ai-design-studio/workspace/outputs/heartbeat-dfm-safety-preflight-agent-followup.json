@@ -1,15 +1,15 @@
 {
   "agent": "dfm-safety-preflight-agent",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T17:11:30+00:00",
+  "timestamp_utc": "2026-04-25T17:11:31+00:00",
   "summary": "checked safety, DFM, and cost review gates",
+  "skip_reason": "target_issue_already_closed_followup",
   "missing_required_docs": [],
   "paperclip_agent_id": "8f02fcc8-3384-4cb1-a55f-8d131955f6e8",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
   "target_issue_identifier": "LAB-7",
   "target_run_token": "20260426-demo-generation-v3-rich-lab-7",
-  "smoke_run_token": null,
-  "wake_reason": null,
+  "smoke_run_token": "",
   "selected_issue": {
     "identifier": "LAB-7",
     "title": "EPIC 7 - DFM / Safety / Cost Preflight",
@@ -17,10 +17,7 @@
   },
   "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-7-dfm-safety-preflight-agent.md",
   "artifact_display_path": "outputs/case-LAB-7-dfm-safety-preflight-agent.md",
-  "paperclip_update": {
-    "issue_id": "a2508878-eeb2-4ee3-a5d4-6ed5c5674e9d",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-7"
-  },
-  "api_error": null
+  "paperclip_update": null,
+  "api_error": null,
+  "wake_reason": null
 }

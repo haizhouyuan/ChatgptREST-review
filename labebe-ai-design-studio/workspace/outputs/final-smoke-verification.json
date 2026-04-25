@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T16:36:46.577Z",
+  "generated_at": "2026-04-25T17:13:26.266Z",
   "paperclip": {
     "base_url": "http://127.0.0.1:3100",
     "health": {
@@ -17,51 +17,33 @@
     "company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
     "live_runs_active_count": 0,
     "latest_smoke_run": {
-      "id": "025f3561-8531-439e-863b-cf6f997b9e41",
+      "id": "4174ff0a-f91a-4a04-a447-948fe4dee46e",
       "companyId": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
       "agentId": "205c3052-effa-422c-939f-38d3dbfa85ff",
       "invocationSource": "on_demand",
       "triggerDetail": "manual",
       "status": "succeeded",
-      "startedAt": "2026-04-25T16:33:25.344Z",
-      "finishedAt": "2026-04-25T16:33:26.451Z",
+      "startedAt": "2026-04-26 01:11:51.903+08",
+      "finishedAt": "2026-04-26 01:11:52.473+08",
       "error": null,
-      "wakeupRequestId": "159221d2-005a-4672-9dff-b9d62ebdbb01",
+      "wakeupRequestId": "c7b1dec9-4c08-4396-ba87-ff5a01db8b65",
       "exitCode": 0,
-      "signal": null,
-      "usageJson": null,
-      "sessionIdBefore": null,
-      "sessionIdAfter": null,
       "logStore": "local_file",
-      "logRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/205c3052-effa-422c-939f-38d3dbfa85ff/025f3561-8531-439e-863b-cf6f997b9e41.ndjson",
-      "logBytes": 1364,
-      "logSha256": "bfd79599f55491ac496cc645d1a1cce90526569916be51aff3113e4cfa95d5ff",
-      "logCompressed": false,
-      "stdoutExcerpt": null,
-      "stderrExcerpt": null,
-      "errorCode": null,
-      "externalRunId": null,
-      "processPid": null,
-      "processGroupId": null,
-      "processStartedAt": null,
-      "retryOfRunId": null,
-      "processLossRetryCount": 0,
+      "logRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/205c3052-effa-422c-939f-38d3dbfa85ff/4174ff0a-f91a-4a04-a447-948fe4dee46e.ndjson",
+      "logBytes": 1404,
+      "logSha256": "69235aff2ec39920c6fbb0996998c9808a3c5c747e958e2ff2c4d218dba7aa94",
       "livenessState": "completed",
       "livenessReason": "Issue is done",
-      "continuationAttempt": 0,
-      "lastUsefulActionAt": null,
-      "nextAction": null,
-      "createdAt": "2026-04-25T16:33:25.125Z",
-      "updatedAt": "2026-04-25T16:33:26.522Z",
+      "createdAt": "2026-04-26 01:11:51.800086+08",
+      "updatedAt": "2026-04-26 01:11:52.525+08",
       "contextSnapshot": {
-        "issueId": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
         "taskId": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
+        "issueId": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
         "taskKey": "ccb43eed-4b0a-40c6-b995-1cd9a71751f4",
-        "wakeReason": "labebe_target_smoke_closeout_20260426",
+        "wakeReason": "labebe_smoke_restore_after_demo_generation_v3",
         "wakeSource": "on_demand",
         "wakeTriggerDetail": "manual"
-      },
-      "resultJson": null
+      }
     }
   },
   "smoke_case": {
@@ -69,25 +51,26 @@
     "key": "LAB-SMOKE-001",
     "title": "CASE 1 - Data Truth Guard end-to-end smoke",
     "status": "done",
-    "completed_at": "2026-04-25T16:33:26.334Z",
+    "completed_at": "2026-04-25T17:11:52.396Z",
     "artifact_path": "labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
     "artifact_exists": true,
-    "artifact_sha256": "ccea28262a852aef697d4733702521cbda093a3f8be67c832bb20915a2186d5f",
-    "heartbeat_json": {
+    "artifact_sha256": "e355339c053591fb6440bdc71f6a9b883f04663e9a8123952a8da15270b593f4",
+    "issue_heartbeat_json": {
       "agent": "data-truth-guard",
       "status": "ok",
-      "timestamp_utc": "2026-04-25T16:33:26+00:00",
+      "timestamp_utc": "2026-04-25T17:11:52+00:00",
       "summary": "checked Data Truth, forbidden claims, and demo sample labels",
       "missing_required_docs": [],
       "paperclip_agent_id": "205c3052-effa-422c-939f-38d3dbfa85ff",
       "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
       "target_issue_identifier": "LAB-SMOKE-001",
+      "target_run_token": "20260426-p0p1-final",
       "smoke_run_token": "20260426-p0p1-final",
       "wake_reason": null,
       "selected_issue": {
         "identifier": "LAB-SMOKE-001",
         "title": "CASE 1 - Data Truth Guard end-to-end smoke",
-        "status": "in_progress"
+        "status": "done"
       },
       "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-SMOKE-001-data-truth-guard.md",
       "artifact_display_path": "outputs/case-LAB-SMOKE-001-data-truth-guard.md",
@@ -106,7 +89,9 @@
     "mcp_tools_exported": true,
     "mcp_policy_ok": true,
     "artifact_ledger_present": true,
-    "secret_scan_hits": 0
+    "artifact_ledger_task_level": true,
+    "secret_scan_hits": 0,
+    "demo_generation_all_passed": true
   },
   "conclusion": {
     "closed_loop": true
