@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Labebe Boss Demo Onepager</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17211e;
+        --muted: #64716c;
+        --paper: #f7f3ec;
+        --panel: #fffaf1;
+        --line: #ddd2bf;
+        --leaf: #2f6f5f;
+        --blue: #315f89;
+        --clay: #bf6a49;
+        --warn: #9b4b35;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+      }
+
+      main {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+
+      header,
+      footer {
+        padding: 22px clamp(18px, 4vw, 56px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        gap: 22px;
+        align-items: end;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(32px, 5vw, 62px);
+        line-height: 0.96;
+        max-width: 860px;
+      }
+
+      .eyebrow {
+        margin-bottom: 8px;
+        color: var(--clay);
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .score {
+        min-width: 210px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .score strong {
+        display: block;
+        color: var(--leaf);
+        font-size: 34px;
+        line-height: 1;
+      }
+
+      .score span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .board {
+        display: grid;
+        grid-template-columns: 0.8fr 1.15fr 0.9fr;
+        gap: 16px;
+        padding: clamp(18px, 4vw, 56px);
+      }
+
+      .panel {
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        overflow: hidden;
+      }
+
+      .panel h2 {
+        padding: 18px;
+        border-bottom: 1px solid var(--line);
+        font-size: 22px;
+      }
+
+      .items,
+      .timeline,
+      .blocked,
+      .decision {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+      }
+
+      .item,
+      .step,
+      .claim {
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf8;
+      }
+
+      .item strong,
+      .step strong,
+      .claim strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--blue);
+        font-size: 14px;
+      }
+
+      .item span,
+      .step span,
+      .claim span,
+      .decision p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 74px 1fr auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .badge {
+        display: inline-flex;
+        min-height: 26px;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 8px;
+        border-radius: 999px;
+        background: #e5f0ea;
+        color: var(--leaf);
+        font-size: 11px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .claim.blocked strong,
+      .claim.blocked .badge {
+        color: var(--warn);
+      }
+
+      .claim.blocked .badge {
+        background: #f5e4dc;
+      }
+
+      .output {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+      }
+
+      .hero-img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+      }
+
+      .decision h3 {
+        font-size: 26px;
+        line-height: 1.08;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        border-bottom: 0;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      footer div {
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf8;
+      }
+
+      footer strong {
+        display: block;
+        color: var(--leaf);
+        font-size: 20px;
+      }
+
+      footer span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        header {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .board,
+        footer {
+          grid-template-columns: 1fr;
+        }
+
+        .step {
+          grid-template-columns: 62px 1fr;
+        }
+
+        .step .badge {
+          grid-column: 2;
+          justify-self: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="eyebrow">Paperclip front-stage demo</p>
+          <h1>From local sample signals to a governed Labebe product concept.</h1>
+        </div>
+        <div class="score" aria-label="Pro review state">
+          <strong>6.1 to 8.0</strong>
+          <span>Pro said the closed loop was credible but needed a boss-facing product layer. This page is that layer.</span>
+        </div>
+      </header>
+
+      <section class="board" aria-label="Boss demo onepager">
+        <article class="panel">
+          <h2>Input Signals</h2>
+          <div class="items">
+            <div class="item"><strong>RS-001</strong><span>Small-kitchen storage footprint drives compact stow-away requirements.</span></div>
+            <div class="item"><strong>RS-002</strong><span>Cleaning friction becomes a cleanable step geometry requirement.</span></div>
+            <div class="item"><strong>RS-003</strong><span>Foldable form needs a visible lock-state design cue.</span></div>
+            <div class="item"><strong>DT-006</strong><span>Demo samples can inspire exploration but cannot prove demand.</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2>Agent Handoff</h2>
+          <div class="timeline">
+            <div class="step"><strong>LAB-1</strong><span>Data Truth labels source boundaries and blocks unsupported claims.</span><em class="badge">claim gate</em></div>
+            <div class="step"><strong>LAB-2</strong><span>Radar turns samples into opportunity clusters with missing evidence.</span><em class="badge">sample-only</em></div>
+            <div class="step"><strong>LAB-3</strong><span>VOC maps pain to requirements for SpaceSmart.</span><em class="badge">concept brief</em></div>
+            <div class="step"><strong>LAB-4</strong><span>Design Strategy compares four routes and selects Fold-Flat Pantry.</span><em class="badge">route review</em></div>
+            <div class="step"><strong>LAB-7</strong><span>DFM/Safety blocks safety, cost, certification, and launch claims.</span><em class="badge">stop/go</em></div>
+            <div class="step"><strong>LAB-8</strong><span>Concept-to-Market writes draft assets with source labels.</span><em class="badge">publish blocked</em></div>
+          </div>
+        </article>
+
+        <article class="panel output">
+          <h2>Review-Ready Output</h2>
+          <img class="hero-img" src="./boss-demo-wow/assets/foldable-learning-tower-montessori-kitchen-tower-log-color.jpg" alt="Foldable wooden learning tower concept" />
+          <div class="decision">
+            <h3>SpaceSmart Foldable Learning Tower</h3>
+            <p>Boss decision: approve prototype exploration, or require more customer evidence first.</p>
+          </div>
+          <div class="blocked">
+            <div class="claim"><strong>Allowed</strong><span>Review-ready draft concept based on local demo_sample signals.</span><em class="badge">draft</em></div>
+            <div class="claim blocked"><strong>Blocked</strong><span>Certified safe, proven demand, final cost, and available-now claims.</span><em class="badge">no source</em></div>
+          </div>
+        </article>
+      </section>
+
+      <footer aria-label="Closed loop evidence">
+        <div><strong>true</strong><span>demo_generation_summary.allPassed</span></div>
+        <div><strong>done</strong><span>LAB-SMOKE-001 smoke issue</span></div>
+        <div><strong>0</strong><span>secret scan hits</span></div>
+        <div><strong>0</strong><span>active Paperclip runs</span></div>
+      </footer>
+    </main>
+  </body>
+</html>

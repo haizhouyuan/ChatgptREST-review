@@ -21,6 +21,22 @@
 - Both concepts remain review-ready drafts.
 - SpaceSmart proceeds first for DFM/Safety preflight.
 - Mini Bakery proceeds only as a demo route until cost and module assumptions are reviewed.
+
+## Director Gate Notes
+
+| Gate | Decision | Reason | Owner |
+| --- | --- | --- | --- |
+| Brand fit | Proceed for SpaceSmart | compact utility still supports warm Labebe playroom language | Design Director |
+| Product clarity | Proceed with edits | one hero concept is easier to explain than parallel concepts | Demo Producer |
+| Safety language | Block external wording | no tipping, pinch, age-grade, or certification evidence exists | DFM/Safety |
+| Market promise | Block demand wording | demo samples are directional only | Data Truth Guard |
+| Prototype ask | Allow as boss decision | next decision is evidence funding, not launch approval | Product Innovation Director |
+
+## Handoff To LAB-7
+
+- Selected concept: SpaceSmart Foldable Learning Tower.
+- Required review focus: hinge, latch, cleanable step geometry, base width, small parts, and BOM delta.
+- Required wording boundary: use "explores" and "review-ready draft"; do not use "safe", "certified", "proven", "available", or final cost language.
 ## Guardrails
 
 - Source labels used: demo_sample, demo_policy, user_provided_source, verified_fact.

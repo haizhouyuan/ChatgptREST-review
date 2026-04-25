@@ -1,0 +1,80 @@
+{
+  "generated_at": "2026-04-25T18:11:52.099Z",
+  "pro": {
+    "job_id": "c45a1105c7a44bdaad606a33c78bfc4d",
+    "conversation_url": "https://chatgpt.com/c/69ecffd4-4890-83e8-8a63-ec4c75b7f62a",
+    "verdict_before_iteration": "Governance loop credible, but not yet high-quality plus wow boss demo.",
+    "baseline_scores": {
+      "orchestration_credibility": 8,
+      "product_story_clarity": 6.5,
+      "artifact_quality": 5,
+      "wow_factor": 3.5,
+      "executive_demo_readiness": 6,
+      "overall": 6.1
+    },
+    "target_after_iteration": {
+      "orchestration_credibility": 8.5,
+      "product_story_clarity": 8,
+      "artifact_quality": 7.5,
+      "wow_factor": 7,
+      "executive_demo_readiness": 8
+    }
+  },
+  "actions_taken": [
+    "Added boss-demo-onepager.html as the single-screen front-stage artifact.",
+    "Added boss-demo-wow visual console with local Labebe assets.",
+    "Added agent-handoff-map.md to make downstream use of agent output visible.",
+    "Added space-smart-concept-card.md to make the product hero memorable.",
+    "Added claim-lineage-matrix.md with an explicit blocked-claim demo.",
+    "Enhanced LAB-4, LAB-6, LAB-7, LAB-8, and LAB-9 into decision artifacts."
+  ],
+  "acceptance": {
+    "pro_answer_recorded": true,
+    "boss_onepager_present": true,
+    "boss_onepager_has_inputs_timeline_output_blocked_claims": true,
+    "visible_gates_at_least_three": true,
+    "handoff_map_covers_lab1_to_lab8": true,
+    "concept_card_has_can_say_and_cannot_say": true,
+    "claim_lineage_has_blocked_demo": true,
+    "lab4_route_cards": true,
+    "lab7_stop_go_gate": true,
+    "lab8_asset_preview_board": true,
+    "lab9_live_script_and_click_path": true,
+    "screenshots_nonempty": true,
+    "paperclip_health_ok": true,
+    "demo_generation_all_passed": true,
+    "secret_scan_hits": 0,
+    "secret_scan_hits_zero": true
+  },
+  "screenshots": [
+    {
+      "path": "qa/paperclip-wow/boss-demo-wow-desktop.png",
+      "size_bytes": 1989997,
+      "sha256": "cebdb04db81011fd920e0232ded6dc17eb36b1dae57a6185622fbf4b646acf2e",
+      "width": 1440,
+      "height": 3850
+    },
+    {
+      "path": "qa/paperclip-wow/boss-demo-wow-mobile.png",
+      "size_bytes": 881910,
+      "sha256": "bb32acf88b1e86ba46792d037795e172e703211e44ab9aeab29757ae7c819d7e",
+      "width": 390,
+      "height": 6528
+    },
+    {
+      "path": "qa/paperclip-wow/boss-demo-onepager-desktop.png",
+      "size_bytes": 348248,
+      "sha256": "586a7823bfb8712d9daeec0d9d3e8e7e9f2ac93748ca32ea46514f6cfa30a90d",
+      "width": 1440,
+      "height": 1263
+    },
+    {
+      "path": "qa/paperclip-wow/boss-demo-onepager-mobile.png",
+      "size_bytes": 279490,
+      "sha256": "00781935699243beaaa4fbebfe8ac6b5503ef5a501762dddf0c702b449acb951",
+      "width": 390,
+      "height": 2817
+    }
+  ],
+  "status": "passed"
+}

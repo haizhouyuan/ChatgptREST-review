@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T17:13:26.266Z",
+  "generated_at": "2026-04-25T18:11:52.099Z",
   "artifacts": [
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-0-product-innovation-director.md",
@@ -72,8 +72,8 @@
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-4-design-strategy-agent.md",
       "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-4-design-strategy-agent.md",
-      "sha256": "d6f54e42a87aca44f093382cb017ba7494073e965f74e1401e6fa84e54e50934",
-      "size_bytes": 1463,
+      "sha256": "f7186f36daba8ebf562a87af3eb748d40c7bb879ff25acc9d782481bc66c078f",
+      "size_bytes": 2862,
       "source_labels": [
         "demo_policy",
         "demo_sample"
@@ -106,8 +106,8 @@
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-6-design-director-agent.md",
       "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-6-design-director-agent.md",
-      "sha256": "0c3dcbe3c4ee73c0e3a7ef5d9fd4b39dc00ebbec66d0b16ff727cf9c807bda31",
-      "size_bytes": 1298,
+      "sha256": "754eb6ecbb1e1aa034d436eab290887c9b74db12f4757f7b9f60cbfe36b30f99",
+      "size_bytes": 2307,
       "source_labels": [
         "demo_policy",
         "demo_sample"
@@ -123,8 +123,8 @@
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-7-dfm-safety-preflight-agent.md",
       "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-7-dfm-safety-preflight-agent.md",
-      "sha256": "4802cbe239af5958401a1261b7ed3873cc9428d2452f286e9840b5d99197cf76",
-      "size_bytes": 1372,
+      "sha256": "b81e94e354b73476c10751646723e16fecb2c04ba950bbf11e5cbe067adc9300",
+      "size_bytes": 2618,
       "source_labels": [
         "demo_policy",
         "demo_sample"
@@ -140,8 +140,8 @@
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-8-concept-to-market-agent.md",
       "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-8-concept-to-market-agent.md",
-      "sha256": "95166501930ae9f389ecfe0af6519e9c0de1c172318660a23dc109d2824aa4c0",
-      "size_bytes": 1545,
+      "sha256": "39926158171b62d4aab1d8af70dc67c0b3413a15bbdf4aad6bd9323cf2346e4c",
+      "size_bytes": 4132,
       "source_labels": [
         "demo_policy",
         "demo_sample"
@@ -157,8 +157,8 @@
     {
       "artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-9-demo-producer-agent.md",
       "relative_artifact": "labebe-ai-design-studio/workspace/outputs/case-LAB-9-demo-producer-agent.md",
-      "sha256": "28f4c9974a72847e21c9ed61add2cbf2f6fd13ee58fd57921eef72f58069e1c7",
-      "size_bytes": 1353,
+      "sha256": "9d50bc6c26349d731e56b919e7784dd43f678b10765240af4771dbe8b119cd34",
+      "size_bytes": 3499,
       "source_labels": [
         "demo_policy",
         "demo_sample"
@@ -188,5 +188,11 @@
       "content_has_demo_label": true,
       "content_is_task_level_demo": true
     }
-  ]
+  ],
+  "post_pro_iteration": {
+    "applied": true,
+    "pro_job_id": "c45a1105c7a44bdaad606a33c78bfc4d",
+    "pro_conversation_url": "https://chatgpt.com/c/69ecffd4-4890-83e8-8a63-ec4c75b7f62a",
+    "note": "Hashes refreshed after enhancing LAB-4, LAB-6, LAB-7, LAB-8, and LAB-9 into decision artifacts."
+  }
 }

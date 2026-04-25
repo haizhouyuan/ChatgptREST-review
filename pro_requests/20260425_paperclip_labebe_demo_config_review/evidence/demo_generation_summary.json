@@ -43,7 +43,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/21bb4465-6cc8-4b1e-bfe7-99ca18cceb63/e39f9e35-ad5a-4101-bb7d-b3e992f143c4.ndjson",
       "runError": null,
       "livenessState": "needs_followup",
-      "livenessReason": "Run produced useful output but no concrete action evidence"
+      "livenessReason": "Run produced useful output but no concrete action evidence",
+      "postProArtifactSha256": "4232b1e94d6e070d3c164537ca5ecf60c7681c36799e66de30131d075bc9da3a"
     },
     {
       "identifier": "LAB-1",
@@ -82,7 +83,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/205c3052-effa-422c-939f-38d3dbfa85ff/bf517d57-8da1-456a-b212-4e886340b73f.ndjson",
       "runError": null,
       "livenessState": "needs_followup",
-      "livenessReason": "Run produced useful output but no concrete action evidence"
+      "livenessReason": "Run produced useful output but no concrete action evidence",
+      "postProArtifactSha256": "ed7a9146eb61e6340d6a3b3574d8e61759df2024923e44620d7c7515b0f8e025"
     },
     {
       "identifier": "LAB-2",
@@ -121,7 +123,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/636fc974-2d4e-4e19-9c4e-d918c02b2b22/dca03f55-2f1a-4104-afe8-a4ba1df914d2.ndjson",
       "runError": null,
       "livenessState": "needs_followup",
-      "livenessReason": "Run produced useful output but no concrete action evidence"
+      "livenessReason": "Run produced useful output but no concrete action evidence",
+      "postProArtifactSha256": "acfc75bc3e649408b7d2cac5c14513adec1aa357a0da5fd73649380fc1657685"
     },
     {
       "identifier": "LAB-3",
@@ -160,7 +163,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/dbe06d12-5752-4e35-b243-c8655cb5d4f0/68bbc593-57a2-4255-92ea-90c64aa411bb.ndjson",
       "runError": null,
       "livenessState": "needs_followup",
-      "livenessReason": "Run produced useful output but no concrete action evidence"
+      "livenessReason": "Run produced useful output but no concrete action evidence",
+      "postProArtifactSha256": "376c454b11489fe9e3e62f750e8e16b3f00c0fb4f6770b0d995038e3ebcc39aa"
     },
     {
       "identifier": "LAB-4",
@@ -178,7 +182,7 @@
       "expectedStatus": "in_review",
       "artifactDisplayPath": "outputs/case-LAB-4-design-strategy-agent.md",
       "artifactPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-4-design-strategy-agent.md",
-      "artifactBytes": 1463,
+      "artifactBytes": 2862,
       "heartbeatPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-4-design-strategy-agent.json",
       "latestCommentId": "61465a97-4ed9-4696-b4ae-b32991ba1241",
       "latestCommentCreatedAt": "2026-04-26 01:10:57.601787+08",
@@ -199,7 +203,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/c02f100d-fa49-40be-8ba2-aa99479ee731/1caed56d-d850-4a18-b047-bb08ceee9eb9.ndjson",
       "runError": null,
       "livenessState": "needs_followup",
-      "livenessReason": "Run produced useful output but no concrete action evidence"
+      "livenessReason": "Run produced useful output but no concrete action evidence",
+      "postProArtifactSha256": "f7186f36daba8ebf562a87af3eb748d40c7bb879ff25acc9d782481bc66c078f"
     },
     {
       "identifier": "LAB-5",
@@ -238,7 +243,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/c02f100d-fa49-40be-8ba2-aa99479ee731/07c8295d-fb1e-4292-a856-e076544f2cc0.ndjson",
       "runError": null,
       "livenessState": "needs_followup",
-      "livenessReason": "Run produced useful output but no concrete action evidence"
+      "livenessReason": "Run produced useful output but no concrete action evidence",
+      "postProArtifactSha256": "963f0c856de93cab5ad01bbe7357ad9f6aebef9273d67c0d1da09c4b57dde376"
     },
     {
       "identifier": "LAB-6",
@@ -256,7 +262,7 @@
       "expectedStatus": "in_review",
       "artifactDisplayPath": "outputs/case-LAB-6-design-director-agent.md",
       "artifactPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-6-design-director-agent.md",
-      "artifactBytes": 1298,
+      "artifactBytes": 2307,
       "heartbeatPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-6-design-director-agent.json",
       "latestCommentId": "45200f7c-580b-459a-95db-ef280aa612e9",
       "latestCommentCreatedAt": "2026-04-26 01:11:24.553286+08",
@@ -277,7 +283,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/f2d79982-2af8-4223-92f4-905aaedcba68/b817927b-9e0d-44ba-96cb-c16ce7298e4c.ndjson",
       "runError": null,
       "livenessState": null,
-      "livenessReason": null
+      "livenessReason": null,
+      "postProArtifactSha256": "754eb6ecbb1e1aa034d436eab290887c9b74db12f4757f7b9f60cbfe36b30f99"
     },
     {
       "identifier": "LAB-7",
@@ -295,7 +302,7 @@
       "expectedStatus": "in_review",
       "artifactDisplayPath": "outputs/case-LAB-7-dfm-safety-preflight-agent.md",
       "artifactPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-7-dfm-safety-preflight-agent.md",
-      "artifactBytes": 1372,
+      "artifactBytes": 2618,
       "heartbeatPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-7-dfm-safety-preflight-agent.json",
       "latestCommentId": "b01f19f7-7bfb-4af1-9b7f-699f7720acd2",
       "latestCommentCreatedAt": "2026-04-26 01:11:31.0052+08",
@@ -316,7 +323,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/8f02fcc8-3384-4cb1-a55f-8d131955f6e8/fdbb4ffa-f1f3-47af-b4b7-878c5d4d0c90.ndjson",
       "runError": null,
       "livenessState": "needs_followup",
-      "livenessReason": "Run produced useful output but no concrete action evidence"
+      "livenessReason": "Run produced useful output but no concrete action evidence",
+      "postProArtifactSha256": "b81e94e354b73476c10751646723e16fecb2c04ba950bbf11e5cbe067adc9300"
     },
     {
       "identifier": "LAB-8",
@@ -334,7 +342,7 @@
       "expectedStatus": "in_review",
       "artifactDisplayPath": "outputs/case-LAB-8-concept-to-market-agent.md",
       "artifactPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-8-concept-to-market-agent.md",
-      "artifactBytes": 1545,
+      "artifactBytes": 4132,
       "heartbeatPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-8-concept-to-market-agent.json",
       "latestCommentId": "312dfee9-9ce9-4f93-a9b7-d40cb3b839c8",
       "latestCommentCreatedAt": "2026-04-26 01:11:37.611328+08",
@@ -355,7 +363,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/b13ca279-5945-47a7-8722-c95ef15d00cc/babc5941-b78d-4c2b-ab45-d6a4d1642e5b.ndjson",
       "runError": null,
       "livenessState": null,
-      "livenessReason": null
+      "livenessReason": null,
+      "postProArtifactSha256": "39926158171b62d4aab1d8af70dc67c0b3413a15bbdf4aad6bd9323cf2346e4c"
     },
     {
       "identifier": "LAB-9",
@@ -373,7 +382,7 @@
       "expectedStatus": "in_review",
       "artifactDisplayPath": "outputs/case-LAB-9-demo-producer-agent.md",
       "artifactPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-9-demo-producer-agent.md",
-      "artifactBytes": 1353,
+      "artifactBytes": 3499,
       "heartbeatPath": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/heartbeat-LAB-9-demo-producer-agent.json",
       "latestCommentId": "5f989ce1-6b7a-47f0-bed8-3a72510a26fd",
       "latestCommentCreatedAt": "2026-04-26 01:11:43.771478+08",
@@ -394,7 +403,8 @@
       "runLogRef": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df/fe6a8e49-a61c-4298-88b6-dd5a60f44b45/60b7a99d-2492-416a-ac07-6b845df7ce44.ndjson",
       "runError": null,
       "livenessState": "needs_followup",
-      "livenessReason": "Run produced useful output but no concrete action evidence"
+      "livenessReason": "Run produced useful output but no concrete action evidence",
+      "postProArtifactSha256": "9d50bc6c26349d731e56b919e7784dd43f678b10765240af4771dbe8b119cd34"
     }
   ],
   "smokeRestore": {
@@ -514,5 +524,24 @@
       "status": "done",
       "assigneeAgentId": "205c3052-effa-422c-939f-38d3dbfa85ff"
     }
-  ]
+  ],
+  "postProEnhancement": {
+    "applied": true,
+    "generatedAt": "2026-04-25T18:11:52.099Z",
+    "pro_job_id": "c45a1105c7a44bdaad606a33c78bfc4d",
+    "added_frontstage_artifacts": [
+      "labebe-ai-design-studio/workspace/outputs/boss-demo-onepager.html",
+      "labebe-ai-design-studio/workspace/outputs/boss-demo-wow/index.html",
+      "labebe-ai-design-studio/workspace/outputs/agent-handoff-map.md",
+      "labebe-ai-design-studio/workspace/outputs/space-smart-concept-card.md",
+      "labebe-ai-design-studio/workspace/outputs/claim-lineage-matrix.md"
+    ],
+    "enhanced_issue_artifacts": [
+      "LAB-4",
+      "LAB-6",
+      "LAB-7",
+      "LAB-8",
+      "LAB-9"
+    ]
+  }
 }

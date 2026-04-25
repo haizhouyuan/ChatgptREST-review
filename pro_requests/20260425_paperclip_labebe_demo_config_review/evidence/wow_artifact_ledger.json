@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-04-25T18:11:52.099Z",
+  "pro_job_id": "c45a1105c7a44bdaad606a33c78bfc4d",
+  "artifacts": [
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/boss-demo-onepager.html",
+      "sha256": "ebce5f25b54c0d00806c5827fb5617f40282bc2e1ef0e95390d2ae1849ad3254",
+      "size_bytes": 8548,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/boss-demo-wow/index.html",
+      "sha256": "eadc387fe2426d9acdbdca85bf010de8793584e12703812141e880c665b0d787",
+      "size_bytes": 6915,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/boss-demo-wow/style.css",
+      "sha256": "67065054e343aa815b3f9d3666a414bee146fe0fce667b808bb2bf7883c7e0c7",
+      "size_bytes": 7369,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/boss-demo-wow/script.js",
+      "sha256": "d8c98e2e22f49ed5522520fa4d51895d8d0d712ac4eb57bd24877c325727d266",
+      "size_bytes": 3864,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/boss-demo-wow/README.md",
+      "sha256": "6911824dfac392d7b3ad567934a7cedca6f06d13d0eed84265fde5bf1349cadb",
+      "size_bytes": 1011,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/boss-demo-wow/90-second-script.md",
+      "sha256": "21b5075123fdc947dba46922f6a0ce699a420fc86aa138a25d280e4f6599aa5f",
+      "size_bytes": 1371,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/agent-handoff-map.md",
+      "sha256": "8096608aba93e26ad6db9451b55362688204c049342747d6669b136cf8682c45",
+      "size_bytes": 2841,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/space-smart-concept-card.md",
+      "sha256": "d8e18a4dd96c2012caae610386b7edcca2b409f32bf2c3b91fcd340f21593779",
+      "size_bytes": 2438,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "labebe-ai-design-studio/workspace/outputs/claim-lineage-matrix.md",
+      "sha256": "9f387cfca79b2fb99824a2710d378f3d15b4e76b824a0c66b87722a781a1c6a3",
+      "size_bytes": 2079,
+      "role": "boss_frontstage_artifact"
+    },
+    {
+      "path": "qa/paperclip-wow/boss-demo-wow-desktop.png",
+      "sha256": "cebdb04db81011fd920e0232ded6dc17eb36b1dae57a6185622fbf4b646acf2e",
+      "size_bytes": 1989997,
+      "role": "visual_verification_screenshot"
+    },
+    {
+      "path": "qa/paperclip-wow/boss-demo-wow-mobile.png",
+      "sha256": "bb32acf88b1e86ba46792d037795e172e703211e44ab9aeab29757ae7c819d7e",
+      "size_bytes": 881910,
+      "role": "visual_verification_screenshot"
+    },
+    {
+      "path": "qa/paperclip-wow/boss-demo-onepager-desktop.png",
+      "sha256": "586a7823bfb8712d9daeec0d9d3e8e7e9f2ac93748ca32ea46514f6cfa30a90d",
+      "size_bytes": 348248,
+      "role": "visual_verification_screenshot"
+    },
+    {
+      "path": "qa/paperclip-wow/boss-demo-onepager-mobile.png",
+      "sha256": "00781935699243beaaa4fbebfe8ac6b5503ef5a501762dddf0c702b449acb951",
+      "size_bytes": 279490,
+      "role": "visual_verification_screenshot"
+    }
+  ]
+}
