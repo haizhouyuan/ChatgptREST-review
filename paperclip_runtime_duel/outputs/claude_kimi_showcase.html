@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paperclip Claude Code Kimi Demo 展示入口</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17201b;
+      --muted: #5f6a62;
+      --paper: #fbfbf7;
+      --panel: #ffffff;
+      --line: #d8dfd8;
+      --green: #245c42;
+      --green-soft: #e6f1e8;
+      --blue: #2f5f8f;
+      --blue-soft: #e9f0f7;
+      --clay: #b85a3c;
+      --amber: #e4b84b;
+      --dark: #202821;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      min-height: 86dvh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
+      border-bottom: 1px solid var(--line);
+      background: #f6f7ef;
+    }
+
+    .hero-copy {
+      padding: clamp(28px, 5vw, 76px);
+      display: grid;
+      align-content: center;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    .eyebrow {
+      margin: 0;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 960px;
+      font-size: clamp(40px, 6.2vw, 82px);
+      line-height: 0.98;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.48;
+      overflow-wrap: anywhere;
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 14px;
+      border: 1px solid var(--green);
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 820;
+      white-space: nowrap;
+      transition: transform 140ms ease, background 140ms ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button:active { transform: scale(0.98); }
+
+    .button.secondary {
+      background: #fff;
+      color: var(--green);
+    }
+
+    .button.blue {
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 520px;
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(0.98) contrast(1.03);
+    }
+
+    .caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+      line-height: 1.42;
+      overflow-wrap: anywhere;
+    }
+
+    .caption strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    main {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 58px;
+    }
+
+    section {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(25px, 3vw, 38px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      margin: 0 0 18px;
+      max-width: 840px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.58;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .panel,
+    .metric,
+    .asset {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      overflow: hidden;
+    }
+
+    .panel {
+      padding: 18px;
+      min-height: 178px;
+    }
+
+    .panel h3,
+    .metric h3,
+    .asset h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .panel p,
+    .metric p,
+    .asset p,
+    .small {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      margin-bottom: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .tag.blue {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .tag.clay {
+      background: #f5e6df;
+      color: var(--clay);
+    }
+
+    .metric {
+      padding: 16px;
+      border-top: 4px solid var(--green);
+    }
+
+    .metric:nth-child(2) { border-top-color: var(--blue); }
+    .metric:nth-child(3) { border-top-color: var(--amber); }
+    .metric:nth-child(4) { border-top-color: var(--clay); }
+
+    .metric .value {
+      display: block;
+      margin-bottom: 6px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .asset img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .asset div { padding: 14px; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    th {
+      color: var(--green);
+      background: #f4f7f1;
+      font-weight: 850;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    code {
+      padding: 2px 5px;
+      border-radius: 6px;
+      background: #eef2ee;
+      color: #24342a;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      overflow-wrap: anywhere;
+    }
+
+    .path-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .path-item {
+      display: grid;
+      grid-template-columns: minmax(150px, 0.25fr) minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .path-item strong {
+      font-size: 14px;
+    }
+
+    .path-item a {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 760;
+      overflow-wrap: anywhere;
+    }
+
+    .copy {
+      min-height: 36px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f9faf7;
+      color: var(--green);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .script {
+      display: grid;
+      gap: 10px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 14px 14px 14px 52px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    footer {
+      padding: 26px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 920px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .hero-media {
+        min-height: 360px;
+        order: -1;
+      }
+
+      .caption {
+        left: 16px;
+        right: auto;
+        width: calc(100vw - 32px);
+      }
+
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .path-item {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      main { width: min(100% - 24px, 1200px); }
+
+      .hero-copy {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: clamp(32px, 10.5vw, 42px);
+        line-height: 1.06;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .action-row {
+        display: grid;
+      }
+
+      .button {
+        white-space: normal;
+        text-align: center;
+      }
+
+      .caption {
+        width: min(330px, calc(100vw - 32px));
+      }
+
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Paperclip Runtime Duel / Claude Code Kimi</p>
+      <h1>展示入口在这里</h1>
+      <p class="lead">这是一个可直接打开的展示页：先看 Claude Code Kimi 的最终结果，再看 Paperclip issue 闭环、评分证据、打包档案和模型路由说明。不要再从文件夹里翻。</p>
+      <div class="action-row">
+        <a class="button" href="claude_kimi_code_demo.md">打开最终 demo artifact</a>
+        <a class="button secondary" href="claude_kimi_comparison.md">看同任务对比结论</a>
+        <a class="button blue" data-paperclip-issue href="http://127.0.0.1:3100/issues/5521d6b7-b772-45b7-b247-904a20ad9e3a">打开 Paperclip RUN-3</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="showpiece_assets/ai-studio-hero.jpg" alt="Labebe AI Design Studio 展示图">
+      <div class="caption">
+        <strong>展示定位</strong>
+        不是单个聊天输出，而是 Paperclip 管控下的工单、智能体、运行环境、工具策略和证据闭环。
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>最短展示路径</h2>
+      <p class="section-lead">对外演示按这个顺序走，三分钟以内能讲清楚：结果在哪里、证据在哪里、为什么这是 Kimi 模型通过 Claude Code 兼容路径跑出来的。</p>
+      <div class="grid-3">
+        <article class="panel">
+          <span class="tag">Step 1</span>
+          <h3>先看结果</h3>
+          <p>打开 <code>claude_kimi_code_demo.md</code>。这是 Claude Code Kimi lane 生成的完整 boss demo pack，包含 12 个要求章节和完整 self-score。</p>
+        </article>
+        <article class="panel">
+          <span class="tag blue">Step 2</span>
+          <h3>再看闭环</h3>
+          <p>打开 Paperclip RUN-3 issue。状态是 <code>done</code>，成功 run 是 <code>8cb4fcd5-944b-4976-868e-fdc28c74c23d</code>。</p>
+        </article>
+        <article class="panel">
+          <span class="tag clay">Step 3</span>
+          <h3>最后看证据</h3>
+          <p>打开 <code>scorecard.json</code>、<code>secret_scan.json</code> 和 package SHA。可以证明 artifact 非空、结构完整、无 secret 命中。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>本次结果</h2>
+      <div class="grid-4">
+        <article class="metric">
+          <span class="value">100</span>
+          <h3>确定性评分</h3>
+          <p>结构、证据、policy hygiene 全部通过。</p>
+        </article>
+        <article class="metric">
+          <span class="value">97</span>
+          <h3>修正 self-score</h3>
+          <p>扣分点主要是 runtime metadata conflict 需要清楚说明。</p>
+        </article>
+        <article class="metric">
+          <span class="value">19</span>
+          <h3>证据命中</h3>
+          <p>比 native Kimi lane 更偏完整 board-pack。</p>
+        </article>
+        <article class="metric">
+          <span class="value">0</span>
+          <h3>secret 命中</h3>
+          <p>23 个文件扫描，findingCount 为 0。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>展示给别人的链接</h2>
+      <p class="section-lead">如果对方和你在同一台机器上，用本机地址。如果对方用手机或外网入口，通过 Tailscale hostname 打开。</p>
+      <div class="path-list">
+        <div class="path-item">
+          <strong>本机展示页</strong>
+          <a href="http://127.0.0.1:8778/claude_kimi_showcase.html">http://127.0.0.1:8778/claude_kimi_showcase.html</a>
+          <button class="copy" data-copy="http://127.0.0.1:8778/claude_kimi_showcase.html">复制</button>
+        </div>
+        <div class="path-item">
+          <strong>手机/Tailscale</strong>
+          <a href="http://yogas2.tail594315.ts.net:8778/claude_kimi_showcase.html">http://yogas2.tail594315.ts.net:8778/claude_kimi_showcase.html</a>
+          <button class="copy" data-copy="http://yogas2.tail594315.ts.net:8778/claude_kimi_showcase.html">复制</button>
+        </div>
+        <div class="path-item">
+          <strong>Paperclip issue</strong>
+          <a data-paperclip-issue href="http://127.0.0.1:3100/issues/5521d6b7-b772-45b7-b247-904a20ad9e3a">http://127.0.0.1:3100/issues/5521d6b7-b772-45b7-b247-904a20ad9e3a</a>
+          <button class="copy" data-copy-paperclip>复制</button>
+        </div>
+        <div class="path-item">
+          <strong>打包档案</strong>
+          <a href="runtime_duel_package_20260426T0537Z.tar.gz">runtime_duel_package_20260426T0537Z.tar.gz</a>
+          <button class="copy" data-copy="8422aec2b2a0299700038481bf1dedbcd2f5e6291fb08bf13eb6ea000516b404">复制 SHA256</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>路线说明</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>项目</th>
+              <th>本次事实</th>
+              <th>展示时怎么说</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Agent lane</td>
+              <td><code>Claude Code Kimi Content Lead</code>, agent id <code>d4a4c6b7-06d5-4859-8459-40f869f2ee40</code></td>
+              <td>这是 Paperclip 里专门新建的 Claude Code Kimi lane。</td>
+            </tr>
+            <tr>
+              <td>Issue</td>
+              <td><code>RUN-3</code>, issue id <code>5521d6b7-b772-45b7-b247-904a20ad9e3a</code>, status <code>done</code></td>
+              <td>不是临时文件输出，而是 issue 驱动的闭环结果。</td>
+            </tr>
+            <tr>
+              <td>Runtime route</td>
+              <td>Paperclip <code>claude_local</code> adapter command 指向 <code>/home/yuanhaizhou/.local/bin/claudekimi</code></td>
+              <td>我们不是在比官方 Claude Code，而是在测试 Kimi 通过 Claude Code 兼容路径的效果。</td>
+            </tr>
+            <tr>
+              <td>Model evidence</td>
+              <td>Raw stream-json 出现 <code>model: kimi-for-coding</code>；aggregate <code>usageJson</code> 仍显示 Claude Code 默认计费元数据。</td>
+              <td>以 raw stream-json 作为实际上游模型证据，同时如实披露 metadata conflict。</td>
+            </tr>
+            <tr>
+              <td>结论</td>
+              <td><code>claudekimi</code> 比之前 native Kimi 更像完整 board-pack；native Kimi 的产品审美更干净。</td>
+              <td>主推 claudekimi 做高要求 demo 生成，同时保留 native Kimi 的审美作为人工评审参考。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>可展示素材</h2>
+      <p class="section-lead">这些图片是随包放在本地的展示素材，可以配合 boss demo pack 讲产品场景和 AI studio 概念。</p>
+      <div class="grid-4">
+        <article class="asset">
+          <img src="showpiece_assets/foldable-learning-tower.jpg" alt="Foldable learning tower">
+          <div>
+            <h3>Learning Tower</h3>
+            <p>用于说明 Labebe 产品概念生成和 DFM / safety gate。</p>
+          </div>
+        </article>
+        <article class="asset">
+          <img src="showpiece_assets/play-kitchen.jpg" alt="Play kitchen">
+          <div>
+            <h3>Play Kitchen</h3>
+            <p>用于说明产品视觉方向和场景演示。</p>
+          </div>
+        </article>
+        <article class="asset">
+          <img src="showpiece_assets/bakery-playset.jpg" alt="Bakery playset">
+          <div>
+            <h3>Bakery Playset</h3>
+            <p>用于说明多概念输出和选品评审。</p>
+          </div>
+        </article>
+        <article class="asset">
+          <img src="showpiece_assets/playroom.jpg" alt="Playroom">
+          <div>
+            <h3>Playroom</h3>
+            <p>用于说明消费场景和展示氛围。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>三分钟讲法</h2>
+      <div class="script">
+        <div class="step">
+          <strong>开场</strong>
+          <p class="small">这是 Paperclip 管控的 AI team demo，不是单个模型聊天。所有输出都绑定 issue、agent、runtime 和 evidence。</p>
+        </div>
+        <div class="step">
+          <strong>打开 artifact</strong>
+          <p class="small">展示 <code>claude_kimi_code_demo.md</code>，说明它是同一目标下由 Claude Code Kimi lane 生成的完整 boss demo pack。</p>
+        </div>
+        <div class="step">
+          <strong>打开 RUN-3</strong>
+          <p class="small">展示 Paperclip issue 状态为 <code>done</code>，并指出 run id、closeout comment 和 evidence 文件。</p>
+        </div>
+        <div class="step">
+          <strong>解释模型路线</strong>
+          <p class="small">说明 <code>claudekimi</code> 是 Claude Code 兼容包装，raw stream-json 显示 <code>kimi-for-coding</code>，aggregate usageJson 的 Claude 字段只是包装元数据冲突。</p>
+        </div>
+        <div class="step">
+          <strong>收束结论</strong>
+          <p class="small">这次 claudekimi 更强在控制面、证据密度和完整 board-pack；native Kimi 更强在审美干净度。当前建议是用 claudekimi 跑高要求 demo，再用人工评审补审美。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>证据入口</h2>
+      <div class="grid-3">
+        <article class="panel">
+          <h3>最终 artifact</h3>
+          <p><a href="claude_kimi_code_demo.md">claude_kimi_code_demo.md</a></p>
+        </article>
+        <article class="panel">
+          <h3>同任务对比</h3>
+          <p><a href="claude_kimi_comparison.md">claude_kimi_comparison.md</a></p>
+        </article>
+        <article class="panel">
+          <h3>评分证据</h3>
+          <p><a href="evidence/scorecard.json">evidence/scorecard.json</a></p>
+        </article>
+        <article class="panel">
+          <h3>运行证据</h3>
+          <p><a href="evidence/claudeKimi_run.json">evidence/claudeKimi_run.json</a></p>
+        </article>
+        <article class="panel">
+          <h3>配置证据</h3>
+          <p><a href="evidence/runtime_config_redacted.json">evidence/runtime_config_redacted.json</a></p>
+        </article>
+        <article class="panel">
+          <h3>secret scan</h3>
+          <p><a href="evidence/secret_scan.json">evidence/secret_scan.json</a></p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <strong>Package SHA256:</strong>
+      <code>8422aec2b2a0299700038481bf1dedbcd2f5e6291fb08bf13eb6ea000516b404</code>
+      <br>
+      本页面只是展示入口，事实以 Paperclip issue、evidence JSON、artifact 和 tar.gz package 为准。
+    </footer>
+  </main>
+
+  <script>
+    const issueId = "5521d6b7-b772-45b7-b247-904a20ad9e3a";
+    const host = window.location.hostname && window.location.hostname !== ""
+      ? window.location.hostname
+      : "127.0.0.1";
+    const isTailnetHost = host.endsWith(".ts.net");
+    const paperclipUrl = isTailnetHost
+      ? `https://${host}:9447/issues/${issueId}`
+      : `http://${host}:3100/issues/${issueId}`;
+
+    document.querySelectorAll("[data-paperclip-issue]").forEach((node) => {
+      node.setAttribute("href", paperclipUrl);
+      if (node.tagName === "A" && node.textContent.includes("127.0.0.1")) {
+        node.textContent = paperclipUrl;
+      }
+    });
+
+    document.querySelectorAll("[data-copy-paperclip]").forEach((node) => {
+      node.setAttribute("data-copy", paperclipUrl);
+    });
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const value = button.getAttribute("data-copy");
+        try {
+          await navigator.clipboard.writeText(value);
+          const oldText = button.textContent;
+          button.textContent = "已复制";
+          window.setTimeout(() => { button.textContent = oldText; }, 1200);
+        } catch {
+          window.prompt("复制这个地址", value);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
