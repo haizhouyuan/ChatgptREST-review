@@ -1,12 +1,12 @@
 {
-  "exportedAt": "2026-04-26T02:59:49.027Z",
+  "exportedAt": "2026-04-26T05:37:17.243Z",
   "company": {
     "id": "1d9f885c-d2ac-4411-9b74-f91240ef2a72",
     "name": "Runtime Duel Studio - Claude Code vs Kimi",
     "description": "Independent Paperclip company for same-goal generation comparison between Claude Code and native Kimi CLI.",
     "status": "active",
     "issuePrefix": "RUN",
-    "issueCounter": 2,
+    "issueCounter": 3,
     "budgetMonthlyCents": 0,
     "spentMonthlyCents": 0,
     "requireBoardApprovalForNewAgents": false,
@@ -17,7 +17,7 @@
     "brandColor": null,
     "logoAssetId": null,
     "createdAt": "2026-04-26T01:59:05.289Z",
-    "updatedAt": "2026-04-26T02:42:40.042Z",
+    "updatedAt": "2026-04-26T05:31:12.149Z",
     "logoUrl": null
   },
   "adapters": [
@@ -56,6 +56,68 @@
     }
   ],
   "agents": [
+    {
+      "id": "d4a4c6b7-06d5-4859-8459-40f869f2ee40",
+      "name": "Claude Code Kimi Content Lead",
+      "title": "Claude Code Kimi Runtime Lane",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "cwd": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/workspaces/claude-kimi",
+        "env": {
+          "HCOM": {
+            "type": "plain",
+            "value": "/vol1/1000/home-yuanhaizhou/_root_home/.local/bin/hcom"
+          },
+          "HOME": {
+            "type": "plain",
+            "value": "/home/yuanhaizhou"
+          },
+          "PATH": {
+            "type": "plain",
+            "value": "/vol1/1000/home-yuanhaizhou/_root_home/.local/bin:/home/yuanhaizhou/.local/bin:/home/yuanhaizhou/local/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          },
+          "CLAUDE_HOME": {
+            "type": "plain",
+            "value": "/home/yuanhaizhou"
+          },
+          "CLAUDE_CONFIG_DIR": {
+            "type": "plain",
+            "value": "/vol1/1000/home-yuanhaizhou/.claude-kimi"
+          },
+          "KIMI_CODINGPLAN_API_KEY": "***REDACTED_KEY***"
+        },
+        "command": "/home/yuanhaizhou/.local/bin/claudekimi",
+        "timeoutSec": 900,
+        "maxTurnsPerRun": 30,
+        "promptTemplate": "Complete the scoped Paperclip issue now.\nUse the assigned issue, shared target brief, rubric, and your lane instructions.\nDo not stop at a plan. Produce the artifact, save it to the lane output path, and close out with evidence.\nFor claude_local lanes, do not assume a final assistant message changes issue status. Use the injected Paperclip API env to PATCH the assigned issue to done after the artifact exists.\n\nContext JSON:\n{{context}}",
+        "paperclipSkillSync": {
+          "desiredSkills": [
+            "paperclipai/paperclip/paperclip",
+            "paperclipai/paperclip/paperclip-create-agent",
+            "paperclipai/paperclip/paperclip-create-plugin",
+            "paperclipai/paperclip/para-memory-files",
+            "company/1d9f885c-d2ac-4411-9b74-f91240ef2a72/runtime-duel-operator",
+            "company/1d9f885c-d2ac-4411-9b74-f91240ef2a72/runtime-duel-rubric"
+          ]
+        },
+        "instructionsFilePath": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/agents/claude-kimi-code-content-lead/AGENTS.md",
+        "instructionsRootPath": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/agents/claude-kimi-code-content-lead",
+        "instructionsEntryFile": "AGENTS.md",
+        "instructionsBundleMode": "external",
+        "dangerouslySkipPermissions": true
+      },
+      "runtimeConfig": {
+        "heartbeat": {
+          "enabled": false,
+          "maxConcurrentRuns": 1
+        }
+      },
+      "metadata": {
+        "duelLane": "claudeKimi",
+        "modelRoute": "Kimi coding endpoint through the local claudekimi wrapper",
+        "runtimeAlias": "Claude Code Kimi"
+      }
+    },
     {
       "id": "e59b5eaa-f2c3-4aa1-a3c2-8e5ee7832770",
       "name": "Claude Code Content Lead",

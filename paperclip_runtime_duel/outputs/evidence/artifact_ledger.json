@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-04-26T02:59:49.041Z",
+  "exportedAt": "2026-04-26T05:37:17.264Z",
   "artifacts": [
     {
       "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md",
@@ -14,10 +14,22 @@
       "mtime": "2026-04-26T02:35:28.048Z"
     },
     {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_kimi_code_demo.md",
+      "size": 43017,
+      "sha256": "9e312ce7220814e2586ed8959a47a544f9c409fc021c4115a78af3dbdb2da62f",
+      "mtime": "2026-04-26T05:32:14.892Z"
+    },
+    {
       "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/final_boss_entry.md",
       "size": 4003,
       "sha256": "1cea2d84ef731456e6d543bb84271036198b987a6663189a2048c418389b2a95",
       "mtime": "2026-04-26T02:54:18.651Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_kimi_comparison.md",
+      "size": 3753,
+      "sha256": "1449f56adc23dc3eaca0ce33e54aefb1973ad988b6cf1b551211d576a5754b53",
+      "mtime": "2026-04-26T05:35:18.325Z"
     },
     {
       "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/boss_runtime_duel_entry.html",
@@ -50,10 +62,22 @@
       "mtime": "2026-04-26T02:36:59.544Z"
     },
     {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/claudeKimi_run.json",
+      "size": 110943,
+      "sha256": "97625e05be23a8455837114898e33e7046bbca0b7efaf366dd8bc5c51274b49e",
+      "mtime": "2026-04-26T05:34:25.049Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/claudeKimi_operator_closeout.json",
+      "size": 477,
+      "sha256": "d21aa12b91b04d76eb1e35a1040057173fd641bde9e6437626138baeeab04193",
+      "mtime": "2026-04-26T05:33:20.920Z"
+    },
+    {
       "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/scorecard.json",
-      "size": 1125,
-      "sha256": "ece567fd755c1382f17ce2414b95ae25b5b14070cdc0ddced095bb0ea348ac88",
-      "mtime": "2026-04-26T02:42:57.436Z"
+      "size": 1668,
+      "sha256": "91f7ec20ebf3e3b4950ebf5c19bff242abd1c7583140ecbf15e5804732f7977e",
+      "mtime": "2026-04-26T05:37:17.086Z"
     },
     {
       "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/mcp_tools_list_redacted.json",

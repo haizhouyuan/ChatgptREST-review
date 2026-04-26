@@ -1,6 +1,7 @@
 {
   "apiUrl": "http://127.0.0.1:3100",
   "createdAt": "2026-04-26T02:00:30.776Z",
+  "updatedAt": "2026-04-26T05:19:20.202Z",
   "adapter": {
     "installed": false,
     "type": "kimi_cli"
@@ -14,14 +15,17 @@
   ],
   "agents": {
     "claude": "e59b5eaa-f2c3-4aa1-a3c2-8e5ee7832770",
-    "kimi": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef"
+    "kimi": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef",
+    "claudeKimi": "d4a4c6b7-06d5-4859-8459-40f869f2ee40"
   },
   "issues": {
     "claude": "a0ff7e79-98b5-43a4-8a3e-e12252a70343",
-    "kimi": "5ee772bb-6b03-4a42-b319-db3f3cc662f4"
+    "kimi": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+    "claudeKimi": "5521d6b7-b772-45b7-b247-904a20ad9e3a"
   },
   "outputPaths": {
     "claude": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md",
-    "kimi": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md"
+    "kimi": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md",
+    "claudeKimi": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_kimi_code_demo.md"
   }
 }

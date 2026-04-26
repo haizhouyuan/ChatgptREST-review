@@ -2,10 +2,11 @@
 
 ## Purpose
 
-Create a direct Paperclip comparison between two local runtime aliases:
+Create a direct Paperclip comparison between local runtime aliases:
 
 - `Claude Code`: local Claude Code CLI/client lane, run through Paperclip `claude_local`. The actual provider/model must be reported from run evidence; do not assume it is an official Anthropic model.
 - `Kimi`: native Kimi Code CLI, run through a local Paperclip `kimi_cli` adapter.
+- `Claude Code Kimi`: local Claude Code compatibility lane, run through Paperclip `claude_local` with command `/home/yuanhaizhou/.local/bin/claudekimi`. This is the requested "Claude Code + Kimi model route" lane. If Paperclip aggregate `usageJson` conflicts with raw stream-json model fields, record the conflict and do not describe it as official Claude output.
 
 Both lanes must solve the same content-generation target with the same constraints, output schema, evidence base, and 100-point rubric.
 
@@ -71,6 +72,7 @@ Each runtime must also save its artifact:
 
 - Claude lane: `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md`
 - Kimi lane: `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md`
+- Claude Code Kimi lane: `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_kimi_code_demo.md`
 
 If the runtime cannot write the file, it must include the complete artifact in the Paperclip issue comment.
 

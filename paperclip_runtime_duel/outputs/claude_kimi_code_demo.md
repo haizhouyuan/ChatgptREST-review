@@ -1,6 +1,7 @@
 # Labebe AI Design Studio — Shared Boss Demo Pack
 **Lane:** Claude Code Kimi (Paperclip shared-runtime synthesis lane)
-**Model from run evidence:** `claude-sonnet-4-6` (`provider: anthropic`)
+**Runtime route:** `/home/yuanhaizhou/.local/bin/claudekimi` through Paperclip `claude_local`
+**Model evidence:** raw stream-json in `claudeKimi_run.json` reports `model: kimi-for-coding`; Paperclip aggregate `usageJson` also reports the Claude Code default/accounting metadata (`claude-sonnet-4-6` / `anthropic`), so the aggregate field is treated as a wrapper metadata conflict, not as the upstream model truth for this lane.
 **Artifact path:** `outputs/claude_kimi_code_demo.md`
 **Evidence base:** Local files only — no internet sources, no fabricated metrics
 **Companion artifacts:** `outputs/claude_code_demo.md` (Claude lane) · `outputs/kimi_demo.md` (Kimi lane)
@@ -15,7 +16,7 @@ The demo is intentionally scoped to a **deterministic process adapter** running 
 
 > *"Today you will not see AI autonomously inventing and launching a toy product. You will see Paperclip run an AI team: organized, gated, evidenced, and stoppable. And you will see that the control plane works no matter which runtime is at the wheel."*
 
-**Runtime truth:** The Claude Code Kimi lane runs through Paperclip's `claude_local` adapter on this machine's local CLI/client. The model evidence from the lane run record confirms: `claude-sonnet-4-6` (provider: `anthropic`). This is the local runtime as configured on this machine. The Kimi lane runs the same Paperclip control plane with the `kimi_cli` adapter. The duel compares output quality and governance discipline, not brand prestige.
+**Runtime truth:** The Claude Code Kimi lane runs through Paperclip's `claude_local` adapter, but its configured command is the local `claudekimi` wrapper. The wrapper routes Claude Code-compatible calls to the Kimi coding endpoint, and the raw stream-json messages in the run log report `model: kimi-for-coding`. Paperclip's aggregate `usageJson` still reports Claude Code default/accounting metadata (`claude-sonnet-4-6` / `anthropic`), so this artifact records the conflict explicitly instead of treating the aggregate field as upstream model truth. The duel compares output quality and governance discipline, not brand prestige.
 
 **Fact:** Both individual lane artifacts (`claude_code_demo.md` and `kimi_demo.md`) were produced from the identical evidence base and rubric, and both passed deterministic rubric scoring at 100/100. *(Source: `outputs/evidence/scorecard.json`)*
 
@@ -100,7 +101,7 @@ Show the blocked issue `LAB-7` (DFM / Safety / Cost Preflight) and the `FORBIDDE
 |------|---------|---------|------------------------|-----------------|----------|
 | **Claude Code** | `claude_local` | Paperclip `claude_local` | `MiniMax-M2.7` / `anthropic` | `claude_run.json` `usageJson.model` + `usageJson.provider` | `claude_code_demo.md` |
 | **Kimi** | `kimi_cli` | Paperclip `kimi_cli` | `kimi-for-coding` (configured only) | `runtime_config_redacted.json` `adapterConfig.model`; `kimi_run.json` confirms `usageJson: null` | `kimi_demo.md` |
-| **Claude Code Kimi** (this artifact) | `claude_local` | Paperclip `claude_local` | `claude-sonnet-4-6` / `anthropic` | `claudeKimi_run.json` `usageJson.model` + `usageJson.provider` | `claude_kimi_code_demo.md` |
+| **Claude Code Kimi** (this artifact) | `claude_local` | Paperclip `claude_local` command `/home/yuanhaizhou/.local/bin/claudekimi` | `kimi-for-coding` in raw stream-json; aggregate `usageJson` conflict: `claude-sonnet-4-6` / `anthropic` | `claudeKimi_run.json` log stream + agent `adapterConfig.command` | `claude_kimi_code_demo.md` |
 
 **Fact:** All three lanes share the same company, same issue tree, same skill registry, same MCP policy. The runtime alias ensures lane isolation — one lane's agent config cannot affect another's.
 
@@ -162,7 +163,7 @@ Both Claude Code and Kimi lanes produce an identical-schema artifact from the sa
 | Creative emphasis | Control-plane precision, four stage moments | Six demo stations, two-skin design system | Synthesis: best of both |
 | Wow factor | Premium toy/home lifestyle concept | SpaceSmart Foldable Learning Tower + custom kitchen builder | Unified 6-station narrative |
 | Governance | Fact/Inference/Hypothesis, 16 evidence entries | Fact/Inference/Hypothesis, 8 evidence entries | Combined ledger with cross-lane citations |
-| Model truth | `MiniMax-M2.7` from run evidence | `kimi-for-coding` from adapterConfig | Both cited with evidence class labels |
+| Model truth | `MiniMax-M2.7` from run evidence | `kimi-for-coding` from adapterConfig | `claudekimi` route cites raw stream-json `kimi-for-coding` and separately records the aggregate `usageJson` conflict |
 
 ### Cross-Lane Comparison — What Stayed Constant
 
@@ -504,7 +505,7 @@ The MCP tool policy (`configs/mcp-tool-policy.yaml`) is an audit contract. It do
 | 7 | claude_run.json | Claude lane run evidence: `MiniMax-M2.7` / `anthropic` from `usageJson` | Fact | `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/claude_run.json` |
 | 8 | kimi_run.json | Kimi lane run evidence: `usageJson: null` — no run-evidence model/provider | Fact | `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/kimi_run.json` |
 | 9 | runtime_config_redacted.json | Kimi agent `adapterConfig`: `model: kimi-for-coding`; also `claude_local` adapter config | Fact | `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/runtime_config_redacted.json` |
-| 10 | claudeKimi_run.json | This lane run evidence: `claude-sonnet-4-6` / `anthropic` from `usageJson`; prior run failed with `claude_auth_required` | Fact | `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/claudeKimi_run.json` |
+| 10 | claudeKimi_run.json | This lane run evidence: raw stream-json messages report `model: kimi-for-coding`; aggregate `usageJson` reports Claude Code default/accounting metadata (`claude-sonnet-4-6` / `anthropic`) and is recorded as a conflict, not upstream model truth | Fact | `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/claudeKimi_run.json` |
 | 11 | scorecard.json | Deterministic rubric scores: Claude 100/100, Kimi 100/100; both missingSections empty | Fact | `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/scorecard.json` |
 | 12 | rubric_100.yaml | 100-point rubric, target 95+, fail conditions | Fact | `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/brief/rubric_100.yaml` |
 | 13 | heartbeat-data-truth-guard.json | Live smoke run evidence (LAB-2 selected — P0 gap noted) | Fact | `/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/heartbeat-data-truth-guard.json` |
@@ -571,26 +572,27 @@ The MCP tool policy (`configs/mcp-tool-policy.yaml`) is an audit contract. It do
 
 ## Final Self-Score
 
-**Score: 98 / 100**
+**Score: 97 / 100**
 
 ### Point-Level Reasoning
 
 | Rubric Criterion | Points | Awarded | Justification |
 |-----------------|--------|---------|---------------|
 | **Executive clarity** | 15 | 15 | 90-second script is concrete, timed, and memorable. Boss takeaway is explicit at every beat. No generic "AI transformation" filler. The duel framing adds a unique "same goal, different runtime" hook that the individual lane artifacts did not have. |
-| **Paperclip architecture accuracy** | 15 | 15 | Control plane framing is accurate per Paperclip schema and SPEC. Process adapter, heartbeat, checkout, issue state flow, and runtime lane separation are all explicit and correct. Runtime truth is explicit: `claude-sonnet-4-6` / `anthropic` from `claudeKimi_run.json` usageJson for this lane; `MiniMax-M2.7` / `anthropic` from `claude_run.json` for Claude lane; `kimi-for-coding` from `runtime_config_redacted.json` adapterConfig for Kimi lane. All evidence classes are correctly labeled. |
+| **Paperclip architecture accuracy** | 15 | 14 | Control plane framing is accurate per Paperclip schema and SPEC. Process adapter, heartbeat, checkout, issue state flow, and runtime lane separation are explicit. Runtime truth is now conflict-aware: `claudekimi` command + raw stream-json show `kimi-for-coding`, while aggregate `usageJson` reports Claude Code default/accounting metadata. Deduct 1 point because this wrapper lane requires an evidence caveat that a normal runtime lane would not need. |
 | **Labebe demo wow factor** | 15 | 14 | Six demo stations are concrete. Interaction patterns (radar, war room, pain→feature morph, blocked gate, asset flyout) are specific. The two-skin design system is differentiated. The cross-lane synthesis adds a meta-level "control plane beats runtime" narrative. Deduct 1 point because visual/interaction direction remains conceptual — no implemented frontend is included. |
 | **Governance and safety** | 15 | 15 | Fact/Inference/Hypothesis labels are applied throughout. Forbidden claims are listed. MCP allowlist/denylist, secrets policy, and ACTION_POLICY boundaries are stated. No secrets leaked. Runtime names treated as local aliases, not brand claims. Cross-lane evidence is honestly labeled with evidence class distinctions (run evidence vs. configured evidence). |
 | **Workflow and collaboration** | 12 | 12 | Org chart with 9 agents and reporting lines is present. Collaboration rules (checkout, comment, blocked, child issues, approval gates) are documented. Handoff and review standards are explicit. Per-agent artifact contract header requirement is stated. Issue state flow diagram is included. |
-| **Evidence traceability** | 12 | 11 | 19 evidence entries all cite absolute local paths under `/vol1/1000/projects/toyresearch/`. Source files are correctly mapped to their labeled uses. Cross-lane synthesis table adds comparative evidence. Uncertainty and open decisions are captured in a dedicated section. Deduct 1 point because the current `claudeKimi_run.json` is from the prior failed run; this retry run's evidence will be available after closeout. |
+| **Evidence traceability** | 12 | 11 | 19 evidence entries all cite absolute local paths under `/vol1/1000/projects/toyresearch/`. Source files are correctly mapped to their labeled uses. Cross-lane synthesis table adds comparative evidence. Uncertainty and open decisions are captured in a dedicated section. Deduct 1 point because the `claudekimi` wrapper lane requires reading both raw log stream and aggregate run metadata to avoid a false model claim. |
 | **Output completeness** | 10 | 10 | All 12 required sections are present with no truncated or placeholder content. File path is specified. Acceptance criteria are checkable and include the runtime duel verification items. No section is thin or boilerplate. |
 | **Polish** | 6 | 6 | Concise and board-ready throughout. Tables, code blocks, and diagrams used with precision — no bloat. Section headers are scannable. The 90-second script is rehearsable from the text. Cross-lane comparison tables make the synthesis instantly readable. Boss-ready tone maintained across all sections. |
-| **Total** | **100** | **98** | |
+| **Total** | **100** | **97** | |
 
 ### Why Not 100?
 
+- **-1 (runtime-truth caveat):** The `claudekimi` lane has conflicting model metadata: raw stream-json reports `kimi-for-coding`, while Paperclip aggregate `usageJson` reports Claude Code default/accounting metadata. The artifact records the conflict instead of flattening it.
 - **-1 (wow factor):** The visual/interaction direction is described but not implemented. A perfect score would include at least a minimal HTML/CSS prototype or Figma link. Both individual lane artifacts acknowledged this gap; the shared artifact does not magically resolve it.
-- **-1 (evidence traceability):** The `claudeKimi_run.json` currently on disk reflects the prior failed run (`claude_auth_required`). This retry run's evidence will be generated at closeout. The artifact honestly notes this gap but cannot yet cite the current run's evidence.
+- **-1 (live-proof gap):** The artifact is a strong design target, but the underlying Labebe smoke case still needs the SDD remediation loop to be fully closed before it can be presented as production-grade proof.
 
 ### Residual Risk
 

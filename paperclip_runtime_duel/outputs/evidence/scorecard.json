@@ -1,5 +1,5 @@
 {
-  "scoredAt": "2026-04-26T02:42:57.434Z",
+  "scoredAt": "2026-04-26T05:37:17.087Z",
   "lanes": {
     "claude": {
       "file": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md",
@@ -28,10 +28,25 @@
       },
       "chars": 27747,
       "sha256": "dcde0322a563980dc9d2612e4fde2abc59bce39aa20646516556440fa52d3adf"
+    },
+    "claudeKimi": {
+      "file": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_kimi_code_demo.md",
+      "score": 100,
+      "selfScore": 97,
+      "missingSections": [],
+      "evidenceHits": 19,
+      "labelCounts": {
+        "Fact": 53,
+        "Inference": 10,
+        "Hypothesis": 9
+      },
+      "chars": 42099,
+      "sha256": "9e312ce7220814e2586ed8959a47a544f9c409fc021c4115a78af3dbdb2da62f"
     }
   },
   "comparison": {
-    "winnerByDeterministicRubric": "tie",
-    "note": "This deterministic score checks structure, traceability, and policy hygiene. Human/Pro review is still needed for taste and true wow factor."
+    "requestedAxis": "claudeKimi compared with prior same-goal outputs",
+    "winnerByDeterministicRubric": "claude, kimi, claudeKimi",
+    "note": "This deterministic score checks structure, traceability, and policy hygiene. Human review is still needed for taste, boss-readiness, and true wow factor."
   }
 }

@@ -7,6 +7,7 @@ const ROOT = "/vol1/1000/projects/toyresearch/paperclip_runtime_duel";
 const outputs = {
   claude: path.join(ROOT, "outputs", "claude_code_demo.md"),
   kimi: path.join(ROOT, "outputs", "kimi_demo.md"),
+  claudeKimi: path.join(ROOT, "outputs", "claude_kimi_code_demo.md"),
 };
 const requiredSections = [
   "# Executive Demo Narrative",
@@ -65,11 +66,13 @@ for (const [lane, file] of Object.entries(outputs)) {
 }
 
 result.comparison = {
-  winnerByDeterministicRubric:
-    result.lanes.claude.score === result.lanes.kimi.score
-      ? "tie"
-      : (result.lanes.claude.score > result.lanes.kimi.score ? "claude" : "kimi"),
-  note: "This deterministic score checks structure, traceability, and policy hygiene. Human/Pro review is still needed for taste and true wow factor.",
+  requestedAxis: "claudeKimi compared with prior same-goal outputs",
+  winnerByDeterministicRubric: Object.entries(result.lanes)
+    .sort((a, b) => b[1].score - a[1].score)
+    .filter(([_lane, value], _index, rows) => value.score === rows[0][1].score)
+    .map(([lane]) => lane)
+    .join(", "),
+  note: "This deterministic score checks structure, traceability, and policy hygiene. Human review is still needed for taste, boss-readiness, and true wow factor.",
 };
 
 const outPath = path.join(ROOT, "outputs", "evidence", "scorecard.json");

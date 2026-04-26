@@ -1,6 +1,22 @@
 {
-  "exportedAt": "2026-04-26T02:59:49.034Z",
+  "exportedAt": "2026-04-26T05:37:17.257Z",
   "issues": [
+    {
+      "id": "5521d6b7-b772-45b7-b247-904a20ad9e3a",
+      "identifier": "RUN-3",
+      "title": "RUNTIME-DUEL-CLAUDE-KIMI - Generate the shared boss demo pack",
+      "status": "done",
+      "priority": "critical",
+      "assigneeAgentId": "d4a4c6b7-06d5-4859-8459-40f869f2ee40",
+      "commentCount": 5,
+      "latestComment": {
+        "id": "962ab314-013b-47a6-8c1a-f8932f0dc42a",
+        "authorAgentId": null,
+        "createdByRunId": null,
+        "createdAt": "2026-04-26T05:33:20.907Z",
+        "bodyPreview": "Operator-verified closeout for claudeKimi.\n\nRun: 8cb4fcd5-944b-4976-868e-fdc28c74c23d (succeeded)\nArtifact: /vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_kimi_code_demo.md\nSize: 43017 bytes\n\nReason: the artifact exists and the heartbeat run succeeded. This closeout is explicit because Paperclip's `claude_local` adapter writes the final assistant answer as a comment but does not automatically transition issue status to `done`."
+      }
+    },
     {
       "id": "a0ff7e79-98b5-43a4-8a3e-e12252a70343",
       "identifier": "RUN-1",

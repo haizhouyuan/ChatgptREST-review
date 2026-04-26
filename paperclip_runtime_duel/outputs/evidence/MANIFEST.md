@@ -1,14 +1,17 @@
 # Runtime Duel Evidence Manifest
 
-- Exported: 2026-04-26T02:59:49.102Z
+- Exported: 2026-04-26T05:37:17.299Z
 - Company: Runtime Duel Studio - Claude Code vs Kimi (1d9f885c-d2ac-4411-9b74-f91240ef2a72)
 - Claude issue: a0ff7e79-98b5-43a4-8a3e-e12252a70343
 - Kimi issue: 5ee772bb-6b03-4a42-b319-db3f3cc662f4
+- Claude Code Kimi issue: 5521d6b7-b772-45b7-b247-904a20ad9e3a
 
 ## Core Artifacts
 
 - Claude output: /vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md
 - Kimi output: /vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md
+- Claude Code Kimi output: /vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_kimi_code_demo.md
+- Claude Code Kimi comparison: outputs/claude_kimi_comparison.md
 - Final boss entry: outputs/final_boss_entry.md
 - Boss HTML entry: outputs/boss_runtime_duel_entry.html
 - Pro review answer: outputs/evidence/pro_review_answer.md
@@ -24,4 +27,4 @@
 
 ## Interpretation
 
-This package compares local runtime aliases as configured on this machine. Claude Code is the local Claude Code CLI/client lane, and the run evidence records its actual model/provider. Kimi is the native Kimi CLI lane via the local `kimi_cli` adapter.
+This package compares local runtime aliases as configured on this machine. Claude Code is the local Claude Code CLI/client lane, Kimi is the native Kimi CLI lane via the local `kimi_cli` adapter, and Claude Code Kimi is the local `/home/yuanhaizhou/.local/bin/claudekimi` Claude Code compatibility wrapper routed to the Kimi coding endpoint. Model/provider claims must be read from adapter config and run evidence separately.

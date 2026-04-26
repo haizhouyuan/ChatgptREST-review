@@ -147,14 +147,27 @@ async function ensureIssue(companyId, title, payload) {
 }
 
 function sameGoalDescription(lane) {
-  const outPath = lane === "claude"
-    ? `${ROOT}/outputs/claude_code_demo.md`
-    : `${ROOT}/outputs/kimi_demo.md`;
+  const lanes = {
+    claude: {
+      label: "Claude Code",
+      outPath: `${ROOT}/outputs/claude_code_demo.md`,
+    },
+    kimi: {
+      label: "Native Kimi CLI",
+      outPath: `${ROOT}/outputs/kimi_demo.md`,
+    },
+    claudeKimi: {
+      label: "Claude Code Kimi",
+      outPath: `${ROOT}/outputs/claude_kimi_code_demo.md`,
+    },
+  };
+  const selected = lanes[lane];
+  if (!selected) throw new Error(`Unknown lane: ${lane}`);
   return [
     "Run the shared Runtime Duel target now.",
     "",
-    `Lane: ${lane === "claude" ? "Claude Code" : "Kimi"}`,
-    `Output path: ${outPath}`,
+    `Lane: ${selected.label}`,
+    `Output path: ${selected.outPath}`,
     "",
     "You must read:",
     `- ${ROOT}/brief/shared_target_brief.md`,
@@ -175,26 +188,43 @@ async function main() {
   await fs.mkdir(path.join(ROOT, "outputs", "evidence"), { recursive: true });
   await fs.mkdir(path.join(ROOT, "workspaces", "claude"), { recursive: true });
   await fs.mkdir(path.join(ROOT, "workspaces", "kimi"), { recursive: true });
+  await fs.mkdir(path.join(ROOT, "workspaces", "claude-kimi"), { recursive: true });
 
   const existingState = await maybeReadState();
-  if (existingState?.companyId && existingState?.agents?.claude && existingState?.agents?.kimi) {
+  if (
+    existingState?.companyId &&
+    existingState?.agents?.claude &&
+    existingState?.agents?.kimi &&
+    existingState?.agents?.claudeKimi
+  ) {
     console.log(JSON.stringify({ reused: true, ...existingState }, null, 2));
     return;
   }
 
   const adapter = await ensureAdapter();
-  const company = await ensureCompany();
+  const company = existingState?.companyId
+    ? await api(`/api/companies/${existingState.companyId}`)
+    : await ensureCompany();
 
-  const operatorSkill = await createSkill(company.id, "skills/runtime-duel-operator/SKILL.md");
-  const rubricSkill = await createSkill(company.id, "skills/runtime-duel-rubric/SKILL.md");
-  const desiredSkills = [operatorSkill.key, rubricSkill.key];
+  let desiredSkills = existingState?.skillKeys;
+  if (!desiredSkills?.length) {
+    const operatorSkill = await createSkill(company.id, "skills/runtime-duel-operator/SKILL.md");
+    const rubricSkill = await createSkill(company.id, "skills/runtime-duel-rubric/SKILL.md");
+    desiredSkills = [operatorSkill.key, rubricSkill.key];
+  }
 
-  const project = await ensureProject(company.id);
+  let project = null;
+  if (existingState?.projectId) {
+    const projects = await api(`/api/companies/${company.id}/projects`);
+    project = projects.find((entry) => entry.id === existingState.projectId) || null;
+  }
+  if (!project) project = await ensureProject(company.id);
 
   const promptTemplate = [
     "Complete the scoped Paperclip issue now.",
     "Use the assigned issue, shared target brief, rubric, and your lane instructions.",
     "Do not stop at a plan. Produce the artifact, save it to the lane output path, and close out with evidence.",
+    "For claude_local lanes, do not assume a final assistant message changes issue status. Use the injected Paperclip API env to PATCH the assigned issue to done after the artifact exists.",
     "",
     "Context JSON:",
     "{{context}}",
@@ -251,6 +281,38 @@ async function main() {
       metadata: { runtimeAlias: "Kimi", duelLane: "kimi" },
   });
 
+  const claudeKimi = await ensureAgent(company.id, "Claude Code Kimi Content Lead", {
+      name: "Claude Code Kimi Content Lead",
+      role: "pm",
+      title: "Claude Code Kimi Runtime Lane",
+      icon: "sparkles",
+      capabilities: "Generate the shared boss-demo content pack using the Claude Code compatibility path backed by Kimi coding endpoint.",
+      desiredSkills,
+      adapterType: "claude_local",
+      adapterConfig: {
+        command: "/home/yuanhaizhou/.local/bin/claudekimi",
+        cwd: `${ROOT}/workspaces/claude-kimi`,
+        instructionsFilePath: `${ROOT}/agents/claude-kimi-code-content-lead/AGENTS.md`,
+        promptTemplate,
+        dangerouslySkipPermissions: true,
+        maxTurnsPerRun: 30,
+        timeoutSec: 900,
+        env: {
+          HOME: "/home/yuanhaizhou",
+          CLAUDE_HOME: "/home/yuanhaizhou",
+          CLAUDE_CONFIG_DIR: "/vol1/1000/home-yuanhaizhou/.claude-kimi",
+          PATH: PATH_ENV,
+          HCOM: "/vol1/1000/home-yuanhaizhou/_root_home/.local/bin/hcom",
+        },
+      },
+      runtimeConfig: { heartbeat: { enabled: false, maxConcurrentRuns: 1 } },
+      metadata: {
+        runtimeAlias: "Claude Code Kimi",
+        duelLane: "claudeKimi",
+        modelRoute: "Kimi coding endpoint through the local claudekimi wrapper",
+      },
+  });
+
   const claudeIssue = await ensureIssue(company.id, "RUNTIME-DUEL-CLAUDE - Generate the shared boss demo pack", {
       projectId: project.id,
       title: "RUNTIME-DUEL-CLAUDE - Generate the shared boss demo pack",
@@ -269,9 +331,19 @@ async function main() {
       assigneeAgentId: kimi.id,
   });
 
+  const claudeKimiIssue = await ensureIssue(company.id, "RUNTIME-DUEL-CLAUDE-KIMI - Generate the shared boss demo pack", {
+      projectId: project.id,
+      title: "RUNTIME-DUEL-CLAUDE-KIMI - Generate the shared boss demo pack",
+      description: sameGoalDescription("claudeKimi"),
+      status: "backlog",
+      priority: "critical",
+      assigneeAgentId: claudeKimi.id,
+  });
+
   const state = {
     apiUrl: API,
-    createdAt: new Date().toISOString(),
+    createdAt: existingState?.createdAt || new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
     adapter,
     companyId: company.id,
     companyName: company.name,
@@ -280,14 +352,17 @@ async function main() {
     agents: {
       claude: claude.id,
       kimi: kimi.id,
+      claudeKimi: claudeKimi.id,
     },
     issues: {
       claude: claudeIssue.id,
       kimi: kimiIssue.id,
+      claudeKimi: claudeKimiIssue.id,
     },
     outputPaths: {
       claude: `${ROOT}/outputs/claude_code_demo.md`,
       kimi: `${ROOT}/outputs/kimi_demo.md`,
+      claudeKimi: `${ROOT}/outputs/claude_kimi_code_demo.md`,
     },
   };
   await writeState(state);

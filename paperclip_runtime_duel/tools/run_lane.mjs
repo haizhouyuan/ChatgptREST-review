@@ -6,8 +6,8 @@ const ROOT = "/vol1/1000/projects/toyresearch/paperclip_runtime_duel";
 const STATE_PATH = path.join(ROOT, "state.json");
 const lane = process.argv[2];
 
-if (!["claude", "kimi"].includes(lane)) {
-  console.error("Usage: node tools/run_lane.mjs <claude|kimi>");
+if (!["claude", "kimi", "claudeKimi"].includes(lane)) {
+  console.error("Usage: node tools/run_lane.mjs <claude|kimi|claudeKimi>");
   process.exit(2);
 }
 

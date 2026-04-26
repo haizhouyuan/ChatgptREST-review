@@ -24,6 +24,9 @@ function redactValue(value) {
   if (Array.isArray(value)) return value.map(redactValue);
   if (value && typeof value === "object") {
     return Object.fromEntries(Object.entries(value).map(([key, val]) => {
+      if (/^(?:raw|cached)?(?:Input|Output)Tokens$|^inputTokens$|^outputTokens$|^cachedInputTokens$|^rawCachedInputTokens$/i.test(key) && typeof val === "number") {
+        return [key, val];
+      }
       if (/(api[-_]?key|token|secret|password|authorization|credential|private[-_]?key)/i.test(key)) {
         return [key, "***REDACTED_KEY***"];
       }
@@ -182,12 +185,16 @@ await writeJson("run_matrix.json", {
 const artifactFiles = await existingFiles([
   STATE.outputPaths.claude,
   STATE.outputPaths.kimi,
+  STATE.outputPaths.claudeKimi,
   path.join(ROOT, "outputs", "final_boss_entry.md"),
+  path.join(ROOT, "outputs", "claude_kimi_comparison.md"),
   path.join(ROOT, "outputs", "boss_runtime_duel_entry.html"),
   path.join(ROOT, "outputs", "evidence", "pro_review_answer.md"),
   path.join(ROOT, "outputs", "evidence", "post_pro_iteration_summary.md"),
   path.join(EVIDENCE, "claude_run.json"),
   path.join(EVIDENCE, "kimi_run.json"),
+  path.join(EVIDENCE, "claudeKimi_run.json"),
+  path.join(EVIDENCE, "claudeKimi_operator_closeout.json"),
   path.join(EVIDENCE, "scorecard.json"),
   path.join(EVIDENCE, "mcp_tools_list_redacted.json"),
   path.join(EVIDENCE, "labebe_final_smoke_verification.json"),
@@ -217,11 +224,14 @@ const manifest = [
   `- Company: ${STATE.companyName} (${STATE.companyId})`,
   `- Claude issue: ${STATE.issues.claude}`,
   `- Kimi issue: ${STATE.issues.kimi}`,
+  `- Claude Code Kimi issue: ${STATE.issues.claudeKimi || "not configured"}`,
   "",
   "## Core Artifacts",
   "",
   `- Claude output: ${STATE.outputPaths.claude}`,
   `- Kimi output: ${STATE.outputPaths.kimi}`,
+  `- Claude Code Kimi output: ${STATE.outputPaths.claudeKimi || "not configured"}`,
+  "- Claude Code Kimi comparison: outputs/claude_kimi_comparison.md",
   "- Final boss entry: outputs/final_boss_entry.md",
   "- Boss HTML entry: outputs/boss_runtime_duel_entry.html",
   "- Pro review answer: outputs/evidence/pro_review_answer.md",
@@ -237,7 +247,7 @@ const manifest = [
   "",
   "## Interpretation",
   "",
-  "This package compares local runtime aliases as configured on this machine. Claude Code is the local Claude Code CLI/client lane, and the run evidence records its actual model/provider. Kimi is the native Kimi CLI lane via the local `kimi_cli` adapter.",
+  "This package compares local runtime aliases as configured on this machine. Claude Code is the local Claude Code CLI/client lane, Kimi is the native Kimi CLI lane via the local `kimi_cli` adapter, and Claude Code Kimi is the local `/home/yuanhaizhou/.local/bin/claudekimi` Claude Code compatibility wrapper routed to the Kimi coding endpoint. Model/provider claims must be read from adapter config and run evidence separately.",
   "",
 ].join("\n");
 await fs.writeFile(path.join(EVIDENCE, "MANIFEST.md"), manifest);
