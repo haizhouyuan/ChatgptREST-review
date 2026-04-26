@@ -1,0 +1,140 @@
+{
+  "lane": "kimi",
+  "checkedAt": "2026-04-26T02:36:59.547Z",
+  "companyId": "1d9f885c-d2ac-4411-9b74-f91240ef2a72",
+  "agentId": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef",
+  "issueId": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+  "run": {
+    "id": "fdab01aa-99f7-40bc-b77a-5a7272f5edaa",
+    "companyId": "1d9f885c-d2ac-4411-9b74-f91240ef2a72",
+    "agentId": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef",
+    "invocationSource": "automation",
+    "triggerDetail": "system",
+    "status": "succeeded",
+    "startedAt": "2026-04-26T02:33:01.401Z",
+    "finishedAt": "2026-04-26T02:36:54.778Z",
+    "error": null,
+    "wakeupRequestId": "60ad9655-be7c-4152-bcab-d4b2b1762830",
+    "exitCode": 0,
+    "signal": null,
+    "usageJson": null,
+    "resultJson": {
+      "stderr": "\nTo resume this session: kimi -r 30bc0108-0d48-4018-a6bf-f30b55ee80e2\n",
+      "stdout": "Done. Issue **RUN-2** closed as `done` (v3).\n\n**What changed in this revision:**\n\n| Fix | Before | After |\n|-----|--------|-------|\n| Kimi provider claim | `Provider (from run evidence) = Moonshot AI` | Removed. `kimi_run.json` has `run.usageJson: null`; no run-evidence model/provider exists for Kimi. |\n| Kimi model evidence class | Implied as run evidence | Explicitly labeled as **Paperclip `adapterConfig` configured model evidence** (`kimi-for-coding`, source: `runtime_config_redacted.json`) |\n| Lane comparison table | Mixed configured and run evidence in same rows | Separate rows: `Configured model (adapterConfig)` vs `Model/Provider (from run evidence)` |\n| Evidence Ledger | 7 entries | 8 entries (added `runtime_config_redacted.json` to ground Kimi `adapterConfig`) |\n| Self-score reasoning | Generic \"from run evidence\" | Precise: Claude from run evidence, Kimi from `adapterConfig` because `usageJson` is null |\n\n**Artifact:** `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md` (372 lines, ~27 KB)\n\n**Self-score:** 97 / 100\n\n**Evidence used:**\n- `sdd.md`\n- `my - 红队审核与建议.md`\n- `paperclip_labebe_demo_package/COMPANY.md`\n- `paperclip_labebe_demo_package/configs/demo-brief.yaml`\n- `paperclip_labebe_demo_package/configs/mcp-tool-policy.yaml`\n- `paperclip_labebe_demo_package/docs/RUNTIME_AND_SKILL_NOTES.md`\n- `paperclip_runtime_duel/outputs/evidence/claude_run.json`\n- `paperclip_runtime_duel/outputs/evidence/runtime_config_redacted.json`\n\n**Residual risk:** The live Paperclip instance still requires the 7-item P0 remediation from `sdd.md` before this demo pack can be presented as a live proof; until then, it is a design target backed by local evidence, not a closed-loop smoke validation.",
+      "issueId": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+      "summary": "Done. Issue **RUN-2** closed as `done` (v3).\n\n**What changed in this revision:**\n\n| Fix | Before | After |\n|-----|--------|-------|\n| Kimi provider claim | `Provider (from run evidence) = Moonshot AI` | Removed. `kimi_run.json` has `run.usageJson: null`; no run-evidence model/provider exists for Kimi. |\n| Kimi model evidence class | Implied as run evidence | Explicitly labeled as **Paperclip `adapterConfig` configured model evidence** (`kimi-for-coding`, source: `runtime_config_redacted.json`) |\n| Lane comparison table | Mixed configured and run evidence in same rows | Separate rows: `Configured model (adapterConfig)` vs `Model/Provider (from run evidence)` |\n| Evidence Ledger | 7 entries | 8 entries (added `runtime_config_redacted.json` to ground Kimi `adapterConfig`) |\n| Self-score reasoning | Generic \"from run evidence\" | Precise: Claude from run evidence, Kimi from `adapterConfig` because `usageJson` is null |\n\n**Artifact:** `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md` (372 lines, ~27 KB)\n\n**Self-score:** 97 / 100\n\n**Evidence used:**\n- `sdd.md`\n- `my - 红队审核与建议.md`\n- `paperclip_labebe_demo_package/COMPANY.md`\n- `paperclip_labebe_demo_package/configs/demo-brief.yaml`\n- `paperclip_labebe_demo_package/configs/mcp-tool-policy.yaml`\n- `paperclip_labebe_demo_package/docs/RUNTIME_AND_SKILL_NOTES.md`\n- `paperclip_runtime_duel/outputs/evidence/claude_run.json`\n- `paperclip_runtime_duel/outputs/evidence/runtime_config_redacted.json`\n\n**Residual risk:** The live Paperclip instance still requires the 7-item P0 remediation from `sdd.md` before this demo pack can be presented as a live proof; until then, it is a design target backed by local evidence, not a closed-loop smoke validation.",
+      "issuePatch": {
+        "ok": true
+      },
+      "stopReason": "completed",
+      "timeoutFired": false,
+      "timeoutSource": "config",
+      "timeoutConfigured": true,
+      "effectiveTimeoutSec": 900
+    },
+    "sessionIdBefore": null,
+    "sessionIdAfter": null,
+    "logStore": "local_file",
+    "logRef": "1d9f885c-d2ac-4411-9b74-f91240ef2a72/11c366eb-6de4-4dc1-b700-f15fc1fbcdef/fdab01aa-99f7-40bc-b77a-5a7272f5edaa.ndjson",
+    "logBytes": 1979,
+    "logSha256": "9a3d3c1ea351eb068826282e710621c6dddc644d071e30cfa5be429fb7bae735",
+    "logCompressed": false,
+    "stdoutExcerpt": "Done. Issue **RUN-2** closed as `done` (v3).\n\n**What changed in this revision:**\n\n| Fix | Before | After |\n|-----|--------|-------|\n| Kimi provider claim | `Provider (from run evidence) = Moonshot AI` | Removed. `kimi_run.json` has `run.usageJson: null`; no run-evidence model/provider exists for Kimi. |\n| Kimi model evidence class | Implied as run evidence | Explicitly labeled as **Paperclip `adapterConfig` configured model evidence** (`kimi-for-coding`, source: `runtime_config_redacted.json`) |\n| Lane comparison table | Mixed configured and run evidence in same rows | Separate rows: `Configured model (adapterConfig)` vs `Model/Provider (from run evidence)` |\n| Evidence Ledger | 7 entries | 8 entries (added `runtime_config_redacted.json` to ground Kimi `adapterConfig`) |\n| Self-score reasoning | Generic \"from run evidence\" | Precise: Claude from run evidence, Kimi from `adapterConfig` because `usageJson` is null |\n\n**Artifact:** `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md` (372 lines, ~27 KB)\n\n**Self-score:** 97 / 100\n\n**Evidence used:**\n- `sdd.md`\n- `my - 红队审核与建议.md`\n- `paperclip_labebe_demo_package/COMPANY.md`\n- `paperclip_labebe_demo_package/configs/demo-brief.yaml`\n- `paperclip_labebe_demo_package/configs/mcp-tool-policy.yaml`\n- `paperclip_labebe_demo_package/docs/RUNTIME_AND_SKILL_NOTES.md`\n- `paperclip_runtime_duel/outputs/evidence/claude_run.json`\n- `paperclip_runtime_duel/outputs/evidence/runtime_config_redacted.json`\n\n**Residual risk:** The live Paperclip instance still requires the 7-item P0 remediation from `sdd.md` before this demo pack can be presented as a live proof; until then, it is a design target backed by local evidence, not a closed-loop smoke validation.\n",
+    "stderrExcerpt": "\nTo resume this session: kimi -r 30bc0108-0d48-4018-a6bf-f30b55ee80e2\n",
+    "errorCode": null,
+    "externalRunId": null,
+    "processPid": 2064445,
+    "processGroupId": null,
+    "processStartedAt": "2026-04-26T02:33:01.646Z",
+    "retryOfRunId": null,
+    "processLossRetryCount": 0,
+    "issueCommentStatus": "satisfied",
+    "issueCommentSatisfiedByCommentId": "86ef07a3-2a40-440d-a7c0-ffbadbf60e91",
+    "issueCommentRetryQueuedAt": null,
+    "livenessState": "completed",
+    "livenessReason": "Issue is done",
+    "continuationAttempt": 0,
+    "lastUsefulActionAt": "2026-04-26T02:36:54.761Z",
+    "nextAction": null,
+    "contextSnapshot": {
+      "source": "issue.comment.reopen",
+      "taskId": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+      "actorId": "local-board",
+      "issueId": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+      "taskKey": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+      "commentId": "c729832f-7f1b-4d35-978b-f173c1ad1b81",
+      "projectId": "9d403310-324f-4855-bee4-524180f35e0c",
+      "wakeReason": "runtime_duel_manual_start",
+      "wakeSource": "on_demand",
+      "triggeredBy": "board",
+      "reopenedFrom": "done",
+      "wakeCommentId": "c729832f-7f1b-4d35-978b-f173c1ad1b81",
+      "wakeCommentIds": [
+        "c729832f-7f1b-4d35-978b-f173c1ad1b81"
+      ],
+      "forceFreshSession": true,
+      "wakeTriggerDetail": "manual",
+      "paperclipWorkspace": {
+        "cwd": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel",
+        "mode": "shared_workspace",
+        "source": "project_primary",
+        "repoRef": null,
+        "repoUrl": null,
+        "strategy": "project_primary",
+        "agentHome": "/vol1/1000/projects/toyresearch/.paperclip-labebe/instances/labebe-demo/workspaces/11c366eb-6de4-4dc1-b700-f15fc1fbcdef",
+        "projectId": "9d403310-324f-4855-bee4-524180f35e0c",
+        "branchName": null,
+        "workspaceId": "e82558f5-b419-4722-a162-6f21c111d334",
+        "worktreePath": null
+      },
+      "paperclipWorkspaces": [
+        {
+          "cwd": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel",
+          "repoRef": null,
+          "repoUrl": null,
+          "workspaceId": "e82558f5-b419-4722-a162-6f21c111d334"
+        }
+      ],
+      "executionWorkspaceId": "197809d9-6501-4714-a0d7-1668005b66e3",
+      "paperclipHarnessCheckedOut": true,
+      "paperclipContinuationSummary": {
+        "key": "continuation-summary",
+        "body": "# Continuation Summary\n\n- Issue: RUN-2 — RUNTIME-DUEL-KIMI - Generate the shared boss demo pack\n- Status: done\n- Priority: critical\n- Current mode: review\n- Last updated by run: 7594562b-8f6a-487a-a2df-70e4b53ae4e0\n- Agent: Kimi Content Lead (kimi_cli)\n\n## Objective\n\nRun the shared Runtime Duel target now.\n\nLane: Kimi\nOutput path: /vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md\n\nYou must read:\n- /vol1/1000/projects/toyresearch/paperclip_runtime_duel/brief/shared_target_brief.md\n- /vol1/1000/projects/toyresearch/paperclip_runtime_duel/brief/rubric_100.yaml\n\nThen produce the full Markdown artifact with all required sections, save it to the output path, and close this issue as done.\n\nAcceptance criteria:\n- Artifact file exists and is non-empty.\n- All required sections from the shared brief are present.\n- Evidence Ledger has local evidence entries.\n- Final Self-Score targets 95+ / 100 and explains point-level reasoning.\n- No secrets, fake external validation, fake metrics, or unverifiable claims.\n\n## Acceptance Criteria\n\nNo explicit acceptance criteria captured.\n\n## Recent Concrete Actions\n\n- Run `7594562b-8f6a-487a-a2df-70e4b53ae4e0` finished with status `succeeded` at 2026-04-26T02:22:41.981Z.\n- Done. Issue **RUN-2** closed as `done` (v2).\n\n**What changed in this revision:**\n\n| Fix | Before | After | Score Impact |\n|-----|--------|-------|-------------|\n| Runtime truth | Implied \"Claude Code\" brand + assumed Anthropic model | Explicit: `claude_local` is a local Paperclip CLI/client lane; actual model `MiniMax-M2.7` with `provider: anthropic` from `claude_run.json` | 96 → 97 |\n| Kimi lane description | Generic \"Kimi Code CLI\" | Explicit: native `kimi-for-coding` through local `kimi_cli` adapter | Fixed |\n| Lane comparison table | Missing evidence-backed model/provider rows | Added actual model/provider from run evidence for both lanes | Fixed |\n| Evidence Ledger | 6 entries | 7 entries (added `claude_run.json` as runtime evidence) | 12/12 maintained |\n| All 12 sections | Intact | Intact | No regression |\n\n**Artifact:** `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md` (370 lines, 27 KB)\n\n**Self-score:** 97 / 100\n\n**Evidence used:**\n- `sdd.md`\n- `my - 红队审核与建议.md`\n- `paperclip_labebe_demo_package/COMPANY.md`\n- `paperclip_labebe_demo_package/configs/demo-brief.yaml`\n- `paperclip_labebe_demo_package/configs/mcp-tool-policy.yaml`\n-\n[truncated]\n\n## Files / Routes Touched\n\n- No file or route paths were detected in the captured run summary.\n\n## Commands Run\n\n- Heartbeat run `7594562b-8f6a-487a-a2df-70e4b53ae4e0` invoked adapter `kimi_cli`.\n- Detailed shell/tool commands remain in the run log and transcript.\n\n## Blockers / Decisions\n\n- No new blocker was recorded by the latest run.\n\n## Next Action\n\n- Review the completed issue output and close any remaining follow-up comments.",
+        "title": "Continuation Summary",
+        "updatedAt": "2026-04-26T02:22:42.185Z"
+      }
+    },
+    "createdAt": "2026-04-26T02:33:01.309Z",
+    "updatedAt": "2026-04-26T02:36:54.815Z"
+  },
+  "issue": {
+    "id": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+    "identifier": "RUN-2",
+    "title": "RUNTIME-DUEL-KIMI - Generate the shared boss demo pack",
+    "status": "done",
+    "priority": "critical",
+    "assigneeAgentId": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef"
+  },
+  "artifact": {
+    "exists": true,
+    "size": 28643,
+    "mtime": "2026-04-26T02:35:28.048Z"
+  },
+  "latestComment": {
+    "id": "86ef07a3-2a40-440d-a7c0-ffbadbf60e91",
+    "companyId": "1d9f885c-d2ac-4411-9b74-f91240ef2a72",
+    "issueId": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+    "authorAgentId": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef",
+    "authorUserId": null,
+    "createdByRunId": "fdab01aa-99f7-40bc-b77a-5a7272f5edaa",
+    "body": "Kimi CLI runtime completed this issue.\n\nDone. Issue **RUN-2** closed as `done` (v3).\n\n**What changed in this revision:**\n\n| Fix | Before | After |\n|-----|--------|-------|\n| Kimi provider claim | `Provider (from run evidence) = Moonshot AI` | Removed. `kimi_run.json` has `run.usageJson: null`; no run-evidence model/provider exists for Kimi. |\n| Kimi model evidence class | Implied as run evidence | Explicitly labeled as **Paperclip `adapterConfig` configured model evidence** (`kimi-for-coding`, source: `runtime_config_redacted.json`) |\n| Lane comparison table | Mixed configured and run evidence in same rows | Separate rows: `Configured model (adapterConfig)` vs `Model/Provider (from run evidence)` |\n| Evidence Ledger | 7 entries | 8 entries (added `runtime_config_redacted.json` to ground Kimi `adapterConfig`) |\n| Self-score reasoning | Generic \"from run evidence\" | Precise: Claude from run evidence, Kimi from `adapterConfig` because `usageJson` is null |\n\n**Artifact:** `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md` (372 lines, ~27 KB)\n\n**Self-score:** 97 / 100\n\n**Evidence used:**\n- `sdd.md`\n- `my - 红队审核与建议.md`\n- `paperclip_labebe_demo_package/COMPANY.md`\n- `paperclip_labebe_demo_package/configs/demo-brief.yaml`\n- `paperclip_labebe_demo_package/configs/mcp-tool-policy.yaml`\n- `paperclip_labebe_demo_package/docs/RUNTIME_AND_SKILL_NOTES.md`\n- `paperclip_runtime_duel/outputs/evidence/claude_run.json`\n- `paperclip_runtime_duel/outputs/evidence/runtime_config_redacted.json`\n\n**Residual risk:** The live Paperclip instance still requires the 7-item P0 remediation from `sdd.md` before this demo pack can be presented as a live proof; until then, it is a design target backed by local evidence, not a closed-loop smoke validation.",
+    "createdAt": "2026-04-26T02:36:54.751Z",
+    "updatedAt": "2026-04-26T02:36:54.751Z"
+  },
+  "log": {
+    "runId": "fdab01aa-99f7-40bc-b77a-5a7272f5edaa",
+    "store": "local_file",
+    "logRef": "1d9f885c-d2ac-4411-9b74-f91240ef2a72/11c366eb-6de4-4dc1-b700-f15fc1fbcdef/fdab01aa-99f7-40bc-b77a-5a7272f5edaa.ndjson",
+    "content": "{\"ts\":\"2026-04-26T02:36:54.319Z\",\"stream\":\"stdout\",\"chunk\":\"Done. Issue **RUN-2** closed as `done` (v3).\\n\\n**What changed in this revision:**\\n\\n| Fix | Before | After |\\n|-----|--------|-------|\\n| Kimi provider claim | `Provider (from run evidence) = Moonshot AI` | Removed. `kimi_run.json` has `run.usageJson: null`; no run-evidence model/provider exists for Kimi. |\\n| Kimi model evidence class | Implied as run evidence | Explicitly labeled as **Paperclip `adapterConfig` configured model evidence** (`kimi-for-coding`, source: `runtime_config_redacted.json`) |\\n| Lane comparison table | Mixed configured and run evidence in same rows | Separate rows: `Configured model (adapterConfig)` vs `Model/Provider (from run evidence)` |\\n| Evidence Ledger | 7 entries | 8 entries (added `runtime_config_redacted.json` to ground Kimi `adapterConfig`) |\\n| Self-score reasoning | Generic \\\"from run evidence\\\" | Precise: Claude from run evidence, Kimi from `adapterConfig` because `usageJson` is null |\\n\\n**Artifact:** `/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md` (372 lines, ~27 KB)\\n\\n**Self-score:** 97 / 100\\n\\n**Evidence used:**\\n- `sdd.md`\\n- `my - 红队审核与建议.md`\\n- `paperclip_labebe_demo_package/COMPANY.md`\\n- `paperclip_labebe_demo_package/configs/demo-brief.yaml`\\n- `paperclip_labebe_demo_package/configs/mcp-tool-policy.yaml`\\n- `paperclip_labebe_demo_package/docs/RUNTIME_AND_SKILL_NOTES.md`\\n- `paperclip_runtime_duel/outputs/evidence/claude_run.json`\\n- `paperclip_runtime_duel/outputs/evidence/runtime_config_redacted.json`\\n\\n**Residual risk:** The live Paperclip instance still requires the 7-item P0 remediation from `sdd.md` before this demo pack can be presented as a live proof; until then, it is a design target backed by local evidence, not a closed-loop smoke validation.\\n\"}\n{\"ts\":\"2026-04-26T02:36:54.320Z\",\"stream\":\"stderr\",\"chunk\":\"\\nTo resume this session: kimi -r 30bc0108-0d48-4018-a6bf-f30b55ee80e2\\n\"}\n"
+  }
+}

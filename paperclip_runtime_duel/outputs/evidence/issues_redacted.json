@@ -1,0 +1,37 @@
+{
+  "exportedAt": "2026-04-26T02:59:49.034Z",
+  "issues": [
+    {
+      "id": "a0ff7e79-98b5-43a4-8a3e-e12252a70343",
+      "identifier": "RUN-1",
+      "title": "RUNTIME-DUEL-CLAUDE - Generate the shared boss demo pack",
+      "status": "done",
+      "priority": "critical",
+      "assigneeAgentId": "e59b5eaa-f2c3-4aa1-a3c2-8e5ee7832770",
+      "commentCount": 8,
+      "latestComment": {
+        "id": "2cfeff23-3842-429a-a913-dbd217726969",
+        "authorAgentId": "e59b5eaa-f2c3-4aa1-a3c2-8e5ee7832770",
+        "createdByRunId": "7138e76f-786f-4035-9d65-1e8afce24d63",
+        "createdAt": "2026-04-26T02:42:29.602Z",
+        "bodyPreview": "Regenerated with Kimi v3 evidence-class correction.\n\n**Changes applied:**\n\n| Fix | Before | After |\n|-----|--------|-------|\n| Lane comparison table | Mixed configured and run-evidence model/provider for Kimi | Separate columns: Configured Model (adapterConfig) vs Model/Provider from Run Evidence; Kimi row now shows `kimi-for-coding` under adapterConfig and `usageJson: null` — no run-evidence model/provider |\n| Model truth row (Same-Goal Plan) | `kimi-for-coding` cited without evidence class distinction | Explicitly: Claude `MiniMax-M2.7` / `anthropic` from `claude_run.json` usageJson; Kimi `kimi-for-coding` from `runtime_config_redacted.json` adapterConfig because `kimi_run.json` confirms `run.usageJson: null` |\n| Evidence Ledger | 15 entries | 16 entries (added `runtime_config_redacted.j"
+      }
+    },
+    {
+      "id": "5ee772bb-6b03-4a42-b319-db3f3cc662f4",
+      "identifier": "RUN-2",
+      "title": "RUNTIME-DUEL-KIMI - Generate the shared boss demo pack",
+      "status": "done",
+      "priority": "critical",
+      "assigneeAgentId": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef",
+      "commentCount": 9,
+      "latestComment": {
+        "id": "86ef07a3-2a40-440d-a7c0-ffbadbf60e91",
+        "authorAgentId": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef",
+        "createdByRunId": "fdab01aa-99f7-40bc-b77a-5a7272f5edaa",
+        "createdAt": "2026-04-26T02:36:54.751Z",
+        "bodyPreview": "Kimi CLI runtime completed this issue.\n\nDone. Issue **RUN-2** closed as `done` (v3).\n\n**What changed in this revision:**\n\n| Fix | Before | After |\n|-----|--------|-------|\n| Kimi provider claim | `Provider (from run evidence) = Moonshot AI` | Removed. `kimi_run.json` has `run.usageJson: null`; no run-evidence model/provider exists for Kimi. |\n| Kimi model evidence class | Implied as run evidence | Explicitly labeled as **Paperclip `adapterConfig` configured model evidence** (`kimi-for-coding`, source: `runtime_config_redacted.json`) |\n| Lane comparison table | Mixed configured and run evidence in same rows | Separate rows: `Configured model (adapterConfig)` vs `Model/Provider (from run evidence)` |\n| Evidence Ledger | 7 entries | 8 entries (added `runtime_config_redacted.json` to ground Ki"
+      }
+    }
+  ]
+}

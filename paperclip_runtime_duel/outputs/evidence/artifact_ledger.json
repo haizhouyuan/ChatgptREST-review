@@ -1,0 +1,137 @@
+{
+  "exportedAt": "2026-04-26T02:59:49.041Z",
+  "artifacts": [
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md",
+      "size": 29864,
+      "sha256": "7d45908360071f5556097113cd9ae593d6f9a30f9c838b69fa4a52d60593f5f2",
+      "mtime": "2026-04-26T02:41:59.668Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md",
+      "size": 28643,
+      "sha256": "dcde0322a563980dc9d2612e4fde2abc59bce39aa20646516556440fa52d3adf",
+      "mtime": "2026-04-26T02:35:28.048Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/final_boss_entry.md",
+      "size": 4003,
+      "sha256": "1cea2d84ef731456e6d543bb84271036198b987a6663189a2048c418389b2a95",
+      "mtime": "2026-04-26T02:54:18.651Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/boss_runtime_duel_entry.html",
+      "size": 12793,
+      "sha256": "dd55beb114f0030456d73934628fc602f987becef7a718c768d6998fcb356861",
+      "mtime": "2026-04-26T02:57:38.860Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/pro_review_answer.md",
+      "size": 21856,
+      "sha256": "f16c548420744c91b4c8298aea081f15e05c4072a8c05810f642bd0bac143662",
+      "mtime": "2026-04-26T02:51:02.042Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/post_pro_iteration_summary.md",
+      "size": 1901,
+      "sha256": "876f3f364fcf92a0a37a86f13e4738cc55fbf4775f886b4e799bf42a16db5af9",
+      "mtime": "2026-04-26T02:59:34.352Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/claude_run.json",
+      "size": 177616,
+      "sha256": "49d5e2d7c623a679275e84707146eb5916b000ce682016bc59277d4e2625184f",
+      "mtime": "2026-04-26T02:42:43.240Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/kimi_run.json",
+      "size": 17429,
+      "sha256": "144260e5ab18111a0f3ac013b4c5cd5876ce6c96661b784e50aad9ab334a0e3e",
+      "mtime": "2026-04-26T02:36:59.544Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/scorecard.json",
+      "size": 1125,
+      "sha256": "ece567fd755c1382f17ce2414b95ae25b5b14070cdc0ddced095bb0ea348ac88",
+      "mtime": "2026-04-26T02:42:57.436Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/mcp_tools_list_redacted.json",
+      "size": 1527,
+      "sha256": "7cfd6ccb2abbd68bc824fc9233ce6b0a65f2a39f70f392eaff45219acd1b9a98",
+      "mtime": "2026-04-26T02:59:14.188Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/labebe_final_smoke_verification.json",
+      "size": 3836,
+      "sha256": "676032e84969561ac7d3b5a01063b09c16a7089ebdd040fab9fac31da815b54e",
+      "mtime": "2026-04-26T02:59:14.180Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/boss-demo-wow/index.html",
+      "size": 6926,
+      "sha256": "03e862abdf7a3238599c606987784318b4be828f3fefc7d3bb60841233c3f9b4",
+      "mtime": "2026-04-25T18:33:58.591Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/boss-demo-onepager.html",
+      "size": 8531,
+      "sha256": "cb2eac4eb864c99e0053ba39a140721d4f9e6b2a93dffbe0642e7513261ba6cc",
+      "mtime": "2026-04-25T18:33:58.603Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/frontstage-pack-verification.md",
+      "size": 2317,
+      "sha256": "affecdd473c460d3d66ad31673cb96cd6eb3b95eb1eb233bb0e51160c720778d",
+      "mtime": "2026-04-25T18:33:58.619Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/claim-lineage-matrix.md",
+      "size": 2079,
+      "sha256": "9f387cfca79b2fb99824a2710d378f3d15b4e76b824a0c66b87722a781a1c6a3",
+      "mtime": "2026-04-25T18:08:08.333Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/space-smart-concept-card.md",
+      "size": 2438,
+      "sha256": "d8e18a4dd96c2012caae610386b7edcca2b409f32bf2c3b91fcd340f21593779",
+      "mtime": "2026-04-25T18:08:08.333Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/qa/paperclip-wow/boss-demo-wow-desktop.png",
+      "size": 1996204,
+      "sha256": "efcb6d2427ab17692b96fcdd33fcc9b20980b95f480652ce5ce45debf0020882",
+      "mtime": "2026-04-25T18:34:58.395Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/qa/paperclip-wow/boss-demo-wow-mobile.png",
+      "size": 882959,
+      "sha256": "f45e0531a87b587f1f5b66c5ff77c4c8ad4e76f9c158f461844567e04e9f88bd",
+      "mtime": "2026-04-25T18:34:57.479Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/qa/paperclip-wow/boss-demo-onepager-desktop.png",
+      "size": 346639,
+      "sha256": "ff4505e9c977705f984345863c1bedd72bd5863b8a5f09c318a09aece89cface",
+      "mtime": "2026-04-25T18:34:22.547Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/qa/paperclip-wow/boss-demo-onepager-mobile.png",
+      "size": 277055,
+      "sha256": "60f1353fd20386a1ecd2eb251779502f7468b729c30a2076f8a3e6cbe80ae851",
+      "mtime": "2026-04-25T18:34:22.795Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/qa/boss-runtime-duel-desktop.png",
+      "size": 591485,
+      "sha256": "328c049a3c3499e6e703671a2b5a9b41662b0efcc2362621f3dc0a4038ea57be",
+      "mtime": "2026-04-26T02:58:10.944Z"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/qa/boss-runtime-duel-mobile.png",
+      "size": 200364,
+      "sha256": "bbd36618308a61200cdd774894137ab1611d6469cfd09407ac3de09ab64cbbef",
+      "mtime": "2026-04-26T02:57:49.924Z"
+    }
+  ]
+}

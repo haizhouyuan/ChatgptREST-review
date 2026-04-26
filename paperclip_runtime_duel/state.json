@@ -1,0 +1,27 @@
+{
+  "apiUrl": "http://127.0.0.1:3100",
+  "createdAt": "2026-04-26T02:00:30.776Z",
+  "adapter": {
+    "installed": false,
+    "type": "kimi_cli"
+  },
+  "companyId": "1d9f885c-d2ac-4411-9b74-f91240ef2a72",
+  "companyName": "Runtime Duel Studio - Claude Code vs Kimi",
+  "projectId": "9d403310-324f-4855-bee4-524180f35e0c",
+  "skillKeys": [
+    "company/1d9f885c-d2ac-4411-9b74-f91240ef2a72/runtime-duel-operator",
+    "company/1d9f885c-d2ac-4411-9b74-f91240ef2a72/runtime-duel-rubric"
+  ],
+  "agents": {
+    "claude": "e59b5eaa-f2c3-4aa1-a3c2-8e5ee7832770",
+    "kimi": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef"
+  },
+  "issues": {
+    "claude": "a0ff7e79-98b5-43a4-8a3e-e12252a70343",
+    "kimi": "5ee772bb-6b03-4a42-b319-db3f3cc662f4"
+  },
+  "outputPaths": {
+    "claude": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md",
+    "kimi": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md"
+  }
+}

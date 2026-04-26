@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paperclip Runtime Duel - Boss Demo Entry</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17201b;
+      --muted: #5d6b62;
+      --line: #d8e0d8;
+      --paper: #fbfbf7;
+      --panel: #ffffff;
+      --green: #245c42;
+      --leaf: #e8f2e8;
+      --amber: #f4c95d;
+      --clay: #c65b3b;
+      --blue: #2f5f8f;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 0;
+      border-bottom: 1px solid var(--line);
+      background: #f6f7ef;
+    }
+
+    .hero-copy {
+      padding: clamp(28px, 5vw, 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 26px;
+      min-width: 0;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(40px, 7vw, 88px);
+      line-height: 0.95;
+      letter-spacing: 0;
+      max-width: 100%;
+    }
+
+    .subhead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      border: 1px solid var(--green);
+      border-radius: 8px;
+      padding: 10px 14px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      background: var(--green);
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .button.secondary {
+      background: #fff;
+      color: var(--green);
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      background: #1b241d;
+      min-width: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.95) contrast(1.02);
+    }
+
+    .media-caption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 56px;
+    }
+
+    .section {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(24px, 3vw, 36px);
+      letter-spacing: 0;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .proof {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 18px;
+      min-height: 178px;
+      min-width: 0;
+    }
+
+    .proof strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .proof p,
+    .scene p,
+    .truth p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--leaf);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .scenes {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .scene {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+      min-height: 248px;
+      min-width: 0;
+    }
+
+    .scene img {
+      display: block;
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .scene div { padding: 14px; }
+
+    .scene h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+
+    .truth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .truth {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .truth h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      background: #eef2ee;
+      padding: 1px 4px;
+      border-radius: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .verdict {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .lane {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .lane h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .lane ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    .warning {
+      border-left: 5px solid var(--clay);
+      background: #fff7f2;
+      padding: 16px 18px;
+      border-radius: 8px;
+      color: #5a2a1c;
+      line-height: 1.45;
+    }
+
+    footer {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 42px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .truth-grid,
+      .verdict,
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-media {
+        min-height: 360px;
+      }
+
+      .scenes {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-copy {
+        padding: 28px 18px;
+        width: min(100%, 390px);
+      }
+
+      main,
+      footer {
+        width: min(100% - 36px, 354px);
+        margin-left: 18px;
+        margin-right: auto;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .button {
+        justify-content: center;
+        white-space: normal;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 38px;
+        line-height: 1;
+        max-width: 350px;
+      }
+
+      .subhead {
+        max-width: 350px;
+      }
+
+      .hero-media {
+        width: min(100%, 390px);
+      }
+
+      .scenes {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Paperclip Runtime Duel</div>
+      <h1>Governed AI Design Studio Demo</h1>
+      <p class="subhead">Two local runtime aliases generated the same boss-demo target under Paperclip. The final story combines Kimi's product narrative, Claude's audit spine, Labebe smoke proof, and a visual frontstage.</p>
+      <div class="actions">
+        <a class="button" href="../../labebe-ai-design-studio/workspace/outputs/boss-demo-wow/index.html">Open Visual Showpiece</a>
+        <a class="button secondary" href="final_boss_entry.md">Open Evidence Wrapper</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="showpiece_assets/ai-studio-hero.jpg" alt="Labebe AI design studio visual">
+      <div class="media-caption">Use this as the boss entry. The raw Claude and Kimi markdown files are audit inputs, not the first screen.</div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <h2>Proof Rails</h2>
+      <div class="proof-grid">
+        <article class="proof">
+          <span class="status">Closed</span>
+          <strong>Runtime Duel</strong>
+          <p>Claude run <code>7138e76f</code> and Kimi run <code>fdab01aa</code> both succeeded. Issues are done, artifacts are hashed, secret scan is clean.</p>
+        </article>
+        <article class="proof">
+          <span class="status">Closed</span>
+          <strong>Labebe Smoke</strong>
+          <p><code>LAB-SMOKE-001</code> is done with artifact hash <code>e355339c</code> and zero active runs in the Labebe Paperclip company.</p>
+        </article>
+        <article class="proof">
+          <span class="status">Present</span>
+          <strong>Frontstage</strong>
+          <p>The visual console, one-page board, product concept card, claim lineage matrix, and QA screenshots exist as local artifacts.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>90-Second Storyboard</h2>
+      <div class="scenes">
+        <article class="scene">
+          <img src="showpiece_assets/playroom.jpg" alt="Labebe playroom">
+          <div>
+            <h3>1. Business Hook</h3>
+            <p>What should Labebe design next? Start with compact-home parent pain, not agent mechanics.</p>
+          </div>
+        </article>
+        <article class="scene">
+          <img src="showpiece_assets/foldable-learning-tower.jpg" alt="Foldable learning tower concept">
+          <div>
+            <h3>2. Concept Path</h3>
+            <p>Sample signals become SpaceSmart Foldable Learning Tower requirements and a review-ready draft.</p>
+          </div>
+        </article>
+        <article class="scene">
+          <img src="showpiece_assets/play-kitchen.jpg" alt="Wooden play kitchen">
+          <div>
+            <h3>3. Agent Relay</h3>
+            <p>Data Truth, Radar, VOC, Design Strategy, Design Director, DFM, and Market agents hand off evidence.</p>
+          </div>
+        </article>
+        <article class="scene">
+          <img src="showpiece_assets/bakery-playset.jpg" alt="Toy bakery playset">
+          <div>
+            <h3>4. Asset Matrix</h3>
+            <p>One concept expands into PDP, Amazon A+, TikTok, Meta, Google image, and email drafts.</p>
+          </div>
+        </article>
+        <article class="scene">
+          <img src="showpiece_assets/ai-studio-hero.jpg" alt="AI control room">
+          <div>
+            <h3>5. Risk Gate</h3>
+            <p>The strongest moment is what the system refuses: safety, demand, cost, certification, and launch claims.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Runtime Truth</h2>
+      <div class="truth-grid">
+        <article class="truth">
+          <h3>Claude Code Lane</h3>
+          <p>Paperclip <code>claude_local</code> local CLI/client alias. Latest run <code>usageJson</code> reports model <code>MiniMax-M2.7</code>, provider <code>anthropic</code>. This is runtime evidence, not an official Anthropic-hosted Claude claim.</p>
+        </article>
+        <article class="truth">
+          <h3>Kimi Lane</h3>
+          <p>Paperclip external <code>kimi_cli</code> adapter using <code>kimi-direct</code>. Configured model is <code>kimi-for-coding</code> from <code>adapterConfig</code>. Latest run has <code>usageJson: null</code>.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Lane Verdict</h2>
+      <div class="verdict">
+        <article class="lane">
+          <h3>Kimi as Frontstage</h3>
+          <ul>
+            <li>Stronger boss narrative and visual sequence.</li>
+            <li>Better hook, demo stations, and product concept flow.</li>
+            <li>Use it for the 90-second walkthrough.</li>
+          </ul>
+        </article>
+        <article class="lane">
+          <h3>Claude as Audit Spine</h3>
+          <ul>
+            <li>Stronger control-plane and evidence framing.</li>
+            <li>Better runtime truth, MCP, secrets, and acceptance wording.</li>
+            <li>Use it when the boss asks how we know this is governed.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Safe Close</h2>
+      <div class="warning">
+        Runtime Duel generation is closed, and Labebe smoke evidence is available. This is still an internal governed demo, not a production launch, safety certification, real customer validation, or external account execution claim.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Evidence: <code>final_boss_entry.md</code>, <code>evidence/pro_review_answer.md</code>, <code>evidence/run_matrix.json</code>, <code>labebe-ai-design-studio/workspace/outputs/final-smoke-verification.json</code>.
+  </footer>
+</body>
+</html>

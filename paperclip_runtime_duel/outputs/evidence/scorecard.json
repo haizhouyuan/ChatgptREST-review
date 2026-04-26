@@ -1,0 +1,37 @@
+{
+  "scoredAt": "2026-04-26T02:42:57.434Z",
+  "lanes": {
+    "claude": {
+      "file": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md",
+      "score": 100,
+      "selfScore": 100,
+      "missingSections": [],
+      "evidenceHits": 17,
+      "labelCounts": {
+        "Fact": 29,
+        "Inference": 4,
+        "Hypothesis": 3
+      },
+      "chars": 28951,
+      "sha256": "7d45908360071f5556097113cd9ae593d6f9a30f9c838b69fa4a52d60593f5f2"
+    },
+    "kimi": {
+      "file": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md",
+      "score": 100,
+      "selfScore": 97,
+      "missingSections": [],
+      "evidenceHits": 8,
+      "labelCounts": {
+        "Fact": 34,
+        "Inference": 6,
+        "Hypothesis": 8
+      },
+      "chars": 27747,
+      "sha256": "dcde0322a563980dc9d2612e4fde2abc59bce39aa20646516556440fa52d3adf"
+    }
+  },
+  "comparison": {
+    "winnerByDeterministicRubric": "tie",
+    "note": "This deterministic score checks structure, traceability, and policy hygiene. Human/Pro review is still needed for taste and true wow factor."
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "exportedAt": "2026-04-26T02:59:49.027Z",
+  "company": {
+    "id": "1d9f885c-d2ac-4411-9b74-f91240ef2a72",
+    "name": "Runtime Duel Studio - Claude Code vs Kimi",
+    "description": "Independent Paperclip company for same-goal generation comparison between Claude Code and native Kimi CLI.",
+    "status": "active",
+    "issuePrefix": "RUN",
+    "issueCounter": 2,
+    "budgetMonthlyCents": 0,
+    "spentMonthlyCents": 0,
+    "requireBoardApprovalForNewAgents": false,
+    "feedbackDataSharingEnabled": false,
+    "feedbackDataSharingConsentAt": null,
+    "feedbackDataSharingConsentByUserId": null,
+    "feedbackDataSharingTermsVersion": null,
+    "brandColor": null,
+    "logoAssetId": null,
+    "createdAt": "2026-04-26T01:59:05.289Z",
+    "updatedAt": "2026-04-26T02:42:40.042Z",
+    "logoUrl": null
+  },
+  "adapters": [
+    {
+      "type": "claude_local",
+      "label": "claude_local",
+      "source": "builtin",
+      "modelsCount": 6,
+      "loaded": true,
+      "disabled": false,
+      "capabilities": {
+        "supportsInstructionsBundle": true,
+        "supportsSkills": true,
+        "supportsLocalAgentJwt": true,
+        "requiresMaterializedRuntimeSkills": false
+      },
+      "overridePaused": false
+    },
+    {
+      "type": "kimi_cli",
+      "label": "kimi_cli",
+      "source": "external",
+      "modelsCount": 1,
+      "loaded": true,
+      "disabled": false,
+      "capabilities": {
+        "supportsInstructionsBundle": true,
+        "supportsSkills": true,
+        "supportsLocalAgentJwt": true,
+        "requiresMaterializedRuntimeSkills": false
+      },
+      "overriddenBuiltin": false,
+      "version": "0.1.0",
+      "packageName": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/adapter-kimi-cli",
+      "isLocalPath": true
+    }
+  ],
+  "agents": [
+    {
+      "id": "e59b5eaa-f2c3-4aa1-a3c2-8e5ee7832770",
+      "name": "Claude Code Content Lead",
+      "title": "Claude Code CLI Runtime Lane",
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "cwd": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/workspaces/claude",
+        "env": {
+          "HCOM": {
+            "type": "plain",
+            "value": "/vol1/1000/home-yuanhaizhou/_root_home/.local/bin/hcom"
+          },
+          "HOME": {
+            "type": "plain",
+            "value": "/home/yuanhaizhou"
+          },
+          "PATH": {
+            "type": "plain",
+            "value": "/vol1/1000/home-yuanhaizhou/_root_home/.local/bin:/home/yuanhaizhou/.local/bin:/home/yuanhaizhou/local/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          }
+        },
+        "command": "/home/yuanhaizhou/local/node/bin/claude",
+        "timeoutSec": 900,
+        "maxTurnsPerRun": 30,
+        "promptTemplate": "Complete the scoped Paperclip issue now.\nUse the assigned issue, shared target brief, rubric, and your lane instructions.\nDo not stop at a plan. Produce the artifact, save it to the lane output path, and close out with evidence.\n\nContext JSON:\n{{context}}",
+        "paperclipSkillSync": {
+          "desiredSkills": [
+            "paperclipai/paperclip/paperclip",
+            "paperclipai/paperclip/paperclip-create-agent",
+            "paperclipai/paperclip/paperclip-create-plugin",
+            "paperclipai/paperclip/para-memory-files",
+            "company/1d9f885c-d2ac-4411-9b74-f91240ef2a72/runtime-duel-operator",
+            "company/1d9f885c-d2ac-4411-9b74-f91240ef2a72/runtime-duel-rubric"
+          ]
+        },
+        "instructionsFilePath": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/agents/claude-code-content-lead/AGENTS.md",
+        "dangerouslySkipPermissions": true
+      },
+      "runtimeConfig": {
+        "heartbeat": {
+          "enabled": false,
+          "maxConcurrentRuns": 1
+        }
+      },
+      "metadata": {
+        "duelLane": "claude",
+        "runtimeAlias": "Claude Code"
+      }
+    },
+    {
+      "id": "11c366eb-6de4-4dc1-b700-f15fc1fbcdef",
+      "name": "Kimi Content Lead",
+      "title": "Native Kimi CLI Runtime Lane",
+      "adapterType": "kimi_cli",
+      "adapterConfig": {
+        "cwd": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/workspaces/kimi",
+        "home": "/home/yuanhaizhou",
+        "model": "kimi-for-coding",
+        "apiUrl": "http://127.0.0.1:3100",
+        "command": "/home/yuanhaizhou/.local/bin/kimi-direct",
+        "pathEnv": "/vol1/1000/home-yuanhaizhou/_root_home/.local/bin:/home/yuanhaizhou/.local/bin:/home/yuanhaizhou/local/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "configFile": "/home/yuanhaizhou/.kimi/config.toml",
+        "timeoutSec": 900,
+        "promptTemplate": "Complete the scoped Paperclip issue now.\nUse the assigned issue, shared target brief, rubric, and your lane instructions.\nDo not stop at a plan. Produce the artifact, save it to the lane output path, and close out with evidence.\n\nContext JSON:\n{{context}}",
+        "autoUpdateIssue": true,
+        "paperclipSkillSync": {
+          "desiredSkills": [
+            "paperclipai/paperclip/paperclip",
+            "paperclipai/paperclip/paperclip-create-agent",
+            "paperclipai/paperclip/paperclip-create-plugin",
+            "paperclipai/paperclip/para-memory-files",
+            "company/1d9f885c-d2ac-4411-9b74-f91240ef2a72/runtime-duel-operator",
+            "company/1d9f885c-d2ac-4411-9b74-f91240ef2a72/runtime-duel-rubric"
+          ]
+        },
+        "instructionsFilePath": "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/agents/kimi-content-lead/AGENTS.md"
+      },
+      "runtimeConfig": {
+        "heartbeat": {
+          "enabled": false,
+          "maxConcurrentRuns": 1
+        }
+      },
+      "metadata": {
+        "duelLane": "kimi",
+        "runtimeAlias": "Kimi"
+      }
+    }
+  ]
+}

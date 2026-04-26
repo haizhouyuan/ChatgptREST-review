@@ -1,0 +1,57 @@
+rubric_name: runtime_duel_boss_demo_100_point
+target_score: 95
+criteria:
+  executive_clarity:
+    points: 15
+    requires:
+      - 90-second script is concrete and memorable
+      - boss-facing takeaway is obvious
+      - no generic AI transformation filler
+  paperclip_architecture_accuracy:
+    points: 15
+    requires:
+      - Paperclip framed as control plane
+      - issue/agent/heartbeat/approval/evidence flow is accurate
+      - runtime aliases and lane separation are explicit
+  labebe_demo_wow_factor:
+    points: 15
+    requires:
+      - premium visual/product concept
+      - concrete interaction direction
+      - memorable stage moments
+  governance_and_safety:
+    points: 15
+    requires:
+      - fact/inference/hypothesis labels
+      - forbidden claims avoided
+      - secrets/MCP/action boundaries stated
+  workflow_and_collaboration:
+    points: 12
+    requires:
+      - agent org chart
+      - collaboration workflow
+      - handoff and review standards
+  evidence_traceability:
+    points: 12
+    requires:
+      - source files cited
+      - evidence ledger non-empty
+      - uncertainty and open decisions captured
+  output_completeness:
+    points: 10
+    requires:
+      - all required sections present
+      - file path or full issue comment output
+      - acceptance criteria checkable
+  polish:
+    points: 6
+    requires:
+      - concise but not thin
+      - board-ready tone
+      - strong formatting and scanability
+fail_conditions:
+  - fabricated external metrics
+  - claims of real customer data or real market validation not present in local files
+  - secret leakage
+  - missing evidence ledger
+  - no self-score
