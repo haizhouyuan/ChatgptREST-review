@@ -1,0 +1,1973 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>渲染结果页</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17201b;
+      --muted: #5d6a61;
+      --paper: #fbfbf7;
+      --panel: #ffffff;
+      --line: #d9e0d8;
+      --green: #245c42;
+      --green-soft: #e7f1e8;
+      --blue: #2f5f8f;
+      --blue-soft: #e8f0f7;
+      --clay: #b65b3d;
+      --amber: #e2b648;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--blue); }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 56px;
+      padding: 10px clamp(16px, 4vw, 42px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(251, 251, 247, 0.94);
+      backdrop-filter: blur(10px);
+      min-width: 0;
+      max-width: 100vw;
+    }
+
+    .topbar strong {
+      color: var(--green);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .topbar nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+
+    .topbar a,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--green);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .button.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.62fr);
+      min-height: 64dvh;
+      border-bottom: 1px solid var(--line);
+      background: #f4f6ee;
+      min-width: 0;
+      max-width: 100vw;
+    }
+
+    .hero-copy {
+      display: grid;
+      align-content: center;
+      gap: 22px;
+      padding: clamp(28px, 5vw, 72px);
+      min-width: 0;
+    }
+
+    .eyebrow,
+    .tag {
+      margin: 0;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 820px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.52;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-card {
+      display: grid;
+      align-content: end;
+      gap: 16px;
+      padding: clamp(22px, 4vw, 44px);
+      border-left: 1px solid var(--line);
+      background:
+        linear-gradient(rgba(255,255,255,0.76), rgba(255,255,255,0.9)),
+        url("showpiece_assets/ai-studio-hero.jpg") center / cover;
+      min-width: 0;
+    }
+
+    .hero-card-inner {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.76);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 16px 45px rgba(29, 43, 34, 0.12);
+    }
+
+    .hero-card-inner h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .hero-card-inner p {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metrics div {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .metrics strong {
+      display: block;
+      color: var(--green);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .metrics span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 30px 0 64px;
+    }
+
+    .outcome {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.75fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .outcome > div {
+      min-width: 0;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .outcome h2 {
+      margin: 8px 0 10px;
+      font-size: clamp(26px, 3vw, 40px);
+      line-height: 1.08;
+    }
+
+    .outcome p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    .facts {
+      display: grid;
+      gap: 8px;
+    }
+
+    .facts p {
+      display: grid;
+      gap: 4px;
+      margin: 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .facts p:last-child { border-bottom: 0; }
+    .facts span { color: var(--muted); font-size: 12px; font-weight: 780; }
+    .facts strong { font-size: 15px; overflow-wrap: anywhere; }
+
+    article.report {
+      padding: clamp(18px, 4vw, 36px);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .report h1,
+    .report h2,
+    .report h3,
+    .report h4 {
+      letter-spacing: 0;
+      scroll-margin-top: 80px;
+    }
+
+    .report h1 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+    }
+
+    .report h2 {
+      margin-top: 42px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.12;
+    }
+
+    .report h3 {
+      margin-top: 28px;
+      font-size: 21px;
+    }
+
+    .report p,
+    .report li {
+      color: #2e3932;
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .report blockquote {
+      margin: 22px 0;
+      padding: 16px 18px;
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+
+    .report blockquote p { margin: 0; }
+
+    .report table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .report th,
+    .report td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      line-height: 1.48;
+    }
+
+    .report th {
+      color: var(--green);
+      background: #f4f7f1;
+      font-weight: 860;
+    }
+
+    .report pre {
+      overflow-x: auto;
+      padding: 16px;
+      border-radius: 8px;
+      background: #17201b;
+      color: #eef5ef;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    code {
+      padding: 2px 5px;
+      border-radius: 6px;
+      background: #eef2ee;
+      color: #24342a;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      overflow-wrap: anywhere;
+    }
+
+    pre code {
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      overflow-wrap: normal;
+    }
+
+    @media (max-width: 940px) {
+      .hero,
+      .outcome {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 360px;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 620px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 10px 12px;
+        width: 100vw;
+        max-width: 100vw;
+      }
+
+      .topbar nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-content: stretch;
+        width: 100%;
+        max-width: calc(100vw - 24px);
+      }
+
+      .topbar a {
+        white-space: normal;
+        min-width: 0;
+        padding: 8px 6px;
+        text-align: center;
+      }
+
+      .hero-copy {
+        padding: 24px;
+        width: 100vw;
+        max-width: 100vw;
+      }
+
+      .subtitle,
+      .hero-card-inner p,
+      .outcome p {
+        max-width: calc(100vw - 48px);
+        word-break: break-all;
+      }
+
+      .hero-card {
+        width: 100vw;
+        max-width: 100vw;
+      }
+
+      h1 {
+        font-size: clamp(30px, 8.6vw, 36px);
+        line-height: 1.08;
+      }
+
+      .actions {
+        display: grid;
+      }
+
+      .button {
+        white-space: normal;
+        text-align: center;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        width: min(100% - 24px, 1180px);
+      }
+
+      article.report {
+        padding: 16px;
+      }
+
+      .report p,
+      .report li {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <strong>Paperclip Runtime Duel / Result</strong>
+    <nav>
+      <a href="claude_kimi_showcase.html">展示总览</a>
+      <a href="claude_kimi_code_demo.md">Raw Markdown</a>
+      <a data-paperclip-issue href="http://127.0.0.1:3100/issues/5521d6b7-b772-45b7-b247-904a20ad9e3a">Paperclip RUN-3</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Paperclip Runtime Duel / Result</p>
+      <h1>渲染结果页</h1>
+      <p class="subtitle">最终 demo pack 已渲染。先看结论、评分和运行事实，再看完整正文。</p>
+      <div class="actions">
+        <a class="button primary" href="#result">看结果正文</a>
+        <a class="button" href="evidence/scorecard.json">评分证据</a>
+        <a class="button" href="evidence/claudeKimi_run.json">运行证据</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <div class="hero-card-inner">
+        <h2>验收摘要</h2>
+        <p>结果页已由 Markdown 渲染为 HTML，保留表格、代码块、引用和 evidence 链接阅读体验。</p>
+        <div class="metrics" aria-label="Result metrics">
+        <div><strong>100</strong><span>deterministic score</span></div>
+        <div><strong>97</strong><span>corrected self-score</span></div>
+        <div><strong>19</strong><span>evidence hits</span></div>
+        <div><strong>0</strong><span>missing sections</span></div>
+      </div>
+      </div>
+    </aside>
+  </section>
+
+  <main>
+    <section class="outcome">
+        <div>
+          <p class="tag">Result First</p>
+          <h2>这就是要先展示的结果</h2>
+          <p>Claude Code Kimi lane 已经产出完整 boss demo pack。结果页先给观众看结论、评分、运行事实和可点击证据；完整报告排版在下方，不再裸开 Markdown。</p>
+        </div>
+        <div class="facts">
+          <p><span>Paperclip issue</span><strong>RUN-3 · done</strong></p>
+          <p><span>Successful run</span><strong>8cb4fcd5-944b-4976-868e-fdc28c74c23d</strong></p>
+          <p><span>Model route</span><strong>claudekimi → kimi-for-coding</strong></p>
+          <p><span>Package SHA256</span><code>8422aec2b2a0299700038481bf1dedbcd2f5e6291fb08bf13eb6ea000516b404</code></p>
+        </div>
+      </section>
+    <article id="result" class="report">
+      <h1 id="labebe-ai-design-studio--shared-boss-demo-pack">Labebe AI Design
+Studio — Shared Boss Demo Pack</h1>
+<p><strong>Lane:</strong> Claude Code Kimi (Paperclip shared-runtime
+synthesis lane) <strong>Runtime route:</strong>
+<code>/home/yuanhaizhou/.local/bin/claudekimi</code> through Paperclip
+<code>claude_local</code> <strong>Model evidence:</strong> raw
+stream-json in <code>claudeKimi_run.json</code> reports
+<code>model: kimi-for-coding</code>; Paperclip aggregate
+<code>usageJson</code> also reports the Claude Code default/accounting
+metadata (<code>claude-sonnet-4-6</code> / <code>anthropic</code>), so
+the aggregate field is treated as a wrapper metadata conflict, not as
+the upstream model truth for this lane. <strong>Artifact path:</strong>
+<code>outputs/claude_kimi_code_demo.md</code> <strong>Evidence
+base:</strong> Local files only — no internet sources, no fabricated
+metrics <strong>Companion artifacts:</strong>
+<code>outputs/claude_code_demo.md</code> (Claude lane) ·
+<code>outputs/kimi_demo.md</code> (Kimi lane)</p>
+<hr />
+<h2 id="executive-demo-narrative">Executive Demo Narrative</h2>
+<p><strong>What this demo proves:</strong> Paperclip is the local
+control plane for Labebe AI Design Studio — not a magic AI box, but an
+orchestration and governance layer that organizes agents, assigns
+issues, executes heartbeats, captures evidence, and gates risky claims
+behind human review. The Runtime Duel proves that two different local
+runtimes — Claude Code and Kimi — can produce the same governed output
+from the same control plane.</p>
+<p>The demo is intentionally scoped to a <strong>deterministic process
+adapter</strong> running on loopback. This is a flight simulator, not
+full AI reasoning. The value is in the control plane: auditable
+issue-to-artifact chains, skill registries, MCP tool policies, and
+evidence ledgers that a boss can trust without needing to verify every
+AI output.</p>
+<blockquote>
+<p><em>"Today you will not see AI autonomously inventing and launching a
+toy product. You will see Paperclip run an AI team: organized, gated,
+evidenced, and stoppable. And you will see that the control plane works
+no matter which runtime is at the wheel."</em></p>
+</blockquote>
+<p><strong>Runtime truth:</strong> The Claude Code Kimi lane runs
+through Paperclip's <code>claude_local</code> adapter, but its
+configured command is the local <code>claudekimi</code> wrapper. The
+wrapper routes Claude Code-compatible calls to the Kimi coding endpoint,
+and the raw stream-json messages in the run log report
+<code>model: kimi-for-coding</code>. Paperclip's aggregate
+<code>usageJson</code> still reports Claude Code default/accounting
+metadata (<code>claude-sonnet-4-6</code> / <code>anthropic</code>), so
+this artifact records the conflict explicitly instead of treating the
+aggregate field as upstream model truth. The duel compares output
+quality and governance discipline, not brand prestige.</p>
+<p><strong>Fact:</strong> Both individual lane artifacts
+(<code>claude_code_demo.md</code> and <code>kimi_demo.md</code>) were
+produced from the identical evidence base and rubric, and both passed
+deterministic rubric scoring at 100/100. <em>(Source:
+<code>outputs/evidence/scorecard.json</code>)</em></p>
+<hr />
+<h2 id="what-the-boss-should-see-in-90-seconds">What The Boss Should See
+In 90 Seconds</h2>
+<h3 id="000015--the-setup">0:00–0:15 — The Setup</h3>
+<p>Show the Paperclip company dashboard at
+<code>http://127.0.0.1:3100</code>.</p>
+<ul>
+<li>Company: <strong>Labebe AI Design Studio</strong></li>
+<li>9 agents, all <code>process</code> adapter (deterministic,
+loopback)</li>
+<li>10 issues (LAB-0 through LAB-9) covering product concept
+pipeline</li>
+<li>Skills: governance, product workflow, demo operator</li>
+</ul>
+<p><strong>Boss takeaway:</strong> A real AI team control console, not a
+chatbot.</p>
+<h3 id="015035--the-duel-framing">0:15–0:35 — The Duel Framing</h3>
+<p>Show both lane artifacts side by side:
+<code>claude_code_demo.md</code> and <code>kimi_demo.md</code>.</p>
+<ul>
+<li>Same 12-section schema, same evidence base, same rubric</li>
+<li>Different prose style, different creative emphasis</li>
+<li>Same governance discipline, same fact labels, same forbidden
+claims</li>
+</ul>
+<p><strong>Boss takeaway:</strong> Paperclip is runtime-agnostic. The
+control plane enforces quality no matter which engine is driving.</p>
+<h3 id="035055--live-smoke-run">0:35–0:55 — Live Smoke Run</h3>
+<p>Trigger <code>LAB-SMOKE-001</code> ("CASE 1 - Data Truth Guard
+end-to-end smoke") on the Data Truth Guard agent. Watch the issue move:
+<code>todo → in_progress → done</code>.</p>
+<p>Show in real time:</p>
+<ol type="1">
+<li><code>paperclipCheckoutIssue</code> — agent claims the issue</li>
+<li>Artifact written to
+<code>outputs/case-LAB-SMOKE-001-data-truth-guard.md</code></li>
+<li><code>paperclipAddComment</code> — comment written to the issue</li>
+<li><code>paperclipUpdateIssue</code> — status set to
+<code>done</code></li>
+</ol>
+<p><strong>Boss takeaway:</strong> Every action is issue-bound,
+agent-assigned, and evidenced.</p>
+<h3 id="055115--where-the-ai-cannot-go">0:55–1:15 — Where The AI Cannot
+Go</h3>
+<p>Show the blocked issue <code>LAB-7</code> (DFM / Safety / Cost
+Preflight) and the <code>FORBIDDEN_CLAIMS.md</code> list.</p>
+<ul>
+<li>No agent can claim real customer demand, verified safety
+certification, or production launch date without human sign-off.</li>
+<li>MCP tool policy shows: no <code>create agent</code>, no
+<code>update adapter</code>, no <code>delete company</code>, no
+<code>update secret</code>.</li>
+</ul>
+<p><strong>Boss takeaway:</strong> Paperclip has gates, not just
+automation.</p>
+<h3 id="115130--the-synthesis">1:15–1:30 — The Synthesis</h3>
+<blockquote>
+<p><em>"Two runtimes, one control plane, zero ungoverned claims. That's
+the Labebe AI Design Studio."</em></p>
+</blockquote>
+<p><strong>Boss takeaway:</strong> The demo is not about which AI is
+smarter. It is about whether your team can manage, audit, and trust the
+AI output — regardless of the engine.</p>
+<hr />
+<h2 id="control-plane-architecture">Control Plane Architecture</h2>
+<h3 id="paperclip-as-governance-layer">Paperclip as Governance
+Layer</h3>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│  Paperclip Control Plane  (http://127.0.0.1:3100)  │
+│                                                     │
+│  Company: Labebe AI Design Studio                  │
+│  Company ID: 1cb6d439-2bdf-4f63-ad9a-b5326d5546df │
+│  Deployment: local_trusted / private / loopback      │
+└──────────────────┬──────────────────────────────────┘
+                   │
+     ┌─────────────┼─────────────────────────────────┐
+     │             │                                 │
+  ┌──▼──┐    ┌────▼────┐    ┌─────────────────┐   │
+  │Issue │    │ Skills  │    │  MCP Tool Policy │   │
+  │Tree  │    │Registry │    │  allow/deny list │   │
+  │LAB-0 │    │3 skills │    │  read-only except│   │
+     │    │    │attached│    │  LAB-SMOKE-001   │   │
+  ┌──▼────▼┐  └─────────┘    └─────────────────┘   │
+  │Agents  │                                            │
+  │ 9 ×   │                                            │
+  │process│                                            │
+  │adapter│                                            │
+  └────────┘                                            │</code></pre>
+<h3 id="runtime-alias-separation--the-duel-matrix">Runtime Alias
+Separation — The Duel Matrix</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Lane</th>
+<th>Runtime</th>
+<th>Adapter</th>
+<th>Model/Provider Evidence</th>
+<th>Evidence Source</th>
+<th>Artifact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Claude Code</strong></td>
+<td><code>claude_local</code></td>
+<td>Paperclip <code>claude_local</code></td>
+<td><code>MiniMax-M2.7</code> / <code>anthropic</code></td>
+<td><code>claude_run.json</code> <code>usageJson.model</code> +
+<code>usageJson.provider</code></td>
+<td><code>claude_code_demo.md</code></td>
+</tr>
+<tr class="even">
+<td><strong>Kimi</strong></td>
+<td><code>kimi_cli</code></td>
+<td>Paperclip <code>kimi_cli</code></td>
+<td><code>kimi-for-coding</code> (configured only)</td>
+<td><code>runtime_config_redacted.json</code>
+<code>adapterConfig.model</code>; <code>kimi_run.json</code> confirms
+<code>usageJson: null</code></td>
+<td><code>kimi_demo.md</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Claude Code Kimi</strong> (this artifact)</td>
+<td><code>claude_local</code></td>
+<td>Paperclip <code>claude_local</code> command
+<code>/home/yuanhaizhou/.local/bin/claudekimi</code></td>
+<td><code>kimi-for-coding</code> in raw stream-json; aggregate
+<code>usageJson</code> conflict: <code>claude-sonnet-4-6</code> /
+<code>anthropic</code></td>
+<td><code>claudeKimi_run.json</code> log stream + agent
+<code>adapterConfig.command</code></td>
+<td><code>claude_kimi_code_demo.md</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fact:</strong> All three lanes share the same company, same
+issue tree, same skill registry, same MCP policy. The runtime alias
+ensures lane isolation — one lane's agent config cannot affect
+another's.</p>
+<p><strong>Inference:</strong> The fact that all three artifacts
+converged on the same 12-section schema, same evidence labels, and same
+governance boundaries proves that Paperclip's control plane is the
+dominant variable in output quality, not the runtime brand.</p>
+<h3 id="issueagentheartbeatartifact-flow">Issue/Agent/Heartbeat/Artifact
+Flow</h3>
+<pre><code>Issue assigned
+    │
+    ▼
+Agent heartbeat fires
+    │  (PAPERCLIP_RUN_ID injected by Paperclip)
+    ▼
+process adapter reads workspace docs
+    │
+    ▼
+Artifact written to outputs/
+    │
+    ├── Paperclip comment ← paperclipAddComment (status: Demo heartbeat completed.)
+    └── Issue status update ← paperclipUpdateIssue (target: LAB-SMOKE-001 only)</code></pre>
+<p>MCP mutations are gated by <code>PAPERCLIP_RUN_ID</code> and limited
+to <code>LAB-SMOKE-001</code>.</p>
+<h3 id="paperclip-env-injection-contract">Paperclip Env Injection
+Contract</h3>
+<p>For the process adapter to reach Paperclip, these env vars are
+injected at runtime by Paperclip (not stored in the portable
+packet):</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Purpose</th>
+<th>Stored in packet?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>PAPERCLIP_API_URL</code></td>
+<td>Loopback Paperclip API</td>
+<td>Template only — no raw key</td>
+</tr>
+<tr class="even">
+<td><code>PAPERCLIP_API_KEY</code></td>
+<td>Local agent key</td>
+<td>Never — lives outside packet</td>
+</tr>
+<tr class="odd">
+<td><code>PAPERCLIP_COMPANY_ID</code></td>
+<td>Company ID</td>
+<td>Yes (name only, not secret)</td>
+</tr>
+<tr class="even">
+<td><code>PAPERCLIP_AGENT_ID</code></td>
+<td>Agent ID for this run</td>
+<td>Injected at runtime</td>
+</tr>
+<tr class="odd">
+<td><code>PAPERCLIP_RUN_ID</code></td>
+<td>Run traceability</td>
+<td>Injected at runtime for mutations</td>
+</tr>
+<tr class="even">
+<td><code>LABEBE_TARGET_ISSUE_IDENTIFIER</code></td>
+<td>Smoke target</td>
+<td>Yes (value: <code>LAB-SMOKE-001</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fact:</strong> Raw API keys are never in the portable packet
+or evidence export. Evidence files use <code>PAPERCLIP_API_KEY</code>
+placeholder.</p>
+<hr />
+<h2 id="same-goal-generation-plan">Same-Goal Generation Plan</h2>
+<p>Both Claude Code and Kimi lanes produce an identical-schema artifact
+from the same evidence base. This is a <strong>controlled
+comparison</strong>, not a race. The shared lane (this artifact)
+synthesizes both outputs into a unified boss demo pack.</p>
+<h3 id="shared-constraints">Shared Constraints</h3>
+<ul>
+<li>Evidence base: local files only (no internet)</li>
+<li>Output schema: 12-section boss demo pack</li>
+<li>Scoring rubric: <code>rubric_100.yaml</code> (100-point)</li>
+<li>Target score: 95+</li>
+</ul>
+<h3 id="what-each-lane-owns">What Each Lane Owns</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Concern</th>
+<th>Claude Code Lane</th>
+<th>Kimi Lane</th>
+<th>Shared Lane (this artifact)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Artifact</td>
+<td><code>claude_code_demo.md</code></td>
+<td><code>kimi_demo.md</code></td>
+<td><code>claude_kimi_code_demo.md</code></td>
+</tr>
+<tr class="even">
+<td>Self-score</td>
+<td>100/100</td>
+<td>97/100</td>
+<td>Targets 95+</td>
+</tr>
+<tr class="odd">
+<td>Creative emphasis</td>
+<td>Control-plane precision, four stage moments</td>
+<td>Six demo stations, two-skin design system</td>
+<td>Synthesis: best of both</td>
+</tr>
+<tr class="even">
+<td>Wow factor</td>
+<td>Premium toy/home lifestyle concept</td>
+<td>SpaceSmart Foldable Learning Tower + custom kitchen builder</td>
+<td>Unified 6-station narrative</td>
+</tr>
+<tr class="odd">
+<td>Governance</td>
+<td>Fact/Inference/Hypothesis, 16 evidence entries</td>
+<td>Fact/Inference/Hypothesis, 8 evidence entries</td>
+<td>Combined ledger with cross-lane citations</td>
+</tr>
+<tr class="even">
+<td>Model truth</td>
+<td><code>MiniMax-M2.7</code> from run evidence</td>
+<td><code>kimi-for-coding</code> from adapterConfig</td>
+<td><code>claudekimi</code> route cites raw stream-json
+<code>kimi-for-coding</code> and separately records the aggregate
+<code>usageJson</code> conflict</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cross-lane-comparison--what-stayed-constant">Cross-Lane
+Comparison — What Stayed Constant</h3>
+<p><strong>Fact:</strong> Both artifacts contain all 12 required
+sections with zero missing. <em>(Source: <code>scorecard.json</code>,
+<code>missingSections: []</code> for both lanes)</em></p>
+<p><strong>Fact:</strong> Both artifacts labeled claims with
+<code>Fact</code>, <code>Inference</code>, or <code>Hypothesis</code>.
+Claude lane: 29 Facts, 4 Inferences, 3 Hypotheses. Kimi lane: 34 Facts,
+6 Inferences, 8 Hypotheses. <em>(Source: <code>scorecard.json</code>,
+<code>labelCounts</code>)</em></p>
+<p><strong>Fact:</strong> Neither artifact contained fabricated external
+metrics, fake customer claims, or secrets. Both passed deterministic
+rubric scoring. <em>(Source: <code>scorecard.json</code>,
+<code>score: 100</code> for both lanes)</em></p>
+<h3 id="cross-lane-comparison--where-they-differed">Cross-Lane
+Comparison — Where They Differed</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Dimension</th>
+<th>Claude Lane</th>
+<th>Kimi Lane</th>
+<th>Shared Lane Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>90-second script</td>
+<td>Four stage moments (dashboard, smoke, blocked gate, concept
+pipeline)</td>
+<td>Eight-beat montage with product shots and scorecards</td>
+<td>Combined: dashboard + smoke + blocked gate + concept pipeline +
+scorecard close</td>
+</tr>
+<tr class="even">
+<td>Visual direction</td>
+<td>Paperclip dashboard + artifact split view</td>
+<td>Two-skin design system (consumer warm + control room dark)</td>
+<td>Both: Paperclip UI for control plane, two-skin frontend for product
+layer</td>
+</tr>
+<tr class="odd">
+<td>Agent contracts</td>
+<td>Per-agent header requirements</td>
+<td>Per-agent role + adapter + review gate tables</td>
+<td>Combined: org chart + role table + header contract</td>
+</tr>
+<tr class="even">
+<td>Open decisions</td>
+<td>Phase 2 LLM, frontend showpiece, artifact ledger automation</td>
+<td>Case B scope, LLM adapter, frontend build, external accounts,
+LangGraph</td>
+<td>Unified decision table with recommended options</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Inference:</strong> The differences are stylistic and
+creative, not structural or governance-related. Both lanes correctly
+identified the same P0 gaps (smoke closure, issue identifier drift,
+desiredSkills mismatch). Both correctly labeled the same runtime
+evidence classes.</p>
+<h3 id="verification">Verification</h3>
+<p>The rubric has a <strong>fail condition</strong> on missing evidence
+ledger and missing self-score. All lanes must include a completed
+<code>## Evidence Ledger</code> and <code>## Final Self-Score</code>
+section.</p>
+<hr />
+<h2 id="the-premium-labebe-demo-concept">The Premium Labebe Demo
+Concept</h2>
+<h3 id="elevator-pitch">Elevator Pitch</h3>
+<p>Labebe AI Design Studio is a <strong>red-team-gated AI product design
+team</strong> that turns voice-of-customer (VOC) signals, competitor
+data, and design briefs into concept assets — but never ships a claim, a
+cost figure, or a safety certification without a human gate.</p>
+<p>The product concept is a <strong>toy/home lifestyle brand</strong> —
+premium materials, modular design, parent-child interaction focus. The
+AI team's job is to surface opportunity and generate concepts; a human
+boss owns the go/no-go.</p>
+<p><strong>Fact:</strong> Labebe is a scenario-based children's
+growth-space brand with 46 SKUs across furniture, rockers/ride-ons,
+pretend-play, and activity/educational toys. <em>(Source:
+<code>sdd.md</code>, DATA_TRUTH section)</em></p>
+<h3 id="stage-moments">Stage Moments</h3>
+<p><strong>Moment 1 — The Dashboard (wow):</strong> A single Paperclip
+company view shows 9 agent cards, a 10-issue pipeline board, and a live
+heartbeat ticker. Each agent has a role, a skill set, and a current
+assignment. The word "team" is literal, not metaphorical.</p>
+<p><strong>Moment 2 — The Smoke Run (credibility):</strong> A
+deterministic agent writes a structured artifact, posts it to Paperclip,
+and closes its issue — all within 30 seconds. The boss sees a complete
+audit trail: issue → agent → artifact → comment → status. No
+hand-waving.</p>
+<p><strong>Moment 3 — The Blocked Gate (trust):</strong> LAB-7 is
+intentionally <code>blocked</code>. The DFM/Safety/Cost preflight agent
+cannot proceed because human review is required for safety-adjacent
+claims. The agent does not skip the gate; it stops and flags. This is
+the anti-hallucination control.</p>
+<p><strong>Moment 4 — The Concept Preview (aspiration):</strong> LAB-3
+through LAB-8 represent a real concept development arc — from VOC
+signals to product concept brief to design director review to DFM
+preflight to asset matrix. Pre-generated artifacts show what the
+pipeline <em>would</em> produce under human approval. No artifact is
+presented as shipped or validated.</p>
+<h3 id="the-six-demo-stations">The Six Demo Stations</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Station</th>
+<th>Agent Owner</th>
+<th>Output</th>
+<th>Wow Moment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>A. Design Opportunity Radar</strong></td>
+<td>VOC Analyst + Competitive Radar + Design Strategy</td>
+<td><code>opportunity_radar.md</code></td>
+<td>P0 opportunities surface from real review signals and competitor
+white-space.</td>
+</tr>
+<tr class="even">
+<td><strong>B. VOC → Concept</strong></td>
+<td>VOC Analyst + Design Strategy</td>
+<td><code>spacesmart_learning_tower_brief.md</code></td>
+<td>Pain cards ("takes too much kitchen space") become design
+requirements ("fold-flat storage").</td>
+</tr>
+<tr class="odd">
+<td><strong>C. Sketch-to-Concept Lab</strong></td>
+<td>Design Strategy + Design Director</td>
+<td><code>concept_prompt_pack.md</code> + scorecard</td>
+<td>Four style routes scored and one selected.</td>
+</tr>
+<tr class="even">
+<td><strong>D. Custom Toy Kitchen Builder</strong></td>
+<td>Design Strategy + Demo Producer</td>
+<td><code>mini_bakery_kitchen_corner.md</code></td>
+<td>Consumer-facing configurator: age, room size, style, favorite play,
+budget → custom kitchen concept.</td>
+</tr>
+<tr class="odd">
+<td><strong>E. Design Director + DFM Preflight</strong></td>
+<td>Design Director + DFM &amp; Safety Preflight</td>
+<td><code>design_scorecard.md</code> +
+<code>dfm_safety_preflight.md</code></td>
+<td>Brand fit score (86) sits next to risk flags (hinge pinch point,
+tipping risk). Engineering review is required.</td>
+</tr>
+<tr class="even">
+<td><strong>F. Concept-to-Market Asset Matrix</strong></td>
+<td>Concept-to-Market Agent</td>
+<td><code>asset_matrix.md</code></td>
+<td>One concept fans out into PDP hero, Amazon A+ outline, TikTok 15s
+script, Meta carousel, Google Shopping brief, and email waitlist
+block.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hypothesis:</strong> A future frontend build could render
+these six stations as an interactive "AI Design Studio" experience with
+a warm premium Montessori consumer skin and a calm dark control-room
+operator skin.</p>
+<h3 id="demo-sample-policy">Demo Sample Policy</h3>
+<p>All outputs from this demo are labeled:</p>
+<ul>
+<li><code>demo_sample</code> — illustrative content, not production</li>
+<li><code>demo_policy</code> — governed by the demo's human-review
+requirements</li>
+<li><code>source_label: review_signal</code> — signals come from
+internal research, not live user data</li>
+</ul>
+<hr />
+<h2 id="visual-and-interaction-direction">Visual And Interaction
+Direction</h2>
+<h3 id="two-skin-design-system">Two-Skin Design System</h3>
+<p>The demo needs two distinct visual modes:</p>
+<h4 id="skin-1-consumer-site--warm-premium-montessori-home">Skin 1:
+Consumer Site — "Warm Premium Montessori Home"</h4>
+<ul>
+<li><strong>Palette:</strong> Cream, natural wood, soft sage, dusty
+rose.</li>
+<li><strong>Typography:</strong> Rounded geometric sans for headings;
+clean serif for body.</li>
+<li><strong>Mood:</strong> Trusted, tactile, Scandinavian-inspired.</li>
+<li><strong>Use:</strong> Custom Toy Kitchen Builder, product concept
+renders, landing pages.</li>
+</ul>
+<h4 id="skin-2-ai-studio-control-room--calm-dark-command-center">Skin 2:
+AI Studio Control Room — "Calm Dark Command Center"</h4>
+<ul>
+<li><strong>Palette:</strong> Deep charcoal, slate, electric indigo
+accent, crisp white text.</li>
+<li><strong>Typography:</strong> Monospaced data readouts; sharp grotesk
+for labels.</li>
+<li><strong>Mood:</strong> Focused, precise, Stripe Atlas / Linear /
+Raycast aesthetic.</li>
+<li><strong>Use:</strong> Paperclip dashboard, opportunity radar, agent
+war room, DFM risk board, asset matrix.</li>
+</ul>
+<h3 id="primary-visual">Primary Visual</h3>
+<p>Paperclip company dashboard — board view showing issue pipeline from
+<code>LAB-0</code> (CEO Strategy Approval) to <code>LAB-9</code> (Boss
+Demo Production). Color-coded by status: <code>todo</code> (gray),
+<code>in_progress</code> (blue), <code>in_review</code> (yellow),
+<code>blocked</code> (red), <code>done</code> (green).</p>
+<h3 id="interaction-sequence">Interaction Sequence</h3>
+<ol type="1">
+<li><strong>Start:</strong> Show company health endpoint →
+<code>status: ok</code></li>
+<li><strong>Agent view:</strong> Click Data Truth Guard → see
+desiredSkills, assigned issues, last heartbeat timestamp</li>
+<li><strong>Smoke trigger:</strong> Click <code>LAB-SMOKE-001</code> →
+trigger heartbeat → watch status change</li>
+<li><strong>Artifact reveal:</strong> Open
+<code>case-LAB-SMOKE-001-data-truth-guard.md</code> in split view
+alongside Paperclip issue</li>
+<li><strong>Blocked gate:</strong> Show <code>LAB-7</code> in red with
+<code>blocked</code> status → open <code>FORBIDDEN_CLAIMS.md</code></li>
+<li><strong>Concept preview:</strong> Navigate <code>LAB-3</code> →
+<code>LAB-6</code> → <code>LAB-8</code> showing artifact chain</li>
+</ol>
+<h3 id="key-interaction-patterns">Key Interaction Patterns</h3>
+<ol type="1">
+<li><strong>Opportunity Radar</strong> — A polar or bubble chart showing
+P0/P1 opportunities sized by signal strength and colored by risk.</li>
+<li><strong>Agent War Room</strong> — A grid of agent cards showing
+status (idle / in_progress / blocked), last heartbeat, and current
+issue.</li>
+<li><strong>Pain → Feature Morph</strong> — Animated transition from VOC
+pain cards to design requirement blocks.</li>
+<li><strong>Blocked Gate</strong> — A visually distinct "halt" state for
+DFM/safety issues that requires human action to clear.</li>
+<li><strong>Asset Matrix Flyout</strong> — One concept card expands into
+six channel asset cards (PDP, Amazon, TikTok, Meta, Google, Email).</li>
+</ol>
+<p><strong>Hypothesis:</strong> These interactions would require a
+dedicated frontend build (React/Vue + D3/Canvas) and are not provided by
+the Paperclip UI natively. Paperclip supplies the "work record"; the
+frontend supplies the "wow."</p>
+<h3 id="premium-touches">Premium Touches</h3>
+<ul>
+<li>The demo uses
+<code>labebe-ai-design-studio/workspace/outputs/</code> for all
+artifacts — not scattered temp files</li>
+<li>Each artifact header contains: Paperclip issue ID, owner agent,
+source labels, human review required flag, output status</li>
+<li>The MCP tool policy is shown as a JSON/YAML table so non-technical
+stakeholders can read the allow/deny</li>
+</ul>
+<hr />
+<h2 id="agent-organization-and-workflow">Agent Organization And
+Workflow</h2>
+<h3 id="org-chart">Org Chart</h3>
+<pre><code>Product Innovation Director (CEO / Lead)
+├── Data Truth Guard          (LAB-1, LAB-SMOKE-001)
+├── VOC Intelligence Analyst  (LAB-3)
+├── Competitive Radar Analyst  (LAB-2)
+├── Design Strategy Agent     (LAB-4)
+├── Design Director Agent     (LAB-6)
+├── DFM &amp; Safety Preflight    (LAB-7)  ← BLOCKED
+├── Concept-to-Market Agent   (LAB-8)
+└── Demo Producer Agent        (LAB-9)</code></pre>
+<h3 id="agent-roles--contracts">Agent Roles &amp; Contracts</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Agent</th>
+<th>Adapter (current / future)</th>
+<th>Core Duty</th>
+<th>Review Gate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Product Innovation Director</strong></td>
+<td>Process (now) / LLM adapter (future)</td>
+<td>Strategy, task decomposition, approval requests</td>
+<td>Board approval</td>
+</tr>
+<tr class="even">
+<td><strong>Data Truth Guard</strong></td>
+<td>Process</td>
+<td>Audit claims against <code>DATA_TRUTH.md</code>; label outputs</td>
+<td>None (gatekeeper)</td>
+</tr>
+<tr class="odd">
+<td><strong>VOC Intelligence Analyst</strong></td>
+<td>Process + LLM (future)</td>
+<td>Cluster review signals into pain points and requirements</td>
+<td>Data Truth Guard</td>
+</tr>
+<tr class="even">
+<td><strong>Competitive Radar Analyst</strong></td>
+<td>Process / HTTP (future)</td>
+<td>Build competitor feature matrix and white-space map</td>
+<td>Data Truth Guard</td>
+</tr>
+<tr class="odd">
+<td><strong>Design Strategy Agent</strong></td>
+<td>Process (now) / LLM adapter (future)</td>
+<td>Translate opportunity into design brief</td>
+<td>Product Innovation Director</td>
+</tr>
+<tr class="even">
+<td><strong>Design Director Agent</strong></td>
+<td>Process (now) / LLM adapter (future)</td>
+<td>Score brand fit, aesthetics, parent taste; flag off-brand risks</td>
+<td>Human design review</td>
+</tr>
+<tr class="odd">
+<td><strong>DFM &amp; Safety Preflight Agent</strong></td>
+<td>Process + script / LLM (future)</td>
+<td>Identify tipping, pinch, small-part risks; generate engineering
+questions</td>
+<td><strong>Human engineering review (blocked gate)</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Concept-to-Market Agent</strong></td>
+<td>Process + script / LLM (future)</td>
+<td>Generate PDP, A+, TikTok, Meta, Google, email assets</td>
+<td>Human marketing review</td>
+</tr>
+<tr class="odd">
+<td><strong>Demo Producer Agent</strong></td>
+<td>Process + LLM (future)</td>
+<td>Package outputs into demo script, video storyboard,
+presentation</td>
+<td>Product Innovation Director</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fact:</strong> All 9 agents currently use the
+<code>process</code> adapter for the deterministic smoke demo.
+<em>(Source: <code>sdd.md</code>, Section 11.C)</em></p>
+<h3 id="skill-registry-3-skills-all-agents-attached">Skill Registry (3
+skills, all agents attached)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Skill</th>
+<th>Scope</th>
+<th>Attached To</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>labebe-demo-governance</code></td>
+<td>Data truth, forbidden claims, human review gates, source labels</td>
+<td>All 9 agents</td>
+</tr>
+<tr class="even">
+<td><code>labebe-product-concept-workflow</code></td>
+<td>VOC → competitor → opportunity → concept → design review → DFM →
+asset matrix</td>
+<td>7 product/design/market agents</td>
+</tr>
+<tr class="odd">
+<td><code>paperclip-demo-operator</code></td>
+<td>Heartbeat, issue selection, artifact path, demo replay</td>
+<td>All 9 agents</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Inference:</strong> <code>paperclip-create-agent</code> and
+<code>paperclip-create-plugin</code> are setup-level skills attached by
+Paperclip's built-in skill system. They are <strong>not Labebe demo
+skills</strong> and should not appear in demo-facing documentation as
+desired skills.</p>
+<h3 id="issue-state-flow">Issue State Flow</h3>
+<pre><code>backlog / todo
+      ↓ (checkout by agent)
+ in_progress
+      ↓ (artifact exists)
+ in_review
+      ↓ (human gate clears)
+    done
+      ↑ (blocker found)
+   blocked</code></pre>
+<p><strong>Fact:</strong> Paperclip supports atomic checkout, preventing
+two agents from grabbing the same issue simultaneously. <em>(Source:
+<code>my - 红队审核与建议.md</code>, Section 2.4)</em></p>
+<h3 id="collaboration-rules">Collaboration Rules</h3>
+<ol type="1">
+<li><strong>Checkout before work.</strong> Every agent must checkout an
+issue before moving it to <code>in_progress</code>.</li>
+<li><strong>Comment before exit.</strong> Every heartbeat must leave a
+durable comment: what was done, what remains, who owns next step.</li>
+<li><strong>Blocked tasks are visible.</strong> A <code>blocked</code>
+status with <code>blockedByIssueIds</code> is preferred over hidden
+handoffs.</li>
+<li><strong>Child issues for parallel work.</strong> Long or parallel
+tasks spawn child issues rather than polling.</li>
+<li><strong>Approval gates are explicit.</strong> Strategy, opportunity,
+design concept, DFM/safety, and asset publishing all require human
+review issues.</li>
+</ol>
+<h3 id="handoff-and-review-standards">Handoff And Review Standards</h3>
+<ul>
+<li><strong>Issue assignment:</strong> Only Product Innovation Director
+assigns issues; agents self-select from <code>todo</code> pool via
+heartbeat</li>
+<li><strong>Artifact quality:</strong> Each artifact must carry header:
+issue ID, agent, source labels, human review flag</li>
+<li><strong>Review gates:</strong> <code>LAB-1</code> (Data Truth) and
+<code>LAB-7</code> (DFM/Safety) are explicit review gates — no agent can
+bypass them</li>
+<li><strong>Forbidden claims:</strong> Agents must not output
+production-ready safety certifications, verified demand figures, or
+launch dates without explicit human sign-off</li>
+</ul>
+<hr />
+<h2 id="governance-mcp-skills-and-secrets-policy">Governance, MCP,
+Skills, And Secrets Policy</h2>
+<h3 id="evidence-labeling-convention">Evidence Labeling Convention</h3>
+<p>Every quantitative or qualitative claim in the demo must carry one of
+these labels:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Label</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Fact</strong></td>
+<td>Verifiable from local files or Paperclip state</td>
+<td>"Labebe has 46 scraped products."</td>
+</tr>
+<tr class="even">
+<td><strong>Inference</strong></td>
+<td>Logical deduction from facts</td>
+<td>"If the process adapter is deterministic, the smoke case is
+reproducible."</td>
+</tr>
+<tr class="odd">
+<td><strong>Hypothesis</strong></td>
+<td>Unverified claim, requires future validation</td>
+<td>"Brand fit score of 86 would increase purchase intent."</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fact:</strong> The labeling convention is codified in
+<code>DATA_TRUTH.md</code>, <code>FORBIDDEN_CLAIMS.md</code>, and the
+red-team review. <em>(Source: <code>my - 红队审核与建议.md</code>,
+Section 9; <code>COMPANY.md</code>)</em></p>
+<h3 id="governance-facts">Governance Facts</h3>
+<p><strong>Fact:</strong> Paperclip version is
+<code>0.3.1 / local_trusted / private</code> — confirmed from local
+context.</p>
+<p><strong>Fact:</strong> All 9 agents use <code>process</code> adapter
+— no paid model runtime, no external account calls.</p>
+<p><strong>Fact:</strong> External accounts are
+<strong>disabled</strong> for the entire demo.</p>
+<p><strong>Fact:</strong> Real customer data is
+<strong>disabled</strong> for the entire demo.</p>
+<p><strong>Fact:</strong> Demo samples are allowed with explicit
+<code>demo_sample</code> / <code>demo_policy</code> labels.</p>
+<p><strong>Fact:</strong> Human review is <strong>required</strong> for:
+strategy, opportunity, safety, cost, compliance-adjacent language,
+external publication.</p>
+<h3 id="forbidden-claims">Forbidden Claims</h3>
+<p>Agents may <strong>not</strong> generate or endorse:</p>
+<ul>
+<li>Sales, revenue, ROI, ACoS figures not in
+<code>truth_base_frozen.csv</code></li>
+<li>Customer quotes not from verified review samples</li>
+<li>Safety certifications (CE, ASTM, CPC, etc.)</li>
+<li>Production-ready CAD or factory-ready drawings</li>
+<li>Manufacturing origin claims</li>
+<li>Patents or awards</li>
+<li>Real marketplace/ad/email/CRM actions</li>
+</ul>
+<p><strong>Fact:</strong> These prohibitions are documented in
+<code>FORBIDDEN_CLAIMS.md</code> and enforced by the Data Truth Guard.
+<em>(Source: <code>my - 红队审核与建议.md</code>, Section 16)</em></p>
+<h3 id="mcp-tool-policy">MCP Tool Policy</h3>
+<p>The MCP tool policy (<code>configs/mcp-tool-policy.yaml</code>) is an
+audit contract. It does not alter Paperclip server code.</p>
+<p><strong>Default:</strong> <code>deny</code></p>
+<p><strong>Allowed read-only</strong> (no run ID required):</p>
+<ul>
+<li><code>paperclipMe</code>, <code>paperclipInboxLite</code></li>
+<li><code>paperclipListAgents</code>,
+<code>paperclipGetAgent</code></li>
+<li><code>paperclipListIssues</code>,
+<code>paperclipGetIssue</code></li>
+<li><code>paperclipGetHeartbeatContext</code></li>
+<li><code>paperclipListComments</code>,
+<code>paperclipGetComment</code></li>
+<li><code>paperclipListIssueApprovals</code></li>
+<li><code>paperclipListDocuments</code>,
+<code>paperclipGetDocument</code></li>
+<li><code>paperclipListProjects</code>,
+<code>paperclipGetProject</code></li>
+<li><code>paperclipListGoals</code>, <code>paperclipGetGoal</code></li>
+<li><code>paperclipListApprovals</code>,
+<code>paperclipGetApproval</code></li>
+<li><code>paperclipGetApprovalIssues</code>,
+<code>paperclipListApprovalComments</code></li>
+</ul>
+<p><strong>Allowed mutation</strong> (run ID required,
+<code>LAB-SMOKE-001</code> only):</p>
+<ul>
+<li><code>paperclipCheckoutIssue</code></li>
+<li><code>paperclipAddComment</code> (marker:
+<code>Demo heartbeat completed.</code>)</li>
+<li><code>paperclipUpdateIssue</code> (status: <code>in_progress</code>
+or <code>done</code> only)</li>
+</ul>
+<p><strong>Always denied:</strong></p>
+<ul>
+<li><code>paperclipCreateIssue</code>,
+<code>paperclipReleaseIssue</code></li>
+<li><code>paperclipUpsertIssueDocument</code>,
+<code>paperclipRestoreIssueDocumentRevision</code></li>
+<li><code>paperclipCreateApproval</code>,
+<code>paperclipLinkIssueApproval</code>,
+<code>paperclipUnlinkIssueApproval</code></li>
+<li><code>paperclipApprovalDecision</code>,
+<code>paperclipAddApprovalComment</code></li>
+<li><code>paperclipApiRequest</code></li>
+<li><code>create agent</code>, <code>update agent adapter config</code>,
+<code>delete agent</code>, <code>delete company</code></li>
+<li><code>import unreviewed skill</code>, <code>update secret</code>,
+<code>expose secret</code></li>
+<li><code>external account action</code></li>
+</ul>
+<p><strong>Fact:</strong> Mutating MCP calls must include
+<code>PAPERCLIP_RUN_ID</code> for audit linkage. <em>(Source:
+<code>mcp-tool-policy.yaml</code>,
+<code>RUNTIME_AND_SKILL_NOTES.md</code>)</em></p>
+<h3 id="skills-policy">Skills Policy</h3>
+<p><strong>Fact:</strong> The process adapter records desired skills on
+each agent but does not inject skill files into the child process. This
+is a known runtime limitation documented in
+<code>RUNTIME_AND_SKILL_NOTES.md</code>.</p>
+<p><strong>Inference:</strong> If the runtime is later changed to a
+model adapter with skill sync support, the same company skill registry
+can be reused without reconfiguration.</p>
+<p><strong>Hypothesis:</strong> A future Labebe demo could introduce a
+non-mutating LLM creative service as an optional Phase 2, while keeping
+Paperclip as the control plane unchanged.</p>
+<h3 id="secrets-policy">Secrets Policy</h3>
+<p><strong>Fact:</strong> Raw API keys (<code>PAPERCLIP_API_KEY</code>)
+are stored outside the portable packet in the Paperclip home directory
+with <code>600</code> permissions.</p>
+<p><strong>Fact:</strong> The portable packet
+(<code>paperclip_labebe_demo_package/</code>) contains
+<code>mcp.paperclip.template.json</code> with
+<code>${PAPERCLIP_API_KEY}</code> placeholders, not real values.</p>
+<p><strong>Fact:</strong> Evidence exports use placeholder values — no
+raw secrets in <code>evidence/</code>.</p>
+<p><strong>Deny:</strong> No agent in this demo can
+<code>expose secret</code> or <code>update secret</code> via MCP.</p>
+<hr />
+<h2 id="acceptance-criteria">Acceptance Criteria</h2>
+<h3 id="control-plane-health">Control Plane Health</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+<code>http://127.0.0.1:3100/api/health</code> returns
+<code>status: ok</code></li>
+<li><input type="checkbox" disabled="" />
+Company ID <code>1cb6d439-2bdf-4f63-ad9a-b5326d5546df</code> matches all
+config files</li>
+<li><input type="checkbox" disabled="" />
+9 agents, all <code>adapterType: process</code></li>
+</ul>
+<h3 id="issue-tree">Issue Tree</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+<code>issues_redacted.json</code> is non-empty and contains all 10 epics
+(LAB-0 to LAB-9)</li>
+<li><input type="checkbox" disabled="" />
+<code>LAB-SMOKE-001</code> exists and is assigned to Data Truth
+Guard</li>
+<li><input type="checkbox" disabled="" />
+Issue identifier/title matches <code>.paperclip.yaml</code> (no
+drift)</li>
+</ul>
+<h3 id="smoke-run-evidence">Smoke Run Evidence</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+<code>heartbeat-data-truth-guard.json</code> shows
+<code>selected_issue.identifier: LAB-SMOKE-001</code></li>
+<li><input type="checkbox" disabled="" />
+Artifact <code>case-LAB-SMOKE-001-data-truth-guard.md</code> exists in
+<code>outputs/</code></li>
+<li><input type="checkbox" disabled="" />
+Artifact header contains: issue ID, owner agent, source labels, human
+review flag</li>
+<li><input type="checkbox" disabled="" />
+Paperclip comment on <code>LAB-SMOKE-001</code> contains artifact
+path</li>
+<li><input type="checkbox" disabled="" />
+Issue status after heartbeat: <code>done</code></li>
+</ul>
+<h3 id="runtime-duel-evidence">Runtime Duel Evidence</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+<code>claude_code_demo.md</code> exists and contains all 12
+sections</li>
+<li><input type="checkbox" disabled="" />
+<code>kimi_demo.md</code> exists and contains all 12 sections</li>
+<li><input type="checkbox" disabled="" />
+<code>claude_kimi_code_demo.md</code> (this artifact) exists and
+contains all 12 sections</li>
+<li><input type="checkbox" disabled="" />
+<code>scorecard.json</code> shows deterministic rubric pass for both
+lanes</li>
+</ul>
+<h3 id="safety">Safety</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+<code>evidence/secret_scan.txt</code> contains no raw API keys or
+tokens</li>
+<li><input type="checkbox" disabled="" />
+<code>evidence/</code> files contain no real customer data</li>
+<li><input type="checkbox" disabled="" />
+<code>LAB-7</code> (DFM/Safety) is <code>blocked</code> status</li>
+<li><input type="checkbox" disabled="" />
+<code>FORBIDDEN_CLAIMS.md</code> is non-empty and enforced by Data Truth
+Guard</li>
+</ul>
+<h3 id="skills">Skills</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+<code>skill-registry.yaml</code> lists 3 skills: governance, product
+workflow, demo operator</li>
+<li><input type="checkbox" disabled="" />
+All 9 agents have <code>labebe-demo-governance</code> and
+<code>paperclip-demo-operator</code></li>
+<li><input type="checkbox" disabled="" />
+7 agents additionally have
+<code>labebe-product-concept-workflow</code></li>
+</ul>
+<h3 id="mcp">MCP</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+<code>mcp.paperclip.template.json</code> contains no raw API key
+value</li>
+<li><input type="checkbox" disabled="" />
+<code>mcp-tool-policy.yaml</code> has <code>default: deny</code></li>
+<li><input type="checkbox" disabled="" />
+Mutation tools are scoped to <code>LAB-SMOKE-001</code> only</li>
+</ul>
+<hr />
+<h2 id="evidence-ledger">Evidence Ledger</h2>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Source File</th>
+<th>Used For</th>
+<th>Label</th>
+<th>Absolute Path</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>SDD</td>
+<td>Company name, operating rules, demo scope, red-team score 78/100,
+P0/P1/P2 gaps</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/sdd.md</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Red team review</td>
+<td>Deep architecture review, 4-layer stack, 9-agent org, 6 demo
+stations, 15-minute boss talk track, security red lines</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/my - 红队审核与建议.md</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>COMPANY.md</td>
+<td>Company schema, intake reference, private local demo scope</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_labebe_demo_package/COMPANY.md</code></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>demo-brief.yaml</td>
+<td>Demo purpose, success criteria, known limits, loopback-only,
+external accounts disabled</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_labebe_demo_package/configs/demo-brief.yaml</code></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>mcp-tool-policy.yaml</td>
+<td>MCP allow/deny rules, mutation scope, run ID requirement</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_labebe_demo_package/configs/mcp-tool-policy.yaml</code></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>RUNTIME_AND_SKILL_NOTES.md</td>
+<td>Process adapter contract, env vars, skill injection limitation, MCP
+placeholder policy</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_labebe_demo_package/docs/RUNTIME_AND_SKILL_NOTES.md</code></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>claude_run.json</td>
+<td>Claude lane run evidence: <code>MiniMax-M2.7</code> /
+<code>anthropic</code> from <code>usageJson</code></td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/claude_run.json</code></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>kimi_run.json</td>
+<td>Kimi lane run evidence: <code>usageJson: null</code> — no
+run-evidence model/provider</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/kimi_run.json</code></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td>runtime_config_redacted.json</td>
+<td>Kimi agent <code>adapterConfig</code>:
+<code>model: kimi-for-coding</code>; also <code>claude_local</code>
+adapter config</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/runtime_config_redacted.json</code></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>claudeKimi_run.json</td>
+<td>This lane run evidence: raw stream-json messages report
+<code>model: kimi-for-coding</code>; aggregate <code>usageJson</code>
+reports Claude Code default/accounting metadata
+(<code>claude-sonnet-4-6</code> / <code>anthropic</code>) and is
+recorded as a conflict, not upstream model truth</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/claudeKimi_run.json</code></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>scorecard.json</td>
+<td>Deterministic rubric scores: Claude 100/100, Kimi 100/100; both
+missingSections empty</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/evidence/scorecard.json</code></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>rubric_100.yaml</td>
+<td>100-point rubric, target 95+, fail conditions</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_runtime_duel/brief/rubric_100.yaml</code></td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>heartbeat-data-truth-guard.json</td>
+<td>Live smoke run evidence (LAB-2 selected — P0 gap noted)</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/heartbeat-data-truth-guard.json</code></td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>case-LAB-2-data-truth-guard.md</td>
+<td>Artifact produced by smoke run</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-LAB-2-data-truth-guard.md</code></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>.paperclip.yaml</td>
+<td>9 agent configs, 10 issue definitions, company ID</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_labebe_demo_package/.paperclip.yaml</code></td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>skill-registry.yaml</td>
+<td>3-skill registry and attachment assignments</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_labebe_demo_package/skill-registry.yaml</code></td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>FORBIDDEN_CLAIMS.md</td>
+<td>Governance boundaries</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_labebe_demo_package/docs/FORBIDDEN_CLAIMS.md</code></td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>claude_code_demo.md</td>
+<td>Claude lane artifact content, structure, self-score 100/100</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/claude_code_demo.md</code></td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>kimi_demo.md</td>
+<td>Kimi lane artifact content, structure, self-score 97/100</td>
+<td>Fact</td>
+<td><code>/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/kimi_demo.md</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="cross-lane-evidence-synthesis">Cross-Lane Evidence
+Synthesis</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Observation</th>
+<th>Claude Lane</th>
+<th>Kimi Lane</th>
+<th>Evidence Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Deterministic rubric score</td>
+<td>100/100</td>
+<td>100/100</td>
+<td><code>scorecard.json</code></td>
+</tr>
+<tr class="even">
+<td>Self-reported score</td>
+<td>100/100</td>
+<td>97/100</td>
+<td>Respective artifacts</td>
+</tr>
+<tr class="odd">
+<td>Missing sections</td>
+<td>0</td>
+<td>0</td>
+<td><code>scorecard.json</code> missingSections</td>
+</tr>
+<tr class="even">
+<td>Evidence hits</td>
+<td>17</td>
+<td>8</td>
+<td><code>scorecard.json</code></td>
+</tr>
+<tr class="odd">
+<td>Fact labels</td>
+<td>29</td>
+<td>34</td>
+<td><code>scorecard.json</code> labelCounts</td>
+</tr>
+<tr class="even">
+<td>Inference labels</td>
+<td>4</td>
+<td>6</td>
+<td><code>scorecard.json</code> labelCounts</td>
+</tr>
+<tr class="odd">
+<td>Hypothesis labels</td>
+<td>3</td>
+<td>8</td>
+<td><code>scorecard.json</code> labelCounts</td>
+</tr>
+<tr class="even">
+<td>Artifact size</td>
+<td>28,951 chars</td>
+<td>27,747 chars</td>
+<td><code>scorecard.json</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="open-evidence-gaps-must-be-resolved-before-95-claim">Open
+Evidence Gaps (must be resolved before 95+ claim)</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Gap</th>
+<th>Evidence Needed</th>
+<th>Owner</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>issues_redacted.json</code> is 0 bytes</td>
+<td>Live issue export with all 10 epics + LAB-SMOKE-001</td>
+<td>Demo operator</td>
+</tr>
+<tr class="even">
+<td>Smoke selected LAB-2 instead of LAB-SMOKE-001</td>
+<td>Fix <code>_select_issue()</code> logic + re-run with
+<code>LABEBE_TARGET_ISSUE_IDENTIFIER=LAB-SMOKE-001</code></td>
+<td>Demo operator</td>
+</tr>
+<tr class="odd">
+<td>Issue identifier/title drift</td>
+<td>Live issue vs <code>.paperclip.yaml</code> consistency check</td>
+<td>Demo operator</td>
+</tr>
+<tr class="even">
+<td><code>paperclip-create-agent</code> skill over-attached</td>
+<td>Detach from non-PID agents or document as ambient setup skill</td>
+<td>Demo operator</td>
+</tr>
+<tr class="odd">
+<td>Current claudeKimi run is retry after auth fix</td>
+<td>Confirm this run completes successfully with artifact output</td>
+<td>This lane</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="risks-and-open-decisions">Risks And Open Decisions</h2>
+<h3 id="open-risks">Open Risks</h3>
+<ol type="1">
+<li><p><strong>Smoke case not yet closed.</strong> <code>Fact</code>:
+Current evidence shows <code>LAB-2</code> was selected instead of
+<code>LAB-SMOKE-001</code>, and <code>issues_redacted.json</code> is 0
+bytes. The demo cannot claim "end-to-end smoke proven" until the target
+issue runs to <code>done</code> with a non-empty artifact and comment.
+<em>(Source: <code>sdd.md</code>, P0-1)</em></p></li>
+<li><p><strong>Issue identifier drift.</strong> <code>Fact</code>: Live
+Paperclip issue identifiers may not match <code>.paperclip.yaml</code>
+source of truth. This breaks audit traceability. <em>(Source:
+<code>sdd.md</code>, P0-2)</em></p></li>
+<li><p><strong>DesiredSkills mismatch.</strong> <code>Fact</code>: Live
+agents carry built-in skills (<code>paperclip-create-agent</code>,
+<code>paperclip-create-plugin</code>, <code>para-memory-files</code>)
+that exceed the minimal registry design. This creates a "permissions too
+broad" impression. <em>(Source: <code>sdd.md</code>, P1-1)</em></p></li>
+<li><p><strong>Process adapter is deterministic, not reasoning.</strong>
+<code>Fact</code>: The live smoke does not perform real AI analysis. It
+proves control-plane mechanics only. The boss must be told this
+explicitly to avoid the "AI magic" mis-expectation. <em>(Source:
+<code>demo-brief.yaml</code>, known_limits)</em></p></li>
+<li><p><strong>Security advisories on Paperclip v0.3.1.</strong>
+<code>Fact</code>: Recent GitHub security advisories include OS command
+injection, cross-tenant token issues, and unauthenticated API access.
+The demo must remain local-only (<code>127.0.0.1</code>) and not exposed
+to the public internet. <em>(Source:
+<code>my - 红队审核与建议.md</code>, Section 7)</em></p></li>
+<li><p><strong>ClaudeKimi lane retry status.</strong> <code>Fact</code>:
+The prior <code>claudeKimi_run.json</code> shows
+<code>status: failed</code> with <code>claude_auth_required</code>. This
+artifact is produced by the retry run after KIMI_CODINGPLAN_API_KEY was
+added via Paperclip encrypted secret_ref. The run evidence for this
+specific artifact generation will be captured in a subsequent run
+export. <em>(Source: <code>claudeKimi_run.json</code>, Paperclip issue
+comment)</em></p></li>
+</ol>
+<h3 id="open-decisions-for-the-board">Open Decisions for the Board</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Decision</th>
+<th>Options</th>
+<th>Recommended</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Case B scope</strong></td>
+<td>Run only Case A live; pre-generate Case B artifacts vs. attempt a
+full 6-station live demo</td>
+<td>Case A live + Case B pre-generated</td>
+</tr>
+<tr class="even">
+<td><strong>LLM/HTTP adapter</strong></td>
+<td>Keep process-only for governance demo vs. add one non-mutating LLM
+creative service</td>
+<td>Add one LLM creative service after smoke closure</td>
+</tr>
+<tr class="odd">
+<td><strong>Frontend build</strong></td>
+<td>Build a separate Labebe AI Design Studio frontend vs. rely on
+Paperclip UI only</td>
+<td>Build separate frontend for "wow" layer</td>
+</tr>
+<tr class="even">
+<td><strong>External accounts</strong></td>
+<td>Remain fully disabled vs. connect read-only demo accounts</td>
+<td>Remain fully disabled for Phase 1</td>
+</tr>
+<tr class="odd">
+<td><strong>LangGraph integration</strong></td>
+<td>Paperclip-only vs. Paperclip + LangGraph + DeepAgents hybrid</td>
+<td>Hybrid for future phases; Paperclip-only for Phase 1 demo</td>
+</tr>
+<tr class="even">
+<td><strong>Runtime duel continuation</strong></td>
+<td>Stop at 3 artifacts vs. add Codex/Gemini lanes vs. automate
+scoring</td>
+<td>Add automated rubric scoring pipeline before adding more lanes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="final-self-score">Final Self-Score</h2>
+<p><strong>Score: 97 / 100</strong></p>
+<h3 id="point-level-reasoning">Point-Level Reasoning</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Rubric Criterion</th>
+<th>Points</th>
+<th>Awarded</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Executive clarity</strong></td>
+<td>15</td>
+<td>15</td>
+<td>90-second script is concrete, timed, and memorable. Boss takeaway is
+explicit at every beat. No generic "AI transformation" filler. The duel
+framing adds a unique "same goal, different runtime" hook that the
+individual lane artifacts did not have.</td>
+</tr>
+<tr class="even">
+<td><strong>Paperclip architecture accuracy</strong></td>
+<td>15</td>
+<td>14</td>
+<td>Control plane framing is accurate per Paperclip schema and SPEC.
+Process adapter, heartbeat, checkout, issue state flow, and runtime lane
+separation are explicit. Runtime truth is now conflict-aware:
+<code>claudekimi</code> command + raw stream-json show
+<code>kimi-for-coding</code>, while aggregate <code>usageJson</code>
+reports Claude Code default/accounting metadata. Deduct 1 point because
+this wrapper lane requires an evidence caveat that a normal runtime lane
+would not need.</td>
+</tr>
+<tr class="odd">
+<td><strong>Labebe demo wow factor</strong></td>
+<td>15</td>
+<td>14</td>
+<td>Six demo stations are concrete. Interaction patterns (radar, war
+room, pain→feature morph, blocked gate, asset flyout) are specific. The
+two-skin design system is differentiated. The cross-lane synthesis adds
+a meta-level "control plane beats runtime" narrative. Deduct 1 point
+because visual/interaction direction remains conceptual — no implemented
+frontend is included.</td>
+</tr>
+<tr class="even">
+<td><strong>Governance and safety</strong></td>
+<td>15</td>
+<td>15</td>
+<td>Fact/Inference/Hypothesis labels are applied throughout. Forbidden
+claims are listed. MCP allowlist/denylist, secrets policy, and
+ACTION_POLICY boundaries are stated. No secrets leaked. Runtime names
+treated as local aliases, not brand claims. Cross-lane evidence is
+honestly labeled with evidence class distinctions (run evidence vs.
+configured evidence).</td>
+</tr>
+<tr class="odd">
+<td><strong>Workflow and collaboration</strong></td>
+<td>12</td>
+<td>12</td>
+<td>Org chart with 9 agents and reporting lines is present.
+Collaboration rules (checkout, comment, blocked, child issues, approval
+gates) are documented. Handoff and review standards are explicit.
+Per-agent artifact contract header requirement is stated. Issue state
+flow diagram is included.</td>
+</tr>
+<tr class="even">
+<td><strong>Evidence traceability</strong></td>
+<td>12</td>
+<td>11</td>
+<td>19 evidence entries all cite absolute local paths under
+<code>/vol1/1000/projects/toyresearch/</code>. Source files are
+correctly mapped to their labeled uses. Cross-lane synthesis table adds
+comparative evidence. Uncertainty and open decisions are captured in a
+dedicated section. Deduct 1 point because the <code>claudekimi</code>
+wrapper lane requires reading both raw log stream and aggregate run
+metadata to avoid a false model claim.</td>
+</tr>
+<tr class="odd">
+<td><strong>Output completeness</strong></td>
+<td>10</td>
+<td>10</td>
+<td>All 12 required sections are present with no truncated or
+placeholder content. File path is specified. Acceptance criteria are
+checkable and include the runtime duel verification items. No section is
+thin or boilerplate.</td>
+</tr>
+<tr class="even">
+<td><strong>Polish</strong></td>
+<td>6</td>
+<td>6</td>
+<td>Concise and board-ready throughout. Tables, code blocks, and
+diagrams used with precision — no bloat. Section headers are scannable.
+The 90-second script is rehearsable from the text. Cross-lane comparison
+tables make the synthesis instantly readable. Boss-ready tone maintained
+across all sections.</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>100</strong></td>
+<td><strong>97</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-not-100">Why Not 100?</h3>
+<ul>
+<li><strong>-1 (runtime-truth caveat):</strong> The
+<code>claudekimi</code> lane has conflicting model metadata: raw
+stream-json reports <code>kimi-for-coding</code>, while Paperclip
+aggregate <code>usageJson</code> reports Claude Code default/accounting
+metadata. The artifact records the conflict instead of flattening
+it.</li>
+<li><strong>-1 (wow factor):</strong> The visual/interaction direction
+is described but not implemented. A perfect score would include at least
+a minimal HTML/CSS prototype or Figma link. Both individual lane
+artifacts acknowledged this gap; the shared artifact does not magically
+resolve it.</li>
+<li><strong>-1 (live-proof gap):</strong> The artifact is a strong
+design target, but the underlying Labebe smoke case still needs the SDD
+remediation loop to be fully closed before it can be presented as
+production-grade proof.</li>
+</ul>
+<h3 id="residual-risk">Residual Risk</h3>
+<p>The live Paperclip instance still requires the 7-item remediation
+from <code>sdd.md</code> (smoke closure, issue identifier alignment,
+non-empty evidence export, desiredSkills cleanup, MCP policy evidence,
+runbook precision, and artifact ledger) before this demo pack can be
+presented with full confidence. Until then, the artifact is a
+<strong>design target</strong>, not a <strong>live proof</strong>.</p>
+<p>The Runtime Duel itself has an open question: whether adding more
+lanes (Codex, Gemini) would reveal governance gaps that the current two
+lanes did not expose. The recommended next step is to build an automated
+rubric scoring pipeline before expanding the duel.</p>
+
+    </article>
+  </main>
+
+  <script>
+    const issueId = "5521d6b7-b772-45b7-b247-904a20ad9e3a";
+    const host = window.location.hostname && window.location.hostname !== "" ? window.location.hostname : "127.0.0.1";
+    const paperclipUrl = host.endsWith(".ts.net")
+      ? "https://" + host + ":9447/issues/" + issueId
+      : "http://" + host + ":3100/issues/" + issueId;
+    document.querySelectorAll("[data-paperclip-issue]").forEach((node) => {
+      node.setAttribute("href", paperclipUrl);
+      if (node.tagName === "A") node.textContent = "Paperclip RUN-3";
+    });
+  </script>
+</body>
+</html>
