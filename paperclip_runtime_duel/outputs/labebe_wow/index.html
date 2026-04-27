@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Labebe AI Application Wow Demo</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151c18;
+        --muted: #5e6d64;
+        --paper: #faf8f2;
+        --soft: #f1ece2;
+        --panel: #fffdf8;
+        --line: #ded5c6;
+        --green: #245d45;
+        --blue: #2b5d82;
+        --clay: #b95c3e;
+        --amber: #ddae33;
+        --red: #a63e36;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+        overflow-x: hidden;
+      }
+      img { max-width: 100%; display: block; }
+      a { color: inherit; text-decoration: none; }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 14px clamp(18px, 4vw, 56px);
+        border-bottom: 1px solid rgba(222, 213, 198, 0.9);
+        background: rgba(250, 248, 242, 0.94);
+        backdrop-filter: blur(14px);
+      }
+      .brand strong { display: block; font-size: 19px; line-height: 1.1; }
+      .brand span { color: var(--clay); font-size: 12px; font-weight: 850; text-transform: uppercase; }
+      .topbar nav { max-width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
+      .topbar a, .ghost-link {
+        min-height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 13px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 253, 248, 0.88);
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .hero {
+        min-height: calc(100dvh - 68px);
+        display: grid;
+        grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+        gap: clamp(24px, 4vw, 62px);
+        align-items: center;
+        padding: clamp(28px, 5vw, 72px);
+        background:
+          linear-gradient(120deg, rgba(250,248,242,0.98), rgba(250,248,242,0.72)),
+          url("./assets/heroHome.jpg") center / cover;
+        border-bottom: 1px solid var(--line);
+      }
+      .kicker {
+        margin: 0 0 12px;
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+      h1, h2, h3, p { overflow-wrap: anywhere; }
+      h1 {
+        margin: 0;
+        max-width: 980px;
+        font-size: clamp(46px, 7.2vw, 106px);
+        line-height: 0.98;
+        word-break: break-word;
+      }
+      .hero-copy h1 span { display: block; }
+      .hero-copy p span { display: block; }
+      .hero-copy { min-width: 0; }
+      .hero-copy > p:not(.kicker) {
+        max-width: 760px;
+        color: #405048;
+        font-size: clamp(18px, 2vw, 26px);
+        line-height: 1.42;
+      }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+      .primary {
+        min-height: 46px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 18px;
+        border-radius: 8px;
+        background: var(--green);
+        color: #fffdf8;
+        font-size: 15px;
+        font-weight: 900;
+      }
+      .machine-card {
+        align-self: stretch;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        overflow: hidden;
+        border: 1px solid rgba(21,28,24,0.18);
+        border-radius: 8px;
+        background: rgba(255,253,248,0.92);
+        box-shadow: 0 26px 90px rgba(21,28,24,0.22);
+      }
+      .machine-card img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; }
+      .machine-caption { padding: 24px; border-top: 1px solid var(--line); }
+      .machine-caption h2 { margin: 0 0 10px; font-size: clamp(28px, 3vw, 46px); line-height: 1.02; }
+      .machine-caption p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.44; }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 28px;
+        max-width: 780px;
+      }
+      .stats div {
+        min-height: 92px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255,253,248,0.9);
+      }
+      .stats strong { display: block; color: var(--green); font-size: 31px; line-height: 1; }
+      .stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 13px; font-weight: 700; }
+      .section { padding: clamp(44px, 6vw, 82px) clamp(18px, 5vw, 72px); border-bottom: 1px solid var(--line); }
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 28px;
+        align-items: end;
+        margin-bottom: 28px;
+      }
+      .section h2 { margin: 0; font-size: clamp(34px, 5vw, 68px); line-height: 1.02; }
+      .section-head p:not(.kicker) { color: var(--muted); font-size: 18px; line-height: 1.52; }
+      .signals {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .signal, .lane, .asset-card, .claim, .decision-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+      .signal { min-height: 180px; padding: 18px; }
+      .signal strong { color: var(--blue); font-size: 15px; }
+      .signal h3 { margin: 12px 0 10px; font-size: 22px; line-height: 1.13; }
+      .signal p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.45; }
+      .machine {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.85fr) repeat(5, minmax(140px, 1fr)) minmax(240px, 0.9fr);
+        gap: 10px;
+        align-items: stretch;
+      }
+      .station {
+        position: relative;
+        min-height: 270px;
+        display: grid;
+        align-content: space-between;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fffdf8;
+      }
+      .station.input { background: #14201a; color: #fffdf8; }
+      .station.output { background: #e7f0ea; }
+      .station b { display: block; font-size: 13px; text-transform: uppercase; color: var(--clay); }
+      .station.input b { color: #f0c26c; }
+      .station h3 { margin: 12px 0; font-size: 24px; line-height: 1.08; }
+      .station p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.42; }
+      .station.input p { color: rgba(255,253,248,0.82); }
+      .status {
+        justify-self: start;
+        margin-top: 20px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(36,93,69,0.12);
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .asset-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .asset-card { min-height: 240px; padding: 20px; display: grid; align-content: space-between; }
+      .asset-card span { color: var(--clay); font-size: 12px; font-weight: 900; text-transform: uppercase; }
+      .asset-card h3 { margin: 12px 0; font-size: 28px; line-height: 1.08; }
+      .asset-card p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.42; }
+      .asset-card em {
+        justify-self: start;
+        margin-top: 18px;
+        padding: 8px 11px;
+        border-radius: 999px;
+        background: #e7f0ea;
+        color: var(--green);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 900;
+      }
+      .claims-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 18px;
+      }
+      .claim { padding: 24px; }
+      .claim.blocked { border-color: rgba(166,62,54,0.5); background: #fff8f5; }
+      .claim h3 { margin: 0 0 18px; font-size: 34px; }
+      .claim-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 13px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 16px;
+      }
+      .claim-row b { color: var(--ink); }
+      .claim-row span {
+        flex: 0 0 auto;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: #e7f0ea;
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+      .claim.blocked .claim-row span { background: #f4dfda; color: var(--red); }
+      .visual-strip {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 14px;
+      }
+      .visual-strip figure {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+      .visual-strip img { width: 100%; height: 300px; object-fit: cover; }
+      .visual-strip figcaption { padding: 14px; color: var(--green); font-weight: 900; }
+      .lanes {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .lane { min-height: 190px; padding: 20px; }
+      .lane strong { color: var(--blue); font-size: 15px; }
+      .lane h3 { margin: 12px 0; font-size: 25px; line-height: 1.1; }
+      .lane p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.44; }
+      .decision {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+        gap: 20px;
+      }
+      .decision-card { padding: 24px; background: #14201a; color: #fffdf8; }
+      .decision-card h3 { margin: 0 0 14px; font-size: 38px; line-height: 1.05; }
+      .decision-card p, .decision-card li { color: rgba(255,253,248,0.8); font-size: 17px; line-height: 1.5; }
+      .decision-card ul { margin: 18px 0 0; padding-left: 20px; }
+      .evidence {
+        display: grid;
+        gap: 10px;
+        align-content: start;
+      }
+      .evidence a {
+        display: block;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--blue);
+        font-weight: 900;
+      }
+      @media (max-width: 900px) {
+        .hero, .section-head, .claims-layout, .decision { grid-template-columns: 1fr; }
+        .hero { min-height: auto; }
+        .hero { padding: 28px 18px; }
+        h1 { font-size: clamp(32px, 9vw, 36px); line-height: 1.08; word-break: break-all; }
+        .hero-copy > p:not(.kicker) { max-width: 100%; font-size: 16px; word-break: break-all; }
+        .topbar nav { display: grid; grid-template-columns: 1fr; width: 100%; }
+        .topbar a { width: 100%; }
+        .machine-card img { min-height: 300px; }
+        .stats, .signals, .asset-grid, .visual-strip, .lanes { grid-template-columns: 1fr; }
+        .machine { grid-template-columns: 1fr; }
+        .section { padding-block: 42px; }
+        .topbar { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span>Result-first boss demo</span>
+        <strong>Labebe AI Application Wow</strong>
+      </div>
+      <nav>
+        <a href="#concept">Concept</a>
+        <a href="#machine">Machine</a>
+        <a href="#matrix">Assets</a>
+        <a href="#gate">Claim Gate</a>
+        <a href="#lanes">Pro Demos</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">不是 AI 技术展示，是 Labebe 拿到的业务结果</p>
+          <h1><span>新品概念</span><span>裂变成</span><span>可审核增长资产包。</span></h1>
+          <p><span>本地样本信号转成产品方向。</span><span>渠道素材进入老板决策包。</span><span>安全、认证、需求、成本、上市声明全部先过门禁。</span></p>
+          <div class="stats">
+            <div><strong>1</strong><span>review-ready concept</span></div>
+            <div><strong>6</strong><span>channel asset drafts</span></div>
+            <div><strong>0</strong><span>unsupported launch claims</span></div>
+          </div>
+          <div class="hero-actions">
+            <a class="primary" href="#concept">先看最终概念</a>
+            <a class="ghost-link" href="./labebe_ai_application_wow.mp4">打开老板视频</a>
+          </div>
+        </div>
+        <article class="machine-card">
+          <img src="./assets/learningTower.jpg" alt="SpaceSmart Foldable Learning Tower concept" />
+          <div class="machine-caption">
+            <h2>SpaceSmart Foldable Learning Tower</h2>
+            <p>Compact storage, visible lock-state cue, cleanable geometry. Status: local draft/demo, prototype exploration only.</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="concept" class="section">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Demo B / VOC to New Concept</p>
+            <h2>评论痛点变成新品概念，而不是一页流程图。</h2>
+          </div>
+          <p>Pro 要的 hero moment 是老板能复述的产品故事：小厨房占地、清洁摩擦、折叠锁定这三类信号，转成 SpaceSmart 的可审核产品方向。</p>
+        </div>
+        <div class="signals">
+          
+            <article class="signal">
+              <strong>RS-001</strong>
+              <h3>小厨房收纳占地</h3>
+              <p>转成 fold-flat stow-away requirement</p>
+            </article>
+          
+            <article class="signal">
+              <strong>RS-002</strong>
+              <h3>台阶与角落清洁摩擦</h3>
+              <p>转成 wipe-clean step geometry</p>
+            </article>
+          
+            <article class="signal">
+              <strong>RS-003</strong>
+              <h3>折叠形态需要锁定信号</h3>
+              <p>转成 visible lock-state cue</p>
+            </article>
+          
+            <article class="signal">
+              <strong>DT-006</strong>
+              <h3>样本不能证明真实需求</h3>
+              <p>阻止 proven demand claim</p>
+            </article>
+          
+        </div>
+      </section>
+
+      <section id="machine" class="section">
+        <div class="section-head">
+          <div>
+            <p class="kicker">AI Packaging Machine</p>
+            <h2>一个 SKU 投入机器，右侧吐出增长资产。</h2>
+          </div>
+          <p>这就是 Pro 建议的表达方式：不要解释 AI，要让 AI 像生产线一样发生。Paperclip 留在后台做控制和证据，老板看到的是结果。</p>
+        </div>
+        <div class="machine">
+          <article class="station input"><b>Input</b><h3>SpaceSmart SKU seed</h3><p>本地样本、产品图片、设计约束和 Data Truth 规则。</p><span class="status">truth core</span></article>
+          <article class="station"><b>01</b><h3>Fact Intake</h3><p>标记 verified / demo_sample / forbidden claim。</p><span class="status">source labels</span></article>
+          <article class="station"><b>02</b><h3>VOC Press</h3><p>把用户痛点压印成 requirement map。</p><span class="status">concept brief</span></article>
+          <article class="station"><b>03</b><h3>Route Cutter</h3><p>四条设计路线，选择 Fold-Flat Pantry。</p><span class="status">route review</span></article>
+          <article class="station"><b>04</b><h3>DFM Gate</h3><p>tipping、pinch、small parts、cost 进入人审。</p><span class="status">conditional go</span></article>
+          <article class="station"><b>05</b><h3>Asset Press</h3><p>PDP、A+、TikTok、Meta、Google、Email 同步出稿。</p><span class="status">draft only</span></article>
+          <article class="station output"><b>Output</b><h3>Boss decision pack</h3><p>批准 prototype exploration，或先要求更多证据。</p><span class="status">review-ready</span></article>
+        </div>
+      </section>
+
+      <section id="matrix" class="section">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Demo F / Concept-to-Market Matrix</p>
+            <h2>同一概念，不同渠道，一次生成。</h2>
+          </div>
+          <p>老板要看到的是 AI 给 Labebe 带来的产能：不是一段文案，而是一个受控的多渠道增长资产矩阵。</p>
+        </div>
+        <div class="asset-grid">
+          
+            <article class="asset-card">
+              <span>PDP</span>
+              <div>
+                <h3>首屏概念模块</h3>
+                <p>compact kitchen routine + fold-flat story</p>
+              </div>
+              <em>Draft</em>
+            </article>
+          
+            <article class="asset-card">
+              <span>Amazon A+</span>
+              <div>
+                <h3>Problem / Solution / Gate 三段</h3>
+                <p>不写 certification / ranking</p>
+              </div>
+              <em>Review</em>
+            </article>
+          
+            <article class="asset-card">
+              <span>TikTok 15s</span>
+              <div>
+                <h3>小厨房 before / after 分镜</h3>
+                <p>lock mechanism 进入工程审核</p>
+              </div>
+              <em>Draft</em>
+            </article>
+          
+            <article class="asset-card">
+              <span>Meta</span>
+              <div>
+                <h3>4 帧 carousel</h3>
+                <p>痛点、概念、门槛、下一步</p>
+              </div>
+              <em>Draft</em>
+            </article>
+          
+            <article class="asset-card">
+              <span>Google Image</span>
+              <div>
+                <h3>温暖木色厨房场景 brief</h3>
+                <p>无 available-now 文案</p>
+              </div>
+              <em>Draft</em>
+            </article>
+          
+            <article class="asset-card">
+              <span>Email</span>
+              <div>
+                <h3>老板审批邮件</h3>
+                <p>只请求 prototype exploration</p>
+              </div>
+              <em>Internal</em>
+            </article>
+          
+        </div>
+      </section>
+
+      <section id="gate" class="section">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Claim Firewall Arena</p>
+            <h2>最该给老板看的 wow：AI 会生成，也会停。</h2>
+          </div>
+          <p>儿童家居产品不能靠 AI 编漂亮话。这个 demo 的核心不是“写得快”，而是能把不能说的话挡在发布前。</p>
+        </div>
+        <div class="claims-layout">
+          <article class="claim">
+            <h3>Allowed draft claims</h3>
+            <div class="claim-row"><b>Designed for compact kitchen routines.</b><span>RS-001</span></div>
+            <div class="claim-row"><b>Explores a fold-flat helper-tower concept.</b><span>LAB-4</span></div>
+            <div class="claim-row"><b>Visible lock-state detail is part of concept direction.</b><span>RS-003</span></div>
+            <div class="claim-row"><b>Draft assets are local and not launched.</b><span>verified</span></div>
+          </article>
+          <article class="claim blocked">
+            <h3>Blocked before boss approval</h3>
+            <div class="claim-row"><b>Certified safe</b><span>blocked</span></div><div class="claim-row"><b>Proven market demand</b><span>blocked</span></div><div class="claim-row"><b>Lower cost than competitors</b><span>blocked</span></div><div class="claim-row"><b>Available now</b><span>blocked</span></div><div class="claim-row"><b>Production-ready CAD</b><span>blocked</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Visual result shelf</p>
+            <h2>Labebe 的产品世界先站出来。</h2>
+          </div>
+          <p>Pro 的批评是对的：不能让“技术控制台”抢主角。展示必须先让人看到产品、房间、渠道资产和可执行决策。</p>
+        </div>
+        <div class="visual-strip">
+          <figure><img src="./assets/playKitchen.jpg" alt="Labebe play kitchen" /><figcaption>Modular Tiny Pretend Kitchen</figcaption></figure>
+          <figure><img src="./assets/bakery.jpg" alt="Labebe bakery playset" /><figcaption>Mini Bakery Kitchen Corner</figcaption></figure>
+          <figure><img src="./assets/playroom.jpg" alt="Labebe playroom" /><figcaption>Playroom Reset System</figcaption></figure>
+        </div>
+      </section>
+
+      <section id="lanes" class="section">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Pro specified demo lanes</p>
+            <h2>后续十几个 demo 必须按这 6 条主线做结果展示。</h2>
+          </div>
+          <p>这些不是技术步骤，而是 Labebe AI 应用后可以给老板看的业务能力。</p>
+        </div>
+        <div class="lanes">
+          
+            <article class="lane">
+              <strong>Demo A</strong>
+              <h3>Design Opportunity Radar</h3>
+              <p>从 review / competitor / trend 样本找 P0 产品机会</p>
+            </article>
+          
+            <article class="lane">
+              <strong>Demo B</strong>
+              <h3>VOC to New Concept</h3>
+              <p>把评论痛点翻译为 SpaceSmart 学习塔需求</p>
+            </article>
+          
+            <article class="lane">
+              <strong>Demo C</strong>
+              <h3>Sketch to Concept</h3>
+              <p>把草图方向变成可审核 concept route</p>
+            </article>
+          
+            <article class="lane">
+              <strong>Demo D</strong>
+              <h3>Custom Toy Kitchen Builder</h3>
+              <p>让家长定制玩具厨房模块与房间适配</p>
+            </article>
+          
+            <article class="lane">
+              <strong>Demo E</strong>
+              <h3>Design Director + DFM</h3>
+              <p>美学、工程、安全、成本在上线前先卡住</p>
+            </article>
+          
+            <article class="lane">
+              <strong>Demo F</strong>
+              <h3>Concept-to-Market Matrix</h3>
+              <p>同一概念裂变 PDP、A+、短视频、广告与邮件资产</p>
+            </article>
+          
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="decision">
+          <article class="decision-card">
+            <p class="kicker">Boss close</p>
+            <h3>今天要批准的不是上线，而是下一轮原型与证据投入。</h3>
+            <p>这才是安全的老板口径：AI 已经把机会、概念、渠道资产和风险门槛整理成可决策包，但任何安全、认证、成本、需求、上市 claim 都必须继续人审。</p>
+            <ul>
+              <li>Approve prototype exploration for SpaceSmart.</li>
+              <li>Request more customer evidence before demand claims.</li>
+              <li>Keep channel assets local until human review passes.</li>
+            </ul>
+          </article>
+          <div class="evidence">
+            <a href="../claude_kimi_showcase.html">旧技术展示入口</a>
+            <a href="../video/boss_video.html">旧 Paperclip 视频入口</a>
+            <a href="./labebe_ai_application_wow.mp4">新 Labebe wow 视频</a>
+            <a href="../evidence/artifact_ledger.json">Evidence ledger</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

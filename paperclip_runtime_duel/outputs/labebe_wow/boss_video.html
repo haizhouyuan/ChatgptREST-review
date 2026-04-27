@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Labebe AI Application Wow Video</title>
+    <style>
+      :root { color-scheme: light; --ink:#151c18; --muted:#5e6d64; --paper:#faf8f2; --panel:#fffdf8; --line:#ded5c6; --green:#245d45; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      main { min-height: 100dvh; display: grid; align-content: center; gap: 24px; padding: clamp(18px, 5vw, 64px); }
+      header { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 20px; align-items: end; }
+      h1 { margin: 0; max-width: 980px; font-size: clamp(38px, 6vw, 78px); line-height: 1.02; }
+      p { margin: 12px 0 0; max-width: 850px; color: var(--muted); font-size: 18px; line-height: 1.5; }
+      .links { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+      a { min-height: 40px; display: inline-flex; align-items: center; padding: 9px 13px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: inherit; text-decoration: none; font-weight: 850; }
+      video, img { width: 100%; border: 1px solid var(--line); border-radius: 8px; background: #000; box-shadow: 0 24px 80px rgba(21,28,24,0.16); }
+      .sheet { background: var(--panel); padding: 14px; border: 1px solid var(--line); border-radius: 8px; }
+      .sheet h2 { margin: 0 0 12px; font-size: 24px; }
+      @media (max-width: 760px) { header { grid-template-columns: 1fr; } .links { justify-content: flex-start; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <h1>Labebe AI 应用结果展示视频</h1>
+          <p>这版按 Pro 的方向重做：先展示 Labebe 新品概念、渠道资产矩阵和 Claim Gate 结果，再把 Paperclip 作为后台证据。</p>
+        </div>
+        <div class="links">
+          <a href="./index.html">打开互动展示页</a>
+          <a href="./labebe_ai_application_wow.mp4">直接打开 MP4</a>
+        </div>
+      </header>
+      <video controls poster="./labebe_ai_application_wow_poster.jpg" src="./labebe_ai_application_wow.mp4"></video>
+      <section class="sheet">
+        <h2>Storyboard contact sheet</h2>
+        <img src="./labebe_ai_application_wow_contact_sheet.jpg" alt="Video contact sheet" />
+      </section>
+    </main>
+  </body>
+</html>
