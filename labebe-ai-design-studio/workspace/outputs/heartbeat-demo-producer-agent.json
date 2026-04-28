@@ -1,27 +1,22 @@
 {
   "agent": "demo-producer-agent",
   "status": "ok",
-  "timestamp_utc": "2026-04-25T18:36:36+00:00",
-  "summary": "posted post-Pro frontstage demo pack verification to LAB-9",
+  "timestamp_utc": "2026-04-27T21:29:56+00:00",
+  "summary": "checked boss demo recording and presentation path",
   "missing_required_docs": [],
   "paperclip_agent_id": "fe6a8e49-a61c-4298-88b6-dd5a60f44b45",
   "paperclip_company_id": "1cb6d439-2bdf-4f63-ad9a-b5326d5546df",
-  "target_issue_identifier": "LAB-9",
-  "target_run_token": "post-pro-frontstage-verification-20260426",
+  "target_issue_identifier": null,
+  "target_run_token": null,
   "smoke_run_token": null,
   "wake_reason": null,
   "selected_issue": {
-    "identifier": "LAB-9",
-    "title": "EPIC 9 - Boss Demo Production",
-    "status": "in_review"
+    "identifier": "",
+    "title": "",
+    "status": ""
   },
-  "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/frontstage-pack-verification.md",
-  "artifact_display_path": "outputs/frontstage-pack-verification.md",
-  "paperclip_update": {
-    "issue_id": "68edbe40-7f7e-45fb-beed-e9f6e234539c",
-    "next_status": "in_review",
-    "updated_identifier": "LAB-9",
-    "comment_id": "1b4303d1-be9b-4657-b557-2964a2b3364e"
-  },
+  "artifact": "/vol1/1000/projects/toyresearch/labebe-ai-design-studio/workspace/outputs/case-demo-producer-agent-demo-producer-agent.md",
+  "artifact_display_path": "outputs/case-demo-producer-agent-demo-producer-agent.md",
+  "paperclip_update": null,
   "api_error": null
 }
