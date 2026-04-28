@@ -1,0 +1,29 @@
+{
+  "issue_id": "LAB-XXX",
+  "artifact_set": "short_snake_case_name",
+  "created_at": "YYYY-MM-DDTHH:MM:SS+08:00",
+  "owner_role": "Role Name",
+  "worker": "codex|kimicode|kimi|claude|claude-kimi|manual",
+  "status": "draft|review|accepted|rejected",
+  "artifacts": [
+    {
+      "path": "relative/or/absolute/path",
+      "type": "product_data|qa_report|decision_matrix|prototype|screenshot|claim_ledger|handoff",
+      "source_refs": [],
+      "confidence": "high|medium|low",
+      "known_limitations": []
+    }
+  ],
+  "commands_used": [],
+  "claims_supported": [],
+  "claims_blocked": [],
+  "qa_status": "not_run|sample_complete|passed|failed",
+  "forbidden_actions_check": {
+    "called_pro_or_gemini": false,
+    "edited_outside_scope": false,
+    "invented_claims": false,
+    "started_full_crawl": false
+  },
+  "next_handoff": "What the next agent may use this for, and what it must not use this for."
+}
+

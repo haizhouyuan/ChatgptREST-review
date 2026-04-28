@@ -1,0 +1,37 @@
+{
+  "observed_at": "2026-04-27T16:43:01.442051+00:00",
+  "source_urls": [
+    {
+      "collection": "all",
+      "url": "https://labebeclub.com/collections/all"
+    },
+    {
+      "collection": "rockers-ride-ons",
+      "url": "https://labebeclub.com/collection/rockers-ride-ons"
+    },
+    {
+      "collection": "pretend-play",
+      "url": "https://labebeclub.com/collection/pretend-play"
+    },
+    {
+      "collection": "activity-educational-toys",
+      "url": "https://labebeclub.com/collection/activity-educational-toys"
+    },
+    {
+      "collection": "furniture",
+      "url": "https://labebeclub.com/collection/furniture"
+    },
+    {
+      "collection": "new-in",
+      "url": "https://labebeclub.com/collection/new-in"
+    },
+    {
+      "collection": "storage-shelving",
+      "url": "https://labebeclub.com/collection/storage-shelving"
+    }
+  ],
+  "raw_row_count": 99,
+  "deduped_product_count": 60,
+  "failures": [],
+  "output_csv": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/labebe_products_live_probe.csv"
+}

@@ -1,0 +1,1123 @@
+{
+  "generated_at": "2026-04-27T17:19:24.136Z",
+  "inputCsv": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/product_master_live_probe_v1.csv",
+  "limit": 12,
+  "delayMs": 5000,
+  "searched_count": 12,
+  "searches": [
+    {
+      "captured_at": "2026-04-27T17:18:06.275Z",
+      "url": "https://www.amazon.com/s?k=labebe%20Pink%20Unicorn%20Plush%20Rocker",
+      "error": {
+        "exceptionId": 1,
+        "text": "Uncaught",
+        "lineNumber": 2,
+        "columnNumber": 39,
+        "scriptId": "9",
+        "stackTrace": {
+          "callFrames": [
+            {
+              "functionName": "",
+              "scriptId": "9",
+              "url": "",
+              "lineNumber": 2,
+              "columnNumber": 39
+            },
+            {
+              "functionName": "",
+              "scriptId": "9",
+              "url": "",
+              "lineNumber": 40,
+              "columnNumber": 2
+            }
+          ]
+        },
+        "exception": {
+          "type": "object",
+          "subtype": "error",
+          "className": "TypeError",
+          "description": "TypeError: Cannot read properties of null (reading 'innerText')\n    at <anonymous>:3:40\n    at <anonymous>:41:3",
+          "objectId": "4315176121221587444.2.2"
+        }
+      },
+      "results": [],
+      "page_state": {},
+      "query": "labebe Pink Unicorn Plush Rocker",
+      "sku_id": "pink-unicorn-plush-rocker",
+      "dtc_title": "Pink Unicorn Plush Rocker",
+      "dtc_price": "109.99",
+      "dtc_review_count_visible": "18.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/pink-unicorn-plush-rocker.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:18:12.422Z",
+      "url": "https://www.amazon.com/s?k=labebe+Children%E2%80%99s+Writing+Desk+and+Chair+Set+with+Hutch+%26+Cork+Board+for+Study+%26+Art",
+      "document_title": "Amazon.com : labebe Children’s Writing Desk and Chair Set with Hutch & Cork Board for Study & Art",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0FLPXNKNB",
+          "title": "Wooden Pink Kids Study Desk and Chair Set, 2 Drawers and 2 Storage Cabinets, Children Desk with Hutch and Bookshelf, Girls Study Desk for Kids Bedroom",
+          "url": "https://www.amazon.com/RUPOLX-Drawers-Cabinets-Children-Bookshelf/dp/B0FLPXNKNB",
+          "image": "https://m.media-amazon.com/images/I/717w8bpLPHL._AC_UL320_.jpg",
+          "price": "JPY 23,886",
+          "rating_text": "5.0 out of 5 stars, rating details",
+          "review_count_text": "23,886"
+        },
+        {
+          "rank": 2,
+          "asin": "B0GGH39LTP",
+          "title": "Kids Study Desk and Chair Set - Height Adjustable Study Writing Table with Bookstand and Storage Drawer, Child's School Study Writing Tables Ergonomic Widened Desktop Art Desk for Boy & Girl (Pink)",
+          "url": "https://www.amazon.com/Kids-Study-Desk-Chair-Set/dp/B0GGH39LTP",
+          "image": "https://m.media-amazon.com/images/I/71RWA7xqtVL._AC_UL320_.jpg",
+          "price": "JPY 13,694",
+          "rating_text": "3.5 out of 5 stars, rating details",
+          "review_count_text": "13,694"
+        },
+        {
+          "rank": 3,
+          "asin": "B0DRH4JQVN",
+          "title": "Kids Study Table and Chair Set Blue Height Adjustable Child's School Study Writing Tables Kids Desk and Chair Set Adjustable Art Desk Girls for Bedroom with Large Writing Board and Drawer",
+          "url": "https://www.amazon.com/SMIXLVY-Height-Adjustable-Writing-Bedroom/dp/B0DRH4JQVN",
+          "image": "https://m.media-amazon.com/images/I/610buYu4gOL._AC_UL320_.jpg",
+          "price": "JPY 22,133",
+          "rating_text": "2.8 out of 5 stars, rating details",
+          "review_count_text": "22,133"
+        },
+        {
+          "rank": 4,
+          "asin": "B0FHWFJT53",
+          "title": "Kids Desk and Chair Set, Height Adjustable Child's School Study Writing Tables, Kids Desk with Bookstand and Storage Drawer, Widened Desktop with Desktop for Boys and Girls (Blue-F)",
+          "url": "https://www.amazon.com/Xaperexi-Adjustable-Writing-Bookstand-Storage/dp/B0FHWFJT53",
+          "image": "https://m.media-amazon.com/images/I/71XZz2kExdL._AC_UL320_.jpg",
+          "price": "JPY 14,331",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "14,331"
+        },
+        {
+          "rank": 5,
+          "asin": "B0FHWB21GJ",
+          "title": "Kids Desk and Chair Set, Height Adjustable Child's School Study Writing Tables, Kids Desk with Bookstand and Storage Drawer, Widened Desktop with Desktop for Boys and Girls (Pink-F)",
+          "url": "https://www.amazon.com/Xaperexi-Adjustable-Writing-Bookstand-Storage/dp/B0FHWB21GJ",
+          "image": "https://m.media-amazon.com/images/I/711w4ZWPxkL._AC_UL320_.jpg",
+          "price": "JPY 14,331",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "14,331"
+        },
+        {
+          "rank": 6,
+          "asin": "B092D6XVDN",
+          "title": "UTEX",
+          "url": "https://www.amazon.com/UTEX-Wooden-Children-Writing-Storage/dp/B092D6XVDN",
+          "image": "https://m.media-amazon.com/images/I/81LwbOjMyRL._AC_UL320_.jpg",
+          "price": "JPY 20,701",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "20,701"
+        },
+        {
+          "rank": 7,
+          "asin": "B0F3HTRVLL",
+          "title": "Treocho",
+          "url": "https://www.amazon.com/Treocho-Tiltable-Desktop-Children-Storage/dp/B0F3HTRVLL",
+          "image": "https://m.media-amazon.com/images/I/71ag9x42g-L._AC_UL320_.jpg",
+          "price": "JPY 21,657",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "21,657"
+        },
+        {
+          "rank": 8,
+          "asin": "B0F2FBWF2N",
+          "title": "BIERUM",
+          "url": "https://www.amazon.com/BIERUM-Kids-Desk-Chair-Set/dp/B0F2FBWF2N",
+          "image": "https://m.media-amazon.com/images/I/615NNvPRrrL._AC_UL320_.jpg",
+          "price": "JPY 14,331",
+          "rating_text": "4.4 out of 5 stars, rating details",
+          "review_count_text": "14,331"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 15607,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Children’s Writing Desk and Chair Set with Hutch & Cork Board for Study & Art",
+      "sku_id": "children-s-writing-desk-and-chair-set-with-hutch---cork-board-for-study---art",
+      "dtc_title": "Children’s Writing Desk and Chair Set with Hutch & Cork Board for Study & Art",
+      "dtc_price": "179.99",
+      "dtc_review_count_visible": "12.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/children-s-writing-desk-and-chair-set-with-hutch---cork-board-for-study---art.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:18:23.493Z",
+      "url": "https://www.amazon.com/s?k=labebe+Kids+Wooden+Desk+%26+Chair+Set+with+Corkboard%2C+Hutch+Storage+%26+Organizer",
+      "document_title": "Amazon.com : labebe Kids Wooden Desk & Chair Set with Corkboard, Hutch Storage & Organizer",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0F3HTRVLL",
+          "title": "Treocho",
+          "url": "https://www.amazon.com/Treocho-Tiltable-Desktop-Children-Storage/dp/B0F3HTRVLL",
+          "image": "https://m.media-amazon.com/images/I/71ag9x42g-L._AC_UL320_.jpg",
+          "price": "JPY 21,657",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "21,657"
+        },
+        {
+          "rank": 2,
+          "asin": "B0F3HCYN2M",
+          "title": "Treocho",
+          "url": "https://www.amazon.com/Treocho-Tiltable-Desktop-Children-Storage/dp/B0F3HCYN2M",
+          "image": "https://m.media-amazon.com/images/I/71vGQDZJO2L._AC_UL320_.jpg",
+          "price": "JPY 25,479",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "25,479"
+        },
+        {
+          "rank": 3,
+          "asin": "B0FLPXNKNB",
+          "title": "Wooden Pink Kids Study Desk and Chair Set, 2 Drawers and 2 Storage Cabinets, Children Desk with Hutch and Bookshelf, Girls Study Desk for Kids Bedroom",
+          "url": "https://www.amazon.com/RUPOLX-Drawers-Cabinets-Children-Bookshelf/dp/B0FLPXNKNB",
+          "image": "https://m.media-amazon.com/images/I/717w8bpLPHL._AC_UL320_.jpg",
+          "price": "JPY 23,886",
+          "rating_text": "5.0 out of 5 stars, rating details",
+          "review_count_text": "23,886"
+        },
+        {
+          "rank": 4,
+          "asin": "B092D5JLLZ",
+          "title": "UTEX",
+          "url": "https://www.amazon.com/UTEX-Children-Students-Computer-Workstation/dp/B092D5JLLZ",
+          "image": "https://m.media-amazon.com/images/I/81EgsukLefL._AC_UL320_.jpg",
+          "price": "JPY 18,153",
+          "rating_text": "4.5 out of 5 stars, rating details",
+          "review_count_text": "18,153"
+        },
+        {
+          "rank": 5,
+          "asin": "B0FBGR4MM4",
+          "title": "BOLUO",
+          "url": "https://www.amazon.com/BOLUO-White-Kids-Desk-Chair/dp/B0FBGR4MM4",
+          "image": "https://m.media-amazon.com/images/I/61MykxgREUL._AC_UL320_.jpg",
+          "price": "JPY 14,331",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "14,331"
+        },
+        {
+          "rank": 6,
+          "asin": "B0DP6XFPTK",
+          "title": "Giant bean",
+          "url": "https://www.amazon.com/Learning-Cabinets-Suitable-Classroom-Playroom/dp/B0DP6XFPTK",
+          "image": "https://m.media-amazon.com/images/I/71L9faFML6L._AC_UL320_.jpg",
+          "price": "JPY 20,701",
+          "rating_text": "3.9 out of 5 stars, rating details",
+          "review_count_text": "20,701"
+        },
+        {
+          "rank": 7,
+          "asin": "B0FV3SHP48",
+          "title": "White Kids Desk and Chair Set for 5-8 Year Old Girls Boys, Small Child Desk with Bookshelf, Children Study Table with Fabric Drawer and Storage",
+          "url": "https://www.amazon.com/MomZi-Kids-Desk-Chair-Set/dp/B0FV3SHP48",
+          "image": "https://m.media-amazon.com/images/I/71ZW5ZjBlUL._AC_UL320_.jpg",
+          "price": "",
+          "rating_text": "4.1 out of 5 stars, rating details",
+          "review_count_text": ""
+        },
+        {
+          "rank": 8,
+          "asin": "B0FHWFJT53",
+          "title": "Kids Desk and Chair Set, Height Adjustable Child's School Study Writing Tables, Kids Desk with Bookstand and Storage Drawer, Widened Desktop with Desktop for Boys and Girls (Blue-F)",
+          "url": "https://www.amazon.com/Xaperexi-Adjustable-Writing-Bookstand-Storage/dp/B0FHWFJT53",
+          "image": "https://m.media-amazon.com/images/I/71XZz2kExdL._AC_UL320_.jpg",
+          "price": "JPY 14,331",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "14,331"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 8269,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Kids Wooden Desk & Chair Set with Corkboard, Hutch Storage & Organizer",
+      "sku_id": "kids-wooden-desk---chair-set-with-corkboard--hutch-storage---organizer",
+      "dtc_title": "Kids Wooden Desk & Chair Set with Corkboard, Hutch Storage & Organizer",
+      "dtc_price": "179.99",
+      "dtc_review_count_visible": "11.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/kids-wooden-desk---chair-set-with-corkboard--hutch-storage---organizer.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:18:29.022Z",
+      "url": "https://www.amazon.com/s?k=labebe+Midnight+Serenity+Wooden+Play+Kitchen+Set",
+      "document_title": "Amazon.com : labebe Midnight Serenity Wooden Play Kitchen Set",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0FH1KX7XQ",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Kitchen-Toddlers-Realistic-Accessories/dp/B0FH1KX7XQ",
+          "image": "https://m.media-amazon.com/images/I/71UyVIcwF-L._AC_UL320_.jpg",
+          "price": "JPY 20,701",
+          "rating_text": "4.4 out of 5 stars, rating details",
+          "review_count_text": "20,701"
+        },
+        {
+          "rank": 2,
+          "asin": "B0DWMRNS17",
+          "title": "Wooden Play Kitchen for Kids– Realistic Appliances, Smart Storage & 15 Fun Accessories for Inspiring Pretend Play (Ages 3+)",
+          "url": "https://www.amazon.com/Kitchen-Realistic-Appliances-Accessories-Inspiring/dp/B0DWMRNS17",
+          "image": "https://m.media-amazon.com/images/I/71nykwOv19L._AC_UL320_.jpg",
+          "price": "JPY 21,497",
+          "rating_text": "4.3 out of 5 stars, rating details",
+          "review_count_text": "21,497"
+        },
+        {
+          "rank": 3,
+          "asin": "B0FPX1RVGJ",
+          "title": "Kids Wooden Play Kitchen Set – Realistic Pretend Play Kitchen with Stove, Sink, Coffee Maker, Ice Maker & 15 Fun Accessories | Montessori-Inspired Toy Kitchen for Toddlers Ages 3+",
+          "url": "https://www.amazon.com/Kids-Wooden-Play-Kitchen-Montessori-Inspired/dp/B0FPX1RVGJ",
+          "image": "https://m.media-amazon.com/images/I/71xiDg0Y75L._AC_UL320_.jpg",
+          "price": "JPY 23,886",
+          "rating_text": "4.4 out of 5 stars, rating details",
+          "review_count_text": "23,886"
+        },
+        {
+          "rank": 4,
+          "asin": "B0GTVH216C",
+          "title": "Kids Play Kitchen Toddler Kitchen Playset with Play Food Set Pretend Cooking Set with Sink, Stove, Microwave Wooden Toys Kitchen Gift for Girls and Boys",
+          "url": "https://www.amazon.com/Kids-play-Kitchen-wooden-Playset/dp/B0GTVH216C",
+          "image": "https://m.media-amazon.com/images/I/81-L-0MlHWL._AC_UL320_.jpg",
+          "price": "JPY 15,922",
+          "rating_text": "5.0 out of 5 stars, rating details",
+          "review_count_text": "15,922"
+        },
+        {
+          "rank": 5,
+          "asin": "B0FZQWN6CK",
+          "title": "ROBUD",
+          "url": "https://www.amazon.com/ROBUD-Kitchen-Playset-Dishwasher-Toddlers/dp/B0FZQWN6CK",
+          "image": "https://m.media-amazon.com/images/I/71oxJqcKDsL._AC_UL320_.jpg",
+          "price": "JPY 52,551",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "52,551"
+        },
+        {
+          "rank": 6,
+          "asin": "B0GFVPSDDN",
+          "title": "ROBUD",
+          "url": "https://www.amazon.com/ROBUD-Kitchen-Realistic-Accessories-Toddlers/dp/B0GFVPSDDN",
+          "image": "https://m.media-amazon.com/images/I/81XLYxOResL._AC_UL320_.jpg",
+          "price": "JPY 22,294",
+          "rating_text": "3.0 out of 5 stars, rating details",
+          "review_count_text": "22,294"
+        },
+        {
+          "rank": 7,
+          "asin": "B0FMXJDM4B",
+          "title": "ROBUD",
+          "url": "https://www.amazon.com/ROBUD-Kitchen-Pretend-Microwave-Toddlers/dp/B0FMXJDM4B",
+          "image": "https://m.media-amazon.com/images/I/81YBosGmhvL._AC_UL320_.jpg",
+          "price": "JPY 16,425",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "16,425"
+        },
+        {
+          "rank": 8,
+          "asin": "B09VK59NMD",
+          "title": "ROBOTIME",
+          "url": "https://www.amazon.com/ROBOTIME-Kitchen-Playset-Toddlers-Microwave/dp/B09VK59NMD",
+          "image": "https://m.media-amazon.com/images/I/71qljkMhzqL._AC_UL320_.jpg",
+          "price": "JPY 17,245",
+          "rating_text": "4.3 out of 5 stars, rating details",
+          "review_count_text": "17,245"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 22578,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Midnight Serenity Wooden Play Kitchen Set",
+      "sku_id": "midnight-serenity-wooden-play-kitchen-set",
+      "dtc_title": "Midnight Serenity Wooden Play Kitchen Set",
+      "dtc_price": "129.99",
+      "dtc_review_count_visible": "10.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/midnight-serenity-wooden-play-kitchen-set.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:18:34.578Z",
+      "url": "https://www.amazon.com/s?k=labebe+Cream+Wooden+Play+Kitchen+Set+with+Storage",
+      "document_title": "Amazon.com : labebe Cream Wooden Play Kitchen Set with Storage",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0FH1KX7XQ",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Kitchen-Toddlers-Realistic-Accessories/dp/B0FH1KX7XQ",
+          "image": "https://m.media-amazon.com/images/I/71UyVIcwF-L._AC_UL320_.jpg",
+          "price": "JPY 20,701",
+          "rating_text": "4.4 out of 5 stars, rating details",
+          "review_count_text": "20,701"
+        },
+        {
+          "rank": 2,
+          "asin": "B0DWMRNS17",
+          "title": "Wooden Play Kitchen for Kids– Realistic Appliances, Smart Storage & 15 Fun Accessories for Inspiring Pretend Play (Ages 3+)",
+          "url": "https://www.amazon.com/Kitchen-Realistic-Appliances-Accessories-Inspiring/dp/B0DWMRNS17",
+          "image": "https://m.media-amazon.com/images/I/71nykwOv19L._AC_UL320_.jpg",
+          "price": "JPY 21,497",
+          "rating_text": "4.3 out of 5 stars, rating details",
+          "review_count_text": "21,497"
+        },
+        {
+          "rank": 3,
+          "asin": "B0C6MD24Z7",
+          "title": "Tiny Land",
+          "url": "https://www.amazon.com/Tiny-Land-Kitchen-Features-Designed/dp/B0C6MD24Z7",
+          "image": "https://m.media-amazon.com/images/I/81N1TdxzVdL._AC_UL320_.jpg",
+          "price": "JPY 27,071",
+          "rating_text": "4.5 out of 5 stars, rating details",
+          "review_count_text": "27,071"
+        },
+        {
+          "rank": 4,
+          "asin": "B0FSZPDHTK",
+          "title": "Wooden Play Kitchen for Toddlers, Modern Kids Kitchen Playset with Realistic Lights & Sounds, Toy Kitchen Set with 25 Pcs Accessories, Pretend Play for Girls & Boys Ages 3+, Cream White",
+          "url": "https://www.amazon.com/JoyBubbla-Kitchen-Toddlers-Realistic-Accessories/dp/B0FSZPDHTK",
+          "image": "https://m.media-amazon.com/images/I/71AA+iIy4PL._AC_UL320_.jpg",
+          "price": "JPY 17,516",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "17,516"
+        },
+        {
+          "rank": 5,
+          "asin": "B0GFVPSDDN",
+          "title": "ROBUD",
+          "url": "https://www.amazon.com/ROBUD-Kitchen-Realistic-Accessories-Toddlers/dp/B0GFVPSDDN",
+          "image": "https://m.media-amazon.com/images/I/81XLYxOResL._AC_UL320_.jpg",
+          "price": "JPY 22,294",
+          "rating_text": "3.0 out of 5 stars, rating details",
+          "review_count_text": "22,294"
+        },
+        {
+          "rank": 6,
+          "asin": "B0FZQWN6CK",
+          "title": "ROBUD",
+          "url": "https://www.amazon.com/ROBUD-Kitchen-Playset-Dishwasher-Toddlers/dp/B0FZQWN6CK",
+          "image": "https://m.media-amazon.com/images/I/71oxJqcKDsL._AC_UL320_.jpg",
+          "price": "JPY 52,551",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "52,551"
+        },
+        {
+          "rank": 7,
+          "asin": "B0DB57SGJG",
+          "title": "ROBOTIME",
+          "url": "https://www.amazon.com/ROBOTIME-Kitchen-Playset-Marble-Style-Countertop/dp/B0DB57SGJG",
+          "image": "https://m.media-amazon.com/images/I/71WJIaTZ6iL._AC_UL320_.jpg",
+          "price": "JPY 9,681",
+          "rating_text": "4.3 out of 5 stars, rating details",
+          "review_count_text": "9,681"
+        },
+        {
+          "rank": 8,
+          "asin": "B0CTY2LPNN",
+          "title": "ROBOTIME",
+          "url": "https://www.amazon.com/ROBOTIME-Kitchen-Toddlers-kitchen-Playset/dp/B0CTY2LPNN",
+          "image": "https://m.media-amazon.com/images/I/71joaUefvhL._AC_UL320_.jpg",
+          "price": "JPY 24,600",
+          "rating_text": "4.5 out of 5 stars, rating details",
+          "review_count_text": "24,600"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 22578,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Cream Wooden Play Kitchen Set with Storage",
+      "sku_id": "cream-wooden-play-kitchen-set-with-storage",
+      "dtc_title": "Cream Wooden Play Kitchen Set with Storage",
+      "dtc_price": "129.99",
+      "dtc_review_count_visible": "9.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/cream-wooden-play-kitchen-set-with-storage.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:18:40.224Z",
+      "url": "https://www.amazon.com/s?k=labebe+Natural+Wood+Montessori+Shelf+with+Storage+Boxes",
+      "document_title": "Amazon.com : labebe Natural Wood Montessori Shelf with Storage Boxes",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0FLXN9MG7",
+          "title": "MallBest",
+          "url": "https://www.amazon.com/MallBest-Montessori-Shelf-Kids-Removable/dp/B0FLXN9MG7",
+          "image": "https://m.media-amazon.com/images/I/71iNgn49uKL._AC_UL320_.jpg",
+          "price": "JPY 20,701",
+          "rating_text": "4.0 out of 5 stars, rating details",
+          "review_count_text": "20,701"
+        },
+        {
+          "rank": 2,
+          "asin": "B0G6KY6WQY",
+          "title": "Rubber Wood Montessori Shelf, Wooden Toy Storage Organizer for Books Toys, 2 Shelf Bookcase, 5-Section Storage Cabinet, Toddler Book Shelf for Kids Rooms, Playroom, Nursery, Kindergarten",
+          "url": "https://www.amazon.com/PTINFLUCE-Montessori-Organizer-5-Section-Kindergarten/dp/B0G6KY6WQY",
+          "image": "https://m.media-amazon.com/images/I/71XB05SZWgL._AC_UL320_.jpg",
+          "price": "JPY 22,294",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "22,294"
+        },
+        {
+          "rank": 3,
+          "asin": "B0D66LRMQ4",
+          "title": "Rubber Wood Toy Organizer,2-Tier Storage Cabinet Shelves, Solid Wood Montessori Storage Bookshelf for Kids Children Room Kid's Room",
+          "url": "https://www.amazon.com/SHINITOY-Bookcases-Section-Montessori-Storage/dp/B0D66LRMQ4",
+          "image": "https://m.media-amazon.com/images/I/71nM+KJL1JL._AC_UL320_.jpg",
+          "price": "JPY 14,809",
+          "rating_text": "4.2 out of 5 stars, rating details",
+          "review_count_text": "14,809"
+        },
+        {
+          "rank": 4,
+          "asin": "B0FFGPMKR7",
+          "title": "Bamboo Kids Bookshelf 3-Tier with Drawer, Scalloped Front Facing Montessori Book Shelf and Toy Storage for Toddler Kids Rooms, Baby Nursery, Classroom",
+          "url": "https://www.amazon.com/Lavenix-Bookshelf-Scalloped-Montessori-Classroom/dp/B0FFGPMKR7",
+          "image": "https://m.media-amazon.com/images/I/71NoQvgid9L._AC_UL320_.jpg",
+          "price": "JPY 15,924",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "15,924"
+        },
+        {
+          "rank": 5,
+          "asin": "B0GKXJLRL4",
+          "title": "Amdermi",
+          "url": "https://www.amazon.com/Amdermi-Montessori-Bookshelf-Bookcase-Furniture/dp/B0GKXJLRL4",
+          "image": "https://m.media-amazon.com/images/I/715JmVljCJL._AC_UL320_.jpg",
+          "price": "JPY 10,937",
+          "rating_text": "4.2 out of 5 stars, rating details",
+          "review_count_text": "10,937"
+        },
+        {
+          "rank": 6,
+          "asin": "B0D1V1Y5LM",
+          "title": "OOOK",
+          "url": "https://www.amazon.com/OOOK-Montessori-Bookshelf-Classroom-Kindergarten/dp/B0D1V1Y5LM",
+          "image": "https://m.media-amazon.com/images/I/71yGWJ5dpqL._AC_UL320_.jpg",
+          "price": "JPY 15,924",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "15,924"
+        },
+        {
+          "rank": 7,
+          "asin": "B0DFGRGC7L",
+          "title": "HAVLOTII",
+          "url": "https://www.amazon.com/HAVLOTII-Kids-Bookshelf-Toy-Storage/dp/B0DFGRGC7L",
+          "image": "https://m.media-amazon.com/images/I/71KelkXP4vL._AC_UL320_.jpg",
+          "price": "JPY 11,144",
+          "rating_text": "4.5 out of 5 stars, rating details",
+          "review_count_text": "11,144"
+        },
+        {
+          "rank": 8,
+          "asin": "B0CJT9LK1D",
+          "title": "Montessori Bookshelf Toy Shelf Kids Storage Organizer for Toys Book Shelves for Kids Room Sturdy and Safe Toddler Wood Classroom Furniture Bookcases (3Tier)",
+          "url": "https://www.amazon.com/FDHUIJIA-Montessori-Bookshelf-Organizer-Classroom/dp/B0CJT9LK1D",
+          "image": "https://m.media-amazon.com/images/I/61Ce40RoWpL._AC_UL320_.jpg",
+          "price": "JPY 12,738",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "12,738"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 12149,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Natural Wood Montessori Shelf with Storage Boxes",
+      "sku_id": "natural-wood-montessori-shelf-with-storage-boxes",
+      "dtc_title": "Natural Wood Montessori Shelf with Storage Boxes",
+      "dtc_price": "114.99",
+      "dtc_review_count_visible": "9.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/natural-wood-montessori-shelf-with-storage-boxes.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:18:45.771Z",
+      "url": "https://www.amazon.com/s?k=labebe+Kids+Art+Table+%26+Chair+Set+with+Easel+%283+in+1%29",
+      "document_title": "Amazon.com : labebe Kids Art Table & Chair Set with Easel (3 in 1)",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0CZ965952",
+          "title": "Tiita",
+          "url": "https://www.amazon.com/Tiita-Convertible-Bookshelf-Magnetic-Painting/dp/B0CZ965952",
+          "image": "https://m.media-amazon.com/images/I/71ubPnqHxlL._AC_UL320_.jpg",
+          "price": "JPY 13,694",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "13,694"
+        },
+        {
+          "rank": 2,
+          "asin": "B0F9F4QRGB",
+          "title": "Timechee",
+          "url": "https://www.amazon.com/Timechee-Activity-Children-Removable-Building/dp/B0F9F4QRGB",
+          "image": "https://m.media-amazon.com/images/I/81swCNtoRyL._AC_UL320_.jpg",
+          "price": "JPY 11,146",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "11,146"
+        },
+        {
+          "rank": 3,
+          "asin": "B0F9F84XJ1",
+          "title": "Timechee",
+          "url": "https://www.amazon.com/Timechee-Pinewood-Toddlers-Removable-Blackboard/dp/B0F9F84XJ1",
+          "image": "https://m.media-amazon.com/images/I/71F8ovGNf0L._AC_UL320_.jpg",
+          "price": "JPY 10,509",
+          "rating_text": "4.0 out of 5 stars, rating details",
+          "review_count_text": "10,509"
+        },
+        {
+          "rank": 4,
+          "asin": "B0BP7CTTWX",
+          "title": "INFANS",
+          "url": "https://www.amazon.com/INFANS-Activity-Removable-Blackboard-Furniture/dp/B0BP7CTTWX",
+          "image": "https://m.media-amazon.com/images/I/51PG1etkI0L._AC_UL320_.jpg",
+          "price": "JPY 12,738",
+          "rating_text": "4.4 out of 5 stars, rating details",
+          "review_count_text": "12,738"
+        },
+        {
+          "rank": 5,
+          "asin": "B0G3PQSH77",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Montessori-Weaning-Table-Chair/dp/B0G3PQSH77",
+          "image": "https://m.media-amazon.com/images/I/71pb8+t0jDL._AC_UL320_.jpg",
+          "price": "JPY 9,553",
+          "rating_text": "5.0 out of 5 stars, rating details",
+          "review_count_text": "9,553"
+        },
+        {
+          "rank": 6,
+          "asin": "B0DYJQXP6Q",
+          "title": "Kids Art Table and Chair Set, Kids Craft Table with Storage, Toddler Activity Play Desk with 2 Chairs, Wood Art Craft Play Desk with Paper Roller for Writing, Drawing, Learning and Reading",
+          "url": "https://www.amazon.com/Kids-Art-Table-Activity-Learning/dp/B0DYJQXP6Q",
+          "image": "https://m.media-amazon.com/images/I/71PkJro6X9L._AC_UL320_.jpg",
+          "price": "JPY 30,256",
+          "rating_text": "4.1 out of 5 stars, rating details",
+          "review_count_text": "30,256"
+        },
+        {
+          "rank": 7,
+          "asin": "B0F384Z6KY",
+          "title": "EXPERLAM",
+          "url": "https://www.amazon.com/EXPERLAM-Adjustable-Height-Tabletop-Activity-Bookshelf/dp/B0F384Z6KY",
+          "image": "https://m.media-amazon.com/images/I/71fNfVgLXxL._AC_UL320_.jpg",
+          "price": "JPY 14,331",
+          "rating_text": "4.2 out of 5 stars, rating details",
+          "review_count_text": "14,331"
+        },
+        {
+          "rank": 8,
+          "asin": "B0CNSJV9ZF",
+          "title": "Asweets",
+          "url": "https://www.amazon.com/Asweets-Activity-Detachable-Bookshelve-Classroom/dp/B0CNSJV9ZF",
+          "image": "https://m.media-amazon.com/images/I/71ovYKGwX0L._AC_UL320_.jpg",
+          "price": "",
+          "rating_text": "4.4 out of 5 stars, rating details",
+          "review_count_text": ""
+        }
+      ],
+      "page_state": {
+        "body_text_len": 22303,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Kids Art Table & Chair Set with Easel (3 in 1)",
+      "sku_id": "kids-art-table-chair-set-with-easel-3-in-1",
+      "dtc_title": "Kids Art Table & Chair Set with Easel (3 in 1)",
+      "dtc_price": "125.99",
+      "dtc_review_count_visible": "7.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/kids-art-table-chair-set-with-easel-3-in-1.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:18:56.700Z",
+      "url": "https://www.amazon.com/s?k=labebe+Kids+Toy+Storage+Organizer+%26+Bookshelf+with+Bins",
+      "document_title": "Amazon.com : labebe Kids Toy Storage Organizer & Bookshelf with Bins",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0G29XHR28",
+          "title": "Kids Bookshelf and Toy Storage Organizer with 3-Tier Book Display and Shelves, Kids Toy Organizers and Storage with Bins, Book Shelf for Kids Rooms, Playroom Decor for Toddler Bedroom Nursery",
+          "url": "https://www.amazon.com/Bookshelf-Storage-Organizer-Organizers-Playroom/dp/B0G29XHR28",
+          "image": "https://m.media-amazon.com/images/I/71ZcdMKAj8L._AC_UL320_.jpg",
+          "price": "JPY 7,961",
+          "rating_text": "3.2 out of 5 stars, rating details",
+          "review_count_text": "7,961"
+        },
+        {
+          "rank": 2,
+          "asin": "B0G29Y6TL8",
+          "title": "Kids Bookshelf and Toy Storage Organizer with 3-Tier Book Display and Shelves, Kids Toy Organizers and Storage with Bins, Book Shelf for Kids Rooms, Playroom Decor for Toddler Bedroom Nursery",
+          "url": "https://www.amazon.com/Bookshelf-Storage-Organizer-Organizers-Playroom/dp/B0G29Y6TL8",
+          "image": "https://m.media-amazon.com/images/I/71OTFo8Sb4L._AC_UL320_.jpg",
+          "price": "JPY 7,961",
+          "rating_text": "3.2 out of 5 stars, rating details",
+          "review_count_text": "7,961"
+        },
+        {
+          "rank": 3,
+          "asin": "B0DWJSQ3X4",
+          "title": "Homeiju",
+          "url": "https://www.amazon.com/Homeiju-Bookshelf-Organizer-Bookcase-Children/dp/B0DWJSQ3X4",
+          "image": "https://m.media-amazon.com/images/I/91y5dJmJSSL._AC_UL320_.jpg",
+          "price": "JPY 7,961",
+          "rating_text": "4.4 out of 5 stars, rating details",
+          "review_count_text": "7,961"
+        },
+        {
+          "rank": 4,
+          "asin": "B0FS1FD23T",
+          "title": "Toy Storage Organizer with Bookshelf and Stuffed Animal Storage - Kids Playroom Organization with Shelves and 12 Toy Bins - Toddler Living Room Toy Box for Lego - Nursery Bedroom Decor Essentials",
+          "url": "https://www.amazon.com/Storage-Organizer-Bookshelf-Stuffed-Animal/dp/B0FS1FD23T",
+          "image": "https://m.media-amazon.com/images/I/81UuBmhXNTL._AC_UL320_.jpg",
+          "price": "JPY 15,922",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "15,922"
+        },
+        {
+          "rank": 5,
+          "asin": "B0FXWMLLJB",
+          "title": "EXPERLAM",
+          "url": "https://www.amazon.com/EXPERLAM-Organizer-Bookcase-Space-Saving-Playroom/dp/B0FXWMLLJB",
+          "image": "https://m.media-amazon.com/images/I/81DXOnnsTBL._AC_UL320_.jpg",
+          "price": "JPY 17,516",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "17,516"
+        },
+        {
+          "rank": 6,
+          "asin": "B0D45HSHDF",
+          "title": "Toy Storage Organizer - Toy Organizers and Storage with Bookshelf, Toy Storage Shelf with 3 Shelves and 12 Storage Bins, Kids Bookshelf and Toy Storage for Kids Room, Playroom, Bedroom, Nursery, White",
+          "url": "https://www.amazon.com/Toy-Storage-Organizer-Organizers-Bookshelf/dp/B0D45HSHDF",
+          "image": "https://m.media-amazon.com/images/I/71lzDDKnGVL._AC_UL320_.jpg",
+          "price": "JPY 11,942",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "11,942"
+        },
+        {
+          "rank": 7,
+          "asin": "B0G19W9TTN",
+          "title": "Fodoss",
+          "url": "https://www.amazon.com/Fodoss-Book-Shelf-Kids-Rooms/dp/B0G19W9TTN",
+          "image": "https://m.media-amazon.com/images/I/713Wd+4cvJL._AC_UL320_.jpg",
+          "price": "JPY 11,144",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "11,144"
+        },
+        {
+          "rank": 8,
+          "asin": "B0GLMNVJ64",
+          "title": "Amdermi",
+          "url": "https://www.amazon.com/Amdermi-Organizer-Bookcase-Multi-Bin-Toddlers/dp/B0GLMNVJ64",
+          "image": "https://m.media-amazon.com/images/I/81dkWnfud7L._AC_UL320_.jpg",
+          "price": "JPY 18,472",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "18,472"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 25940,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Kids Toy Storage Organizer & Bookshelf with Bins",
+      "sku_id": "kids-toy-storage-organizer-bookshelf-with-bins",
+      "dtc_title": "Kids Toy Storage Organizer & Bookshelf with Bins",
+      "dtc_price": "105.99",
+      "dtc_review_count_visible": "7.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/kids-toy-storage-organizer-bookshelf-with-bins.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:19:02.462Z",
+      "url": "https://www.amazon.com/s?k=labebe+Llama+Plush+Rocker",
+      "document_title": "Amazon.com : labebe Llama Plush Rocker",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B07MFXJ28Y",
+          "title": "labebe",
+          "url": "https://www.amazon.com/%E3%80%90New%E3%80%91-labebe-Rocking-Stuffed-Birthday/dp/B07MFXJ28Y",
+          "image": "https://m.media-amazon.com/images/I/51mzXVQoCBL._AC_UL320_.jpg",
+          "price": "JPY 20,701",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "20,701"
+        },
+        {
+          "rank": 2,
+          "asin": "B07BGZCT28",
+          "title": "ROCK MY BABY",
+          "url": "https://www.amazon.com/Rock-My-Baby-stuffed-Rocking/dp/B07BGZCT28",
+          "image": "https://m.media-amazon.com/images/I/61Ro253vMOL._AC_UL320_.jpg",
+          "price": "JPY 20,064",
+          "rating_text": "4.5 out of 5 stars, rating details",
+          "review_count_text": "20,064"
+        },
+        {
+          "rank": 3,
+          "asin": "B0DJ6XM7GK",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Rocking-Stuffed-Animals-Seatbelt/dp/B0DJ6XM7GK",
+          "image": "https://m.media-amazon.com/images/I/61aq8sgXxVL._AC_UL320_.jpg",
+          "price": "JPY 19,109",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "19,109"
+        },
+        {
+          "rank": 4,
+          "asin": "B07Z3DXVQT",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Rocking-Mammoth-Stuffed-Birthday/dp/B07Z3DXVQT",
+          "image": "https://m.media-amazon.com/images/I/71uAEj+oQKL._AC_UL320_.jpg",
+          "price": "JPY 13,614",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "13,614"
+        },
+        {
+          "rank": 5,
+          "asin": "B0DSVJB5QH",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Rocking-Brownish-Stuffed-Children/dp/B0DSVJB5QH",
+          "image": "https://m.media-amazon.com/images/I/71E-oZfuaRL._AC_UL320_.jpg",
+          "price": "JPY 14,888",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "14,888"
+        },
+        {
+          "rank": 6,
+          "asin": "B071774PWC",
+          "title": "labebe",
+          "url": "https://www.amazon.com/Labebe-Rocking-Stuffed-Crocodile-Outdoor/dp/B071774PWC",
+          "image": "https://m.media-amazon.com/images/I/71XtG2nyeIL._AC_UL320_.jpg",
+          "price": "JPY 16,242",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "16,242"
+        },
+        {
+          "rank": 7,
+          "asin": "B0DT8GH844",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Rocking-Stuffed-Animal-Crocodile/dp/B0DT8GH844",
+          "image": "https://m.media-amazon.com/images/I/71XWoSNPYrL._AC_UL320_.jpg",
+          "price": "JPY 15,924",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "15,924"
+        },
+        {
+          "rank": 8,
+          "asin": "B0FSQ48N93",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Rocking-Squirrel-Seatbelt-Children/dp/B0FSQ48N93",
+          "image": "https://m.media-amazon.com/images/I/61niSVY1uSL._AC_UL320_.jpg",
+          "price": "JPY 13,614",
+          "rating_text": "4.9 out of 5 stars, rating details",
+          "review_count_text": "13,614"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 11390,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Llama Plush Rocker",
+      "sku_id": "llama-plush-rocker",
+      "dtc_title": "Llama Plush Rocker",
+      "dtc_price": "105.99",
+      "dtc_review_count_visible": "7.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/llama-plush-rocker.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:19:12.648Z",
+      "url": "https://www.amazon.com/s?k=labebe+Rubber+Wood+Montessori+Shelf",
+      "document_title": "Amazon.com : labebe Rubber Wood Montessori Shelf",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0G6KY6WQY",
+          "title": "Rubber Wood Montessori Shelf, Wooden Toy Storage Organizer for Books Toys, 2 Shelf Bookcase, 5-Section Storage Cabinet, Toddler Book Shelf for Kids Rooms, Playroom, Nursery, Kindergarten",
+          "url": "https://www.amazon.com/PTINFLUCE-Montessori-Organizer-5-Section-Kindergarten/dp/B0G6KY6WQY",
+          "image": "https://m.media-amazon.com/images/I/71XB05SZWgL._AC_UL320_.jpg",
+          "price": "JPY 22,294",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "22,294"
+        },
+        {
+          "rank": 2,
+          "asin": "B0D1V1Y5LM",
+          "title": "OOOK",
+          "url": "https://www.amazon.com/OOOK-Montessori-Bookshelf-Classroom-Kindergarten/dp/B0D1V1Y5LM",
+          "image": "https://m.media-amazon.com/images/I/71yGWJ5dpqL._AC_UL320_.jpg",
+          "price": "JPY 15,924",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "15,924"
+        },
+        {
+          "rank": 3,
+          "asin": "B0FDQL1MRJ",
+          "title": "Montessori Shelf, Toy Shelf for Kids, Kids Bookshelf, 2-Tier, 3-Section Wooden Book Shelf, Toy Storage Organizer for Kid Rooms, Palyroom, Nursery (35-2/5\"*23-5/8\"*11-4/5\")",
+          "url": "https://www.amazon.com/suureks-Montessori-Bookshelf-3-Section-Organizer/dp/B0FDQL1MRJ",
+          "image": "https://m.media-amazon.com/images/I/71TRK-ztS9L._AC_UL320_.jpg",
+          "price": "JPY 12,738",
+          "rating_text": "4.3 out of 5 stars, rating details",
+          "review_count_text": "12,738"
+        },
+        {
+          "rank": 4,
+          "asin": "B0D66LRMQ4",
+          "title": "Rubber Wood Toy Organizer,2-Tier Storage Cabinet Shelves, Solid Wood Montessori Storage Bookshelf for Kids Children Room Kid's Room",
+          "url": "https://www.amazon.com/SHINITOY-Bookcases-Section-Montessori-Storage/dp/B0D66LRMQ4",
+          "image": "https://m.media-amazon.com/images/I/71nM+KJL1JL._AC_UL320_.jpg",
+          "price": "JPY 14,809",
+          "rating_text": "4.2 out of 5 stars, rating details",
+          "review_count_text": "14,809"
+        },
+        {
+          "rank": 5,
+          "asin": "B0BF7C3PNC",
+          "title": "Montessori Bookshelf - Book Display Shelf for Toddler - Forward/Front Facing Bookcase Rack Display",
+          "url": "https://www.amazon.com/Montessori-Bookshelf-Book-Display-Shelf/dp/B0BF7C3PNC",
+          "image": "https://m.media-amazon.com/images/I/81q0uqNlb5L._AC_UL320_.jpg",
+          "price": "JPY 11,936",
+          "rating_text": "4.4 out of 5 stars, rating details",
+          "review_count_text": "11,936"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 6354,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 5,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Rubber Wood Montessori Shelf",
+      "sku_id": "rubber-wood-montessori-shelf",
+      "dtc_title": "Rubber Wood Montessori Shelf",
+      "dtc_price": "139.99",
+      "dtc_review_count_visible": "7.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/rubber-wood-montessori-shelf.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:19:18.299Z",
+      "url": "https://www.amazon.com/s?k=labebe+Wooden+Square+Stools%282+per+Pack%29",
+      "document_title": "Amazon.com : labebe Wooden Square Stools(2 per Pack)",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0F66GTPZ6",
+          "title": "2 Pack Wooden Stool, Plant Stools, Kids Stools for Adults Step Stool for with Four Detachable and Assembled Legs(Classic 9.3inch)-Walnut",
+          "url": "https://www.amazon.com/Detachable-Assembled-Classic-9-3inch-Walnut/dp/B0F66GTPZ6",
+          "image": "https://m.media-amazon.com/images/I/711HpOlSeML._AC_UL320_.jpg",
+          "price": "JPY 4,935",
+          "rating_text": "4.2 out of 5 stars, rating details",
+          "review_count_text": "4,935"
+        },
+        {
+          "rank": 2,
+          "asin": "B0FT7DVLDQ",
+          "title": "YEXEXINM",
+          "url": "https://www.amazon.com/YEXEXINM-Non-Slip-Bathroom-Footstool-Assembly/dp/B0FT7DVLDQ",
+          "image": "https://m.media-amazon.com/images/I/71NXYEHSgeL._AC_UL320_.jpg",
+          "price": "JPY 4,776",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "4,776"
+        },
+        {
+          "rank": 3,
+          "asin": "B0C73HM5YD",
+          "title": "Beright",
+          "url": "https://www.amazon.com/Beright-Childrens-Assembled-Four-Legged-Square/dp/B0C73HM5YD",
+          "image": "https://m.media-amazon.com/images/I/61dVxREv5SL._AC_UL320_.jpg",
+          "price": "",
+          "rating_text": "4.2 out of 5 stars, rating details",
+          "review_count_text": ""
+        },
+        {
+          "rank": 4,
+          "asin": "B0DWMWYWXR",
+          "title": "Goaste",
+          "url": "https://www.amazon.com/Goaste-Sitting-Multi-Purpose-4-Legged-Playroom/dp/B0DWMWYWXR",
+          "image": "https://m.media-amazon.com/images/I/71+k6ojtrpL._AC_UL320_.jpg",
+          "price": "JPY 2,691",
+          "rating_text": "4.0 out of 5 stars, rating details",
+          "review_count_text": "2,691"
+        },
+        {
+          "rank": 5,
+          "asin": "B0D922L6FP",
+          "title": "StrongTek",
+          "url": "https://www.amazon.com/StrongTek-Non-Slip-Skid-Resistant-Capacity-Portable/dp/B0D922L6FP",
+          "image": "https://m.media-amazon.com/images/I/61hEU0wQfkL._AC_UL320_.jpg",
+          "price": "JPY 11,146",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "11,146"
+        },
+        {
+          "rank": 6,
+          "asin": "B0D2VYQ3SM",
+          "title": "Natural Solid Wood Step Stool Wood Stool for Kids 11.7'' Sturdy Sitting Stool Wooden Step Stool for Adults Square Stool Wood Plant Stand Small Foot Stool with Four Detachable and Assembled Legs",
+          "url": "https://www.amazon.com/Jurath-Natural-Step-Detachable-Assembled/dp/B0D2VYQ3SM",
+          "image": "https://m.media-amazon.com/images/I/61QMP9e2KWL._AC_UL320_.jpg",
+          "price": "JPY 5,094",
+          "rating_text": "4.3 out of 5 stars, rating details",
+          "review_count_text": "5,094"
+        },
+        {
+          "rank": 7,
+          "asin": "B0F4H53MPB",
+          "title": "Chunful",
+          "url": "https://www.amazon.com/Chunful-Small-Wooden-Decorative-Footstool/dp/B0F4H53MPB",
+          "image": "https://m.media-amazon.com/images/I/71UrT7zKnrL._AC_UL320_.jpg",
+          "price": "JPY 5,731",
+          "rating_text": "4.0 out of 5 stars, rating details",
+          "review_count_text": "5,731"
+        },
+        {
+          "rank": 8,
+          "asin": "B0FPQTZTJ7",
+          "title": "Solid Wood Step Stool, Rustic Small Wooden Stool for Adults, Kids and Toddlers, Mini Bench Plant Stand Fishing Stool for High Beds, Kitchen, Bathroom, Closet, Sink",
+          "url": "https://www.amazon.com/LIFTATAPA-Toddlers-Fishing-Kitchen-Bathroom/dp/B0FPQTZTJ7",
+          "image": "https://m.media-amazon.com/images/I/51bxLMVBzkL._AC_UL320_.jpg",
+          "price": "JPY 5,094",
+          "rating_text": "4.1 out of 5 stars, rating details",
+          "review_count_text": "5,094"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 8236,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Wooden Square Stools(2 per Pack)",
+      "sku_id": "wooden-square-stools-2-per-pack",
+      "dtc_title": "Wooden Square Stools(2 per Pack)",
+      "dtc_price": "34.99",
+      "dtc_review_count_visible": "7.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/wooden-square-stools-2-per-pack.png"
+    },
+    {
+      "captured_at": "2026-04-27T17:19:23.909Z",
+      "url": "https://www.amazon.com/s?k=labebe+Highlander+Cattle+Plush+Rocker",
+      "document_title": "Amazon.com : labebe Highlander Cattle Plush Rocker",
+      "results": [
+        {
+          "rank": 1,
+          "asin": "B0DSVJB5QH",
+          "title": "labebe",
+          "url": "",
+          "image": "https://m.media-amazon.com/images/I/71E-oZfuaRL._AC_UL320_.jpg",
+          "price": "JPY 14,888",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "14,888"
+        },
+        {
+          "rank": 2,
+          "asin": "B0F8VTX2F9",
+          "title": "Baby Rocking Horse,Highlander Cattle Wooden Rocking Horse for Toddlers 1 Year Old Cute Cow Stuffed Plush Ride-on Toy Rocking Animal for Baby Boys and Girls Nursery/Child Christmas or Birthday Gift",
+          "url": "https://www.amazon.com/Rocking-Highlander-Toddlers-Christmas-Birthday/dp/B0F8VTX2F9",
+          "image": "https://m.media-amazon.com/images/I/717JH4j9nxL._AC_UL320_.jpg",
+          "price": "JPY 19,093",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "19,093"
+        },
+        {
+          "rank": 3,
+          "asin": "B0GL7333J9",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Rocking-Rabbit-Nursery-Birthday/dp/B0GL7333J9",
+          "image": "https://m.media-amazon.com/images/I/71JDreuLWgL._AC_UL320_.jpg",
+          "price": "JPY 19,109",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "19,109"
+        },
+        {
+          "rank": 4,
+          "asin": "B071774PWC",
+          "title": "labebe",
+          "url": "https://www.amazon.com/Labebe-Rocking-Stuffed-Crocodile-Outdoor/dp/B071774PWC",
+          "image": "https://m.media-amazon.com/images/I/71XtG2nyeIL._AC_UL320_.jpg",
+          "price": "JPY 16,242",
+          "rating_text": "4.6 out of 5 stars, rating details",
+          "review_count_text": "16,242"
+        },
+        {
+          "rank": 5,
+          "asin": "B0DSVJB5QH",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Rocking-Brownish-Stuffed-Children/dp/B0DSVJB5QH",
+          "image": "https://m.media-amazon.com/images/I/71E-oZfuaRL._AC_UL320_.jpg",
+          "price": "JPY 14,888",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "14,888"
+        },
+        {
+          "rank": 6,
+          "asin": "B09TKPWM2K",
+          "title": "Baby Rocking Horse for 1 Year Old,Wooden Cow/Yak Horse Rocking with Wicker Plush Wooden Ride On Toy for 2 Years Old Girl&Boy Nursery Birthday Gift",
+          "url": "https://www.amazon.com/Rocking-VALL%C3%89E-Wooden-Wicker-Buffalo/dp/B09TKPWM2K",
+          "image": "https://m.media-amazon.com/images/I/71ca-VHu-zL._AC_UL320_.jpg",
+          "price": "JPY 15,924",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "15,924"
+        },
+        {
+          "rank": 7,
+          "asin": "B0DT8GH844",
+          "title": "labebe",
+          "url": "https://www.amazon.com/labebe-Rocking-Stuffed-Animal-Crocodile/dp/B0DT8GH844",
+          "image": "https://m.media-amazon.com/images/I/71XWoSNPYrL._AC_UL320_.jpg",
+          "price": "JPY 15,924",
+          "rating_text": "4.8 out of 5 stars, rating details",
+          "review_count_text": "15,924"
+        },
+        {
+          "rank": 8,
+          "asin": "B072LXVM36",
+          "title": "labebe",
+          "url": "https://www.amazon.com/Labebe-Rocking-Unicorn-Rocker-Stuffed/dp/B072LXVM36",
+          "image": "https://m.media-amazon.com/images/I/61FPE4tksSL._AC_UL320_.jpg",
+          "price": "JPY 15,924",
+          "rating_text": "4.7 out of 5 stars, rating details",
+          "review_count_text": "15,924"
+        }
+      ],
+      "page_state": {
+        "body_text_len": 16393,
+        "captcha_like": false,
+        "blank_like": false,
+        "result_count": 8,
+        "horizontal_overflow": false
+      },
+      "query": "labebe Highlander Cattle Plush Rocker",
+      "sku_id": "highlander-cattle-plush-rocker",
+      "dtc_title": "Highlander Cattle Plush Rocker",
+      "dtc_price": "125.99",
+      "dtc_review_count_visible": "6.0",
+      "screenshot": "qa/marketplace_probe/amazon_search_candidates_sample_v1/highlander-cattle-plush-rocker.png"
+    }
+  ]
+}

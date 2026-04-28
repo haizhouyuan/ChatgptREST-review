@@ -1,0 +1,20 @@
+video_asset_id,scene_id,scene_order,scene_name,start_sec,end_sec,duration_sec,visual_description,audio_description,sku_featured,claim_risk,dtc_usable,boss_gallery_usable
+VID-002,SC-001,1,open_product_hero,0,2,2,Wooden mud kitchen product cutout on clean background; soft lighting,AI Chinese voiceover introducing product features,wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,high: AI voiceover may make unsupported claims,blocked,usable_with_claim_gate
+VID-002,SC-002,2,outdoor_play_transition,2,4,2,Scene transitions to outdoor garden setting with child-sized perspective; warm sunlight,Voiceover continues describing outdoor play benefits,wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,high: "benefits" claims not verified,blocked,usable_with_claim_gate
+VID-002,SC-003,3,feature_closeup,4,5,1,Quick cut to sink and planter box detail; motion blur on water effect,Voiceover mentions specific accessories,wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,medium: accessory accuracy unverified,blocked,usable_with_claim_gate
+VID-002,SC-004,4,brand_lockup,5,6,1,Labebe logo appears with tagline; fade to black,Music sting + brand name,generic_brand,low,blocked,usable_with_claim_gate
+VID-003,SC-001,1,open_product_hero,0,2,2,Same as VID-002 SC-001 but silent,Silent; no audio,wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,medium: visual only; no claim risk from audio,blocked,usable_with_claim_gate
+VID-003,SC-002,2,outdoor_play_transition,2,4,2,Same as VID-002 SC-002 but silent,Silent,wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,medium,blocked,usable_with_claim_gate
+VID-003,SC-003,3,feature_closeup,4,5,1,Same as VID-002 SC-003 but silent,Silent,wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,medium,blocked,usable_with_claim_gate
+VID-003,SC-004,4,brand_lockup,5,6,1,Same as VID-002 SC-004 but silent,Silent,generic_brand,low,blocked,usable_with_claim_gate
+VID-006,SC-001,1,title_card,0,3,3,Title: "Labebe AI Application Wow"; dark background with subtle animation,Upbeat instrumental music,generic_brand,low,blocked,usable_with_claim_gate
+VID-006,SC-002,2,opportunity_radar,3,8,5,Screen recording of opportunity radar output; charts and data,Voiceover explaining market opportunity,generic_brand,high: market data claims unverified,blocked,usable_with_claim_gate
+VID-006,SC-003,3,voc_to_concept,8,15,7,Split screen: VOC snippets on left, SpaceSmart concept sketch on right,Voiceover: "VOC drove this concept",generic_brand,high: causality claim unverified,blocked,usable_with_claim_gate
+VID-006,SC-004,4,ai_packaging_machine,15,22,7,Montage of asset generation screens; fast cuts,Electronic music + UI sound effects,generic_brand,low,blocked,usable_with_claim_gate
+VID-006,SC-005,5,channel_assets,22,30,8,Six channel asset drafts shown in grid; labels for each platform,Voiceover listing channels,generic_brand,medium: channel suitability unverified,blocked,usable_with_claim_gate
+VID-006,SC-006,6,claim_gate_moment,30,35,5,Red stop sign animation; text: "Unsupported claim blocked",Dramatic sound effect,generic_brand,low,blocked,usable_with_claim_gate
+VID-006,SC-007,7,pro_six_lanes,35,42,7,Slide showing Pro's six demo lanes; bullet points,Voiceover summarizing,generic_brand,low,blocked,usable_with_claim_gate
+VID-006,SC-008,8,boss_decision,42,45,3,Text: "Prototype exploration, not launch approval"; Labebe logo,Calm closing music,generic_brand,low,blocked,usable_with_claim_gate
+VID-001,SC-001,1,brand_intro,0,unknown,unknown,Generic children playing montage; wooden toys visible,Upbeat music; no voiceover,generic_brand,high: contains children/faces; model releases unknown,conditional,conditional
+VID-005,SC-001,1,workflow_demo,0,unknown,unknown,Screen recording of AI design tool; cursor movements; panel interactions,Background music; no narration,generic_brand,low,blocked,usable_with_claim_gate
+VID-007,SC-001,1,legacy_open,0,unknown,unknown,Paperclip logo first; workflow diagram,Voiceover: "This is the Paperclip runtime...",generic_brand,low,blocked,conditional

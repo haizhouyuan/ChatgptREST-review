@@ -1,0 +1,215 @@
+{
+  "manifest_schema": "evidence_manifest_v1",
+  "worker_id": "WP-D",
+  "worker_name": "Design Reference Mapping",
+  "date_created": "2026-04-27T19:18:08+08:00",
+  "write_scope": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/design_reference_mapping/",
+  "source_files_read": [
+    {
+      "path": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/01_MASTER_IMPLEMENTATION_PLAN.md",
+      "description": "Master 14-day sprint plan. Defined Commerce Decision Layer outputs, gates, and delegation rules.",
+      "lines": 692
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/00_strategy/labebe_positioning.md",
+      "description": "Core positioning, target audience, and red lines.",
+      "lines": 21
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/00_strategy/visual_direction.md",
+      "description": "Consumer site and AI Growth Studio visual direction. Moodboard definitions.",
+      "lines": 33
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/00_strategy/design_principles.md",
+      "description": "Five design principles for Labebe.",
+      "lines": 16
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/01_same_category_references/lovevery_age_based_play.md",
+      "description": "Lovevery reference: age-based discovery.",
+      "lines": 18
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/01_same_category_references/lalo_adult_taste_child_products.md",
+      "description": "Lalo reference: adult-taste aesthetics.",
+      "lines": 17
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/01_same_category_references/milton_goose_heirloom_play.md",
+      "description": "Milton & Goose reference: premium pretend-play.",
+      "lines": 16
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/01_same_category_references/little_partners_learning_tower.md",
+      "description": "Little Partners reference: learning tower functional framing.",
+      "lines": 13
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/01_same_category_references/crate_kids_room_design.md",
+      "description": "Crate & Kids reference: room merchandising.",
+      "lines": 14
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/01_same_category_references/pottery_barn_kids_registry_gift.md",
+      "description": "Pottery Barn Kids reference: gift and registry.",
+      "lines": 16
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/01_same_category_references/tender_leaf_wooden_world.md",
+      "description": "Tender Leaf Toys reference: wooden world-building.",
+      "lines": 14
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/01_same_category_references/nestig_kids_room_growth.md",
+      "description": "Nestig/Oeuf/Ferm Living reference: room growth and longevity.",
+      "lines": 14
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/02_world_class_web_references/linear_ai_workflow_system.md",
+      "description": "Linear reference: workflow status and timeline.",
+      "lines": 16
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/02_world_class_web_references/raycast_command_center.md",
+      "description": "Raycast reference: command center quick actions.",
+      "lines": 12
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/02_world_class_web_references/framer_performance_website.md",
+      "description": "Framer reference: performance transparency and polish.",
+      "lines": 13
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/02_world_class_web_references/stripe_atlas_process_explainer.md",
+      "description": "Stripe Atlas reference: process explainer and trust logic.",
+      "lines": 11
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/03_page_patterns/homepage_patterns.md",
+      "description": "Homepage pattern notes.",
+      "lines": 9
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/03_page_patterns/collection_page_patterns.md",
+      "description": "Collection page pattern notes.",
+      "lines": 7
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/03_page_patterns/pdp_patterns.md",
+      "description": "PDP pattern notes.",
+      "lines": 8
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/04_ai_growth_studio/ai_studio_patterns.md",
+      "description": "AI Growth Studio pattern notes.",
+      "lines": 6
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/05_motion_references/motion_guidelines.md",
+      "description": "Motion guidelines: approved paths and tools.",
+      "lines": 19
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/labebe_design_reference_pack/06_design_system/DESIGN.md",
+      "description": "Design system: color tokens, typography, spacing.",
+      "lines": 63
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_website_design_dtc/01_website_design_framework.md",
+      "description": "Website design framework: benchmark case map, proposed structure.",
+      "lines": 195
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_website_design_dtc/02_independent_site_growth_framework.md",
+      "description": "Independent site growth: funnel architecture, page system, conversion.",
+      "lines": 285
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_website_design_dtc/07_current_site_gap_map.md",
+      "description": "Current site gap map: what is solid, what is missing.",
+      "lines": 238
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_design_dtc_research_v2/01_website_design_research.md",
+      "description": "V2 research: north-star concept, benchmark interpretation, homepage modules.",
+      "lines": 234
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_design_dtc_research_v2/02_independent_site_growth_research.md",
+      "description": "V2 growth research: traffic strategy, page system, AI operating model.",
+      "lines": 265
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_design_dtc_research_v2/03_ai_showoff_pattern_library.md",
+      "description": "V2 AI pattern library: P0/P1/P2 patterns, killer interaction.",
+      "lines": 113
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_design_dtc_research_v2/04_benchmark_matrix.tsv",
+      "description": "V2 benchmark matrix: 26 reference entries with borrow/avoid/translation.",
+      "lines": 28
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_design_dtc_research_v2/05_pro_context_bundle_v2.md",
+      "description": "V2 pro context: current implementation facts, product data truth, strengths/weaknesses.",
+      "lines": 227
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/research/20260425_design_dtc_research_v2/07_redesign_execution_and_presentation_plan.md",
+      "description": "V2 execution plan: scope boundary, research topics, implemented modules.",
+      "lines": 145
+    }
+  ],
+  "outputs_produced": [
+    {
+      "path": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/design_reference_mapping/reference_pattern_mapping_draft.md",
+      "description": "15 reference patterns mapped to business problems, shopper missions, PDP modules, conversion mechanisms, asset needs, and rejection conditions.",
+      "size_bytes": 25738
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/design_reference_mapping/commerce_pattern_library_draft.md",
+      "description": "24 commerce patterns organized by touchpoint (homepage/nav, collection, PDP, gift flow, room flow, cart, AI studio) with P0/P1/P2 priority.",
+      "size_bytes": 29352
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/design_reference_mapping/rejected_generic_patterns.md",
+      "description": "17 rejected generic patterns with rejection conditions, reasoning, and alternatives.",
+      "size_bytes": 16855
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/design_reference_mapping/handoff.md",
+      "description": "Handoff document with decisions, limitations, next steps, and acceptance verification.",
+      "size_bytes": 7497
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/design_reference_mapping/evidence_manifest.json",
+      "description": "This manifest.",
+      "size_bytes": null
+    }
+  ],
+  "acceptance_criteria": {
+    "every_pattern_has_business_problem": true,
+    "every_pattern_has_what_not_to_copy": true,
+    "every_pattern_has_homepage_nav_collection_pdp_bundle_impact": true,
+    "every_pattern_has_rejection_condition": true,
+    "no_pro_gemini_calls": true,
+    "no_pretty_sites_without_mapping": true,
+    "no_final_ui_designs": true,
+    "no_prototype_code_edits": true
+  },
+  "limitations": [
+    "Some reference files lack live URLs; only markdown notes exist.",
+    "Conversion mechanisms are hypotheses based on industry research, not Labebe-specific A/B tests.",
+    "Asset needs are descriptive but not cross-referenced against existing Labebe asset inventory.",
+    "Motion patterns described at pattern level but not specified in frames/timing/easing.",
+    "Mobile-specific implementations mentioned but not fully specified beyond 390px/430px breakpoint."
+  ],
+  "next_tasks": [
+    "LAB-007 Commerce Decision Layer: map P0 patterns to hero SKUs and produce design_decision_matrix.csv",
+    "LAB-007: produce rejected_direction_log.md documenting considered and rejected alternatives",
+    "LAB-008 DTC Prototype: use commerce_pattern_library_draft.md as module checklist",
+    "LAB-008: use rejected_generic_patterns.md as anti-checklist during design review",
+    "Browser/Visual QA: use rejection conditions as P0/P1 test criteria"
+  ]
+}

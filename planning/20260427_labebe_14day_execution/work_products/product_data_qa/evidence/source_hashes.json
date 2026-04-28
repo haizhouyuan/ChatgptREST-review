@@ -1,0 +1,24 @@
+{
+  "labebe_products.csv": {
+    "path": "data/labebe/labebe_products.csv",
+    "size_bytes": 13158,
+    "mtime_unix": 1777042625,
+    "sha256": "a1688c94504b7a780d3d302a57409243ba8c6dd986a060951a284a100d59f223"
+  },
+  "labebe_products_with_images.csv": {
+    "path": "data/labebe/labebe_products_with_images.csv",
+    "size_bytes": 8973,
+    "mtime_unix": 1777041014,
+    "sha256": "165f51ab9550389b9aca182e5a3be1f6071c10a59d26a8bdd08edffd8a28237b"
+  },
+  "all_product_images.json": {
+    "path": "data/labebe/all_product_images.json",
+    "size_bytes": 54405,
+    "mtime_unix": 1777042106,
+    "sha256": "415e3069523eeef0741c2d8f68f6bf8dd47dd7c982ffae4a596a323af5be9dbe"
+  },
+  "images_dir": {
+    "path": "data/labebe/images",
+    "file_count": 460
+  }
+}

@@ -7,11 +7,66 @@ __pycache__/
 .python-version
 .venv/
 venv/
+node_modules/
+dist/
+.vite/
 
 .DS_Store
 .codex
 .playwright-mcp/
 .paperclip-labebe/
 
+# Generated/runtime logs.
+logs/
+*.log
+*.pid
+*.pid.info
+
+# Heavy transfer packages and media are archived by path/index, not normal git.
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+*.mp4
+*.mp3
+
+# Generated prototype/build folders.
+labebe-gemini-demo/node_modules/
+labebe-gemini-demo/dist/
+labebe-gemini-demo/logs/
+labebe-gemini-demo/.git/
+kimi_generated_site/
+kimi_labebe_design_library/
+paperclip_runtime_duel/outputs/boss_gallery_v0/
+paperclip_runtime_duel/outputs/labebe_site_walkthrough/
+
+# Historical/raw reference trees are kept locally and indexed by README files.
+archive/**
+!archive/
+!archive/README.md
+clean/**
+!clean/
+!clean/README.md
+pro_requests/**
+!pro_requests/
+!pro_requests/README.md
+research/**
+!research/
+!research/README.md
+labebe_design_reference_pack/
+kimi_web_upload_website_pack/
+minimax-output/
+
+# Local downloaded binaries.
+tools/cloudflared
+
+# Generated agent runtime output from older Paperclip/Labebe experiments.
+labebe-ai-design-studio/workspace/outputs/*-demo-producer-agent.*
+
+# Screenshot/QA bulk output is referenced by docs and final packages.
+qa/
+
 # Downloaded product image corpus; regenerate with scrape_labebe.py.
 data/labebe/images/
+data/labebe/live_probe_images_20260428/

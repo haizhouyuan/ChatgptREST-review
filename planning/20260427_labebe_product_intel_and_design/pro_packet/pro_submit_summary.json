@@ -1,0 +1,259 @@
+{
+  "action_hint": "await_push",
+  "canonical_answer": {
+    "answer_chars": null,
+    "answer_format": null,
+    "answer_provenance": {
+      "contract_class": "generic",
+      "last_event_type": "job_created"
+    },
+    "answer_state": "partial",
+    "authoritative_answer_path": null,
+    "authoritative_job_id": null,
+    "export_available": false,
+    "finality_reason": "job_created",
+    "ready": false,
+    "record_version": "v1",
+    "widget_export_available": false
+  },
+  "job_id": "c33acc4b812e41cea92f4e317efad589",
+  "kind": "chatgpt_web.ask",
+  "mode": "automation_public_mcp",
+  "ok": true,
+  "provider": "chatgpt",
+  "requested_runtime": {
+    "action_hint": "await_push",
+    "agent_timeout_seconds": 7200,
+    "idempotency_key": "labebe-product-intel-design-prework-pro-review-20260427-v5",
+    "job_id": "c33acc4b812e41cea92f4e317efad589",
+    "kind": "chatgpt_web.ask",
+    "provider": "chatgpt",
+    "request_timeout_seconds": 7230.0,
+    "status": "queued"
+  },
+  "result": {
+    "accepted": true,
+    "action_hint": "await_push",
+    "already_running": false,
+    "answer_chars": null,
+    "assistant_answer_ready_at": null,
+    "attempts": 0,
+    "background_wait_started": true,
+    "cancel_requested_at": null,
+    "canonical_answer": {
+      "answer_chars": null,
+      "answer_format": null,
+      "answer_provenance": {
+        "contract_class": "generic",
+        "last_event_type": "job_created"
+      },
+      "answer_state": "partial",
+      "authoritative_answer_path": null,
+      "authoritative_job_id": null,
+      "export_available": false,
+      "finality_reason": "job_created",
+      "ready": false,
+      "record_version": "v1",
+      "widget_export_available": false
+    },
+    "client_context": {
+      "cwd": "/vol1/1000/projects/toyresearch",
+      "date": "2026-04-27",
+      "latest_user_direction": [
+        "Before another website redesign, do two prerequisite workstreams.",
+        "Workstream 1: full Labebe product and Amazon current-state/product intelligence research.",
+        "Workstream 2: product-driven website design research with multiple distinct creative options.",
+        "Existing artifacts must be audited honestly; done does not mean done well.",
+        "Crawl method lessons should be written back to a skill or new skill and recorded in maint after validation.",
+        "Website output should include multiple design options and a video/walkthrough presentation concept.",
+        "The website itself is pure Labebe DTC replacement; AI/Product Matrix demos are separate."
+      ],
+      "local_current_state": {
+        "amazon_sample_asins": 1,
+        "amazon_sample_reviews_deduped": 13,
+        "collections": {
+          "activity_educational_toys": 6,
+          "furniture": 17,
+          "new_in": 1,
+          "pretend_play": 9,
+          "rockers_ride_ons": 13
+        },
+        "independent_site_products": 46,
+        "indexed_image_urls": 459,
+        "indexed_product_galleries": 46,
+        "local_images": 460
+      },
+      "project": "Labebe DTC website redesign prework",
+      "review_need": "Raise the standard and identify flaws before execution."
+    },
+    "completion_contract": {
+      "answer_chars": null,
+      "answer_provenance": {
+        "contract_class": "generic",
+        "last_event_type": "job_created"
+      },
+      "answer_state": "partial",
+      "authoritative_answer_path": null,
+      "authoritative_job_id": null,
+      "export_available": false,
+      "finality_reason": "job_created",
+      "kind": "chatgpt_web.ask",
+      "min_chars_required": 800,
+      "widget_export_available": false
+    },
+    "completion_mode": "push",
+    "completion_quality": null,
+    "conversation_export_chars": null,
+    "conversation_export_format": null,
+    "conversation_export_path": null,
+    "conversation_export_sha256": null,
+    "conversation_url": null,
+    "created_at": 1777266773.4030237,
+    "delivery_preference": "push_only",
+    "effective_execution_lane": "web_premium",
+    "effective_preset": "pro_extended",
+    "effective_provider": "chatgpt",
+    "error": null,
+    "estimated_wait_seconds": 0,
+    "expected_sla_seconds": 7200,
+    "expected_wait_bucket": "short",
+    "expected_wait_seconds": 0,
+    "fallback_from": null,
+    "fallback_reason": null,
+    "fallback_to": null,
+    "front_action": "return_now",
+    "job_id": "c33acc4b812e41cea92f4e317efad589",
+    "kb_context_injected": false,
+    "kind": "chatgpt_web.ask",
+    "last_event_at": 1777266773.40348,
+    "last_event_type": "job_created",
+    "max_attempts": 3,
+    "min_prompt_interval_seconds": 61,
+    "next_action": {
+      "channel": "hook",
+      "fallback_tools": [
+        "automation_job_events",
+        "automation_result"
+      ],
+      "job_id": "c33acc4b812e41cea92f4e317efad589",
+      "kind": "await_push",
+      "watch_id": "wait-1777266773-0013-c33acc4b"
+    },
+    "not_before": null,
+    "notify_channel": "hook",
+    "ok": true,
+    "parent_job_id": null,
+    "path": null,
+    "phase": "send",
+    "phase_detail": "awaiting_prompt_send",
+    "preflight": {
+      "blocking_reasons": [],
+      "declared": {
+        "checks": [
+          {
+            "name": "context_packet_exists",
+            "note": "Planning docs and local evidence files are packaged before asking Pro.",
+            "status": "pass"
+          },
+          {
+            "name": "not_a_bare_question",
+            "note": "The prompt explicitly references the packet and summarizes the current boundary.",
+            "status": "pass"
+          },
+          {
+            "name": "website_scope_boundary",
+            "note": "The pure DTC website is separated from AI demo, Product Matrix, Paperclip and boss-showroom work.",
+            "status": "pass"
+          },
+          {
+            "name": "pro_not_deep_research",
+            "note": "The ask tells Pro not to use web search or Deep Research for this review.",
+            "status": "pass"
+          },
+          {
+            "name": "attachments_are_small_enough",
+            "note": "The packet uses text/csv/json/code excerpts and does not attach full image folders.",
+            "status": "pass"
+          }
+        ],
+        "created_at": "2026-04-27",
+        "known_limits": [
+          "This is a planning review, not a final crawl result.",
+          "Amazon source reliability still needs sample validation.",
+          "Live Labebe/Amazon facts may change after the local scrape date."
+        ],
+        "task_id": "labebe_product_intel_design_prework_pro_review_20260427"
+      },
+      "known_gaps": [],
+      "warnings": []
+    },
+    "premium_allowed": null,
+    "premium_justified": false,
+    "preview": "",
+    "prompt_sent_at": null,
+    "provider": "chatgpt",
+    "provider_capability_profile": {
+      "ask_kind": "chatgpt_web.ask",
+      "auto_semantics": "true_non_pro",
+      "deep_research_support": "flag_only",
+      "default_preset": "auto",
+      "has_true_non_pro": true,
+      "kind_namespace": "chatgpt_web.",
+      "premium_presets": [
+        "deep_research",
+        "pro_extended",
+        "thinking_extended",
+        "thinking_heavy"
+      ],
+      "provider_id": "chatgpt",
+      "safe_non_pro_fallback": "auto",
+      "supported_presets": [
+        "auto",
+        "deep_research",
+        "pro_extended",
+        "thinking_extended",
+        "thinking_heavy"
+      ]
+    },
+    "provider_selection": {
+      "deep_research": false,
+      "expected_behavior": [
+        "Return a critical Chinese review of the plan.",
+        "Focus on product intelligence methodology, website design research, presentation/video plan, acceptance criteria, and revised execution phases.",
+        "Do not mix internal AI demo modules into the pure consumer website."
+      ],
+      "rationale": [
+        "The user asked for Pro to critique the plan after enough local context is assembled.",
+        "This is a methodology and design-strategy review, not a fresh internet research task.",
+        "Deep Research is intentionally not requested in this turn to avoid spending the run on browser search instead of packet critique."
+      ],
+      "reason": "The user explicitly asked to send the complete prework plan to ChatGPT Pro for strict critique. This is a high-standard methodology and design-strategy review based on attached local context, not a fresh Deep Research web task.",
+      "requested_preset": "pro_extended",
+      "requested_provider": "chatgpt"
+    },
+    "push_enabled": true,
+    "queue_position": 0,
+    "queue_state": "queued",
+    "reason": null,
+    "reason_type": null,
+    "recovery_detail": null,
+    "recovery_status": "healthy",
+    "requested_execution_lane": "",
+    "requested_preset": "pro_extended",
+    "requested_provider": "chatgpt",
+    "retry_after_seconds": null,
+    "rewrite_reason": null,
+    "rewrite_source": null,
+    "safe_next_action": "wait",
+    "selection_source": "caller_declared",
+    "status": "queued",
+    "task_object_contract": {},
+    "updated_at": 1777266773.4030237,
+    "user_message": "已提交，预计几分钟内，完成后会推送，不需要前台轮询。",
+    "watch_id": "wait-1777266773-0013-c33acc4b",
+    "watch_running": true,
+    "watch_status": "running"
+  },
+  "status": "queued",
+  "surface": "automation-kernel-v1"
+}

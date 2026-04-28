@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "job_id": "c887b531770743539bc079c81c7d0261",
+  "status": "completed",
+  "phase": "wait",
+  "conversation_url": "https://chatgpt.com/c/69ef4413-99bc-83e8-959c-9e7b8dd54345",
+  "conversation_id": "69ef4413-99bc-83e8-959c-9e7b8dd54345",
+  "path": "jobs/c887b531770743539bc079c81c7d0261/answer.md",
+  "answer_sha256": "caf8dab6a13812ce2204f296c3f31efb34f0c824cfb1025f20bc739a684ac298",
+  "answer_chars": 4521,
+  "answer_format": "markdown",
+  "completion_contract": {
+    "kind": "chatgpt_web.ask",
+    "answer_state": "final",
+    "finality_reason": "completed",
+    "answer_chars": 4521,
+    "min_chars_required": 4000,
+    "authoritative_job_id": "c887b531770743539bc079c81c7d0261",
+    "authoritative_answer_path": "jobs/c887b531770743539bc079c81c7d0261/answer.md",
+    "answer_provenance": {
+      "contract_class": "research",
+      "canonical_source": "answer_artifact",
+      "last_event_type": "answer_reconciled_from_conversation",
+      "completion_quality": "final",
+      "conversation_export_path": "jobs/c887b531770743539bc079c81c7d0261/conversation.json",
+      "authoritative_job_id": "c887b531770743539bc079c81c7d0261"
+    },
+    "export_available": true,
+    "widget_export_available": false
+  },
+  "canonical_answer": {
+    "record_version": "v1",
+    "ready": true,
+    "answer_state": "final",
+    "finality_reason": "completed",
+    "authoritative_job_id": "c887b531770743539bc079c81c7d0261",
+    "authoritative_answer_path": "jobs/c887b531770743539bc079c81c7d0261/answer.md",
+    "answer_chars": 4521,
+    "answer_format": "markdown",
+    "answer_provenance": {
+      "contract_class": "research",
+      "canonical_source": "answer_artifact",
+      "last_event_type": "answer_reconciled_from_conversation",
+      "completion_quality": "final",
+      "conversation_export_path": "jobs/c887b531770743539bc079c81c7d0261/conversation.json",
+      "authoritative_job_id": "c887b531770743539bc079c81c7d0261"
+    },
+    "export_available": true,
+    "widget_export_available": false
+  }
+}

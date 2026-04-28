@@ -1,0 +1,31 @@
+{
+  "artifact": "commerce_decision_layer",
+  "generated_at": "2026-04-27",
+  "source_files": [
+    "inputs/product_master_v0.csv",
+    "inputs/downloaded_media_manifest.csv",
+    "inputs/current_data_qa.md",
+    "inputs/reference_pattern_mapping.md",
+    "inputs/rejected_generic_patterns.md"
+  ],
+  "outputs": [
+    "sample_selection_rationale.md",
+    "category_portfolio_map.md",
+    "shopper_mission_map.md",
+    "sku_role_matrix.csv",
+    "asset_readiness_matrix.csv",
+    "claim_permission_matrix.csv",
+    "hero_candidate_matrix.csv",
+    "bundle_and_cross_sell_map.csv",
+    "navigation_decision_matrix.md",
+    "pdp_module_strategy_by_category.md",
+    "rejected_direction_log.md",
+    "design_decision_matrix.csv",
+    "../sample_dossiers/*.md"
+  ],
+  "known_limits": [
+    "No new external Amazon crawl was performed in this artifact.",
+    "Safety, materials, dimensions, age range, certifications, and marketplace performance remain blocked pending evidence.",
+    "Asset rights for scraped/AI-generated images remain usage-gated."
+  ]
+}

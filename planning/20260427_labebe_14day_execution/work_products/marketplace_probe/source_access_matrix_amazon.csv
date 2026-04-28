@@ -1,0 +1,8 @@
+method,access_type,key_required,expected_value,risk,initial_status,next_test
+Existing Apify script,script,unknown,"May retrieve Amazon reviews if configured","Can tempt premature review crawl; key/config may be unavailable",quarantine,"Inspect script and env requirements only"
+Local CSV sample,local,no,"Can test review/VOC schema and risk handling","ASIN-to-SKU mapping unverified",usable_for_method_only,"Use B087P9SXZQ only as identity workflow sample"
+Amazon public search/manual,browser/manual,no,"Can identify candidate ASINs and listing facts","May be rate-limited or localized; manual evidence needed",candidate,"Use 1-2 sample products only"
+Amazon product page manual capture,browser/manual,no,"Can capture listing title/images/price/facts","Dynamic page and regional variation",candidate,"Only after candidate ASIN found"
+Keepa/API/SP-API/API,key likely,"Could provide stronger ranking/history/listing data","No access assumed; may overbuild",deferred,"Do not block sprint on this"
+Ad libraries/social/search,public/mixed,no/unknown,"May discover product media or campaign claims","Not direct ASIN identity",separate_lane,"Handle under media asset probe"
+

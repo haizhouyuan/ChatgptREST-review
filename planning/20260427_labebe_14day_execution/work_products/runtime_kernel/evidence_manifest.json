@@ -1,0 +1,50 @@
+{
+  "issue_id": "PCL-001",
+  "artifact_set": "minimal_paperclip_operating_kernel_v0",
+  "created_at": "2026-04-27T19:20:00+08:00",
+  "owner_role": "Paperclip Program Architect",
+  "worker": "codex-main",
+  "status": "review",
+  "artifacts": [
+    {
+      "path": "work_products/runtime_kernel/paperclip_org_tree.md",
+      "type": "org_tree",
+      "source_refs": ["01_MASTER_IMPLEMENTATION_PLAN.md", "09_PRO_FEEDBACK_SYNTHESIS_AND_PLAN_ADJUSTMENTS.md"],
+      "confidence": "high",
+      "known_limitations": ["Not yet created in a live Paperclip instance."]
+    },
+    {
+      "path": "work_products/runtime_kernel/issue_evidence_contract.md",
+      "type": "issue_contract",
+      "source_refs": ["01_MASTER_IMPLEMENTATION_PLAN.md"],
+      "confidence": "high",
+      "known_limitations": []
+    },
+    {
+      "path": "work_products/runtime_kernel/gate_kernel_v0.md",
+      "type": "gate_contract",
+      "source_refs": ["pro_packet/final_pro_confirmation_answer.md"],
+      "confidence": "high",
+      "known_limitations": ["Gate templates still need to be applied issue-by-issue."]
+    },
+    {
+      "path": "work_products/runtime_kernel/evidence_manifest_schema.json",
+      "type": "schema",
+      "source_refs": ["06_EVIDENCE_MANIFEST_TEMPLATE.json"],
+      "confidence": "medium",
+      "known_limitations": ["Schema is local; not enforced by tooling yet."]
+    }
+  ],
+  "commands_used": [],
+  "claims_supported": [],
+  "claims_blocked": [],
+  "qa_status": "document_review_needed",
+  "forbidden_actions_check": {
+    "called_pro_or_gemini": false,
+    "edited_outside_scope": false,
+    "invented_claims": false,
+    "started_full_crawl": false
+  },
+  "next_handoff": "Use these artifacts as local PCL-001 operating kernel inputs. Do not treat them as live Paperclip instance creation until mapped into Paperclip."
+}
+

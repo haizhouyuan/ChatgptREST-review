@@ -1,0 +1,36 @@
+{
+  "task_id": "labebe_product_intel_design_prework_pro_review_20260427",
+  "created_at": "2026-04-27",
+  "checks": [
+    {
+      "name": "context_packet_exists",
+      "status": "pass",
+      "note": "Planning docs and local evidence files are packaged before asking Pro."
+    },
+    {
+      "name": "not_a_bare_question",
+      "status": "pass",
+      "note": "The prompt explicitly references the packet and summarizes the current boundary."
+    },
+    {
+      "name": "website_scope_boundary",
+      "status": "pass",
+      "note": "The pure DTC website is separated from AI demo, Product Matrix, Paperclip and boss-showroom work."
+    },
+    {
+      "name": "pro_not_deep_research",
+      "status": "pass",
+      "note": "The ask tells Pro not to use web search or Deep Research for this review."
+    },
+    {
+      "name": "attachments_are_small_enough",
+      "status": "pass",
+      "note": "The packet uses text/csv/json/code excerpts and does not attach full image folders."
+    }
+  ],
+  "known_limits": [
+    "This is a planning review, not a final crawl result.",
+    "Amazon source reliability still needs sample validation.",
+    "Live Labebe/Amazon facts may change after the local scrape date."
+  ]
+}

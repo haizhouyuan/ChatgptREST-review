@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-04-27T17:27:04.072792+00:00",
+  "listing_rows": 5,
+  "claim_rows": 25,
+  "review_gate_rows": 1,
+  "outputs": [
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_listing_facts_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_claim_gate_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_review_crawl_gate_v1.csv"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "requested_provider": "chatgpt",
+  "requested_preset": "pro_extended",
+  "deep_research": false,
+  "reason": "The user explicitly asked to send the complete prework plan to ChatGPT Pro for strict critique. This is a high-standard methodology and design-strategy review based on attached local context, not a fresh Deep Research web task.",
+  "rationale": [
+    "The user asked for Pro to critique the plan after enough local context is assembled.",
+    "This is a methodology and design-strategy review, not a fresh internet research task.",
+    "Deep Research is intentionally not requested in this turn to avoid spending the run on browser search instead of packet critique."
+  ],
+  "expected_behavior": [
+    "Return a critical Chinese review of the plan.",
+    "Focus on product intelligence methodology, website design research, presentation/video plan, acceptance criteria, and revised execution phases.",
+    "Do not mix internal AI demo modules into the pure consumer website."
+  ]
+}

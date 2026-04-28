@@ -1,0 +1,175 @@
+task_id: labebe_product_intel_and_design_prework_20260427
+date: 2026-04-27
+owner: codex
+decision_to_support: >
+  Decide the correct prework plan before rebuilding the Labebe DTC website:
+  product/channel intelligence first, then product-driven website design
+  options and presentation assets.
+output_shape:
+  - product intelligence execution plan
+  - crawl/source methodology
+  - current artifact audit
+  - design research and multi-option website concept plan
+  - Pro review packet
+unacceptable_evidence:
+  - treating scraped list pages as full product intelligence
+  - using unsupported review counts, ratings, certifications, awards, or sales claims
+  - accepting Amazon ASIN matches without source and confidence notes
+  - using AI-generated visual concepts as product facts
+  - merging the pure consumer DTC website with the separate AI demo/boss demo surface
+
+source_families:
+  local_authority:
+    tier: T0
+    examples:
+      - data/labebe/labebe_products.csv
+      - data/labebe/labebe_products_with_images.csv
+      - data/labebe/all_product_images.json
+      - docs/labebe-scrape-report-2026-04-24.md
+      - scrape_labebe.py
+      - fetch_amazon_reviews_apify.py
+      - data/amazon_reviews_US_B087P9SXZQ.csv
+    allowed_usage:
+      - baseline current-state inventory
+      - known gaps and method design
+      - source-of-truth for what has already been done locally
+    limitations:
+      - local scrape outputs may include parse errors
+      - local files are not proof of live current prices after the scrape date
+
+  brand_owned_public:
+    tier: T1
+    examples:
+      - labebeclub.com product, collection, homepage, policy, blog, and media pages
+      - official Labebe Amazon listings or brand store pages when verified
+    allowed_usage:
+      - product facts
+      - official images
+      - PDP copy, price, visible reviews, age/material/certification claims
+    limitations:
+      - must record access date
+      - must distinguish visible page claims from verified external facts
+
+  platform_primary_public:
+    tier: T1
+    examples:
+      - Amazon listing pages
+      - Amazon review pages
+      - Amazon brand store pages
+      - Amazon public category/rank signals where visible
+    allowed_usage:
+      - public listing facts
+      - ASIN evidence
+      - public rating/review count/rank/coupon/bought-past-month signals
+    limitations:
+      - anti-bot and localization can change visible fields
+      - do not infer ownership without seller/brand evidence
+
+  official_api:
+    tier: T1_or_T2
+    examples:
+      - Amazon SP-API catalog/pricing/offers endpoints if credentials exist
+    allowed_usage:
+      - structured catalog and pricing/offers data
+    limitations:
+      - credential-gated
+      - seller-account permissions may limit fields
+      - returned data must still be mapped to Labebe SKU confidence
+
+  third_party_structured:
+    tier: T2
+    examples:
+      - Apify Amazon actors
+      - Keepa or equivalent rank/price history providers
+    allowed_usage:
+      - efficient product/review/rank extraction
+      - BSR/rank/price history as external analytics signal
+    limitations:
+      - actor/API output must pass sample QA before full run
+      - fields may be missing, stale, or actor-specific
+      - costs/rate limits must be logged
+
+  discovery_sources:
+    tier: T2_or_T3
+    examples:
+      - Google search results
+      - Amazon search results
+      - image search
+      - marketplace search pages
+    allowed_usage:
+      - ASIN discovery
+      - competitor discovery
+      - lead generation
+    limitations:
+      - not final evidence until verified against a product/listing page
+
+  expert_review:
+    tier: T2
+    examples:
+      - ChatGPT Pro review with complete context packet
+      - later follow-up Pro thread with prior answer attached
+    allowed_usage:
+      - critique of methodology
+      - design strategy brainstorming
+      - missing-risk detection
+    limitations:
+      - not factual evidence for product data
+      - must be grounded against local/public sources before implementation
+
+  weak_signals:
+    tier: T3
+    examples:
+      - uncited community posts
+      - generic marketing blogs
+      - unverified AI-generated suggestions
+    allowed_usage:
+      - inspiration only
+    limitations:
+      - cannot support claims in final product intelligence or website copy
+
+intake_order:
+  - local_authority
+  - brand_owned_public
+  - platform_primary_public
+  - official_api_if_available
+  - third_party_structured
+  - discovery_sources
+  - expert_review
+  - weak_signals_only_as_leads
+
+must_have_source_classes:
+  product_master:
+    required:
+      - local_authority
+      - brand_owned_public
+  amazon_match:
+    required:
+      - platform_primary_public
+    optional:
+      - third_party_structured
+      - discovery_sources
+  sales_proxy:
+    required_one_of:
+      - platform_primary_public
+      - official_api
+      - third_party_structured
+  design_decisions:
+    required:
+      - product_master
+      - design_reference_pack
+      - product_intelligence_summary
+
+forbidden_shortcuts:
+  - Fill missing ratings with attractive numbers.
+  - Treat onsite review count as Amazon demand.
+  - Treat one Amazon listing as official unless brand/seller evidence supports it.
+  - Use fake parent testimonials.
+  - Use unverified certifications or safety claims.
+  - Use non-Labebe placeholder products as design evidence.
+  - Ask Pro with a bare question and no files/context.
+
+source_cards_file: source_cards.tsv
+notes: >
+  This registry freezes source boundaries for the prework plan. It is not the
+  final crawl output. The sample crawl must produce concrete source_ids per
+  SKU before full parallelization.

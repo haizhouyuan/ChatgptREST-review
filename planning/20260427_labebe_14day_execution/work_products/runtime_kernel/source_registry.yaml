@@ -1,0 +1,80 @@
+version: 0
+created_at: "2026-04-27T19:22:00+08:00"
+status: draft
+sources:
+  - id: labebe_dtc_local_crawl
+    type: local_data
+    path: /vol1/1000/projects/toyresearch/data/labebe
+    trust_tier: medium
+    allowed_use:
+      - product identity candidate
+      - image source candidate
+      - PDP/product data seed
+    blocked_use:
+      - final claims without QA
+      - final ratings/reviews without source check
+    known_limits:
+      - dirty titles
+      - join mismatch risk
+      - incomplete PDP facts
+  - id: amazon_sample_b087p9sxzq
+    type: local_data
+    path: /vol1/1000/projects/toyresearch/data/amazon_reviews_US_B087P9SXZQ.csv
+    trust_tier: low
+    allowed_use:
+      - method probe
+      - ASIN identity workflow sample
+    blocked_use:
+      - VOC synthesis before ASIN identity confidence
+      - demand claim
+    known_limits:
+      - SKU mapping unverified
+      - marketplace/language risk unknown
+  - id: kimi_website_upload_pack
+    type: local_pack
+    path: /vol1/1000/projects/toyresearch/kimi_web_upload_website_pack
+    trust_tier: medium
+    allowed_use:
+      - historical briefs
+      - storyboard/material reference
+      - local asset candidates
+    blocked_use:
+      - factual product claims without source trace
+    known_limits:
+      - generated/curated material may mix fact and concept
+  - id: labebe_design_reference_pack
+    type: local_research_pack
+    path: /vol1/1000/projects/toyresearch/labebe_design_reference_pack
+    trust_tier: medium
+    allowed_use:
+      - design reference mapping
+      - pattern extraction
+    blocked_use:
+      - moodboard-only decisions
+    known_limits:
+      - needs mapping to Labebe business problems
+  - id: paperclip_labebe_wow_baseline
+    type: local_demo
+    path: /vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/labebe_wow
+    trust_tier: medium
+    allowed_use:
+      - Boss Gallery baseline
+      - AI Wow demo reference
+    blocked_use:
+      - DTC website source
+      - production claim source
+    known_limits:
+      - result-first but still concept/demo
+  - id: prior_qa_screenshots
+    type: local_qa_history
+    path: /vol1/1000/projects/toyresearch/qa
+    trust_tier: medium
+    allowed_use:
+      - failure-mode analysis
+      - visual QA baseline
+      - rejected direction log
+    blocked_use:
+      - proof that current plan is good
+    known_limits:
+      - many screenshots belong to rejected iterations
+

@@ -1,0 +1,12 @@
+{
+  "captured_at": "2026-04-27T16:57:02.762Z",
+  "url": "https://www.amazon.com/ap/signin?openid.pape.max_auth_age=3600&openid.return_to=https%3A%2F%2Fwww.amazon.com%2Fproduct-reviews%2FB072LXVM36%3FsortBy%3Drecent%26reviewerType%3Dall_reviews&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=usflex&openid.mode=checkid_setup&language=en_US&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0",
+  "document_title": "Amazon Sign-In",
+  "heading": "Sign in or create account",
+  "body_text_len": 291,
+  "captcha_like": false,
+  "blank_like": false,
+  "review_count_extracted": 0,
+  "reviews": [],
+  "visible_text_sample": "Sign in or create account Enter mobile number or email Continue By continuing, you agree to Amazon's Conditions of Use and Privacy Notice. Need help? Buying for work? Create a free business account Conditions of Use Privacy Notice Help © 1996-2026, Amazon.com, Inc. or its affiliates"
+}

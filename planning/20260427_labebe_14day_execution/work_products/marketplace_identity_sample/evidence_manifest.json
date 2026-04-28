@@ -1,0 +1,18 @@
+{
+  "artifact": "marketplace_identity_sample",
+  "generated_at": "2026-04-27",
+  "scope": "Amazon identity-first sample, not full marketplace crawl",
+  "outputs": [
+    "asin_candidate_matrix.csv",
+    "amazon_identity_sample.md"
+  ],
+  "external_sources": [
+    "https://testmarket.io/deals/amazon/rocking-horses-animals/labebe-baby-rocking-horse-ride-unicorn-kid-ride-on-toy-for-6-month-3-year-old-infant-boy-girl-plush-animal-rocker-toddlerchild-stuffed-ride-toy-pink/341943",
+    "https://www.bestchoice.com/review/Labebe-Plush-Rocking-Horse-Wooden-E6gOehrxwh"
+  ],
+  "known_limits": [
+    "No canonical Amazon page was accepted as source of truth.",
+    "No ASIN, rank, sales, rating, or current Amazon review count is accepted.",
+    "Third-party aggregator traces are candidate identity signals only."
+  ]
+}

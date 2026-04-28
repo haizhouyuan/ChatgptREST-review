@@ -1,0 +1,213 @@
+{
+  "manifest_version": "0.1",
+  "generated_at": "2026-04-27",
+  "task": {
+    "sprint": "20260427_labebe_14day_execution",
+    "issue": "LAB-003 Product Master v0 and Data QA",
+    "work_package": "WP-A Product Data QA",
+    "worker": "Claude Code (delegated; bounded write scope)",
+    "write_scope": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/",
+    "is_final": false,
+    "is_sprint_done": false,
+    "notes": "Drafts only. Main controller integrates and authors closeout."
+  },
+  "sources": {
+    "labebe_products_csv_a": {
+      "path": "data/labebe/labebe_products.csv",
+      "size_bytes": 13158,
+      "mtime_unix": 1777042625,
+      "sha256": "a1688c94504b7a780d3d302a57409243ba8c6dd986a060951a284a100d59f223",
+      "role": "canonical 46-row product listing CSV; local_image_path filled",
+      "trust_notes": "title column is dirty; discount/original_price/reviews_count columns are partial; image_url column always empty"
+    },
+    "labebe_products_with_images_csv_b": {
+      "path": "data/labebe/labebe_products_with_images.csv",
+      "size_bytes": 8973,
+      "mtime_unix": 1777041014,
+      "sha256": "165f51ab9550389b9aca182e5a3be1f6071c10a59d26a8bdd08edffd8a28237b",
+      "role": "stale earlier checkpoint; do not use",
+      "trust_notes": "filename misleading; local_image_path empty; image_url empty"
+    },
+    "all_product_images_json": {
+      "path": "data/labebe/all_product_images.json",
+      "size_bytes": 54405,
+      "mtime_unix": 1777042106,
+      "sha256": "415e3069523eeef0741c2d8f68f6bf8dd47dd7c982ffae4a596a323af5be9dbe",
+      "role": "PDP-side gallery URL index, 46 keys x 459 image URLs",
+      "trust_notes": "one slug differs from CSV-side slug for the same product"
+    },
+    "labebe_images_dir": {
+      "path": "data/labebe/images/",
+      "file_count": 460,
+      "role": "local cache of all gallery images",
+      "trust_notes": "47 distinct slug stems on disk because of the children-s/childrens slug duplication"
+    },
+    "scrape_labebe_py": {
+      "path": "scrape_labebe.py",
+      "role": "listing-level Playwright scraper that produced the above outputs; read only for analysis",
+      "trust_notes": "title concatenation in scrape JS is the root cause of dirty CSV titles"
+    },
+    "labebe_scrape_report_md": {
+      "path": "docs/labebe-scrape-report-2026-04-24.md",
+      "role": "hand-written 2026-04-24 scrape summary; cross-checked against this QA"
+    }
+  },
+  "outputs": [
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/product_data_inventory.md",
+      "sha256": "492b04f6c8ce7b4119106eaac63a8ae03c59b30da70f579137c994dbce33425e",
+      "kind": "doc",
+      "summary": "Inventory of source files, sizes, hashes, schemas, limitations, and per-collection counts.",
+      "derived_from": [
+        "labebe_products_csv_a",
+        "labebe_products_with_images_csv_b",
+        "all_product_images_json",
+        "labebe_images_dir",
+        "scrape_labebe_py",
+        "labebe_scrape_report_md"
+      ]
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/current_data_qa_draft.md",
+      "sha256": "404cd9e7d684a106640406c01c01c1ef50838f6935adb7a8d064b6b7088f6a11",
+      "kind": "doc",
+      "summary": "QA findings: 46-product uniqueness, slug-join risk, title-parse anomalies, near-duplicate flags, gallery completeness, source limitations.",
+      "derived_from": [
+        "labebe_products_csv_a",
+        "all_product_images_json",
+        "labebe_images_dir",
+        "scrape_labebe_py"
+      ]
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/product_master_v0_draft.csv",
+      "sha256": "b92bcf89fe792a96ff46032aae97fd9ef089d88672a20a5fa0e4ddf87b816dab",
+      "rows": 46,
+      "columns": 21,
+      "kind": "data",
+      "summary": "Per-product master table with re-derived numeric fields and explicit unknown_fields per row.",
+      "derived_from": [
+        "labebe_products_csv_a",
+        "all_product_images_json",
+        "labebe_images_dir"
+      ],
+      "build_script": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/build_drafts.py"
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/slug_image_join_report_draft.csv",
+      "sha256": "5f331f0aa10f6c3d4213f4aaf7ea16351dac1bdb8e83a2db063632553db68f56",
+      "rows": 47,
+      "columns": 9,
+      "kind": "data",
+      "summary": "Per-slug presence in CSV / JSON / disk plus normalization match status. 45 perfect, 2 rows for the 1 split product, 0 image-dir-missing rows.",
+      "derived_from": [
+        "labebe_products_csv_a",
+        "all_product_images_json",
+        "labebe_images_dir"
+      ],
+      "build_script": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/build_drafts.py"
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/dirty_title_parse_report_draft.csv",
+      "sha256": "86d6bf1333fc0269ed0b34810f9b35b4d193bed0e9456133cb8d3fcd40306cba",
+      "rows": 46,
+      "columns": 17,
+      "kind": "data",
+      "summary": "Title-parse comparison vs CSV columns. Per-row anomaly notes covering missing MSRP column, banner/badge presence, From-prefix variant pricing, etc.",
+      "derived_from": [
+        "labebe_products_csv_a"
+      ],
+      "build_script": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/build_drafts.py"
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/do_not_use_fields_draft.md",
+      "sha256": "70f27b8dc4ae272fc9b4efa1d4fe56a853ac5dfa2941ad250f522e7fc32cf216",
+      "kind": "doc",
+      "summary": "Field-by-field block list for the Claim Gate (LAB-003 / LAB-007 / LAB-009).",
+      "derived_from": [
+        "labebe_products_csv_a",
+        "labebe_products_with_images_csv_b",
+        "all_product_images_json"
+      ]
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/handoff.md",
+      "sha256": "d9b121edf3f08a806d6248daaad8851e0184ead180db01ef3308f0b61b06f374",
+      "kind": "doc",
+      "summary": "Handoff notes: what controller can trust, what to inspect, what is not yet usable, recommended next actions, forbidden actions not taken."
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/build_drafts.py",
+      "sha256": "0561f20188abab51cdf34f4d73a19b153f8e07baaaa799e77e1ba14f83fb508e",
+      "kind": "script",
+      "summary": "Reproducible builder for product_master_v0_draft.csv, slug_image_join_report_draft.csv, dirty_title_parse_report_draft.csv. Idempotent."
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/evidence/source_hashes.json",
+      "sha256": "c5ddb611d9c1aee9edd661f9ad1248f7d87763b7df25f2a3e38c5a3d3fcf892c",
+      "kind": "evidence",
+      "summary": "Source-side sha256 + size + mtime captured at build time."
+    },
+    {
+      "path": "planning/20260427_labebe_14day_execution/work_products/product_data_qa/evidence/build_drafts_log.txt",
+      "sha256": "d1d615edd1460de5ef5b2de5ebb3ed1b7aab521d05e953385ec9370e562fa1c3",
+      "kind": "evidence",
+      "summary": "Stdout from the most recent build_drafts.py run."
+    }
+  ],
+  "commands_run": [
+    "ls -la /vol1/1000/projects/toyresearch/data/labebe/",
+    "ls -la /vol1/1000/projects/toyresearch/data/labebe/images/",
+    "wc -l /vol1/1000/projects/toyresearch/data/labebe/labebe_products.csv /vol1/1000/projects/toyresearch/data/labebe/labebe_products_with_images.csv",
+    "python3 - (ad-hoc inspections of CSV/JSON/disk consistency)",
+    "python3 planning/20260427_labebe_14day_execution/work_products/product_data_qa/build_drafts.py"
+  ],
+  "acceptance_evidence_for_LAB_003": {
+    "uniquely_identify_46_products": {
+      "evidence": [
+        "current_data_qa_draft.md §0",
+        "slug_image_join_report_draft.csv (45 perfect + 1 normalize)",
+        "product_master_v0_draft.csv slug_match_status column"
+      ],
+      "status": "satisfied_after_one_normalization_rule"
+    },
+    "check_slug_image_pdp_joins": {
+      "evidence": [
+        "slug_image_join_report_draft.csv",
+        "current_data_qa_draft.md §3"
+      ],
+      "status": "satisfied_with_one_documented_risk"
+    },
+    "parse_dirty_titles": {
+      "evidence": [
+        "dirty_title_parse_report_draft.csv",
+        "current_data_qa_draft.md §4-6"
+      ],
+      "status": "satisfied"
+    },
+    "list_fields_unsafe_for_copy_or_claim": {
+      "evidence": [
+        "do_not_use_fields_draft.md"
+      ],
+      "status": "satisfied"
+    }
+  },
+  "limitations": [
+    "Listing-level scrape only; no PDP body, no dimensions, no materials, no age guidance, no certifications.",
+    "Listing review counts only on 32/46; empty does not mean zero.",
+    "Listing badges (NEW!, HOT, From) are merchandising flags, not demand or release-date evidence.",
+    "Single 2026-04-24 capture; live prices, coupons, stock, multi-collection membership unknown.",
+    "Variant-family relationships (Learning Tower, Magnetic Easel, near-duplicate desk SKUs) not derivable from this source.",
+    "Image gallery roles (hero/lifestyle/dimension/packaging/assembly) not labelled."
+  ],
+  "forbidden_actions_confirmed_not_taken": [
+    "did_not_call_pro_or_gemini",
+    "did_not_run_external_crawl",
+    "did_not_modify_data_labebe_files",
+    "did_not_modify_scrape_labebe_py",
+    "did_not_overwrite_source_data",
+    "did_not_silently_repair_data",
+    "did_not_mark_LAB_003_done",
+    "did_not_edit_outside_write_scope"
+  ]
+}

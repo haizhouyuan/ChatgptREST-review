@@ -1,0 +1,30 @@
+{
+  "project": "Labebe DTC website redesign prework",
+  "cwd": "/vol1/1000/projects/toyresearch",
+  "date": "2026-04-27",
+  "latest_user_direction": [
+    "Before another website redesign, do two prerequisite workstreams.",
+    "Workstream 1: full Labebe product and Amazon current-state/product intelligence research.",
+    "Workstream 2: product-driven website design research with multiple distinct creative options.",
+    "Existing artifacts must be audited honestly; done does not mean done well.",
+    "Crawl method lessons should be written back to a skill or new skill and recorded in maint after validation.",
+    "Website output should include multiple design options and a video/walkthrough presentation concept.",
+    "The website itself is pure Labebe DTC replacement; AI/Product Matrix demos are separate."
+  ],
+  "local_current_state": {
+    "independent_site_products": 46,
+    "indexed_product_galleries": 46,
+    "indexed_image_urls": 459,
+    "local_images": 460,
+    "collections": {
+      "furniture": 17,
+      "rockers_ride_ons": 13,
+      "pretend_play": 9,
+      "activity_educational_toys": 6,
+      "new_in": 1
+    },
+    "amazon_sample_asins": 1,
+    "amazon_sample_reviews_deduped": 13
+  },
+  "review_need": "Raise the standard and identify flaws before execution."
+}

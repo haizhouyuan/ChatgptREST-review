@@ -1,0 +1,30 @@
+{
+  "purpose": "final_pre_execution_pro_confirmation",
+  "user_requested_new_pro_confirmation": true,
+  "provider": "chatgpt",
+  "preset": "pro_extended",
+  "deep_research": false,
+  "web_search_requested": false,
+  "ask_type": "planning_review",
+  "expected_answer_language": "Chinese",
+  "must_not_open_additional_reviews": true,
+  "minimum_useful_answer": "Directly critique the plan, identify cuts/strictness changes, and state execute/small-revision/do-not-execute.",
+  "attachments_are_sufficient": true,
+  "context_scope": [
+    "master implementation plan",
+    "compact Pro context brief",
+    "prior advisor synthesis",
+    "regenerated Pro operating-model answer"
+  ],
+  "known_risks": [
+    "Pro may answer generically unless asked for concrete modifications",
+    "Plan may still be too large for 14 days",
+    "External review should not become a new blocker loop"
+  ],
+  "client_policy": [
+    "Use final answer only; prompt echo is not progress",
+    "Do not submit follow-up unless result is unusable",
+    "After answer, revise local plan and proceed to local execution/delegation"
+  ]
+}
+

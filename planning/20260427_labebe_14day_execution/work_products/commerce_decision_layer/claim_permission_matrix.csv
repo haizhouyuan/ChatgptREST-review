@@ -1,0 +1,33 @@
+slug,claim_type,status,evidence,display_rule
+pink-unicorn-plush-rocker,price,allowed_with_scrape_date,$109.99 from local DTC scrape,Show with source/date in internal docs; public mock can show price only as demo data.
+pink-unicorn-plush-rocker,review_count,allowed_if_numeric,18 reviews,Do not convert to star rating or customer quote.
+pink-unicorn-plush-rocker,safety_certification_materials_age,blocked_pending_pdp_evidence,Not present in current product_master_v0.,"Use neutral copy; no certification, safety pass, material, or age guarantee."
+pink-unicorn-plush-rocker,marketplace_sales_rank_velocity,blocked_pending_asin_identity,Amazon identity not verified.,"No Amazon volume, rank, bestseller, or proven demand wording."
+cream-wooden-play-kitchen-set-with-storage,price,allowed_with_scrape_date,$129.99 from local DTC scrape,Show with source/date in internal docs; public mock can show price only as demo data.
+cream-wooden-play-kitchen-set-with-storage,review_count,allowed_if_numeric,9 reviews,Do not convert to star rating or customer quote.
+cream-wooden-play-kitchen-set-with-storage,safety_certification_materials_age,blocked_pending_pdp_evidence,Not present in current product_master_v0.,"Use neutral copy; no certification, safety pass, material, or age guarantee."
+cream-wooden-play-kitchen-set-with-storage,marketplace_sales_rank_velocity,blocked_pending_asin_identity,Amazon identity not verified.,"No Amazon volume, rank, bestseller, or proven demand wording."
+foldable-learning-tower-montessori-kitchen-tower-log-color,price,allowed_with_scrape_date,$79.99 from local DTC scrape,Show with source/date in internal docs; public mock can show price only as demo data.
+foldable-learning-tower-montessori-kitchen-tower-log-color,review_count,hide_or_mark_unknown,unknown,Do not convert to star rating or customer quote.
+foldable-learning-tower-montessori-kitchen-tower-log-color,safety_certification_materials_age,blocked_pending_pdp_evidence,Not present in current product_master_v0.,"Use neutral copy; no certification, safety pass, material, or age guarantee."
+foldable-learning-tower-montessori-kitchen-tower-log-color,marketplace_sales_rank_velocity,blocked_pending_asin_identity,Amazon identity not verified.,"No Amazon volume, rank, bestseller, or proven demand wording."
+children-s-writing-desk-and-chair-set-with-hutch---cork-board-for-study---art,price,allowed_with_scrape_date,$179.99 from local DTC scrape,Show with source/date in internal docs; public mock can show price only as demo data.
+children-s-writing-desk-and-chair-set-with-hutch---cork-board-for-study---art,review_count,allowed_if_numeric,12 reviews,Do not convert to star rating or customer quote.
+children-s-writing-desk-and-chair-set-with-hutch---cork-board-for-study---art,safety_certification_materials_age,blocked_pending_pdp_evidence,Not present in current product_master_v0.,"Use neutral copy; no certification, safety pass, material, or age guarantee."
+children-s-writing-desk-and-chair-set-with-hutch---cork-board-for-study---art,marketplace_sales_rank_velocity,blocked_pending_asin_identity,Amazon identity not verified.,"No Amazon volume, rank, bestseller, or proven demand wording."
+kids-toy-storage-organizer-bookshelf-with-bins,price,allowed_with_scrape_date,$105.99 from local DTC scrape,Show with source/date in internal docs; public mock can show price only as demo data.
+kids-toy-storage-organizer-bookshelf-with-bins,review_count,allowed_if_numeric,7 reviews,Do not convert to star rating or customer quote.
+kids-toy-storage-organizer-bookshelf-with-bins,safety_certification_materials_age,blocked_pending_pdp_evidence,Not present in current product_master_v0.,"Use neutral copy; no certification, safety pass, material, or age guarantee."
+kids-toy-storage-organizer-bookshelf-with-bins,marketplace_sales_rank_velocity,blocked_pending_asin_identity,Amazon identity not verified.,"No Amazon volume, rank, bestseller, or proven demand wording."
+natural-wood-montessori-shelf-with-storage-boxes,price,allowed_with_scrape_date,$114.99 from local DTC scrape,Show with source/date in internal docs; public mock can show price only as demo data.
+natural-wood-montessori-shelf-with-storage-boxes,review_count,allowed_if_numeric,9 reviews,Do not convert to star rating or customer quote.
+natural-wood-montessori-shelf-with-storage-boxes,safety_certification_materials_age,blocked_pending_pdp_evidence,Not present in current product_master_v0.,"Use neutral copy; no certification, safety pass, material, or age guarantee."
+natural-wood-montessori-shelf-with-storage-boxes,marketplace_sales_rank_velocity,blocked_pending_asin_identity,Amazon identity not verified.,"No Amazon volume, rank, bestseller, or proven demand wording."
+wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,price,allowed_with_scrape_date,$109.99 from local DTC scrape,Show with source/date in internal docs; public mock can show price only as demo data.
+wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,review_count,allowed_if_numeric,1 reviews,Do not convert to star rating or customer quote.
+wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,safety_certification_materials_age,blocked_pending_pdp_evidence,Not present in current product_master_v0.,"Use neutral copy; no certification, safety pass, material, or age guarantee."
+wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink,marketplace_sales_rank_velocity,blocked_pending_asin_identity,Amazon identity not verified.,"No Amazon volume, rank, bestseller, or proven demand wording."
+activity-cube-baby-push-walker,price,allowed_with_scrape_date,$69.99 from local DTC scrape,Show with source/date in internal docs; public mock can show price only as demo data.
+activity-cube-baby-push-walker,review_count,hide_or_mark_unknown,unknown,Do not convert to star rating or customer quote.
+activity-cube-baby-push-walker,safety_certification_materials_age,blocked_pending_pdp_evidence,Not present in current product_master_v0.,"Use neutral copy; no certification, safety pass, material, or age guarantee."
+activity-cube-baby-push-walker,marketplace_sales_rank_velocity,blocked_pending_asin_identity,Amazon identity not verified.,"No Amazon volume, rank, bestseller, or proven demand wording."

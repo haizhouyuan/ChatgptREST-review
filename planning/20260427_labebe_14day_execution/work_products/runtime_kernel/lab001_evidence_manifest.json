@@ -1,0 +1,46 @@
+{
+  "issue_id": "LAB-001",
+  "artifact_set": "scope_boundary_and_source_registry_v0",
+  "created_at": "2026-04-27T19:22:00+08:00",
+  "owner_role": "Program Strategist / Evidence Steward",
+  "worker": "codex-main",
+  "status": "review",
+  "artifacts": [
+    {
+      "path": "work_products/runtime_kernel/scope_boundary.md",
+      "type": "scope_boundary",
+      "source_refs": ["01_MASTER_IMPLEMENTATION_PLAN.md", "09_PRO_FEEDBACK_SYNTHESIS_AND_PLAN_ADJUSTMENTS.md"],
+      "confidence": "high",
+      "known_limitations": []
+    },
+    {
+      "path": "work_products/runtime_kernel/source_registry.yaml",
+      "type": "source_registry",
+      "source_refs": ["08_CURRENT_ARTIFACT_MAP.md"],
+      "confidence": "medium",
+      "known_limitations": ["Registry is local and sample-oriented; not full source audit."]
+    },
+    {
+      "path": "work_products/runtime_kernel/source_cards.tsv",
+      "type": "source_cards",
+      "source_refs": ["08_CURRENT_ARTIFACT_MAP.md"],
+      "confidence": "medium",
+      "known_limitations": ["Needs expansion during LAB-002/LAB-003."]
+    }
+  ],
+  "commands_used": [],
+  "claims_supported": [],
+  "claims_blocked": [
+    "unsupported safety/material/certification/demand claims",
+    "consumer-facing AI/Paperclip/internal matrix placement"
+  ],
+  "qa_status": "document_review_needed",
+  "forbidden_actions_check": {
+    "called_pro_or_gemini": false,
+    "edited_outside_scope": false,
+    "invented_claims": false,
+    "started_full_crawl": false
+  },
+  "next_handoff": "Use LAB-001 as scope/source boundary for workers. Extend source registry during method probes; do not treat it as exhaustive."
+}
+

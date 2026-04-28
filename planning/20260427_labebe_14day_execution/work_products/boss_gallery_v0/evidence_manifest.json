@@ -1,0 +1,48 @@
+{
+  "artifact": "boss_gallery_v0",
+  "generated_at": "2026-04-28",
+  "implementation_path": "paperclip_runtime_duel/outputs/boss_gallery_v0/index.html",
+  "source_assets": [
+    "paperclip_runtime_duel/outputs/labebe_wow/labebe_ai_application_wow.mp4",
+    "paperclip_runtime_duel/outputs/labebe_wow/labebe_ai_application_wow_poster.jpg",
+    "paperclip_runtime_duel/outputs/labebe_wow/assets/",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough.mp4",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_mobile.mp4",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_contact_sheet.jpg",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_mobile_contact_sheet.jpg",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/walkthrough_frames/",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/boss_gallery_issue_evidence_map.csv",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/boss_gallery_claim_ledger.csv",
+    "planning/20260427_labebe_14day_execution/work_products/boss_gallery_v0/boss_gallery_issue_evidence_map.csv",
+    "planning/20260427_labebe_14day_execution/work_products/boss_gallery_v0/boss_gallery_claim_ledger.csv",
+    "planning/20260427_labebe_14day_execution/work_products/boss_gallery_v0/boss_gallery_paperclip_binding_report.md",
+    "planning/20260427_labebe_14day_execution/work_products/boss_gallery_v0/import_boss_gallery_evidence_to_paperclip.mjs",
+    "planning/20260427_labebe_14day_execution/work_products/presentation_strategy/render_boss_gallery_walkthrough.mjs",
+    "planning/20260427_labebe_14day_execution/work_products/presentation_strategy/boss_gallery_walkthrough_video_update_20260428.md"
+  ],
+  "qa_artifacts": [
+    "qa/labebe-commerce-v2/boss-gallery-desktop-cdp-v2.png",
+    "qa/labebe-commerce-v2/boss-gallery-mobile-cdp.png",
+    "qa/labebe-commerce-v2/boss-gallery-desktop-cdp-v3.png",
+    "qa/labebe-commerce-v2/boss-gallery-mobile-cdp-v2.png",
+    "qa/browser-harness-p0-smoke-20260428/browser_harness_matrix_report.md",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough.mp4",
+    "paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_mobile.mp4"
+  ],
+  "verification": {
+    "http_status": 200,
+    "desktop_horizontal_overflow": false,
+    "mobile_horizontal_overflow": false,
+    "desktop_walkthrough_video": "H.264 1920x1080 30fps about 48.97s; HTTP 200",
+    "mobile_walkthrough_video": "H.264 1080x1920 30fps about 44.97s; HTTP 200",
+    "section_capture_overflow": "desktop=false, mobile=false from CDP renderer metrics",
+    "browser_harness_p0_smoke": "5/5 pass after issue/evidence map update",
+    "paperclip_binding": "Demo A-F bound to existing Paperclip issues LAB-2, LAB-3, LAB-4, LAB-5, LAB-7, LAB-8; LAB-9 has boss_gallery_index"
+  },
+  "known_limits": [
+    "Static gallery only; not a live Paperclip control plane.",
+    "Paperclip binding is evidence/document binding only; it does not mark issues done or approve publication.",
+    "Video and image asset rights/provenance remain governed by existing labebe_wow notes.",
+    "Demo cards now include evidence IDs and gates, but every channel asset is still prototype-only until reviewed."
+  ]
+}

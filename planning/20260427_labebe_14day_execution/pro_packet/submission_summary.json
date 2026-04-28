@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "job_id": "c887b531770743539bc079c81c7d0261",
+  "kind": "chatgpt_web.ask",
+  "provider": "chatgpt",
+  "preset": "pro_extended",
+  "status_at_submit": "queued",
+  "phase_at_submit": "send",
+  "phase_detail_at_submit": "awaiting_prompt_send",
+  "deep_research": false,
+  "min_chars": 4000,
+  "timeout_seconds": 7200,
+  "idempotency_key": "toyresearch-labebe-14day-execution-final-pro-confirmation-20260427-v2",
+  "attachments_root": "/tmp/chatgptrest_uploads/labebe_14day_execution_final_pro_20260427",
+  "created_at_epoch": 1777288184.849248,
+  "next_action": "wait_for_final_answer"
+}
+

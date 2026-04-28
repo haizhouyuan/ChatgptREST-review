@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-04-27T20:08:07.139355+00:00",
+  "sample_count": 8,
+  "captured_count": 8,
+  "failures": [],
+  "csv": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/pdp_source_probe_v1/labebe_pdp_source_probe_v1.csv",
+  "contexts_jsonl": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/pdp_source_probe_v1/labebe_pdp_source_contexts_v1.jsonl",
+  "claim_review_queue_csv": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/pdp_source_probe_v1/labebe_pdp_source_claim_review_queue_v1.csv",
+  "raw_text_dir": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/pdp_source_probe_v1/raw_text",
+  "screenshot_dir": "/vol1/1000/projects/toyresearch/qa/labebe_pdp_source_probe_v1"
+}

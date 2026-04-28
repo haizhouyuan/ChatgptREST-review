@@ -1,0 +1,8 @@
+{
+  "project": "toyresearch_labebe_paperclip",
+  "workspace": "/vol1/1000/projects/toyresearch",
+  "execution_dir": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution",
+  "desired_outcome": "One final Pro critique to adjust the local 14-day implementation plan before delegation and execution.",
+  "post_review_action": "Revise local plan, record decisions, then split local work across Kimi Code / Claude Code Kimi / Claude Code where useful."
+}
+

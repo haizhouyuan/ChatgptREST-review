@@ -1,0 +1,11 @@
+{
+  "artifact": "master_scope",
+  "generated_at": "2026-04-27",
+  "outputs": [
+    "MASTER_SCOPE_AND_ACCEPTANCE.md"
+  ],
+  "known_limits": [
+    "Scope is intentionally broad; downstream artifacts will track partial vs full completion.",
+    "Hard boundaries include paid actions, destructive actions, account-sensitive automation, and unsupported claims."
+  ]
+}

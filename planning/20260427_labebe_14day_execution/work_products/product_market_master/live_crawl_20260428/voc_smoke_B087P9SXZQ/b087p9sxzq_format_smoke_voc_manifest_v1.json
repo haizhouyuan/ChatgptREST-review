@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-04-27T22:00:34.947136+00:00",
+  "label": "b087p9sxzq_format_smoke",
+  "input_files": [
+    "data/amazon_reviews_US_B087P9SXZQ.csv"
+  ],
+  "input_review_rows": 13,
+  "sku_count": 1,
+  "summary_csv": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/voc_smoke_B087P9SXZQ/b087p9sxzq_format_smoke_voc_theme_summary_v1.csv",
+  "quote_queue_csv": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/voc_smoke_B087P9SXZQ/b087p9sxzq_format_smoke_voc_quote_queue_v1.csv",
+  "identity_warning": "Format smoke only. Existing B087P9SXZQ review sample is not accepted as a current DTC SKU evidence source because contact-sheet review found product image conflict with current DTC doll-stroller-baby-push-walker.",
+  "public_copy_allowed": false,
+  "claim_gate_required": true
+}

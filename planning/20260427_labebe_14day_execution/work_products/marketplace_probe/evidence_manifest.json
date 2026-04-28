@@ -1,0 +1,36 @@
+{
+  "issue_id": "LAB-005-PREP",
+  "artifact_set": "marketplace_identity_workflow_prep_v0",
+  "created_at": "2026-04-27T19:28:00+08:00",
+  "owner_role": "Marketplace Intelligence Analyst",
+  "worker": "codex-main",
+  "status": "draft",
+  "artifacts": [
+    {
+      "path": "work_products/marketplace_probe/asin_identity_workflow.md",
+      "type": "workflow",
+      "source_refs": ["01_MASTER_IMPLEMENTATION_PLAN.md", "pro_packet/final_pro_confirmation_answer.md"],
+      "confidence": "high",
+      "known_limitations": ["No live ASIN candidate test yet."]
+    },
+    {
+      "path": "work_products/marketplace_probe/source_access_matrix_amazon.csv",
+      "type": "source_access_matrix",
+      "source_refs": ["fetch_amazon_reviews_apify.py", "data/amazon_reviews_US_B087P9SXZQ.csv"],
+      "confidence": "medium",
+      "known_limitations": ["Script/env availability not fully inspected yet."]
+    }
+  ],
+  "commands_used": [],
+  "claims_supported": [],
+  "claims_blocked": ["Amazon VOC before ASIN identity confidence", "demand claims from review data alone"],
+  "qa_status": "method_prep_only",
+  "forbidden_actions_check": {
+    "called_pro_or_gemini": false,
+    "edited_outside_scope": false,
+    "invented_claims": false,
+    "started_full_crawl": false
+  },
+  "next_handoff": "Use this as the starting method contract for LAB-005 after sample SKUs are selected."
+}
+

@@ -1,0 +1,40 @@
+{
+  "baseUrl": "",
+  "captures": [
+    {
+      "name": "dtc-home-desktop",
+      "url": "http://fnos.dandanbaba.xyz:8790/",
+      "width": 1440,
+      "height": 1100,
+      "mobile": false
+    },
+    {
+      "name": "dtc-home-mobile",
+      "url": "http://fnos.dandanbaba.xyz:8790/",
+      "width": 390,
+      "height": 844,
+      "mobile": true
+    },
+    {
+      "name": "dtc-pink-unicorn-pdp-desktop",
+      "url": "http://fnos.dandanbaba.xyz:8790/product/pink-unicorn-plush-rocker",
+      "width": 1440,
+      "height": 1100,
+      "mobile": false
+    },
+    {
+      "name": "boss-gallery-desktop",
+      "url": "http://fnos.dandanbaba.xyz:8778/boss_gallery_v0/index.html",
+      "width": 1440,
+      "height": 1100,
+      "mobile": false
+    },
+    {
+      "name": "boss-gallery-mobile",
+      "url": "http://fnos.dandanbaba.xyz:8778/boss_gallery_v0/index.html",
+      "width": 390,
+      "height": 844,
+      "mobile": true
+    }
+  ]
+}

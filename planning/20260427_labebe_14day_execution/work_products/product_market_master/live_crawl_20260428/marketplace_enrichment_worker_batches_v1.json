@@ -1,0 +1,538 @@
+{
+  "created_at": "2026-04-27T23:18:27.261817+00:00",
+  "input_strategy": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/labebe_product_strategy_matrix_v1.csv",
+  "input_search_summary": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_search_candidate_summary_v1.csv",
+  "input_identity_lanes": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_identity_lanes_v1.csv",
+  "backlog_csv": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/marketplace_enrichment_backlog_v1.csv",
+  "batch_plan_md": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/marketplace_enrichment_batch_plan_v1.md",
+  "total_rows": 60,
+  "batch_counts": {
+    "B0_identity_whitelist_review_voc": 7,
+    "B1_variant_cluster_map": 4,
+    "B3_no_identity_high_signal": 1,
+    "B3_no_identity_restart_discovery": 26,
+    "B2_pdp_retry_provider": 10,
+    "B4_negative_training_restart_search": 7,
+    "B5_regional_scope_review": 5
+  },
+  "priority_counts": {
+    "P0_gate_after_authorized_reviews": 7,
+    "P1_high": 10,
+    "P2_medium": 33,
+    "P3_low": 10
+  },
+  "batches": [
+    {
+      "batch_id": "B0_identity_whitelist_review_voc",
+      "row_count": 7,
+      "priority_counts": {
+        "P0_gate_after_authorized_reviews": 7
+      },
+      "recommended_methods": {
+        "review_voc_runner_then_claim_review": 7
+      },
+      "rows": [
+        {
+          "sku_id": "pink-unicorn-plush-rocker",
+          "asin": "B072LXVM36",
+          "priority": "P0_gate_after_authorized_reviews",
+          "method": "review_voc_runner_then_claim_review",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "cream-wooden-play-kitchen-set-with-storage",
+          "asin": "B0FH1KX7XQ",
+          "priority": "P0_gate_after_authorized_reviews",
+          "method": "review_voc_runner_then_claim_review",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "llama-plush-rocker",
+          "asin": "B07MFXJ28Y",
+          "priority": "P0_gate_after_authorized_reviews",
+          "method": "review_voc_runner_then_claim_review",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "white-swan-plush-rocker",
+          "asin": "B0BVR63LRR",
+          "priority": "P0_gate_after_authorized_reviews",
+          "method": "review_voc_runner_then_claim_review",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "crocodile-plush-rocker",
+          "asin": "B071774PWC",
+          "priority": "P0_gate_after_authorized_reviews",
+          "method": "review_voc_runner_then_claim_review",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "fox-plush-rocker",
+          "asin": "B0DSVJB5QH",
+          "priority": "P0_gate_after_authorized_reviews",
+          "method": "review_voc_runner_then_claim_review",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "blue-squirrel-plush-rocker",
+          "asin": "B0FSQ48N93",
+          "priority": "P0_gate_after_authorized_reviews",
+          "method": "review_voc_runner_then_claim_review",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        }
+      ]
+    },
+    {
+      "batch_id": "B1_variant_cluster_map",
+      "row_count": 4,
+      "priority_counts": {
+        "P1_high": 4
+      },
+      "recommended_methods": {
+        "provider_variation_api_or_manual_variant_sheet": 4
+      },
+      "rows": [
+        {
+          "sku_id": "activity-montessori-baby-push-walker",
+          "asin": "B0D6YX3XG1",
+          "priority": "P1_high",
+          "method": "provider_variation_api_or_manual_variant_sheet",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "classic-montessori-baby-push-walker",
+          "asin": "B0D6YX3XG1",
+          "priority": "P1_high",
+          "method": "provider_variation_api_or_manual_variant_sheet",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "activity-cube-baby-push-walker",
+          "asin": "B0F8PZ7KZQ",
+          "priority": "P1_high",
+          "method": "provider_variation_api_or_manual_variant_sheet",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "doll-stroller-baby-push-walker",
+          "asin": "B0F8PZ7KZQ",
+          "priority": "P1_high",
+          "method": "provider_variation_api_or_manual_variant_sheet",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        }
+      ]
+    },
+    {
+      "batch_id": "B2_pdp_retry_provider",
+      "row_count": 10,
+      "priority_counts": {
+        "P2_medium": 10
+      },
+      "recommended_methods": {
+        "browser_harness_retry_then_provider_fallback": 10
+      },
+      "rows": [
+        {
+          "sku_id": "learning-tower-montessori-kitchen-tower-with-slide",
+          "asin": "B0FMRDDRZK",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "mammoth-plush-rocker",
+          "asin": "B07Z3DXVQT",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "princess-vanity-set-with-stool-and-lights",
+          "asin": "B0FLD8TWWN",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "sheep-plush-rocker",
+          "asin": "B0DJ6XM7GK",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "foldable-learning-tower-montessori-kitchen-tower-log-color",
+          "asin": "B0FMRDDRZK",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "learning-tower-montessori-kitchen-tower-gray",
+          "asin": "B0FMRDDRZK",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "learning-tower-montessori-kitchen-tower-log-color",
+          "asin": "B0FMRDDRZK",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "learning-tower-montessori-kitchen-tower-unicorn-design",
+          "asin": "B0FMRDDRZK",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "learning-tower-montessori-kitchen-tower-white",
+          "asin": "B0FMRDDRZK",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-rocking-horse",
+          "asin": "B0DSZXRZZ1",
+          "priority": "P2_medium",
+          "method": "browser_harness_retry_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        }
+      ]
+    },
+    {
+      "batch_id": "B3_no_identity_high_signal",
+      "row_count": 1,
+      "priority_counts": {
+        "P1_high": 1
+      },
+      "recommended_methods": {
+        "pdp_probe_then_visual_gate": 1
+      },
+      "rows": [
+        {
+          "sku_id": "kids-art-table-chair-set-with-easel-3-in-1",
+          "asin": "B0G3PQSH77",
+          "priority": "P1_high",
+          "method": "pdp_probe_then_visual_gate",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        }
+      ]
+    },
+    {
+      "batch_id": "B3_no_identity_restart_discovery",
+      "row_count": 26,
+      "priority_counts": {
+        "P1_high": 5,
+        "P2_medium": 21
+      },
+      "recommended_methods": {
+        "exact_title_brand_search_then_provider_fallback": 26
+      },
+      "rows": [
+        {
+          "sku_id": "children-s-writing-desk-and-chair-set-with-hutch---cork-board-for-study---art",
+          "asin": "B0FLPXNKNB",
+          "priority": "P1_high",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "kids-wooden-desk---chair-set-with-corkboard--hutch-storage---organizer",
+          "asin": "B0F3HTRVLL",
+          "priority": "P1_high",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "natural-wood-montessori-shelf-with-storage-boxes",
+          "asin": "B0FLXN9MG7",
+          "priority": "P1_high",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "rubber-wood-montessori-shelf",
+          "asin": "B0G6KY6WQY",
+          "priority": "P1_high",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "kids-desk-chair-set-with-cork-board-hutch",
+          "asin": "B0FLPXNKNB",
+          "priority": "P1_high",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "kids-toy-storage-organizer-bookshelf-with-bins",
+          "asin": "B0G29XHR28",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-square-stools-2-per-pack",
+          "asin": "B0FT7DVLDQ",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-bakery-toy-food-playset",
+          "asin": "B0DD3XRCJH",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "kids-coffee-shop-grocery-store-playset",
+          "asin": "B0FJFBZ1K2",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "kids-toy-storage-organizer-with-bins",
+          "asin": "B01NAI6YC5",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "outdoor-mud-kitchen-yellow",
+          "asin": "B0GKM5TTK7",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-washer-dryer-playset",
+          "asin": "B0FCRMY75X",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "outdoor-garden-potting-bench-table",
+          "asin": "B0DR2C1557",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "labrador-plush-rocker",
+          "asin": "B0F6C15NM9",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-toy-storage-organizer-with-shelves-bins",
+          "asin": "B0FS6P7PHY",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "shark-activity-wall-busy-board-panel",
+          "asin": "B0CTGTZVHH",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-rotating-bookshelf",
+          "asin": "B09461C2CH",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "rubber-wood-corner-cabinet",
+          "asin": "B0G2M4BCRZ",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-mud-kitchen-outdoor-play-kitchen-with-planter-box-sink",
+          "asin": "B0GKM5TTK7",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "elephant-activity-wall-busy-board-panel",
+          "asin": "B0F4R13P6M",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "magnetic-easel-with-deluxe-art-supplies-colorful",
+          "asin": "B00MC7TC6M",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "magnetic-easel-with-deluxe-art-supplies-pink",
+          "asin": "B086WNQRC3",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "magnetic-easel-with-deluxe-art-supplies-purple",
+          "asin": "B086WNQRC3",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "sit-and-spin-wooden-spinner-seat",
+          "asin": "B09WFVR9D9",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-rainbow-rocking-chair",
+          "asin": "B0BFF4C6VQ",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "wooden-round-stools-2-per-pack",
+          "asin": "B0FD2YT9K6",
+          "priority": "P2_medium",
+          "method": "exact_title_brand_search_then_provider_fallback",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        }
+      ]
+    },
+    {
+      "batch_id": "B4_negative_training_restart_search",
+      "row_count": 7,
+      "priority_counts": {
+        "P2_medium": 2,
+        "P3_low": 5
+      },
+      "recommended_methods": {
+        "search_with_negative_asin_exclusion": 7
+      },
+      "rows": [
+        {
+          "sku_id": "midnight-serenity-wooden-play-kitchen-set",
+          "asin": "B0FH1KX7XQ",
+          "priority": "P2_medium",
+          "method": "search_with_negative_asin_exclusion",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "highlander-cattle-plush-rocker",
+          "asin": "B071774PWC",
+          "priority": "P2_medium",
+          "method": "search_with_negative_asin_exclusion",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "stylish-wooden-kids-kitchen-playset",
+          "asin": "B0FH1KX7XQ",
+          "priority": "P3_low",
+          "method": "search_with_negative_asin_exclusion",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "ice-cream-cart-baby-push-walker",
+          "asin": "B0F8PZ7KZQ",
+          "priority": "P3_low",
+          "method": "search_with_negative_asin_exclusion",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "yak-plush-rocker",
+          "asin": "B07Z3DXVQT",
+          "priority": "P3_low",
+          "method": "search_with_negative_asin_exclusion",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "farm-themed-baby-push-walker",
+          "asin": "B0F8PZ7KZQ",
+          "priority": "P3_low",
+          "method": "search_with_negative_asin_exclusion",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "panda-baby-push-walker",
+          "asin": "B0D6YX3XG1",
+          "priority": "P3_low",
+          "method": "search_with_negative_asin_exclusion",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        }
+      ]
+    },
+    {
+      "batch_id": "B5_regional_scope_review",
+      "row_count": 5,
+      "priority_counts": {
+        "P3_low": 5
+      },
+      "recommended_methods": {
+        "regional_locale_review_first": 5
+      },
+      "rows": [
+        {
+          "sku_id": "learning-tower-montessori-kitchen-tower-white-eu",
+          "asin": "",
+          "priority": "P3_low",
+          "method": "regional_locale_review_first",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "learning-tower-montessori-kitchen-tower-gray-eu",
+          "asin": "",
+          "priority": "P3_low",
+          "method": "regional_locale_review_first",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "classic-montessori-baby-push-walker-eu",
+          "asin": "",
+          "priority": "P3_low",
+          "method": "regional_locale_review_first",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "farm-themed-baby-push-walker-eu",
+          "asin": "",
+          "priority": "P3_low",
+          "method": "regional_locale_review_first",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        },
+        {
+          "sku_id": "tool-bench-baby-push-walker-eu",
+          "asin": "",
+          "priority": "P3_low",
+          "method": "regional_locale_review_first",
+          "guardrail": "identity_first_no_search_page_facts_no_fake_reviews_no_public_claims"
+        }
+      ]
+    }
+  ],
+  "forbidden": [
+    "do not use search-page price/rating/review counts as facts",
+    "do not promote variant clusters as exact SKU proof",
+    "do not run review extraction outside identity-whitelist rows",
+    "do not use marketplace review text as public copy without claim review"
+  ]
+}

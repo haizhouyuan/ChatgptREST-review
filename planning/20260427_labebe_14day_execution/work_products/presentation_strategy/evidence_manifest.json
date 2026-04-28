@@ -1,0 +1,44 @@
+{
+  "created_at": "2026-04-27T00:00:00+08:00",
+  "scope": "Presentation strategy and rendered walkthrough media",
+  "strategy_docs": [
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/presentation_strategy/site_walkthrough_video_plan.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/presentation_strategy/boss_gallery_completion_plan.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/presentation_strategy/visual_qa_acceptance.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/presentation_strategy/boss_gallery_walkthrough_video_update_20260428.md"
+  ],
+  "scripts": [
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/presentation_strategy/render_dtc_walkthrough.mjs",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/presentation_strategy/render_boss_gallery_walkthrough.mjs"
+  ],
+  "rendered_media": [
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/labebe_site_walkthrough/labebe_dtc_site_walkthrough.mp4",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/labebe_site_walkthrough/labebe_dtc_site_walkthrough_poster.jpg",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/labebe_site_walkthrough/labebe_dtc_site_walkthrough_contact_sheet.jpg",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/labebe_site_walkthrough/labebe_dtc_site_walkthrough_mobile.mp4",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/labebe_site_walkthrough/labebe_dtc_site_walkthrough_mobile_poster.jpg",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/labebe_site_walkthrough/labebe_dtc_site_walkthrough_mobile_contact_sheet.jpg",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough.mp4",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_poster.jpg",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_contact_sheet.jpg",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_mobile.mp4",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_mobile_poster.jpg",
+    "/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/boss_gallery_v0/labebe_boss_gallery_walkthrough_mobile_contact_sheet.jpg"
+  ],
+  "render_verification": {
+    "desktop_ffprobe": "H.264 1920x1080 duration 66.967s",
+    "mobile_ffprobe": "H.264 1080x1920 duration 39.967s",
+    "http_status": "http://fnos.dandanbaba.xyz:8778/labebe_site_walkthrough/labebe_dtc_site_walkthrough.mp4 and labebe_dtc_site_walkthrough_mobile.mp4 returned 200",
+    "boss_gallery_desktop_ffprobe": "H.264 1920x1080 duration 48.967s",
+    "boss_gallery_mobile_ffprobe": "H.264 1080x1920 duration 44.967s",
+    "boss_gallery_http_status": "desktop and mobile Boss Gallery walkthrough MP4 URLs returned 200"
+  },
+  "notes": [
+    "DTC walkthrough videos are FFmpeg-rendered from browser-verified screenshots; no MiniMax video quota was consumed.",
+    "The 2026-04-28 render now includes the Gift Theater, Room Builder, and Play Worlds homepage directions plus collection, PDP, and phone views.",
+    "MiniMax remains available for future narrated or generated-motion versions through the existing minimax-multimodal-toolkit skill.",
+    "Boss Gallery already has a separate result-first MP4 under paperclip_runtime_duel/outputs/labebe_wow/.",
+    "Boss Gallery now has separate desktop and mobile walkthrough videos rendered from CDP section captures.",
+    "Boss Gallery walkthrough remains internal presentation media and is not embedded into the consumer DTC site."
+  ]
+}

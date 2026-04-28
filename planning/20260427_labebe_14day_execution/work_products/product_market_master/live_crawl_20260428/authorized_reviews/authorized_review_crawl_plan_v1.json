@@ -1,0 +1,31 @@
+{
+  "created_at": "2026-04-27T22:00:34.856270+00:00",
+  "mode": "dry_run",
+  "gate_status": "dry_run_no_external_calls",
+  "seed_path": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_review_voc_seed_v1.csv",
+  "eligible_rows": 7,
+  "actor_id": "automation-lab/amazon-reviews-scraper",
+  "marketplace": "US",
+  "sorts": [
+    "recent",
+    "helpful"
+  ],
+  "star_filters": [
+    "five_star",
+    "four_star",
+    "three_star",
+    "two_star",
+    "one_star"
+  ],
+  "max_reviews_per_star_filter": 100,
+  "plan_csv": "planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/authorized_reviews/authorized_review_crawl_plan_v1.csv",
+  "external_calls_made": false,
+  "outputs": [],
+  "blocked_reason": "",
+  "rules": [
+    "identity_whitelist_candidate only",
+    "review text remains internal until claim review",
+    "no search candidates, variant clusters, or blocked examples",
+    "no public DTC copy authorization"
+  ]
+}

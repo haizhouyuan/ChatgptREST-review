@@ -1,0 +1,98 @@
+{
+  "issue_id": "RUNTIME-QA-TEMPLATE",
+  "artifact_set": "browser_visual_qa_templates_v0",
+  "created_at": "2026-04-27T19:25:00+08:00",
+  "owner_role": "Runtime QA Template Steward",
+  "worker": "codex-main",
+  "status": "p0_executable",
+  "artifacts": [
+    {
+      "path": "work_products/runtime_qa_templates/browser_harness_p0_contract.md",
+      "type": "qa_contract",
+      "source_refs": ["01_MASTER_IMPLEMENTATION_PLAN.md", "pro_packet/final_pro_confirmation_answer.md"],
+      "confidence": "high",
+      "known_limitations": ["P0 executable, but shared service/vision-provider integration is not implemented."]
+    },
+    {
+      "path": "work_products/runtime_qa_templates/browser_harness_capture.mjs",
+      "type": "browser_harness_cli",
+      "source_refs": ["work_products/skill_runtime_governance/browser_harness_p0_implementation_plan.md"],
+      "confidence": "high",
+      "known_limitations": ["Deterministic CDP capture only; no autonomous browser agent and no account/session management."]
+    },
+    {
+      "path": "work_products/runtime_qa_templates/browser_harness_run_matrix.mjs",
+      "type": "browser_harness_matrix_runner",
+      "source_refs": ["work_products/skill_runtime_governance/browser_harness_p0_implementation_plan.md"],
+      "confidence": "high",
+      "known_limitations": ["Runs predefined route/view matrices only."]
+    },
+    {
+      "path": "work_products/runtime_qa_templates/browser_harness_service.mjs",
+      "type": "browser_harness_service_wrapper",
+      "source_refs": ["work_products/skill_runtime_governance/browser_harness_p0_implementation_plan.md"],
+      "confidence": "high",
+      "known_limitations": ["Localhost QA/evidence service only; no authenticated session management, external model submission, design decisioning, code editing or publishing."]
+    },
+    {
+      "path": "work_products/runtime_qa_templates/browser_harness_smoke_matrix.json",
+      "type": "browser_harness_smoke_matrix",
+      "source_refs": [],
+      "confidence": "high",
+      "known_limitations": ["Contains current fnos URLs and should be edited if ports/domains change."]
+    },
+    {
+      "path": "qa/browser-harness-p0-smoke-20260428/browser_harness_matrix_report.md",
+      "type": "browser_harness_smoke_report",
+      "source_refs": ["work_products/runtime_qa_templates/browser_harness_smoke_matrix.json"],
+      "confidence": "high",
+      "known_limitations": ["Smoke covers representative DTC and Boss Gallery routes, not every route."]
+    },
+    {
+      "path": "qa/browser-harness-service-smoke-20260428/browser_harness_service_smoke_report.md",
+      "type": "browser_harness_service_smoke_report",
+      "source_refs": ["work_products/runtime_qa_templates/browser_harness_service.mjs"],
+      "confidence": "high",
+      "known_limitations": ["Smoke covers health/schema/capture and a one-row matrix only; it is not a long-running service soak test."]
+    },
+    {
+      "path": "work_products/runtime_qa_templates/browser_qa_report_template.md",
+      "type": "qa_template",
+      "source_refs": [],
+      "confidence": "medium",
+      "known_limitations": []
+    },
+    {
+      "path": "work_products/runtime_qa_templates/design_review_report_template.md",
+      "type": "design_review_template",
+      "source_refs": [],
+      "confidence": "medium",
+      "known_limitations": []
+    },
+    {
+      "path": "work_products/runtime_qa_templates/visual_ai_slop_checklist.md",
+      "type": "visual_quality_checklist",
+      "source_refs": ["Gemini/Pro feedback synthesis"],
+      "confidence": "high",
+      "known_limitations": []
+    }
+  ],
+  "commands_used": [
+    "node planning/20260427_labebe_14day_execution/work_products/runtime_qa_templates/browser_harness_run_matrix.mjs planning/20260427_labebe_14day_execution/work_products/runtime_qa_templates/browser_harness_smoke_matrix.json qa/browser-harness-p0-smoke-20260428",
+    "BROWSER_HARNESS_PORT=8791 node planning/20260427_labebe_14day_execution/work_products/runtime_qa_templates/browser_harness_service.mjs",
+    "curl -fsS http://127.0.0.1:8791/health",
+    "curl -fsS http://127.0.0.1:8791/schema",
+    "curl -fsS -X POST http://127.0.0.1:8791/capture",
+    "curl -fsS -X POST http://127.0.0.1:8791/matrix"
+  ],
+  "claims_supported": [],
+  "claims_blocked": [],
+  "qa_status": "p0_matrix_smoke_passed_5_of_5_and_service_smoke_passed",
+  "forbidden_actions_check": {
+    "called_pro_or_gemini": false,
+    "edited_outside_scope": false,
+    "invented_claims": false,
+    "started_full_crawl": false
+  },
+  "next_handoff": "Use the matrix runner for repeatable route/view QA. Keep Browser Harness as QA/evidence support only, not a browser automation platform."
+}

@@ -1,0 +1,8 @@
+source_id	type	path_or_url	trust_tier	allowed_use	blocked_use	known_limits
+labebe_dtc_local_crawl	local_data	/vol1/1000/projects/toyresearch/data/labebe	medium	product identity candidate; image source candidate; PDP seed	final claims without QA; final ratings/reviews without source check	dirty titles; join mismatch risk; incomplete PDP facts
+amazon_sample_b087p9sxzq	local_data	/vol1/1000/projects/toyresearch/data/amazon_reviews_US_B087P9SXZQ.csv	low	method probe; ASIN identity workflow sample	VOC synthesis before ASIN identity confidence; demand claim	SKU mapping unverified; marketplace/language risk unknown
+kimi_website_upload_pack	local_pack	/vol1/1000/projects/toyresearch/kimi_web_upload_website_pack	medium	historical briefs; storyboard/material reference; local asset candidates	factual product claims without source trace	generated/curated material may mix fact and concept
+labebe_design_reference_pack	local_research_pack	/vol1/1000/projects/toyresearch/labebe_design_reference_pack	medium	design reference mapping; pattern extraction	moodboard-only decisions	needs mapping to Labebe business problems
+paperclip_labebe_wow_baseline	local_demo	/vol1/1000/projects/toyresearch/paperclip_runtime_duel/outputs/labebe_wow	medium	Boss Gallery baseline; AI Wow demo reference	DTC website source; production claim source	result-first but still concept/demo
+prior_qa_screenshots	local_qa_history	/vol1/1000/projects/toyresearch/qa	medium	failure-mode analysis; visual QA baseline; rejected direction log	proof current plan is good	many screenshots belong to rejected iterations
+

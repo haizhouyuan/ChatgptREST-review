@@ -1,0 +1,118 @@
+workspace	identifier	status	priority	domain	migration_class	title
+Assistant Factory	ASF-26	done	high	control-plane	migrate_lesson_or_followup	Build cross-workspace evidence bundle exporter
+Assistant Factory	ASF-25	done	high	control-plane	migrate_lesson_or_followup	Compile proof ledger and sidecar knowledge register
+Assistant Factory	ASF-24	done	high	control-plane	migrate_lesson_or_followup	Implement read-only chief live snapshot exporter
+Assistant Factory	ASF-23	done	high	control-plane	migrate_lesson_or_followup	Implement runnable chief manifest and advance_one dry-run harness
+Assistant Factory	ASF-22	done	high	planning-memory	archive_as_blueprint_or_future_project	Harness0 golden path: executable planning-memory case_01 proof
+Assistant Factory	ASF-21	done	none	planning-memory	archive_as_blueprint_or_future_project	Cross-workspace dispatch smoke worker ack
+Assistant Factory	ASF-20	done	medium	education	archive_as_blueprint_or_future_project	梳理儿子语音助手设想与依赖
+Assistant Factory	ASF-19	done	medium	education	archive_as_blueprint_or_future_project	梳理教育专家助理需求与现有材料
+Assistant Factory	ASF-18	done	medium	control-plane	migrate_lesson_or_followup	Chief manifest and transition checker design baseline
+Assistant Factory	ASF-17	done	medium	control-plane	migrate_lesson_or_followup	设计 Hermes 总控 prompt 与 specialist routing
+Assistant Factory	ASF-16	done	medium	control-plane	migrate_lesson_or_followup	切 Hermes 主入口到独立 Codex auth 方案
+Assistant Factory	ASF-15	done	medium	control-plane	migrate_lesson_or_followup	确认 Hermes 主入口 provider model MCP skill 现状
+Assistant Factory	ASF-14	done	medium	chatgptrest-capability	migrate_lesson_or_followup	设计 UI 自动化升级方案
+Assistant Factory	ASF-13	done	medium	chatgptrest-capability	migrate_lesson_or_followup	调研 anything-cli 与 opencli 升级路径
+Assistant Factory	ASF-12	done	medium	chatgptrest-capability	migrate_lesson_or_followup	执行 capability regression matrix
+Assistant Factory	ASF-11	done	medium	chatgptrest-capability	migrate_lesson_or_followup	列出现有 web 自动化能力清单
+Assistant Factory	ASF-10	done	medium	finbot	archive_as_blueprint_or_future_project	设计 finbot Paper Replay / Data Ground Truth Pilot
+Assistant Factory	ASF-9	done	medium	finbot	archive_as_blueprint_or_future_project	冻结 OpportunityCase 合同与只读映射方案
+Assistant Factory	ASF-8	done	medium	finbot	archive_as_blueprint_or_future_project	归档已有投研产物与工作框架
+Assistant Factory	ASF-7	done	medium	finbot	archive_as_blueprint_or_future_project	梳理 codexread -> finagent -> finbot 历史链
+Assistant Factory	ASF-6	done	medium	planning-memory	archive_as_blueprint_or_future_project	开 GBrain sandbox lane
+Assistant Factory	ASF-5	done	medium	planning-memory	archive_as_blueprint_or_future_project	补 LLM Wiki 编译知识层对比计划
+Assistant Factory	ASF-4	done	high	planning-memory	archive_as_blueprint_or_future_project	定义 memory delta 结构
+Assistant Factory	ASF-3	done	high	planning-memory	archive_as_blueprint_or_future_project	为 Case 01 04 07 生成正式 rubric
+Assistant Factory	ASF-2	done	high	planning-memory	archive_as_blueprint_or_future_project	为 Case 01 04 07 生成标准输入包
+Assistant Factory	ASF-1	done	high	planning-memory	archive_as_blueprint_or_future_project	盘点 planning ArmS 已测与未测对象
+Assistant Ops	AOP-91	done	medium	native-no-write-readonly-proof	migrate_lesson_or_followup	AOP-91 fallback-chief real read-only proof
+Assistant Ops	AOP-90	done	medium	native-no-write-readonly-proof	migrate_lesson_or_followup	AOP-90 codex-chief-fallback approval deny policy smoke
+Assistant Ops	AOP-89	done	medium	native-no-write-readonly-proof	migrate_lesson_or_followup	AOP-89 fallback-chief read-only proof unlock review
+Assistant Ops	AOP-88	done	medium	native-no-write-readonly-proof	migrate_lesson_or_followup	AOP-88 codex-chief-fallback liveness smoke target
+Assistant Ops	AOP-87	done	medium	native-no-write-readonly-proof	migrate_lesson_or_followup	AOP-87 Codex GPT-5.5 fallback liveness smoke target
+Assistant Ops	AOP-86	done	medium	native-no-write-readonly-proof	migrate_lesson_or_followup	AOP-86 GPT-5.5 xhigh model liveness smoke target
+Assistant Ops	AOP-85	done	medium	native-no-write-readonly-proof	migrate_lesson_or_followup	AOP-85 LC-NW-1 deterministic runtime smoke target
+Assistant Ops	AOP-84	cancelled	high	cancelled-lc-nw-smoke-fixture	archive_do_not_migrate_as_success	LC-NW-1-SMOKE: forced-tool task env no-write read_file smoke target
+Assistant Ops	AOP-83	cancelled	none	cancelled-lc-nw-smoke-fixture	archive_do_not_migrate_as_success	LC-NW-1-SMOKE: fresh policy-pruned no-write read_file smoke target
+Assistant Ops	AOP-82	cancelled	none	cancelled-lc-nw-smoke-fixture	archive_do_not_migrate_as_success	LC-NW-1-SMOKE: fresh native no-write read_file smoke target
+Assistant Ops	AOP-81	cancelled	none	cancelled-lc-nw-smoke-fixture	archive_do_not_migrate_as_success	LC-NW-1-SMOKE: sacrificial native no-write read_file smoke target
+Assistant Ops	AOP-80	done	high	autopilot-dryrun-governance	migrate_lesson_or_followup	Codify dual-review static-only gate for chief MCP/skills reconciliation
+Assistant Ops	AOP-79	done	high	autopilot-dryrun-governance	migrate_lesson_or_followup	Prepare chief MCP/skills metadata reconciliation proposal
+Assistant Ops	AOP-78	done	high	autopilot-dryrun-governance	migrate_lesson_or_followup	Install read-only chief dry-run reporter timer
+Assistant Ops	AOP-77	done	high	autopilot-dryrun-governance	migrate_lesson_or_followup	Pause create-issue governance autopilot pending dry-run reporter
+Assistant Ops	AOP-76	done	high	control-plane-review	migrate_lesson_or_followup	Fallback review ASF-26 implementation artifacts
+Assistant Ops	AOP-75	cancelled	high	control-plane-review	archive_do_not_migrate_as_success	Red-team review ASF-26 implementation artifacts
+Assistant Ops	AOP-74	done	high	control-plane-review	migrate_lesson_or_followup	Fallback review ASF-26 evidence bundle contract
+Assistant Ops	AOP-73	cancelled	high	control-plane-review	archive_do_not_migrate_as_success	Red-team review ASF-26 evidence bundle contract
+Assistant Ops	AOP-72	done	high	control-plane-review	migrate_lesson_or_followup	Fallback review ASF-25 implementation artifacts
+Assistant Ops	AOP-71	cancelled	high	control-plane-review	archive_do_not_migrate_as_success	Red-team review ASF-25 implementation artifacts
+Assistant Ops	AOP-70	done	high	control-plane-review	migrate_lesson_or_followup	Red-team review ASF-25 proof ledger contract
+Assistant Ops	AOP-69	done	high	control-plane-review	migrate_lesson_or_followup	Red-team review ASF-24 implementation artifacts
+Assistant Ops	AOP-68	done	high	control-plane-review	migrate_lesson_or_followup	Red-team review ASF-24 read-only snapshot exporter contract
+Assistant Ops	AOP-67	done	high	control-plane-review	migrate_lesson_or_followup	Red-team review ASF-23 implementation artifacts
+Assistant Ops	AOP-66	done	high	control-plane-review	migrate_lesson_or_followup	Red-team review ASF-23 runnable manifest dry-run harness contract
+Assistant Ops	AOP-65	done	high	control-plane-review	migrate_lesson_or_followup	Red-team review ASF-18 chief manifest transition checker checkpoint
+Assistant Ops	AOP-64	done	medium	control-plane-review	migrate_lesson_or_followup	Chief governance sweep
+Assistant Ops	AOP-63	done	medium	control-plane-review	migrate_lesson_or_followup	Chief governance sweep
+Assistant Ops	AOP-62	done	medium	control-plane-review	migrate_lesson_or_followup	Governance sweep: hold next lanes pending ASF-17 review
+Assistant Ops	AOP-61	done	high	control-plane-review	migrate_lesson_or_followup	Red-team review ASF-17 Hermes chief prompt routing contract checkpoint
+Assistant Ops	AOP-60	done	high	packet-review-fallback	review_manually	Fallback red-team review ASF-16 Hermes auth lane proof checkpoint
+Assistant Ops	AOP-59	cancelled	high	packet-review-fallback	archive_do_not_migrate_as_success	Red-team review ASF-16 Hermes auth lane proof checkpoint
+Assistant Ops	AOP-58	done	high	packet-review-fallback	review_manually	Fallback red-team review ASF-15 Hermes control plane inventory checkpoint
+Assistant Ops	AOP-57	cancelled	high	packet-review-fallback	archive_do_not_migrate_as_success	Red-team review ASF-15 Hermes control plane inventory checkpoint
+Assistant Ops	AOP-56	done	high	packet-review-fallback	review_manually	Fallback red-team review ASF-8 OpportunityCase backtest checkpoint
+Assistant Ops	AOP-55	cancelled	high	packet-review-fallback	archive_do_not_migrate_as_success	Red-team review ASF-8 OpportunityCase backtest checkpoint
+Assistant Ops	AOP-54	done	high	packet-review-fallback	review_manually	Fallback redteam review: ASF-7 finbot history checkpoint
+Assistant Ops	AOP-53	cancelled	high	packet-review-fallback	archive_do_not_migrate_as_success	Redteam review: ASF-7 finbot history checkpoint
+Assistant Ops	AOP-52	done	high	packet-review-fallback	review_manually	Independent rubric scoring: ASF-22 Harness0 case_01
+Assistant Ops	AOP-51	done	high	packet-review-fallback	review_manually	Redteam final verify: ASF-22 Harness0 fixes
+Assistant Ops	AOP-50	done	high	packet-review-fallback	review_manually	Redteam review: ASF-22 Harness0 artifact bundle
+Assistant Ops	AOP-49	done	high	packet-review-fallback	review_manually	Redteam review: ASF-22 executable Harness0 contract
+Assistant Ops	AOP-48	cancelled	high	packet-review-fallback	archive_do_not_migrate_as_success	Chief packet: ASF-6 GBrain sandbox gate
+Assistant Ops	AOP-47	done	high	packet-review-fallback	review_manually	Redteam review: ASF-5 checkpoint artifact
+Assistant Ops	AOP-46	done	high	packet-review-fallback	review_manually	Redteam review: ASF-5 LLM Wiki gate
+Assistant Ops	AOP-45	done	high	packet-review-fallback	review_manually	Chief packet: ASF-5 LLM Wiki comparison plan gate
+Assistant Ops	AOP-44	done	high	packet-review-fallback	review_manually	Redteam review: ASF-3 checkpoint artifact
+Assistant Ops	AOP-43	done	high	packet-review-fallback	review_manually	Redteam review: ASF-3 rubric gate
+Assistant Ops	AOP-42	done	high	packet-review-fallback	review_manually	Chief packet: ASF-3 rubric execution gate
+Assistant Ops	AOP-41	done	high	packet-review-fallback	review_manually	Redteam review: ASF-4 checkpoint artifact
+Assistant Ops	AOP-40	done	high	packet-review-fallback	review_manually	Fallback redteam review: ASF-4 memory delta gate
+Assistant Ops	AOP-39	done	low	packet-review-fallback	review_manually	Smoke test: Codex xhigh fallback red-team
+Assistant Ops	AOP-38	cancelled	high	packet-review-fallback	archive_do_not_migrate_as_success	Redteam review: ASF-4 memory delta gate
+Assistant Ops	AOP-37	done	high	packet-review-fallback	review_manually	Chief packet: ASF-4 memory delta execution gate
+Assistant Ops	AOP-36	done	high	packet-review-fallback	review_manually	Redteam review: ASF-2 checkpoint artifact
+Assistant Ops	AOP-35	done	high	packet-review-fallback	review_manually	Redteam review: ASF-2 execution gate
+Assistant Ops	AOP-34	done	high	packet-review-fallback	review_manually	Chief packet: ASF-2 execution gate
+Assistant Ops	AOP-33	done	high	packet-review-fallback	review_manually	Redteam final verify: ASF-1 schema revision
+Assistant Ops	AOP-32	done	high	packet-review-fallback	review_manually	Redteam review: ASF-1 checkpoint artifact
+Assistant Ops	AOP-31	done	high	packet-review-fallback	review_manually	Redteam review: ASF-1 amended execution gate
+Assistant Ops	AOP-30	done	high	packet-review-fallback	review_manually	Chief amended packet: ASF-1 execution gate
+Assistant Ops	AOP-29	done	high	packet-review-fallback	review_manually	Redteam review: ASF-1 pre-execution packet
+Assistant Ops	AOP-28	done	high	packet-review-fallback	review_manually	Chief packet: ASF-1 pre-execution review scope
+Assistant Ops	AOP-27	done	high	issue-contract-governance	migrate_lesson_or_followup	Redteam review: AOP-26 Tier 3 decision packet
+Assistant Ops	AOP-26	done	high	issue-contract-governance	migrate_lesson_or_followup	Chief decision packet: planning-memory Tier 3 scope and order
+Assistant Ops	AOP-25	done	high	issue-contract-governance	migrate_lesson_or_followup	Redteam evidence review via packet: rewritten ASF-1..ASF-6 contracts
+Assistant Ops	AOP-24	cancelled	high	issue-contract-governance	archive_do_not_migrate_as_success	Redteam evidence review: rewritten ASF-1..ASF-6 contracts
+Assistant Ops	AOP-23	done	high	issue-contract-governance	migrate_lesson_or_followup	Rewrite-only: planning-memory pilot ASF-1..ASF-6 issue contracts
+Assistant Ops	AOP-22	done	high	issue-contract-governance	migrate_lesson_or_followup	Redteam evidence review: Governance v0 Package AOP-21
+Assistant Ops	AOP-21	done	high	issue-contract-governance	migrate_lesson_or_followup	Governance v0 Package consistency pass
+Assistant Ops	AOP-20	done	high	issue-contract-governance	migrate_lesson_or_followup	Redteam evidence review: PRD0 Harness0 Issue Contract Template
+Assistant Ops	AOP-19	done	high	issue-contract-governance	migrate_lesson_or_followup	Issue Contract Template v0 for all non-smoke work
+Assistant Ops	AOP-18	done	high	redteam-harness	migrate_lesson_or_followup	Harness0: Multica Hermes continuity and review loop
+Assistant Ops	AOP-17	done	high	redteam-harness	migrate_lesson_or_followup	PRD0: Personal assistant development operating system
+Assistant Ops	AOP-16	done	high	redteam-harness	migrate_lesson_or_followup	Redteam review: live cleanup proposal before PRD0
+Assistant Ops	AOP-15	done	high	redteam-harness	migrate_lesson_or_followup	Live cleanup proposal for Multica/Hermes v2 gates
+Assistant Ops	AOP-14	done	medium	redteam-harness	migrate_lesson_or_followup	Redteam GAC smoke test
+Assistant Ops	AOP-13	done	high	chief-ops-contract	migrate_lesson_or_followup	Chief 接手 v2 operating spec 并先做治理收口
+Assistant Ops	AOP-12	done	medium	chief-ops-contract	migrate_lesson_or_followup	Chief cross-workspace smoke: read monitor dispatch
+Assistant Ops	AOP-11	done	medium	chief-ops-contract	migrate_lesson_or_followup	Chief of Staff 正式接手路线图（收紧版）
+Assistant Ops	AOP-10	cancelled	medium	chief-ops-contract	archive_do_not_migrate_as_success	Chief of Staff 正式接收路线图与任务管理边界（本地读取版）
+Assistant Ops	AOP-9	cancelled	medium	chief-ops-contract	archive_do_not_migrate_as_success	Chief of Staff 正式接收路线图与任务管理边界
+Assistant Ops	AOP-8	done	medium	chief-ops-contract	migrate_lesson_or_followup	Hermes chief-of-staff smoke test
+Assistant Ops	AOP-7	cancelled	high	chief-ops-contract	archive_do_not_migrate_as_success	Chief of Staff 读取路线图并接管后续任务管理
+Assistant Ops	AOP-6	done	medium	specialist-contracts	archive_as_blueprint_or_future_project	教育助理长期运行方案设计
+Assistant Ops	AOP-5	done	medium	specialist-contracts	archive_as_blueprint_or_future_project	个人投研助理长期运行方案设计
+Assistant Ops	AOP-4	done	medium	specialist-contracts	archive_as_blueprint_or_future_project	战略与项目评审 specialist 运行契约设计
+Assistant Ops	AOP-3	done	medium	specialist-contracts	archive_as_blueprint_or_future_project	Meeting intelligence specialist 运行契约设计
+Assistant Ops	AOP-2	done	medium	specialist-contracts	archive_as_blueprint_or_future_project	HR specialist 运行契约设计
+Assistant Ops	AOP-1	done	medium	specialist-contracts	archive_as_blueprint_or_future_project	Chief of Staff 日常汇报与风险升级机制设计

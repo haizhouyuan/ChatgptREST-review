@@ -1,0 +1,8 @@
+REPO_ROOT=/vol1/1000/projects/toyresearch
+DATA_DIR=/vol1/1000/projects/toyresearch/data/labebe
+OUT_DIR=/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_data_qa
+source hashes written -> /vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_data_qa/evidence/source_hashes.json
+CSV A rows=46 CSV B rows=46 JSON keys=46
+slug_image_join_report_draft.csv rows=47
+dirty_title_parse_report_draft.csv rows=46
+product_master_v0_draft.csv rows=46

@@ -1,0 +1,224 @@
+{
+  "manifest_version": "1.0",
+  "worker": "WP-C Public Media Asset Probe Worker",
+  "scope": "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/media_asset_probe/",
+  "created_at": "2026-04-27T19:18:08+08:00",
+  "task_issue": "LAB-006",
+  "acceptance_criteria": {
+    "identify_local_media_folders": true,
+    "classify_media_roles": true,
+    "record_source_path_or_url": true,
+    "state_usage_caveats": true
+  },
+  "outputs": [
+    {
+      "file": "initial_media_probe.md",
+      "description": "Discovery summary, source map, collection coverage, gaps, and method notes",
+      "lines": 145,
+      "status": "complete"
+    },
+    {
+      "file": "brand_video_assets_draft.csv",
+      "description": "Video asset inventory with source, SKU association, duration, hash, and rights flags",
+      "lines": 9,
+      "status": "complete"
+    },
+    {
+      "file": "downloaded_media_manifest_draft.csv",
+      "description": "Full manifest of 102 key assets with local paths, hashes, duplicates, roles, and caveats",
+      "lines": 103,
+      "status": "complete"
+    },
+    {
+      "file": "video_scene_index_draft.csv",
+      "description": "Scene-level breakdown of 4 videos with timestamps, descriptions, claim risk, and usability flags",
+      "lines": 27,
+      "status": "complete"
+    },
+    {
+      "file": "asset_rights_and_usage_notes_draft.md",
+      "description": "Rights posture by asset class, blocked claims, allowed uses with conditions, and provenance gaps",
+      "lines": 115,
+      "status": "complete"
+    },
+    {
+      "file": "handoff.md",
+      "description": "Continuity document for next worker with key findings, decisions required, and no-go zones",
+      "lines": 130,
+      "status": "complete"
+    },
+    {
+      "file": "evidence_manifest.json",
+      "description": "Machine-readable evidence manifest for gate validation",
+      "lines": 224,
+      "status": "complete"
+    },
+    {
+      "file": "build_current_site_asset_usage_audit.mjs",
+      "description": "Reproducible audit script for current DTC site image/video asset usage and rights posture",
+      "lines": 210,
+      "status": "complete"
+    },
+    {
+      "file": "current_site_asset_usage_audit_v2.md",
+      "description": "Current DTC site asset usage summary, guardrails, and usage posture",
+      "lines": 69,
+      "status": "complete"
+    },
+    {
+      "file": "current_site_asset_usage_audit_v2.csv",
+      "description": "Per-asset DTC image audit for 26 product images with source path, live-probe URL, hashes, and usage posture",
+      "lines": 27,
+      "status": "complete"
+    },
+    {
+      "file": "current_site_asset_usage_audit_v2_manifest.json",
+      "description": "Machine-readable summary for current DTC site asset audit v2",
+      "lines": 1,
+      "status": "complete"
+    },
+    {
+      "file": "production_asset_clearance_queue_v1.md",
+      "description": "Production media-rights handoff queue summary for the 26 active DTC product images",
+      "lines": 69,
+      "status": "complete"
+    },
+    {
+      "file": "production_asset_clearance_queue_v1.csv",
+      "description": "Per-asset brand/legal/ecommerce approval queue; all rows default to pending_brand_legal_review",
+      "lines": 27,
+      "status": "complete"
+    }
+  ],
+  "sources_read": [
+    {
+      "path": "planning/20260427_labebe_14day_execution/01_MASTER_IMPLEMENTATION_PLAN.md",
+      "purpose": "Understand sprint scope, LAB-006 acceptance, and gate requirements",
+      "sha256_prefix": "unknown",
+      "status": "read"
+    },
+    {
+      "path": "data/labebe/all_product_images.json",
+      "purpose": "Map 46 products to CDN image URLs",
+      "sha256_prefix": "unknown",
+      "status": "read"
+    },
+    {
+      "path": "data/labebe/labebe_products.csv",
+      "purpose": "Product metadata and collection mapping",
+      "sha256_prefix": "unknown",
+      "status": "read"
+    },
+    {
+      "path": "docs/labebe-scrape-report-2026-04-24.md",
+      "purpose": "Verify scrape method, CDN source, and image count",
+      "sha256_prefix": "unknown",
+      "status": "read"
+    },
+    {
+      "path": "paperclip_runtime_duel/outputs/labebe_wow/storyboard.md",
+      "purpose": "Understand Boss Gallery v0 structure and slide order",
+      "sha256_prefix": "unknown",
+      "status": "read"
+    },
+    {
+      "path": "minimax-output/README.md",
+      "purpose": "Document MiniMax AI video asset provenance",
+      "sha256_prefix": "4d43c414405d81b7",
+      "status": "read"
+    }
+  ],
+  "directories_enumerated": [
+    {
+      "path": "data/labebe/images/",
+      "file_count": 460,
+      "media_type": "product_catalog_jpg"
+    },
+    {
+      "path": "kimi_web_upload_website_pack/images/",
+      "file_count": 16,
+      "media_type": "reference_and_storyboard_jpg"
+    },
+    {
+      "path": "kimi_web_upload_website_pack/07_minimax_demo_assets/",
+      "file_count": 3,
+      "media_type": "ai_generated_video_and_jpg"
+    },
+    {
+      "path": "minimax-output/",
+      "file_count": 7,
+      "media_type": "ai_generated_video_audio_jpg"
+    },
+    {
+      "path": "paperclip_runtime_duel/outputs/labebe_wow/",
+      "file_count": 13,
+      "media_type": "boss_gallery_v0_mixed"
+    },
+    {
+      "path": "kimi_generated_site/app/public/videos/",
+      "file_count": 2,
+      "media_type": "dtc_site_video"
+    },
+    {
+      "path": "kimi_generated_site/app/dist/assets/products/",
+      "file_count": 16,
+      "media_type": "dtc_build_product_jpg"
+    },
+    {
+      "path": "kimi_labebe_design_library/app/public/",
+      "file_count": 32,
+      "media_type": "design_library_mixed"
+    },
+    {
+      "path": "data/labebe/live_probe_images_20260428/",
+      "file_count": 9,
+      "media_type": "live_probe_catalog_jpg"
+    }
+  ],
+  "key_metrics": {
+    "total_products_with_images": 46,
+    "total_downloaded_images": 460,
+    "total_video_files": 9,
+    "ai_generated_video_skus": 1,
+    "duplicate_file_groups": 22,
+    "dtc_ready_product_images": 16,
+    "boss_gallery_v0_assets": 13,
+    "current_dtc_product_images": 26,
+    "current_dtc_images_with_exact_local_source_chain": 26,
+    "current_dtc_video_files": 0,
+    "current_dtc_assets_blocked_until_origin_verification": 0,
+    "production_clearance_queue_rows": 26,
+    "production_approved_assets": 0,
+    "production_pending_brand_legal_review_assets": 26
+  },
+  "blockers_for_next_phase": [
+    {
+      "blocker": "Catalog image reuse rights unverified",
+      "impact": "DTC prototype cannot safely use scraped images without clearance",
+      "mitigation": "Use production_asset_clearance_queue_v1.csv to mark each asset approve_for_dtc, internal_only, or replace_before_launch"
+    },
+    {
+      "blocker": "AI-generated hero images provenance unknown",
+      "impact": "Design library heroes blocked for DTC",
+      "mitigation": "Treat as concept references only; generate new heroes with known provenance"
+    },
+    {
+      "blocker": "brand-video.mp4 origin unknown",
+      "impact": "Cannot use in DTC or Boss Gallery without music/footage clearance",
+      "mitigation": "Trace source or replace with licensed footage"
+    },
+    {
+      "blocker": "Only 1 SKU has AI video",
+      "impact": "Boss Gallery \"AI Packaging Machine\" demo lacks breadth",
+      "mitigation": "Commerce Decision Layer selects 2-3 priority SKUs for video generation"
+    }
+  ],
+  "compliance_notes": {
+    "pro_gemini_called": false,
+    "source_urls_invented": false,
+    "usage_rights_claimed": false,
+    "prototype_code_edited": true,
+    "scope_respected": true,
+    "consumer_site_internal_demo_routes_removed": true
+  }
+}

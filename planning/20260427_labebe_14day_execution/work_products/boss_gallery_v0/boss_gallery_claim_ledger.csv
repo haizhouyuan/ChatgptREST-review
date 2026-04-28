@@ -1,0 +1,9 @@
+claim_id,demo_track,claim,status,safe_demo_wording,source_or_gate,next_review
+CLM-BG-001,All demos,Certified safe,blocked,"Safety-related language requires attached source evidence and human review.","Claim Gate / child-product risk policy",Claim steward plus safety/compliance review
+CLM-BG-002,All demos,Proven market demand,blocked,"Prototype exploration based on local product facts and prepared marketplace research lane.","Amazon review/VOC extraction is gated by authorized provider/login",Marketplace evidence review
+CLM-BG-003,Demo B,Production-ready CAD,blocked,"Concept direction and review brief only; not production CAD.","No CAD/DFM approval artifact exists",DFM/engineering review
+CLM-BG-004,Demo B,Lower cost than competitors,blocked,"Cost model required before cost or margin claims.","No cost model evidence exists",Commercial/ops review
+CLM-BG-005,Demo F,Amazon sales lift or conversion improvement,blocked,"Channel asset plan pending publication and performance logging.","No campaign performance data exists",Performance analytics review after test
+CLM-BG-006,Demo F,Real customer quote,blocked,"Use review-count signal only where captured; do not invent quotes.","Fake review/customer quote rule",Review source verification
+CLM-BG-007,Demo F,Pink Unicorn price and visible DTC review count,allowed_with_source,"Use captured DTC product facts with scrape-date caveat.","DTC product data and product strategy matrix",Final copy/source-date review
+CLM-BG-008,All demos,Synthetic image/video draft,allowed_with_label,"Label generated media as synthetic concept/demo unless it is verified brand footage.","Media asset policy",Brand/media-rights review

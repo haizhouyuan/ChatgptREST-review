@@ -1,0 +1,25 @@
+{
+  "artifact": "executive_pack",
+  "generated_at": "2026-04-27",
+  "outputs": [
+    "EXECUTIVE_DECISION_PACK.md",
+    "artifact_index.md"
+  ],
+  "summarized_work_products": [
+    "runtime_kernel",
+    "runtime_qa_templates",
+    "product_data_qa",
+    "media_asset_probe",
+    "design_reference_mapping",
+    "marketplace_probe",
+    "marketplace_identity_sample",
+    "commerce_decision_layer",
+    "sample_dossiers",
+    "dtc_prototype_v2",
+    "boss_gallery_v0"
+  ],
+  "known_limits": [
+    "This is an integrated v0 execution pack, not final production completion.",
+    "Remaining work is listed explicitly in EXECUTIVE_DECISION_PACK.md."
+  ]
+}

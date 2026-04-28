@@ -1,0 +1,57 @@
+{
+  "type": "object",
+  "required": [
+    "issue_id",
+    "artifact_set",
+    "created_at",
+    "owner_role",
+    "worker",
+    "status",
+    "artifacts",
+    "forbidden_actions_check",
+    "next_handoff"
+  ],
+  "properties": {
+    "issue_id": { "type": "string" },
+    "artifact_set": { "type": "string" },
+    "created_at": { "type": "string" },
+    "owner_role": { "type": "string" },
+    "worker": { "type": "string" },
+    "status": { "type": "string" },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "type", "confidence"],
+        "properties": {
+          "path": { "type": "string" },
+          "type": { "type": "string" },
+          "source_refs": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "type": "string" },
+          "known_limitations": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "commands_used": { "type": "array", "items": { "type": "string" } },
+    "claims_supported": { "type": "array", "items": { "type": "string" } },
+    "claims_blocked": { "type": "array", "items": { "type": "string" } },
+    "qa_status": { "type": "string" },
+    "forbidden_actions_check": {
+      "type": "object",
+      "required": [
+        "called_pro_or_gemini",
+        "edited_outside_scope",
+        "invented_claims",
+        "started_full_crawl"
+      ],
+      "properties": {
+        "called_pro_or_gemini": { "type": "boolean" },
+        "edited_outside_scope": { "type": "boolean" },
+        "invented_claims": { "type": "boolean" },
+        "started_full_crawl": { "type": "boolean" }
+      }
+    },
+    "next_handoff": { "type": "string" }
+  }
+}
+

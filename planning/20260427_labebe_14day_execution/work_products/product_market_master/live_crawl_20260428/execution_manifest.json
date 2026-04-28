@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-04-27T17:27:03.239432+00:00",
+  "inputs": [
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/labebe_products_live_probe.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/labebe_old_vs_live_slug_diff.csv",
+    "data/amazon_reviews_US_B087P9SXZQ.csv"
+  ],
+  "outputs": [
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/product_master_live_probe_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_identity_sample_v2.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_browser_identity_facts_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/product_fact_execution_update_20260428.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_search_candidates_full_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_pdp_probe_facts_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_dtc_visual_gate_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_dtc_visual_gate_v1.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_dtc_visual_human_review_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_dtc_visual_human_review_v1.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_identity_lanes_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_identity_lanes_v1.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_review_voc_seed_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/amazon_review_crawl_readiness_v1.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/labebe_product_strategy_matrix_v1.csv",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/labebe_product_strategy_matrix_v1.md",
+    "/vol1/1000/projects/toyresearch/planning/20260427_labebe_14day_execution/work_products/product_market_master/live_crawl_20260428/image_identity_expanded_v1/amazon_dtc_visual_gate_contact_sheet_v1.jpg"
+  ],
+  "gate_result": "dtc_live_probe_passed_marketplace_search_candidates_expanded_pdp_index_built_visual_gate_created_human_review_lanes_review_seed_and_product_strategy_matrix_created_not_ready_for_full_review_crawl"
+}

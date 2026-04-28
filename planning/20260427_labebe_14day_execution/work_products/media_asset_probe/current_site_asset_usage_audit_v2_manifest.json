@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-04-27T20:44:00.789Z",
+  "product_rows": 26,
+  "product_image_files": 26,
+  "referenced_product_images": 26,
+  "unreferenced_product_images": 0,
+  "exact_catalog_copies": 17,
+  "live_probe_catalog_exact_copies": 9,
+  "live_probe_catalog_url_backed": 0,
+  "blocked_until_origin_verified": 0,
+  "consumer_bundle_video_files": [],
+  "outputs": [
+    "current_site_asset_usage_audit_v2.csv",
+    "current_site_asset_usage_audit_v2.md"
+  ]
+}
