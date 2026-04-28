@@ -121,10 +121,6 @@ def main():
     # Build final product list
     products = []
     for slug, probe in sorted(canonical.items()):
-        # Skip the problematic CSV parse issue row
-        if 'kids-wooden-desk---chair-set' in slug:
-            continue  # duplicate of children-s-writing-desk, CSV parse artifact
-            
         curated = existing_curated.get(slug) or default_curated(slug, probe['title'], guess_collection(slug, probe))
         collection = guess_collection(slug, probe)
         

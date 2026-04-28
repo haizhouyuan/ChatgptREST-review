@@ -2,21 +2,42 @@
 set -euo pipefail
 
 # Validate Labebe product catalog consistency
-# Checks: duplicate slugs, missing images, unassigned collections, dataStatus integrity
+# Checks: canonical coverage, duplicate slugs, images, collection references, assignment.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 PRODUCTS_TS="$PROJECT_DIR/src/data/products.ts"
 COLLECTIONS_TS="$PROJECT_DIR/src/data/collections.ts"
 IMG_DIR="$PROJECT_DIR/public/assets/products"
+CANONICAL_JSON="$PROJECT_DIR/scripts/product_master_canonical.json"
 
 ERRORS=0
 
 echo "=== Labebe Product Catalog Validator ==="
 echo ""
 
-# 1. Check duplicate slugs
-echo "[1/5] Checking duplicate slugs..."
+# 1. Check products.ts covers canonical product master exactly
+echo "[1/7] Checking canonical product coverage..."
+PRODUCT_SLUGS=$(grep "slug:" "$PRODUCTS_TS" | grep -v "slug: string" | sed "s/.*slug: '//;s/',.*//" | sort)
+CANONICAL_SLUGS=$(node -e "const fs=require('fs'); const data=JSON.parse(fs.readFileSync('$CANONICAL_JSON','utf8')); console.log(data.map(p=>p.slug).sort().join('\\n'))")
+CANONICAL_MISSING=$(comm -23 <(echo "$CANONICAL_SLUGS") <(echo "$PRODUCT_SLUGS"))
+CANONICAL_EXTRA=$(comm -13 <(echo "$CANONICAL_SLUGS") <(echo "$PRODUCT_SLUGS"))
+if [ -n "$CANONICAL_MISSING" ] || [ -n "$CANONICAL_EXTRA" ]; then
+    if [ -n "$CANONICAL_MISSING" ]; then
+        echo "  FAIL: Canonical products missing from products.ts:"
+        echo "$CANONICAL_MISSING" | sed 's/^/    /'
+    fi
+    if [ -n "$CANONICAL_EXTRA" ]; then
+        echo "  FAIL: products.ts contains products absent from canonical master:"
+        echo "$CANONICAL_EXTRA" | sed 's/^/    /'
+    fi
+    ERRORS=$((ERRORS + 1))
+else
+    echo "  OK: products.ts matches canonical product master"
+fi
+
+# 2. Check duplicate slugs
+echo "[2/7] Checking duplicate slugs..."
 DUPES=$(grep "slug:" "$PRODUCTS_TS" | grep -v "slug: string" | sed "s/.*slug: '//;s/',.*//" | sort | uniq -d)
 if [ -n "$DUPES" ]; then
     echo "  FAIL: Duplicate slugs found:"
@@ -26,9 +47,9 @@ else
     echo "  OK: No duplicate slugs"
 fi
 
-# 2. Check missing images
-echo "[2/5] Checking product images..."
-SLUGS=$(grep "slug:" "$PRODUCTS_TS" | grep -v "slug: string" | sed "s/.*slug: '//;s/',.*//")
+# 3. Check missing images
+echo "[3/7] Checking product images..."
+SLUGS="$PRODUCT_SLUGS"
 IMG_MISSING=0
 for slug in $SLUGS; do
     if [ ! -f "$IMG_DIR/${slug}.jpg" ]; then
@@ -42,9 +63,25 @@ else
     ERRORS=$((ERRORS + IMG_MISSING))
 fi
 
-# 3. Check products referenced in collections actually exist in products.ts
-echo "[3/5] Checking collection slug references..."
-PRODUCT_SLUGS=$(grep "slug:" "$PRODUCTS_TS" | grep -v "slug: string" | sed "s/.*slug: '//;s/',.*//" | sort)
+# 4. Check orphan images
+echo "[4/7] Checking orphan product images..."
+ORPHAN_IMAGES=0
+for img in "$IMG_DIR"/*.jpg; do
+    [ -e "$img" ] || continue
+    slug="$(basename "$img" .jpg)"
+    if ! echo "$PRODUCT_SLUGS" | grep -qx "$slug"; then
+        echo "  FAIL: Orphan product image without product: $slug"
+        ORPHAN_IMAGES=$((ORPHAN_IMAGES + 1))
+    fi
+done
+if [ "$ORPHAN_IMAGES" -eq 0 ]; then
+    echo "  OK: No orphan product images"
+else
+    ERRORS=$((ERRORS + ORPHAN_IMAGES))
+fi
+
+# 5. Check products referenced in collections actually exist in products.ts
+echo "[5/7] Checking collection slug references..."
 COLLECTION_SLUGS=$(grep "'" "$COLLECTIONS_TS" | grep -v "id:\|name:\|subtitle:\|description:\|image:\|href:\|bestFor:" | grep -oP "'[a-z][a-z0-9-]+'" | tr -d "'" | sort -u)
 COL_BAD=0
 for cs in $COLLECTION_SLUGS; do
@@ -59,8 +96,8 @@ else
     ERRORS=$((ERRORS + COL_BAD))
 fi
 
-# 4. Check products NOT in any collection
-echo "[4/5] Checking unassigned products..."
+# 6. Check products NOT in any collection
+echo "[6/7] Checking unassigned products..."
 UNASSIGNED=0
 for ps in $PRODUCT_SLUGS; do
     if ! echo "$COLLECTION_SLUGS" | grep -qx "$ps"; then
@@ -74,10 +111,12 @@ else
     echo "  WARN: $UNASSIGNED products not in any collection"
 fi
 
-# 5. Count totals
-echo "[5/5] Summary..."
+# 7. Count totals
+echo "[7/7] Summary..."
 TOTAL=$(echo "$PRODUCT_SLUGS" | wc -l)
+CANONICAL_TOTAL=$(echo "$CANONICAL_SLUGS" | wc -l)
 echo "  Total products: $TOTAL"
+echo "  Canonical products: $CANONICAL_TOTAL"
 echo "  Total collections: $(grep "id:" "$COLLECTIONS_TS" | wc -l)"
 
 echo ""
