@@ -25,13 +25,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 # Allocator lives in sibling package
 sys.path.insert(0, str(Path(__file__).parent.parent / "runtime_allocator"))
-from allocator_mvp import (
-    allocate,
-    PrivacyTier,
-    QualityTier,
-    QuotaLedger,
-    RouteRequest,
-)
+from skill_agent import execute_with_fallback
 
 # Known memory systems under study
 KNOWN_MEMORY_SYSTEMS = frozenset({
@@ -116,147 +110,165 @@ class MemoryResearchResponse(BaseModel):
     error: Optional[str] = None
 
 
-# ── Runtime routing ─────────────────────────────────────────────────────────
+# ── Runtime routing (via skill_agent) ──────────────────────────────────────
+
+_TASK_CLASS_MAP: dict[str, str] = {
+    "system_eval": "memory_indexing",
+    "benchmark": "memory_benchmark",
+    "comparison": "memory_comparison",
+    "recommendation": "memory_recommendation",
+    "memory_benchmark": "memory_benchmark",
+    "memory_regression_test": "memory_benchmark",
+    "memory_index": "memory_indexing",
+    "memory_ablation": "memory_comparison",
+}
 
 
-def _provider_endpoint(provider: str) -> tuple[str, str, str]:
-    """Return (provider_id, default_model, endpoint)."""
-    if provider == "minimax":
-        return (
-            "minimax",
-            "MiniMax-M2.7-highspeed",
-            os.getenv("MINIMAX_API_HOST", "https://api.minimaxi.com").rstrip("/") + "/v1",
-        )
-    if provider == "claudekimi":
-        return (
-            "claudekimi",
-            "mimo-v2.5-pro",
-            os.getenv("CLAUDEKIMI_ENDPOINT", "http://127.0.0.1:8080/v1"),
-        )
-    if provider == "openai":
-        return ("openai", "gpt-4.1", os.getenv("OPENAI_BASE_URL", ""))
-    raise ValueError(f"Unsupported provider: {provider}")
+def _build_execute_params(req: MemoryResearchRequest) -> dict:
+    """Build kwargs for execute_with_fallback() from memory research request."""
+    task_class = _TASK_CLASS_MAP.get(req.task_type, "memory_indexing")
 
-
-def _route_runtime(req: MemoryResearchRequest) -> tuple[str, str, str, list[str], list[str]]:
-    """Route memory research tasks.
-
-    Research tasks need quality over speed, so default to claudekimi (CRITICAL tier).
-    The allocator is called for audit logging but claudekimi is the hard default.
-    """
-    ledger = QuotaLedger()
-
-    route_req = RouteRequest(
-        task_class="memory_indexing",
-        privacy_tier_required=PrivacyTier.EXTERNAL_CLOUD,
-        min_quality_tier=QualityTier.HIGH,
-        needs_tool_calling=True,
-        needs_json=True,
-        input_tokens_est=8000,
-        output_tokens_est=4000,
-        can_degrade=False,
-        high_stakes=False,
-    )
-
-    decision = allocate(route_req, ledger=ledger)
-
-    reason_codes = list(decision.reason_codes)
-    fallback_chain = list(decision.fallback_chain)
-
-    # Honor explicit provider override
+    params: dict = {
+        "task_class": task_class,
+        "privacy_tier": "external_cloud",
+        "min_quality_tier": "high",
+        "needs_json": True,
+        "input_tokens_est": 8000,
+        "output_tokens_est": 4000,
+        "can_degrade": False,
+        "high_stakes": False,
+    }
     if req.provider_override:
-        provider, model, endpoint = _provider_endpoint(req.provider_override)
-        reason_codes.append(f"provider_override={req.provider_override}")
-        return provider, model, endpoint, reason_codes, fallback_chain
+        params["provider_override"] = req.provider_override
+    if req.model_override:
+        params["model_override"] = req.model_override
 
-    # Default: claudekimi for research quality
-    if decision.provider_id != "claudekimi":
-        reason_codes.append(
-            f"allocator_selected_{decision.provider_id}_but_memory_research_pinned_to_claudekimi"
-        )
-
-    provider, model, endpoint = _provider_endpoint("claudekimi")
-    return provider, model, endpoint, reason_codes, fallback_chain
+    return params
 
 
 # ── Stub execution ──────────────────────────────────────────────────────────
 
 
-def _run_stub(
+def _run_memory_work(
     task_type: str,
     memory_systems: list[str],
     query_context: str,
     output_language: str,
     provider: str,
     model: str,
-) -> tuple[str, float]:
-    """Stub implementation that returns a structured placeholder.
+    input_data: dict | None = None,
+) -> tuple[dict, float]:
+    """Execute memory research work.
 
-    Returns (result_text, duration_seconds).
-    Real adapters (thought-retriever, graphiti, etc.) will replace this later.
+    For benchmark tasks, runs deterministic precision/recall calculations
+    on provided test cases. Returns (structured_output, duration_seconds).
     """
     start = datetime.now()
+    input_data = input_data or {}
 
-    lang_header = "记忆研究报告" if output_language == "Chinese" else "Memory Research Report"
-
-    if task_type == "system_eval":
+    if task_type in ("benchmark", "memory_benchmark", "memory_regression_test"):
+        output = run_deterministic_memory_benchmark(task_type, memory_systems, input_data)
+    elif task_type in ("system_eval", "memory_index"):
         system = memory_systems[0] if memory_systems else "unknown"
-        body = (
-            f"## {lang_header}: {system} 评估\n\n"
-            f"**任务类型**: system_eval\n"
-            f"**目标系统**: {system}\n"
-            f"**查询上下文**: {query_context or '(未指定)'}\n\n"
-            f"### 评估维度\n"
-            f"1. 检索精度 (Retrieval Precision)\n"
-            f"2. 记忆持久性 (Memory Persistence)\n"
-            f"3. 上下文窗口利用率 (Context Window Utilization)\n"
-            f"4. 增量更新效率 (Incremental Update Efficiency)\n"
-            f"5. 多跳推理能力 (Multi-hop Reasoning)\n\n"
-            f"> STUB: 真实评估结果将在 {system} 适配器接入后生成。\n"
-        )
-    elif task_type == "benchmark":
-        body = (
-            f"## {lang_header}: 标准基准测试\n\n"
-            f"**任务类型**: benchmark\n"
-            f"**测试系统**: {', '.join(memory_systems)}\n"
-            f"**查询上下文**: {query_context or '(未指定)'}\n\n"
-            f"### 基准指标\n"
-            f"| 系统 | 召回率 | 精确率 | 延迟(ms) | 成本/千次 |\n"
-            f"|------|--------|--------|----------|----------|\n"
-        )
-        for sys_name in memory_systems:
-            body += f"| {sys_name} | -- | -- | -- | -- |\n"
-        body += f"\n> STUB: 真实基准数据将在各系统适配器接入后填充。\n"
-    elif task_type == "comparison":
-        body = (
-            f"## {lang_header}: 多系统对比分析\n\n"
-            f"**任务类型**: comparison\n"
-            f"**对比系统**: {', '.join(memory_systems)}\n"
-            f"**查询上下文**: {query_context or '(未指定)'}\n\n"
-            f"### 对比维度\n"
-            f"- 架构模式 (Architecture Pattern)\n"
-            f"- 记忆组织方式 (Memory Organization)\n"
-            f"- 检索策略 (Retrieval Strategy)\n"
-            f"- 适用场景 (Best-fit Scenarios)\n"
-            f"- 局限性 (Limitations)\n\n"
-            f"> STUB: 真实对比分析将在各系统适配器接入后生成。\n"
-        )
-    else:  # recommendation
-        body = (
-            f"## {lang_header}: 最佳实践推荐\n\n"
-            f"**任务类型**: recommendation\n"
-            f"**评估范围**: {', '.join(memory_systems)}\n"
-            f"**查询上下文**: {query_context or '(未指定)'}\n\n"
-            f"### 推荐内容\n"
-            f"1. 场景化选型建议\n"
-            f"2. 混合架构方案\n"
-            f"3. 性能优化策略\n"
-            f"4. 成本效益分析\n\n"
-            f"> STUB: 真实推荐将在基准数据积累后生成。\n"
-        )
+        output = {
+            "summary": f"System evaluation for {system}.",
+            "system": system,
+            "dimensions": [
+                "retrieval_precision",
+                "memory_persistence",
+                "context_window_utilization",
+                "incremental_update_efficiency",
+                "multi_hop_reasoning",
+            ],
+            "query_context": query_context,
+            "status": "pending_real_adapter",
+            "template_version": "v1",
+        }
+    elif task_type in ("comparison", "memory_ablation"):
+        output = {
+            "summary": f"Comparison of {len(memory_systems)} memory systems.",
+            "systems": memory_systems,
+            "dimensions": [
+                "architecture_pattern",
+                "memory_organization",
+                "retrieval_strategy",
+                "best_fit_scenarios",
+                "limitations",
+            ],
+            "query_context": query_context,
+            "status": "pending_real_adapter",
+            "template_version": "v1",
+        }
+    elif task_type == "recommendation":
+        output = {
+            "summary": "Best practices recommendation.",
+            "systems_evaluated": memory_systems,
+            "query_context": query_context,
+            "recommendations": [],
+            "status": "pending_real_data",
+            "template_version": "v1",
+        }
+    else:
+        output = {"summary": f"{task_type} completed.", "template_version": "v1"}
 
     duration = (datetime.now() - start).total_seconds()
-    return body, duration
+    return output, duration
+
+
+def run_deterministic_memory_benchmark(
+    task_type: str,
+    memory_systems: list[str],
+    input_data: dict,
+) -> dict[str, Any]:
+    """Run deterministic precision/recall benchmark on provided test cases.
+
+    Expects input_data to contain:
+      - cases: list of {case_id, expected_ids: [...], retrieved_ids: [...]}
+    """
+    cases = input_data.get("cases", [])
+
+    if not cases:
+        return {
+            "summary": f"{task_type}: no test cases provided. Supply cases with expected_ids and retrieved_ids.",
+            "metrics": {"avg_precision": 0.0, "avg_recall": 0.0, "case_count": 0},
+            "cases": [],
+            "status": "no_cases",
+            "template_version": "v1",
+        }
+
+    results = []
+    for case in cases:
+        expected = set(case.get("expected_ids", []))
+        retrieved = set(case.get("retrieved_ids", []))
+
+        true_positive = len(expected & retrieved)
+        precision = true_positive / max(len(retrieved), 1)
+        recall = true_positive / max(len(expected), 1)
+
+        results.append({
+            "case_id": case.get("case_id"),
+            "precision": round(precision, 4),
+            "recall": round(recall, 4),
+            "expected_count": len(expected),
+            "retrieved_count": len(retrieved),
+            "true_positive": true_positive,
+        })
+
+    avg_precision = sum(r["precision"] for r in results) / max(len(results), 1)
+    avg_recall = sum(r["recall"] for r in results) / max(len(results), 1)
+
+    return {
+        "summary": f"{task_type} completed on {len(results)} cases across {len(memory_systems)} systems.",
+        "systems": memory_systems,
+        "metrics": {
+            "avg_precision": round(avg_precision, 4),
+            "avg_recall": round(avg_recall, 4),
+            "case_count": len(results),
+        },
+        "cases": results,
+        "status": "completed",
+        "template_version": "v1",
+    }
 
 
 # ── Save helpers ────────────────────────────────────────────────────────────
@@ -321,53 +333,66 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
     if unknown:
         reason_codes.append(f"unknown_systems={','.join(unknown)}")
 
-    # Route runtime
-    provider, default_model, default_endpoint, route_reasons, fallback_chain = _route_runtime(req)
-    reason_codes.extend(route_reasons)
+    # Build messages for the LLM
+    system_prompt = (
+        f"You are a memory research lab analyst. Task type: {req.task_type}. "
+        f"Memory systems under evaluation: {', '.join(req.memory_systems)}. "
+        f"Output language: {req.output_language}. "
+        f"Provide structured, evidence-based analysis."
+    )
+    user_content = req.query_context or f"Run {req.task_type} on {', '.join(req.memory_systems)}."
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_content},
+    ]
 
-    model = req.model_override or default_model
+    # Execute via skill_agent with fallback
+    exec_params = _build_execute_params(req)
+    skill_result = execute_with_fallback(
+        messages=messages,
+        max_tokens=4096,
+        **exec_params,
+    )
 
-    try:
-        result_text, stub_duration = _run_stub(
-            task_type=req.task_type,
-            memory_systems=req.memory_systems,
-            query_context=req.query_context,
-            output_language=req.output_language,
-            provider=provider,
-            model=model,
-        )
-        status = "completed_stub"
+    provider = skill_result.provider_id
+    model = skill_result.model_name
+    reason_codes.extend(skill_result.reason_codes)
+    fallback_chain = list(skill_result.fallback_chain)
+
+    artifacts: dict[str, str] = {}
+
+    if skill_result.success:
+        result_text = skill_result.content
+        work_duration = skill_result.total_latency_ms / 1000.0
+        status = "completed"
         error_class = None
         error = None
-    except Exception as e:
-        result_text = ""
-        stub_duration = 0.0
-        status = "error"
-        error_class = e.__class__.__name__
-        error = str(e)
-        reason_codes.append(f"execution_error={error_class}")
 
-    # Save artifacts
-    artifacts: dict[str, str] = {}
-    if req.save and status != "error":
-        try:
-            json_path, md_path = _save_report(
-                req,
-                result_text,
-                {
-                    "request_id": request_id,
-                    "company_id": req.company_id,
-                    "issue_id": req.issue_id,
-                    "runtime_provider": provider,
-                    "model_name": model,
-                    "duration_seconds": stub_duration,
-                    "route_reason_codes": reason_codes,
-                },
-            )
-            artifacts["json"] = json_path
-            artifacts["markdown"] = md_path
-        except Exception as save_error:
-            reason_codes.append(f"save_failed={save_error.__class__.__name__}")
+        if req.save:
+            try:
+                json_path, md_path = _save_report(
+                    req,
+                    result_text,
+                    {
+                        "request_id": request_id,
+                        "company_id": req.company_id,
+                        "issue_id": req.issue_id,
+                        "runtime_provider": provider,
+                        "model_name": model,
+                        "duration_seconds": work_duration,
+                        "route_reason_codes": reason_codes,
+                    },
+                )
+                artifacts["json"] = json_path
+                artifacts["markdown"] = md_path
+            except Exception as save_error:
+                reason_codes.append(f"save_failed={save_error.__class__.__name__}")
+    else:
+        result_text = ""
+        work_duration = skill_result.total_latency_ms / 1000.0
+        status = "error"
+        error_class = skill_result.error_class
+        error = skill_result.error
 
     response = MemoryResearchResponse(
         request_id=request_id,
@@ -381,7 +406,7 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
         model_name=model,
         route_reason_codes=reason_codes,
         fallback_chain=fallback_chain,
-        duration_seconds=stub_duration,
+        duration_seconds=work_duration,
         generated_at=datetime.now().isoformat(),
         artifacts=artifacts,
         error_class=error_class,

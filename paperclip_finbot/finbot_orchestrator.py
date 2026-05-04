@@ -31,13 +31,9 @@ except ImportError:
 
 # Allocator lives in sibling package
 sys.path.insert(0, str(Path(__file__).parent.parent / "runtime_allocator"))
-from allocator_mvp import (
-    allocate,
-    PrivacyTier,
-    QualityTier,
-    QuotaLedger,
-    RouteRequest,
-)
+from allocator_mvp import allocate, PrivacyTier, QualityTier, QuotaLedger, RouteRequest
+from skill_agent import load_profiles
+from runtime_invoker import _resolve_env
 
 
 VALID_TRADINGAGENTS_PROVIDERS = {"minimax", "claudekimi", "openai"}
@@ -53,7 +49,7 @@ class PaperclipFinbotRequest(BaseModel):
     issue_id: Optional[str] = None
 
     ticker: str
-    trade_date: str = Field(description="YYYY-MM-DD trade/as-of date")
+    trade_date: str = Field(description="YYYY-MM-DD trade/as/of date")
 
     output_language: Literal["Chinese", "English"] = "Chinese"
 
@@ -66,8 +62,7 @@ class PaperclipFinbotRequest(BaseModel):
         list[Literal["market", "news", "social", "fundamentals"]]
     ] = None
 
-    # Until allocator quality gating is fixed, Finbot E2E should be hard-pinned
-    # to claudekimi unless explicitly overridden.
+    # Finbot E2E is hard-pinned to claudekimi unless explicitly overridden.
     provider_override: Optional[Literal["minimax", "claudekimi", "openai"]] = None
     model_override: Optional[str] = None
     backend_url_override: Optional[str] = None
@@ -142,26 +137,11 @@ def _default_selected_analysts(req: PaperclipFinbotRequest) -> list[str]:
     return ["market", "news", "fundamentals"]
 
 
-def _provider_endpoint(provider: str) -> tuple[str, str, str]:
-    """Return provider, default model, endpoint."""
-    if provider == "minimax":
-        return (
-            "minimax",
-            "MiniMax-M2.7-highspeed",
-            os.getenv("MINIMAX_API_HOST", "https://api.minimaxi.com").rstrip("/") + "/v1",
-        )
-
-    if provider == "claudekimi":
-        return (
-            "claudekimi",
-            "mimo-v2.5-pro",
-            os.getenv("CLAUDEKIMI_ENDPOINT", "http://127.0.0.1:8080/v1"),
-        )
-
-    if provider == "openai":
-        return ("openai", "gpt-4.1", os.getenv("OPENAI_BASE_URL", ""))
-
-    raise ValueError(f"Unsupported provider: {provider}")
+def _get_endpoint_from_profiles(provider_id: str) -> str:
+    """Look up endpoint URL from YAML profiles."""
+    profiles = load_profiles()
+    rt = profiles.get("runtimes", {}).get(provider_id, {})
+    return _resolve_env(rt.get("endpoint", ""))
 
 
 def _route_runtime(req: PaperclipFinbotRequest):
@@ -178,7 +158,9 @@ def _route_runtime(req: PaperclipFinbotRequest):
 
     # Provider override takes priority — check cooldown before accepting
     if req.provider_override:
-        provider, model, endpoint = _provider_endpoint(req.provider_override)
+        provider = req.provider_override
+        model = req.model_override
+        endpoint = _get_endpoint_from_profiles(provider)
 
         if ledger.is_cooling_down(provider):
             cooldown_info = ledger.get_cooldown(provider)
@@ -190,7 +172,7 @@ def _route_runtime(req: PaperclipFinbotRequest):
             reason_codes.append(f"provider_override={req.provider_override}")
             return provider, model, endpoint, reason_codes, fallback_chain
 
-    # Run allocator for audit logging
+    # Run allocator for audit logging (loads runtimes from YAML)
     route_req = RouteRequest(
         task_class="finbot_trade_proposal",
         privacy_tier_required=PrivacyTier.EXTERNAL_CLOUD,
@@ -208,14 +190,15 @@ def _route_runtime(req: PaperclipFinbotRequest):
     fallback_chain.extend(decision.fallback_chain)
 
     # Safety override: hard-pin to claudekimi for Finbot E2E
+    provider = "claudekimi"
+    model = req.model_override
+    endpoint = _get_endpoint_from_profiles(provider)
+
     if decision.provider_id != "claudekimi":
-        provider, model, endpoint = _provider_endpoint("claudekimi")
         reason_codes.append(
             f"allocator_selected_{decision.provider_id}_but_finbot_e2e_hard_pinned_to_claudekimi"
         )
-        return provider, model, endpoint, reason_codes, fallback_chain
 
-    provider, model, endpoint = _provider_endpoint("claudekimi")
     return provider, model, endpoint, reason_codes, fallback_chain
 
 

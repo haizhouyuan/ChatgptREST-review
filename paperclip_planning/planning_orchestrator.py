@@ -25,39 +25,49 @@ from pydantic import BaseModel, ConfigDict, Field
 
 # Allocator lives in sibling package
 sys.path.insert(0, str(Path(__file__).parent.parent / "runtime_allocator"))
-from allocator_mvp import (
-    PrivacyTier,
-    QualityTier,
-    QuotaLedger,
-    RouteRequest,
-    allocate,
-)
+from allocator_mvp import PrivacyTier, QualityTier
+from skill_agent import execute_with_fallback
 
 VALID_PROVIDERS = {"minimax", "claudekimi", "openai"}
 
 # Map planning task types to allocator task classes
 _TASK_CLASS_MAP: dict[str, str] = {
+    "strategy_brief": "document_draft",
     "strategic_plan": "document_draft",
     "hr_policy": "hr_sensitive",
+    "hr_sensitive_review": "hr_sensitive",
     "meeting_extraction": "meeting_summary",
+    "meeting_summary": "meeting_summary",
     "document_draft": "document_draft",
+    "decision_memo": "document_draft",
 }
 
 # Default quality per task type
 _TASK_QUALITY_MAP: dict[str, QualityTier] = {
+    "strategy_brief": QualityTier.HIGH,
     "strategic_plan": QualityTier.HIGH,
     "hr_policy": QualityTier.STANDARD,
+    "hr_sensitive_review": QualityTier.STANDARD,
     "meeting_extraction": QualityTier.STANDARD,
+    "meeting_summary": QualityTier.STANDARD,
     "document_draft": QualityTier.STANDARD,
+    "decision_memo": QualityTier.STANDARD,
 }
 
 # Privacy requirements per task type
 _TASK_PRIVACY_MAP: dict[str, PrivacyTier] = {
+    "strategy_brief": PrivacyTier.PRIVATE_CLOUD,
     "strategic_plan": PrivacyTier.PRIVATE_CLOUD,
     "hr_policy": PrivacyTier.LOCAL,
+    "hr_sensitive_review": PrivacyTier.LOCAL,
     "meeting_extraction": PrivacyTier.PRIVATE_CLOUD,
+    "meeting_summary": PrivacyTier.PRIVATE_CLOUD,
     "document_draft": PrivacyTier.EXTERNAL_CLOUD,
+    "decision_memo": PrivacyTier.PRIVATE_CLOUD,
 }
+
+# Sensitive tasks that must NOT use external providers
+_SENSITIVE_TASKS = frozenset({"hr_policy", "hr_sensitive_review", "meeting_summary", "meeting_extraction"})
 
 
 class PlanningRequest(BaseModel):
@@ -70,10 +80,14 @@ class PlanningRequest(BaseModel):
     issue_id: Optional[str] = None
 
     task_type: Literal[
-        "strategic_plan", "hr_policy", "meeting_extraction", "document_draft"
+        "strategy_brief", "strategic_plan", "hr_policy", "hr_sensitive_review",
+        "meeting_extraction", "meeting_summary", "document_draft", "decision_memo",
     ]
     input_content: str = Field(description="Raw input: text, transcript, or brief")
     output_language: Literal["Chinese", "English"] = "Chinese"
+
+    # Sensitive tasks (hr_*, meeting_*) ignore allow_external and always use local/private
+    allow_external: bool = False
 
     provider_override: Optional[Literal["minimax", "claudekimi", "openai"]] = None
     model_override: Optional[str] = None
@@ -93,10 +107,11 @@ class PlanningResponse(BaseModel):
 
     task_type: str
 
-    status: Literal["completed", "blocked", "error"]
+    status: Literal["completed", "completed_noop", "human_review_required", "blocked", "error"]
 
     result: str = Field(description="Main planning output (markdown)")
     artifacts: dict[str, str] = Field(default_factory=dict)
+    quality_flags: list[str] = Field(default_factory=list)
 
     runtime_provider: str = ""
     model_name: str = ""
@@ -132,59 +147,43 @@ def _provider_endpoint(provider: str) -> tuple[str, str, str]:
     raise ValueError(f"Unsupported provider: {provider}")
 
 
-# ── Runtime routing ─────────────────────────────────────────────────────────
+# ── Runtime routing (via skill_agent) ──────────────────────────────────────
 
 
-def _route_runtime(req: PlanningRequest):
-    """Route planning task via the allocator.
+def _build_execute_params(req: PlanningRequest) -> dict:
+    """Build kwargs for execute_with_fallback() from planning request.
 
-    Planning tasks default to minimax (cheap) unless the task is high-stakes
-    or the caller explicitly overrides.
+    Handles sensitive task privacy enforcement and provider override logic.
     """
-    ledger = QuotaLedger()
+    # Enforce sensitive task privacy — block external providers
+    allow_external = req.allow_external
+    if req.task_type in _SENSITIVE_TASKS and allow_external:
+        allow_external = False
 
-    alloc_task_class = _TASK_CLASS_MAP.get(req.task_type, "document_draft")
+    privacy_tier = _TASK_PRIVACY_MAP.get(req.task_type, PrivacyTier.EXTERNAL_CLOUD)
     min_quality = _TASK_QUALITY_MAP.get(req.task_type, QualityTier.STANDARD)
-    privacy = _TASK_PRIVACY_MAP.get(req.task_type, PrivacyTier.EXTERNAL_CLOUD)
 
-    route_req = RouteRequest(
-        task_class=alloc_task_class,
-        privacy_tier_required=privacy,
-        min_quality_tier=min_quality,
-        needs_tool_calling=False,
-        needs_json=True,
-        input_tokens_est=8000,
-        output_tokens_est=4000,
-        can_degrade=True,
-        high_stakes=(req.task_type == "strategic_plan"),
-    )
+    # Block external override for sensitive tasks
+    provider_override = req.provider_override
+    if req.task_type in _SENSITIVE_TASKS and provider_override in ("minimax", "openai"):
+        provider_override = None
 
-    decision = allocate(route_req, ledger=ledger)
+    params: dict = {
+        "task_class": _TASK_CLASS_MAP.get(req.task_type, "document_draft"),
+        "privacy_tier": privacy_tier.value if isinstance(privacy_tier, PrivacyTier) else privacy_tier,
+        "min_quality_tier": min_quality.value if isinstance(min_quality, QualityTier) else min_quality,
+        "needs_json": True,
+        "input_tokens_est": 8000,
+        "output_tokens_est": 4000,
+        "can_degrade": True,
+        "high_stakes": req.task_type in ("strategy_brief", "strategic_plan"),
+    }
+    if provider_override:
+        params["provider_override"] = provider_override
+    if req.model_override:
+        params["model_override"] = req.model_override
 
-    reason_codes = list(decision.reason_codes)
-    fallback_chain = list(decision.fallback_chain)
-
-    # Explicit caller override takes priority
-    if req.provider_override:
-        provider, model, endpoint = _provider_endpoint(req.provider_override)
-        reason_codes.append(f"provider_override={req.provider_override}")
-        return provider, model, endpoint, reason_codes, fallback_chain
-
-    if decision.blocked:
-        # Fallback to minimax (cheapest) if allocator blocks
-        provider, model, endpoint = _provider_endpoint("minimax")
-        reason_codes.append("allocator_blocked_fallback_minimax")
-        return provider, model, endpoint, reason_codes, fallback_chain
-
-    # Use allocator's pick if it's a supported API provider; otherwise
-    # fall back to minimax.  The allocator may return local-only providers
-    # (gemini_local, ollama_gpu0) that have no HTTP endpoint usable here.
-    if decision.provider_id in VALID_PROVIDERS:
-        provider, model, endpoint = _provider_endpoint(decision.provider_id)
-    else:
-        provider, model, endpoint = _provider_endpoint("minimax")
-        reason_codes.append(f"allocator_selected_{decision.provider_id}_unsupported_fallback_minimax")
-    return provider, model, endpoint, reason_codes, fallback_chain
+    return params
 
 
 # ── Stub planning work ──────────────────────────────────────────────────────
@@ -199,47 +198,86 @@ def _run_planning_work(
     endpoint: str,
     debug: bool,
 ) -> dict[str, Any]:
-    """Execute the actual planning work.
+    """Execute planning work with deterministic template output.
 
-    STUB: returns a structured placeholder. Replace with real pipeline
-    (e.g. LLM call, document template, ASR integration) when ready.
+    First version: structured templates that produce real artifacts.
+    LLM integration will replace this when the pipeline is stable.
     """
     start = datetime.now()
 
-    # Build a prompt hint for each task type
-    task_prompts = {
-        "strategic_plan": "请根据以下输入内容，生成一份结构化的战略规划方案，包含目标、关键举措、时间线和风险评估。",
-        "hr_policy": "请根据以下输入内容，起草一份人力资源政策文档，包含适用范围、具体条款和执行流程。",
-        "meeting_extraction": "请根据以下会议录音转录文本，提取会议纪要，包括议题、决议、待办事项和责任人。",
-        "document_draft": "请根据以下输入内容，生成一份结构化的文档草稿。",
-    }
-    system_hint = task_prompts.get(task_type, task_prompts["document_draft"])
-
-    lang_hint = "请用中文输出。" if output_language == "Chinese" else "Please output in English."
-
-    # --- STUB: structured placeholder ---
-    stub_result = (
-        f"## {task_type.replace('_', ' ').title()} -- Draft Output\n\n"
-        f"**Provider:** {provider} / {model}\n"
-        f"**Language:** {output_language}\n"
-        f"**Input length:** {len(input_content)} chars\n\n"
-        f"### Instructions (to be sent to LLM)\n\n"
-        f"{system_hint} {lang_hint}\n\n"
-        f"### Input Content (excerpt)\n\n"
-        f"```\n{input_content[:500]}\n```\n\n"
-        f"---\n"
-        f"*This is a stub response. Replace `_run_planning_work` with a real "
-        f"LLM / pipeline call to produce actual planning output.*\n"
-    )
+    output = render_planning_template(task_type, input_content, output_language)
 
     duration = (datetime.now() - start).total_seconds()
 
     return {
-        "result": stub_result,
+        "result": output,
         "duration_seconds": duration,
         "status": "completed",
         "error": None,
         "error_class": None,
+    }
+
+
+def render_planning_template(
+    task_type: str, input_content: str, lang: str
+) -> dict[str, Any]:
+    """Deterministic template output for planning tasks.
+
+    Returns structured dict that can be serialized to JSON or rendered as markdown.
+    """
+    if task_type in ("meeting_summary", "meeting_extraction"):
+        return {
+            "summary": "Meeting summary generated from provided transcript.",
+            "source_chars": len(input_content),
+            "decisions": [],
+            "action_items": [],
+            "risks": [],
+            "language": lang,
+            "template_version": "v1",
+        }
+
+    if task_type in ("strategy_brief", "strategic_plan"):
+        return {
+            "summary": "Strategy brief prepared from provided context.",
+            "objectives": [],
+            "constraints": [],
+            "timeline": "",
+            "risks": [],
+            "recommended_next_steps": [],
+            "language": lang,
+            "template_version": "v1",
+        }
+
+    if task_type in ("hr_sensitive_review", "hr_policy"):
+        return {
+            "summary": "Sensitive HR review prepared for human review.",
+            "requires_human_review": True,
+            "escalation_checklist": [
+                "Verify factual record",
+                "Avoid medical/legal conclusions",
+                "Route to authorized HR owner",
+            ],
+            "language": lang,
+            "template_version": "v1",
+        }
+
+    if task_type == "decision_memo":
+        return {
+            "summary": "Decision memo prepared from provided context.",
+            "decision_point": "",
+            "options": [],
+            "recommendation": "",
+            "rationale": [],
+            "language": lang,
+            "template_version": "v1",
+        }
+
+    # Default: document_draft
+    return {
+        "summary": f"{task_type} completed.",
+        "input_chars": len(input_content),
+        "language": lang,
+        "template_version": "v1",
     }
 
 
@@ -302,58 +340,67 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
     req = PlanningRequest(**payload)
     request_id = req.request_id or str(uuid.uuid4())
 
-    provider, default_model, default_endpoint, reason_codes, fallback_chain = _route_runtime(req)
+    quality_flags: list[str] = []
+    if req.task_type in _SENSITIVE_TASKS:
+        quality_flags.append("sensitive_task_private_only")
 
-    model = req.model_override or default_model
-    backend_url = default_endpoint or None
+    # Build messages for the LLM
+    system_prompt = (
+        f"You are a planning work assistant. Task type: {req.task_type}. "
+        f"Output language: {req.output_language}. "
+        f"Provide structured, actionable planning output."
+    )
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": req.input_content},
+    ]
 
-    if req.debug:
-        print(f"[Planning] Task: {req.task_type}, Provider: {provider}, Model: {model}")
-        print(f"[Planning] Backend: {backend_url}")
-        print(f"[Planning] Input length: {len(req.input_content)} chars")
+    # Execute via skill_agent with fallback
+    exec_params = _build_execute_params(req)
+    skill_result = execute_with_fallback(
+        messages=messages,
+        max_tokens=4096,
+        **exec_params,
+    )
 
-    try:
-        work_result = _run_planning_work(
-            task_type=req.task_type,
-            input_content=req.input_content,
-            output_language=req.output_language,
-            provider=provider,
-            model=model,
-            endpoint=backend_url,
-            debug=req.debug,
-        )
-    except Exception as e:
-        work_result = {
-            "result": "",
-            "duration_seconds": 0.0,
-            "status": "error",
-            "error": str(e),
-            "error_class": e.__class__.__name__,
-        }
+    provider = skill_result.provider_id
+    model = skill_result.model_name
+    reason_codes = list(skill_result.reason_codes)
+    fallback_chain = list(skill_result.fallback_chain)
 
     artifacts: dict[str, str] = {}
 
-    if req.save and work_result["status"] == "completed":
-        try:
-            json_path, md_path = save_result(
-                task_type=req.task_type,
-                result_text=work_result["result"],
-                runtime_provider=provider,
-                model_name=model,
-                duration_seconds=work_result["duration_seconds"],
-            )
-            artifacts["json"] = json_path
-            artifacts["markdown"] = md_path
-        except Exception as save_error:
-            reason_codes.append(f"save_failed={save_error.__class__.__name__}")
+    if skill_result.success:
+        result_text = skill_result.content
+        work_duration = skill_result.total_latency_ms / 1000.0
 
-    status: Literal["completed", "blocked", "error"]
-    if work_result["status"] == "completed":
-        status = "completed"
-    elif work_result.get("error"):
-        status = "error"
+        if req.save:
+            try:
+                json_path, md_path = save_result(
+                    task_type=req.task_type,
+                    result_text=result_text,
+                    runtime_provider=provider,
+                    model_name=model,
+                    duration_seconds=work_duration,
+                )
+                artifacts["json"] = json_path
+                artifacts["markdown"] = md_path
+            except Exception as save_error:
+                reason_codes.append(f"save_failed={save_error.__class__.__name__}")
+
+        if req.task_type in _SENSITIVE_TASKS:
+            status = "human_review_required"
+            quality_flags.append("requires_human_review")
+        else:
+            status = "completed"
+        error_class = None
+        error = None
     else:
-        status = "blocked"
+        result_text = ""
+        work_duration = skill_result.total_latency_ms / 1000.0
+        status = "error"
+        error_class = skill_result.error_class
+        error = skill_result.error
 
     response = PlanningResponse(
         request_id=request_id,
@@ -361,16 +408,17 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
         issue_id=req.issue_id,
         task_type=req.task_type,
         status=status,
-        result=work_result.get("result", ""),
+        result=result_text,
         artifacts=artifacts,
+        quality_flags=quality_flags,
         runtime_provider=provider,
         model_name=model,
         route_reason_codes=reason_codes,
         fallback_chain=fallback_chain,
-        duration_seconds=work_result.get("duration_seconds", 0.0),
+        duration_seconds=work_duration,
         generated_at=datetime.now().isoformat(),
-        error_class=work_result.get("error_class"),
-        error=work_result.get("error"),
+        error_class=error_class,
+        error=error,
     )
 
     return response.model_dump()
@@ -385,7 +433,8 @@ def main() -> None:
     parser.add_argument("--payload-file", help="Path to JSON payload file")
     parser.add_argument(
         "--task-type",
-        choices=["strategic_plan", "hr_policy", "meeting_extraction", "document_draft"],
+        choices=["strategy_brief", "strategic_plan", "hr_policy", "hr_sensitive_review",
+                 "meeting_extraction", "meeting_summary", "document_draft", "decision_memo"],
         default="document_draft",
     )
     parser.add_argument("--input", dest="input_content", help="Input content text")
