@@ -190,10 +190,20 @@ def _quality_score(rt: Runtime, task_class: str) -> float:
 
 def _apply_policy_filters(candidates: list[Runtime], req: RouteRequest) -> list[Runtime]:
     """Apply hard policy filters based on task class."""
+    # Determine effective minimum quality tier: max of request min and task-specific requirement.
+    task_required = _TASK_QUALITY.get(req.task_class)
+    if task_required is not None:
+        effective_min = max(_QUALITY_RANK[req.min_quality_tier], _QUALITY_RANK[task_required])
+    else:
+        effective_min = _QUALITY_RANK[req.min_quality_tier]
+
     filtered = []
     for rt in candidates:
         # Privacy filter
         if _PRIVACY_RANK[rt.privacy_tier] > _PRIVACY_RANK[req.privacy_tier_required]:
+            continue
+        # Quality tier hard gate — cheap models must not win high-stakes tasks.
+        if _QUALITY_RANK[rt.quality_tier] < effective_min:
             continue
         # Tool calling filter
         if req.needs_tool_calling and not rt.supports_tools:
@@ -326,6 +336,7 @@ def _default_runtimes() -> list[Runtime]:
             endpoint="gemini-cli",
             privacy_tier=PrivacyTier.EXTERNAL_CLOUD,
             quality_tier=QualityTier.HIGH,
+            supports_tools=False,  # No tool wrapper exists yet
             cost_per_mtok_in=0.0,
             cost_per_mtok_out=0.0,
             latency_p50_ms=2500,
