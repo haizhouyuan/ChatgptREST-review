@@ -1,0 +1,230 @@
+# Routing policies for Paperclip Skill Agent.
+# Defines per-task-class fallback chains, degradation rules, and terminal states.
+
+policies:
+  # ── Finbot ──────────────────────────────────────────────────────────────
+  finbot_trade_proposal:
+    can_degrade: false
+    allowed_quality: [critical]
+    primary: [claudekimi]
+    fallback: []
+    terminal_if_unavailable: human_review_required
+
+  finbot_risk_veto:
+    can_degrade: false
+    allowed_quality: [critical]
+    primary: [claudekimi]
+    fallback: []
+    terminal_if_unavailable: human_review_required
+
+  finbot_debate:
+    can_degrade: false
+    primary: [claudekimi]
+    fallback: []
+    terminal_if_unavailable: human_review_required
+
+  finbot_fundamental:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: [minimax]
+    terminal_if_unavailable: completed_no_trade
+
+  finbot_market_analysis:
+    can_degrade: true
+    primary: [minimax]
+    fallback: [gemini_local, claudekimi]
+    terminal_if_unavailable: completed_no_trade
+
+  finbot_news:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax]
+    terminal_if_unavailable: completed_no_trade
+
+  finbot_news_summary:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax]
+    terminal_if_unavailable: completed_no_trade
+
+  finbot_technical:
+    can_degrade: true
+    primary: [minimax]
+    fallback: [gemini_local, claudekimi]
+    terminal_if_unavailable: completed_no_trade
+
+  # ── Planning ────────────────────────────────────────────────────────────
+  planning_strategy:
+    can_degrade: false
+    primary: [claudekimi]
+    fallback: []
+    terminal_if_unavailable: human_review_required
+
+  strategy_brief:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: [gemini_local]
+    terminal_if_unavailable: human_review_required
+
+  strategic_plan:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: [gemini_local]
+    terminal_if_unavailable: human_review_required
+
+  hr_sensitive:
+    can_degrade: false
+    allowed_privacy: [local, private_cloud]
+    primary: [ollama_gpu0]
+    fallback: []
+    terminal_if_unavailable: human_review_required
+
+  hr_sensitive_review:
+    can_degrade: false
+    allowed_privacy: [local, private_cloud]
+    primary: [ollama_gpu0]
+    fallback: []
+    terminal_if_unavailable: human_review_required
+
+  meeting_summary:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax, claudekimi]
+    terminal_if_unavailable: blocked
+
+  meeting_extraction:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax, claudekimi]
+    terminal_if_unavailable: blocked
+
+  document_draft:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax]
+    terminal_if_unavailable: blocked
+
+  decision_memo:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax, claudekimi]
+    terminal_if_unavailable: blocked
+
+  # ── Labebe ──────────────────────────────────────────────────────────────
+  labebe_review_analysis:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: [gemini_local]
+    terminal_if_unavailable: human_review_required
+
+  labebe_commerce_decision:
+    can_degrade: false
+    primary: [claudekimi]
+    fallback: []
+    terminal_if_unavailable: human_review_required
+
+  labebe_evidence_bundle:
+    can_degrade: false
+    primary: [claudekimi]
+    fallback: []
+    terminal_if_unavailable: human_review_required
+
+  dtc_copy:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax, claudekimi]
+    terminal_if_unavailable: blocked
+
+  boss_gallery_card:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax]
+    terminal_if_unavailable: blocked
+
+  labebe_product_eval:
+    can_degrade: true
+    primary: [minimax]
+    fallback: [gemini_local, claudekimi]
+    terminal_if_unavailable: blocked
+
+  labebe_content_gen:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax]
+    terminal_if_unavailable: blocked
+
+  # ── Memory ──────────────────────────────────────────────────────────────
+  memory_indexing:
+    can_degrade: true
+    primary: [ollama_gpu0]
+    fallback: [claudekimi]
+    terminal_if_unavailable: blocked
+
+  memory_benchmark:
+    can_degrade: false
+    primary: [ollama_gpu0, claudekimi]
+    fallback: []
+    terminal_if_unavailable: blocked
+
+  memory_comparison:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: [gemini_local]
+    terminal_if_unavailable: blocked
+
+  memory_recommendation:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: [gemini_local]
+    terminal_if_unavailable: blocked
+
+  memory_system_eval:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: [gemini_local]
+    terminal_if_unavailable: blocked
+
+  # ── LLM Research ────────────────────────────────────────────────────────
+  llm_research_eval:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: []
+    terminal_if_unavailable: blocked
+
+  llm_research_benchmark:
+    can_degrade: false
+    primary: [ollama_gpu0, claudekimi]
+    fallback: []
+    terminal_if_unavailable: blocked
+
+  model_download:
+    can_degrade: false
+    primary: []
+    fallback: []
+    terminal_if_unavailable: blocked
+    note: "process task, not LLM"
+
+  local_model_benchmark:
+    can_degrade: false
+    primary: [ollama_gpu0]
+    fallback: []
+    terminal_if_unavailable: blocked
+
+  # ── General ─────────────────────────────────────────────────────────────
+  code_reasoning:
+    can_degrade: true
+    primary: [claudekimi]
+    fallback: [gemini_local]
+    terminal_if_unavailable: blocked
+
+  frontend:
+    can_degrade: true
+    primary: [gemini_local]
+    fallback: [minimax]
+    terminal_if_unavailable: blocked
+
+  benchmark:
+    can_degrade: false
+    primary: [ollama_gpu0]
+    fallback: []
+    terminal_if_unavailable: blocked

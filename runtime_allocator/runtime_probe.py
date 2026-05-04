@@ -30,11 +30,17 @@ class ProbeResult:
 
 
 def probe_openai_compatible(endpoint: str, provider_id: str, timeout: float = 5.0) -> ProbeResult:
-    """Probe an OpenAI-compatible /v1/models endpoint."""
+    """Probe an OpenAI-compatible endpoint.
+
+    Tries /v1/models first. If 404, falls back to a minimal /v1/chat/completions
+    request to check if the server is alive (some proxies don't expose /v1/models).
+    """
     start = time.monotonic()
+    base = endpoint.rstrip("/")
+
+    # Try /v1/models first
     try:
-        url = endpoint.rstrip("/") + "/models"
-        resp = httpx.get(url, timeout=timeout)
+        resp = httpx.get(f"{base}/models", timeout=timeout)
         latency = (time.monotonic() - start) * 1000
 
         if resp.status_code == 200:
@@ -45,6 +51,46 @@ def probe_openai_compatible(endpoint: str, provider_id: str, timeout: float = 5.
                 available=True,
                 latency_ms=latency,
                 model_loaded=models[0] if models else None,
+            )
+        # If not 200 but not 404, report the error
+        if resp.status_code != 404:
+            return ProbeResult(
+                provider_id=provider_id,
+                available=False,
+                latency_ms=latency,
+                error=f"HTTP {resp.status_code}: {resp.text[:200]}",
+            )
+    except Exception as e:
+        latency = (time.monotonic() - start) * 1000
+        return ProbeResult(
+            provider_id=provider_id,
+            available=False,
+            latency_ms=latency,
+            error=str(e)[:200],
+            error_class=e.__class__.__name__,
+        )
+
+    # Fallback: try minimal chat completion
+    try:
+        start2 = time.monotonic()
+        resp = httpx.post(
+            f"{base}/chat/completions",
+            json={
+                "model": "test",
+                "messages": [{"role": "user", "content": "hi"}],
+                "max_tokens": 1,
+            },
+            timeout=timeout,
+        )
+        latency = (time.monotonic() - start) * 1000
+
+        if resp.status_code in (200, 400, 422):
+            # 400/422 means the server is alive but rejected our request
+            return ProbeResult(
+                provider_id=provider_id,
+                available=True,
+                latency_ms=latency,
+                model_loaded="(chat_completion_only)",
             )
         return ProbeResult(
             provider_id=provider_id,
@@ -141,6 +187,49 @@ def probe_all(profiles: dict | None = None) -> list[ProbeResult]:
         endpoint = rt.get("endpoint", "")
         protocol = rt.get("protocol", "openai_compatible")
         results.append(probe_by_protocol(endpoint, pid, protocol))
+    return results
+
+
+def probe_all_with_health(
+    profiles: dict | None = None,
+    state_store=None,
+) -> list[ProbeResult]:
+    """Probe all runtimes and update health store with results."""
+    from runtime_allocator.runtime_state import get_store
+    if state_store is None:
+        state_store = get_store()
+
+    results = probe_all(profiles)
+
+    for r in results:
+        if r.available:
+            state_store.update_health(
+                r.provider_id, "healthy",
+                latency_ms=int(r.latency_ms),
+            )
+        else:
+            # Classify the error
+            error_text = (r.error or "").lower()
+            if "404" in error_text:
+                status = "circuit_open"
+                circuit_seconds = 600
+            elif "timeout" in error_text or "connection" in error_text:
+                status = "degraded"
+                circuit_seconds = 0
+            elif "not found" in error_text and "gemini" in error_text.lower():
+                status = "down"
+                circuit_seconds = 3600
+            else:
+                status = "degraded"
+                circuit_seconds = 0
+
+            state_store.update_health(
+                r.provider_id, status,
+                latency_ms=int(r.latency_ms),
+                error=r.error,
+                circuit_open_seconds=circuit_seconds,
+            )
+
     return results
 
 

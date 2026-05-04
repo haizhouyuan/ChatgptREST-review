@@ -33,6 +33,7 @@ from runtime_allocator.allocator_mvp import (
 )
 from runtime_allocator.runtime_invoker import InvokeResult, invoke_llm
 from runtime_allocator.runtime_probe import ProbeResult, probe_by_protocol
+from runtime_allocator.runtime_state import RuntimeStateStore, get_store
 
 
 # ── Profile loading ──────────────────────────────────────────────────────────
@@ -109,6 +110,7 @@ def execute_with_fallback(
     max_retries: int = 2,
     profiles: Optional[dict] = None,
     ledger: Optional[QuotaLedger] = None,
+    state_store: Optional[RuntimeStateStore] = None,
 ) -> SkillResult:
     """Execute an LLM call with automatic routing, fallback, and cooldown.
 
@@ -144,6 +146,8 @@ def execute_with_fallback(
         profiles = load_profiles()
     if ledger is None:
         ledger = QuotaLedger()
+    if state_store is None:
+        state_store = get_store()
 
     reason_codes: list[str] = []
     fallback_chain: list[str] = []
@@ -188,7 +192,7 @@ def execute_with_fallback(
             can_degrade=can_degrade,
             high_stakes=high_stakes,
         )
-        decision = allocate(route_req, runtimes=runtimes, ledger=ledger)
+        decision = allocate(route_req, runtimes=runtimes, ledger=ledger, health_store=state_store)
 
         if decision.blocked:
             total_ms = (time.monotonic() - start_total) * 1000
@@ -252,6 +256,17 @@ def execute_with_fallback(
         attempts.append(attempt_record)
 
         if not result.error:
+            # Update health: success
+            state_store.update_health(pid, "healthy", latency_ms=int(result.latency_ms))
+            state_store.log_event(
+                provider_id=pid,
+                task_class=task_class,
+                status="success",
+                latency_ms=int(result.latency_ms),
+                tokens_in_est=input_tokens_est,
+                tokens_out_est=output_tokens_est,
+                tokens_actual=result.input_tokens + result.output_tokens,
+            )
             total_ms = (time.monotonic() - start_total) * 1000
             return SkillResult(
                 provider_id=pid,
@@ -268,9 +283,44 @@ def execute_with_fallback(
                 success=True,
             )
 
-        # On failure: set cooldown and try next
+        # On failure: update health, set cooldown, log event, try next
         last_error = result
         cooldown = cooldown_ttl_for_error(result.error_class, result.error)
+
+        # Classify failure for health tracking
+        error_text = f"{result.error_class or ''} {result.error or ''}".lower()
+        if "429" in error_text or "rate limit" in error_text or "quota" in error_text:
+            health_status = "quota_exhausted"
+            circuit_seconds = cooldown[1] if cooldown else 300
+        elif "404" in error_text:
+            health_status = "circuit_open"
+            circuit_seconds = cooldown[1] if cooldown else 600
+        elif "timeout" in error_text or "connection" in error_text:
+            health_status = "degraded"
+            circuit_seconds = 0
+        else:
+            health_status = "degraded"
+            circuit_seconds = 0
+
+        state_store.update_health(
+            pid, health_status,
+            latency_ms=int(result.latency_ms),
+            error=result.error,
+            circuit_open_seconds=circuit_seconds,
+        )
+        state_store.log_event(
+            provider_id=pid,
+            task_class=task_class,
+            status="failed",
+            error_class=result.error_class,
+            error_code=result.error[:200] if result.error else None,
+            latency_ms=int(result.latency_ms),
+            tokens_in_est=input_tokens_est,
+            tokens_out_est=output_tokens_est,
+            fallback_from=pid if attempt_idx < len(attempt_targets) - 1 else None,
+            fallback_to=attempt_targets[attempt_idx + 1][0] if attempt_idx < len(attempt_targets) - 1 else None,
+        )
+
         if cooldown:
             reason, ttl = cooldown
             ledger.set_cooldown(pid, reason, ttl)

@@ -146,73 +146,7 @@ def _build_execute_params(req: MemoryResearchRequest) -> dict:
     return params
 
 
-# ── Stub execution ──────────────────────────────────────────────────────────
-
-
-def _run_memory_work(
-    task_type: str,
-    memory_systems: list[str],
-    query_context: str,
-    output_language: str,
-    provider: str,
-    model: str,
-    input_data: dict | None = None,
-) -> tuple[dict, float]:
-    """Execute memory research work.
-
-    For benchmark tasks, runs deterministic precision/recall calculations
-    on provided test cases. Returns (structured_output, duration_seconds).
-    """
-    start = datetime.now()
-    input_data = input_data or {}
-
-    if task_type in ("benchmark", "memory_benchmark", "memory_regression_test"):
-        output = run_deterministic_memory_benchmark(task_type, memory_systems, input_data)
-    elif task_type in ("system_eval", "memory_index"):
-        system = memory_systems[0] if memory_systems else "unknown"
-        output = {
-            "summary": f"System evaluation for {system}.",
-            "system": system,
-            "dimensions": [
-                "retrieval_precision",
-                "memory_persistence",
-                "context_window_utilization",
-                "incremental_update_efficiency",
-                "multi_hop_reasoning",
-            ],
-            "query_context": query_context,
-            "status": "pending_real_adapter",
-            "template_version": "v1",
-        }
-    elif task_type in ("comparison", "memory_ablation"):
-        output = {
-            "summary": f"Comparison of {len(memory_systems)} memory systems.",
-            "systems": memory_systems,
-            "dimensions": [
-                "architecture_pattern",
-                "memory_organization",
-                "retrieval_strategy",
-                "best_fit_scenarios",
-                "limitations",
-            ],
-            "query_context": query_context,
-            "status": "pending_real_adapter",
-            "template_version": "v1",
-        }
-    elif task_type == "recommendation":
-        output = {
-            "summary": "Best practices recommendation.",
-            "systems_evaluated": memory_systems,
-            "query_context": query_context,
-            "recommendations": [],
-            "status": "pending_real_data",
-            "template_version": "v1",
-        }
-    else:
-        output = {"summary": f"{task_type} completed.", "template_version": "v1"}
-
-    duration = (datetime.now() - start).total_seconds()
-    return output, duration
+# ── Deterministic benchmark utility ─────────────────────────────────────────
 
 
 def run_deterministic_memory_benchmark(

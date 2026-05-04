@@ -34,13 +34,8 @@ from pydantic import BaseModel, ConfigDict, Field
 
 # Allocator lives in sibling package
 sys.path.insert(0, str(Path(__file__).parent.parent / "runtime_allocator"))
-from allocator_mvp import (
-    PrivacyTier,
-    QualityTier,
-    QuotaLedger,
-    RouteRequest,
-    allocate,
-)
+from allocator_mvp import PrivacyTier, QualityTier
+from skill_agent import execute_with_fallback
 
 PAPERCLIP_API = os.getenv("PAPERCLIP_API", "http://127.0.0.1:3100/api")
 LABEBE_COMPANY_ID = "9ca70186-256c-49f4-8d87-038a94f32acb"
@@ -50,20 +45,12 @@ REPORT_DIR = Path(os.path.expanduser("~/.paperclip/labebe_reports"))
 
 VALID_PROVIDERS = {"minimax", "claudekimi", "openai"}
 
-# ── Task type -> default provider mapping ────────────────────────────────────
-
-_TASK_PROVIDER_DEFAULT: dict[str, str] = {
-    "product_review_analysis": "claudekimi",
-    "dtc_copy": "minimax",
-    "boss_gallery_card": "minimax",
-    "commerce_decision": "claudekimi",
-    "evidence_bundle": "claudekimi",
-}
+# ── Task type -> allocator task class mapping ────────────────────────────────
 
 _TASK_CLASS_MAP: dict[str, str] = {
     "product_review_analysis": "labebe_review_analysis",
-    "dtc_copy": "document_draft",
-    "boss_gallery_card": "document_draft",
+    "dtc_copy": "dtc_copy",
+    "boss_gallery_card": "boss_gallery_card",
     "commerce_decision": "labebe_commerce_decision",
     "evidence_bundle": "labebe_evidence_bundle",
 }
@@ -148,75 +135,30 @@ class LabebeResponse(BaseModel):
     error: Optional[str] = None
 
 
-# ── Provider endpoint resolution ────────────────────────────────────────────
+# ── Runtime routing (via skill_agent) ──────────────────────────────────────
 
 
-def _provider_endpoint(provider: str) -> tuple[str, str, str]:
-    """Return (provider, default_model, endpoint)."""
-    if provider == "minimax":
-        return (
-            "minimax",
-            "MiniMax-M2.7-highspeed",
-            os.getenv("MINIMAX_API_HOST", "https://api.minimaxi.com").rstrip("/") + "/v1",
-        )
-    if provider == "claudekimi":
-        return (
-            "claudekimi",
-            "mimo-v2.5-pro",
-            os.getenv("CLAUDEKIMI_ENDPOINT", "http://127.0.0.1:8080/v1"),
-        )
-    if provider == "openai":
-        return ("openai", "gpt-4.1", os.getenv("OPENAI_BASE_URL", ""))
-    raise ValueError(f"Unsupported provider: {provider}")
-
-
-# ── Runtime routing ─────────────────────────────────────────────────────────
-
-
-def _route_runtime(req: LabebeRequest) -> tuple[str, str, str, list[str], list[str]]:
-    """Route through the allocator, respecting task-specific defaults.
-
-    Returns (provider, model, endpoint, reason_codes, fallback_chain).
-    """
-    ledger = QuotaLedger()
-
-    task_class = _TASK_CLASS_MAP.get(req.task_type, "document_draft")
+def _build_execute_params(req: LabebeRequest) -> dict:
+    """Build kwargs for execute_with_fallback() from labebe request."""
+    task_class = _TASK_CLASS_MAP.get(req.task_type, "labebe_review_analysis")
     min_quality = _TASK_QUALITY_MAP.get(req.task_type, QualityTier.STANDARD)
 
-    route_req = RouteRequest(
-        task_class=task_class,
-        privacy_tier_required=PrivacyTier.EXTERNAL_CLOUD,
-        min_quality_tier=min_quality,
-        needs_tool_calling=False,
-        needs_json=True,
-        input_tokens_est=4000,
-        output_tokens_est=2000,
-        can_degrade=req.task_type not in ("commerce_decision", "evidence_bundle"),
-        high_stakes=req.task_type in ("commerce_decision", "evidence_bundle"),
-    )
-
-    decision = allocate(route_req, ledger=ledger)
-    reason_codes = list(decision.reason_codes)
-    fallback_chain = list(decision.fallback_chain)
-
-    # Explicit caller override wins
+    params: dict = {
+        "task_class": task_class,
+        "privacy_tier": "external_cloud",
+        "min_quality_tier": min_quality.value if isinstance(min_quality, QualityTier) else min_quality,
+        "needs_json": True,
+        "input_tokens_est": 4000,
+        "output_tokens_est": 2000,
+        "can_degrade": req.task_type not in ("commerce_decision", "evidence_bundle"),
+        "high_stakes": req.task_type in ("commerce_decision", "evidence_bundle"),
+    }
     if req.provider_override:
-        provider, model, endpoint = _provider_endpoint(req.provider_override)
-        reason_codes.append(f"provider_override={req.provider_override}")
-        return provider, model, endpoint, reason_codes, fallback_chain
+        params["provider_override"] = req.provider_override
+    if req.model_override:
+        params["model_override"] = req.model_override
 
-    # Task-specific default provider
-    default_provider = _TASK_PROVIDER_DEFAULT.get(req.task_type, "claudekimi")
-    provider, model, endpoint = _provider_endpoint(default_provider)
-
-    if decision.provider_id != default_provider:
-        reason_codes.append(
-            f"allocator_selected_{decision.provider_id}_but_task_default_{default_provider}"
-        )
-    else:
-        reason_codes.append(f"allocator_agrees_with_task_default={default_provider}")
-
-    return provider, model, endpoint, reason_codes, fallback_chain
+    return params
 
 
 # ── Stub work functions ─────────────────────────────────────────────────────
@@ -409,40 +351,55 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
 
     req = LabebeRequest(**payload)
     request_id = req.request_id or str(uuid.uuid4())
-    start_time = datetime.now()
 
-    # Route runtime
-    provider, default_model, endpoint, reason_codes, fallback_chain = _route_runtime(req)
-    model = req.model_override or default_model
+    # Build messages for the LLM
+    system_prompt = (
+        f"You are a Labebe product analysis assistant. Task type: {req.task_type}. "
+        f"Product: {req.product_id or 'unknown'}. "
+        f"Output language: {req.output_language}. "
+        f"Provide structured, actionable product analysis output."
+    )
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": req.input_content},
+    ]
 
-    if req.debug:
-        print(f"[Labebe] Task: {req.task_type}, Product: {req.product_id}")
-        print(f"[Labebe] Provider: {provider}, Model: {model}")
-        print(f"[Labebe] Endpoint: {endpoint}")
+    # Execute via skill_agent with fallback
+    exec_params = _build_execute_params(req)
+    skill_result = execute_with_fallback(
+        messages=messages,
+        max_tokens=4096,
+        **exec_params,
+    )
 
-    # Execute stub
-    stub_fn = _STUB_DISPATCH.get(req.task_type)
-    if stub_fn is None:
-        raise ValueError(f"Unknown task_type: {req.task_type}")
+    provider = skill_result.provider_id
+    model = skill_result.model_name
+    reason_codes = list(skill_result.reason_codes)
+    fallback_chain = list(skill_result.fallback_chain)
 
-    try:
-        result_text, result_structured = stub_fn(
-            input_content=req.input_content,
-            product_id=req.product_id,
-            output_language=req.output_language,
-        )
-        status = "completed_stub"
+    result_structured = None
+
+    if skill_result.success:
+        result_text = skill_result.content
+        duration = skill_result.total_latency_ms / 1000.0
+
+        # Try to parse structured JSON from LLM output
+        try:
+            result_structured = json.loads(result_text)
+            if isinstance(result_structured, dict):
+                result_text = result_structured.pop("result", result_text)
+        except (json.JSONDecodeError, AttributeError):
+            pass
+
+        status = "completed"
         error_class = None
         error = None
-    except Exception as e:
+    else:
         result_text = ""
-        result_structured = None
+        duration = skill_result.total_latency_ms / 1000.0
         status = "error"
-        error_class = e.__class__.__name__
-        error = str(e)
-        reason_codes.append(f"execution_error={error_class}")
-
-    duration = (datetime.now() - start_time).total_seconds()
+        error_class = skill_result.error_class
+        error = skill_result.error
 
     # Build response
     response = LabebeResponse(

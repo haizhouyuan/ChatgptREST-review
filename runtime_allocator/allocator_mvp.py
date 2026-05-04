@@ -44,9 +44,12 @@ class TaskClass(str, Enum):
     FINBOT_DEBATE = "finbot_debate"
     FINBOT_TRADE_PROPOSAL = "finbot_trade_proposal"
     FINBOT_RISK_VETO = "finbot_risk_veto"
+    FINBOT_MARKET_ANALYSIS = "finbot_market_analysis"
+    FINBOT_NEWS_SUMMARY = "finbot_news_summary"
     # Planning
     STRATEGY_BRIEF = "strategy_brief"
     STRATEGIC_PLAN = "strategic_plan"
+    PLANNING_STRATEGY = "planning_strategy"
     HR_SENSITIVE = "hr_sensitive"
     HR_SENSITIVE_REVIEW = "hr_sensitive_review"
     MEETING_SUMMARY = "meeting_summary"
@@ -57,14 +60,21 @@ class TaskClass(str, Enum):
     LABEBE_PRODUCT_EVAL = "labebe_product_eval"
     LABEBE_CONTENT_GEN = "labebe_content_gen"
     LABEBE_REVIEW_ANALYSIS = "labebe_review_analysis"
+    LABEBE_COMMERCE_DECISION = "labebe_commerce_decision"
+    LABEBE_EVIDENCE_BUNDLE = "labebe_evidence_bundle"
+    DTC_COPY = "dtc_copy"
+    BOSS_GALLERY_CARD = "boss_gallery_card"
     # Memory
     MEMORY_INDEXING = "memory_indexing"
     MEMORY_BENCHMARK = "memory_benchmark"
     MEMORY_COMPARISON = "memory_comparison"
     MEMORY_RECOMMENDATION = "memory_recommendation"
+    MEMORY_SYSTEM_EVAL = "memory_system_eval"
     # LLM Research
     LLM_RESEARCH_EVAL = "llm_research_eval"
     LLM_RESEARCH_BENCHMARK = "llm_research_benchmark"
+    MODEL_DOWNLOAD = "model_download"
+    LOCAL_MODEL_BENCHMARK = "local_model_benchmark"
     # General
     FRONTEND = "frontend"
     CODE_REASONING = "code_reasoning"
@@ -246,9 +256,12 @@ _TASK_QUALITY = {
     TaskClass.FINBOT_NEWS.value: QualityTier.STANDARD,
     TaskClass.FINBOT_FUNDAMENTAL.value: QualityTier.HIGH,
     TaskClass.FINBOT_TECHNICAL.value: QualityTier.STANDARD,
+    TaskClass.FINBOT_MARKET_ANALYSIS.value: QualityTier.STANDARD,
+    TaskClass.FINBOT_NEWS_SUMMARY.value: QualityTier.STANDARD,
     # Planning
     TaskClass.STRATEGY_BRIEF.value: QualityTier.HIGH,
     TaskClass.STRATEGIC_PLAN.value: QualityTier.HIGH,
+    TaskClass.PLANNING_STRATEGY.value: QualityTier.HIGH,
     TaskClass.HR_SENSITIVE.value: QualityTier.STANDARD,
     TaskClass.HR_SENSITIVE_REVIEW.value: QualityTier.STANDARD,
     TaskClass.MEETING_SUMMARY.value: QualityTier.STANDARD,
@@ -258,15 +271,22 @@ _TASK_QUALITY = {
     # Labebe
     TaskClass.LABEBE_PRODUCT_EVAL.value: QualityTier.STANDARD,
     TaskClass.LABEBE_CONTENT_GEN.value: QualityTier.STANDARD,
-    TaskClass.LABEBE_REVIEW_ANALYSIS.value: QualityTier.STANDARD,
+    TaskClass.LABEBE_REVIEW_ANALYSIS.value: QualityTier.HIGH,
+    TaskClass.LABEBE_COMMERCE_DECISION.value: QualityTier.CRITICAL,
+    TaskClass.LABEBE_EVIDENCE_BUNDLE.value: QualityTier.CRITICAL,
+    TaskClass.DTC_COPY.value: QualityTier.STANDARD,
+    TaskClass.BOSS_GALLERY_CARD.value: QualityTier.STANDARD,
     # Memory
     TaskClass.MEMORY_INDEXING.value: QualityTier.STANDARD,
     TaskClass.MEMORY_BENCHMARK.value: QualityTier.CHEAP,
     TaskClass.MEMORY_COMPARISON.value: QualityTier.HIGH,
     TaskClass.MEMORY_RECOMMENDATION.value: QualityTier.HIGH,
+    TaskClass.MEMORY_SYSTEM_EVAL.value: QualityTier.HIGH,
     # LLM Research
     TaskClass.LLM_RESEARCH_EVAL.value: QualityTier.HIGH,
     TaskClass.LLM_RESEARCH_BENCHMARK.value: QualityTier.CHEAP,
+    TaskClass.MODEL_DOWNLOAD.value: QualityTier.CHEAP,
+    TaskClass.LOCAL_MODEL_BENCHMARK.value: QualityTier.CHEAP,
     # General
     TaskClass.CODE_REASONING.value: QualityTier.HIGH,
     TaskClass.BENCHMARK.value: QualityTier.CHEAP,
@@ -278,34 +298,49 @@ _RUNTIME_TASK_SCORES = {
     ("claudekimi", "finbot_risk_veto"): 0.95,
     ("claudekimi", "finbot_debate"): 0.90,
     ("claudekimi", "finbot_fundamental"): 0.90,
-    ("claudekimi", "finbot_trade_proposal"): 0.85,
+    ("claudekimi", "finbot_trade_proposal"): 0.92,
     ("claudekimi", "code_reasoning"): 0.90,
     ("claudekimi", "strategy_brief"): 0.85,
     ("claudekimi", "strategic_plan"): 0.85,
+    ("claudekimi", "planning_strategy"): 0.88,
     ("claudekimi", "llm_research_eval"): 0.90,
     ("claudekimi", "memory_comparison"): 0.85,
     ("claudekimi", "memory_recommendation"): 0.85,
+    ("claudekimi", "memory_system_eval"): 0.88,
     ("claudekimi", "document_draft"): 0.75,
     ("claudekimi", "memory_indexing"): 0.70,
+    ("claudekimi", "labebe_review_analysis"): 0.88,
+    ("claudekimi", "labebe_commerce_decision"): 0.92,
+    ("claudekimi", "labebe_evidence_bundle"): 0.94,
     # minimax
     ("minimax", "finbot_news"): 0.75,
     ("minimax", "finbot_technical"): 0.70,
     ("minimax", "finbot_fundamental"): 0.65,
+    ("minimax", "finbot_market_analysis"): 0.78,
+    ("minimax", "finbot_news_summary"): 0.72,
     ("minimax", "document_draft"): 0.70,
     ("minimax", "meeting_summary"): 0.70,
+    ("minimax", "meeting_extraction"): 0.70,
     ("minimax", "labebe_product_eval"): 0.70,
     ("minimax", "labebe_content_gen"): 0.75,
     ("minimax", "labebe_review_analysis"): 0.70,
+    ("minimax", "labebe_commerce_decision"): 0.60,
     ("minimax", "decision_memo"): 0.70,
-    ("minimax", "meeting_extraction"): 0.70,
+    ("minimax", "dtc_copy"): 0.75,
+    ("minimax", "boss_gallery_card"): 0.72,
     # gemini_local
-    ("gemini_local", "frontend"): 0.85,
+    ("gemini_local", "frontend"): 0.90,
     ("gemini_local", "finbot_news"): 0.80,
-    ("gemini_local", "document_draft"): 0.80,
-    ("gemini_local", "meeting_summary"): 0.85,
+    ("gemini_local", "finbot_news_summary"): 0.78,
+    ("gemini_local", "document_draft"): 0.84,
+    ("gemini_local", "meeting_summary"): 0.86,
+    ("gemini_local", "meeting_extraction"): 0.84,
     ("gemini_local", "strategy_brief"): 0.75,
-    ("gemini_local", "labebe_content_gen"): 0.80,
-    ("gemini_local", "memory_comparison"): 0.75,
+    ("gemini_local", "labebe_content_gen"): 0.82,
+    ("gemini_local", "dtc_copy"): 0.82,
+    ("gemini_local", "boss_gallery_card"): 0.88,
+    ("gemini_local", "memory_comparison"): 0.85,
+    ("gemini_local", "memory_recommendation"): 0.80,
     # ollama_gpu0
     ("ollama_gpu0", "memory_indexing"): 0.80,
     ("ollama_gpu0", "memory_benchmark"): 0.80,
@@ -313,6 +348,7 @@ _RUNTIME_TASK_SCORES = {
     ("ollama_gpu0", "hr_sensitive"): 0.70,
     ("ollama_gpu0", "hr_sensitive_review"): 0.70,
     ("ollama_gpu0", "llm_research_benchmark"): 0.75,
+    ("ollama_gpu0", "local_model_benchmark"): 0.75,
 }
 
 
@@ -369,8 +405,16 @@ def allocate(
     req: RouteRequest,
     runtimes: list[Runtime] = None,
     ledger: QuotaLedger = None,
+    health_store=None,
 ) -> RouteDecision:
-    """Route a task to the best available runtime."""
+    """Route a task to the best available runtime.
+
+    Args:
+        req: Routing request
+        runtimes: Available runtimes (loaded from YAML if None)
+        ledger: Quota ledger (legacy JSON-backed)
+        health_store: RuntimeStateStore for health-aware filtering
+    """
 
     if runtimes is None:
         runtimes = _default_runtimes()
@@ -379,6 +423,11 @@ def allocate(
 
     # 1. Filter enabled + policy
     candidates = [r for r in runtimes if r.enabled]
+
+    # Health filter: exclude runtimes in circuit breaker or down
+    if health_store is not None:
+        candidates = [r for r in candidates if health_store.is_usable(r.provider_id)]
+
     candidates = _apply_policy_filters(candidates, req)
 
     # 2. Quota preflight

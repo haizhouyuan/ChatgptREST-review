@@ -1,5 +1,8 @@
 # Runtime profiles for Paperclip Skill Agent.
-# Loaded by skill_agent.py; replaces hardcoded _default_runtimes().
+# Loaded by skill_agent.py and allocator_mvp.py.
+# Replaces hardcoded _default_runtimes().
+
+version: 1
 
 runtimes:
   claudekimi:
@@ -7,6 +10,7 @@ runtimes:
     model_name: mimo-v2.5-pro
     endpoint: ${CLAUDEKIMI_ENDPOINT:http://127.0.0.1:8080/v1}
     protocol: openai_compatible
+    adapter: openai_compatible
     privacy_tier: external_cloud
     quality_tier: critical
     supports_tools: true
@@ -16,12 +20,41 @@ runtimes:
     cost_per_mtok_out: 15.0
     latency_p50_ms: 3000
     enabled: true
+    # Extended capabilities
+    supports_streaming: false
+    supports_files: false
+    supports_shell: false
+    supports_web_fetch: false
+    supports_mcp: false
+    supports_multimodal: false
+    # Quota
+    quota_mode: opaque_plan
+    soft_rpd: 120
+    hard_rpd: 180
+    soft_rpm: 4
+    max_concurrency: 1
+    # Health
+    health_probe: openai_chat_completion
+    health_timeout_ms: 12000
+    circuit_open_after_failures: 3
+    cooldown_seconds: 600
+    # Strengths / weaknesses (for routing hints)
+    strengths:
+      - high_stakes_reasoning
+      - finance_debate
+      - risk_veto
+      - evidence_synthesis
+      - code_reasoning
+      - commerce_decision
+    weaknesses:
+      - endpoint_compatibility_risk
 
   minimax:
     provider_id: minimax
     model_name: MiniMax-M2.7-highspeed
     endpoint: ${MINIMAX_API_HOST:https://api.minimaxi.com}/v1
     protocol: openai_compatible
+    adapter: openai_compatible
     privacy_tier: external_cloud
     quality_tier: standard
     supports_tools: true
@@ -31,12 +64,36 @@ runtimes:
     cost_per_mtok_out: 2.0
     latency_p50_ms: 1500
     enabled: true
+    supports_streaming: false
+    supports_files: false
+    supports_shell: false
+    supports_web_fetch: false
+    supports_mcp: false
+    supports_multimodal: false
+    quota_mode: transparent_or_headerless_api
+    soft_rpd: 800
+    hard_rpd: 1000
+    soft_rpm: 20
+    max_concurrency: 4
+    health_probe: openai_chat_completion
+    health_timeout_ms: 8000
+    circuit_open_after_failures: 5
+    cooldown_seconds: 300
+    strengths:
+      - cheap_summary
+      - document_draft
+      - copy_variant
+      - market_technical_report
+    weaknesses:
+      - financial_roleplay_refusal
+      - tool_ordering_risk
 
   gemini_local:
     provider_id: gemini_local
     model_name: gemini-2.5-pro
     endpoint: gemini-cli
     protocol: gemini_cli
+    adapter: gemini_cli
     privacy_tier: external_cloud
     quality_tier: high
     supports_tools: false
@@ -46,12 +103,41 @@ runtimes:
     cost_per_mtok_out: 0.0
     latency_p50_ms: 2500
     enabled: true
+    supports_streaming: false
+    supports_files: true
+    supports_shell: true
+    supports_web_fetch: true
+    supports_mcp: true
+    supports_multimodal: true
+    quota_mode: opaque_plan
+    soft_rpd: 700
+    hard_rpd: 950
+    soft_rpm: 20
+    max_concurrency: 2
+    health_probe: cli_auth
+    health_timeout_ms: 15000
+    circuit_open_after_failures: 3
+    cooldown_seconds: 600
+    strengths:
+      - frontend
+      - long_text_synthesis
+      - meeting_summary
+      - document_draft
+      - code_generation
+      - boss_gallery_frontend
+      - memory_report_writing
+      - dtc_copy
+    weaknesses:
+      - no_paperclip_tool_calling_wrapper
+      - opaque_plan_quota
+      - structured_json_needs_validator
 
   ollama_gpu0:
     provider_id: ollama_gpu0
     model_name: qwen2.5:32b
     endpoint: http://localhost:11434/v1
     protocol: openai_compatible
+    adapter: openai_compatible
     privacy_tier: local
     quality_tier: standard
     supports_tools: false
@@ -61,65 +147,27 @@ runtimes:
     cost_per_mtok_out: 0.0
     latency_p50_ms: 5000
     enabled: true
-
-task_quality_requirements:
-  finbot_risk_veto: critical
-  finbot_debate: high
-  finbot_trade_proposal: high
-  finbot_fundamental: high
-  finbot_news: standard
-  finbot_technical: standard
-  code_reasoning: high
-  hr_sensitive: standard
-  benchmark: cheap
-  document_draft: standard
-  meeting_summary: standard
-  memory_indexing: standard
-  memory_benchmark: cheap
-  strategy_brief: high
-  strategic_plan: high
-  labebe_product_eval: standard
-  labebe_content_gen: standard
-  llm_research_eval: high
-  llm_research_benchmark: cheap
-
-runtime_task_scores:
-  # claudekimi
-  claudekimi:
-    finbot_risk_veto: 0.95
-    finbot_debate: 0.90
-    finbot_fundamental: 0.90
-    finbot_trade_proposal: 0.85
-    code_reasoning: 0.90
-    strategy_brief: 0.85
-    strategic_plan: 0.85
-    llm_research_eval: 0.90
-    document_draft: 0.75
-    memory_indexing: 0.70
-
-  # minimax
-  minimax:
-    finbot_news: 0.75
-    finbot_technical: 0.70
-    finbot_fundamental: 0.65
-    document_draft: 0.70
-    meeting_summary: 0.70
-    labebe_product_eval: 0.70
-    labebe_content_gen: 0.75
-
-  # gemini_local
-  gemini_local:
-    frontend: 0.85
-    finbot_news: 0.80
-    document_draft: 0.80
-    meeting_summary: 0.85
-    strategy_brief: 0.75
-    labebe_content_gen: 0.80
-
-  # ollama_gpu0
-  ollama_gpu0:
-    memory_indexing: 0.80
-    benchmark: 0.75
-    hr_sensitive: 0.70
-    memory_benchmark: 0.80
-    llm_research_benchmark: 0.75
+    supports_streaming: true
+    supports_files: false
+    supports_shell: false
+    supports_web_fetch: false
+    supports_mcp: false
+    supports_multimodal: false
+    quota_mode: local_resource
+    soft_rpd: 500
+    hard_rpd: 500
+    soft_rpm: 10
+    max_concurrency: 1
+    health_probe: openai_chat_completion
+    health_timeout_ms: 10000
+    circuit_open_after_failures: 2
+    cooldown_seconds: 300
+    strengths:
+      - hr_sensitive_draft
+      - local_memory_indexing
+      - benchmark
+      - private_summary
+    weaknesses:
+      - tools_disabled
+      - slower
+      - requires_homepc_online
