@@ -25,23 +25,19 @@ from typing import Any, Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 try:
-    from .allocator_mvp import (
-        allocate,
-        PrivacyTier,
-        QualityTier,
-        QuotaLedger,
-        RouteRequest,
-    )
     from .tradingagents_adapter import run_tradingagents, save_result
 except ImportError:
-    from allocator_mvp import (
-        allocate,
-        PrivacyTier,
-        QualityTier,
-        QuotaLedger,
-        RouteRequest,
-    )
     from tradingagents_adapter import run_tradingagents, save_result
+
+# Allocator lives in sibling package
+sys.path.insert(0, str(Path(__file__).parent.parent / "runtime_allocator"))
+from allocator_mvp import (
+    allocate,
+    PrivacyTier,
+    QualityTier,
+    QuotaLedger,
+    RouteRequest,
+)
 
 
 VALID_TRADINGAGENTS_PROVIDERS = {"minimax", "claudekimi", "openai"}
