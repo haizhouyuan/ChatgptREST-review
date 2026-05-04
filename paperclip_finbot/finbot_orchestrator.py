@@ -72,6 +72,11 @@ class PaperclipFinbotRequest(BaseModel):
     model_override: Optional[str] = None
     backend_url_override: Optional[str] = None
 
+    # off: skip risk layer entirely
+    # framework: structured risk-control assessment (safe for all providers)
+    # debate: persona-based debate (requires stable deep provider like claudekimi)
+    risk_mode: Literal["off", "framework", "debate"] = "framework"
+
     max_recur_limit: int = 40
     debug: bool = False
     save: bool = True
@@ -114,6 +119,7 @@ class PaperclipFinbotResponse(BaseModel):
 
     markdown_report: str = ""
     artifacts: dict[str, str] = Field(default_factory=dict)
+    quality_flags: list[str] = Field(default_factory=list)
 
     error_class: Optional[str] = None
     error: Optional[str] = None
@@ -161,12 +167,30 @@ def _provider_endpoint(provider: str) -> tuple[str, str, str]:
 def _route_runtime(req: PaperclipFinbotRequest):
     """Route Finbot E2E.
 
-    Current allocator_mvp.py has a quality-gate bug, so this function still calls
-    the allocator for audit but hard-pins E2E to claudekimi unless the caller
-    explicitly overrides the provider.
+    Provider override is checked FIRST to avoid the quota ledger recording
+    the wrong provider. If override is set, we skip the allocator entirely.
+    Otherwise, hard-pin to claudekimi for safety.
     """
     ledger = QuotaLedger()
 
+    reason_codes: list[str] = []
+    fallback_chain: list[str] = []
+
+    # Provider override takes priority — check cooldown before accepting
+    if req.provider_override:
+        provider, model, endpoint = _provider_endpoint(req.provider_override)
+
+        if ledger.is_cooling_down(provider):
+            cooldown_info = ledger.get_cooldown(provider)
+            reason_codes.append(f"provider_override_cooldown={provider}")
+            reason_codes.append(f"cooldown_reason={cooldown_info.get('reason', 'unknown') if cooldown_info else 'unknown'}")
+            # Fall through to allocator as fallback
+        else:
+            ledger.reserve(provider)
+            reason_codes.append(f"provider_override={req.provider_override}")
+            return provider, model, endpoint, reason_codes, fallback_chain
+
+    # Run allocator for audit logging
     route_req = RouteRequest(
         task_class="finbot_trade_proposal",
         privacy_tier_required=PrivacyTier.EXTERNAL_CLOUD,
@@ -180,16 +204,10 @@ def _route_runtime(req: PaperclipFinbotRequest):
     )
 
     decision = allocate(route_req, ledger=ledger)
+    reason_codes.extend(decision.reason_codes)
+    fallback_chain.extend(decision.fallback_chain)
 
-    reason_codes = list(decision.reason_codes)
-    fallback_chain = list(decision.fallback_chain)
-
-    if req.provider_override:
-        provider, model, endpoint = _provider_endpoint(req.provider_override)
-        reason_codes.append(f"provider_override={req.provider_override}")
-        return provider, model, endpoint, reason_codes, fallback_chain
-
-    # Safety override until allocator quality tier is fixed.
+    # Safety override: hard-pin to claudekimi for Finbot E2E
     if decision.provider_id != "claudekimi":
         provider, model, endpoint = _provider_endpoint("claudekimi")
         reason_codes.append(
@@ -226,6 +244,7 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
         max_recur_limit=req.max_recur_limit,
         resolve_pending_returns=False,
         data_mode=req.data_mode,
+        risk_mode=req.risk_mode,
     )
 
     artifacts: dict[str, str] = {}
@@ -281,6 +300,7 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
         generated_at=datetime.now().isoformat(),
         markdown_report=result.markdown_report,
         artifacts=artifacts,
+        quality_flags=result.quality_flags,
         error_class=result.error_class,
         error=result.error,
     )

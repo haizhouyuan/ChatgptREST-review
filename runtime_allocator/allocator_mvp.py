@@ -136,9 +136,80 @@ class QuotaLedger:
         return reservation_id
 
     def can_reserve(self, provider_id: str, rpd_limit: int = 1000, tpm_limit: int = 60) -> bool:
+        if self.is_cooling_down(provider_id):
+            return False
         today = self._today()
         used = self._data.get(today, {}).get(provider_id, {})
         return used.get("rpd", 0) < rpd_limit and used.get("tpm", 0) < tpm_limit
+
+    # ── Cooldown management ──────────────────────────────────────────────────
+
+    def set_cooldown(
+        self,
+        provider_id: str,
+        reason: str,
+        ttl_seconds: int,
+        dimension: str = "provider",
+    ) -> None:
+        """Put a provider into cooldown for ttl_seconds."""
+        now = datetime.now()
+        until = now + timedelta(seconds=ttl_seconds)
+        today = self._today()
+
+        self._data.setdefault(today, {})
+        self._data[today].setdefault("_cooldowns", {})
+        self._data[today]["_cooldowns"][f"{dimension}:{provider_id}"] = {
+            "until": until.isoformat(),
+            "reason": reason,
+            "set_at": now.isoformat(),
+        }
+        self._save()
+
+    def get_cooldown(
+        self,
+        provider_id: str,
+        dimension: str = "provider",
+    ) -> Optional[dict]:
+        """Get cooldown info for a provider, or None if not cooling down."""
+        today = self._today()
+        key = f"{dimension}:{provider_id}"
+        entry = self._data.get(today, {}).get("_cooldowns", {}).get(key)
+        if not entry:
+            return None
+
+        try:
+            until = datetime.fromisoformat(entry["until"])
+        except Exception:
+            return None
+
+        if until <= datetime.now():
+            return None
+
+        return entry
+
+    def is_cooling_down(
+        self,
+        provider_id: str,
+        dimension: str = "provider",
+    ) -> bool:
+        """Check if a provider is currently in cooldown."""
+        return self.get_cooldown(provider_id, dimension=dimension) is not None
+
+
+def cooldown_ttl_for_error(error_class: str | None, error: str | None) -> tuple[str, int] | None:
+    """Classify an error and return (reason, ttl_seconds) for cooldown, or None."""
+    text = f"{error_class or ''} {error or ''}".lower()
+
+    if "429" in text or "rate limit" in text or "too many" in text:
+        return "rate_limit", 3600
+
+    if "connection refused" in text or "connectionerror" in text or "timeout" in text:
+        return "endpoint_unavailable", 900
+
+    if "unauthorized" in text or "invalid api key" in text or "authentication" in text:
+        return "auth_error", 86400
+
+    return None
 
 
 # ── Quality scoring ────────────────────────────────────────────────────────

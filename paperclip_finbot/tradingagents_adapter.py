@@ -14,11 +14,82 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
+
+
+# ── Quality gate constants and helpers ────────────────────────────────────────
+
+THINK_BLOCK_RE = re.compile(r"<think>.*?</think>", re.IGNORECASE | re.DOTALL)
+
+REFUSAL_MARKERS = [
+    "i can't",
+    "i cannot",
+    "i'm not a financial advisor",
+    "not a financial advisor",
+    "i need to step back",
+    "我无法满足",
+    "我不是持证金融顾问",
+    "不能提供投资建议",
+    "无法继续",
+    "prompt injection",
+]
+
+VALID_DECISIONS = {
+    "BUY",
+    "SELL",
+    "HOLD",
+    "NO_TRADE_DATA_UNAVAILABLE",
+    "HUMAN_REVIEW_REQUIRED",
+}
+
+
+def strip_think_blocks(text: str | None) -> str:
+    """Remove <think>...</think> draft blocks from LLM output."""
+    if not text:
+        return ""
+    return THINK_BLOCK_RE.sub("", text).strip()
+
+
+def has_think_block(text: str | None) -> bool:
+    """Check if text contains <think> blocks."""
+    return bool(text and THINK_BLOCK_RE.search(text))
+
+
+def contains_refusal(text: str | None) -> bool:
+    """Detect LLM refusal patterns in output."""
+    if not text:
+        return False
+    lowered = text.lower()
+    return any(marker in lowered for marker in REFUSAL_MARKERS)
+
+
+def normalize_decision(raw: str | None) -> tuple[str, list[str]]:
+    """Normalize final trade decision to valid enum. Returns (decision, flags)."""
+    flags: list[str] = []
+    text = (raw or "").strip()
+
+    if contains_refusal(text):
+        return "HOLD / HUMAN_REVIEW_REQUIRED", ["final_decision_refusal"]
+
+    upper = text.upper()
+
+    if "NO_TRADE_DATA_UNAVAILABLE" in upper:
+        return "NO_TRADE_DATA_UNAVAILABLE", flags
+
+    if "HUMAN_REVIEW" in upper:
+        return "HOLD / HUMAN_REVIEW_REQUIRED", flags
+
+    for token in ["BUY", "SELL", "HOLD"]:
+        if token in upper:
+            return token, flags
+
+    flags.append("decision_parse_failed")
+    return "HOLD / HUMAN_REVIEW_REQUIRED", flags
 
 
 @dataclass
@@ -35,6 +106,7 @@ class FinbotResult:
     selected_analysts: Optional[list[str]] = None
     data_mode: str = "live"
     state: Optional[dict] = None
+    quality_flags: list[str] = field(default_factory=list)
     error: Optional[str] = None
     error_class: Optional[str] = None
 
@@ -47,6 +119,7 @@ def _build_config(
     max_recur_limit: int = 40,
     resolve_pending_returns: bool = False,
     data_mode: str = "live",
+    risk_mode: str = "framework",
 ) -> dict:
     """Build TradingAgents config from environment / defaults."""
 
@@ -98,6 +171,7 @@ def _build_config(
 
     config["checkpoint_enabled"] = False
     config["output_language"] = output_language
+    config["risk_mode"] = risk_mode
 
     config["data_vendors"] = {
         "core_stock_apis": "yfinance",
@@ -115,10 +189,15 @@ def _unset_proxy():
         os.environ.pop(var, None)
 
 
-def _render_state_markdown(state, decision: str) -> str:
-    """Render the TradingAgents final state into a stable markdown report."""
+def _render_state_markdown(state, decision: str) -> tuple[str, list[str]]:
+    """Render the TradingAgents final state into a stable markdown report.
+
+    Returns (markdown_text, quality_flags).
+    """
+    quality_flags: list[str] = []
+
     if not isinstance(state, dict):
-        return str(decision)
+        return str(decision), quality_flags
 
     sections = []
 
@@ -135,14 +214,22 @@ def _render_state_markdown(state, decision: str) -> str:
     for key, title in ordered_keys:
         val = state.get(key)
         if isinstance(val, str) and val.strip():
-            sections.append(f"## {title}\n\n{val.strip()}")
+            if has_think_block(val):
+                quality_flags.append(f"chain_of_thought_leak_in_{key}")
+            cleaned = strip_think_blocks(val)
+            if cleaned:
+                sections.append(f"## {title}\n\n{cleaned}")
 
     debate = state.get("investment_debate_state")
     if isinstance(debate, dict):
         for subkey in ["bull_history", "bear_history", "judge_decision"]:
             val = debate.get(subkey)
             if isinstance(val, str) and val.strip():
-                sections.append(f"## Investment Debate: {subkey}\n\n{val.strip()}")
+                if has_think_block(val):
+                    quality_flags.append(f"chain_of_thought_leak_in_debate_{subkey}")
+                cleaned = strip_think_blocks(val)
+                if cleaned:
+                    sections.append(f"## Investment Debate: {subkey}\n\n{cleaned}")
 
     risk = state.get("risk_debate_state")
     if isinstance(risk, dict):
@@ -154,11 +241,17 @@ def _render_state_markdown(state, decision: str) -> str:
         ]:
             val = risk.get(subkey)
             if isinstance(val, str) and val.strip():
-                sections.append(f"## Risk Debate: {subkey}\n\n{val.strip()}")
+                if has_think_block(val):
+                    quality_flags.append(f"chain_of_thought_leak_in_risk_{subkey}")
+                if contains_refusal(val):
+                    quality_flags.append(f"refusal_in_risk_{subkey}")
+                cleaned = strip_think_blocks(val)
+                if cleaned:
+                    sections.append(f"## Risk Debate: {subkey}\n\n{cleaned}")
 
     sections.append(f"## Processed Decision\n\n{decision}")
 
-    return "\n\n".join(sections)
+    return "\n\n".join(sections), quality_flags
 
 
 def run_tradingagents(
@@ -173,6 +266,7 @@ def run_tradingagents(
     max_recur_limit: int = 40,
     resolve_pending_returns: bool = False,
     data_mode: str = "live",
+    risk_mode: str = "framework",
 ) -> FinbotResult:
     """Run the full TradingAgents pipeline for a ticker/date."""
 
@@ -193,6 +287,7 @@ def run_tradingagents(
             max_recur_limit=max_recur_limit,
             resolve_pending_returns=resolve_pending_returns,
             data_mode=data_mode,
+            risk_mode=risk_mode,
         )
 
         if debug:
@@ -211,21 +306,39 @@ def run_tradingagents(
 
         duration = (datetime.now() - start_time).total_seconds()
 
-        markdown_report = _render_state_markdown(state, decision)
+        markdown_report, render_flags = _render_state_markdown(state, decision)
+
+        # Normalize the final decision through quality gates
+        raw_final = state.get("final_trade_decision") if isinstance(state, dict) else str(decision)
+        processed_decision, decision_flags = normalize_decision(raw_final)
+
+        # Check for refusal in the raw decision text
+        if contains_refusal(str(decision)):
+            decision_flags.append("raw_decision_refusal")
+
+        quality_flags = render_flags + decision_flags
+
+        # Determine status based on quality flags
+        status = "completed"
+        if any("refusal" in f for f in quality_flags):
+            status = "human_review_required"
+        elif "decision_parse_failed" in quality_flags:
+            status = "human_review_required"
 
         return FinbotResult(
             ticker=ticker,
             date=date,
-            decision=str(decision),
+            decision=processed_decision,
             markdown_report=markdown_report,
             runtime_provider=provider,
             model_name=config["deep_think_llm"],
             duration_seconds=duration,
-            status="completed",
+            status=status,
             retry_allowed=False,
             selected_analysts=selected_analysts,
             data_mode=data_mode,
             state=state if isinstance(state, dict) else None,
+            quality_flags=quality_flags,
         )
 
     except Exception as e:
@@ -296,6 +409,7 @@ def save_result(result: FinbotResult, output_dir: str = None):
         "duration_seconds": result.duration_seconds,
         "selected_analysts": result.selected_analysts,
         "data_mode": result.data_mode,
+        "quality_flags": result.quality_flags,
         "error": result.error,
         "error_class": result.error_class,
         "generated_at": datetime.now().isoformat(),
@@ -309,8 +423,10 @@ def save_result(result: FinbotResult, output_dir: str = None):
     md_content += f"- Status: {result.status}\n"
     md_content += f"- Analysts: {', '.join(result.selected_analysts or [])}\n"
     md_content += f"- Data mode: {result.data_mode}\n"
-    md_content += f"- Generated: {datetime.now().isoformat()}\n\n"
-    md_content += f"## Decision\n\n{result.decision}\n\n"
+    md_content += f"- Generated: {datetime.now().isoformat()}\n"
+    if result.quality_flags:
+        md_content += f"- Quality flags: {', '.join(result.quality_flags)}\n"
+    md_content += f"\n## Decision\n\n{result.decision}\n\n"
     if result.markdown_report:
         md_content += f"## Full Report\n\n{result.markdown_report}\n"
     if result.error:
