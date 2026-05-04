@@ -125,12 +125,23 @@ def invoke_gemini_cli(
     system_prompt: Optional[str] = None,
     timeout: float = 120.0,
 ) -> InvokeResult:
-    """Invoke Gemini CLI for text generation."""
+    """Invoke Gemini CLI for text generation.
+
+    Uses -p (headless) mode with -o text for clean output.
+    System prompt is prepended to the user prompt since Gemini CLI
+    doesn't have a separate --system-prompt flag.
+    """
     start = time.monotonic()
 
-    cmd = ["gemini", "-p", prompt]
+    # Build the full prompt: system instructions + user content
     if system_prompt:
-        cmd = ["gemini", "-p", f"{system_prompt}\n\n{prompt}"]
+        full_prompt = f"[System Instructions]\n{system_prompt}\n\n[User Request]\n{prompt}"
+    else:
+        full_prompt = prompt
+
+    cmd = ["gemini", "-p", full_prompt, "-o", "text", "--skip-trust"]
+    if model and model != "gemini-2.5-pro":
+        cmd.extend(["-m", model])
 
     try:
         result = subprocess.run(
@@ -143,6 +154,12 @@ def invoke_gemini_cli(
 
         if result.returncode == 0:
             content = result.stdout.strip()
+            # Clean up common Gemini CLI output artifacts
+            if content.startswith("```"):
+                # Remove markdown code fences if present
+                lines = content.split("\n")
+                if lines[0].startswith("```") and lines[-1].strip() == "```":
+                    content = "\n".join(lines[1:-1]).strip()
             return InvokeResult(
                 provider_id="gemini_local",
                 model_name=model,
@@ -247,20 +264,24 @@ def invoke_llm(
         )
 
     if protocol == "gemini_cli":
-        # Flatten messages to a single prompt for CLI
-        prompt_parts = []
+        # Separate system and user messages for Gemini CLI
+        system_parts = []
+        user_parts = []
         for msg in messages:
             role = msg.get("role", "user")
             content = msg.get("content", "")
             if role == "system":
-                prompt_parts.insert(0, content)
+                system_parts.append(content)
             else:
-                prompt_parts.append(content)
-        prompt = "\n\n".join(prompt_parts)
+                user_parts.append(content)
+
+        system_prompt = "\n\n".join(system_parts) if system_parts else None
+        user_prompt = "\n\n".join(user_parts) if user_parts else ""
 
         return invoke_gemini_cli(
-            prompt=prompt,
+            prompt=user_prompt,
             model=resolved_model,
+            system_prompt=system_prompt,
             timeout=timeout,
         )
 

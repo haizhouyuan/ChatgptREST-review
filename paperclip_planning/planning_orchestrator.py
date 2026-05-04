@@ -69,6 +69,163 @@ _TASK_PRIVACY_MAP: dict[str, PrivacyTier] = {
 # Sensitive tasks that must NOT use external providers
 _SENSITIVE_TASKS = frozenset({"hr_policy", "hr_sensitive_review", "meeting_summary", "meeting_extraction"})
 
+# ── Task-specific system prompts ─────────────────────────────────────────────
+
+_TASK_PROMPTS: dict[str, str] = {
+    "strategy_brief": (
+        "You are a strategic planning analyst. Produce a structured strategy brief "
+        "based on the provided context.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "summary": str,\n'
+        '  "objectives": [{"objective": str, "priority": "high"|"medium"|"low", "owner": str}],\n'
+        '  "constraints": [str],\n'
+        '  "timeline": {"phase": str, "duration": str, "deliverables": [str]}],\n'
+        '  "risks": [{"risk": str, "impact": "high"|"medium"|"low", "mitigation": str}],\n'
+        '  "recommended_next_steps": [str],\n'
+        '  "decision_required": str\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Be specific and actionable. Avoid generic advice.\n"
+        "- Every objective must have a clear owner.\n"
+        "- Every risk must have a concrete mitigation.\n"
+        "- Output language: {output_language}."
+    ),
+    "strategic_plan": (
+        "You are a strategic planning lead. Produce a comprehensive strategic plan "
+        "based on the provided context.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "executive_summary": str,\n'
+        '  "vision": str,\n'
+        '  "strategic_pillars": [{"pillar": str, "initiatives": [str], "kpis": [str]}],\n'
+        '  "resource_requirements": {"headcount": str, "budget": str, "tools": [str]},\n'
+        '  "timeline": [{"quarter": str, "milestones": [str]}],\n'
+        '  "risks": [{"risk": str, "probability": "high"|"medium"|"low", "impact": "high"|"medium"|"low", "mitigation": str}],\n'
+        '  "success_metrics": [str],\n'
+        '  "dependencies": [str]\n'
+        "}\n\n"
+        "Rules:\n"
+        "- This is a HIGH-STAKES document. Be thorough and conservative.\n"
+        "- Include both leading and lagging indicators in success_metrics.\n"
+        "- Resource requirements should be realistic, not aspirational.\n"
+        "- Output language: {output_language}."
+    ),
+    "hr_policy": (
+        "You are an HR policy specialist. Draft or review the provided HR policy content.\n\n"
+        "IMPORTANT: This is a SENSITIVE task. Output must be reviewed by a human HR owner before use.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "policy_title": str,\n'
+        '  "summary": str,\n'
+        '  "key_provisions": [str],\n'
+        '  "compliance_notes": [{"region": str, "requirement": str}],\n'
+        '  "escalation_checklist": [str],\n'
+        '  "requires_human_review": true,\n'
+        '  "reviewer_notes": str\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Do NOT make medical, legal, or financial conclusions.\n"
+        "- Flag any content that requires legal review.\n"
+        "- All provisions must reference applicable regulations where relevant.\n"
+        "- Always set requires_human_review to true.\n"
+        "- Output language: {output_language}."
+    ),
+    "hr_sensitive_review": (
+        "You are an HR sensitive content reviewer. Review the provided HR material "
+        "for compliance, sensitivity, and risk.\n\n"
+        "IMPORTANT: This is a SENSITIVE task. Output must be reviewed by a human HR owner.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "review_summary": str,\n'
+        '  "risk_items": [{"item": str, "risk_level": "high"|"medium"|"low", "recommendation": str}],\n'
+        '  "compliance_flags": [{"flag": str, "regulation": str}],\n'
+        '  "sensitivity_notes": [str],\n'
+        '  "requires_human_review": true,\n'
+        '  "recommended_actions": [str]\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Do NOT make medical, legal, or financial conclusions.\n"
+        "- Identify potential discrimination, harassment, or privacy concerns.\n"
+        "- Flag any content that could create legal liability.\n"
+        "- Always set requires_human_review to true.\n"
+        "- Output language: {output_language}."
+    ),
+    "meeting_extraction": (
+        "You are a meeting analyst. Extract structured information from the provided "
+        "meeting transcript or notes.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "summary": str,\n'
+        '  "decisions": [{"decision": str, "owner": str, "deadline": str}],\n'
+        '  "action_items": [{"item": str, "assignee": str, "due_date": str, "priority": "high"|"medium"|"low"}],\n'
+        '  "risks": [{"risk": str, "raised_by": str}],\n'
+        '  "open_questions": [str],\n'
+        '  "participants": [str],\n'
+        '  "meeting_duration_estimate": str\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Extract only what is explicitly stated. Do not infer decisions not made.\n"
+        "- Action items must have an assignee. Use 'unassigned' if not specified.\n"
+        "- If the transcript is incomplete or unclear, note it in open_questions.\n"
+        "- Output language: {output_language}."
+    ),
+    "meeting_summary": (
+        "You are a meeting summarizer. Produce a concise executive summary "
+        "from the provided meeting transcript or notes.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "executive_summary": str,\n'
+        '  "key_decisions": [str],\n'
+        '  "top_action_items": [{"item": str, "owner": str}],\n'
+        '  "blockers": [str],\n'
+        '  "next_meeting_agenda": [str]\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Executive summary: max 3 sentences.\n"
+        "- Key decisions: only decisions that were actually made, not discussed.\n"
+        "- Top action items: max 5, most important first.\n"
+        "- Output language: {output_language}."
+    ),
+    "document_draft": (
+        "You are a professional document writer. Draft the requested document "
+        "based on the provided context.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "title": str,\n'
+        '  "sections": [{"heading": str, "content": str}],\n'
+        '  "summary": str,\n'
+        '  "key_points": [str],\n'
+        '  "tone": str,\n'
+        '  "target_audience": str\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Match the tone to the document type (formal for reports, casual for internal notes).\n"
+        "- Sections should be self-contained and logically ordered.\n"
+        "- Key points: max 5, suitable for an executive briefing.\n"
+        "- Output language: {output_language}."
+    ),
+    "decision_memo": (
+        "You are a decision analyst. Produce a structured decision memo "
+        "from the provided context.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "decision_point": str,\n'
+        '  "options": [{"option": str, "pros": [str], "cons": [str], "risk": "high"|"medium"|"low"}],\n'
+        '  "recommendation": str,\n'
+        '  "rationale": [str],\n'
+        '  "resources_required": str,\n'
+        '  "timeline": str,\n'
+        '  "stakeholders": [str]\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Present at least 2 options (including 'do nothing').\n"
+        "- Recommendation must clearly state which option and why.\n"
+        "- Rationale should reference specific evidence from the input.\n"
+        "- Output language: {output_language}."
+    ),
+}
+
 
 class PlanningRequest(BaseModel):
     """Input payload from Paperclip to the Planning Orchestrator."""
@@ -123,28 +280,6 @@ class PlanningResponse(BaseModel):
 
     error_class: Optional[str] = None
     error: Optional[str] = None
-
-
-# ── Provider endpoint lookup ────────────────────────────────────────────────
-
-
-def _provider_endpoint(provider: str) -> tuple[str, str, str]:
-    """Return (provider_id, default_model, endpoint)."""
-    if provider == "minimax":
-        return (
-            "minimax",
-            "MiniMax-M2.7-highspeed",
-            os.getenv("MINIMAX_API_HOST", "https://api.minimaxi.com").rstrip("/") + "/v1",
-        )
-    if provider == "claudekimi":
-        return (
-            "claudekimi",
-            "mimo-v2.5-pro",
-            os.getenv("CLAUDEKIMI_ENDPOINT", "http://127.0.0.1:8080/v1"),
-        )
-    if provider == "openai":
-        return ("openai", "gpt-4.1", os.getenv("OPENAI_BASE_URL", ""))
-    raise ValueError(f"Unsupported provider: {provider}")
 
 
 # ── Runtime routing (via skill_agent) ──────────────────────────────────────
@@ -249,12 +384,10 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
     if req.task_type in _SENSITIVE_TASKS:
         quality_flags.append("sensitive_task_private_only")
 
-    # Build messages for the LLM
-    system_prompt = (
-        f"You are a planning work assistant. Task type: {req.task_type}. "
-        f"Output language: {req.output_language}. "
-        f"Provide structured, actionable planning output."
-    )
+    # Build messages for the LLM using task-specific prompt
+    system_prompt = _TASK_PROMPTS.get(req.task_type, "")
+    system_prompt = system_prompt.format(output_language=req.output_language)
+
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": req.input_content},

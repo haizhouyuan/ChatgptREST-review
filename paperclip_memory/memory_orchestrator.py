@@ -36,6 +36,107 @@ KNOWN_MEMORY_SYSTEMS = frozenset({
     "supermemory",
 })
 
+# ── Task-specific system prompts ─────────────────────────────────────────────
+
+_TASK_PROMPTS: dict[str, str] = {
+    "system_eval": (
+        "You are a memory systems researcher. Evaluate the specified memory system "
+        "based on the provided context and research literature.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "system_name": str,\n'
+        '  "architecture_summary": str,\n'
+        '  "dimensions": {\n'
+        '    "retrieval_precision": {"score": <float 0-1>, "notes": str},\n'
+        '    "memory_persistence": {"score": <float 0-1>, "notes": str},\n'
+        '    "context_window_utilization": {"score": <float 0-1>, "notes": str},\n'
+        '    "incremental_update_efficiency": {"score": <float 0-1>, "notes": str},\n'
+        '    "multi_hop_reasoning": {"score": <float 0-1>, "notes": str}\n'
+        '  },\n'
+        '  "strengths": [str],\n'
+        '  "weaknesses": [str],\n'
+        '  "best_fit_scenarios": [str],\n'
+        '  "notable_papers": [{"title": str, "relevance": str}],\n'
+        '  "confidence": <float 0-1>\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Score each dimension based on published benchmarks and architectural analysis.\n"
+        "- If data is insufficient for a dimension, set score to null and explain in notes.\n"
+        "- Notable papers: only cite papers you are confident exist. If unsure, omit.\n"
+        "- Confidence: reflect how much evidence you have for your evaluation.\n"
+        "- Output language: {output_language}."
+    ),
+    "benchmark": (
+        "You are a memory systems benchmark analyst. Analyze benchmark results "
+        "and produce a structured report.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "benchmark_name": str,\n'
+        '  "systems_compared": [str],\n'
+        '  "metrics": {\n'
+        '    "avg_precision": <float>,\n'
+        '    "avg_recall": <float>,\n'
+        '    "avg_latency_ms": <float>,\n'
+        '    "case_count": int\n'
+        '  },\n'
+        '  "system_rankings": [{"system": str, "rank": int, "score": float, "notes": str}],\n'
+        '  "statistical_significance": str,\n'
+        '  "recommendations": [str],\n'
+        '  "methodology_notes": str\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Rankings must be based on the provided benchmark data, not assumptions.\n"
+        "- If benchmark data is not provided, state this clearly and set confidence low.\n"
+        "- Statistical significance: note if differences are meaningful or within noise.\n"
+        "- Output language: {output_language}."
+    ),
+    "comparison": (
+        "You are a memory systems comparison analyst. Produce a side-by-side comparison "
+        "of the specified memory systems.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "systems": [str],\n'
+        '  "comparison_matrix": {\n'
+        '    "architecture_pattern": {"<system>": str},\n'
+        '    "memory_organization": {"<system>": str},\n'
+        '    "retrieval_strategy": {"<system>": str},\n'
+        '    "scalability": {"<system>": str},\n'
+        '    "ease_of_integration": {"<system>": str}\n'
+        '  },\n'
+        '  "best_fit_scenarios": {"<system>": [str]},\n'
+        '  "limitations": {"<system>": [str]},\n'
+        '  "overall_recommendation": str,\n'
+        '  "confidence": <float 0-1>\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Compare only the systems listed. Do not add unlisted systems.\n"
+        "- Each cell in the comparison matrix must be specific, not generic.\n"
+        "- Overall recommendation must pick a winner for a stated use case.\n"
+        "- If you lack data on a system, say so explicitly rather than guessing.\n"
+        "- Output language: {output_language}."
+    ),
+    "recommendation": (
+        "You are a memory systems advisor. Produce a recommendation report "
+        "based on the specified context and requirements.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "recommendation_summary": str,\n'
+        '  "systems_evaluated": [str],\n'
+        '  "top_recommendation": {"system": str, "rationale": [str], "confidence": <float 0-1>},\n'
+        '  "runner_up": {"system": str, "rationale": [str]},\n'
+        '  "implementation_roadmap": [{"phase": str, "duration": str, "deliverables": [str]}],\n'
+        '  "risks": [{"risk": str, "mitigation": str}],\n'
+        '  "open_questions": [str]\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Recommendation must be grounded in the evaluation data, not popularity.\n"
+        "- Include both a top pick and a runner-up.\n"
+        "- Implementation roadmap should be realistic for a small team.\n"
+        "- Open questions: list what you'd want to know before finalizing.\n"
+        "- Output language: {output_language}."
+    ),
+}
+
 
 # ── Pydantic models ────────────────────────────────────────────────────────
 
@@ -267,14 +368,14 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
     if unknown:
         reason_codes.append(f"unknown_systems={','.join(unknown)}")
 
-    # Build messages for the LLM
-    system_prompt = (
-        f"You are a memory research lab analyst. Task type: {req.task_type}. "
-        f"Memory systems under evaluation: {', '.join(req.memory_systems)}. "
-        f"Output language: {req.output_language}. "
-        f"Provide structured, evidence-based analysis."
-    )
+    # Build messages for the LLM using task-specific prompt
+    system_prompt = _TASK_PROMPTS.get(req.task_type, "")
+    system_prompt = system_prompt.format(output_language=req.output_language)
+
+    systems_info = f"Memory systems under evaluation: {', '.join(req.memory_systems)}."
     user_content = req.query_context or f"Run {req.task_type} on {', '.join(req.memory_systems)}."
+    user_content = f"{systems_info}\n\n{user_content}"
+
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_content},

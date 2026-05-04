@@ -63,6 +63,111 @@ _TASK_QUALITY_MAP: dict[str, QualityTier] = {
     "evidence_bundle": QualityTier.CRITICAL,
 }
 
+# ── Task-specific system prompts ─────────────────────────────────────────────
+
+_TASK_PROMPTS: dict[str, str] = {
+    "product_review_analysis": (
+        "You are a Labebe product review analyst. Analyze the provided review data "
+        "and produce a structured JSON report.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "sentiment_score": <float -1.0 to 1.0>,\n'
+        '  "top_themes": [{"theme": str, "count": int, "sentiment": str}],\n'
+        '  "complaint_clusters": [{"cluster": str, "severity": "low"|"medium"|"high", "count": int}],\n'
+        '  "competitive_positioning": str,\n'
+        '  "recommendation": str,\n'
+        '  "confidence": <float 0-1>\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Base analysis ONLY on provided review text. Do not fabricate data.\n"
+        "- If review data is insufficient, set confidence below 0.3 and explain in recommendation.\n"
+        "- Do NOT cite Amazon ratings, review counts, or bestseller claims.\n"
+        "- All claims must be traceable to specific review excerpts."
+    ),
+    "dtc_copy": (
+        "You are a DTC (direct-to-consumer) copywriter for Labebe, a premium children's furniture brand. "
+        "Generate marketing copy based on the product information provided.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "headline": str,\n'
+        '  "subhead": str,\n'
+        '  "body_copy": str,\n'
+        '  "cta": str,\n'
+        '  "seo_title": str,\n'
+        '  "seo_description": str,\n'
+        '  "tone_notes": str\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Copy must be warm, playful, and parent-focused. Not corporate.\n"
+        "- Do NOT make health/safety claims unless explicitly supported by input data.\n"
+        "- Do NOT reference Amazon, ratings, reviews, or bestseller status.\n"
+        "- Headline must work as a standalone hero text on a homepage.\n"
+        "- CTA should be action-oriented, not generic ('Shop Now' is acceptable).\n"
+        "- Output language: {output_language}."
+    ),
+    "boss_gallery_card": (
+        "You are a product card designer for Boss Gallery, an internal AI business-outcome demo. "
+        "Generate a structured product gallery card based on the product information provided.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "card_title": str,\n'
+        '  "feature_bullets": [str],\n'
+        '  "price_display": str,\n'
+        '  "trust_badges": [str],\n'
+        '  "image_slots": [{"slot": str, "description": str}],\n'
+        '  "bundle_suggestion": str,\n'
+        '  "one_line_hook": str\n'
+        "}\n\n"
+        "Rules:\n"
+        "- Feature bullets: max 5, each under 10 words.\n"
+        "- Trust badges: only use badges supported by input data (e.g., 'Non-toxic materials').\n"
+        "- Do NOT fabricate certifications, awards, or ratings.\n"
+        "- Image slots should describe what photo is needed, not generate images.\n"
+        "- Output language: {output_language}."
+    ),
+    "commerce_decision": (
+        "You are a commerce decision analyst for Labebe. Analyze the provided product/market data "
+        "and produce a structured commerce decision report.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "decision": "proceed"|"hold"|"reject",\n'
+        '  "confidence": <float 0-1>,\n'
+        '  "pricing_recommendation": {"suggested_range": str, "rationale": str},\n'
+        '  "channel_fit_score": <float 0-1>,\n'
+        '  "channel_fit_notes": str,\n'
+        '  "risk_flags": [{"flag": str, "severity": "low"|"medium"|"high", "mitigation": str}],\n'
+        '  "margin_analysis": {"estimated_margin": str, "notes": str}\n'
+        "}\n\n"
+        "Rules:\n"
+        "- This is a HIGH-STAKES decision. Be conservative with confidence scores.\n"
+        "- If data is insufficient, set confidence below 0.4 and recommend 'hold'.\n"
+        "- Every risk flag must have a concrete mitigation suggestion.\n"
+        "- Do NOT use Amazon sales data, BSR, or review counts for pricing decisions.\n"
+        "- Output language: {output_language}."
+    ),
+    "evidence_bundle": (
+        "You are a claim-safety evidence analyst for Labebe. Assemble an evidence bundle "
+        "from the provided source material.\n\n"
+        "Output format (JSON):\n"
+        "{\n"
+        '  "claims": [{"claim": str, "status": "supported"|"unsupported"|"blocked", "source_ref": str}],\n'
+        '  "sources": [{"id": str, "type": str, "reliability": "high"|"medium"|"low"}],\n'
+        '  "confidence_map": {"<claim>": <float 0-1>},\n'
+        '  "regulatory_flags": [{"flag": str, "region": str, "action": str}],\n'
+        '  "bundle_hash": str,\n'
+        '  "summary": str\n'
+        "}\n\n"
+        "Rules:\n"
+        "- EVERY claim must have a source_ref pointing to a specific source.\n"
+        "- Claims without sources must be marked 'unsupported'.\n"
+        "- Health/safety/medical claims default to 'blocked' unless backed by certified test reports.\n"
+        "- Amazon reviews are NOT reliable evidence for product claims.\n"
+        "- Regulatory flags: flag any claim that could trigger compliance issues in US/EU/CN.\n"
+        "- bundle_hash: generate a short hash of the claim set for deduplication.\n"
+        "- Output language: {output_language}."
+    ),
+}
+
 
 # ── Pydantic models ─────────────────────────────────────────────────────────
 
@@ -352,16 +457,17 @@ def run_from_paperclip(payload: dict[str, Any]) -> dict[str, Any]:
     req = LabebeRequest(**payload)
     request_id = req.request_id or str(uuid.uuid4())
 
-    # Build messages for the LLM
-    system_prompt = (
-        f"You are a Labebe product analysis assistant. Task type: {req.task_type}. "
-        f"Product: {req.product_id or 'unknown'}. "
-        f"Output language: {req.output_language}. "
-        f"Provide structured, actionable product analysis output."
-    )
+    # Build messages for the LLM using task-specific prompt
+    system_prompt = _TASK_PROMPTS.get(req.task_type, "")
+    system_prompt = system_prompt.format(output_language=req.output_language)
+
+    user_content = req.input_content
+    if req.product_id:
+        user_content = f"Product ID: {req.product_id}\n\n{user_content}"
+
     messages = [
         {"role": "system", "content": system_prompt},
-        {"role": "user", "content": req.input_content},
+        {"role": "user", "content": user_content},
     ]
 
     # Execute via skill_agent with fallback
