@@ -409,6 +409,7 @@ def allocate(
     health_store=None,
     policy=None,
     quota_store=None,
+    predictive_scores: dict[str, float] = None,
 ) -> RouteDecision:
     """Route a task to the best available runtime.
 
@@ -532,6 +533,17 @@ def allocate(
     # Candidates are already in policy order, so we use score as tiebreaker
     # but preserve policy ordering as the primary sort
     selected = candidates[0]  # Policy primary wins
+
+    # Predictive routing: if historical scores provided, boost candidates
+    if predictive_scores:
+        best_score = -1.0
+        for c in candidates:
+            score = predictive_scores.get(c.provider_id, 0.5)
+            # Quality is still the dominant factor
+            score += _QUALITY_RANK.get(c.quality_tier, 0) * 0.1
+            if score > best_score:
+                best_score = score
+                selected = c
 
     # For high-stakes tasks, prefer highest quality within candidates
     if req.high_stakes:

@@ -87,6 +87,106 @@ class TestExecute:
         assert "latency_ms" in data
 
 
+class TestPreflight:
+    def test_preflight_read_only_task_allowed(self):
+        response = client.post(
+            "/v1/preflight",
+            json={
+                "task_prompt": "Analyze market data",
+                "agent_slug": "finbot",
+                "task_type": "finbot_fundamental",
+                "model_lane": "high",
+            },
+            headers={"X-API-Key": "dev-key"},
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["status"] == "allowed"
+
+    def test_preflight_model_lane_mismatch_blocked(self):
+        response = client.post(
+            "/v1/preflight",
+            json={
+                "task_prompt": "Analyze market data",
+                "agent_slug": "finbot",
+                "task_type": "finbot_fundamental",
+                "model_lane": "cheap",
+            },
+            headers={"X-API-Key": "dev-key"},
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["status"] == "blocked"
+        assert "model_lane_mismatch" in data["reason_codes"]
+
+
+class TestCloseout:
+    def test_closeout_read_only_no_changes_allowed(self):
+        response = client.post(
+            "/v1/closeout",
+            json={
+                "task_type": "finbot_fundamental",
+                "write_scope": "read_only",
+                "files_changed": [],
+                "files_declared": [],
+                "evidence_spans": [],
+            },
+            headers={"X-API-Key": "dev-key"},
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["status"] == "allowed"
+
+    def test_closeout_read_only_with_changes_blocked(self):
+        response = client.post(
+            "/v1/closeout",
+            json={
+                "task_type": "finbot_fundamental",
+                "write_scope": "read_only",
+                "files_changed": ["report.md"],
+                "files_declared": [],
+                "evidence_spans": [],
+            },
+            headers={"X-API-Key": "dev-key"},
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["status"] == "blocked"
+        assert "read_only_violation" in data["reason_codes"]
+
+
+class TestProviderHealth:
+    def test_provider_health_endpoint(self):
+        response = client.get(
+            "/v1/health/providers",
+            headers={"X-API-Key": "dev-key"},
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert "providers" in data
+
+
+class TestBilling:
+    def test_billing_daily_endpoint(self):
+        response = client.get(
+            "/v1/billing/daily",
+            headers={"X-API-Key": "dev-key"},
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert "total_calls" in data
+        assert "total_cost_usd" in data
+
+    def test_billing_alerts_endpoint(self):
+        response = client.get(
+            "/v1/billing/alerts?daily_budget_usd=100.0",
+            headers={"X-API-Key": "dev-key"},
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert "alert" in data
+
+
 class TestSummary:
     def test_summary_admin_only(self):
         response = client.get(

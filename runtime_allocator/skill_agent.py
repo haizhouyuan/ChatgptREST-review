@@ -347,7 +347,23 @@ def execute_with_fallback(
             can_degrade=can_degrade,
             high_stakes=high_stakes,
         )
-        decision = allocate(route_req, runtimes=runtimes, ledger=ledger, health_store=state_store, quota_store=state_store)
+        # Optional predictive routing
+        predictive_scores = None
+        try:
+            from runtime_allocator.intelligence import PredictiveRouter
+            router = PredictiveRouter(state_store)
+            predictive_scores = router.score_providers(task_class)
+        except Exception:
+            pass
+
+        decision = allocate(
+            route_req,
+            runtimes=runtimes,
+            ledger=ledger,
+            health_store=state_store,
+            quota_store=state_store,
+            predictive_scores=predictive_scores,
+        )
 
         if decision.blocked:
             total_ms = (time.monotonic() - start_total) * 1000

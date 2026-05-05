@@ -2,9 +2,14 @@
 
 Endpoints:
 - POST /v1/execute          — Run a task with fallback routing
+- POST /v1/preflight        — Pre-execution safety check
+- POST /v1/closeout         — Post-execution validation
 - GET  /health              — Service health check
+- GET  /v1/health/providers — Per-provider health status
 - GET  /metrics             — Prometheus metrics
 - GET  /v1/summary          — Runtime state summary (admin)
+- GET  /v1/billing/daily    — Daily cost attribution
+- GET  /v1/billing/alerts   — Budget overage alerts
 
 Environment:
 - PAPERCLIP_API_KEYS        — Comma-separated key:role pairs
@@ -27,6 +32,10 @@ from prometheus_client import CONTENT_TYPE_LATEST, Counter, Histogram, generate_
 from pydantic import BaseModel, Field
 
 from runtime_allocator.auth import require_admin, require_api_key
+from runtime_allocator.closeout_gate import closeout
+from runtime_allocator.contracts import GateStatus, WriteScope
+from runtime_allocator.cost_attribution import CostAttribution
+from runtime_allocator.preflight_gate import preflight
 from runtime_allocator.runtime_state import RuntimeStateStore
 from runtime_allocator.schemas import CommerceDecisionOutput
 from runtime_allocator.skill_agent import execute_with_fallback
@@ -60,6 +69,11 @@ FALLBACK_COUNTER = Counter(
     "Total fallback events",
     ["from_provider", "to_provider"],
 )
+GATE_COUNTER = Counter(
+    "paperclip_gate_checks_total",
+    "Total gate checks",
+    ["gate", "status"],
+)
 
 
 # ── Pydantic request/response models ───────────────────────────────────────
@@ -75,6 +89,7 @@ class ExecuteRequest(BaseModel):
     company_id: str = Field(default="", description="Multi-tenant company id")
     high_stakes: bool = Field(default=False)
     privacy_tier: str = Field(default="external_cloud")
+    write_scope: str = Field(default="read_only", description="read_only | append_only | mutate")
 
 
 class ExecuteResponse(BaseModel):
@@ -86,6 +101,26 @@ class ExecuteResponse(BaseModel):
     requires_human_review: bool = False
     error: str = ""
     latency_ms: float = 0.0
+    preflight_status: str = ""
+    closeout_status: str = ""
+
+
+class PreflightRequest(BaseModel):
+    task_prompt: str
+    agent_slug: str = ""
+    task_type: str
+    model_lane: str = ""
+    write_scope: Optional[str] = None
+
+
+class CloseoutRequest(BaseModel):
+    task_type: str
+    write_scope: str = "read_only"
+    files_changed: list[str] = Field(default_factory=list)
+    files_declared: list[str] = Field(default_factory=list)
+    evidence_spans: list[str] = Field(default_factory=list)
+    memory_deltas: list[dict] = Field(default_factory=list)
+    review_state: str = "pending"
 
 
 class HealthResponse(BaseModel):
@@ -98,6 +133,7 @@ class HealthResponse(BaseModel):
 
 _start_time: float = 0.0
 _store: Optional[RuntimeStateStore] = None
+_cost_attribution: Optional[CostAttribution] = None
 
 
 def _get_store() -> RuntimeStateStore:
@@ -105,6 +141,13 @@ def _get_store() -> RuntimeStateStore:
     if _store is None:
         _store = RuntimeStateStore()
     return _store
+
+
+def _get_cost_attribution() -> CostAttribution:
+    global _cost_attribution
+    if _cost_attribution is None:
+        _cost_attribution = CostAttribution(_get_store())
+    return _cost_attribution
 
 
 @asynccontextmanager
@@ -165,6 +208,28 @@ async def execute(
     """Execute a task with provider fallback routing."""
     store = _get_store()
 
+    # ── Preflight gate ──────────────────────────────────────────────────
+    pf = preflight(
+        task_prompt=req.messages[0].get("content", "") if req.messages else "",
+        agent_slug="api_client",
+        task_type=req.task_class,
+        model_lane="",
+        declared_write_scope=WriteScope(req.write_scope) if req.write_scope else None,
+    )
+    GATE_COUNTER.labels(gate="preflight", status=pf.status.value).inc()
+    if pf.status == GateStatus.BLOCKED:
+        logger.warning("preflight_blocked", extra={"task_class": req.task_class, "reasons": pf.reason_codes})
+        return ExecuteResponse(
+            success=False,
+            provider_id="blocked",
+            model_name="",
+            terminal_state="blocked",
+            error=f"Preflight blocked: {pf.detail}",
+            preflight_status=pf.status.value,
+        )
+    if pf.status == GateStatus.HUMAN_REVIEW_REQUIRED:
+        logger.info("preflight_review", extra={"task_class": req.task_class, "reasons": pf.reason_codes})
+
     start = time.time()
     try:
         result = execute_with_fallback(
@@ -195,6 +260,7 @@ async def execute(
             model_name="",
             error=str(exc),
             latency_ms=round(latency * 1000, 2),
+            preflight_status=pf.status.value,
         )
 
     latency = time.time() - start
@@ -210,6 +276,20 @@ async def execute(
         FALLBACK_COUNTER.labels(
             from_provider=result.fallback_from, to_provider=result.provider_id
         ).inc()
+
+    # ── Closeout gate ───────────────────────────────────────────────────
+    co = closeout(
+        task_type=req.task_class,
+        write_scope=WriteScope(req.write_scope),
+        files_changed=[],
+        files_declared=[],
+        evidence_spans=[result.content] if result.content else [],
+        memory_deltas=[],
+        review_state="pending",
+    )
+    GATE_COUNTER.labels(gate="closeout", status=co.status.value).inc()
+    if co.status == GateStatus.BLOCKED:
+        logger.warning("closeout_blocked", extra={"task_class": req.task_class, "reasons": co.reason_codes})
 
     logger.info(
         "execute_complete",
@@ -227,10 +307,48 @@ async def execute(
         model_name=result.model_name or "",
         content=result.content or "",
         terminal_state=result.terminal_state or "",
-        requires_human_review=result.requires_human_review,
+        requires_human_review=result.requires_human_review or (pf.status == GateStatus.HUMAN_REVIEW_REQUIRED),
         error=result.error or "",
         latency_ms=round(latency * 1000, 2),
+        preflight_status=pf.status.value,
+        closeout_status=co.status.value,
     )
+
+
+@app.post("/v1/preflight")
+async def preflight_check(
+    req: PreflightRequest,
+    role: str = Depends(require_api_key),
+):
+    """Standalone preflight safety check."""
+    result = preflight(
+        task_prompt=req.task_prompt,
+        agent_slug=req.agent_slug,
+        task_type=req.task_type,
+        model_lane=req.model_lane,
+        declared_write_scope=WriteScope(req.write_scope) if req.write_scope else None,
+    )
+    GATE_COUNTER.labels(gate="preflight", status=result.status.value).inc()
+    return result.model_dump()
+
+
+@app.post("/v1/closeout")
+async def closeout_check(
+    req: CloseoutRequest,
+    role: str = Depends(require_api_key),
+):
+    """Standalone closeout validation."""
+    result = closeout(
+        task_type=req.task_type,
+        write_scope=WriteScope(req.write_scope),
+        files_changed=req.files_changed,
+        files_declared=req.files_declared,
+        evidence_spans=req.evidence_spans,
+        memory_deltas=req.memory_deltas,
+        review_state=req.review_state,
+    )
+    GATE_COUNTER.labels(gate="closeout", status=result.status.value).inc()
+    return result.model_dump()
 
 
 @app.get("/health", response_model=HealthResponse)
@@ -238,6 +356,26 @@ async def health():
     """Service health check."""
     uptime = time.time() - _start_time if _start_time else 0.0
     return HealthResponse(status="healthy", uptime_seconds=round(uptime, 2))
+
+
+@app.get("/v1/health/providers")
+async def provider_health(role: str = Depends(require_api_key)):
+    """Per-provider health status."""
+    store = _get_store()
+    with store._connect() as conn:
+        rows = conn.execute("SELECT * FROM runtime_health").fetchall()
+    return {
+        "providers": [
+            {
+                "provider_id": r["provider_id"],
+                "status": r["status"],
+                "last_probe_at": r["last_probe_at"],
+                "consecutive_failures": r["consecutive_failures"],
+                "circuit_open_until": r["circuit_open_until"],
+            }
+            for r in rows
+        ]
+    }
 
 
 @app.get("/metrics")
@@ -254,6 +392,31 @@ async def summary(role: str = Depends(require_admin)):
     """Runtime state summary (admin only)."""
     store = _get_store()
     return store.summary()
+
+
+@app.get("/v1/billing/daily")
+async def billing_daily(
+    company_id: str = "",
+    date: Optional[str] = None,
+    role: str = Depends(require_api_key),
+):
+    """Daily cost attribution per provider."""
+    ca = _get_cost_attribution()
+    return ca.daily_summary(company_id=company_id, date=date)
+
+
+@app.get("/v1/billing/alerts")
+async def billing_alerts(
+    company_id: str = "",
+    daily_budget_usd: float = 10.0,
+    role: str = Depends(require_api_key),
+):
+    """Check if daily budget is exceeded."""
+    ca = _get_cost_attribution()
+    alert = ca.alert_if_over_budget(company_id=company_id, daily_budget_usd=daily_budget_usd)
+    if alert:
+        return alert
+    return {"alert": None, "company_id": company_id, "daily_budget_usd": daily_budget_usd}
 
 
 # ── CLI entry point ────────────────────────────────────────────────────────
