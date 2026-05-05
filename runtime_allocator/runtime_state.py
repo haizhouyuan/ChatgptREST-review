@@ -31,19 +31,33 @@ _DEFAULT_DB_PATH = Path(os.path.expanduser("~/.paperclip/runtime_state.sqlite"))
 
 
 class RuntimeStateStore:
-    """SQLite-backed runtime state: quota, health, events, locks."""
+    """SQLite-backed runtime state: quota, health, events, locks.
+
+    Each public method opens its own sqlite3 connection for thread safety.
+    SQLite WAL mode handles concurrent reads; writes serialize naturally.
+    """
 
     def __init__(self, db_path: Optional[Path] = None):
         self.db_path = Path(db_path) if db_path else _DEFAULT_DB_PATH
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
-        self._conn = sqlite3.connect(str(self.db_path), check_same_thread=False)
-        self._conn.row_factory = sqlite3.Row
-        self._conn.execute("PRAGMA journal_mode=WAL")
-        self._conn.execute("PRAGMA foreign_keys=ON")
-        self._init_schema()
+        # Initialize schema once via a temporary connection
+        with self._connect() as conn:
+            self._init_schema(conn)
 
-    def _init_schema(self):
-        self._conn.executescript("""
+    @contextmanager
+    def _connect(self):
+        """Yield a fresh sqlite3 connection with WAL and foreign keys enabled."""
+        conn = sqlite3.connect(str(self.db_path), check_same_thread=False)
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA foreign_keys=ON")
+        try:
+            yield conn
+        finally:
+            conn.close()
+
+    def _init_schema(self, conn: sqlite3.Connection):
+        conn.executescript("""
             CREATE TABLE IF NOT EXISTS runtime_budgets (
                 provider_id TEXT PRIMARY KEY,
                 quota_mode TEXT NOT NULL DEFAULT 'opaque_plan',
@@ -134,13 +148,10 @@ class RuntimeStateStore:
             "ALTER TABLE runtime_reservations ADD COLUMN actual_output_tokens INTEGER",
         ):
             try:
-                self._conn.execute(stmt)
+                conn.execute(stmt)
             except sqlite3.OperationalError:
                 pass
-        self._conn.commit()
-
-    def close(self):
-        self._conn.close()
+        conn.commit()
 
     # ── Quota: budgets ────────────────────────────────────────────────────
 
@@ -158,18 +169,20 @@ class RuntimeStateStore:
         cols = ", ".join(defaults.keys())
         placeholders = ", ".join(["?"] * len(defaults))
         updates = ", ".join(f"{k}=excluded.{k}" for k in defaults if k != "provider_id")
-        self._conn.execute(
-            f"INSERT INTO runtime_budgets (provider_id, {cols}) VALUES (?, {placeholders}) "
-            f"ON CONFLICT(provider_id) DO UPDATE SET {updates}",
-            [provider_id] + list(defaults.values()),
-        )
-        self._conn.commit()
+        with self._connect() as conn:
+            conn.execute(
+                f"INSERT INTO runtime_budgets (provider_id, {cols}) VALUES (?, {placeholders}) "
+                f"ON CONFLICT(provider_id) DO UPDATE SET {updates}",
+                [provider_id] + list(defaults.values()),
+            )
+            conn.commit()
 
     def get_budget(self, provider_id: str) -> Optional[dict]:
-        row = self._conn.execute(
-            "SELECT * FROM runtime_budgets WHERE provider_id=?", (provider_id,)
-        ).fetchone()
-        return dict(row) if row else None
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM runtime_budgets WHERE provider_id=?", (provider_id,)
+            ).fetchone()
+            return dict(row) if row else None
 
     # ── Quota: reservations ───────────────────────────────────────────────
 
@@ -191,17 +204,65 @@ class RuntimeStateStore:
         reservation_id = str(uuid.uuid4())[:12]
         now = datetime.now()
         expires = now + timedelta(seconds=ttl_seconds)
-        self._conn.execute(
-            """INSERT INTO runtime_reservations
-               (reservation_id, provider_id, request_id, attempt_id, task_class,
-                estimated_input_tokens, estimated_output_tokens,
-                status, created_at, expires_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, 'reserved', ?, ?)""",
-            (reservation_id, provider_id, request_id, attempt_id, task_class,
-             estimated_input_tokens, estimated_output_tokens,
-             now.isoformat(), expires.isoformat()),
-        )
-        self._conn.commit()
+        with self._connect() as conn:
+            conn.execute(
+                """INSERT INTO runtime_reservations
+                   (reservation_id, provider_id, request_id, attempt_id, task_class,
+                    estimated_input_tokens, estimated_output_tokens,
+                    status, created_at, expires_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, 'reserved', ?, ?)""",
+                (reservation_id, provider_id, request_id, attempt_id, task_class,
+                 estimated_input_tokens, estimated_output_tokens,
+                 now.isoformat(), expires.isoformat()),
+            )
+            conn.commit()
+        return reservation_id
+
+    def try_reserve(
+        self,
+        provider_id: str,
+        request_id: str,
+        task_class: str,
+        attempt_id: Optional[str] = None,
+        estimated_input_tokens: int = 0,
+        estimated_output_tokens: int = 0,
+        ttl_seconds: int = 300,
+    ) -> Optional[str]:
+        """Atomically check budget and reserve. Returns reservation_id or None if over budget.
+
+        This eliminates the check-then-act race between can_reserve() and reserve().
+        """
+        reservation_id = str(uuid.uuid4())[:12]
+        now = datetime.now()
+        expires = now + timedelta(seconds=ttl_seconds)
+        with self._connect() as conn:
+            # Budget check inside the same transaction
+            budget = conn.execute(
+                "SELECT * FROM runtime_budgets WHERE provider_id=?", (provider_id,)
+            ).fetchone()
+            if budget:
+                hard_rpd = budget["hard_rpd"] if "hard_rpd" in budget.keys() else 1000
+                today = now.strftime("%Y-%m-%d")
+                used = conn.execute(
+                    """SELECT COUNT(*) FROM runtime_reservations
+                       WHERE provider_id=? AND status IN ('reserved', 'committed')
+                         AND created_at LIKE ?""",
+                    (provider_id, f"{today}%"),
+                ).fetchone()[0]
+                if used >= hard_rpd:
+                    return None
+
+            conn.execute(
+                """INSERT INTO runtime_reservations
+                   (reservation_id, provider_id, request_id, attempt_id, task_class,
+                    estimated_input_tokens, estimated_output_tokens,
+                    status, created_at, expires_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, 'reserved', ?, ?)""",
+                (reservation_id, provider_id, request_id, attempt_id, task_class,
+                 estimated_input_tokens, estimated_output_tokens,
+                 now.isoformat(), expires.isoformat()),
+            )
+            conn.commit()
         return reservation_id
 
     def commit(
@@ -210,38 +271,37 @@ class RuntimeStateStore:
         actual_input_tokens: int = 0,
         actual_output_tokens: int = 0,
     ):
-        """Mark reservation as committed (successful use).
-
-        Stores actual_input_tokens/actual_output_tokens separately from
-        reserved_units. reserved_units stays at 1 (per-call counter).
-        """
+        """Mark reservation as committed (successful use)."""
         now = datetime.now().isoformat()
-        self._conn.execute(
-            """UPDATE runtime_reservations
-               SET status='committed', committed_at=?,
-                   actual_input_tokens=?, actual_output_tokens=?
-               WHERE reservation_id=?""",
-            (now, actual_input_tokens, actual_output_tokens, reservation_id),
-        )
-        self._conn.commit()
+        with self._connect() as conn:
+            conn.execute(
+                """UPDATE runtime_reservations
+                   SET status='committed', committed_at=?,
+                       actual_input_tokens=?, actual_output_tokens=?
+                   WHERE reservation_id=?""",
+                (now, actual_input_tokens, actual_output_tokens, reservation_id),
+            )
+            conn.commit()
 
     def refund(self, reservation_id: str, reason: str = ""):
         """Mark reservation as refunded (failed, quota returned)."""
-        self._conn.execute(
-            "UPDATE runtime_reservations SET status='refunded' WHERE reservation_id=?",
-            (reservation_id,),
-        )
-        self._conn.commit()
+        with self._connect() as conn:
+            conn.execute(
+                "UPDATE runtime_reservations SET status='refunded' WHERE reservation_id=?",
+                (reservation_id,),
+            )
+            conn.commit()
 
     def count_today(self, provider_id: str, status: str = "committed") -> int:
         """Count reservations today for a provider with a specific status."""
         today = datetime.now().strftime("%Y-%m-%d")
-        row = self._conn.execute(
-            """SELECT COUNT(*) FROM runtime_reservations
-               WHERE provider_id=? AND status=? AND created_at LIKE ?""",
-            (provider_id, status, f"{today}%"),
-        ).fetchone()
-        return row[0] if row else 0
+        with self._connect() as conn:
+            row = conn.execute(
+                """SELECT COUNT(*) FROM runtime_reservations
+                   WHERE provider_id=? AND status=? AND created_at LIKE ?""",
+                (provider_id, status, f"{today}%"),
+            ).fetchone()
+            return row[0] if row else 0
 
     def count_today_units(self, provider_id: str) -> int:
         """Count units consumed today (reserved + committed) for budget gating.
@@ -249,17 +309,17 @@ class RuntimeStateStore:
         Excludes refunded/expired so 401/429 failures don't count against quota.
         """
         today = datetime.now().strftime("%Y-%m-%d")
-        row = self._conn.execute(
-            """SELECT COUNT(*) FROM runtime_reservations
-               WHERE provider_id=? AND status IN ('reserved', 'committed')
-                 AND created_at LIKE ?""",
-            (provider_id, f"{today}%"),
-        ).fetchone()
-        return row[0] if row else 0
+        with self._connect() as conn:
+            row = conn.execute(
+                """SELECT COUNT(*) FROM runtime_reservations
+                   WHERE provider_id=? AND status IN ('reserved', 'committed')
+                     AND created_at LIKE ?""",
+                (provider_id, f"{today}%"),
+            ).fetchone()
+            return row[0] if row else 0
 
     def can_reserve(self, provider_id: str) -> bool:
         """Check if provider can accept new requests (budget + health)."""
-        # Check health first
         if not self.is_usable(provider_id):
             return False
 
@@ -267,7 +327,6 @@ class RuntimeStateStore:
         if not budget:
             return True  # No budget configured, allow
 
-        # Use reserved+committed for hard budget enforcement
         used_rpd = self.count_today_units(provider_id)
         if used_rpd >= budget.get("hard_rpd", 1000):
             return False
@@ -301,35 +360,37 @@ class RuntimeStateStore:
         if circuit_open_seconds > 0:
             circuit_until = (datetime.now() + timedelta(seconds=circuit_open_seconds)).isoformat()
 
-        self._conn.execute(
-            """INSERT INTO runtime_health
-               (provider_id, status, last_probe_at, last_success_at, last_failure_at,
-                consecutive_failures, circuit_open_until, p50_latency_ms, note)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-               ON CONFLICT(provider_id) DO UPDATE SET
-                 status=excluded.status,
-                 last_probe_at=excluded.last_probe_at,
-                 last_success_at=COALESCE(excluded.last_success_at, runtime_health.last_success_at),
-                 last_failure_at=COALESCE(excluded.last_failure_at, runtime_health.last_failure_at),
-                 consecutive_failures=excluded.consecutive_failures,
-                 circuit_open_until=excluded.circuit_open_until,
-                 p50_latency_ms=COALESCE(excluded.p50_latency_ms, runtime_health.p50_latency_ms),
-                 note=excluded.note""",
-            (
-                provider_id, status, now,
-                now if status == "healthy" else None,
-                now if status not in ("healthy",) else None,
-                consecutive, circuit_until,
-                latency_ms, error,
-            ),
-        )
-        self._conn.commit()
+        with self._connect() as conn:
+            conn.execute(
+                """INSERT INTO runtime_health
+                   (provider_id, status, last_probe_at, last_success_at, last_failure_at,
+                    consecutive_failures, circuit_open_until, p50_latency_ms, note)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                   ON CONFLICT(provider_id) DO UPDATE SET
+                     status=excluded.status,
+                     last_probe_at=excluded.last_probe_at,
+                     last_success_at=COALESCE(excluded.last_success_at, runtime_health.last_success_at),
+                     last_failure_at=COALESCE(excluded.last_failure_at, runtime_health.last_failure_at),
+                     consecutive_failures=excluded.consecutive_failures,
+                     circuit_open_until=excluded.circuit_open_until,
+                     p50_latency_ms=COALESCE(excluded.p50_latency_ms, runtime_health.p50_latency_ms),
+                     note=excluded.note""",
+                (
+                    provider_id, status, now,
+                    now if status == "healthy" else None,
+                    now if status not in ("healthy",) else None,
+                    consecutive, circuit_until,
+                    latency_ms, error,
+                ),
+            )
+            conn.commit()
 
     def get_health(self, provider_id: str) -> Optional[dict]:
-        row = self._conn.execute(
-            "SELECT * FROM runtime_health WHERE provider_id=?", (provider_id,)
-        ).fetchone()
-        return dict(row) if row else None
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM runtime_health WHERE provider_id=?", (provider_id,)
+            ).fetchone()
+            return dict(row) if row else None
 
     def is_usable(self, provider_id: str) -> bool:
         """Check if provider is usable (not in circuit breaker, not down)."""
@@ -394,19 +455,20 @@ class RuntimeStateStore:
         fallback_to: Optional[str] = None,
     ):
         """Log a runtime event (call, failure, fallback)."""
-        self._conn.execute(
-            """INSERT INTO runtime_events
-               (reservation_id, provider_id, task_class, status,
-                error_class, error_code, latency_ms,
-                tokens_in_est, tokens_out_est, tokens_actual,
-                fallback_from, fallback_to, created_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-            (reservation_id, provider_id, task_class, status,
-             error_class, error_code, latency_ms,
-             tokens_in_est, tokens_out_est, tokens_actual,
-             fallback_from, fallback_to, datetime.now().isoformat()),
-        )
-        self._conn.commit()
+        with self._connect() as conn:
+            conn.execute(
+                """INSERT INTO runtime_events
+                   (reservation_id, provider_id, task_class, status,
+                    error_class, error_code, latency_ms,
+                    tokens_in_est, tokens_out_est, tokens_actual,
+                    fallback_from, fallback_to, created_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (reservation_id, provider_id, task_class, status,
+                 error_class, error_code, latency_ms,
+                 tokens_in_est, tokens_out_est, tokens_actual,
+                 fallback_from, fallback_to, datetime.now().isoformat()),
+            )
+            conn.commit()
 
     def get_events(
         self,
@@ -414,16 +476,17 @@ class RuntimeStateStore:
         limit: int = 100,
     ) -> list[dict]:
         """Get recent events, optionally filtered by provider."""
-        if provider_id:
-            rows = self._conn.execute(
-                "SELECT * FROM runtime_events WHERE provider_id=? ORDER BY id DESC LIMIT ?",
-                (provider_id, limit),
-            ).fetchall()
-        else:
-            rows = self._conn.execute(
-                "SELECT * FROM runtime_events ORDER BY id DESC LIMIT ?", (limit,)
-            ).fetchall()
-        return [dict(r) for r in rows]
+        with self._connect() as conn:
+            if provider_id:
+                rows = conn.execute(
+                    "SELECT * FROM runtime_events WHERE provider_id=? ORDER BY id DESC LIMIT ?",
+                    (provider_id, limit),
+                ).fetchall()
+            else:
+                rows = conn.execute(
+                    "SELECT * FROM runtime_events ORDER BY id DESC LIMIT ?", (limit,)
+                ).fetchall()
+            return [dict(r) for r in rows]
 
     # ── Resource locks ────────────────────────────────────────────────────
 
@@ -442,55 +505,58 @@ class RuntimeStateStore:
         now = datetime.now()
         expires = now + timedelta(seconds=ttl_seconds)
 
-        try:
-            self._conn.execute("BEGIN IMMEDIATE")
+        with self._connect() as conn:
+            try:
+                conn.execute("BEGIN IMMEDIATE")
 
-            # Atomic insert: succeeds only if no lock or lock expired
-            self._conn.execute(
-                """INSERT INTO resource_locks
-                   (resource_id, owner_request_id, owner_agent_id, lock_type,
-                    acquired_at, expires_at, heartbeat_at)
-                   VALUES (?, ?, ?, ?, ?, ?, ?)
-                   ON CONFLICT(resource_id) DO UPDATE SET
-                     owner_request_id=excluded.owner_request_id,
-                     owner_agent_id=excluded.owner_agent_id,
-                     lock_type=excluded.lock_type,
-                     acquired_at=excluded.acquired_at,
-                     expires_at=excluded.expires_at,
-                     heartbeat_at=excluded.heartbeat_at
-                   WHERE resource_locks.expires_at < ?""",
-                (resource_id, owner_request_id, owner_agent_id, lock_type,
-                 now.isoformat(), expires.isoformat(), now.isoformat(),
-                 now.isoformat()),
-            )
-            acquired = self._conn.execute("SELECT changes()").fetchone()[0] > 0
-            self._conn.commit()
-            return acquired
-        except Exception:
-            self._conn.execute("ROLLBACK")
-            return False
+                # Atomic insert: succeeds only if no lock or lock expired
+                conn.execute(
+                    """INSERT INTO resource_locks
+                       (resource_id, owner_request_id, owner_agent_id, lock_type,
+                        acquired_at, expires_at, heartbeat_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?)
+                       ON CONFLICT(resource_id) DO UPDATE SET
+                         owner_request_id=excluded.owner_request_id,
+                         owner_agent_id=excluded.owner_agent_id,
+                         lock_type=excluded.lock_type,
+                         acquired_at=excluded.acquired_at,
+                         expires_at=excluded.expires_at,
+                         heartbeat_at=excluded.heartbeat_at
+                       WHERE resource_locks.expires_at < ?""",
+                    (resource_id, owner_request_id, owner_agent_id, lock_type,
+                     now.isoformat(), expires.isoformat(), now.isoformat(),
+                     now.isoformat()),
+                )
+                acquired = conn.execute("SELECT changes()").fetchone()[0] > 0
+                conn.commit()
+                return acquired
+            except Exception:
+                conn.execute("ROLLBACK")
+                return False
 
     def release_lock(self, resource_id: str, owner_request_id: str):
         """Release a lock if owned by this request."""
-        self._conn.execute(
-            """DELETE FROM resource_locks
-               WHERE resource_id=? AND owner_request_id=?""",
-            (resource_id, owner_request_id),
-        )
-        self._conn.commit()
+        with self._connect() as conn:
+            conn.execute(
+                """DELETE FROM resource_locks
+                   WHERE resource_id=? AND owner_request_id=?""",
+                (resource_id, owner_request_id),
+            )
+            conn.commit()
 
     def is_locked(self, resource_id: str) -> bool:
         """Check if a resource is currently locked."""
-        row = self._conn.execute(
-            "SELECT expires_at FROM resource_locks WHERE resource_id=?",
-            (resource_id,),
-        ).fetchone()
-        if not row:
-            return False
-        try:
-            return datetime.fromisoformat(row["expires_at"]) > datetime.now()
-        except Exception:
-            return False
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT expires_at FROM resource_locks WHERE resource_id=?",
+                (resource_id,),
+            ).fetchone()
+            if not row:
+                return False
+            try:
+                return datetime.fromisoformat(row["expires_at"]) > datetime.now()
+            except Exception:
+                return False
 
     # ── Migration from JSON ledger ────────────────────────────────────────
 
@@ -527,21 +593,22 @@ class RuntimeStateStore:
 
     def summary(self) -> dict:
         """Get a summary of all runtime state."""
-        budgets = self._conn.execute("SELECT * FROM runtime_budgets").fetchall()
-        health = self._conn.execute("SELECT * FROM runtime_health").fetchall()
-        locks = self._conn.execute("SELECT * FROM resource_locks").fetchall()
-        today = datetime.now().strftime("%Y-%m-%d")
-        events_today = self._conn.execute(
-            "SELECT COUNT(*) FROM runtime_events WHERE created_at LIKE ?",
-            (f"{today}%",),
-        ).fetchone()[0]
+        with self._connect() as conn:
+            budgets = conn.execute("SELECT * FROM runtime_budgets").fetchall()
+            health = conn.execute("SELECT * FROM runtime_health").fetchall()
+            locks = conn.execute("SELECT * FROM resource_locks").fetchall()
+            today = datetime.now().strftime("%Y-%m-%d")
+            events_today = conn.execute(
+                "SELECT COUNT(*) FROM runtime_events WHERE created_at LIKE ?",
+                (f"{today}%",),
+            ).fetchone()[0]
 
-        return {
-            "budgets": [dict(b) for b in budgets],
-            "health": [dict(h) for h in health],
-            "locks": [dict(l) for l in locks],
-            "events_today": events_today,
-        }
+            return {
+                "budgets": [dict(b) for b in budgets],
+                "health": [dict(h) for h in health],
+                "locks": [dict(l) for l in locks],
+                "events_today": events_today,
+            }
 
 
 # ── Singleton ────────────────────────────────────────────────────────────

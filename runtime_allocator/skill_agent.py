@@ -315,8 +315,8 @@ def execute_with_fallback(
             if state_store and not state_store.is_usable(provider_override):
                 _override_failed_gates.append("health_not_usable")
 
-            # Quota gate (legacy ledger)
-            if not ledger.can_reserve(provider_override):
+            # Quota gate (SQLite store)
+            if state_store and not state_store.can_reserve(provider_override):
                 _override_failed_gates.append("quota_exhausted")
 
         if _override_failed_gates:
@@ -347,7 +347,7 @@ def execute_with_fallback(
             can_degrade=can_degrade,
             high_stakes=high_stakes,
         )
-        decision = allocate(route_req, runtimes=runtimes, ledger=ledger, health_store=state_store)
+        decision = allocate(route_req, runtimes=runtimes, ledger=ledger, health_store=state_store, quota_store=state_store)
 
         if decision.blocked:
             total_ms = (time.monotonic() - start_total) * 1000
@@ -394,10 +394,10 @@ def execute_with_fallback(
             })
             continue
 
-        # SQLite reservation per attempt (separate from legacy ledger.reserve)
+        # SQLite reservation per attempt (atomic try_reserve checks budget)
         attempt_id = f"{request_id}:{attempt_idx}"
         try:
-            reservation_id = state_store.reserve(
+            reservation_id = state_store.try_reserve(
                 provider_id=pid,
                 request_id=request_id,
                 attempt_id=attempt_id,

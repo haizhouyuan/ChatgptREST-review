@@ -408,6 +408,7 @@ def allocate(
     ledger: QuotaLedger = None,
     health_store=None,
     policy=None,
+    quota_store=None,
 ) -> RouteDecision:
     """Route a task to the best available runtime.
 
@@ -417,9 +418,10 @@ def allocate(
     Args:
         req: Routing request
         runtimes: Available runtimes (loaded from YAML if None)
-        ledger: Quota ledger (legacy JSON-backed)
+        ledger: Quota ledger (legacy JSON-backed, used only for cooldowns)
         health_store: RuntimeStateStore for health-aware filtering
         policy: PolicyEntry from policy_store (auto-loaded if None)
+        quota_store: RuntimeStateStore for SQLite-backed quota gating
     """
     try:
         from runtime_allocator.policy_store import get_policy
@@ -430,6 +432,8 @@ def allocate(
         runtimes = _default_runtimes()
     if ledger is None:
         ledger = QuotaLedger()
+    if quota_store is None and health_store is not None:
+        quota_store = health_store
 
     # Load policy for this task class
     if policy is None:
@@ -455,7 +459,7 @@ def allocate(
         rt_by_id = {pid: r for pid, r in rt_by_id.items() if health_store.is_usable(pid)}
 
     # Apply hard filters from policy
-    def _passes_policy_filters(rt: Runtime) -> bool:
+    def _passes_policy_filters(rt: Runtime, min_quality_tier: QualityTier = None) -> bool:
         # Privacy filter (from request)
         if _PRIVACY_RANK[rt.privacy_tier] > _PRIVACY_RANK[req.privacy_tier_required]:
             return False
@@ -470,7 +474,7 @@ def allocate(
         # Quality filter (from request)
         task_required = _TASK_QUALITY.get(req.task_class)
         effective_min = max(
-            _QUALITY_RANK[req.min_quality_tier],
+            _QUALITY_RANK[min_quality_tier or req.min_quality_tier],
             _QUALITY_RANK.get(task_required, 0) if task_required else 0,
         )
         if _QUALITY_RANK[rt.quality_tier] < effective_min:
@@ -488,22 +492,28 @@ def allocate(
         return True
 
     # Build candidate list in policy order (primary first, then fallback)
-    def _build_candidates(provider_ids: list[str]) -> list[Runtime]:
+    def _build_candidates(provider_ids: list[str], min_quality_tier: QualityTier = None) -> list[Runtime]:
         result = []
         for pid in provider_ids:
             rt = rt_by_id.get(pid)
-            if rt and _passes_policy_filters(rt) and ledger.can_reserve(pid):
-                result.append(rt)
+            if not rt or not _passes_policy_filters(rt, min_quality_tier=min_quality_tier):
+                continue
+            # Prefer quota_store (SQLite), fall back to legacy ledger
+            if quota_store is not None:
+                if not quota_store.can_reserve(pid):
+                    continue
+            elif ledger is not None:
+                if not ledger.can_reserve(pid):
+                    continue
+            result.append(rt)
         return result
 
     candidates = _build_candidates(policy.all_candidates)
 
-    if not candidates and policy.can_degrade:
-        # Try with relaxed quality
-        req_backup = req.min_quality_tier
-        req.min_quality_tier = QualityTier.CHEAP
-        candidates = _build_candidates(policy.all_candidates)
-        req.min_quality_tier = req_backup
+    # Degrade only if BOTH policy and request allow it
+    if not candidates and policy.can_degrade and req.can_degrade:
+        # Try with relaxed quality (use local copy, don't mutate req)
+        candidates = _build_candidates(policy.all_candidates, min_quality_tier=QualityTier.CHEAP)
 
     if not candidates:
         # Apply terminal_if_unavailable from policy
