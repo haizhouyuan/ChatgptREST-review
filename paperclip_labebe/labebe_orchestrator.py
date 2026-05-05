@@ -397,13 +397,25 @@ _STUB_DISPATCH = {
 # ── Persistence ─────────────────────────────────────────────────────────────
 
 
+def safe_slug(value: str, max_len: int = 40) -> str:
+    """Sanitize a string for safe use in filenames.
+
+    Strips path separators, limits length, allows only alphanumerics + dash/underscore.
+    """
+    import re
+    safe = re.sub(r"[^\w\-]", "_", value)
+    safe = safe.strip("_.")
+    safe = safe.replace("..", "_")
+    return safe[:max_len]
+
+
 def save_result(resp: LabebeResponse) -> tuple[str, str]:
     """Save Labebe result to JSON + markdown files."""
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    product_tag = resp.product_id or "noprod"
-    base_name = f"{resp.task_type}_{product_tag}_{timestamp}"
+    product_tag = safe_slug(resp.product_id or "noprod")
+    base_name = f"{safe_slug(resp.task_type)}_{product_tag}_{timestamp}"
 
     # JSON
     json_path = REPORT_DIR / f"{base_name}.json"

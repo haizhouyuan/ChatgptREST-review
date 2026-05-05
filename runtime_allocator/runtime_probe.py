@@ -29,18 +29,42 @@ class ProbeResult:
     model_loaded: Optional[str] = None
 
 
-def probe_openai_compatible(endpoint: str, provider_id: str, timeout: float = 5.0) -> ProbeResult:
+def _resolve_env(template: str) -> str:
+    """Resolve ${VAR:default} patterns in endpoint strings."""
+    if "${" not in template:
+        return template
+    import re
+    def _replace(m):
+        var_spec = m.group(1)
+        if ":" in var_spec:
+            var_name, default = var_spec.split(":", 1)
+        else:
+            var_name, default = var_spec, ""
+        return __import__("os").getenv(var_name, default)
+    return re.sub(r"\$\{([^}]+)\}", _replace, template)
+
+
+def probe_openai_compatible(
+    endpoint: str,
+    provider_id: str,
+    timeout: float = 5.0,
+    api_key: Optional[str] = None,
+) -> ProbeResult:
     """Probe an OpenAI-compatible endpoint.
 
     Tries /v1/models first. If 404, falls back to a minimal /v1/chat/completions
     request to check if the server is alive (some proxies don't expose /v1/models).
     """
     start = time.monotonic()
-    base = endpoint.rstrip("/")
+    base = _resolve_env(endpoint).rstrip("/")
+
+    headers = {}
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
 
     # Try /v1/models first
     try:
-        resp = httpx.get(f"{base}/models", timeout=timeout)
+        resp = httpx.get(f"{base}/models", timeout=timeout, headers=headers)
         latency = (time.monotonic() - start) * 1000
 
         if resp.status_code == 200:
@@ -51,6 +75,15 @@ def probe_openai_compatible(endpoint: str, provider_id: str, timeout: float = 5.
                 available=True,
                 latency_ms=latency,
                 model_loaded=models[0] if models else None,
+            )
+        # Auth errors → specific classification
+        if resp.status_code in (401, 403):
+            return ProbeResult(
+                provider_id=provider_id,
+                available=False,
+                latency_ms=latency,
+                error=f"HTTP {resp.status_code}: auth/config error — {resp.text[:200]}",
+                error_class="AuthConfigError",
             )
         # If not 200 but not 404, report the error
         if resp.status_code != 404:
@@ -81,6 +114,7 @@ def probe_openai_compatible(endpoint: str, provider_id: str, timeout: float = 5.
                 "max_tokens": 1,
             },
             timeout=timeout,
+            headers=headers,
         )
         latency = (time.monotonic() - start) * 1000
 
@@ -91,6 +125,14 @@ def probe_openai_compatible(endpoint: str, provider_id: str, timeout: float = 5.
                 available=True,
                 latency_ms=latency,
                 model_loaded="(chat_completion_only)",
+            )
+        if resp.status_code in (401, 403):
+            return ProbeResult(
+                provider_id=provider_id,
+                available=False,
+                latency_ms=latency,
+                error=f"HTTP {resp.status_code}: auth/config error — {resp.text[:200]}",
+                error_class="AuthConfigError",
             )
         return ProbeResult(
             provider_id=provider_id,
@@ -160,12 +202,18 @@ def probe_gemini_cli(timeout: float = 10.0) -> ProbeResult:
         )
 
 
-def probe_by_protocol(endpoint: str, provider_id: str, protocol: str) -> ProbeResult:
+def probe_by_protocol(
+    endpoint: str,
+    provider_id: str,
+    protocol: str,
+    timeout: float = 5.0,
+    api_key: Optional[str] = None,
+) -> ProbeResult:
     """Dispatch probe based on protocol type."""
     if protocol == "openai_compatible":
-        return probe_openai_compatible(endpoint, provider_id)
+        return probe_openai_compatible(endpoint, provider_id, timeout=timeout, api_key=api_key)
     if protocol == "gemini_cli":
-        return probe_gemini_cli()
+        return probe_gemini_cli(timeout=max(timeout, 10.0))
     return ProbeResult(
         provider_id=provider_id,
         available=False,
@@ -189,7 +237,11 @@ def probe_all(profiles: dict | None = None) -> list[ProbeResult]:
             continue
         endpoint = rt.get("endpoint", "")
         protocol = rt.get("protocol", "openai_compatible")
-        results.append(probe_by_protocol(endpoint, pid, protocol))
+        timeout = rt.get("health_timeout_ms", 5000) / 1000.0
+        api_key = rt.get("api_key_env")
+        if api_key:
+            api_key = __import__("os").getenv(api_key, "")
+        results.append(probe_by_protocol(endpoint, pid, protocol, timeout=timeout, api_key=api_key or None))
     return results
 
 
@@ -216,7 +268,10 @@ def probe_all_with_health(
         else:
             # Classify the error
             error_text = (r.error or "").lower()
-            if "404" in error_text:
+            if r.error_class == "AuthConfigError":
+                status = "degraded"
+                circuit_seconds = 0  # Auth errors are immediate fix
+            elif "404" in error_text:
                 status = "circuit_open"
                 circuit_seconds = 600
             elif "timeout" in error_text or "connection" in error_text:

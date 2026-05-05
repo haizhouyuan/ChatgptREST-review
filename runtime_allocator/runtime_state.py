@@ -435,32 +435,40 @@ class RuntimeStateStore:
         lock_type: str = "exclusive",
         ttl_seconds: int = 600,
     ) -> bool:
-        """Try to acquire a resource lock. Returns True if acquired."""
+        """Try to acquire a resource lock. Returns True if acquired.
+
+        Uses atomic INSERT ... ON CONFLICT with rowcount check for correctness.
+        """
         now = datetime.now()
         expires = now + timedelta(seconds=ttl_seconds)
 
-        # Check existing lock
-        existing = self._conn.execute(
-            "SELECT * FROM resource_locks WHERE resource_id=?", (resource_id,)
-        ).fetchone()
+        try:
+            self._conn.execute("BEGIN IMMEDIATE")
 
-        if existing:
-            try:
-                if datetime.fromisoformat(existing["expires_at"]) > now:
-                    return False  # Lock still held
-            except Exception:
-                pass
-
-        self._conn.execute(
-            """INSERT OR REPLACE INTO resource_locks
-               (resource_id, owner_request_id, owner_agent_id, lock_type,
-                acquired_at, expires_at, heartbeat_at)
-               VALUES (?, ?, ?, ?, ?, ?, ?)""",
-            (resource_id, owner_request_id, owner_agent_id, lock_type,
-             now.isoformat(), expires.isoformat(), now.isoformat()),
-        )
-        self._conn.commit()
-        return True
+            # Atomic insert: succeeds only if no lock or lock expired
+            self._conn.execute(
+                """INSERT INTO resource_locks
+                   (resource_id, owner_request_id, owner_agent_id, lock_type,
+                    acquired_at, expires_at, heartbeat_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?)
+                   ON CONFLICT(resource_id) DO UPDATE SET
+                     owner_request_id=excluded.owner_request_id,
+                     owner_agent_id=excluded.owner_agent_id,
+                     lock_type=excluded.lock_type,
+                     acquired_at=excluded.acquired_at,
+                     expires_at=excluded.expires_at,
+                     heartbeat_at=excluded.heartbeat_at
+                   WHERE resource_locks.expires_at < ?""",
+                (resource_id, owner_request_id, owner_agent_id, lock_type,
+                 now.isoformat(), expires.isoformat(), now.isoformat(),
+                 now.isoformat()),
+            )
+            acquired = self._conn.execute("SELECT changes()").fetchone()[0] > 0
+            self._conn.commit()
+            return acquired
+        except Exception:
+            self._conn.execute("ROLLBACK")
+            return False
 
     def release_lock(self, resource_id: str, owner_request_id: str):
         """Release a lock if owned by this request."""

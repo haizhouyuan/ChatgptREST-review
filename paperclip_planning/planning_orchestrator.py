@@ -324,6 +324,15 @@ def _build_execute_params(req: PlanningRequest) -> dict:
 # ── Report persistence ──────────────────────────────────────────────────────
 
 
+def safe_slug(value: str, max_len: int = 40) -> str:
+    """Sanitize a string for safe use in filenames."""
+    import re
+    safe = re.sub(r"[^\w\-]", "_", value)
+    safe = safe.strip("_.")
+    safe = safe.replace("..", "_")
+    return safe[:max_len]
+
+
 def save_result(
     task_type: str,
     result_text: str,
@@ -339,7 +348,7 @@ def save_result(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    base_name = f"{task_type}_{timestamp}"
+    base_name = f"{safe_slug(task_type)}_{timestamp}"
 
     # JSON metadata
     json_path = output_dir / f"{base_name}.json"

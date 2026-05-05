@@ -309,6 +309,15 @@ def run_deterministic_memory_benchmark(
 # ── Save helpers ────────────────────────────────────────────────────────────
 
 
+def _safe_slug(value: str, max_len: int = 30) -> str:
+    """Sanitize a string for safe use in filenames."""
+    import re
+    safe = re.sub(r"[^\w\-]", "_", value)
+    safe = safe.strip("_.")
+    safe = safe.replace("..", "_")
+    return safe[:max_len]
+
+
 def _save_report(
     req: MemoryResearchRequest,
     result_text: str,
@@ -322,8 +331,8 @@ def _save_report(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    systems_tag = "_".join(req.memory_systems[:3])  # cap filename length
-    base_name = f"{req.task_type}_{systems_tag}_{timestamp}"
+    systems_tag = "_".join(_safe_slug(s) for s in req.memory_systems[:3])
+    base_name = f"{_safe_slug(req.task_type)}_{systems_tag}_{timestamp}"
 
     # JSON
     json_path = output_dir / f"{base_name}.json"

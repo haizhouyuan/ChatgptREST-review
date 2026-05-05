@@ -180,7 +180,8 @@ class ModelDownloader:
         Args:
             model_id: Model ID from MODEL_REGISTRY
             force: Re-download even if already exists
-            token: HuggingFace API token (for gated models)
+            token: HuggingFace API token (for gated models).
+                If None, reads from HF_TOKEN env var (preferred).
 
         Returns:
             DownloadResult with success status and path.
@@ -212,45 +213,67 @@ class ModelDownloader:
         if not ok and info["gpu_required"]:
             print(f"Warning: {msg}. Model may not run on this machine.", file=sys.stderr)
 
-        # Download using huggingface-cli
+        # Download using huggingface-cli to a temp dir, then atomic rename
         print(f"Downloading {model_id} from {info['repo']}...")
         print(f"  Size: ~{info['size_gb']}GB")
         print(f"  Destination: {model_path}")
 
-        cmd = [
-            "huggingface-cli", "download",
-            info["repo"],
-            "--local-dir", str(model_path),
-        ]
-        if token:
-            cmd.extend(["--token", token])
+        # Token: prefer env over parameter (parameter is legacy)
+        resolved_token = token or os.getenv("HF_TOKEN", "")
 
+        import tempfile
+        temp_dir = Path(tempfile.mkdtemp(prefix=f"hf_download_{model_id}_", dir=str(self.model_dir)))
         try:
+            cmd = [
+                "huggingface-cli", "download",
+                info["repo"],
+                "--local-dir", str(temp_dir),
+            ]
+            if resolved_token:
+                cmd.extend(["--token", resolved_token])
+
             result = subprocess.run(cmd, capture_output=True, text=True, timeout=3600)
-            if result.returncode == 0:
+            if result.returncode != 0:
+                shutil.rmtree(temp_dir, ignore_errors=True)
                 return DownloadResult(
                     model_id=model_id,
-                    success=True,
-                    path=str(model_path),
+                    success=False,
+                    error=f"Download failed: {result.stderr[:500]}",
                 )
+
+            # Atomic move: temp_dir -> final_dir
+            if model_path.exists():
+                if force:
+                    shutil.rmtree(model_path)
+                else:
+                    shutil.rmtree(temp_dir, ignore_errors=True)
+                    return DownloadResult(
+                        model_id=model_id,
+                        success=True,
+                        path=str(model_path),
+                    )
+            temp_dir.rename(model_path)
             return DownloadResult(
                 model_id=model_id,
-                success=False,
-                error=f"Download failed: {result.stderr[:500]}",
+                success=True,
+                path=str(model_path),
             )
         except subprocess.TimeoutExpired:
+            shutil.rmtree(temp_dir, ignore_errors=True)
             return DownloadResult(
                 model_id=model_id,
                 success=False,
                 error="Download timed out (1 hour limit)",
             )
         except FileNotFoundError:
+            shutil.rmtree(temp_dir, ignore_errors=True)
             return DownloadResult(
                 model_id=model_id,
                 success=False,
                 error="huggingface-cli not found. Install with: pip install huggingface_hub",
             )
         except Exception as e:
+            shutil.rmtree(temp_dir, ignore_errors=True)
             return DownloadResult(
                 model_id=model_id,
                 success=False,
@@ -258,8 +281,19 @@ class ModelDownloader:
             )
 
     def delete(self, model_id: str) -> bool:
-        """Delete a downloaded model."""
-        model_path = self.model_dir / model_id
+        """Delete a downloaded model.
+
+        Security: model_id must be in registry. Path is resolved and
+        checked to be under model_dir to prevent path traversal.
+        """
+        if model_id not in MODEL_REGISTRY:
+            return False
+        model_path = (self.model_dir / model_id).resolve()
+        # Path containment check
+        try:
+            model_path.relative_to(self.model_dir.resolve())
+        except ValueError:
+            return False
         if model_path.exists():
             shutil.rmtree(model_path)
             return True

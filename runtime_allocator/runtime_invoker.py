@@ -139,13 +139,15 @@ def invoke_gemini_cli(
     else:
         full_prompt = prompt
 
-    cmd = ["gemini", "-p", full_prompt, "-o", "text", "--skip-trust"]
+    # Pass prompt via stdin to avoid process-list exposure of sensitive text.
+    cmd = ["gemini", "-p", "-", "-o", "text", "--skip-trust"]
     if model and model != "gemini-2.5-pro":
         cmd.extend(["-m", model])
 
     try:
         result = subprocess.run(
             cmd,
+            input=full_prompt,
             capture_output=True,
             text=True,
             timeout=timeout,
