@@ -158,6 +158,26 @@ def _quota_disposition(error_class: Optional[str], error: Optional[str]) -> str:
 
 # ── Core execution ───────────────────────────────────────────────────────────
 
+def _try_validate_schema(
+    raw_content: str,
+    schema_model,
+) -> tuple[bool, Any, Optional[str]]:
+    """Try to parse and validate raw JSON content against a Pydantic model.
+
+    Returns (ok, parsed_object, error_message).
+    """
+    import json
+    try:
+        data = json.loads(raw_content)
+    except json.JSONDecodeError as e:
+        return False, None, f"JSON parse error: {e}"
+    try:
+        obj = schema_model.model_validate(data)
+        return True, obj, None
+    except Exception as e:
+        return False, None, f"Schema validation error: {e}"
+
+
 def execute_with_fallback(
     task_class: str,
     messages: list[dict],
@@ -179,6 +199,7 @@ def execute_with_fallback(
     profiles: Optional[dict] = None,
     ledger: Optional[QuotaLedger] = None,
     state_store: Optional[RuntimeStateStore] = None,
+    schema_model=None,
 ) -> SkillResult:
     """Execute an LLM call with automatic routing, fallback, and cooldown.
 
@@ -428,7 +449,58 @@ def execute_with_fallback(
         attempts.append(attempt_record)
 
         if not result.error:
-            # Update health: success
+            # ── Schema validation (B3) ──────────────────────────────────
+            validated_obj = None
+            schema_retry_done = False
+            if schema_model is not None:
+                ok, validated_obj, schema_err = _try_validate_schema(
+                    result.content, schema_model
+                )
+                if not ok:
+                    reason_codes.append(f"schema_invalid:{pid}:{schema_err[:120]}")
+                    # Retry once with lower temperature
+                    if not schema_retry_done:
+                        schema_retry_done = True
+                        retry_result = invoke_llm(
+                            provider_id=pid,
+                            messages=messages,
+                            model=mdl,
+                            profiles=profiles,
+                            temperature=max(temperature - 0.3, 0.0),
+                            max_tokens=max_tokens,
+                            response_format=response_format,
+                            timeout=timeout,
+                        )
+                        if not retry_result.error:
+                            ok, validated_obj, schema_err = _try_validate_schema(
+                                retry_result.content, schema_model
+                            )
+                            if ok:
+                                result = retry_result
+                                reason_codes.append("schema_retry_success")
+                            else:
+                                reason_codes.append(f"schema_retry_failed:{schema_err[:120]}")
+                                # Fall through to next provider (treat as failure)
+                                result.error = f"schema_validation_failed: {schema_err[:200]}"
+                                result.error_class = "SchemaValidationError"
+                                # Commit reservation as attempt (we used quota)
+                                if reservation_id is not None:
+                                    state_store.commit(reservation_id, 0, 0)
+                                # Update health: degraded but not circuit open
+                                state_store.update_health(pid, "degraded", latency_ms=int(result.latency_ms))
+                                state_store.log_event(
+                                    provider_id=pid, task_class=task_class,
+                                    status="schema_validation_failed",
+                                    error_class="SchemaValidationError",
+                                    error_code=schema_err[:200],
+                                    latency_ms=int(result.latency_ms),
+                                    tokens_in_est=input_tokens_est,
+                                    tokens_out_est=output_tokens_est,
+                                )
+                                last_error = result
+                                continue
+
+            # ── Success path ─────────────────────────────────────────────
             state_store.update_health(pid, "healthy", latency_ms=int(result.latency_ms))
             state_store.log_event(
                 provider_id=pid,
@@ -456,6 +528,7 @@ def execute_with_fallback(
                 success=True,
                 terminal_state=success_terminal,
                 requires_human_review=decision_requires_review,
+                validated_output=validated_obj,
             )
 
         # On failure: update health, set cooldown, log event, try next
