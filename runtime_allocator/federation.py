@@ -1,6 +1,6 @@
 """P9: Federation & Edge — cross-region and edge inference support.
 
-Provides client stubs for federated inference and edge node registration.
+Provides client for federated inference and edge node registration.
 """
 
 from __future__ import annotations
@@ -47,15 +47,20 @@ class EdgeRegistry:
 
 
 class FederationClient:
-    """Stub client for cross-region federated inference.
+    """HTTP client for cross-region federated inference.
 
-    Production implementation would use gRPC or HTTP to call remote
-    runtime allocator instances.
+    Forwards task execution requests to remote runtime allocator instances.
     """
 
     def __init__(self, remote_endpoint: str, api_key: str = ""):
-        self.remote_endpoint = remote_endpoint
+        self.remote_endpoint = remote_endpoint.rstrip("/")
         self.api_key = api_key
+
+    def _headers(self) -> dict:
+        headers = {"Content-Type": "application/json"}
+        if self.api_key:
+            headers["X-API-Key"] = self.api_key
+        return headers
 
     def forward_request(
         self,
@@ -66,22 +71,64 @@ class FederationClient:
         """Forward a task execution request to a remote allocator.
 
         Returns a dict with status, content, and metadata.
-        This is a stub — production would make an actual HTTP call.
         """
-        # Stub: return a placeholder response
-        return {
-            "status": "forwarded",
-            "remote_endpoint": self.remote_endpoint,
-            "task_class": task_class,
-            "content": "",
-            "note": "FederationClient stub — implement HTTP transport for production",
-        }
+        try:
+            import httpx
+            payload = {
+                "task_class": task_class,
+                "messages": messages,
+            }
+            resp = httpx.post(
+                f"{self.remote_endpoint}/v1/execute",
+                json=payload,
+                headers=self._headers(),
+                timeout=timeout,
+            )
+            if resp.status_code == 200:
+                data = resp.json()
+                return {
+                    "status": "forwarded",
+                    "remote_endpoint": self.remote_endpoint,
+                    "task_class": task_class,
+                    "content": data.get("content", ""),
+                    "success": data.get("success", False),
+                    "provider_id": data.get("provider_id", ""),
+                    "latency_ms": data.get("latency_ms", 0.0),
+                }
+            return {
+                "status": "error",
+                "remote_endpoint": self.remote_endpoint,
+                "task_class": task_class,
+                "content": "",
+                "error": f"HTTP {resp.status_code}",
+            }
+        except Exception as exc:
+            return {
+                "status": "error",
+                "remote_endpoint": self.remote_endpoint,
+                "task_class": task_class,
+                "content": "",
+                "error": str(exc),
+            }
 
     def health_check(self) -> dict:
         """Check remote allocator health."""
-        # Stub
-        return {
-            "remote_endpoint": self.remote_endpoint,
-            "reachable": False,
-            "note": "FederationClient stub — implement HTTP transport for production",
-        }
+        try:
+            import httpx
+            resp = httpx.get(
+                f"{self.remote_endpoint}/health",
+                headers=self._headers(),
+                timeout=10.0,
+            )
+            return {
+                "remote_endpoint": self.remote_endpoint,
+                "reachable": resp.status_code == 200,
+                "status_code": resp.status_code,
+                "healthy": resp.json().get("status") == "healthy" if resp.status_code == 200 else False,
+            }
+        except Exception as exc:
+            return {
+                "remote_endpoint": self.remote_endpoint,
+                "reachable": False,
+                "error": str(exc),
+            }

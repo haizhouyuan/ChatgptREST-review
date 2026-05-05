@@ -107,13 +107,53 @@ class TestP9Federation:
         reg.deregister("edge-1")
         assert len(reg.list_nodes()) == 0
 
-    def test_federation_client_stub(self):
+    def test_federation_client_forward_success(self, monkeypatch):
+        class FakeResp:
+            status_code = 200
+            def json(self):
+                return {"success": True, "content": "hello", "provider_id": "claudekimi", "latency_ms": 1500}
+
+        def fake_post(url, **kwargs):
+            return FakeResp()
+
+        monkeypatch.setattr("httpx.post", fake_post)
         client = FederationClient("http://remote:8080", api_key="secret")
         resp = client.forward_request("dtc_copy", [{"role": "user", "content": "test"}])
         assert resp["status"] == "forwarded"
-        assert "stub" in resp["note"].lower()
+        assert resp["success"] is True
+        assert resp["content"] == "hello"
 
-    def test_federation_health_stub(self):
+    def test_federation_client_forward_error(self, monkeypatch):
+        def fake_post(url, **kwargs):
+            raise ConnectionError("no route")
+
+        monkeypatch.setattr("httpx.post", fake_post)
+        client = FederationClient("http://remote:8080")
+        resp = client.forward_request("dtc_copy", [{"role": "user", "content": "test"}])
+        assert resp["status"] == "error"
+        assert "no route" in resp["error"]
+
+    def test_federation_health_success(self, monkeypatch):
+        class FakeResp:
+            status_code = 200
+            def json(self):
+                return {"status": "healthy"}
+
+        def fake_get(url, **kwargs):
+            return FakeResp()
+
+        monkeypatch.setattr("httpx.get", fake_get)
+        client = FederationClient("http://remote:8080")
+        health = client.health_check()
+        assert health["reachable"] is True
+        assert health["healthy"] is True
+
+    def test_federation_health_unreachable(self, monkeypatch):
+        def fake_get(url, **kwargs):
+            raise ConnectionError("no route")
+
+        monkeypatch.setattr("httpx.get", fake_get)
         client = FederationClient("http://remote:8080")
         health = client.health_check()
         assert health["reachable"] is False
+        assert "no route" in health["error"]
