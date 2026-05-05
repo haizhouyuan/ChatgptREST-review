@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+import os
+import tempfile
+
 import pytest
 
 from runtime_allocator.allocator_mvp import (
     PrivacyTier,
     QualityTier,
+    QuotaLedger,
     RouteRequest,
     allocate,
 )
 from runtime_allocator.policy_store import get_policy, load_routing_policy
+
+
+@pytest.fixture
+def isolated_ledger():
+    tmp = tempfile.NamedTemporaryFile(suffix=".json", delete=False)
+    tmp.close()
+    yield QuotaLedger(path=tmp.name)
+    os.unlink(tmp.name)
 
 
 class TestPolicyLoad:
@@ -53,7 +65,7 @@ class TestPolicyRouting:
             f"{task_class}: expected primary={expected_primary}, got {policy.primary}"
         )
 
-    def test_unknown_task_class_blocked(self):
+    def test_unknown_task_class_blocked(self, isolated_ledger):
         req = RouteRequest(
             task_class="totally_unknown_task",
             privacy_tier_required=PrivacyTier.EXTERNAL_CLOUD,
@@ -63,12 +75,12 @@ class TestPolicyRouting:
             input_tokens_est=1000,
             output_tokens_est=500,
         )
-        decision = allocate(req)
+        decision = allocate(req, ledger=isolated_ledger)
         assert decision.blocked
         assert decision.terminal_state == "blocked"
         assert "unknown_task_class" in decision.reason_codes
 
-    def test_high_stakes_non_critical_triggers_review(self):
+    def test_high_stakes_non_critical_triggers_review(self, isolated_ledger):
         req = RouteRequest(
             task_class="finbot_fundamental",
             privacy_tier_required=PrivacyTier.EXTERNAL_CLOUD,
@@ -79,7 +91,7 @@ class TestPolicyRouting:
             output_tokens_est=500,
             high_stakes=True,
         )
-        decision = allocate(req)
+        decision = allocate(req, ledger=isolated_ledger)
         # fundamental allows claudekimi (critical) primary → no review needed
         # but if it fell back to minimax (high), review needed
         if decision.provider_id != "claudekimi":
@@ -87,7 +99,7 @@ class TestPolicyRouting:
 
 
 class TestPolicyPrivacyQualityGates:
-    def test_hr_sensitive_blocks_external_providers(self):
+    def test_hr_sensitive_blocks_external_providers(self, isolated_ledger):
         req = RouteRequest(
             task_class="hr_sensitive",
             privacy_tier_required=PrivacyTier.LOCAL,
@@ -97,7 +109,7 @@ class TestPolicyPrivacyQualityGates:
             input_tokens_est=2000,
             output_tokens_est=500,
         )
-        decision = allocate(req)
+        decision = allocate(req, ledger=isolated_ledger)
         # Should route to ollama_gpu0 or block, never minimax/openai
         assert decision.provider_id in ("ollama_gpu0", "blocked")
 

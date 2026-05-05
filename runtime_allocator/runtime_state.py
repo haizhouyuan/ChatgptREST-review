@@ -20,6 +20,7 @@ from __future__ import annotations
 import json
 import os
 import sqlite3
+import threading
 import uuid
 from contextlib import contextmanager
 from datetime import datetime, timedelta
@@ -40,6 +41,7 @@ class RuntimeStateStore:
     def __init__(self, db_path: Optional[Path] = None):
         self.db_path = Path(db_path) if db_path else _DEFAULT_DB_PATH
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
+        self._lock = threading.Lock()
         # Initialize schema once via a temporary connection
         with self._connect() as conn:
             self._init_schema(conn)
@@ -235,34 +237,35 @@ class RuntimeStateStore:
         reservation_id = str(uuid.uuid4())[:12]
         now = datetime.now()
         expires = now + timedelta(seconds=ttl_seconds)
-        with self._connect() as conn:
-            # Budget check inside the same transaction
-            budget = conn.execute(
-                "SELECT * FROM runtime_budgets WHERE provider_id=?", (provider_id,)
-            ).fetchone()
-            if budget:
-                hard_rpd = budget["hard_rpd"] if "hard_rpd" in budget.keys() else 1000
-                today = now.strftime("%Y-%m-%d")
-                used = conn.execute(
-                    """SELECT COUNT(*) FROM runtime_reservations
-                       WHERE provider_id=? AND status IN ('reserved', 'committed')
-                         AND created_at LIKE ?""",
-                    (provider_id, f"{today}%"),
-                ).fetchone()[0]
-                if used >= hard_rpd:
-                    return None
+        with self._lock:
+            with self._connect() as conn:
+                # Budget check inside the same transaction
+                budget = conn.execute(
+                    "SELECT * FROM runtime_budgets WHERE provider_id=?", (provider_id,)
+                ).fetchone()
+                if budget:
+                    hard_rpd = budget["hard_rpd"] if "hard_rpd" in budget.keys() else 1000
+                    today = now.strftime("%Y-%m-%d")
+                    used = conn.execute(
+                        """SELECT COUNT(*) FROM runtime_reservations
+                           WHERE provider_id=? AND status IN ('reserved', 'committed')
+                             AND created_at LIKE ?""",
+                        (provider_id, f"{today}%"),
+                    ).fetchone()[0]
+                    if used >= hard_rpd:
+                        return None
 
-            conn.execute(
-                """INSERT INTO runtime_reservations
-                   (reservation_id, provider_id, request_id, attempt_id, task_class,
-                    estimated_input_tokens, estimated_output_tokens,
-                    status, created_at, expires_at)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, 'reserved', ?, ?)""",
-                (reservation_id, provider_id, request_id, attempt_id, task_class,
-                 estimated_input_tokens, estimated_output_tokens,
-                 now.isoformat(), expires.isoformat()),
-            )
-            conn.commit()
+                conn.execute(
+                    """INSERT INTO runtime_reservations
+                       (reservation_id, provider_id, request_id, attempt_id, task_class,
+                        estimated_input_tokens, estimated_output_tokens,
+                        status, created_at, expires_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, 'reserved', ?, ?)""",
+                    (reservation_id, provider_id, request_id, attempt_id, task_class,
+                     estimated_input_tokens, estimated_output_tokens,
+                     now.isoformat(), expires.isoformat()),
+                )
+                conn.commit()
         return reservation_id
 
     def commit(
