@@ -179,7 +179,32 @@ async def lifespan(app: FastAPI):
     global _start_time
     _start_time = time.time()
     logger.info("service_start", extra={"version": "p4.0"})
+
+    # Start background probe scheduler if interval > 0
+    probe_task = None
+    if settings.probe_interval_seconds > 0:
+        import asyncio
+        from runtime_allocator.probe_scheduler import probe_all
+
+        async def _probe_loop():
+            while True:
+                try:
+                    await asyncio.to_thread(probe_all, _get_store())
+                except Exception as exc:
+                    logger.error("probe_loop_error", extra={"error": str(exc)})
+                await asyncio.sleep(settings.probe_interval_seconds)
+
+        probe_task = asyncio.create_task(_probe_loop())
+        logger.info("probe_scheduler_started", extra={"interval": settings.probe_interval_seconds})
+
     yield
+
+    if probe_task:
+        probe_task.cancel()
+        try:
+            await probe_task
+        except asyncio.CancelledError:
+            pass
     logger.info("service_stop")
 
 
