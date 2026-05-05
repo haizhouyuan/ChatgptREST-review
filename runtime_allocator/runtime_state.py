@@ -62,6 +62,7 @@ class RuntimeStateStore:
         conn.executescript("""
             CREATE TABLE IF NOT EXISTS runtime_budgets (
                 provider_id TEXT PRIMARY KEY,
+                company_id TEXT NOT NULL DEFAULT '',
                 quota_mode TEXT NOT NULL DEFAULT 'opaque_plan',
                 soft_rpd INTEGER DEFAULT 1000,
                 hard_rpd INTEGER DEFAULT 1000,
@@ -76,6 +77,7 @@ class RuntimeStateStore:
 
             CREATE TABLE IF NOT EXISTS runtime_reservations (
                 reservation_id TEXT PRIMARY KEY,
+                company_id TEXT NOT NULL DEFAULT '',
                 provider_id TEXT NOT NULL,
                 request_id TEXT NOT NULL,
                 attempt_id TEXT,
@@ -94,6 +96,7 @@ class RuntimeStateStore:
 
             CREATE TABLE IF NOT EXISTS runtime_events (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
+                company_id TEXT NOT NULL DEFAULT '',
                 reservation_id TEXT,
                 provider_id TEXT,
                 task_class TEXT,
@@ -111,6 +114,7 @@ class RuntimeStateStore:
 
             CREATE TABLE IF NOT EXISTS runtime_health (
                 provider_id TEXT PRIMARY KEY,
+                company_id TEXT NOT NULL DEFAULT '',
                 status TEXT NOT NULL DEFAULT 'unknown',
                 last_probe_at TEXT,
                 last_success_at TEXT,
@@ -124,6 +128,7 @@ class RuntimeStateStore:
 
             CREATE TABLE IF NOT EXISTS resource_locks (
                 resource_id TEXT PRIMARY KEY,
+                company_id TEXT NOT NULL DEFAULT '',
                 owner_request_id TEXT,
                 owner_agent_id TEXT,
                 lock_type TEXT,
@@ -144,11 +149,17 @@ class RuntimeStateStore:
                 ON resource_locks(expires_at);
         """)
         # Backfill columns for older DBs (best-effort; ignore if already exists)
-        for stmt in (
+        backfill_stmts = [
+            "ALTER TABLE runtime_budgets ADD COLUMN company_id TEXT NOT NULL DEFAULT ''",
             "ALTER TABLE runtime_reservations ADD COLUMN attempt_id TEXT",
             "ALTER TABLE runtime_reservations ADD COLUMN actual_input_tokens INTEGER",
             "ALTER TABLE runtime_reservations ADD COLUMN actual_output_tokens INTEGER",
-        ):
+            "ALTER TABLE runtime_reservations ADD COLUMN company_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE runtime_events ADD COLUMN company_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE runtime_health ADD COLUMN company_id TEXT NOT NULL DEFAULT ''",
+            "ALTER TABLE resource_locks ADD COLUMN company_id TEXT NOT NULL DEFAULT ''",
+        ]
+        for stmt in backfill_stmts:
             try:
                 conn.execute(stmt)
             except sqlite3.OperationalError:
