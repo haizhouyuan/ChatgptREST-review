@@ -27,7 +27,6 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 
-
 _DEFAULT_DB_PATH = Path(os.path.expanduser("~/.paperclip/runtime_state.sqlite"))
 
 
