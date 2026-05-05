@@ -52,3 +52,9 @@ class RateLimiter:
         with self._lock:
             self._tokens.pop(key, None)
             self._last_update.pop(key, None)
+
+    def reset_all(self):
+        """Reset rate limits for all client keys."""
+        with self._lock:
+            self._tokens.clear()
+            self._last_update.clear()
