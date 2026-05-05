@@ -324,13 +324,7 @@ def _build_execute_params(req: PlanningRequest) -> dict:
 # ── Report persistence ──────────────────────────────────────────────────────
 
 
-def safe_slug(value: str, max_len: int = 40) -> str:
-    """Sanitize a string for safe use in filenames."""
-    import re
-    safe = re.sub(r"[^\w\-]", "_", value)
-    safe = safe.strip("_.")
-    safe = safe.replace("..", "_")
-    return safe[:max_len]
+from runtime_allocator.security import safe_slug
 
 
 def save_result(

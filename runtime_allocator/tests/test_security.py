@@ -4,9 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from paperclip_labebe.labebe_orchestrator import safe_slug
-from paperclip_planning.planning_orchestrator import safe_slug as planning_safe_slug
-from paperclip_memory.memory_orchestrator import _safe_slug as memory_safe_slug
+from runtime_allocator.security import safe_slug
 
 
 class TestFilenameSanitizer:
@@ -57,6 +55,33 @@ class TestModelDownloadSecurity:
         dl = ModelDownloader(model_dir=Path(tmpdir))
         # Even if model_id tries traversal, resolve() check blocks it
         assert dl.delete("mimo-7b/../../../etc") is False
+
+    def test_token_not_in_argv(self):
+        from runtime_allocator.model_download import ModelDownloader
+        import subprocess
+
+        # Patch subprocess.run to capture the cmd and env passed
+        recorded = {}
+        original_run = subprocess.run
+
+        def fake_run(cmd, **kwargs):
+            recorded["cmd"] = cmd
+            recorded["env"] = kwargs.get("env")
+            class FakeResult:
+                returncode = 1
+                stderr = "test"
+            return FakeResult()
+
+        subprocess.run = fake_run
+        dl = ModelDownloader()
+        try:
+            dl.download("mimo-7b", token="secret_token_123")
+        finally:
+            subprocess.run = original_run
+
+        assert "--token" not in recorded.get("cmd", []), "Token must not appear in argv"
+        env = recorded.get("env") or {}
+        assert env.get("HF_TOKEN") == "secret_token_123", "Token must be passed via env"
 
 
 class TestEnvResolution:

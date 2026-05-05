@@ -229,10 +229,11 @@ class ModelDownloader:
                 info["repo"],
                 "--local-dir", str(temp_dir),
             ]
+            env = os.environ.copy()
             if resolved_token:
-                cmd.extend(["--token", resolved_token])
+                env["HF_TOKEN"] = resolved_token
 
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=3600)
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=3600, env=env)
             if result.returncode != 0:
                 shutil.rmtree(temp_dir, ignore_errors=True)
                 return DownloadResult(
