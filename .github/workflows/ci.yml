@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          pip install fastapi uvicorn prometheus-client pydantic pyyaml httpx pytest
+          pip install pydantic-settings
+
+      - name: Run tests
+        run: |
+          python -m pytest runtime_allocator/tests -q
+
+      - name: Run concurrency stress (20x)
+        run: |
+          for i in $(seq 1 20); do
+            python -m pytest runtime_allocator/tests/unit/test_runtime_state_concurrency.py -q || exit 1
+          done
+
+      - name: Run integration tests
+        run: |
+          python -m pytest runtime_allocator/tests/integration -v
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install ruff
+        run: pip install ruff
+      - name: Lint
+        run: ruff check runtime_allocator/ || true
+      - name: Format check
+        run: ruff format --check runtime_allocator/ || true
