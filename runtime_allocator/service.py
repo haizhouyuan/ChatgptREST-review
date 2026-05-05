@@ -33,9 +33,11 @@ from pydantic import BaseModel, Field
 
 from runtime_allocator.auth import require_admin, require_api_key
 from runtime_allocator.closeout_gate import closeout
+from runtime_allocator.config import settings
 from runtime_allocator.contracts import GateStatus, WriteScope
 from runtime_allocator.cost_attribution import CostAttribution
 from runtime_allocator.preflight_gate import preflight
+from runtime_allocator.rate_limiter import RateLimiter
 from runtime_allocator.runtime_state import RuntimeStateStore
 from runtime_allocator.schemas import CommerceDecisionOutput
 from runtime_allocator.skill_agent import execute_with_fallback
@@ -150,6 +152,28 @@ def _get_cost_attribution() -> CostAttribution:
     return _cost_attribution
 
 
+# ── Rate limiter ───────────────────────────────────────────────────────────
+
+_rate_limiter = RateLimiter(rps=settings.rate_limit_rps, burst=settings.rate_limit_burst)
+
+
+# ── Webhook helper ─────────────────────────────────────────────────────────
+
+async def _send_webhook(payload: dict):
+    """Send async result to configured webhook URL."""
+    if not settings.webhook_url:
+        return
+    try:
+        import httpx
+        headers = {"Content-Type": "application/json"}
+        if settings.webhook_secret:
+            headers["X-Webhook-Secret"] = settings.webhook_secret
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            await client.post(settings.webhook_url, json=payload, headers=headers)
+    except Exception as exc:
+        logger.warning("webhook_failed", extra={"error": str(exc)})
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global _start_time
@@ -206,6 +230,14 @@ async def execute(
     role: str = Depends(require_api_key),
 ):
     """Execute a task with provider fallback routing."""
+    # Rate limit check
+    client_key = req.company_id or "default"
+    if not _rate_limiter.allow(client_key):
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Rate limit exceeded",
+        )
+
     store = _get_store()
 
     # ── Preflight gate ──────────────────────────────────────────────────
@@ -301,7 +333,7 @@ async def execute(
         },
     )
 
-    return ExecuteResponse(
+    response = ExecuteResponse(
         success=result.success,
         provider_id=result.provider_id or "",
         model_name=result.model_name or "",
@@ -313,6 +345,20 @@ async def execute(
         preflight_status=pf.status.value,
         closeout_status=co.status.value,
     )
+
+    # Fire webhook asynchronously without blocking response
+    import asyncio
+    asyncio.create_task(_send_webhook({
+        "event": "execution_complete",
+        "task_class": req.task_class,
+        "company_id": req.company_id,
+        "provider_id": response.provider_id,
+        "success": response.success,
+        "latency_ms": response.latency_ms,
+        "terminal_state": response.terminal_state,
+    }))
+
+    return response
 
 
 @app.post("/v1/preflight")
