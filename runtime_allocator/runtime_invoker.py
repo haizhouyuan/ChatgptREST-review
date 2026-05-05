@@ -226,7 +226,10 @@ def invoke_llm(
         InvokeResult with content, tokens, latency, or error.
     """
     if profiles is None:
-        from runtime_allocator.skill_agent import load_profiles
+        try:
+            from runtime_allocator.skill_agent import load_profiles
+        except ImportError:
+            from skill_agent import load_profiles
         profiles = load_profiles()
 
     rt = profiles.get("runtimes", {}).get(provider_id)

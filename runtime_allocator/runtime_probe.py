@@ -176,7 +176,10 @@ def probe_by_protocol(endpoint: str, provider_id: str, protocol: str) -> ProbeRe
 def probe_all(profiles: dict | None = None) -> list[ProbeResult]:
     """Probe all runtimes from profiles. Returns list of ProbeResult."""
     if profiles is None:
-        from runtime_allocator.skill_agent import load_profiles
+        try:
+            from runtime_allocator.skill_agent import load_profiles
+        except ImportError:
+            from skill_agent import load_profiles
         profiles = load_profiles()
 
     results = []
@@ -195,7 +198,10 @@ def probe_all_with_health(
     state_store=None,
 ) -> list[ProbeResult]:
     """Probe all runtimes and update health store with results."""
-    from runtime_allocator.runtime_state import get_store
+    try:
+        from runtime_allocator.runtime_state import get_store
+    except ImportError:
+        from runtime_state import get_store
     if state_store is None:
         state_store = get_store()
 

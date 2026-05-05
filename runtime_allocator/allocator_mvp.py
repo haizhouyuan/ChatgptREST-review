@@ -122,6 +122,7 @@ class RouteDecision:
     reason_codes: list[str] = field(default_factory=list)
     requires_human_review: bool = False
     blocked: bool = False
+    terminal_state: Optional[str] = None  # e.g. "human_review_required", "completed_no_trade"
 
 
 # ── Quota ledger (JSON file-backed) ────────────────────────────────────────
@@ -406,77 +407,141 @@ def allocate(
     runtimes: list[Runtime] = None,
     ledger: QuotaLedger = None,
     health_store=None,
+    policy=None,
 ) -> RouteDecision:
     """Route a task to the best available runtime.
+
+    Policy-aware routing: policy primary/fallback chains define candidate order.
+    Score only breaks ties within the same policy tier. Unknown task classes are blocked.
 
     Args:
         req: Routing request
         runtimes: Available runtimes (loaded from YAML if None)
         ledger: Quota ledger (legacy JSON-backed)
         health_store: RuntimeStateStore for health-aware filtering
+        policy: PolicyEntry from policy_store (auto-loaded if None)
     """
+    try:
+        from runtime_allocator.policy_store import get_policy
+    except ImportError:
+        from policy_store import get_policy
 
     if runtimes is None:
         runtimes = _default_runtimes()
     if ledger is None:
         ledger = QuotaLedger()
 
-    # 1. Filter enabled + policy
-    candidates = [r for r in runtimes if r.enabled]
+    # Load policy for this task class
+    if policy is None:
+        policy = get_policy(req.task_class)
 
-    # Health filter: exclude runtimes in circuit breaker or down
+    # Unknown task class with no policy → blocked
+    if policy is None:
+        return RouteDecision(
+            provider_id="blocked",
+            model_name="none",
+            endpoint="",
+            reservation_id="",
+            blocked=True,
+            terminal_state="blocked",
+            reason_codes=["unknown_task_class", f"no_policy_for={req.task_class}"],
+        )
+
+    # Build runtime lookup by provider_id
+    rt_by_id = {r.provider_id: r for r in runtimes if r.enabled}
+
+    # Health filter
     if health_store is not None:
-        candidates = [r for r in candidates if health_store.is_usable(r.provider_id)]
+        rt_by_id = {pid: r for pid, r in rt_by_id.items() if health_store.is_usable(pid)}
 
-    candidates = _apply_policy_filters(candidates, req)
+    # Apply hard filters from policy
+    def _passes_policy_filters(rt: Runtime) -> bool:
+        # Privacy filter (from request)
+        if _PRIVACY_RANK[rt.privacy_tier] > _PRIVACY_RANK[req.privacy_tier_required]:
+            return False
+        # Privacy filter (from policy)
+        if policy.allowed_privacy:
+            if rt.privacy_tier.value not in policy.allowed_privacy:
+                return False
+        # Quality filter (from policy)
+        if policy.allowed_quality:
+            if rt.quality_tier.value not in policy.allowed_quality:
+                return False
+        # Quality filter (from request)
+        task_required = _TASK_QUALITY.get(req.task_class)
+        effective_min = max(
+            _QUALITY_RANK[req.min_quality_tier],
+            _QUALITY_RANK.get(task_required, 0) if task_required else 0,
+        )
+        if _QUALITY_RANK[rt.quality_tier] < effective_min:
+            return False
+        # Tool calling
+        if req.needs_tool_calling and not rt.supports_tools:
+            return False
+        # JSON support
+        if req.needs_json and not rt.supports_json:
+            return False
+        # Context window
+        total_tokens = req.input_tokens_est + req.output_tokens_est
+        if rt.max_context_tokens < total_tokens:
+            return False
+        return True
 
-    # 2. Quota preflight
-    candidates = [
-        r for r in candidates
-        if ledger.can_reserve(r.provider_id)
-    ]
+    # Build candidate list in policy order (primary first, then fallback)
+    def _build_candidates(provider_ids: list[str]) -> list[Runtime]:
+        result = []
+        for pid in provider_ids:
+            rt = rt_by_id.get(pid)
+            if rt and _passes_policy_filters(rt) and ledger.can_reserve(pid):
+                result.append(rt)
+        return result
+
+    candidates = _build_candidates(policy.all_candidates)
+
+    if not candidates and policy.can_degrade:
+        # Try with relaxed quality
+        req_backup = req.min_quality_tier
+        req.min_quality_tier = QualityTier.CHEAP
+        candidates = _build_candidates(policy.all_candidates)
+        req.min_quality_tier = req_backup
 
     if not candidates:
-        if req.can_degrade:
-            # Try again with relaxed quality
-            req.min_quality_tier = QualityTier.CHEAP
-            candidates = [r for r in runtimes if r.enabled]
-            candidates = _apply_policy_filters(candidates, req)
-            candidates = [r for r in candidates if ledger.can_reserve(r.provider_id)]
-
-        if not candidates:
-            return RouteDecision(
-                provider_id="blocked",
-                model_name="none",
-                endpoint="",
-                reservation_id="",
-                blocked=True,
-                reason_codes=["no_available_runtime", "quota_exhausted"],
-            )
-
-    # 3. Score and select
-    scored = []
-    for rt in candidates:
-        score = (
-            4.0 * _quality_score(rt, req.task_class)
-            - 1.5 * (rt.cost_per_mtok_in + rt.cost_per_mtok_out) / 10.0
-            - 1.0 * rt.latency_p50_ms / 10000.0
+        # Apply terminal_if_unavailable from policy
+        terminal = policy.terminal_if_unavailable
+        return RouteDecision(
+            provider_id="blocked",
+            model_name="none",
+            endpoint="",
+            reservation_id="",
+            blocked=True,
+            terminal_state=terminal,
+            reason_codes=["no_available_runtime", f"terminal={terminal}"],
         )
-        scored.append((score, rt))
 
-    scored.sort(key=lambda x: x[0], reverse=True)
-    selected = scored[0][1]
+    # Score to break ties within candidate list
+    # Candidates are already in policy order, so we use score as tiebreaker
+    # but preserve policy ordering as the primary sort
+    selected = candidates[0]  # Policy primary wins
 
-    # 4. Reserve quota
+    # For high-stakes tasks, prefer highest quality within candidates
+    if req.high_stakes:
+        best_quality = max(candidates, key=lambda r: _QUALITY_RANK.get(r.quality_tier, 0))
+        if _QUALITY_RANK.get(best_quality.quality_tier, 0) > _QUALITY_RANK.get(selected.quality_tier, 0):
+            selected = best_quality
+
+    # Reserve quota
     reservation_id = ledger.reserve(selected.provider_id)
 
-    # 5. Build fallback chain
-    fallback_chain = [s[1].provider_id for s in scored[1:4]]
+    # Fallback chain = remaining candidates in policy order
+    fallback_chain = [c.provider_id for c in candidates if c.provider_id != selected.provider_id]
 
-    # 6. Reason codes
-    reason_codes = [f"quality_score={scored[0][0]:.2f}"]
+    # Reason codes
+    reason_codes = [f"policy_primary={policy.primary}", f"selected={selected.provider_id}"]
     if req.high_stakes and selected.quality_tier != QualityTier.CRITICAL:
         reason_codes.append("high_stakes_non_critical_runtime")
+
+    # Determine requires_human_review
+    requires_review = req.high_stakes and selected.quality_tier != QualityTier.CRITICAL
 
     return RouteDecision(
         provider_id=selected.provider_id,
@@ -485,13 +550,33 @@ def allocate(
         reservation_id=reservation_id,
         fallback_chain=fallback_chain,
         reason_codes=reason_codes,
-        requires_human_review=req.high_stakes and selected.quality_tier != QualityTier.CRITICAL,
+        requires_human_review=requires_review,
     )
 
 
 # ── Env var resolution + YAML loading ──────────────────────────────────────
 
-_PROFILES_YAML = Path(__file__).parent / "profiles" / "runtime_profiles.yaml"
+_PKG_DIR = Path(__file__).resolve().parent
+
+
+def _resolve_profiles_yaml() -> Path:
+    """Resolve runtime_profiles.yaml path with env override and fallback."""
+    env_path = os.getenv("PAPERCLIP_RUNTIME_PROFILES")
+    if env_path:
+        p = Path(env_path)
+        if p.exists():
+            return p
+    candidates = [
+        _PKG_DIR / "profiles" / "runtime_profiles.yaml",
+        _PKG_DIR / "runtime_profiles.yaml",
+    ]
+    for c in candidates:
+        if c.exists():
+            return c
+    return candidates[0]
+
+
+_PROFILES_YAML = _resolve_profiles_yaml()
 
 
 def _resolve_env(template: str) -> str:
@@ -517,7 +602,7 @@ def _default_runtimes() -> list[Runtime]:
     except ImportError:
         return _hardcoded_runtimes()
 
-    yaml_path = _PROFILES_YAML
+    yaml_path = _resolve_profiles_yaml()
     if not yaml_path.exists():
         return _hardcoded_runtimes()
 

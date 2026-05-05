@@ -62,11 +62,15 @@ class RuntimeStateStore:
                 reservation_id TEXT PRIMARY KEY,
                 provider_id TEXT NOT NULL,
                 request_id TEXT NOT NULL,
+                attempt_id TEXT,
                 task_class TEXT NOT NULL,
                 estimated_input_tokens INTEGER DEFAULT 0,
                 estimated_output_tokens INTEGER DEFAULT 0,
+                actual_input_tokens INTEGER,
+                actual_output_tokens INTEGER,
                 reserved_units INTEGER DEFAULT 1,
-                status TEXT NOT NULL DEFAULT 'reserved',
+                status TEXT NOT NULL DEFAULT 'reserved'
+                    CHECK (status IN ('reserved', 'committed', 'refunded', 'expired')),
                 created_at TEXT NOT NULL,
                 expires_at TEXT,
                 committed_at TEXT
@@ -116,11 +120,23 @@ class RuntimeStateStore:
                 ON runtime_reservations(provider_id, status);
             CREATE INDEX IF NOT EXISTS idx_reservations_request
                 ON runtime_reservations(request_id);
+            CREATE INDEX IF NOT EXISTS idx_reservations_provider_created
+                ON runtime_reservations(provider_id, created_at);
             CREATE INDEX IF NOT EXISTS idx_events_provider
                 ON runtime_events(provider_id, created_at);
             CREATE INDEX IF NOT EXISTS idx_locks_expires
                 ON resource_locks(expires_at);
         """)
+        # Backfill columns for older DBs (best-effort; ignore if already exists)
+        for stmt in (
+            "ALTER TABLE runtime_reservations ADD COLUMN attempt_id TEXT",
+            "ALTER TABLE runtime_reservations ADD COLUMN actual_input_tokens INTEGER",
+            "ALTER TABLE runtime_reservations ADD COLUMN actual_output_tokens INTEGER",
+        ):
+            try:
+                self._conn.execute(stmt)
+            except sqlite3.OperationalError:
+                pass
         self._conn.commit()
 
     def close(self):
@@ -162,35 +178,50 @@ class RuntimeStateStore:
         provider_id: str,
         request_id: str,
         task_class: str,
+        attempt_id: Optional[str] = None,
         estimated_input_tokens: int = 0,
         estimated_output_tokens: int = 0,
         ttl_seconds: int = 300,
     ) -> str:
-        """Reserve a request unit. Returns reservation_id."""
+        """Reserve a request unit. Returns reservation_id.
+
+        Each attempt within a single request should pass a distinct attempt_id
+        so reservations don't conflict.
+        """
         reservation_id = str(uuid.uuid4())[:12]
         now = datetime.now()
         expires = now + timedelta(seconds=ttl_seconds)
         self._conn.execute(
             """INSERT INTO runtime_reservations
-               (reservation_id, provider_id, request_id, task_class,
+               (reservation_id, provider_id, request_id, attempt_id, task_class,
                 estimated_input_tokens, estimated_output_tokens,
                 status, created_at, expires_at)
-               VALUES (?, ?, ?, ?, ?, ?, 'reserved', ?, ?)""",
-            (reservation_id, provider_id, request_id, task_class,
+               VALUES (?, ?, ?, ?, ?, ?, ?, 'reserved', ?, ?)""",
+            (reservation_id, provider_id, request_id, attempt_id, task_class,
              estimated_input_tokens, estimated_output_tokens,
              now.isoformat(), expires.isoformat()),
         )
         self._conn.commit()
         return reservation_id
 
-    def commit(self, reservation_id: str, tokens_actual: int = 0):
-        """Mark reservation as committed (successful use)."""
+    def commit(
+        self,
+        reservation_id: str,
+        actual_input_tokens: int = 0,
+        actual_output_tokens: int = 0,
+    ):
+        """Mark reservation as committed (successful use).
+
+        Stores actual_input_tokens/actual_output_tokens separately from
+        reserved_units. reserved_units stays at 1 (per-call counter).
+        """
         now = datetime.now().isoformat()
         self._conn.execute(
             """UPDATE runtime_reservations
-               SET status='committed', committed_at=?, reserved_units=?
+               SET status='committed', committed_at=?,
+                   actual_input_tokens=?, actual_output_tokens=?
                WHERE reservation_id=?""",
-            (now, tokens_actual, reservation_id),
+            (now, actual_input_tokens, actual_output_tokens, reservation_id),
         )
         self._conn.commit()
 
@@ -203,12 +234,26 @@ class RuntimeStateStore:
         self._conn.commit()
 
     def count_today(self, provider_id: str, status: str = "committed") -> int:
-        """Count reservations today for a provider."""
+        """Count reservations today for a provider with a specific status."""
         today = datetime.now().strftime("%Y-%m-%d")
         row = self._conn.execute(
             """SELECT COUNT(*) FROM runtime_reservations
                WHERE provider_id=? AND status=? AND created_at LIKE ?""",
             (provider_id, status, f"{today}%"),
+        ).fetchone()
+        return row[0] if row else 0
+
+    def count_today_units(self, provider_id: str) -> int:
+        """Count units consumed today (reserved + committed) for budget gating.
+
+        Excludes refunded/expired so 401/429 failures don't count against quota.
+        """
+        today = datetime.now().strftime("%Y-%m-%d")
+        row = self._conn.execute(
+            """SELECT COUNT(*) FROM runtime_reservations
+               WHERE provider_id=? AND status IN ('reserved', 'committed')
+                 AND created_at LIKE ?""",
+            (provider_id, f"{today}%"),
         ).fetchone()
         return row[0] if row else 0
 
@@ -222,7 +267,8 @@ class RuntimeStateStore:
         if not budget:
             return True  # No budget configured, allow
 
-        used_rpd = self.count_today(provider_id, "committed")
+        # Use reserved+committed for hard budget enforcement
+        used_rpd = self.count_today_units(provider_id)
         if used_rpd >= budget.get("hard_rpd", 1000):
             return False
 
