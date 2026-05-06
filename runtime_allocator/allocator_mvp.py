@@ -410,11 +410,13 @@ def allocate(
     policy=None,
     quota_store=None,
     predictive_scores: dict[str, float] = None,
+    edge_runtimes: list[Runtime] = None,
 ) -> RouteDecision:
     """Route a task to the best available runtime.
 
     Policy-aware routing: policy primary/fallback chains define candidate order.
     Score only breaks ties within the same policy tier. Unknown task classes are blocked.
+    Edge runtimes (federated nodes) are appended as extended fallback candidates.
 
     Args:
         req: Routing request
@@ -423,6 +425,7 @@ def allocate(
         health_store: RuntimeStateStore for health-aware filtering
         policy: PolicyEntry from policy_store (auto-loaded if None)
         quota_store: RuntimeStateStore for SQLite-backed quota gating
+        edge_runtimes: Additional runtimes from edge/federated nodes
     """
     try:
         from runtime_allocator.policy_store import get_policy
@@ -515,6 +518,19 @@ def allocate(
     if not candidates and policy.can_degrade and req.can_degrade:
         # Try with relaxed quality (use local copy, don't mutate req)
         candidates = _build_candidates(policy.all_candidates, min_quality_tier=QualityTier.CHEAP)
+
+    # Append edge/federated runtimes as extended fallback candidates
+    if edge_runtimes:
+        edge_ids = [r.provider_id for r in edge_runtimes]
+        # Temporarily add edge runtimes to lookup
+        for er in edge_runtimes:
+            if er.provider_id not in rt_by_id:
+                rt_by_id[er.provider_id] = er
+        edge_candidates = _build_candidates(edge_ids)
+        seen = {c.provider_id for c in candidates}
+        for ec in edge_candidates:
+            if ec.provider_id not in seen:
+                candidates.append(ec)
 
     if not candidates:
         # Apply terminal_if_unavailable from policy

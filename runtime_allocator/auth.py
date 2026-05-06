@@ -19,8 +19,8 @@ def _load_api_keys():
     global _API_KEYS
     raw = os.getenv("PAPERCLIP_API_KEYS", "")
     if not raw:
-        # Default dev key
-        _API_KEYS = {"dev-key": "admin"}
+        # Production: no keys configured = locked down (no default dev key)
+        _API_KEYS = {}
         return
     for pair in raw.split(","):
         if ":" in pair:

@@ -21,8 +21,8 @@ class Settings(BaseSettings):
     host: str = Field(default="0.0.0.0", alias="PAPERCLIP_HOST")
     log_level: str = Field(default="INFO", alias="PAPERCLIP_LOG_LEVEL")
 
-    # Auth
-    api_keys: str = Field(default="dev-key:admin", alias="PAPERCLIP_API_KEYS")
+    # Auth — production MUST set PAPERCLIP_API_KEYS; empty default = locked down
+    api_keys: str = Field(default="", alias="PAPERCLIP_API_KEYS")
 
     # Rate limiting
     rate_limit_rps: float = Field(default=10.0, alias="PAPERCLIP_RATE_LIMIT_RPS")
@@ -39,9 +39,9 @@ class Settings(BaseSettings):
     )
     pg_uri: str = Field(default="", alias="PAPERCLIP_PG_URI")
 
-    # Probes
+    # Probes — default 0 disables background scheduler until fully tested
     probe_interval_seconds: int = Field(
-        default=60, alias="PAPERCLIP_PROBE_INTERVAL_SECONDS"
+        default=0, alias="PAPERCLIP_PROBE_INTERVAL_SECONDS"
     )
 
     # Billing

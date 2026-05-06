@@ -37,6 +37,11 @@ try:
     from runtime_allocator.runtime_invoker import InvokeResult, invoke_llm
     from runtime_allocator.runtime_probe import ProbeResult, probe_by_protocol
     from runtime_allocator.runtime_state import RuntimeStateStore, get_store
+    from runtime_allocator.federation import (
+        EdgeRegistry,
+        FederationClient,
+        FederatedProvider,
+    )
 except ImportError:
     from allocator_mvp import (
         PrivacyTier,
@@ -49,6 +54,11 @@ except ImportError:
     from runtime_invoker import InvokeResult, invoke_llm
     from runtime_probe import ProbeResult, probe_by_protocol
     from runtime_state import RuntimeStateStore, get_store
+    from federation import (
+        EdgeRegistry,
+        FederationClient,
+        FederatedProvider,
+    )
 
 
 # ── Profile loading ──────────────────────────────────────────────────────────
@@ -156,6 +166,54 @@ def _quota_disposition(error_class: Optional[str], error: Optional[str]) -> str:
     return "commit_attempt"
 
 
+# ── Federation invocation helper ────────────────────────────────────────────
+
+def _invoke_federated(
+    endpoint: str,
+    task_class: str,
+    messages: list[dict],
+    provider_id: str,
+    model_name: str,
+    timeout: float = 120.0,
+) -> InvokeResult:
+    """Invoke a federated edge node via FederationClient.
+
+    Wraps FederationClient.forward_request() into an InvokeResult.
+    """
+    start = time.monotonic()
+    client = FederationClient(remote_endpoint=endpoint, timeout=timeout)
+    try:
+        resp = client.forward_request(task_class, messages, timeout=timeout)
+        latency = (time.monotonic() - start) * 1000
+        if resp.get("status") == "error":
+            return InvokeResult(
+                provider_id=provider_id,
+                model_name=model_name,
+                latency_ms=latency,
+                error=resp.get("error", "federation error"),
+                error_class="FederationError",
+            )
+        return InvokeResult(
+            provider_id=provider_id,
+            model_name=model_name,
+            content=resp.get("content", ""),
+            finish_reason="stop",
+            latency_ms=latency,
+            raw_response=resp,
+        )
+    except Exception as e:
+        latency = (time.monotonic() - start) * 1000
+        return InvokeResult(
+            provider_id=provider_id,
+            model_name=model_name,
+            latency_ms=latency,
+            error=str(e)[:500],
+            error_class=e.__class__.__name__,
+        )
+    finally:
+        client.close()
+
+
 # ── Core execution ───────────────────────────────────────────────────────────
 
 def _try_validate_schema(
@@ -200,6 +258,8 @@ def execute_with_fallback(
     ledger: Optional[QuotaLedger] = None,
     state_store: Optional[RuntimeStateStore] = None,
     schema_model=None,
+    edge_registry: Optional[EdgeRegistry] = None,
+    company_id: str = "",
 ) -> SkillResult:
     """Execute an LLM call with automatic routing, fallback, and cooldown.
 
@@ -225,6 +285,7 @@ def execute_with_fallback(
         max_retries: Max retry attempts across fallback chain
         profiles: Runtime profiles dict (auto-loaded if None)
         ledger: QuotaLedger instance (auto-created if None)
+        edge_registry: EdgeRegistry for federated edge node routing
 
     Returns:
         SkillResult with content, metadata, and attempt history.
@@ -263,6 +324,19 @@ def execute_with_fallback(
             latency_p50_ms=rt.get("latency_p50_ms", 2000),
             enabled=rt.get("enabled", True),
         ))
+
+    # Build edge/federated runtimes from registry
+    edge_runtimes: list[Runtime] = []
+    if edge_registry is not None:
+        for node in edge_registry.list_nodes():
+            fp = FederatedProvider(node)
+            edge_runtimes.append(fp.to_runtime())
+
+    # Unified runtime lookup for fallback chain resolution
+    rt_by_id = {r.provider_id: r for r in runtimes}
+    for er in edge_runtimes:
+        if er.provider_id not in rt_by_id:
+            rt_by_id[er.provider_id] = er
 
     # ── Provider override safety gates ──────────────────────────────────
     # Override bypasses ranking but NOT privacy/quality/policy/health/quota gates.
@@ -363,6 +437,7 @@ def execute_with_fallback(
             health_store=state_store,
             quota_store=state_store,
             predictive_scores=predictive_scores,
+            edge_runtimes=edge_runtimes,
         )
 
         if decision.blocked:
@@ -389,14 +464,14 @@ def execute_with_fallback(
         decision_terminal_state = decision.terminal_state
 
     # Build ordered attempt list: primary + fallbacks
-    primary_profile = profiles.get("runtimes", {}).get(provider_id, {})
-    attempt_targets = [(provider_id, model or primary_profile.get("model_name", ""))]
+    primary_rt = rt_by_id.get(provider_id, {})
+    attempt_targets = [(provider_id, model or getattr(primary_rt, "model_name", ""))]
 
-    # Add fallbacks from allocator
+    # Add fallbacks from allocator (use rt_by_id for both local and edge)
     for fb_id in fallback_chain:
-        fb_profile = profiles.get("runtimes", {}).get(fb_id, {})
-        if fb_profile.get("enabled", True) and not ledger.is_cooling_down(fb_id):
-            attempt_targets.append((fb_id, fb_profile.get("model_name", "")))
+        fb_rt = rt_by_id.get(fb_id)
+        if fb_rt and getattr(fb_rt, "enabled", True) and not ledger.is_cooling_down(fb_id):
+            attempt_targets.append((fb_id, getattr(fb_rt, "model_name", "")))
 
     # Execute with fallback
     last_error = None
@@ -425,16 +500,39 @@ def execute_with_fallback(
             reservation_id = None
             reason_codes.append(f"reserve_failed={res_err.__class__.__name__}")
 
-        result = invoke_llm(
-            provider_id=pid,
-            messages=messages,
-            model=mdl,
-            profiles=profiles,
-            temperature=temperature,
-            max_tokens=max_tokens,
-            response_format=response_format,
-            timeout=timeout,
-        )
+        # P0 fix: if reservation failed (None or exception), skip this provider
+        if reservation_id is None:
+            attempts.append({
+                "provider_id": pid,
+                "model": mdl,
+                "skipped": True,
+                "reason": "quota_exhausted",
+            })
+            continue
+
+        # Route federated providers through FederationClient, local through invoke_llm
+        if pid.startswith("federated:"):
+            fed_rt = rt_by_id.get(pid)
+            fed_endpoint = getattr(fed_rt, "endpoint", "") if fed_rt else ""
+            result = _invoke_federated(
+                endpoint=fed_endpoint,
+                task_class=task_class,
+                messages=messages,
+                provider_id=pid,
+                model_name=mdl,
+                timeout=timeout,
+            )
+        else:
+            result = invoke_llm(
+                provider_id=pid,
+                messages=messages,
+                model=mdl,
+                profiles=profiles,
+                temperature=temperature,
+                max_tokens=max_tokens,
+                response_format=response_format,
+                timeout=timeout,
+            )
 
         # Resolve reservation based on disposition
         if reservation_id is not None:
@@ -477,16 +575,28 @@ def execute_with_fallback(
                     # Retry once with lower temperature
                     if not schema_retry_done:
                         schema_retry_done = True
-                        retry_result = invoke_llm(
-                            provider_id=pid,
-                            messages=messages,
-                            model=mdl,
-                            profiles=profiles,
-                            temperature=max(temperature - 0.3, 0.0),
-                            max_tokens=max_tokens,
-                            response_format=response_format,
-                            timeout=timeout,
-                        )
+                        if pid.startswith("federated:"):
+                            fed_rt = rt_by_id.get(pid)
+                            fed_endpoint = getattr(fed_rt, "endpoint", "") if fed_rt else ""
+                            retry_result = _invoke_federated(
+                                endpoint=fed_endpoint,
+                                task_class=task_class,
+                                messages=messages,
+                                provider_id=pid,
+                                model_name=mdl,
+                                timeout=timeout,
+                            )
+                        else:
+                            retry_result = invoke_llm(
+                                provider_id=pid,
+                                messages=messages,
+                                model=mdl,
+                                profiles=profiles,
+                                temperature=max(temperature - 0.3, 0.0),
+                                max_tokens=max_tokens,
+                                response_format=response_format,
+                                timeout=timeout,
+                            )
                         if not retry_result.error:
                             ok, validated_obj, schema_err = _try_validate_schema(
                                 retry_result.content, schema_model
@@ -515,6 +625,23 @@ def execute_with_fallback(
                                 )
                                 last_error = result
                                 continue
+                        else:
+                            # P0 fix: retry call itself failed — treat as failure, not success
+                            result.error = f"schema_retry_call_failed: {retry_result.error}"
+                            result.error_class = retry_result.error_class or "SchemaRetryError"
+                            if reservation_id is not None:
+                                state_store.commit(reservation_id, 0, 0)
+                            state_store.log_event(
+                                provider_id=pid, task_class=task_class,
+                                status="schema_retry_call_failed",
+                                error_class=result.error_class,
+                                error_code=result.error[:200],
+                                latency_ms=int(retry_result.latency_ms),
+                                tokens_in_est=input_tokens_est,
+                                tokens_out_est=output_tokens_est,
+                            )
+                            last_error = result
+                            continue
 
             # ── Success path ─────────────────────────────────────────────
             state_store.update_health(pid, "healthy", latency_ms=int(result.latency_ms))

@@ -294,7 +294,8 @@ async def execute(
             messages=req.messages,
             state_store=store,
             schema_model=CommerceDecisionOutput,
-            model=req.model or None,
+            model_override=req.model or None,
+            company_id=req.company_id,
             temperature=req.temperature,
             max_tokens=req.max_tokens,
             response_format=req.response_format,
@@ -329,12 +330,19 @@ async def execute(
         provider_id=result.provider_id or "none",
     ).inc()
 
-    if result.fallback_from and result.provider_id:
+    # Derive fallback_from from attempts (last failed provider before success)
+    fallback_from = None
+    if result.attempts and len(result.attempts) > 1:
+        for a in result.attempts[:-1]:
+            if not a.get("success", False):
+                fallback_from = a.get("provider_id")
+    if fallback_from and result.provider_id:
         FALLBACK_COUNTER.labels(
-            from_provider=result.fallback_from, to_provider=result.provider_id
+            from_provider=fallback_from, to_provider=result.provider_id
         ).inc()
 
     # ── Closeout gate ───────────────────────────────────────────────────
+    # TODO: collect real files_changed/files_declared from execution trace
     co = closeout(
         task_type=req.task_class,
         write_scope=WriteScope(req.write_scope),
@@ -358,13 +366,20 @@ async def execute(
         },
     )
 
+    # Closeout blocked must fail-closed: override success to False
+    effective_success = result.success and (co.status != GateStatus.BLOCKED)
+    effective_terminal = (
+        "blocked" if co.status == GateStatus.BLOCKED
+        else result.terminal_state or ""
+    )
+
     response = ExecuteResponse(
-        success=result.success,
+        success=effective_success,
         provider_id=result.provider_id or "",
         model_name=result.model_name or "",
         content=result.content or "",
-        terminal_state=result.terminal_state or "",
-        requires_human_review=result.requires_human_review or (pf.status == GateStatus.HUMAN_REVIEW_REQUIRED),
+        terminal_state=effective_terminal,
+        requires_human_review=result.requires_human_review or (pf.status == GateStatus.HUMAN_REVIEW_REQUIRED) or (co.status == GateStatus.HUMAN_REVIEW_REQUIRED),
         error=result.error or "",
         latency_ms=round(latency * 1000, 2),
         preflight_status=pf.status.value,
