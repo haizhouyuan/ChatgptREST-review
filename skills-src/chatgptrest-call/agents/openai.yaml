@@ -1,0 +1,4 @@
+interface:
+  display_name: "ChatgptREST Call"
+  short_description: "Use the public MCP coding-agent-v1 lane by default, with advisor-agent and legacy fallback only when explicitly needed"
+  default_prompt: "Use $chatgptrest-call in coding-agent-v1 mode first; only switch to advisor-agent for broad task_intake/workspace/contract flows, and only mention legacy jobs when maintenance work explicitly requires it."

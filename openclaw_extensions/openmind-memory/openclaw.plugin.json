@@ -1,0 +1,44 @@
+{
+  "id": "openmind-memory",
+  "name": "OpenMind Memory",
+  "description": "Memory-slot plugin using OpenMind context.resolve and memory.capture.",
+  "version": "2026.3.13",
+  "kind": "memory",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "endpoint": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "baseUrl": { "type": "string" },
+          "apiKey": { "type": "string" },
+          "timeoutMs": { "type": "number", "minimum": 1000, "maximum": 300000 }
+        },
+        "required": ["baseUrl"]
+      },
+      "autoRecall": { "type": "boolean" },
+      "autoCapture": { "type": "boolean" },
+      "defaultRoleId": { "type": "string" },
+      "cacheTtlSeconds": { "type": "number", "minimum": 1, "maximum": 3600 },
+      "tokenBudget": { "type": "number", "minimum": 4000, "maximum": 16000 },
+      "captureMaxChars": { "type": "number", "minimum": 100, "maximum": 10000 },
+      "captureSourceQuality": { "type": "number", "minimum": 0, "maximum": 1 },
+      "projectId": { "type": "string" },
+      "repo": { "type": "string" },
+      "graphScopes": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["personal", "repo"]
+        }
+      },
+      "domainTags": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "required": ["endpoint"]
+  }
+}

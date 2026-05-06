@@ -1,0 +1,16 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-finbot-theme-batch.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-finbot-theme-batch.timer
+#
+[Unit]
+Description=ChatgptREST finbot nightly multi-theme batch
+
+[Timer]
+OnCalendar=*-*-* 20:30:00
+Persistent=true
+RandomizedDelaySec=5min
+Unit=chatgptrest-finbot-theme-batch.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,20 @@
+# Copy/link to: ~/.config/systemd/user/chatgptrest-manual-conversation-harvest.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-manual-conversation-harvest.timer
+#
+# This is read-only with respect to ChatGPT content: it discovers open
+# chatgpt.com/c/<id> tabs and submits conversation_export jobs. It never sends a
+# prompt. Manual Pro holds and frontend 429 holds still block the export jobs.
+[Unit]
+Description=ChatgptREST manual ChatGPT conversation harvest
+After=chatgptrest-api.service chatgptrest-driver.service
+Wants=chatgptrest-api.service chatgptrest-driver.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/vol1/1000/projects/ChatgptREST
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/vol1/1000/projects/ChatgptREST
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=/vol1/1000/projects/ChatgptREST/.venv/bin/python /vol1/1000/projects/ChatgptREST/ops/manual_chatgpt_conversation_harvest.py --once --submit --backend-mode dom_only --min-submit-interval-seconds 300

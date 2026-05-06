@@ -1,0 +1,38 @@
+[
+  {
+    "account_id": "openmind-canary-acct",
+    "thread_id": "openmind-canary-thread-quality",
+    "session_id": "openmind-canary-session-quality",
+    "agent_id": "advisor",
+    "role_id": "planning",
+    "project_id": "prs",
+    "message": "要高质量，按 Codex 标准来。"
+  },
+  {
+    "account_id": "openmind-canary-acct",
+    "thread_id": "openmind-canary-thread-quality",
+    "session_id": "openmind-canary-session-quality",
+    "agent_id": "advisor",
+    "role_id": "planning",
+    "project_id": "prs",
+    "message": "质量不够高，还要提高到Codex。"
+  },
+  {
+    "account_id": "openmind-canary-acct",
+    "thread_id": "openmind-canary-thread-quality",
+    "session_id": "openmind-canary-session-quality",
+    "agent_id": "advisor",
+    "role_id": "planning",
+    "project_id": "prs",
+    "message": "先回复对方，再展开分析。"
+  },
+  {
+    "account_id": "openmind-canary-acct",
+    "thread_id": "openmind-canary-thread-quality",
+    "session_id": "openmind-canary-session-quality",
+    "agent_id": "advisor",
+    "role_id": "planning",
+    "project_id": "prs",
+    "message": "先告诉我怎么回对方。"
+  }
+]

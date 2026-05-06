@@ -1,0 +1,8 @@
+[Unit]
+Description=ChatgptREST planning bulk groundedness and promotion runner
+After=default.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python __CHATGPTREST_ROOT__/ops/run_planning_bulk_groundedness_promotion.py --live --max-atoms 2000 --batch-size 200

@@ -1,0 +1,16 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-finbot-commercial-space.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-finbot-commercial-space.timer
+#
+[Unit]
+Description=ChatgptREST finbot commercial space recurring lane
+
+[Timer]
+OnCalendar=*:0/30
+Persistent=true
+RandomizedDelaySec=2min
+Unit=chatgptrest-finbot-commercial-space.service
+
+[Install]
+WantedBy=timers.target

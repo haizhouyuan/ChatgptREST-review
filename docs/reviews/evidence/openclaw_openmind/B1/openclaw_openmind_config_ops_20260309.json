@@ -1,0 +1,413 @@
+{
+  "models": {
+    "providers": {}
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "trustedProxies": [
+      "127.0.0.1/32",
+      "::1/128"
+    ],
+    "controlUi": {
+      "allowInsecureAuth": false
+    },
+    "auth": {
+      "mode": "token",
+      "allowTailscale": false,
+      "token": "<redacted>"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "session": {
+    "agentToAgent": {
+      "maxPingPongTurns": 0
+    },
+    "maintenance": {
+      "mode": "enforce",
+      "pruneAfter": "7d",
+      "maxEntries": 500,
+      "rotateBytes": "10mb"
+    }
+  },
+  "tools": {
+    "profile": "coding",
+    "agentToAgent": {
+      "enabled": true,
+      "allow": [
+        "main",
+        "maintagent"
+      ]
+    },
+    "sessions": {
+      "visibility": "all"
+    },
+    "exec": {
+      "host": "gateway",
+      "security": "full",
+      "ask": "on-miss",
+      "timeoutSec": 1200,
+      "notifyOnExit": true
+    }
+  },
+  "acp": {
+    "enabled": true,
+    "dispatch": {
+      "enabled": true
+    },
+    "backend": "acpx",
+    "defaultAgent": "codex",
+    "allowedAgents": [
+      "codex",
+      "gemini",
+      "claude"
+    ]
+  },
+  "skills": {
+    "allowBundled": [],
+    "load": {
+      "extraDirs": [
+        "/vol1/1000/projects/ChatgptREST/skills-src"
+      ]
+    },
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "enabled": true,
+    "allow": [
+      "acpx",
+      "diffs",
+      "dingtalk",
+      "feishu",
+      "google-gemini-cli-auth",
+      "openmind-advisor",
+      "openmind-graph",
+      "openmind-memory",
+      "openmind-telemetry"
+    ],
+    "load": {},
+    "entries": {
+      "feishu": {
+        "enabled": true
+      },
+      "dingtalk": {
+        "enabled": true
+      },
+      "acpx": {
+        "enabled": true,
+        "config": {
+          "permissionMode": "approve-all",
+          "nonInteractivePermissions": "fail",
+          "queueOwnerTtlSeconds": 5
+        }
+      },
+      "diffs": {
+        "enabled": true
+      },
+      "google-gemini-cli-auth": {
+        "enabled": true
+      },
+      "openmind-advisor": {
+        "enabled": true,
+        "config": {
+          "endpoint": {
+            "baseUrl": "http://127.0.0.1:18711",
+            "apiKey": "<redacted>"
+          },
+          "defaultMode": "ask"
+        }
+      },
+      "openmind-graph": {
+        "enabled": true,
+        "config": {
+          "endpoint": {
+            "baseUrl": "http://127.0.0.1:18711",
+            "apiKey": "<redacted>"
+          },
+          "defaultRepo": "ChatgptREST",
+          "defaultScopes": [
+            "personal_graph",
+            "repo_graph"
+          ]
+        }
+      },
+      "openmind-memory": {
+        "enabled": true,
+        "config": {
+          "endpoint": {
+            "baseUrl": "http://127.0.0.1:18711",
+            "apiKey": "<redacted>"
+          },
+          "autoRecall": true,
+          "autoCapture": true,
+          "graphScopes": [
+            "personal"
+          ],
+          "domainTags": [
+            "openclaw",
+            "openmind"
+          ],
+          "cacheTtlSeconds": 180,
+          "tokenBudget": "<redacted>",
+          "repo": "ChatgptREST"
+        }
+      },
+      "openmind-telemetry": {
+        "enabled": true,
+        "config": {
+          "endpoint": {
+            "baseUrl": "http://127.0.0.1:18711",
+            "apiKey": "<redacted>"
+          },
+          "enabled": true,
+          "ignoreOwnTools": true
+        }
+      }
+    },
+    "slots": {
+      "memory": "openmind-memory"
+    },
+    "installs": {
+      "dingtalk": {
+        "source": "npm",
+        "spec": "@openclaw-china/dingtalk@2026.3.8-3",
+        "version": "2026.3.8-3",
+        "integrity": "sha512-fq+32sGd0DO+7kOBsmPeTs8iVb0HciTluqIRdoizNd1GSVSVyYx3f4dYpWJaypUvdXzhf4xhOf43QrBZICxS+g=="
+      },
+      "openmind-advisor": {
+        "source": "path",
+        "sourcePath": "/vol1/1000/projects/ChatgptREST/openclaw_extensions/openmind-advisor",
+        "installPath": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.openclaw/extensions/openmind-advisor"
+      },
+      "openmind-graph": {
+        "source": "path",
+        "sourcePath": "/vol1/1000/projects/ChatgptREST/openclaw_extensions/openmind-graph",
+        "installPath": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.openclaw/extensions/openmind-graph"
+      },
+      "openmind-memory": {
+        "source": "path",
+        "sourcePath": "/vol1/1000/projects/ChatgptREST/openclaw_extensions/openmind-memory",
+        "installPath": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.openclaw/extensions/openmind-memory"
+      },
+      "openmind-telemetry": {
+        "source": "path",
+        "sourcePath": "/vol1/1000/projects/ChatgptREST/openclaw_extensions/openmind-telemetry",
+        "installPath": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.openclaw/extensions/openmind-telemetry"
+      }
+    }
+  },
+  "channels": {
+    "defaults": {},
+    "feishu": {
+      "enabled": true,
+      "streaming": false,
+      "dmPolicy": "pairing",
+      "groupPolicy": "disabled",
+      "defaultAccount": "default",
+      "tools": {
+        "doc": false,
+        "chat": false,
+        "wiki": false,
+        "drive": false,
+        "perm": false,
+        "scopes": false
+      },
+      "accounts": {
+        "default": {
+          "enabled": true,
+          "appId": "cli_a90c00987cb81cb5",
+          "appSecret": "<redacted>",
+          "botName": "OpenClaw"
+        },
+        "research": {
+          "enabled": false,
+          "appId": "cli_a91c164f3f78dbd2",
+          "appSecret": "<redacted>",
+          "botName": "Research",
+          "dmPolicy": "disabled",
+          "groupPolicy": "disabled",
+          "requireMention": true
+        }
+      }
+    },
+    "dingtalk": {
+      "enableAICard": false,
+      "dmPolicy": "pairing",
+      "groupPolicy": "disabled",
+      "enabled": true,
+      "clientId": "dingaurkjyg1jzfktmsq",
+      "clientSecret": "<redacted>",
+      "connectionMode": "stream"
+    }
+  },
+  "bindings": [
+    {
+      "type": "route",
+      "agentId": "main",
+      "match": {
+        "channel": "dingtalk",
+        "accountId": "default"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "main",
+      "match": {
+        "channel": "feishu",
+        "accountId": "default"
+      }
+    }
+  ],
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openai-codex/gpt-5.4",
+        "fallbacks": [
+          "google-gemini-cli/gemini-2.5-pro"
+        ]
+      },
+      "models": {
+        "openai-codex/gpt-5.4": {},
+        "google-gemini-cli/gemini-2.5-pro": {},
+        "google-antigravity/claude-opus-4-6-thinking": {}
+      },
+      "userTimezone": "Asia/Shanghai",
+      "workspace": "/vol1/1000/openclaw-workspaces/main",
+      "cliBackends": {
+        "codex-cli": {
+          "command": "/home/yuanhaizhou/.home-codex-official/.local/bin/codex",
+          "args": [
+            "exec",
+            "--json",
+            "--color",
+            "never",
+            "--dangerously-bypass-approvals-and-sandbox",
+            "--skip-git-repo-check"
+          ],
+          "output": "jsonl",
+          "resumeOutput": "text",
+          "resumeArgs": [
+            "exec",
+            "resume",
+            "{sessionId}",
+            "--json",
+            "--dangerously-bypass-approvals-and-sandbox",
+            "--skip-git-repo-check"
+          ],
+          "sessionMode": "existing",
+          "serialize": false
+        }
+      },
+      "memorySearch": {
+        "enabled": false,
+        "provider": "openai",
+        "remote": {
+          "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+        },
+        "model": "text-embedding-v2"
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "thinkingDefault": "high",
+      "maxConcurrent": 4,
+      "sandbox": {
+        "mode": "non-main",
+        "scope": "session",
+        "workspaceAccess": "none",
+        "sessionToolsVisibility": "all"
+      },
+      "subagents": {
+        "maxConcurrent": 6,
+        "thinking": "high",
+        "runTimeoutSeconds": 1200
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "workspace": "/vol1/1000/openclaw-workspaces/main",
+        "model": "openai-codex/gpt-5.4",
+        "tools": {
+          "profile": "coding",
+          "alsoAllow": [
+            "sessions_send",
+            "sessions_list",
+            "sessions_history",
+            "openmind_memory_status",
+            "openmind_memory_recall",
+            "openmind_memory_capture",
+            "openmind_graph_query",
+            "openmind_advisor_ask"
+          ],
+          "deny": [
+            "group:automation",
+            "group:ui",
+            "image",
+            "sessions_spawn",
+            "subagents"
+          ]
+        },
+        "name": "Main",
+        "default": true,
+        "skills": [
+          "chatgptrest-call"
+        ],
+        "heartbeat": {
+          "every": "30m",
+          "target": "none",
+          "lightContext": true,
+          "activeHours": {
+            "start": "08:00",
+            "end": "24:00",
+            "timezone": "Asia/Shanghai"
+          }
+        }
+      },
+      {
+        "id": "maintagent",
+        "workspace": "/vol1/1000/openclaw-workspaces/maintagent",
+        "model": "openai-codex/gpt-5.4",
+        "tools": {
+          "profile": "minimal",
+          "alsoAllow": [
+            "sessions_send",
+            "sessions_list"
+          ]
+        },
+        "name": "Maint",
+        "heartbeat": {
+          "every": "1h",
+          "target": "none",
+          "lightContext": true,
+          "prompt": "Read HEARTBEAT.md if it exists and follow it strictly. Check OpenClaw gateway health, OpenMind health, and Feishu channel readiness. Stay read-only; do not use exec, process, or shell commands for routine health checks. Prefer session status/list over ad-hoc shell probing. Ignore the legacy chatgptrest-* orch/worker topology in this rebuilt baseline. Never run ops/openclaw_orch_agent.py --reconcile unless main explicitly asks about that old stack. If you find an actionable issue, notify `main` via `sessions_send` with `sessionKey=\"agent:main:main\"` and a concise summary. Otherwise reply HEARTBEAT_OK.",
+          "activeHours": {
+            "start": "08:00",
+            "end": "24:00",
+            "timezone": "Asia/Shanghai"
+          }
+        },
+        "sandbox": {
+          "mode": "all",
+          "scope": "agent",
+          "workspaceAccess": "none"
+        }
+      }
+    ]
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "browser": {
+    "enabled": true,
+    "headless": true,
+    "noSandbox": true,
+    "defaultProfile": "openclaw"
+  }
+}

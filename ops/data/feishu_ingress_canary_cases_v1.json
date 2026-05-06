@@ -1,0 +1,23 @@
+[
+  {
+    "case_id": "green_visit_prep",
+    "message": "绿源来访准备",
+    "goal_hint": "planning",
+    "execution_profile": "report_grade",
+    "project_id": "planning"
+  },
+  {
+    "case_id": "tiger_module_coop",
+    "message": "钛虎机器人关节模组合作",
+    "goal_hint": "planning",
+    "execution_profile": "report_grade",
+    "project_id": "planning"
+  },
+  {
+    "case_id": "wheel_competition",
+    "message": "两轮车车轮市场竞争分析",
+    "goal_hint": "planning",
+    "execution_profile": "report_grade",
+    "project_id": "planning"
+  }
+]

@@ -1,0 +1,31 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-mcp.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-mcp.service
+#
+[Unit]
+Description=ChatgptREST public agent MCP adapter
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+EnvironmentFile=-/vol1/maint/MAIN/secrets/credentials.env
+Environment=FASTMCP_HOST=127.0.0.1
+Environment=FASTMCP_PORT=18712
+Environment=CHATGPTREST_AGENT_MCP_PORT=18712
+Environment=CHATGPTREST_BASE_URL=http://127.0.0.1:18711
+Environment=CHATGPTREST_CLIENT_NAME=chatgptrest-agent-mcp
+Environment=CHATGPTREST_CLIENT_INSTANCE=%H-chatgptrest-agent-mcp
+Environment=CHATGPTREST_REQUEST_ID_PREFIX=chatgptrest-agent-mcp
+# Auto-heal: if API port is down, MCP can start local API once and retry.
+Environment=CHATGPTREST_MCP_AUTO_START_API=1
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python __CHATGPTREST_ROOT__/chatgptrest_agent_mcp_server.py --transport streamable-http
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

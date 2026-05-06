@@ -1,0 +1,51 @@
+# Canonical topology contract for ChatgptREST + OpenClaw + OpenMind baseline.
+#
+# All ops scripts, verify checks, and docs should reference this file.
+# Changes to this file must be reviewed before deploy.
+#
+# Concepts:
+#   agent         — OpenClaw runtime agent (has state dir, can receive messages)
+#   role          — Business context that scopes memory and KB access (agent_roles.yaml)
+#   lane          — Codex controller lane (controller_lanes.json)
+#   sidecar       — System process (monitor/patrol/alert), NOT an agent
+#   external_tool — External CLI/API tool consumed via OpenClaw plugin
+#
+# See: https://github.com/haizhouyuan/ChatgptREST/issues/126
+
+version: 1
+baseline: lean
+
+topologies:
+  lean:
+    agents: [main]
+    description: "Single-agent baseline. Production default."
+  ops:
+    agents: [main, maintagent, finbot]
+    description: "Ops topology: main interaction lane, maintenance watchdog, and finbot investment-research scout."
+
+sidecars:
+  guardian:
+    description: "Periodic health check + alert + optional agent wake"
+    process: "chatgptrest-guardian.timer"
+    wake_agent: main
+    wake_session: main-guardian
+    interval_minutes: 15
+
+external_tools:
+  finagent:
+    type: cli
+    path: /vol1/1000/projects/finagent
+    interface: "python3 -m finagent.cli integration-snapshot"
+    openclaw_plugin: finagent-review
+    required: false
+
+retired:
+  agents:
+    - chatgptrest-orch
+    - chatgptrest-codex-w1
+    - chatgptrest-codex-w2
+    - chatgptrest-codex-w3
+    - chatgptrest-guardian   # the agent ID; sidecar process remains active
+  notes: |
+    Legacy orch fleet. Not part of current production baseline.
+    See openclaw_orch_agent.py for compatibility tooling.

@@ -1,0 +1,10 @@
+[Unit]
+Description=Health Probe - periodic system health check
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python ops/health_probe.py --fix
+EnvironmentFile=-/vol1/maint/MAIN/secrets/credentials.env
+TimeoutStartSec=180

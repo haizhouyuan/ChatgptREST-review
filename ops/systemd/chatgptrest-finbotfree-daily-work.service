@@ -1,0 +1,20 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-finbotfree-daily-work.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-finbotfree-daily-work.timer
+#
+[Unit]
+Description=ChatgptREST finbotfree (free tier) continuous daily work sweep
+After=network-online.target chatgptrest-api.service chatgptrest-dashboard.service
+Wants=network-online.target chatgptrest-api.service chatgptrest-dashboard.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+EnvironmentFile=-/vol1/maint/MAIN/secrets/credentials.env
+Environment=FINBOT_TIER=free
+Environment=OPENROUTER_DEFAULT_MODEL=nvidia/nemotron-3-super-120b-a12b:free
+ExecStart=/vol1/1000/projects/ChatgptREST/.venv/bin/python __CHATGPTREST_ROOT__/ops/openclaw_finbot.py daily-work --format json --scope today --limit 8 --refresh-limit 5
+TimeoutStartSec=20min

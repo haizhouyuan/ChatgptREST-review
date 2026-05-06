@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero-grid">
+    <article class="hero-card tone-accent">
+      <span class="hero-label">Global Snapshots</span>
+      <strong class="hero-value">{{ snapshot.summary.global_snapshots }}</strong>
+    </article>
+    <article class="hero-card tone-accent">
+      <span class="hero-label">Root Overlays</span>
+      <strong class="hero-value">{{ snapshot.summary.root_overlays }}</strong>
+    </article>
+    <article class="hero-card tone-accent">
+      <span class="hero-label">Roots With Trace</span>
+      <strong class="hero-value">{{ snapshot.summary.roots_with_trace }}</strong>
+    </article>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Global OpenMind Snapshot</h2>
+          <p>Explainability and context state aggregated out of band.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for row in snapshot.globals %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span>{{ row.kind }}</span>
+              <span>{{ row.ts | fmt_ts }}</span>
+            </div>
+            <div class="stack-list compact mono">
+              {% for key, value in row.summary.items() %}
+                <div>{{ key }}={{ value }}</div>
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No global cognitive snapshot available.</div>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Run Overlays</h2>
+          <p>Per-run explainability overlays kept next to run detail, not in the hot query path.</p>
+        </div>
+      </header>
+      {% if snapshot.overlays %}
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Root Run</th>
+                <th>Kind</th>
+                <th>Trace</th>
+                <th>Route</th>
+                <th>Latest Advisor Event</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in snapshot.overlays %}
+                <tr>
+                  <td>
+                    {% if row.root_run_id %}
+                      <a class="table-link mono" href="/v2/dashboard/runs/{{ row.root_run_id }}">{{ row.root_run_id }}</a>
+                    {% else %}
+                      <span class="subtle">global</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ row.kind }}</td>
+                  <td class="mono">{{ row.summary.trace_id or 'n/a' }}</td>
+                  <td>{{ row.summary.route or 'n/a' }}</td>
+                  <td>{{ row.summary.latest_advisor_event or 'n/a' }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="empty-state">No run overlays available.</div>
+      {% endif %}
+    </article>
+  </section>
+{% endblock %}

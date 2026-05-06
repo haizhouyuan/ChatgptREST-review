@@ -1,0 +1,101 @@
+{
+  "schema_version": "next-stage-release-gate-pack-v1",
+  "description": "Unified release gate pack for the 2026-04-08 boundary-consolidation release.",
+  "gates": [
+    {
+      "gate_id": "coding_agent_v1",
+      "description": "Default coding-agent lane stays web-first, result-first, and low-cognitive-load.",
+      "commands": [
+        {
+          "label": "coding_agent_contract_tests",
+          "argv": [
+            "./.venv/bin/pytest",
+            "-q",
+            "tests/test_agent_mcp.py",
+            "tests/test_skill_chatgptrest_call_coding_agent_v1.py",
+            "tests/test_cli_improvements.py",
+            "tests/test_cli_chatgptrestctl.py"
+          ],
+          "timeout_seconds": 600
+        }
+      ]
+    },
+    {
+      "gate_id": "openclaw_entry_policy",
+      "description": "OpenClaw stack must rebuild and validate cleanly against the retired-control-plane-free runtime.",
+      "commands": [
+        {
+          "label": "openclaw_entry_contract_tests",
+          "argv": [
+            "./.venv/bin/pytest",
+            "-q",
+            "tests/test_openclaw_cognitive_plugins.py",
+            "tests/test_openclaw_adapter.py",
+            "tests/test_rebuild_openclaw_openmind_stack.py",
+            "tests/test_verify_openclaw_openmind_stack.py"
+          ],
+          "timeout_seconds": 600
+        }
+      ]
+    },
+    {
+      "gate_id": "authority_precedence",
+      "description": "Authority anchors must remain structurally first-class and stay ahead of project memory or heuristic recall.",
+      "commands": [
+        {
+          "label": "authority_governance_scan",
+          "argv": [
+            "python3",
+            "ops/run_authority_governance_scan.py",
+            "--output-dir",
+            "{gate_dir}/scan"
+          ],
+          "timeout_seconds": 300
+        },
+        {
+          "label": "authority_contract_tests",
+          "argv": [
+            "./.venv/bin/pytest",
+            "-q",
+            "tests/test_context_service_work_memory.py",
+            "tests/test_prompt_builder.py",
+            "tests/test_cognitive_api.py"
+          ],
+          "timeout_seconds": 600
+        }
+      ]
+    },
+    {
+      "gate_id": "promotion_maintenance_safety",
+      "description": "Promotion maintenance must stay refresh-only and evidence-producing for this release.",
+      "commands": [
+        {
+          "label": "promotion_inventory_report",
+          "argv": [
+            "python3",
+            "ops/report_evomap_promotion_inventory.py",
+            "--output-dir",
+            "{gate_dir}/inventory",
+            "--stamp",
+            "{stamp}"
+          ],
+          "timeout_seconds": 300
+        },
+        {
+          "label": "planning_review_maintenance_refresh_only",
+          "argv": [
+            "python3",
+            "ops/run_planning_review_maintenance.py",
+            "--output-root",
+            "{gate_dir}/maintenance",
+            "--refresh-output-root",
+            "{gate_dir}/refresh",
+            "--top-n",
+            "20"
+          ],
+          "timeout_seconds": 900
+        }
+      ]
+    }
+  ]
+}

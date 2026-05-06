@@ -1,0 +1,78 @@
+{
+    "capsule_id": "skill_hcom_multiagent_ops_20260301",
+    "capsule_type": "skill_learned",
+    "source": "antigravity",
+    "domain": "tooling.hcom",
+    "created_at": "2026-03-01T14:45:00+08:00",
+    "confidence": 0.95,
+    "title": "hcom v0.6.22 多代理通信 — 正确用法与踩坑记录",
+    "context": "在 ChatgptREST 生产就绪过程中，需要通过 hcom 派发任务给 3 个 Claude Code 实例",
+    "lessons": [
+        {
+            "id": "L1",
+            "severity": "critical",
+            "title": "HCOM_DIR 必须显式指定",
+            "problem": "hcom send/list/events 默认使用的 HCOM_DIR 可能和 CC 实例注册的不一致，导致消息写入 A 库但在 B 库查看",
+            "solution": "始终在命令前加 HCOM_DIR=/home/yuanhaizhou/.hcom",
+            "evidence": "hcom send 返回 exit 0 但 hcom events 里查不到 type=message，而 hcom list 显示正确 — 说明是两个不同的库"
+        },
+        {
+            "id": "L2",
+            "severity": "critical",
+            "title": "外部发送者用 --from 而不是 --name",
+            "problem": "非 hcom 管理的进程（如 Antigravity/Codex CLI）用 --name 不会注册为参与者，消息静默丢弃",
+            "solution": "HCOM_DIR=/home/yuanhaizhou/.hcom hcom send --from antigravity @target -- 消息内容",
+            "evidence": "hcom list 始终显示 'Your name: (not participating)'，说明 --name 不生效"
+        },
+        {
+            "id": "L3",
+            "severity": "high",
+            "title": "hcom start 用 --as 而非 --name",
+            "problem": "hcom start --name xxx 不是正确语法",
+            "solution": "hcom start --as antigravity"
+        },
+        {
+            "id": "L4",
+            "severity": "high",
+            "title": "tmux send-keys 无法穿透 hcom pty 层",
+            "problem": "hcom 管理的 CC 实例使用 hcom pty 伪终端，tmux send-keys 写到了外层 tmux 但没进入 pty 内层",
+            "solution": "用 HCOM_DIR=/home/yuanhaizhou/.hcom hcom term inject cc3-bali --enter 代替 tmux send-keys"
+        },
+        {
+            "id": "L5",
+            "severity": "medium",
+            "title": "僵尸 CC 实例检测",
+            "problem": "CC 实例显示 'listening since 20h' 但不处理消息 — 是断连的僵尸",
+            "solution": "hcom kill <name> 杀掉后用 hcom N claude --tag xxx --terminal tmux 重新拉起",
+            "indicators": [
+                "status 长时间不变",
+                "无 deliver 事件",
+                "无 git 动作",
+                "unread 计数不增长"
+            ]
+        },
+        {
+            "id": "L6",
+            "severity": "medium",
+            "title": "消息投递验证闭环",
+            "problem": "发消息后无法确认对方是否收到",
+            "solution_steps": [
+                "1. 写入验证: HCOM_DIR=... hcom events --type message --last 5",
+                "2. 投递验证: HCOM_DIR=... hcom list（看 +N unread 计数）",
+                "3. 处理验证: HCOM_DIR=... hcom events --last 10（看 status=active/tool:Edit 事件）"
+            ]
+        }
+    ],
+    "correct_usage_template": {
+        "send_task": "HCOM_DIR=/home/yuanhaizhou/.hcom hcom send --from antigravity @<target> --intent request -- <task>",
+        "check_delivery": "HCOM_DIR=/home/yuanhaizhou/.hcom hcom events --type message --last 20",
+        "check_status": "HCOM_DIR=/home/yuanhaizhou/.hcom hcom list",
+        "inject_enter": "HCOM_DIR=/home/yuanhaizhou/.hcom hcom term inject <name> --enter",
+        "kill_zombie": "HCOM_DIR=/home/yuanhaizhou/.hcom hcom kill <name>",
+        "launch_fresh": "HCOM_DIR=/home/yuanhaizhou/.hcom hcom 3 claude --tag <tag> --terminal tmux --dangerously-skip-permissions"
+    },
+    "related_files": [
+        "chatgptrest/advisor/dispatch.py",
+        "docs/ops/feishu_webhook_binding.md"
+    ]
+}

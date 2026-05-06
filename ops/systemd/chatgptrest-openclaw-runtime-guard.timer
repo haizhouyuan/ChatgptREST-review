@@ -1,0 +1,15 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-openclaw-runtime-guard.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-openclaw-runtime-guard.timer
+#
+[Unit]
+Description=ChatgptREST OpenClaw runtime guard (every 15 minutes)
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+RandomizedDelaySec=30
+
+[Install]
+WantedBy=timers.target

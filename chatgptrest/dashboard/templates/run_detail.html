@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero-grid">
+    <article class="hero-card tone-{{ snapshot.run.health_tone }}">
+      <span class="hero-label">Current Layer</span>
+      <strong class="hero-value">{{ snapshot.run.current_layer }}</strong>
+    </article>
+    <article class="hero-card tone-{{ snapshot.run.health_tone }}">
+      <span class="hero-label">Current Status</span>
+      <strong class="hero-value">{{ snapshot.run.current_status }}</strong>
+    </article>
+    <article class="hero-card tone-neutral">
+      <span class="hero-label">Current Owner</span>
+      <strong class="hero-value mono">{{ snapshot.run.current_owner or 'n/a' }}</strong>
+    </article>
+    <article class="hero-card tone-neutral">
+      <span class="hero-label">Ingress</span>
+      <strong class="hero-value">{{ snapshot.run.ingress_channel or 'n/a' }}</strong>
+    </article>
+    <article class="hero-card tone-neutral">
+      <span class="hero-label">Task</span>
+      <strong class="hero-value mono">{{ snapshot.run.task_id or 'n/a' }}</strong>
+    </article>
+    <article class="hero-card tone-neutral">
+      <span class="hero-label">Trace</span>
+      <strong class="hero-value mono">{{ snapshot.run.trace_id or 'n/a' }}</strong>
+    </article>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Lineage Summary</h2>
+          <p>Operator view of where this chain came from and what it fans into.</p>
+        </div>
+      </header>
+      <div class="stat-row"><span>Root Run</span><strong class="mono">{{ snapshot.run.root_run_id }}</strong></div>
+      <div class="stat-row"><span>Title</span><strong>{{ snapshot.run.title }}</strong></div>
+      <div class="stat-row"><span>Problem Class</span><strong class="mono">{{ snapshot.run.problem_class }}</strong></div>
+      <div class="stat-row"><span>Updated</span><strong>{{ snapshot.run.updated_at | fmt_ts }}</strong></div>
+      <div class="badge-row">
+        {% for item in snapshot.run.upstream %}
+          <span class="badge tone-neutral">{{ item.label }}={{ item.value }}</span>
+        {% else %}
+          <span class="badge tone-neutral">no upstream edges</span>
+        {% endfor %}
+      </div>
+      <div class="badge-row">
+        {% for item in snapshot.run.downstream %}
+          <span class="badge tone-neutral">{{ item.label }}={{ item.value }}</span>
+        {% else %}
+          <span class="badge tone-neutral">no downstream edges</span>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Projected Entity Counts</h2>
+          <p>Which systems are contributing state to this lineage row.</p>
+        </div>
+      </header>
+      {% for key, value in snapshot.run.entity_counts.items() %}
+        <div class="stat-row">
+          <span class="mono">{{ key }}</span>
+          <strong>{{ value }}</strong>
+        </div>
+      {% endfor %}
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Timeline</h2>
+        <p>Canonical event envelope for the entire execution chain.</p>
+      </div>
+    </header>
+    {% if snapshot.timeline %}
+      <div class="timeline">
+        {% for event in snapshot.timeline %}
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span>{{ event.ts | fmt_ts }}</span>
+              <span>{{ event.layer }} · {{ event.source_system }}</span>
+            </div>
+            <div><strong>{{ event.summary }}</strong></div>
+            <div class="badge-row">
+              <span class="badge tone-{{ status_tone(event.status or event.severity) }}">{{ event.status or 'n/a' }}</span>
+              <span class="badge tone-neutral">{{ event.entity_type }}</span>
+              <span class="badge tone-neutral">{{ event.event_type }}</span>
+            </div>
+            <div class="subtle mono">{{ event.entity_id }}</div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state">No canonical events materialized for this run yet.</div>
+    {% endif %}
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Identity Map</h2>
+          <p>Stable identifiers mapped onto this root lineage.</p>
+        </div>
+      </header>
+      {% if snapshot.identities %}
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Entity</th>
+                <th>Source</th>
+                <th>Mapped Keys</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in snapshot.identities %}
+                <tr>
+                  <td>
+                    <div class="mono">{{ row.entity_type }}:{{ row.entity_id }}</div>
+                    <div class="subtle">{{ row.updated_at | age_label }}</div>
+                  </td>
+                  <td>{{ row.source_system }}</td>
+                  <td>
+                    <div class="stack-list compact mono">
+                      <div>task={{ row.task_id or 'n/a' }}</div>
+                      <div>trace={{ row.trace_id or 'n/a' }}</div>
+                      <div>run={{ row.run_id or 'n/a' }}</div>
+                      <div>job={{ row.job_id or 'n/a' }}</div>
+                      <div>lane={{ row.lane_id or 'n/a' }}</div>
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="empty-state">No identity rows mapped yet.</div>
+      {% endif %}
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Cognitive Overlay</h2>
+          <p>Explainability stays attached to run detail, not to the primary query path.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for row in snapshot.cognitive %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span>{{ row.scope }}</span>
+              <span>{{ row.kind }}</span>
+            </div>
+            <div class="stack-list compact mono">
+              {% for key, value in row.summary.items() %}
+                <div>{{ key }}={{ value }}</div>
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No cognitive overlay available for this run.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Incidents And Client Issues</h2>
+        <p>Operator issues anchored back to this lineage.</p>
+      </div>
+    </header>
+    {% if snapshot.incidents %}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Severity</th>
+              <th>Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in snapshot.incidents %}
+              <tr>
+                <td class="mono">{{ row.incident_id }}</td>
+                <td>{{ row.incident_type }}</td>
+                <td><span class="badge tone-{{ status_tone(row.status) }}">{{ row.status }}</span></td>
+                <td>{{ row.severity }}</td>
+                <td>{{ row.summary or row.title }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty-state">No incidents linked to this run.</div>
+    {% endif %}
+  </section>
+{% endblock %}

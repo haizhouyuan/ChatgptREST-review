@@ -1,0 +1,14 @@
+- [x] Create clean worktree/branch from current `origin/master`
+- [x] Record execution plan before coding
+- [ ] Cherry-pick `2cb04b5` onto clean branch
+- [ ] Run GitNexus impact/context via fresh sub-agent and record findings
+- [ ] Fix checkpoint resolution semantics
+- [ ] Fix `topology_id + explicit team` overlay semantics
+- [ ] Enforce `max_concurrent` in parallel team fan-out
+- [ ] Add regression tests for all three fixes
+- [ ] Run targeted test matrix
+- [ ] Run broader advisor/kernel regression matrix
+- [ ] Write adjudication + walkthrough
+- [ ] Run `gitnexus_detect_changes` or delegated equivalent and summarize scope
+- [ ] Push branch and open PR
+- [ ] Closeout

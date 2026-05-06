@@ -1,0 +1,33 @@
+{
+  "version": "v1",
+  "queries": [
+    {
+      "query_id": "budget-key-figures",
+      "query": "2026预算关键数字汇总",
+      "expected_review_domains": ["budget"],
+      "expected_source_buckets": ["planning_budget"],
+      "expected_title_tokens": ["预算", "关键数字"]
+    },
+    {
+      "query_id": "oem-execution-plan",
+      "query": "104 模组量产导入计划",
+      "expected_review_domains": ["business_104"],
+      "expected_source_buckets": ["planning_latest_output"],
+      "expected_title_tokens": ["量产导入", "计划"]
+    },
+    {
+      "query_id": "strategy-freeze-plan",
+      "query": "横向应用事业部 十五五规划 对内 领导 审阅稿",
+      "expected_review_domains": ["strategy"],
+      "expected_source_buckets": ["planning_strategy"],
+      "expected_title_tokens": ["十五五规划", "审阅稿"]
+    },
+    {
+      "query_id": "governance-matrix",
+      "query": "硬门槛授权矩阵",
+      "expected_review_domains": ["business_104"],
+      "expected_source_buckets": ["planning_latest_output", "planning_outputs"],
+      "expected_title_tokens": ["授权", "矩阵"]
+    }
+  ]
+}

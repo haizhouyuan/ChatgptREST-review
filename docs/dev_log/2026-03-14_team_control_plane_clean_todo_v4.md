@@ -1,0 +1,18 @@
+- [x] Create clean worktree/branch from current `origin/master`
+- [x] Record execution plan before coding
+- [x] Cherry-pick `2cb04b5` onto clean branch
+- [x] Run GitNexus impact/context for `dispatch_team`, `_run_team_roles`, `resolve_team_spec`, `_resolve_checkpoint`
+- [x] Fix checkpoint resolution semantics
+- [x] Fix `topology_id + explicit team` overlay semantics
+- [x] Enforce `max_concurrent` in parallel team fan-out
+- [x] Add regression tests for all three fixes
+- [x] Run targeted test matrix
+- [x] Run broader advisor/kernel regression matrix
+- [x] Run full repo `pytest -q` once to first failure
+- [x] Diagnose order-dependent failure in `test_cc_team_run_and_checkpoint_routes`
+- [x] Harden team-control route test helper against leaked `OPENMIND_RATE_LIMIT`
+- [x] Re-run full repo `pytest -q` to green
+- [x] Write adjudication + final walkthrough
+- [x] Run change-scope check and summarize affected symbols/files
+- [ ] Push branch and open PR
+- [ ] Closeout

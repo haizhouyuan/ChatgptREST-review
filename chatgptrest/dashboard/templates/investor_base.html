@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="json-href" content="{{ json_href }}">
+  <title>{{ page_title }} · OpenClaw OpenMind Dashboard</title>
+  <link rel="stylesheet" href="{{ request.url_for('dashboard_asset', asset_name='dashboard.css') }}">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-kicker">OpenClaw + OpenMind</div>
+        <h1>{{ page_title }}</h1>
+        <p>{{ page_description }}</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="ghost-button" type="button" data-dashboard-refresh>Refresh</button>
+        <div class="refresh-chip" data-updated-indicator style="display: none;">
+          <span>Updated</span>
+          <strong data-refresh-countdown>--</strong>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <a class="tab {% if page_key == 'investor' %}active{% endif %}" href="/v2/dashboard/investor">Investor Home</a>
+      <a class="tab {% if page_key == 'investor_theme' %}active{% endif %}" href="/v2/dashboard/investor">Theme Detail</a>
+      <a class="tab {% if page_key == 'investor_opportunity' %}active{% endif %}" href="/v2/dashboard/investor">Opportunity Detail</a>
+      <a class="tab {% if page_key == 'investor_source' %}active{% endif %}" href="/v2/dashboard/investor">Source Detail</a>
+    </nav>
+
+    <section class="meta-strip" data-investor-meta>
+      <div class="meta-item">
+        <span class="meta-label">Rendered</span>
+        <strong>{{ snapshot.generated_at | fmt_ts }}</strong>
+      </div>
+    </section>
+
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  <script src="{{ request.url_for('dashboard_asset', asset_name='dashboard.js') }}"></script>
+</body>
+</html>

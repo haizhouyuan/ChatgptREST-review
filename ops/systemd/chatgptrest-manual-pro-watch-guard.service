@@ -1,0 +1,24 @@
+# Copy/link to: ~/.config/systemd/user/chatgptrest-manual-pro-watch-guard.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user start chatgptrest-manual-pro-watch-guard.service
+#
+# This service is intentionally not enabled by default. Start it only while a
+# human is using ChatGPT Pro in the shared browser profile.
+[Unit]
+Description=ChatgptREST manual ChatGPT Pro watch guard
+After=chatgptrest-api.service chatgptrest-mcp.service
+Wants=chatgptrest-api.service chatgptrest-mcp.service
+
+[Service]
+Type=simple
+WorkingDirectory=/vol1/1000/projects/ChatgptREST
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/vol1/1000/projects/ChatgptREST
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=/vol1/1000/projects/ChatgptREST/.venv/bin/python /vol1/1000/projects/ChatgptREST/ops/manual_pro_watch_guard.py --poll-seconds 5 --duration-seconds 0 --out-dir /vol1/1000/projects/ChatgptREST/artifacts/monitor/manual_pro_watch_guard
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

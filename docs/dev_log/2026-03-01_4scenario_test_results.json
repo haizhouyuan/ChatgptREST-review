@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-03-01T11:18:05.230244",
+  "api_url": "http://127.0.0.1:18713/v2/advisor/advise",
+  "passed": 4,
+  "total": 4,
+  "total_time_s": 425.4,
+  "results": [
+    {
+      "scenario": "S1_QUICK_QUESTION",
+      "message": "MiniLED和OLED在消费级电视中各有什么优势？",
+      "expected_intent": "QUICK_QUESTION",
+      "elapsed_s": 125.2,
+      "intent_match": true,
+      "metrics": {
+        "intent_top": "QUICK_QUESTION",
+        "selected_route": "hybrid",
+        "route_status": "complete",
+        "kb_has_answer": false,
+        "kb_answerability": 0.0,
+        "kb_chunks": 0,
+        "answer_len": 0,
+        "review_pass": null,
+        "stage": "funnel_complete",
+        "evidence_ids": 0
+      },
+      "api_status": "ok"
+    },
+    {
+      "scenario": "S2_DO_RESEARCH",
+      "message": "深度分析钙钛矿太阳能电池的商业化瓶颈，对比晶硅、薄膜和有机太阳能电池的成本、效率和寿命。",
+      "expected_intent": "DO_RESEARCH",
+      "elapsed_s": 34.0,
+      "intent_match": true,
+      "metrics": {
+        "intent_top": "DO_RESEARCH",
+        "selected_route": "deep_research",
+        "route_status": "success",
+        "kb_has_answer": false,
+        "kb_answerability": 0.0,
+        "kb_chunks": 0,
+        "answer_len": 2697,
+        "review_pass": false,
+        "stage": "research_complete",
+        "evidence_ids": 0
+      },
+      "api_status": "ok"
+    },
+    {
+      "scenario": "S3_WRITE_REPORT",
+      "message": "写一份关于固态电池技术发展现状的简要分析报告，覆盖丰田、三星SDI、QuantumScape的最新进展。",
+      "expected_intent": "WRITE_REPORT",
+      "elapsed_s": 164.3,
+      "intent_match": true,
+      "metrics": {
+        "intent_top": "WRITE_REPORT",
+        "selected_route": "report",
+        "route_status": "needs_revision",
+        "kb_has_answer": true,
+        "kb_answerability": 0.45,
+        "kb_chunks": 1,
+        "answer_len": 500,
+        "review_pass": false,
+        "stage": "report_complete",
+        "evidence_ids": 0
+      },
+      "api_status": "ok"
+    },
+    {
+      "scenario": "S4_BUILD_FEATURE",
+      "message": "开发一个Python命令行工具，能够批量转换Markdown文件为HTML格式，支持自定义CSS主题和目录生成。",
+      "expected_intent": "BUILD_FEATURE",
+      "elapsed_s": 101.9,
+      "intent_match": true,
+      "metrics": {
+        "intent_top": "BUILD_FEATURE",
+        "selected_route": "funnel",
+        "route_status": "complete",
+        "kb_has_answer": true,
+        "kb_answerability": 0.45,
+        "kb_chunks": 1,
+        "answer_len": 0,
+        "review_pass": null,
+        "stage": "funnel_complete",
+        "evidence_ids": 0
+      },
+      "api_status": "ok"
+    }
+  ]
+}

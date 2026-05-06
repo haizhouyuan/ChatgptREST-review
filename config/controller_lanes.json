@@ -1,0 +1,51 @@
+{
+  "lanes": [
+    {
+      "lane_id": "main",
+      "purpose": "primary controller",
+      "lane_kind": "codex",
+      "cwd": "/vol1/1000/projects/ChatgptREST",
+      "desired_state": "observed",
+      "run_state": "working",
+      "session_key": "lane:main"
+    },
+    {
+      "lane_id": "scout",
+      "purpose": "read-only code scout",
+      "lane_kind": "codex",
+      "cwd": "/vol1/1000/projects/ChatgptREST",
+      "desired_state": "observed",
+      "run_state": "idle",
+      "session_key": "lane:scout"
+    },
+    {
+      "lane_id": "worker-1",
+      "purpose": "bounded implementation lane",
+      "lane_kind": "codex",
+      "cwd": "/vol1/1000/projects/ChatgptREST",
+      "desired_state": "observed",
+      "run_state": "idle",
+      "session_key": "lane:worker-1"
+    },
+    {
+      "lane_id": "verifier",
+      "purpose": "tests and smoke validation",
+      "lane_kind": "codex",
+      "cwd": "/vol1/1000/projects/ChatgptREST",
+      "desired_state": "observed",
+      "run_state": "idle",
+      "session_key": "lane:verifier"
+    },
+    {
+      "lane_id": "finbot-commercial-space",
+      "purpose": "commercial space theme run",
+      "lane_kind": "finbot",
+      "cwd": "/vol1/1000/projects/ChatgptREST",
+      "desired_state": "observed",
+      "run_state": "idle",
+      "session_key": "lane:finbot-commercial-space",
+      "stale_after_seconds": 3600,
+      "restart_cooldown_seconds": 600
+    }
+  ]
+}

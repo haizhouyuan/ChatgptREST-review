@@ -1,0 +1,446 @@
+{
+  "generated_at": "2026-03-09T14:13:28.691208+00:00",
+  "openclaw_bin": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.local/share/openclaw-2026.3.7/node_modules/openclaw/openclaw.mjs",
+  "state_dir": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.openclaw",
+  "topology": "lean",
+  "checks": [
+    {
+      "name": "plugins_doctor",
+      "ok": true,
+      "detail": "[plugins] feishu_bitable: Registered bitable tools\nNo plugin issues detected."
+    },
+    {
+      "name": "status_json_loaded",
+      "ok": true,
+      "detail": "sessions.count=11"
+    },
+    {
+      "name": "topology_recognized",
+      "ok": true,
+      "detail": "agent_ids=['main']"
+    },
+    {
+      "name": "topology_matches_expectation",
+      "ok": true,
+      "detail": "topology=lean"
+    },
+    {
+      "name": "heartbeat_agent_count",
+      "ok": true,
+      "detail": "expected=1"
+    },
+    {
+      "name": "legacy_role_agents_removed",
+      "ok": true,
+      "detail": "configured=['main']"
+    },
+    {
+      "name": "main_profile_coding",
+      "ok": true,
+      "detail": "profile=coding"
+    },
+    {
+      "name": "skills_repo_only",
+      "ok": true,
+      "detail": "extraDirs=['/vol1/1000/projects/ChatgptREST/skills-src'] allowBundled=[]"
+    },
+    {
+      "name": "main_skills_repo_public",
+      "ok": true,
+      "detail": "skills=['chatgptrest-call']"
+    },
+    {
+      "name": "main_has_openmind_tools",
+      "ok": true,
+      "detail": "alsoAllow=['openmind_memory_status', 'openmind_memory_recall', 'openmind_memory_capture', 'openmind_graph_query', 'openmind_advisor_ask']"
+    },
+    {
+      "name": "main_no_sessions_spawn",
+      "ok": true,
+      "detail": "effective=['apply_patch', 'edit', 'exec', 'memory_get', 'memory_search', 'openmind_advisor_ask', 'openmind_graph_query', 'openmind_memory_capture', 'openmind_memory_recall', 'openmind_memory_status', 'process', 'read', 'session_status', 'write']"
+    },
+    {
+      "name": "main_no_subagents_tool",
+      "ok": true,
+      "detail": "effective=['apply_patch', 'edit', 'exec', 'memory_get', 'memory_search', 'openmind_advisor_ask', 'openmind_graph_query', 'openmind_memory_capture', 'openmind_memory_recall', 'openmind_memory_status', 'process', 'read', 'session_status', 'write']"
+    },
+    {
+      "name": "lean_agent_to_agent_disabled",
+      "ok": true,
+      "detail": "allow=[]"
+    },
+    {
+      "name": "lean_maintagent_absent",
+      "ok": true,
+      "detail": "configured=['main']"
+    },
+    {
+      "name": "plugins_no_local_load_paths",
+      "ok": true,
+      "detail": "paths=[]"
+    },
+    {
+      "name": "plugins_env_http_proxy_disabled",
+      "ok": true,
+      "detail": "allow=['acpx', 'diffs', 'dingtalk', 'feishu', 'google-gemini-cli-auth', 'openmind-advisor', 'openmind-graph', 'openmind-memory', 'openmind-telemetry']"
+    },
+    {
+      "name": "gateway_bind_loopback",
+      "ok": true,
+      "detail": "bind=loopback"
+    },
+    {
+      "name": "gateway_trusted_proxies_configured",
+      "ok": true,
+      "detail": "trustedProxies=['127.0.0.1/32', '::1/128']"
+    },
+    {
+      "name": "gateway_auth_token_mode",
+      "ok": true,
+      "detail": "auth={'mode': 'token', 'allowTailscale': False, 'token': '<redacted>'}"
+    },
+    {
+      "name": "gateway_auth_token_present",
+      "ok": true,
+      "detail": "auth={'mode': 'token', 'allowTailscale': False, 'token': '<redacted>'}"
+    },
+    {
+      "name": "gateway_tailscale_disabled",
+      "ok": true,
+      "detail": "gateway={'port': 18789, 'mode': 'local', 'bind': 'loopback', 'trustedProxies': ['127.0.0.1/32', '::1/128'], 'controlUi': {'allowInsecureAuth': False}, 'auth': {'mode': 'token', 'allowTailscale': False, 'token': '<redacted>'}, 'tailscale': {'mode': 'off', 'resetOnExit': False}}"
+    },
+    {
+      "name": "feishu_tools_disabled",
+      "ok": true,
+      "detail": "tools={'doc': False, 'chat': False, 'wiki': False, 'drive': False, 'perm': False, 'scopes': False}"
+    },
+    {
+      "name": "security_no_feishu_doc_warning",
+      "ok": true,
+      "detail": "summary.attack_surface"
+    },
+    {
+      "name": "advisor_unauth_ingress_rejected",
+      "ok": true,
+      "detail": "status=401 body={\"detail\":\"Invalid or missing API key\"}"
+    },
+    {
+      "name": "openmind_probe_reply",
+      "ok": true,
+      "detail": "OPENMIND_OK OPENMIND_PROBE_f4345be2da84"
+    },
+    {
+      "name": "openmind_tool_round",
+      "ok": true,
+      "detail": "tool_called=True tool_result=True assistant='OPENMIND_OK OPENMIND_PROBE_f4345be2da84'"
+    },
+    {
+      "name": "memory_capture_probe_reply",
+      "ok": true,
+      "detail": "CAPTURE_OK TRAVEL_PREF_45fe9c2b5525"
+    },
+    {
+      "name": "memory_capture_tool_round",
+      "ok": true,
+      "detail": "tool_called=True tool_result=True assistant='CAPTURE_OK TRAVEL_PREF_45fe9c2b5525'"
+    },
+    {
+      "name": "memory_capture_recorded",
+      "ok": true,
+      "detail": "{\"ok\": true, \"results\": [{\"audit_trail\": [{\"action\": \"stage\", \"agent\": \"openclaw\", \"audit_id\": \"46279a3a-8a3f-4f43-b4d3-d6ab274c79a7\", \"created_at\": \"2026-03-09T14:12:43.669432+00:00\", \"new_tier\": \"staging\", \"old_tier\": null, \"reason\": \"initial staging\", \"record_id\": \"fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4\"}, {\"action\": \"promote\", \"agent\": \"system\", \"audit_id\": \"4a1abe58-b492-4c23-aa65-a694e81def2c\", \"created_at\": \"2026-03-09T14:12:43.677276+00:00\", \"new_tier\": \"episodic\", \"old_tier\": \"staging\", \"reason\": \"cognitive memory capture\", \"record_id\": \"fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4\"}], \"category\": \"captured_memory\", \"duplicate\": false, \"message\": \"captured\", \"ok\": true, \"record_id\": \"fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4\", \"tier\": \"episodic\", \"title\": \"Business travel preference TRAVEL_PREF_45fe9c2b5525 #1\", \"trace_id\": \"fb8a5ef4-a811-485e-9461-55ea2a407431\"}]}"
+    },
+    {
+      "name": "memory_recall_probe_reply",
+      "ok": true,
+      "detail": "RECALL_OK TRAVEL_PREF_45fe9c2b5525"
+    },
+    {
+      "name": "memory_recall_tool_round",
+      "ok": true,
+      "detail": "tool_called=True tool_result=True assistant='RECALL_OK TRAVEL_PREF_45fe9c2b5525'"
+    },
+    {
+      "name": "memory_recall_captured_block",
+      "ok": true,
+      "detail": "{\"cache_ttl_seconds\": 120, \"context_blocks\": [{\"kind\": \"memory\", \"metadata\": {\"record_count\": 2}, \"provenance\": [{\"id\": \"d8360df0-6f46-43f5-9028-69278e462e81\", \"key\": \"working:sess-1:1\", \"type\": \"memory_record\"}, {\"id\": \"8f386465-fb7d-4496-817f-02ab9a9c1474\", \"key\": \"working:sess-1:1\", \"type\": \"memory_record\"}], \"source_type\": \"working\", \"text\": \"user: 我们在讨论安徽项目的图谱和记忆设计。\\nuser: We are discussing the anhuisubstrate graph and memory design.\", \"title\": \"Working Memory\", \"token_count\": 43}, {\"kind\": \"memory\", \"metadata\": {\"record_count\": 2, \"scope\": \"cross_session\"}, \"provenance\": [{\"id\": \"fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4\", \"key\": \"Business travel preference TRAVEL_PREF_45fe9c2b5525 #1\", \"type\": \"memory_record\"}, {\"id\": \"f53e5933-ad2e-46d2-8146-3d5518f4d4ab\", \"key\": \"Business travel preference TRAVEL_PREF_935067306d0b #1\", \"type\": \"memory_record\"}], \"source_type\": \"captured\", \"text\": \"- Business travel preference TRAVEL_PREF_45fe9c2b5525 #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_45fe9c2b5525.\\n- Business travel preference TRAVEL_PREF_935067306d0b #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_935067306d0b.\", \"title\": \"Remembered Guidance\", \"token_count\": 88}, {\"kind\": \"policy\", \"metadata\": {\"hint_count\": 2}, \"provenance\": [], \"source_type\": \"policy\", \"text\": \"- Preserve conversation continuity using recent working memory before introducing new framing.\\n- Knowledge coverage is low; escalate to /v2/advisor/ask for deep research if confidence is critical.\", \"title\": \"Execution Hints\", \"token_count\": 49}], \"degraded\": false, \"degraded_sources\": [], \"metadata\": {\"account_id\": \"\", \"agent_id\": \"\", \"graph_scopes\": [\"personal\"], \"repo\": \"ChatgptREST\", \"session_id\": \"\", \"thread_id\": \"\"}, \"ok\": true, \"prompt_prefix\": \"## Recent Conversation\\nuser: 我们在讨论安徽项目的图谱和记忆设计。\\nuser: We are discussing the anhuisubstrate graph and memory design.\\n\\n## Remembered Guidance\\n- Business travel preference TRAVEL_PREF_45fe9c2b5525 #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_45fe9c2b5525.\\n- Business travel preference TRAVEL_PREF_935067306d0b #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_935067306d0b.\\n\\n## Policy Hints\\n- Preserve conversation continuity using recent working memory before introducing new framing.\\n- Knowledge coverage is low; escalate to /v2/advisor/ask for deep research if confidence is critical.\", \"requested_sources\": [\"memory\", \"policy\"], \"resolved_sources\": [\"memory\", \"policy\"], \"trace_id\": \"c97ee82c-32cc-4c2d-81e6-4f82b3a8d4c1\", \"used_tokens\": 180}"
+    },
+    {
+      "name": "memory_recall_marker_present",
+      "ok": true,
+      "detail": "{\"cache_ttl_seconds\": 120, \"context_blocks\": [{\"kind\": \"memory\", \"metadata\": {\"record_count\": 2}, \"provenance\": [{\"id\": \"d8360df0-6f46-43f5-9028-69278e462e81\", \"key\": \"working:sess-1:1\", \"type\": \"memory_record\"}, {\"id\": \"8f386465-fb7d-4496-817f-02ab9a9c1474\", \"key\": \"working:sess-1:1\", \"type\": \"memory_record\"}], \"source_type\": \"working\", \"text\": \"user: 我们在讨论安徽项目的图谱和记忆设计。\\nuser: We are discussing the anhuisubstrate graph and memory design.\", \"title\": \"Working Memory\", \"token_count\": 43}, {\"kind\": \"memory\", \"metadata\": {\"record_count\": 2, \"scope\": \"cross_session\"}, \"provenance\": [{\"id\": \"fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4\", \"key\": \"Business travel preference TRAVEL_PREF_45fe9c2b5525 #1\", \"type\": \"memory_record\"}, {\"id\": \"f53e5933-ad2e-46d2-8146-3d5518f4d4ab\", \"key\": \"Business travel preference TRAVEL_PREF_935067306d0b #1\", \"type\": \"memory_record\"}], \"source_type\": \"captured\", \"text\": \"- Business travel preference TRAVEL_PREF_45fe9c2b5525 #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_45fe9c2b5525.\\n- Business travel preference TRAVEL_PREF_935067306d0b #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_935067306d0b.\", \"title\": \"Remembered Guidance\", \"token_count\": 88}, {\"kind\": \"policy\", \"metadata\": {\"hint_count\": 2}, \"provenance\": [], \"source_type\": \"policy\", \"text\": \"- Preserve conversation continuity using recent working memory before introducing new framing.\\n- Knowledge coverage is low; escalate to /v2/advisor/ask for deep research if confidence is critical.\", \"title\": \"Execution Hints\", \"token_count\": 49}], \"degraded\": false, \"degraded_sources\": [], \"metadata\": {\"account_id\": \"\", \"agent_id\": \"\", \"graph_scopes\": [\"personal\"], \"repo\": \"ChatgptREST\", \"session_id\": \"\", \"thread_id\": \"\"}, \"ok\": true, \"prompt_prefix\": \"## Recent Conversation\\nuser: 我们在讨论安徽项目的图谱和记忆设计。\\nuser: We are discussing the anhuisubstrate graph and memory design.\\n\\n## Remembered Guidance\\n- Business travel preference TRAVEL_PREF_45fe9c2b5525 #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_45fe9c2b5525.\\n- Business travel preference TRAVEL_PREF_935067306d0b #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_935067306d0b.\\n\\n## Policy Hints\\n- Preserve conversation continuity using recent working memory before introducing new framing.\\n- Knowledge coverage is low; escalate to /v2/advisor/ask for deep research if confidence is critical.\", \"requested_sources\": [\"memory\", \"policy\"], \"resolved_sources\": [\"memory\", \"policy\"], \"trace_id\": \"c97ee82c-32cc-4c2d-81e6-4f82b3a8d4c1\", \"used_tokens\": 180}"
+    },
+    {
+      "name": "main_sessions_spawn_runtime_denied",
+      "ok": true,
+      "detail": "SESSIONS_SPAWN_UNAVAILABLE NEGPROBE_067ace465fab"
+    },
+    {
+      "name": "main_sessions_spawn_negative_probe",
+      "ok": true,
+      "detail": "tool_called=False tool_result=False assistant='SESSIONS_SPAWN_UNAVAILABLE NEGPROBE_067ace465fab'"
+    },
+    {
+      "name": "main_subagents_runtime_denied",
+      "ok": true,
+      "detail": "SUBAGENTS_UNAVAILABLE NEGPROBE_de55885dddad"
+    },
+    {
+      "name": "main_subagents_negative_probe",
+      "ok": true,
+      "detail": "tool_called=False tool_result=False assistant='SUBAGENTS_UNAVAILABLE NEGPROBE_de55885dddad'"
+    }
+  ],
+  "security_summary": "critical=0 warn=0 info=1",
+  "security_findings": [
+    "summary.attack_surface"
+  ],
+  "main_profile": "coding",
+  "skills_extra_dirs": [
+    "/vol1/1000/projects/ChatgptREST/skills-src"
+  ],
+  "skills_allow_bundled": [],
+  "main_skills": [
+    "chatgptrest-call"
+  ],
+  "main_tools": {
+    "profile": "coding",
+    "alsoAllow": [
+      "openmind_memory_status",
+      "openmind_memory_recall",
+      "openmind_memory_capture",
+      "openmind_graph_query",
+      "openmind_advisor_ask"
+    ],
+    "deny": [
+      "group:automation",
+      "group:ui",
+      "image",
+      "sessions_spawn",
+      "subagents",
+      "sessions_send",
+      "sessions_list",
+      "sessions_history"
+    ]
+  },
+  "main_effective_tools": [
+    "apply_patch",
+    "edit",
+    "exec",
+    "memory_get",
+    "memory_search",
+    "openmind_advisor_ask",
+    "openmind_graph_query",
+    "openmind_memory_capture",
+    "openmind_memory_recall",
+    "openmind_memory_status",
+    "process",
+    "read",
+    "session_status",
+    "write"
+  ],
+  "agent_to_agent_allow": [],
+  "maint_skills": [],
+  "maint_tools": {},
+  "maint_effective_tools": [],
+  "plugins_allow": [
+    "acpx",
+    "diffs",
+    "dingtalk",
+    "feishu",
+    "google-gemini-cli-auth",
+    "openmind-advisor",
+    "openmind-graph",
+    "openmind-memory",
+    "openmind-telemetry"
+  ],
+  "plugins_load_paths": [],
+  "gateway_config": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "trustedProxies": [
+      "127.0.0.1/32",
+      "::1/128"
+    ],
+    "controlUi": {
+      "allowInsecureAuth": false
+    },
+    "auth": {
+      "mode": "token",
+      "allowTailscale": false,
+      "token": "<redacted>"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "feishu_tools": {
+    "doc": false,
+    "chat": false,
+    "wiki": false,
+    "drive": false,
+    "perm": false,
+    "scopes": false
+  },
+  "advisor_auth_probe": {
+    "url": "http://127.0.0.1:18711/v2/advisor/ask",
+    "unauthenticated_status": 401,
+    "unauthenticated_body": "{\"detail\":\"Invalid or missing API key\"}",
+    "authenticated_status": 200,
+    "authenticated_body": "{\"by_type\":{\"advisor_ask.kb_direct\":1,\"delivery.failed\":21,\"dispatch.task_completed\":2,\"dispatch.task_started\":2,\"kb.writeback\":1,\"llm.call_completed\":3,\"llm.call_failed\":1,\"memory.capture\":16,\"route.candidate_outcome\":4,\"route.fallback\":1,\"route.selected\":1,\"team.role.completed\":2,\"team.run.completed\":2,\"team.run.created\":2,\"tool.completed\":95,\"tool.failed\":10,\"workflow.completed\":137,\"workflow.failed\":6},\"by_domain\":{\"advisor_ask\":1,\"delivery\":21,\"dispatch\":4,\"kb\":1,\"llm\":8,\"memory\":16,\"routing\":2,\"team\":6,\"tool\":105,\"workflow\":143},\"total\":307}"
+  },
+  "openmind_probe_token": "OPENMIND_PROBE_f4345be2da84",
+  "openmind_probe_reply": "OPENMIND_OK OPENMIND_PROBE_f4345be2da84",
+  "openmind_tool_round_detail": "tool_called=True tool_result=True assistant='OPENMIND_OK OPENMIND_PROBE_f4345be2da84'",
+  "openmind_tool_details": {
+    "ok": true,
+    "memory_ready": true,
+    "kb_ready": true,
+    "graph_ready": true
+  },
+  "memory_capture_marker": "TRAVEL_PREF_45fe9c2b5525",
+  "memory_capture_reply": "CAPTURE_OK TRAVEL_PREF_45fe9c2b5525",
+  "memory_capture_tool_round_detail": "tool_called=True tool_result=True assistant='CAPTURE_OK TRAVEL_PREF_45fe9c2b5525'",
+  "memory_capture_tool_details": {
+    "ok": true,
+    "results": [
+      {
+        "ok": true,
+        "trace_id": "fb8a5ef4-a811-485e-9461-55ea2a407431",
+        "title": "Business travel preference TRAVEL_PREF_45fe9c2b5525 #1",
+        "record_id": "fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4",
+        "category": "captured_memory",
+        "tier": "episodic",
+        "duplicate": false,
+        "message": "captured",
+        "audit_trail": [
+          {
+            "audit_id": "46279a3a-8a3f-4f43-b4d3-d6ab274c79a7",
+            "record_id": "fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4",
+            "action": "stage",
+            "old_tier": null,
+            "new_tier": "staging",
+            "reason": "initial staging",
+            "agent": "openclaw",
+            "created_at": "2026-03-09T14:12:43.669432+00:00"
+          },
+          {
+            "audit_id": "4a1abe58-b492-4c23-aa65-a694e81def2c",
+            "record_id": "fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4",
+            "action": "promote",
+            "old_tier": "staging",
+            "new_tier": "episodic",
+            "reason": "cognitive memory capture",
+            "agent": "system",
+            "created_at": "2026-03-09T14:12:43.677276+00:00"
+          }
+        ]
+      }
+    ]
+  },
+  "memory_recall_reply": "RECALL_OK TRAVEL_PREF_45fe9c2b5525",
+  "memory_recall_tool_round_detail": "tool_called=True tool_result=True assistant='RECALL_OK TRAVEL_PREF_45fe9c2b5525'",
+  "memory_recall_tool_details": {
+    "ok": true,
+    "trace_id": "c97ee82c-32cc-4c2d-81e6-4f82b3a8d4c1",
+    "prompt_prefix": "## Recent Conversation\nuser: 我们在讨论安徽项目的图谱和记忆设计。\nuser: We are discussing the anhuisubstrate graph and memory design.\n\n## Remembered Guidance\n- Business travel preference TRAVEL_PREF_45fe9c2b5525 #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_45fe9c2b5525.\n- Business travel preference TRAVEL_PREF_935067306d0b #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_935067306d0b.\n\n## Policy Hints\n- Preserve conversation continuity using recent working memory before introducing new framing.\n- Knowledge coverage is low; escalate to /v2/advisor/ask for deep research if confidence is critical.",
+    "context_blocks": [
+      {
+        "kind": "memory",
+        "title": "Working Memory",
+        "text": "user: 我们在讨论安徽项目的图谱和记忆设计。\nuser: We are discussing the anhuisubstrate graph and memory design.",
+        "source_type": "working",
+        "token_count": 43,
+        "metadata": {
+          "record_count": 2
+        },
+        "provenance": [
+          {
+            "type": "memory_record",
+            "id": "d8360df0-6f46-43f5-9028-69278e462e81",
+            "key": "working:sess-1:1"
+          },
+          {
+            "type": "memory_record",
+            "id": "8f386465-fb7d-4496-817f-02ab9a9c1474",
+            "key": "working:sess-1:1"
+          }
+        ]
+      },
+      {
+        "kind": "memory",
+        "title": "Remembered Guidance",
+        "text": "- Business travel preference TRAVEL_PREF_45fe9c2b5525 #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_45fe9c2b5525.\n- Business travel preference TRAVEL_PREF_935067306d0b #1: When planning business travel, prefer Hangzhou over Shanghai if schedules are similar. Marker TRAVEL_PREF_935067306d0b.",
+        "source_type": "captured",
+        "token_count": 88,
+        "metadata": {
+          "record_count": 2,
+          "scope": "cross_session"
+        },
+        "provenance": [
+          {
+            "type": "memory_record",
+            "id": "fd9ccd8b-76ae-44d5-8efc-18bf9cc83cc4",
+            "key": "Business travel preference TRAVEL_PREF_45fe9c2b5525 #1"
+          },
+          {
+            "type": "memory_record",
+            "id": "f53e5933-ad2e-46d2-8146-3d5518f4d4ab",
+            "key": "Business travel preference TRAVEL_PREF_935067306d0b #1"
+          }
+        ]
+      },
+      {
+        "kind": "policy",
+        "title": "Execution Hints",
+        "text": "- Preserve conversation continuity using recent working memory before introducing new framing.\n- Knowledge coverage is low; escalate to /v2/advisor/ask for deep research if confidence is critical.",
+        "source_type": "policy",
+        "token_count": 49,
+        "metadata": {
+          "hint_count": 2
+        },
+        "provenance": []
+      }
+    ],
+    "used_tokens": 180,
+    "requested_sources": [
+      "memory",
+      "policy"
+    ],
+    "resolved_sources": [
+      "memory",
+      "policy"
+    ],
+    "cache_ttl_seconds": 120,
+    "degraded": false,
+    "degraded_sources": [],
+    "metadata": {
+      "session_id": "",
+      "account_id": "",
+      "agent_id": "",
+      "thread_id": "",
+      "graph_scopes": [
+        "personal"
+      ],
+      "repo": "ChatgptREST"
+    }
+  },
+  "sessions_spawn_probe_token": "NEGPROBE_067ace465fab",
+  "sessions_spawn_probe_reply": "SESSIONS_SPAWN_UNAVAILABLE NEGPROBE_067ace465fab",
+  "sessions_spawn_probe_detail": "tool_called=False tool_result=False assistant='SESSIONS_SPAWN_UNAVAILABLE NEGPROBE_067ace465fab'",
+  "subagents_probe_token": "NEGPROBE_de55885dddad",
+  "subagents_probe_reply": "SUBAGENTS_UNAVAILABLE NEGPROBE_de55885dddad",
+  "subagents_probe_detail": "tool_called=False tool_result=False assistant='SUBAGENTS_UNAVAILABLE NEGPROBE_de55885dddad'",
+  "comm_token": "",
+  "comm_probe_reply": "",
+  "comm_seen_in_main_transcript": false,
+  "main_latest_transcript_token": "VERIFY_PING_6fc5174263db",
+  "review_evidence": {
+    "verifier_json": "docs/reviews/openclaw_openmind_verifier_lean_20260309.json",
+    "verifier_md": "docs/reviews/openclaw_openmind_verifier_lean_20260309.md",
+    "config_snapshot": "docs/reviews/evidence/openclaw_openmind/B1/openclaw_openmind_config_lean_20260309.json",
+    "transcript_excerpt": "docs/reviews/evidence/openclaw_openmind/B1/openclaw_openmind_transcript_lean_20260309.json",
+    "auth_probe": "docs/reviews/evidence/openclaw_openmind/B2/openmind_advisor_auth_lean_20260309.json"
+  }
+}

@@ -1,0 +1,49 @@
+topologies:
+  review_triad:
+    description: "Scout + reviewer + synthesizer for design, architecture, and review-heavy tasks."
+    roles: [scout, reviewer, synthesizer]
+    task_types: [architecture_review, code_review, design_review, audit, research]
+    execution_mode: parallel
+    synthesis_role: synthesizer
+    max_concurrent: 3
+    gate_ids: [team_failure, low_quality]
+    output_contract:
+      format: markdown
+      sections: [findings, evidence, recommendation]
+    success_criteria:
+      min_quality: 0.70
+
+  implementation_duo:
+    description: "Scout then implementer for bounded code changes."
+    roles: [scout, implementer]
+    task_types: [bug_fix, code_change, refactor, implementation]
+    execution_mode: sequential
+    synthesis_role: implementer
+    max_concurrent: 1
+    gate_ids: [team_failure, writer_review]
+    output_contract:
+      format: markdown
+      sections: [change_summary, verification, risks]
+
+  hardening_ring:
+    description: "Implementer + tester + reviewer + synthesizer for higher-risk delivery."
+    roles: [implementer, tester, reviewer, synthesizer]
+    task_types: [hardening, regression, release_review, remediation]
+    execution_mode: parallel
+    synthesis_role: synthesizer
+    max_concurrent: 3
+    gate_ids: [team_failure, low_quality, writer_review, explicit_input]
+    output_contract:
+      format: markdown
+      sections: [changes, tests, review_findings, final_verdict]
+    success_criteria:
+      min_quality: 0.75
+
+  default_team:
+    description: "Fallback review-oriented topology."
+    roles: [scout, reviewer, synthesizer]
+    task_types: ["*"]
+    execution_mode: parallel
+    synthesis_role: synthesizer
+    max_concurrent: 3
+    gate_ids: [team_failure, low_quality]

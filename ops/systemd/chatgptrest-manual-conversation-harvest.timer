@@ -1,0 +1,16 @@
+# Copy/link to: ~/.config/systemd/user/chatgptrest-manual-conversation-harvest.timer
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-manual-conversation-harvest.timer
+#
+[Unit]
+Description=Run ChatgptREST manual ChatGPT conversation harvest every 5 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

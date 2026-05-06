@@ -1,0 +1,8 @@
+[Unit]
+Description=ChatgptREST planning review maintenance harness (refresh-only)
+After=default.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python __CHATGPTREST_ROOT__/ops/run_planning_review_maintenance.py

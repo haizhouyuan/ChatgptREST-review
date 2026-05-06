@@ -1,0 +1,499 @@
+[
+  {
+    "name": "chatgpt_web_answer_get",
+    "structured_output": true,
+    "params": [
+      "answer_id",
+      "offset",
+      "max_chars"
+    ],
+    "required_params": [
+      "answer_id"
+    ]
+  },
+  {
+    "name": "chatgpt_web_ask",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "model",
+      "thinking_time",
+      "deep_research",
+      "web_search",
+      "agent_mode",
+      "github_repo",
+      "file_paths",
+      "fire_and_forget"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "chatgpt_web_ask_agent_mode",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "model",
+      "file_paths"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "chatgpt_web_ask_deep_research",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "model",
+      "file_paths"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "chatgpt_web_ask_pro_extended",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "file_paths"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "chatgpt_web_ask_thinking_heavy_github",
+    "structured_output": true,
+    "params": [
+      "question",
+      "github_repo",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "file_paths"
+    ],
+    "required_params": [
+      "question",
+      "github_repo",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "chatgpt_web_ask_web_search",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "model",
+      "file_paths"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "chatgpt_web_blocked_status",
+    "structured_output": true,
+    "params": [],
+    "required_params": []
+  },
+  {
+    "name": "chatgpt_web_capture_ui",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "mode",
+      "timeout_seconds",
+      "out_dir",
+      "write_doc"
+    ],
+    "required_params": []
+  },
+  {
+    "name": "chatgpt_web_clear_blocked",
+    "structured_output": true,
+    "params": [],
+    "required_params": []
+  },
+  {
+    "name": "chatgpt_web_conversation_export",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds",
+      "dst_path",
+      "allow_dom_fallback"
+    ],
+    "required_params": [
+      "conversation_url"
+    ]
+  },
+  {
+    "name": "chatgpt_web_create_image",
+    "structured_output": true,
+    "params": [
+      "prompt",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds"
+    ],
+    "required_params": [
+      "prompt",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "chatgpt_web_idempotency_get",
+    "structured_output": true,
+    "params": [
+      "idempotency_key",
+      "include_result"
+    ],
+    "required_params": [
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "chatgpt_web_rate_limit_status",
+    "structured_output": true,
+    "params": [],
+    "required_params": []
+  },
+  {
+    "name": "chatgpt_web_refresh",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds"
+    ],
+    "required_params": [
+      "conversation_url"
+    ]
+  },
+  {
+    "name": "chatgpt_web_regenerate",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds",
+      "min_chars"
+    ],
+    "required_params": [
+      "conversation_url"
+    ]
+  },
+  {
+    "name": "chatgpt_web_self_check",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds"
+    ],
+    "required_params": []
+  },
+  {
+    "name": "chatgpt_web_tab_stats",
+    "structured_output": true,
+    "params": [],
+    "required_params": []
+  },
+  {
+    "name": "chatgpt_web_wait",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds",
+      "min_chars"
+    ],
+    "required_params": [
+      "conversation_url"
+    ]
+  },
+  {
+    "name": "chatgpt_web_wait_idempotency",
+    "structured_output": true,
+    "params": [
+      "idempotency_key",
+      "timeout_seconds",
+      "min_chars"
+    ],
+    "required_params": [
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "gemini_ask_pro_thinking",
+    "structured_output": true,
+    "params": [
+      "question",
+      "model",
+      "thinking_budget",
+      "temperature",
+      "max_output_tokens",
+      "timeout_seconds"
+    ],
+    "required_params": [
+      "question"
+    ]
+  },
+  {
+    "name": "gemini_deep_research",
+    "structured_output": true,
+    "params": [
+      "question",
+      "interaction_id",
+      "agent",
+      "timeout_seconds",
+      "poll_interval_seconds"
+    ],
+    "required_params": []
+  },
+  {
+    "name": "gemini_generate_image",
+    "structured_output": true,
+    "params": [
+      "prompt",
+      "model",
+      "timeout_seconds"
+    ],
+    "required_params": [
+      "prompt"
+    ]
+  },
+  {
+    "name": "gemini_web_ask",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "drive_files",
+      "github_repo"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "gemini_web_ask_pro",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "drive_files",
+      "github_repo"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "gemini_web_ask_pro_deep_think",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "drive_files",
+      "github_repo"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "gemini_web_ask_pro_thinking",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "drive_files",
+      "github_repo"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "gemini_web_capture_ui",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "mode",
+      "timeout_seconds",
+      "out_dir",
+      "write_doc"
+    ],
+    "required_params": []
+  },
+  {
+    "name": "gemini_web_deep_research",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "drive_files"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "gemini_web_deep_research_export_gdoc",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds",
+      "fetch_text",
+      "max_chars"
+    ],
+    "required_params": [
+      "conversation_url"
+    ]
+  },
+  {
+    "name": "gemini_web_extract_answer",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds"
+    ],
+    "required_params": [
+      "conversation_url"
+    ]
+  },
+  {
+    "name": "gemini_web_generate_image",
+    "structured_output": true,
+    "params": [
+      "prompt",
+      "idempotency_key",
+      "conversation_url",
+      "timeout_seconds",
+      "drive_files"
+    ],
+    "required_params": [
+      "prompt",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "gemini_web_idempotency_get",
+    "structured_output": true,
+    "params": [
+      "idempotency_key",
+      "tool_name",
+      "include_result"
+    ],
+    "required_params": [
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "gemini_web_self_check",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds"
+    ],
+    "required_params": []
+  },
+  {
+    "name": "gemini_web_wait",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds",
+      "min_chars",
+      "conversation_hint",
+      "deep_research"
+    ],
+    "required_params": [
+      "conversation_url"
+    ]
+  },
+  {
+    "name": "qwen_web_ask",
+    "structured_output": true,
+    "params": [
+      "question",
+      "idempotency_key",
+      "conversation_url",
+      "preset",
+      "timeout_seconds"
+    ],
+    "required_params": [
+      "question",
+      "idempotency_key"
+    ]
+  },
+  {
+    "name": "qwen_web_capture_ui",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "mode",
+      "timeout_seconds",
+      "out_dir",
+      "write_doc"
+    ],
+    "required_params": []
+  },
+  {
+    "name": "qwen_web_self_check",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds"
+    ],
+    "required_params": []
+  },
+  {
+    "name": "qwen_web_wait",
+    "structured_output": true,
+    "params": [
+      "conversation_url",
+      "timeout_seconds",
+      "min_chars",
+      "deep_research"
+    ],
+    "required_params": [
+      "conversation_url"
+    ]
+  }
+]
