@@ -1,0 +1,15 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-openmind-daily-watch.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-openmind-daily-watch.timer
+#
+[Unit]
+Description=ChatgptREST OpenMind daily watch trigger
+
+[Timer]
+OnCalendar=*-*-* 09:35:00
+Persistent=true
+RandomizedDelaySec=180
+
+[Install]
+WantedBy=timers.target

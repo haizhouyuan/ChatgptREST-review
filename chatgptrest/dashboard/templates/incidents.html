@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero-grid">
+    <article class="hero-card tone-accent">
+      <span class="hero-label">Total</span>
+      <strong class="hero-value">{{ snapshot.summary.total }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Open</span>
+      <strong class="hero-value">{{ snapshot.summary.open_total }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Incidents</span>
+      <strong class="hero-value">{{ snapshot.summary.incidents }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Client Issues</span>
+      <strong class="hero-value">{{ snapshot.summary.client_issues }}</strong>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Incident Query</h2>
+        <p>Incidents stay as an operator surface, but every row should still trace back into lineage and identity.</p>
+      </div>
+    </header>
+    <form class="filter-form" method="get" action="/v2/dashboard/incidents">
+      <label class="wide">
+        Search
+        <input type="text" name="q" value="{{ snapshot.filters.q }}" placeholder="incident id / title / project / root run">
+      </label>
+      <label>
+        Status
+        <input type="text" name="status" value="{{ snapshot.filters.status }}" placeholder="open / in_progress / resolved">
+      </label>
+      <label>
+        Type
+        <input type="text" name="incident_type" value="{{ snapshot.filters.incident_type }}" placeholder="incident / client_issue">
+      </label>
+      <button class="primary-button" type="submit">Apply</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Incident Index</h2>
+        <p>Projected from incident ledger and client issue ledger, then correlated back to root execution rows.</p>
+      </div>
+    </header>
+    {% if snapshot.incidents %}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>State</th>
+              <th>Scope</th>
+              <th>Lineage</th>
+              <th>Summary</th>
+              <th>Updated</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for incident in snapshot.incidents %}
+              <tr>
+                <td>
+                  <div class="mono">{{ incident.incident_id }}</div>
+                  <div class="subtle">{{ incident.incident_type }}</div>
+                </td>
+                <td>
+                  <div class="badge-row">
+                    <span class="badge tone-{{ status_tone(incident.status) }}">{{ incident.status }}</span>
+                    <span class="badge tone-neutral">{{ incident.severity }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div>{{ incident.category or incident.guard_source or 'n/a' }}</div>
+                  <div class="subtle">blast={{ incident.blast_radius }}</div>
+                </td>
+                <td>
+                  {% if incident.root_run_id %}
+                    <a class="table-link mono" href="/v2/dashboard/runs/{{ incident.root_run_id }}">{{ incident.root_run_id }}</a>
+                  {% else %}
+                    <span class="subtle">unmapped</span>
+                  {% endif %}
+                  <div class="subtle">job={{ incident.job_id or 'n/a' }} issue={{ incident.issue_id or 'n/a' }}</div>
+                </td>
+                <td>
+                  <div><strong>{{ incident.title }}</strong></div>
+                  <div class="subtle">{{ incident.summary or 'No summary' }}</div>
+                </td>
+                <td>
+                  <div>{{ incident.updated_at | fmt_ts }}</div>
+                  <div class="subtle">{{ incident.updated_at | age_label }}</div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty-state">No incidents matched the current filters.</div>
+    {% endif %}
+  </section>
+{% endblock %}

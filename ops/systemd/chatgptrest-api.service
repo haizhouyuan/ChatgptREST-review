@@ -1,0 +1,33 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-api.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-api.service
+#
+[Unit]
+Description=ChatgptREST API (REST /v1/jobs, /wait, /answer)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+Environment=CHATGPTREST_DB_PATH=state/jobdb.sqlite3
+Environment=CHATGPTREST_ARTIFACTS_DIR=artifacts
+Environment=CHATGPTREST_HOST=127.0.0.1
+Environment=CHATGPTREST_PORT=18711
+# Optional hard gate: only allow listed X-Client-Name for write operations.
+# Example (MCP-only): Environment=CHATGPTREST_ENFORCE_CLIENT_NAME_ALLOWLIST=chatgptrest-mcp
+# Optional MCP-down fallback:
+#   Environment=CHATGPTREST_ALLOW_FALLBACK_WHEN_MCP_DOWN=1
+#   Environment=CHATGPTREST_FALLBACK_CLIENT_NAME_ALLOWLIST_WHEN_MCP_DOWN=chatgptrestctl
+# Optional traceability hard gates:
+#   Environment=CHATGPTREST_REQUIRE_TRACE_HEADERS_FOR_WRITE=1
+#   Environment=CHATGPTREST_REQUIRE_CANCEL_REASON=1
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python -m chatgptrest.api.app --host 127.0.0.1 --port 18711
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

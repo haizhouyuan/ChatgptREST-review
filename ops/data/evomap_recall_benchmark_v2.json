@@ -1,0 +1,86 @@
+[
+  {
+    "case_id": "planning-green-visit",
+    "case_family": "positive",
+    "query": "绿源来访准备",
+    "project_id": "planning",
+    "expected_keywords": ["绿源", "来访", "拜访", "准备"],
+    "entity_terms": ["绿源"],
+    "expected_posture": "answer",
+    "expected_recall_grade": "bridge",
+    "notes": "operator-facing visit prep query"
+  },
+  {
+    "case_id": "planning-tiger-module",
+    "case_family": "positive",
+    "query": "钛虎机器人关节模组合作",
+    "project_id": "planning",
+    "expected_keywords": ["钛虎", "机器人", "关节模组", "合作"],
+    "entity_terms": ["钛虎", "钛虎机器人"],
+    "expected_posture": "answer",
+    "expected_recall_grade": "bridge",
+    "notes": "entity-specific cooperation query"
+  },
+  {
+    "case_id": "planning-wheel-competition",
+    "case_family": "positive",
+    "query": "两轮车车轮市场竞争分析",
+    "project_id": "planning",
+    "expected_keywords": ["两轮车", "车轮", "市场竞争", "竞争分析", "竞争"],
+    "expected_posture": "answer",
+    "expected_recall_grade": "bridge",
+    "notes": "competitive landscape query"
+  },
+  {
+    "case_id": "planning-green-profile",
+    "case_family": "boundary",
+    "query": "绿源公司整体情况和产品线",
+    "project_id": "planning",
+    "expected_keywords": ["绿源", "产品线", "公司整体情况", "业务"],
+    "entity_terms": ["绿源"],
+    "expected_posture": "clarify",
+    "expected_recall_grade": "bridge",
+    "notes": "entity profile query should retrieve bridge-grade business context but still ask to clarify the dossier scope"
+  },
+  {
+    "case_id": "planning-tiger-profile",
+    "case_family": "boundary",
+    "query": "钛虎机器人董事长背景和公司融资历史",
+    "project_id": "planning",
+    "expected_keywords": ["钛虎", "机器人", "董事长", "融资", "历史"],
+    "entity_terms": ["钛虎", "钛虎机器人"],
+    "expected_posture": "clarify",
+    "expected_recall_grade": "bridge",
+    "notes": "entity dossier query should not pretend to have a first-party dossier"
+  },
+  {
+    "case_id": "planning-vendor-visit",
+    "case_family": "boundary",
+    "query": "供应商来访准备",
+    "project_id": "planning",
+    "expected_keywords": ["供应商", "来访", "准备", "交流"],
+    "expected_posture": "clarify",
+    "expected_recall_grade": "bridge",
+    "notes": "generic supplier visit prep should retrieve reusable preparation material"
+  },
+  {
+    "case_id": "planning-wheel-route",
+    "case_family": "stress",
+    "query": "两轮车前轮车轮产品路线",
+    "project_id": "planning",
+    "expected_keywords": ["两轮车", "前轮", "车轮", "产品路线"],
+    "expected_posture": "answer",
+    "expected_recall_grade": "bridge",
+    "notes": "product-route query should answer directly with planning evidence"
+  },
+  {
+    "case_id": "planning-irrelevant-hospital",
+    "case_family": "negative",
+    "query": "医院信息化竞争格局分析",
+    "project_id": "planning",
+    "expected_keywords": ["医院", "信息化", "竞争格局"],
+    "expected_posture": "abstain",
+    "expected_recall_grade": "abstain",
+    "notes": "out-of-domain query should not be falsely associated with planning knowledge"
+  }
+]

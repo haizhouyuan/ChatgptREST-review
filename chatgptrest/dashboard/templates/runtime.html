@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero-grid">
+    <article class="hero-card tone-{{ status_tone(snapshot.summary.system_health) }}">
+      <span class="hero-label">System Health</span>
+      <strong class="hero-value">{{ snapshot.summary.system_health }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Blocking Guards</span>
+      <strong class="hero-value">{{ snapshot.summary.guards_blocking }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Attention Runs</span>
+      <strong class="hero-value">{{ snapshot.summary.attention_runs }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Open Incidents</span>
+      <strong class="hero-value">{{ snapshot.summary.open_incidents }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Open Client Issues</span>
+      <strong class="hero-value">{{ snapshot.summary.open_client_issues }}</strong>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Component Health</h2>
+        <p>Guardian, orch, canary, viewer watchdog, runtime guard, and execution health projected into one runtime plane.</p>
+      </div>
+    </header>
+    {% if snapshot.components %}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Status</th>
+              <th>Guard</th>
+              <th>Attention</th>
+              <th>Blast Radius</th>
+              <th>Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for component in snapshot.components %}
+              <tr>
+                <td>
+                  <div>{{ component.label }}</div>
+                  <div class="subtle">{{ component.plane }}</div>
+                </td>
+                <td>
+                  <span class="badge tone-{{ status_tone(component.status or component.severity) }}">{{ component.status }}</span>
+                </td>
+                <td>{{ component.guard_family or 'n/a' }}</td>
+                <td>{{ component.attention_reason or 'steady' }}</td>
+                <td>{{ component.blast_radius or 'local' }}</td>
+                <td>{{ component.summary }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty-state">No runtime components materialized yet.</div>
+    {% endif %}
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Runs Requiring Operator Attention</h2>
+          <p>These are classified as job, lane continuity, team role/checkpoint, or issue problems.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for run in snapshot.attention_runs %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <a class="table-link mono" href="/v2/dashboard/runs/{{ run.root_run_id }}">{{ run.root_run_id }}</a>
+              <span>{{ run.updated_at | age_label }}</span>
+            </div>
+            <div><strong>{{ run.title }}</strong></div>
+            <div class="badge-row">
+              <span class="badge tone-{{ run.health_tone }}">{{ run.current_status }}</span>
+              <span class="badge tone-neutral">{{ run.current_layer }}</span>
+              <span class="badge tone-neutral">{{ run.problem_class }}</span>
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No attention runs.</div>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Open Issues</h2>
+          <p>Runtime alarms correlated to incidents and client issues.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for incident in snapshot.incidents %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span class="mono">{{ incident.incident_id }}</span>
+              <span>{{ incident.updated_at | age_label }}</span>
+            </div>
+            <div><strong>{{ incident.title }}</strong></div>
+            <div class="badge-row">
+              <span class="badge tone-{{ status_tone(incident.status) }}">{{ incident.status }}</span>
+              <span class="badge tone-neutral">{{ incident.incident_type }}</span>
+              <span class="badge tone-neutral">{{ incident.severity }}</span>
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No open incidents.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+{% endblock %}

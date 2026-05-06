@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodic planning bulk groundedness and promotion runner
+
+[Timer]
+OnBootSec=30min
+OnUnitInactiveSec=12h
+Persistent=true
+Unit=chatgptrest-planning-bulk-promotion.service
+
+[Install]
+WantedBy=timers.target

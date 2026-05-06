@@ -1,0 +1,24 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-worker-wait.service
+# Then run:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-worker-wait.service
+#
+[Unit]
+Description=ChatgptREST worker (wait stage)
+After=network-online.target chatgptrest-api.service chatgptrest-driver.service
+Wants=network-online.target chatgptrest-api.service chatgptrest-driver.service
+
+[Service]
+Type=simple
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+Environment=CHATGPTREST_DB_PATH=state/jobdb.sqlite3
+Environment=CHATGPTREST_ARTIFACTS_DIR=artifacts
+Environment=CHATGPTREST_DRIVER_URL=http://127.0.0.1:18701/mcp
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python -m chatgptrest.worker.worker --role wait
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

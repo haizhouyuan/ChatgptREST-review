@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero-grid">
+    {% for metric in snapshot.hero_metrics %}
+      <article class="hero-card tone-{{ metric.tone }}">
+        <span class="hero-label">{{ metric.label }}</span>
+        <strong class="hero-value">{{ metric.value }}</strong>
+      </article>
+    {% endfor %}
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Execution Pressure</h2>
+          <p>How the control plane currently classifies operator attention across run lineage layers.</p>
+        </div>
+      </header>
+      {% if snapshot.problem_breakdown %}
+        {% for row in snapshot.problem_breakdown %}
+          <div class="stat-row">
+            <span class="mono">{{ row.problem_class }}</span>
+            <strong>{{ row.count }}</strong>
+            <a class="primary-button" href="/v2/dashboard/runs?problem_class={{ row.problem_class }}&running_only=true">Go to Queue</a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-state">No execution rows materialized yet.</div>
+      {% endif %}
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Ingress Mix</h2>
+          <p>Where active lineage currently enters the system.</p>
+        </div>
+      </header>
+      {% if snapshot.ingress_breakdown %}
+        {% for row in snapshot.ingress_breakdown %}
+          <div class="stat-row">
+            <span class="mono">{{ row.ingress_channel }}</span>
+            <strong>{{ row.count }}</strong>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-state">No ingress metadata mapped yet.</div>
+      {% endif %}
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Attention Queue</h2>
+        <p>Unified execution rows ordered by severity, not by source table.</p>
+      </div>
+      <a class="ghost-button" href="/v2/dashboard/runs?running_only=true">Open Runs View</a>
+    </header>
+    {% if snapshot.attention_runs %}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Root Run</th>
+              <th>Execution State</th>
+              <th>Problem Class</th>
+              <th>Upstream</th>
+              <th>Downstream</th>
+              <th>Updated</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for run in snapshot.attention_runs %}
+              <tr>
+                <td>
+                  <a class="table-link mono" href="/v2/dashboard/runs/{{ run.root_run_id }}">{{ run.root_run_id }}</a>
+                  <div>{{ run.title }}</div>
+                  <div class="subtle">task={{ run.task_id or 'n/a' }} trace={{ run.trace_id or 'n/a' }}</div>
+                </td>
+                <td>
+                  <div class="badge-row">
+                    <span class="badge tone-{{ run.health_tone }}">{{ run.current_status }}</span>
+                    <span class="badge tone-neutral">{{ run.current_layer }}</span>
+                  </div>
+                  <div class="subtle">owner={{ run.current_owner or 'n/a' }}</div>
+                </td>
+                <td>
+                  <span class="mono">{{ run.problem_class }}</span>
+                </td>
+                <td>
+                  <div class="stack-list compact">
+                    {% for item in run.upstream %}
+                      <div><span class="subtle">{{ item.label }}</span> <span class="mono">{{ item.value }}</span></div>
+                    {% else %}
+                      <div class="subtle">none</div>
+                    {% endfor %}
+                  </div>
+                </td>
+                <td>
+                  <div class="stack-list compact">
+                    {% for item in run.downstream %}
+                      <div><span class="subtle">{{ item.label }}</span> <span class="mono">{{ item.value }}</span></div>
+                    {% else %}
+                      <div class="subtle">none</div>
+                    {% endfor %}
+                  </div>
+                </td>
+                <td>
+                  <div>{{ run.updated_at | fmt_ts }}</div>
+                  <div class="subtle">{{ run.last_progress_at | age_label }}</div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty-state">No active attention rows.</div>
+    {% endif %}
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Runtime Signals</h2>
+          <p>Guard and watchdog state summarized out of band from the write path.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for component in snapshot.component_health %}
+          <div class="signal-card tone-{{ status_tone(component.status or component.severity) }}">
+            <div>
+              <div>{{ component.label }}</div>
+              <div class="subtle">{{ component.guard_family or component.plane }}</div>
+            </div>
+            <div class="align-right">
+              <div class="mono">{{ component.status }}</div>
+              <div class="subtle">{{ component.attention_reason or 'steady' }}</div>
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No runtime signals materialized.</div>
+        {% endfor %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Incident Preview</h2>
+          <p>Incidents and client issues are shown here as operator entrypoints, still anchored back to lineage.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for incident in snapshot.incident_preview %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <span class="mono">{{ incident.incident_id }}</span>
+              <span>{{ incident.updated_at | age_label }}</span>
+            </div>
+            <div><strong>{{ incident.title }}</strong></div>
+            <div class="badge-row">
+              <span class="badge tone-{{ status_tone(incident.status) }}">{{ incident.status }}</span>
+              <span class="badge tone-neutral">{{ incident.incident_type }}</span>
+              <span class="badge tone-neutral">{{ incident.severity }}</span>
+            </div>
+            <div class="subtle">{{ incident.summary or 'No summary' }}</div>
+          </div>
+        {% else %}
+          <div class="empty-state">No incidents or client issues currently open.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Cognitive Overlay</h2>
+        <p>OpenMind and EvoMap stay on the explainability side of the control plane, not on the hot path.</p>
+      </div>
+      <a class="ghost-button" href="/v2/dashboard/cognitive">Open Cognitive View</a>
+    </header>
+    <div class="card-grid compact">
+      <article class="hero-card tone-accent">
+        <span class="hero-label">KB Docs</span>
+        <strong class="hero-value">{{ snapshot.cognitive_global.summary.kb_search_docs or 0 }}</strong>
+      </article>
+      <article class="hero-card tone-accent">
+        <span class="hero-label">Memory Records</span>
+        <strong class="hero-value">{{ snapshot.cognitive_global.summary.memory_records or 0 }}</strong>
+      </article>
+      <article class="hero-card tone-accent">
+        <span class="hero-label">Signal Rows</span>
+        <strong class="hero-value">{{ snapshot.cognitive_global.summary.signal_rows or 0 }}</strong>
+      </article>
+      <article class="hero-card tone-accent">
+        <span class="hero-label">Knowledge Atoms</span>
+        <strong class="hero-value">{{ snapshot.cognitive_global.summary.knowledge_atoms or 0 }}</strong>
+      </article>
+    </div>
+  </section>
+{% endblock %}

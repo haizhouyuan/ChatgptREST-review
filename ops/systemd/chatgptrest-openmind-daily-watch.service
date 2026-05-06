@@ -1,0 +1,17 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-openmind-daily-watch.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-openmind-daily-watch.timer
+#
+[Unit]
+Description=ChatgptREST OpenMind daily watch bundle
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python __CHATGPTREST_ROOT__/ops/run_openmind_daily_watch.py
+TimeoutStartSec=30min

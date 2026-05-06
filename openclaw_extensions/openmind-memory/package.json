@@ -1,0 +1,15 @@
+{
+  "name": "@openmind/openmind-memory",
+  "version": "2026.3.13",
+  "private": true,
+  "description": "OpenClaw memory-slot plugin backed by the OpenMind cognitive substrate.",
+  "type": "module",
+  "dependencies": {
+    "@sinclair/typebox": "0.34.48"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

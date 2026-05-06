@@ -1,0 +1,316 @@
+{% extends "investor_base.html" %}
+
+{% block content %}
+  {% set theme_evolution = snapshot.detail.theme_evolution or ((snapshot.detail.theme_state or {}).get('history') or {}) %}
+  <section class="hero-grid canonical-state">
+    <article class="hero-card tone-accent" style="flex: 2;">
+      <span class="hero-label">Posture</span>
+      <strong class="hero-value" style="font-size: 28px;">{{ snapshot.detail.decision_card.recommended_posture or snapshot.detail.decision_card.current_posture|upper }}</strong>
+      <div class="subtle" style="margin-top: 8px;">{{ snapshot.detail.decision_card.best_expression or 'n/a' }}</div>
+    </article>
+  </section>
+
+  <section class="hero-grid" style="margin-top: -8px;">
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Related opportunities</span>
+      <strong class="hero-value">{{ snapshot.theme.related_opportunities|length }}</strong>
+    </article>
+    <article class="hero-card tone-neutral">
+      <span class="hero-label">Tracked expressions</span>
+      <strong class="hero-value">{{ snapshot.detail.expressions|length }}</strong>
+    </article>
+  </section>
+
+  <section class="panel" style="margin-bottom: 16px;">
+    {% set posture = snapshot.detail.decision_card.recommended_posture or snapshot.detail.decision_card.current_posture %}
+    {% set cta_label = 'Continue Watching' if posture == 'watch_with_prepare_candidate' else ('Research Now' if posture == 'research_deep' else ('Drop Theme' if posture == 'drop' else 'Review')) %}
+    {% set cta_href = snapshot.detail.decision_card.investor_brief_href or snapshot.theme.run_doc_reader_href or '/' %}
+    <a href="{{ cta_href }}" class="primary-button">{{ cta_label }}</a>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Investor Logic</h2>
+          <p>This page only answers questions investors really care about.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        <div class="timeline-item"><strong>Investor question</strong><div>{{ snapshot.detail.investor_question }}</div></div>
+        <div class="timeline-item"><strong>Thesis</strong><div>{{ snapshot.detail.thesis_statement }}</div></div>
+        <div class="timeline-item"><strong>Why now</strong><div>{{ snapshot.detail.why_now }}</div></div>
+        <div class="timeline-item"><strong>Why mispriced</strong><div>{{ snapshot.detail.why_mispriced }}</div></div>
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Decision Card</h2>
+          <p>Current action, why it cannot escalate, and future events that will force a re-evaluation.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        <div class="timeline-item">
+          <strong>Current / recommended</strong>
+          <div>{{ snapshot.detail.decision_card.current_posture }} → {{ snapshot.detail.decision_card.recommended_posture }}</div>
+        </div>
+        {% if snapshot.detail.decision_card.decision_excerpt %}
+          <div class="timeline-item">
+            <strong>Run excerpt</strong>
+            <div>{{ snapshot.detail.decision_card.decision_excerpt }}</div>
+          </div>
+        {% endif %}
+        {% if snapshot.detail.decision_card.investor_excerpt %}
+          <div class="timeline-item">
+            <strong>Investor judgment</strong>
+            <div>{{ snapshot.detail.decision_card.investor_excerpt }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Planning Matches</h2>
+        <p>This theme's position in the overall plan, priority, and logic source.</p>
+      </div>
+      <a class="ghost-button" href="{{ snapshot.detail.planning_doc_reader_href }}">Open Planning Doc</a>
+    </header>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Priority / Theme</th>
+            <th>Logic / Rationale</th>
+            <th>Expressions</th>
+            <th>Sources</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in snapshot.theme.planning_matches %}
+          <tr>
+            <td>
+              <span class="badge tone-{{ 'accent' if row.priority in ['P0', 'P1', 'p0', 'p1'] else 'warning' if row.priority in ['P2', 'p2'] else 'neutral' }}">{{ row.priority }}</span>
+              <div class="subtle" style="margin-top:4px;">{{ row.theme }}</div>
+            </td>
+            <td>
+              <strong>{{ row.logic }}</strong>
+              {% if row.why %}<div class="subtle" style="margin-top:4px;">{{ row.why }}</div>{% endif %}
+            </td>
+            <td>{{ row.expressions|join(' / ') if row.expressions else 'n/a' }}</td>
+            <td>{{ row.sources|join(' / ') if row.sources else 'n/a' }}</td>
+          </tr>
+          {% else %}
+          <tr><td colspan="4"><div class="empty-state">No planning rows linked to this theme yet.</div></td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Research Progress</h2>
+          <p>Where the current theme research stands, and which entry points are worth pursuing.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        <div class="timeline-item"><strong>Run root</strong><div class="mono">{{ snapshot.theme.run_root or 'n/a' }}</div></div>
+        <div class="timeline-item"><strong>Summary excerpt</strong><div>{{ snapshot.theme.summary_excerpt or 'n/a' }}</div></div>
+        <div class="timeline-item">
+          <strong>Tracked mix</strong>
+          <div>core {{ snapshot.theme.core_count }} · option {{ snapshot.theme.option_count }} · competitor {{ snapshot.theme.competitor_count }} · alternative {{ snapshot.theme.alternative_count }}</div>
+        </div>
+        {% if theme_evolution.get('summary_lines') %}
+          <div class="timeline-item">
+            <strong>Thesis evolution</strong>
+            <ul>
+              {% for row in theme_evolution.get('summary_lines', []) %}
+                <li>{{ row }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        {% if snapshot.theme.related_opportunities %}
+          <div class="timeline-item">
+            <strong>Current blockers</strong>
+            <ul>
+              {% for item in snapshot.theme.related_opportunities[:3] %}
+                {% if item.research_package and item.research_package.why_not_investable_yet %}
+                  <li>{{ item.research_package.why_not_investable_yet }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Theme Source Map</h2>
+          <p>Which sources/KOLs are most relevant to this theme and why they matter.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for source in snapshot.detail.related_sources %}
+          <div class="signal-card tone-success">
+            <div>
+              {% if source.detail_href %}<div><a class="table-link" href="{{ source.detail_href }}">{{ source.name }}</a></div>{% else %}<div>{{ source.name }}</div>{% endif %}
+              <div class="subtle" title="Type, trust tier, and historical track record">{{ source.source_type }} · {{ source.source_trust_tier }} · {{ source.track_record_label }}</div>
+              {% if source.quality_band %}<div class="subtle" title="Quality band, trend direction, and supported claims">Quality {{ source.quality_band }} · {{ source.trend_label or 'flat' }} · {{ source.supported_claim_count or 0 }} claims</div>{% endif %}
+            </div>
+            <div class="align-right">
+              <div class="mono" title="Routes where this source's claims were accepted">{{ source.accepted_route_count }} accepted</div>
+              <div class="subtle" title="Cases where predictions were validated">{{ source.validated_case_count }} validated</div>
+            </div>
+          </div>
+        {% else %}
+          <div class="empty-state">No theme-level source map is available yet.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="triple-grid">
+    <article class="panel">
+      <header class="panel-header"><div><h2>Capital Gate</h2></div></header>
+      <div class="stack-list">
+        {% for row in snapshot.detail.decision_card.capital_gate %}
+          <div class="timeline-item">{{ row }}</div>
+        {% else %}
+          <div class="empty-state">No capital gate recorded.</div>
+        {% endfor %}
+      </div>
+    </article>
+    <article class="panel">
+      <header class="panel-header"><div><h2>Stop Rule</h2></div></header>
+      <div class="stack-list">
+        {% for row in snapshot.detail.decision_card.stop_rule %}
+          <div class="timeline-item">{{ row }}</div>
+        {% else %}
+          <div class="empty-state">No stop rules recorded.</div>
+        {% endfor %}
+      </div>
+    </article>
+    <article class="panel">
+      <header class="panel-header"><div><h2>Falsifiers</h2></div></header>
+      <div class="stack-list">
+        {% for row in snapshot.detail.decision_card.thesis_level_falsifiers %}
+          <div class="timeline-item"><strong>Thesis</strong><div>{{ row }}</div></div>
+        {% endfor %}
+        {% for row in snapshot.detail.decision_card.timing_level_falsifiers %}
+          <div class="timeline-item"><strong>Timing</strong><div>{{ row }}</div></div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Expression Layer</h2>
+        <p>Core / option / alternative / competitor expressions under the same theme as comparable objects.</p>
+      </div>
+    </header>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Expression</th>
+            <th>Role</th>
+            <th>Stage</th>
+            <th>Why not now</th>
+            <th>Upgrade requirements</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in snapshot.detail.expressions %}
+            <tr>
+              <td>
+                <strong>{{ item.entity }}</strong>
+                <div class="subtle">{{ item.product }}</div>
+              </td>
+              <td>
+                <span class="badge tone-{{ 'accent' if item.bucket_role == 'core' else 'warning' if item.bucket_role == 'option' else 'neutral' }}">{{ item.bucket_role }}</span>
+                <div class="subtle">{{ item.entity_role }}</div>
+              </td>
+              <td>
+                <div>{{ item.current_stage }}</div>
+                <div class="subtle">next={{ item.expected_next_stage }} by {{ item.expected_by }}</div>
+              </td>
+              <td>{{ item.why_not_now or item.evidence_text }}</td>
+              <td>
+                {% for row in item.upgrade_requirements %}
+                  <div>{{ row }}</div>
+                {% else %}
+                  <div class="subtle">n/a</div>
+                {% endfor %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header"><div><h2>Related Opportunities</h2></div></header>
+      <div class="stack-list">
+        {% for item in snapshot.theme.related_opportunities %}
+          <div class="timeline-item">
+            <div class="timeline-meta"><span>{{ item.residual_class }}</span><span>{{ item.route }}</span></div>
+            <strong><a class="table-link" href="/v2/dashboard/investor/opportunities/{{ item.candidate_id }}">{{ item.thesis_name }}</a></strong>
+            <div class="subtle">{{ item.note }}</div>
+          </div>
+        {% else %}
+          <div class="empty-state">No related radar opportunity currently linked.</div>
+        {% endfor %}
+      </div>
+    </article>
+    <article class="panel">
+      <header class="panel-header">
+        <div><h2>Source Documents</h2><p>Jump back to spec, run report, and planning documents.</p></div>
+      </header>
+      <div class="badge-row">
+        <a class="ghost-button" href="{{ snapshot.detail.spec_reader_href }}">Open Spec</a>
+        <a class="ghost-button" href="{{ snapshot.detail.run_doc_reader_href }}">Open Run Report</a>
+        <a class="ghost-button" href="{{ snapshot.detail.planning_doc_reader_href }}">Open Planning Doc</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Theme Evolution Timeline</h2>
+        <p>Track how posture, best expression, and action distance change over time.</p>
+      </div>
+    </header>
+    <div class="stack-list">
+      {% for item in snapshot.detail.theme_history %}
+        <div class="timeline-item">
+          <div class="timeline-meta"><span>{{ item.recommended_posture or 'n/a' }}</span><span>{{ item.best_expression or 'n/a' }}</span></div>
+          <strong>action distance {{ item.action_distance or 'n/a' }}</strong>
+          {% if item.history.summary_lines %}
+            <div class="subtle">{{ item.history.summary_lines[0] }}</div>
+          {% else %}
+            <div class="subtle">No material change logged.</div>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="empty-state">No theme evolution timeline recorded yet.</div>
+      {% endfor %}
+    </div>
+  </section>
+
+
+{% endblock %}

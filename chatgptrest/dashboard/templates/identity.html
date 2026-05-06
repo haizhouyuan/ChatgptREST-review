@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="hero-grid">
+    <article class="hero-card tone-accent">
+      <span class="hero-label">Root Runs</span>
+      <strong class="hero-value">{{ snapshot.summary.total_roots }}</strong>
+    </article>
+    <article class="hero-card tone-accent">
+      <span class="hero-label">Mapped Entities</span>
+      <strong class="hero-value">{{ snapshot.summary.mapped_entities }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Missing Task</span>
+      <strong class="hero-value">{{ snapshot.summary.missing_task }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Missing Trace</span>
+      <strong class="hero-value">{{ snapshot.summary.missing_trace }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Missing Ingress</span>
+      <strong class="hero-value">{{ snapshot.summary.missing_ingress }}</strong>
+    </article>
+    <article class="hero-card tone-warning">
+      <span class="hero-label">Unmapped Incidents</span>
+      <strong class="hero-value">{{ snapshot.summary.unmapped_incidents }}</strong>
+    </article>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Entity Coverage</h2>
+          <p>How many canonical identity rows each entity type currently contributes.</p>
+        </div>
+      </header>
+      {% if snapshot.entity_breakdown %}
+        {% for row in snapshot.entity_breakdown %}
+          <div class="stat-row">
+            <span class="mono">{{ row.entity_type }}</span>
+            <strong>{{ row.count }}</strong>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-state">No identity rows materialized.</div>
+      {% endif %}
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Identity Gaps</h2>
+          <p>Runs that still require backfill for task, trace, or ingress mapping.</p>
+        </div>
+      </header>
+      <div class="stack-list">
+        {% for run in snapshot.gaps %}
+          <div class="timeline-item">
+            <div class="timeline-meta">
+              <a class="table-link mono" href="/v2/dashboard/runs/{{ run.root_run_id }}">{{ run.root_run_id }}</a>
+              <span>{{ run.updated_at | age_label }}</span>
+            </div>
+            <div><strong>{{ run.title }}</strong></div>
+            <div class="subtle">task={{ run.task_id or 'missing' }} trace={{ run.trace_id or 'missing' }} ingress={{ run.ingress_channel or 'missing' }}</div>
+          </div>
+        {% else %}
+          <div class="empty-state">No identity gaps detected.</div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>Recent Identity Map Rows</h2>
+        <p>Canonical keys that let incidents, ingress, tasks, jobs, lanes, and team checkpoints converge onto the same lineage.</p>
+      </div>
+    </header>
+    {% if snapshot.mappings %}
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Identity</th>
+              <th>Root Run</th>
+              <th>Source</th>
+              <th>Mapped Keys</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in snapshot.mappings %}
+              <tr>
+                <td>
+                  <div class="mono">{{ row.entity_type }}:{{ row.entity_id }}</div>
+                  <div class="subtle">{{ row.identity_key }}</div>
+                </td>
+                <td>
+                  <a class="table-link mono" href="/v2/dashboard/runs/{{ row.root_run_id }}">{{ row.root_run_id }}</a>
+                </td>
+                <td>{{ row.source_system }}</td>
+                <td>
+                  <div class="stack-list compact mono">
+                    <div>task={{ row.task_id or 'n/a' }}</div>
+                    <div>trace={{ row.trace_id or 'n/a' }}</div>
+                    <div>run={{ row.run_id or 'n/a' }}</div>
+                    <div>job={{ row.job_id or 'n/a' }}</div>
+                    <div>lane={{ row.lane_id or 'n/a' }}</div>
+                    <div>checkpoint={{ row.checkpoint_id or 'n/a' }}</div>
+                  </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty-state">No identity map rows available.</div>
+    {% endif %}
+  </section>
+{% endblock %}

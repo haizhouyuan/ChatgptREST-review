@@ -1,0 +1,8 @@
+[Unit]
+Description=ChatgptREST controller lane continuity sweep
+After=default.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/vol1/1000/projects/ChatgptREST
+ExecStart=/vol1/1000/projects/ChatgptREST/.venv/bin/python /vol1/1000/projects/ChatgptREST/ops/controller_lane_continuity.py sweep

@@ -1,0 +1,23 @@
+[
+  {
+    "case_id": "planning-green-visit",
+    "query": "绿源来访准备",
+    "project_id": "planning",
+    "expected_keywords": ["绿源", "来访", "拜访", "准备"],
+    "notes": "operator-facing visit prep query"
+  },
+  {
+    "case_id": "planning-tiger-module",
+    "query": "钛虎机器人关节模组合作",
+    "project_id": "planning",
+    "expected_keywords": ["钛虎", "机器人", "关节模组", "合作"],
+    "notes": "entity-specific cooperation query"
+  },
+  {
+    "case_id": "planning-wheel-competition",
+    "query": "两轮车车轮市场竞争分析",
+    "project_id": "planning",
+    "expected_keywords": ["两轮车", "车轮", "市场竞争", "竞争分析", "竞争"],
+    "notes": "competitive landscape query"
+  }
+]

@@ -1,0 +1,47 @@
+# Agent Role Definitions
+#
+# Each role defines a business context that scopes memory and KB access.
+# - memory_namespace: maps to source.role in memory records
+# - kb_scope_tags: soft hints for ContextResolver (not enforced until 1C)
+#
+# Roles are loaded by chatgptrest.kernel.role_loader.load_roles()
+
+roles:
+  devops:
+    description: "ChatgptREST 系统运维与代码开发"
+    prompt: |
+      你是 ChatgptREST 系统的运维与开发专家。
+      改动前必须评估 blast radius。决策标准：可用性 > 性能 > 功能。
+    tools:
+      - chatgptrest_*
+      - gitnexus_*
+      - chrome-devtools
+      - run_command
+    model: sonnet
+    memory_namespace: devops
+    kb_scope_tags:
+      - chatgptrest
+      - ops
+      - infra
+      - driver
+      - mcp
+      - runbook
+
+  research:
+    description: "深度研究与分析"
+    prompt: |
+      你是 thesis-first 的研究分析师。
+      产出必须有证据支撑。报告结构：核心发现 → 证据链 → 行动建议。
+    tools:
+      - chatgptrest_ask
+      - chatgptrest_consult
+      - web_search
+      - read_url_content
+    model: sonnet
+    memory_namespace: research
+    kb_scope_tags:
+      - research
+      - finagent
+      - education
+      - analysis
+      - market

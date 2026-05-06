@@ -1,0 +1,98 @@
+{
+  "version": "planning-acceptance-v1",
+  "profiles": {
+    "implementation_plan": {
+      "route_hint": "funnel",
+      "output_shape": "planning_memo",
+      "required_sections": [
+        "goal",
+        "plan",
+        "dependencies",
+        "risks",
+        "validation"
+      ],
+      "required_artifacts": [
+        "planning_memo"
+      ],
+      "watch_policy": {
+        "checkpoint": "quality_gate",
+        "notify_on_completion": true
+      }
+    },
+    "business_planning": {
+      "route_hint": "funnel",
+      "output_shape": "planning_memo",
+      "required_sections": [
+        "objective",
+        "current_state",
+        "options",
+        "recommended_plan",
+        "risks",
+        "next_steps"
+      ],
+      "required_artifacts": [
+        "planning_memo"
+      ],
+      "watch_policy": {
+        "checkpoint": "quality_gate",
+        "notify_on_completion": true
+      }
+    },
+    "workforce_planning": {
+      "route_hint": "funnel",
+      "output_shape": "planning_memo",
+      "required_sections": [
+        "staffing_goal",
+        "current_state",
+        "demand_drivers",
+        "headcount_plan",
+        "hiring_sequence",
+        "risks"
+      ],
+      "required_artifacts": [
+        "planning_memo"
+      ],
+      "watch_policy": {
+        "checkpoint": "quality_gate",
+        "notify_on_completion": true
+      }
+    },
+    "meeting_summary": {
+      "route_hint": "report",
+      "output_shape": "meeting_summary",
+      "required_sections": [
+        "meeting_context",
+        "key_points",
+        "decisions",
+        "action_items",
+        "open_questions"
+      ],
+      "required_artifacts": [
+        "meeting_summary"
+      ],
+      "watch_policy": {
+        "checkpoint": "delivery_only",
+        "notify_on_completion": true
+      }
+    },
+    "interview_notes": {
+      "route_hint": "report",
+      "output_shape": "meeting_summary",
+      "required_sections": [
+        "candidate_context",
+        "evidence",
+        "strengths",
+        "concerns",
+        "recommendation",
+        "next_steps"
+      ],
+      "required_artifacts": [
+        "interview_notes"
+      ],
+      "watch_policy": {
+        "checkpoint": "delivery_only",
+        "notify_on_completion": true
+      }
+    }
+  }
+}

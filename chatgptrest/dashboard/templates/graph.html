@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.30.4/dist/cytoscape.min.js"></script>
+
+  <section class="command-stage panel graph-stage">
+    <div class="command-stage__hero">
+      <div class="stage-copy">
+        <span class="kicker">Execution Lineage</span>
+        <h2>Trace how tasks become runs, jobs, lanes, issues, and incidents.</h2>
+        <p>
+          This graph is intentionally narrow: it only shows execution lineage from the control-plane read model.
+          Use it to explain why something is stuck before adding cognitive overlays.
+        </p>
+      </div>
+      <div class="score-wheel">
+        <div class="score-wheel__value">{{ snapshot.summary.nodes or 0 }}</div>
+        <div class="score-wheel__label">nodes in view</div>
+      </div>
+    </div>
+
+    <div class="hero-metrics-grid">
+      {% for card in snapshot.status_cards %}
+        <article class="hero-card tone-{{ card.tone }}">
+          <span class="hero-label">{{ card.label }}</span>
+          <strong class="hero-value">{{ card.value }}</strong>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="double-grid">
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Graph Controls</h2>
+          <p>Select a root run or expand a node neighborhood without forcing the browser to join raw tables.</p>
+        </div>
+      </header>
+      <div class="graph-controls" data-graph-api="/v2/dashboard/api/graph/lineage" data-graph-neighborhood-api="/v2/dashboard/api/graph/neighborhood">
+        <label class="graph-controls__field">
+          <span>Root Run</span>
+          <select data-graph-root-select>
+            {% for item in snapshot.roots %}
+              <option value="{{ item.root_run_id }}" {% if item.root_run_id == snapshot.selected_root_run_id %}selected{% endif %}>
+                {{ item.title }} · {{ item.status }} · {{ item.problem_class }}
+              </option>
+            {% endfor %}
+          </select>
+        </label>
+        <button type="button" class="ghost-button" data-graph-neighborhood>Expand Selected Node Neighborhood</button>
+      </div>
+      <div class="graph-canvas" data-graph-canvas data-graph-seed='{{ snapshot.graph | tojson | safe }}'></div>
+      <div class="graph-caption subtle">
+        Initial graph is a controlled lineage subgraph. Click a node, then use neighborhood expansion for a bounded join.
+      </div>
+    </article>
+
+    <article class="panel">
+      <header class="panel-header">
+        <div>
+          <h2>Current Root Set</h2>
+          <p>These are the highest-priority roots currently visible in the execution control plane.</p>
+        </div>
+      </header>
+      <div class="live-run-grid">
+        {% for item in snapshot.roots %}
+          <article class="live-run-card tone-{{ item.tone }}">
+            <strong>{{ item.title }}</strong>
+            <div class="subtle mono">{{ item.root_run_id }}</div>
+            <div class="subtle">{{ item.layer }} · {{ item.status }} · {{ item.problem_class }}</div>
+          </article>
+        {% endfor %}
+      </div>
+      <div class="legend-list">
+        {% for item in snapshot.legend %}
+          <div class="legend-list__item">
+            <span class="status-pill tone-{{ item.tone }}">{{ item.type }}</span>
+            <span>{{ item.label }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="graph-selection" data-graph-selection>
+        <div class="empty-state">Select a node to inspect details here.</div>
+      </div>
+    </article>
+  </section>
+{% endblock %}

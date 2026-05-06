@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "families": [
+    {
+      "family_id": "attachment_contract_missing",
+      "family_label": "Attachment contract missing",
+      "match": {
+        "any_terms": [
+          "attachmentcontractmissing",
+          "attachment contract missing",
+          "attachment_contract_missing"
+        ]
+      }
+    },
+    {
+      "family_id": "gemini_no_thread_url",
+      "family_label": "Gemini wait / no thread URL",
+      "match": {
+        "kinds": ["gemini_web.ask"],
+        "any_terms": [
+          "waitnothreadurltimeout",
+          "conversation_url_conflict",
+          "conversationurlrebound",
+          "stable conversation_url",
+          "gemini_no_thread_url",
+          "gemini_followup_thread_handoff"
+        ]
+      }
+    },
+    {
+      "family_id": "gemini_stable_thread_no_progress",
+      "family_label": "Gemini wait / stable thread no progress",
+      "match": {
+        "kinds": ["gemini_web.ask"],
+        "any_terms": [
+          "waitnoprogresstimeout",
+          "wait phase made no progress",
+          "gemini_stable_thread_no_progress",
+          "gemini_wait_no_progress"
+        ]
+      }
+    },
+    {
+      "family_id": "upload_path_normalization",
+      "family_label": "Upload path normalization",
+      "match": {
+        "any_terms": [
+          "driveuploadfailed",
+          "input.file_paths",
+          "attachment upload path",
+          "idempotency mismatch",
+          "different file path spellings"
+        ]
+      }
+    },
+    {
+      "family_id": "completion_guard_false_downgrade",
+      "family_label": "Completion guard false downgrade",
+      "match": {
+        "any_terms": [
+          "completion_guard_downgraded",
+          "completed_under_min_chars",
+          "suspect_short_answer",
+          "preamble text",
+          "too-short completion"
+        ]
+      }
+    },
+    {
+      "family_id": "provider_job_kind_contract_drift",
+      "family_label": "Provider / job-kind contract drift",
+      "match": {
+        "any_terms": [
+          "unknown job kind",
+          "unknown kind:"
+        ]
+      }
+    }
+  ]
+}

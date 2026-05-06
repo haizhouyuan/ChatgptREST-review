@@ -1,0 +1,19 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-viewer-watchdog.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-viewer-watchdog.timer
+#
+[Unit]
+Description=ChatgptREST viewer watchdog (detect black screen and auto-heal)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python ops/viewer_watchdog.py --heal
+# viewer_restart.sh intentionally spawns persistent viewer processes (Xvfb/x11vnc/websockify/chrome).
+# Do not SIGTERM the entire cgroup on oneshot completion, otherwise watchdog itself turns failed.
+KillMode=none

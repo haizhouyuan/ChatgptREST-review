@@ -1,0 +1,23 @@
+{
+  "cohort_id": "openmind-production-canary-v1",
+  "watch_window_days": 7,
+  "projects": [
+    "shortmobility",
+    "prs"
+  ],
+  "surfaces": [
+    "/v3/agent/turn",
+    "openmind-advisor"
+  ],
+  "failure_budget": {
+    "max_fail_domains": 0,
+    "allowed_warn_domains": [
+      "promotion"
+    ]
+  },
+  "notes": [
+    "The canary projects match the packet-harness default cases.",
+    "Promotion warn is allowed during the watch window when blank promotion reason ratio remains healthy and the warning is attributable to staged-without-active backlog.",
+    "Full production go-live still requires the watch window to elapse cleanly."
+  ]
+}

@@ -1,0 +1,17 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-finbotfree-daily-work.timer
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-finbotfree-daily-work.timer
+#
+[Unit]
+Description=ChatgptREST finbotfree (free tier) continuous daily work sweep (every 4 hours)
+
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=4h
+Persistent=true
+RandomizedDelaySec=2min
+Unit=chatgptrest-finbotfree-daily-work.service
+
+[Install]
+WantedBy=timers.target

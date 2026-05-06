@@ -1,0 +1,31 @@
+{
+  "version": "v1",
+  "generated_for": "2026-04-08_refined_next_stage_full_execution_plan_v2",
+  "cases": [
+    {
+      "case_id": "chatgptrest_completion_contract",
+      "project_id": "ChatgptREST",
+      "query": "completion contract authoritative answer",
+      "expected_primary_project": "ChatgptREST",
+      "expectation": "Scoped retrieval should return ChatgptREST contract/finality knowledge before unrelated infrastructure or multi-project hits."
+    },
+    {
+      "case_id": "infrastructure_issue_domain_contract",
+      "project_id": "infrastructure",
+      "query": "issue domain projection contract",
+      "expected_primary_project": "infrastructure",
+      "expectation": "Scoped retrieval should stay on infrastructure operational documentation rather than broader multi-project review traces."
+    },
+    {
+      "case_id": "antigravity_data_sources",
+      "project_id": "antigravity",
+      "query": "数据来源",
+      "expected_primary_project": "antigravity",
+      "expectation": "Scoped retrieval should keep the result set on antigravity atoms and suppress unrelated multi-project or unknown-scope matches."
+    }
+  ],
+  "notes": [
+    "The corpus is intentionally narrow and runtime-backed.",
+    "Planning-specific queries are not included in v1 because the current live FTS behavior does not yet provide a stable, project-distinguishing planning query family."
+  ]
+}

@@ -1,0 +1,21 @@
+# Copy to: ~/.config/systemd/user/chatgptrest-orch-doctor.service
+# Then:
+#   systemctl --user daemon-reload
+#   systemctl --user enable --now chatgptrest-orch-doctor.timer
+#
+[Unit]
+Description=ChatgptREST OpenClaw orch doctor (reconcile orch agents)
+After=network-online.target chatgptrest-api.service
+Wants=network-online.target chatgptrest-api.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=__CHATGPTREST_ROOT__
+Environment=PYTHONUNBUFFERED=1
+Environment=HOME=/home/yuanhaizhou/.home-codex-official
+Environment=OPENCLAW_STATE_DIR=/home/yuanhaizhou/.home-codex-official/.openclaw
+Environment=OPENCLAW_CMD=/home/yuanhaizhou/.home-codex-official/.local/bin/openclaw
+EnvironmentFile=-%h/.config/chatgptrest/chatgptrest.env
+ExecStart=__CHATGPTREST_ROOT__/.venv/bin/python ops/openclaw_orch_agent.py --include-ui-canary --strict
+# orch doctor uses exit 2 for "needs attention"; keep unit green while preserving report signal.
+SuccessExitStatus=2

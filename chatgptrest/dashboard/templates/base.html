@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title }} · OpenClaw OpenMind Dashboard</title>
+  <link rel="stylesheet" href="{{ request.url_for('dashboard_asset', asset_name='dashboard.css') }}">
+</head>
+<body data-refresh-seconds="30">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-kicker">OpenClaw + OpenMind</div>
+        <h1>{{ page_title }}</h1>
+        <div class="subtle">Operator Dashboard</div>
+        <p>{{ page_description }}</p>
+      </div>
+      <div class="topbar-actions">
+        {% if json_href %}
+          <a class="ghost-button" href="{{ json_href }}" target="_blank" rel="noopener">Raw JSON</a>
+        {% endif %}
+        <button class="ghost-button" type="button" data-dashboard-refresh>Refresh</button>
+        <div class="refresh-chip">
+          <span>Auto refresh</span>
+          <strong data-refresh-countdown>30s</strong>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      {% for item in nav_items %}
+        <a class="tab {% if item.key == page_key %}active{% endif %}" href="{{ item.href }}">{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+
+    <section class="meta-strip">
+      <div class="meta-item">
+        <span class="meta-label">Rendered</span>
+        <strong>{{ snapshot.generated_at | fmt_ts }}</strong>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Read Model Refresh</span>
+        <strong>{{ snapshot.control_plane.refreshed_at | fmt_ts }}</strong>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Refresh Status</span>
+        <strong>{{ snapshot.control_plane.refresh_status or 'unknown' }}</strong>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Root Runs</span>
+        <strong>{{ snapshot.control_plane.root_count or 0 }}</strong>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Page</span>
+        <strong>{{ page_title }}</strong>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Source</span>
+        <strong>/v2/dashboard/*</strong>
+      </div>
+    </section>
+
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  <script src="{{ request.url_for('dashboard_asset', asset_name='dashboard.js') }}"></script>
+</body>
+</html>

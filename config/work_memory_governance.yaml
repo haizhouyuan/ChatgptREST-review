@@ -1,0 +1,15 @@
+version: 1
+
+approval:
+  policy_name: allowlisted_source_complete_identity
+  allow_approved_sources:
+    - advisor_agent
+    - openclaw
+    - codex
+    - claude_code
+    - antigravity
+    - manual_review
+  require_identity_fields:
+    - account_id
+    - role_id
+  require_provenance_quality: complete

@@ -1,0 +1,104 @@
+{
+  "validation_id": "skill_suite_validation_matrix_v1",
+  "governance": {
+    "data_policy": "local_only_default",
+    "external_review_requires_redaction": true,
+    "classification_levels": [
+      "public",
+      "internal",
+      "internal_confidential"
+    ],
+    "review_note": "Real historical materials stay local in this bundle. External model review requires a separately redacted packet."
+  },
+  "rubric": {
+    "dimensions": [
+      "artifact_completeness",
+      "qa_signal_quality",
+      "routing_honesty",
+      "reproducibility",
+      "openclaw_observability"
+    ],
+    "expectation_labels": [
+      "pass",
+      "warn",
+      "fail"
+    ]
+  },
+  "runner_files": [
+    {
+      "alias": "document_pro_suite_runner",
+      "path": "/vol1/1000/home-yuanhaizhou/.codex-shared/skills/document-pro-suite/scripts/document_pro_suite.py"
+    },
+    {
+      "alias": "report_pro_suite_runner",
+      "path": "/vol1/1000/home-yuanhaizhou/.codex-shared/skills/report-pro-suite/scripts/report_pro_suite.py"
+    },
+    {
+      "alias": "ppt_pro_suite_runner",
+      "path": "/vol1/1000/home-yuanhaizhou/.codex-shared/skills/ppt-pro-suite/scripts/ppt_pro_suite.py"
+    }
+  ],
+  "captures": [
+    {
+      "id": "python3_version",
+      "command": [
+        "python3",
+        "--version"
+      ]
+    },
+    {
+      "id": "openclaw_skills_list",
+      "command": [
+        "/home/yuanhaizhou/.local/bin/openclaw",
+        "skills",
+        "list"
+      ],
+      "env": {
+        "HOME": "/home/yuanhaizhou/.home-codex-official"
+      }
+    },
+    {
+      "id": "pandoc_version",
+      "command": [
+        "pandoc",
+        "--version"
+      ]
+    },
+    {
+      "id": "typst_version",
+      "command": [
+        "typst",
+        "--version"
+      ]
+    },
+    {
+      "id": "quarto_version",
+      "command": [
+        "quarto",
+        "--version"
+      ]
+    },
+    {
+      "id": "soffice_version",
+      "command": [
+        "soffice",
+        "--version"
+      ]
+    },
+    {
+      "id": "ocrmypdf_version",
+      "command": [
+        "ocrmypdf",
+        "--version"
+      ]
+    },
+    {
+      "id": "tesseract_version",
+      "command": [
+        "tesseract",
+        "--version"
+      ]
+    }
+  ],
+  "cases": []
+}

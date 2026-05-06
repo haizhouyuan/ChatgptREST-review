@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="panel">
+    <header class="panel-header">
+      <div>
+        <h2>{{ snapshot.reader_title }}</h2>
+        <p>Whitelisted reader for finagent reports, specs, planning docs, and finbot inbox artifacts.</p>
+      </div>
+    </header>
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <span class="mono">{{ snapshot.path }}</span>
+      </div>
+    </div>
+    <pre class="json-block" style="white-space: pre-wrap; max-height: none;">{{ snapshot.content }}</pre>
+  </section>
+{% endblock %}
