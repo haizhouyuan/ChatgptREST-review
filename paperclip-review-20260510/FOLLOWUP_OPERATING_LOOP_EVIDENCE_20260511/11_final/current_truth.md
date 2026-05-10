@@ -18,6 +18,8 @@ operation. The goal is still active.
   leakage, quarantined provider and local LLM production-route fixtures.
 - Finbot has 10 hard-reviewed research-only cases.
 - Finbot has 6 high-quality research-only cases after primary-authority repair.
+- Finbot has supervised decision memos for those 6 cases, framed only as
+  research sprint prompts.
 - Planning has an actionable follow-up queue and research campaign.
 - Local LLM Research completed repeated 36-row HomePC Ollama benchmarks. The
   current best full run is `33 / 36` strict JSON, and targeted compact-schema

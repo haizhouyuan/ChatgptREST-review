@@ -26,6 +26,7 @@ not a new Pro request and not a production-ready claim.
 - `03_governance/false_pass_gate_result.json`
 - `04_finbot/finbot_hard_review_matrix_v2.json`
 - `04_finbot/finbot_primary_authority_repair.json`
+- `04_finbot/finbot_supervised_decision_memos_v2.md`
 - `05_planning/planning_research_campaign_after_finbot_repair.json`
 - `06_local_llm/local_llm_benchmark_summary.json`
 - `06_local_llm/local_llm_quality_audit.md`
@@ -62,3 +63,20 @@ Refreshed: 2026-05-11T00:55:39+08:00
 ## Loop Refresh 0000
 
 Refreshed: 2026-05-11T00:56:02+08:00
+
+## Loop Refresh 0001
+
+Refreshed: 2026-05-11T01:26:02+08:00
+
+## Loop Refresh 0002
+
+Refreshed: 2026-05-11T01:56:02+08:00
+
+## Loop Refresh 0003
+
+Refreshed: 2026-05-11T01:58:58+08:00
+
+## Loop Refresh 0004
+
+Refreshed: 2026-05-11T02:28:59+08:00
+
