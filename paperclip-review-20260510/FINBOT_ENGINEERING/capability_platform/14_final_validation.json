@@ -1,0 +1,83 @@
+{
+  "schema": "finbot_engineering.final_validation.v1",
+  "generated_at": "2026-05-09T18:09:43+08:00",
+  "status": "FINBOT_ENGINEERING_CAPABILITY_PLATFORM_V1_PASS",
+  "passed": true,
+  "complete_allowed": true,
+  "pre_live_pass": false,
+  "errors": [],
+  "metrics": {
+    "sources": 33,
+    "workflow_verified_sources": 7,
+    "skill_contracts": 12,
+    "valuation_entries": 2,
+    "alerts": 3,
+    "decision_memos": 2,
+    "negative_fixtures": 6
+  },
+  "negative_fixture_results": [
+    {
+      "fixture": "advice_output.json",
+      "expected_error": "FORBIDDEN_ADVICE_OUTPUT",
+      "failed_as_expected": true,
+      "errors": [
+        "$.decision_memo.decision_status: forbidden decision status buy",
+        "$.decision_memo.recommendation: forbidden field recommendation"
+      ]
+    },
+    {
+      "fixture": "broker_action.json",
+      "expected_error": "BROKER_ACTION_FORBIDDEN",
+      "failed_as_expected": true,
+      "errors": [
+        "$.decision_memo.broker_action: forbidden field broker_action"
+      ]
+    },
+    {
+      "fixture": "endpoint_only_false_readiness.json",
+      "expected_error": "ENDPOINT_ONLY_NOT_WORKFLOW_VERIFIED",
+      "failed_as_expected": true,
+      "errors": [
+        "missing required data sources: ['13F as ownership context only', 'AKShare', 'BSE', 'Baostock', 'Binance risk context', 'CNINFO', 'Chrome DevTools / CDP evidence capture', 'Daloopa', 'Eastmoney / Tonghuashun downgraded secondary routes', 'Fincept', 'Form 4', 'Google Drive / local docs', 'LangGraph / Agno / PydanticAI', 'OpenBB if available', 'Qlib / vectorbt / Backtrader / Lean', 'Quartr', 'Readwise', 'SEC EDGAR submissions', 'SEC companyfacts', 'SSE', 'SZSE', 'TradingAgents / TradingAgents-CN', 'Tushare', 'Zotero', 'earnings releases / filings', 'issuer IR pages', 'local price CSV fixture fallback', 'web-content-extractor / governed local HTML extraction']",
+        "SEC EDGAR submissions must remain workflow_verified with evidence",
+        "SEC companyfacts must remain workflow_verified with evidence",
+        "Google Drive / local docs must remain workflow_verified with evidence",
+        "web-content-extractor / governed local HTML extraction must remain workflow_verified with evidence",
+        "Alpaca watch-only: workflow_verified requires workflow proof, got endpoint_alive_only",
+        "Alpaca watch-only: endpoint/tool/surface proof counted as workflow verification",
+        "Alpaca watch-only: guarded connector cannot be workflow_verified in this phase"
+      ]
+    },
+    {
+      "fixture": "guarded_connector_fake_enabled.json",
+      "expected_error": "GUARDED_CONNECTOR_FALSE_READY",
+      "failed_as_expected": true,
+      "errors": [
+        "missing required data sources: ['13F as ownership context only', 'AKShare', 'Alpaca watch-only', 'BSE', 'Baostock', 'Binance risk context', 'CNINFO', 'Chrome DevTools / CDP evidence capture', 'Eastmoney / Tonghuashun downgraded secondary routes', 'Fincept', 'Form 4', 'Google Drive / local docs', 'LangGraph / Agno / PydanticAI', 'OpenBB if available', 'Qlib / vectorbt / Backtrader / Lean', 'Quartr', 'Readwise', 'SEC EDGAR submissions', 'SEC companyfacts', 'SSE', 'SZSE', 'TradingAgents / TradingAgents-CN', 'Tushare', 'Zotero', 'earnings releases / filings', 'issuer IR pages', 'local price CSV fixture fallback', 'web-content-extractor / governed local HTML extraction']",
+        "SEC EDGAR submissions must remain workflow_verified with evidence",
+        "SEC companyfacts must remain workflow_verified with evidence",
+        "Google Drive / local docs must remain workflow_verified with evidence",
+        "web-content-extractor / governed local HTML extraction must remain workflow_verified with evidence",
+        "Daloopa: guarded connector cannot be workflow_verified in this phase"
+      ]
+    },
+    {
+      "fixture": "production_watchlist.json",
+      "expected_error": "PRODUCTION_WATCHLIST_FORBIDDEN",
+      "failed_as_expected": true,
+      "errors": [
+        "$.alert.alert_scope: alert_scope must be human_review_alert",
+        "$.alert.alert_type: forbidden alert type buy_signal"
+      ]
+    },
+    {
+      "fixture": "target_price_as_advice.json",
+      "expected_error": "TARGET_PRICE_AS_ADVICE",
+      "failed_as_expected": true,
+      "errors": [
+        "$.valuation.target_price: forbidden field target_price",
+        "$.valuation.recommendation: forbidden field recommendation"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "fixture_id": "guarded_connector_fake_enabled",
+  "expected_error": "GUARDED_CONNECTOR_FALSE_READY",
+  "sources": [
+    {
+      "name": "Daloopa",
+      "status": "workflow_verified",
+      "proof_level": "workflow_verified",
+      "workflow_proof_id": ""
+    }
+  ]
+}

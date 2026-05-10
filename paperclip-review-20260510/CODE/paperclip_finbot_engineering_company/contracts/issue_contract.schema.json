@@ -1,0 +1,21 @@
+{
+  "required_fields": [
+    "issue_id",
+    "objective",
+    "allowed_write_scope",
+    "forbidden_actions",
+    "runtime",
+    "expected_artifacts",
+    "validation_commands",
+    "closeout_required"
+  ],
+  "closeout_required": [
+    "changed_files",
+    "artifact_manifest",
+    "validation_result",
+    "stdout_stderr",
+    "diff_or_commit",
+    "evidence_path"
+  ]
+}
+

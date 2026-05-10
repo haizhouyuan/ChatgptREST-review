@@ -1,0 +1,10 @@
+{
+  "run_id": "fixture-capability-platform-v1",
+  "case_or_source_id": "alpha-yelp-20260509",
+  "allowed_sources": [
+    "sec_companyfacts",
+    "local_docs"
+  ],
+  "evidence_policy": "primary_required",
+  "expected_output_status": "pass"
+}

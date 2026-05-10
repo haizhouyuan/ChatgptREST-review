@@ -1,0 +1,966 @@
+{
+  "schema": "finbot.agent_skill_contracts.v1",
+  "generated_at": "2026-05-09T17:55:49+08:00",
+  "skills": [
+    {
+      "skill_id": "source_discovery_skill",
+      "purpose": "Engineering contract for Finbot source discovery skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/source_discovery_skill.fixture.json"
+    },
+    {
+      "skill_id": "source_quality_scoring_skill",
+      "purpose": "Engineering contract for Finbot source quality scoring skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/source_quality_scoring_skill.fixture.json"
+    },
+    {
+      "skill_id": "content_ingestion_skill",
+      "purpose": "Engineering contract for Finbot content ingestion skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/content_ingestion_skill.fixture.json"
+    },
+    {
+      "skill_id": "primary_evidence_lookup_skill",
+      "purpose": "Engineering contract for Finbot primary evidence lookup skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/primary_evidence_lookup_skill.fixture.json"
+    },
+    {
+      "skill_id": "claim_extraction_skill",
+      "purpose": "Engineering contract for Finbot claim extraction skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/claim_extraction_skill.fixture.json"
+    },
+    {
+      "skill_id": "evidence_binding_skill",
+      "purpose": "Engineering contract for Finbot evidence binding skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/evidence_binding_skill.fixture.json"
+    },
+    {
+      "skill_id": "entity_resolution_skill",
+      "purpose": "Engineering contract for Finbot entity resolution skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/entity_resolution_skill.fixture.json"
+    },
+    {
+      "skill_id": "valuation_range_research_skill",
+      "purpose": "Engineering contract for Finbot valuation range research skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/valuation_range_research_skill.fixture.json"
+    },
+    {
+      "skill_id": "catalyst_invalidation_tracking_skill",
+      "purpose": "Engineering contract for Finbot catalyst invalidation tracking skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/catalyst_invalidation_tracking_skill.fixture.json"
+    },
+    {
+      "skill_id": "risk_qa_skill",
+      "purpose": "Engineering contract for Finbot risk qa skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/risk_qa_skill.fixture.json"
+    },
+    {
+      "skill_id": "decision_memo_drafting_skill",
+      "purpose": "Engineering contract for Finbot decision memo drafting skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/decision_memo_drafting_skill.fixture.json"
+    },
+    {
+      "skill_id": "alert_monitoring_skill",
+      "purpose": "Engineering contract for Finbot alert monitoring skill; not installed as a native/global skill.",
+      "input_schema": {
+        "type": "object",
+        "required": [
+          "run_id",
+          "case_or_source_id",
+          "allowed_sources",
+          "evidence_policy"
+        ],
+        "properties": {
+          "run_id": {
+            "type": "string"
+          },
+          "case_or_source_id": {
+            "type": "string"
+          },
+          "allowed_sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_policy": {
+            "enum": [
+              "primary_required",
+              "hypothesis_only",
+              "local_fixture_only"
+            ]
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "status",
+          "evidence_ids",
+          "next_action"
+        ],
+        "properties": {
+          "status": {
+            "enum": [
+              "pass",
+              "blocked",
+              "candidate_to_enable",
+              "needs_human_review"
+            ]
+          },
+          "evidence_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "required_evidence": [
+        "source_id",
+        "authority_level",
+        "local_path_or_url",
+        "sha256_or_stable_id",
+        "available_at"
+      ],
+      "validator": "tools/validate_finbot_capability_platform.py",
+      "forbidden_actions": [
+        "investment_advice",
+        "broker_action",
+        "production_watchlist",
+        "trade_signal",
+        "position_size",
+        "automatic_trading",
+        "buy_sell_hold_recommendation",
+        "target_price_as_advice"
+      ],
+      "example_fixture": "fixtures/capability_platform/alert_monitoring_skill.fixture.json"
+    }
+  ]
+}

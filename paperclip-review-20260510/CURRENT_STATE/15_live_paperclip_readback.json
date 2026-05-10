@@ -1,0 +1,214 @@
+{
+  "schema": "paperclip.overnight.live_readback.v1",
+  "generated_at": "2026-05-10T09:15:00+08:00",
+  "status": "PASS_LIVE_READBACK",
+  "readbackMode": "accepted_runs_plus_explicit_carrier_gaps",
+  "required_status": "PAPERCLIP_OVERNIGHT_ALL_COMPANY_OPS_PASS",
+  "issues": [
+    {
+      "identifier": "FIN-40",
+      "role": "finbot_research",
+      "issueId": "8fb9ce48-0973-4154-af8f-90e445c5407f",
+      "title": "Finbot Research overnight open-ended alpha discovery readback",
+      "issueStatus": "done",
+      "statusSyncError": null,
+      "accepted": true,
+      "acceptedComment": {
+        "id": "cd31bceb-a12a-4d3e-a530-560984367667",
+        "authorAgentId": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+        "createdByRunId": "77bb08a3-8b95-4f0a-91ec-99755e2735a7",
+        "createdAt": "2026-05-10T00:31:46.513Z",
+        "bodyHead": "Overnight all-company operations validation complete\n\nValidated evidence root: `/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery`\n\n- **Continuation confirmed, not duplicate**: `continuation_record.json` states continuing same run_root without overwriting history. `21_open_alpha_extension_audit.json` confirms `extended_same_run_root` — user raised thresholds after the runner started; the merge extends the same run_root. Only one run directory exists in the parent.\n- **Substantive delta and closeout confirmed**: `16_cycle_by_cycle_substantive_delta_audit.json` shows 11 effective cycles (cycle_04 was a continuation restart repair, explicitly not counted) with substantive_delta covering source intake/refresh, theme expansion, primary evidence acquisition, opportunity candidate creation, risk/reversal QA, and valuation research range. `22_closeout.md` confirms all goal-contract thresholds exceeded (12 cycles, 148 sources, 56 themes, 185 candidates, 56 alpha-qualified cases, 20 full decision memos, 20 top surprising opportunities).\n- **Research-only boundary confirmed**: All artifacts carry explicit research-only disclaimers. `20_final_validation.json` negative_fixture_results show all forbidden outputs were correctly rejected: advice_output (`buy`/`recommendation` blocked), target_price_as_advice (`target_price` blocked), broker_action (`broker_action` blocked), production_watchlist (`trade_signal` blocked). No buy/sell/hold, target price, position sizing, trade signal, broker action, or production watchlist found.\n- **Tool quarantine confirmed**: `00_goal_contract.md`, `blocker_board.md`, `Governance_correction_packet.md`, `Skill_MCP_readiness_matrix.md`, and `Runtime_fallback_matrix.md` all state MiniMax / DeepSeek / Tavily / Brave remain `quarantined_or_no_production_use`. Historical asset mentions are from indexed legacy documents, not active production use in this run.\n\nToken=REDACTED_VALUE issue: [FIN-40](/FIN/issues/FIN-40)"
+      },
+      "acceptedRun": {
+        "id": "77bb08a3-8b95-4f0a-91ec-99755e2735a7",
+        "status": "succeeded",
+        "agentId": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+        "startedAt": "2026-05-10T00:29:43.852Z",
+        "finishedAt": "2026-05-10T00:31:58.491Z",
+        "logRef": null
+      }
+    },
+    {
+      "identifier": "FIN-41",
+      "role": "finbot_engineering",
+      "issueId": "4f8eb296-7c6d-4d4a-acb9-5abffb85a57f",
+      "title": "Finbot Engineering overnight capability carrier readback",
+      "issueStatus": "done",
+      "statusSyncError": null,
+      "accepted": true,
+      "acceptedComment": {
+        "id": "8b549019-6010-4297-822c-99ed94397152",
+        "authorAgentId": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+        "createdByRunId": "41f04f26-ede7-4dd4-bcc8-512564cb94e0",
+        "createdAt": "2026-05-10T00:35:31.226Z",
+        "bodyHead": "Overnight all-company operations validation complete.\n\n## Validation Results\n\n- **Run root continuity**: Confirmed continuation, not duplicate.\n  - `continuation_record.json`: \"previous unattended process was no longer active; continuing same run_root without overwriting history\"\n  - `21_open_alpha_extension_audit.json`: status `extended_same_run_root`\n- **Role artifact (finbot_engineering)**: Confirmed substantive_delta and closeout evidence.\n  - `capability_lab_extension.md`: substantive delta includes AGENTS/README correction, adapter smoke, negative fixtures\n  - `capability_lab_closeout_enriched.md`: 7 workflow-verified capabilities\n  - `paperclip_finbot_engineering_company/AGENTS.md`: exists (1852 bytes), defines capability_lab_v1 with hard boundaries\n  - `paperclip_finbot_engineering_company/README.md`: exists (1039 bytes), confirms research-only capability lab\n- **Research-only boundary**: Confirmed compliant.\n  - No investment advice, no buy/sell/hold, no target-price recommendation, no position sizing, no trade signal, no broker action, no production watchlist\n  - All 4 negative fixtures failed-as-expected in `20_final_validation.json`\n- **Vendor quarantine**: Confirmed MiniMax/DeepSeek/Tavily/Brave remain `quarantined_or_no_production_use`.\n  - Listed in `01_source_registry.yaml`, `00_goal_contract.md`, `Runtime_fallback_matrix.md`, `Skill_MCP_readiness_matrix.md`, `Governance_correction_packet.md`\n  - `blocker_board.md`: B-PROVIDER-QUARANTINE marked not_blocking with next action to keep no-production-use\n\n## Evidence Paths\n\n- Run root: `docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery`\n- Live readback updated: `15_live_paperclip_readback.json`\n- Role artifact: `paperclip_finbot_engineering_company/AGENTS.md`\n\nPAPERCLIP_OVERNIGHT_ALL_COMPANY_OPS_PASS"
+      },
+      "acceptedRun": {
+        "id": "41f04f26-ede7-4dd4-bcc8-512564cb94e0",
+        "status": "succeeded",
+        "agentId": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+        "startedAt": "2026-05-10T00:32:04.175Z",
+        "finishedAt": "2026-05-10T00:35:43.244Z",
+        "logRef": null
+      }
+    },
+    {
+      "identifier": "PLA-83",
+      "role": "planning",
+      "issueId": "e3e297cc-7c73-4b75-aa1b-df047285a1fa",
+      "title": "Planning overnight operations queue readback",
+      "issueStatus": "done",
+      "statusSyncError": null,
+      "accepted": true,
+      "acceptedComment": {
+        "id": "b4944c6b-2653-46a2-85ce-78aaef5ff091",
+        "authorAgentId": "67dca5ac-a3ff-4d06-a01e-83c4aa50bc7e",
+        "createdByRunId": "e4615be9-eb00-4f1c-88bd-9de84d4efab4",
+        "createdAt": "2026-05-10T00:41:42.172Z",
+        "bodyHead": "Paperclip API is unreachable from this environment (HTTP 000 on localhost:3100). This aligns with the agent constraint — controller handles status sync.\n\nPLA-83 work is fully complete and durable:\n\n- `PLA-83_overnight_ops_queue_readback.md` — validation artifact with `validation_complete_accepted` status\n- `PLA-83_validation_comment.md` — comment starting with \"Overnight all-company operations validation complete\" and containing token `PAPERCLIP_OVERNIGHT_ALL_COMPANY_OPS_PASS`\n\nAll 4 required checks passed:\n1. **Continuation vs duplicate** — PASS\n2. **Substantive_delta + closeout** — PASS  \n3. **Research-only boundary** — PASS\n4. **MiniMax/DeepSeek/Tavily/Brave quarantine** — PASS\n\nController should sync the local comment to the issue and mark status accordingly."
+      },
+      "acceptedRun": {
+        "id": "e4615be9-eb00-4f1c-88bd-9de84d4efab4",
+        "status": "succeeded",
+        "agentId": "67dca5ac-a3ff-4d06-a01e-83c4aa50bc7e",
+        "startedAt": "2026-05-10T00:40:55.064Z",
+        "finishedAt": "2026-05-10T00:41:41.737Z",
+        "logRef": null
+      }
+    },
+    {
+      "identifier": "PAPA-53",
+      "role": "governance",
+      "issueId": "552ff87e-da33-4a3b-9eac-44d8bf94c115",
+      "title": "Governance overnight false-pass and boundary readback",
+      "issueStatus": "done",
+      "statusSyncError": null,
+      "accepted": true,
+      "acceptedComment": {
+        "id": "abc628e9-b9b8-423b-b9cc-380632567821",
+        "authorAgentId": "11858cbd-02dd-4f43-9d00-553189dbd1bc",
+        "createdByRunId": "a4da918d-8fba-4ea3-8e3c-c062bb29915d",
+        "createdAt": "2026-05-10T00:43:20.916Z",
+        "bodyHead": "Overnight all-company operations validation complete\n\n**Governance false-pass and boundary readback — all checks pass.**\n\n- **Continuation (not duplicate):** `continuation_record.json` and `21_open_alpha_extension_audit.json` both confirm this run extends the same run_root started at 2026-05-10T00:26:36+08:00 without overwriting history.\n- **Substantive delta + closeout:** `16_cycle_by_cycle_substantive_delta_audit.json` shows all 12 cycles carry substantive delta (source intake, theme expansion, primary evidence, opportunity creation, risk/reversal QA, valuation research range). 11 cycles counted effective; cycle_04 correctly excluded as continuation-restart repair. `22_closeout.md` present with full counts. Anti-idle audit confirms all 18 global work cycles rejected sleep-only.\n- **Research-only boundary:** Goal contract, closeout, and extension audit all explicitly forbid investment advice, buy/sell/hold, target price, position sizing, trade signal, broker action, and production watchlist. `20_final_validation.json` negative fixtures confirm all 4 guardrails failed-as-expected: advice_output, target_price_as_advice, broker_action, and production_watchlist were all rejected. `governance_correction_packet.md` enforces the same 12 false-pass rejection classes.\n- **Provider quarantine:** `00_goal_contract.md`, root `blocker_board.json` (B-PROVIDER-QUARANTINE), and `governance_correction_packet.md` all confirm MiniMax / DeepSeek / Tavily / Brave remain quarantined / no-production-use.\n\n**Context:** `20_final_validation.json` shows broader live readback still pending for several non-governance roles (finbot_research, planning, memory, skill_mcp, runtime, learning_research, local_llm, labebe). This governance-specific validation is complete and unblocks the governance live role.\n\nPAPERCLIP_OVERNIGHT_ALL_COMPANY_OPS_PASS"
+      },
+      "acceptedRun": {
+        "id": "a4da918d-8fba-4ea3-8e3c-c062bb29915d",
+        "status": "succeeded",
+        "agentId": "11858cbd-02dd-4f43-9d00-553189dbd1bc",
+        "startedAt": "2026-05-10T00:40:56.000Z",
+        "finishedAt": "2026-05-10T00:43:28.406Z",
+        "logRef": null
+      }
+    },
+    {
+      "identifier": "MEM-20",
+      "role": "memory",
+      "issueId": "f9f0b83f-2ad7-4c70-86f4-271e8fde54bf",
+      "title": "Memory overnight research and replay readback",
+      "issueStatus": "done",
+      "statusSyncError": null,
+      "accepted": true,
+      "acceptedComment": {
+        "id": "5434a770-3ff1-46d9-b777-d3188a95243c",
+        "authorAgentId": "918b15d2-e906-44fb-8a8d-e61e171f0b5e",
+        "createdByRunId": "09ca829c-f3f8-4c15-b510-25aae850b84c",
+        "createdAt": "2026-05-10T00:45:00.838Z",
+        "bodyHead": "Overnight all-company operations validation complete\n\n- Continuation confirmed: `continuation_record.json` explicitly states \"continuing same run_root without overwriting history\"; `20_final_validation.json` extension_merge confirms \"extends the same run_root without starting a duplicate run\". Not a duplicate run.\n- Substantive delta confirmed: `memory_research_and_replay_packet.md` lists provider comparison, Planning replay, and Finbot memory delta as substantive outputs. The enriched packet includes memory layering policy, replay records, and authority promotion exclusion rules. Cycle-by-cycle audit (`16_cycle_by_cycle_substantive_delta_audit.json`) shows substantive delta across all 12 cycles.\n- Closeout evidence present: `22_closeout.md` generated at 2026-05-10T08:29:19+08:00 with full counts and PENDING_FINAL_VALIDATOR status.\n- Research-only boundary confirmed: No investment advice, no buy/sell/hold, no target-price recommendation, no position sizing, no trade signal, no broker action, no production watchlist. Negative fixture results in `20_final_validation.json` show all forbidden outputs were correctly rejected.\n- Quarantined providers confirmed: MiniMax / DeepSeek / Tavily / Brave remain quarantined/no-production-use per `00_goal_contract.md` provider boundary. No evidence of production use in memory artifacts.\n\nPAPERCLIP_OVERNIGHT_ALL_COMPANY_OPS_PASS"
+      },
+      "acceptedRun": {
+        "id": "09ca829c-f3f8-4c15-b510-25aae850b84c",
+        "status": "succeeded",
+        "agentId": "918b15d2-e906-44fb-8a8d-e61e171f0b5e",
+        "startedAt": "2026-05-10T00:43:36.451Z",
+        "finishedAt": "2026-05-10T00:45:08.074Z",
+        "logRef": null
+      }
+    }
+  ],
+  "carrierGaps": [
+    {
+      "role": "skill_mcp",
+      "identifier": "PEC-20",
+      "issueId": "32bc9375-183d-4afa-81d5-96349134f714",
+      "title": "Skill MCP overnight readiness readback",
+      "assigneeAgentId": "0170a003-4096-472e-979f-3a9981502ea9",
+      "carrierStatus": "done",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [
+        {
+          "runId": "acbca4dd-2dee-437a-b423-b4815ab30e56",
+          "status": "succeeded",
+          "startedAt": "2026-05-10T00:45:16.699Z",
+          "finishedAt": "2026-05-10T00:46:12.504Z"
+        }
+      ],
+      "commentCount": 1,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    },
+    {
+      "role": "runtime",
+      "identifier": "PAP-53",
+      "issueId": "97aaec40-fb61-447c-98f9-ceafa42d39b1",
+      "title": "Runtime overnight fallback matrix readback",
+      "assigneeAgentId": "b32456b6-9507-4da6-9039-145f31406796",
+      "carrierStatus": "backlog",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [],
+      "commentCount": 0,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    },
+    {
+      "role": "learning_research",
+      "identifier": "PAPAA-16",
+      "issueId": "3dd69654-7470-48a9-8d8a-5de66c36d080",
+      "title": "Learning Research overnight roadmap readback",
+      "assigneeAgentId": "726864d8-88e0-4d83-8589-535f86acdd03",
+      "carrierStatus": "backlog",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [],
+      "commentCount": 0,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    },
+    {
+      "role": "local_llm",
+      "identifier": "LOC-5",
+      "issueId": "550f4f40-25b9-4e3a-a93d-2727dafb969d",
+      "title": "Local LLM research-only overnight readback",
+      "assigneeAgentId": "0a5e71d1-c0fe-4093-852c-4bbeebd40f78",
+      "carrierStatus": "backlog",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [],
+      "commentCount": 0,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    },
+    {
+      "role": "labebe",
+      "identifier": "LABA-13",
+      "issueId": "cd4b9800-1ecb-4f69-8de1-81aa154f2091",
+      "title": "Labebe AI Transformation overnight closeout readback",
+      "assigneeAgentId": "19f88a52-0983-4aa4-a00c-2eb3a1c41cfe",
+      "carrierStatus": "backlog",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [],
+      "commentCount": 0,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    }
+  ],
+  "gapPolicy": "Carrier gaps are not accepted run evidence. They are explicit live blocker/carry-forward evidence for roles without current succeeded bound comments."
+}

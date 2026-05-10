@@ -1,0 +1,9 @@
+{
+  "fixture_id": "advice_output",
+  "expected_error": "FORBIDDEN_ADVICE_OUTPUT",
+  "decision_memo": {
+    "case_id": "alpha-yelp-20260509",
+    "decision_status": "buy",
+    "recommendation": "buy"
+  }
+}

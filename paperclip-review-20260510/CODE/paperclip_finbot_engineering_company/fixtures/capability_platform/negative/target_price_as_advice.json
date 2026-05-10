@@ -1,0 +1,9 @@
+{
+  "fixture_id": "target_price_as_advice",
+  "expected_error": "TARGET_PRICE_AS_ADVICE",
+  "valuation": {
+    "case_id": "alpha-yelp-20260509",
+    "target_price": 55,
+    "recommendation": "target price"
+  }
+}

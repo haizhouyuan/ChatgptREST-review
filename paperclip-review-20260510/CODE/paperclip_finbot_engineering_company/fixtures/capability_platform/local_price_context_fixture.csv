@@ -1,0 +1,5 @@
+ticker,date,close,currency,fixture_only
+YELP,2026-05-08,39.25,USD,true
+NKE,2026-05-08,90.1,USD,true
+TXN,2026-05-08,178.4,USD,true
+MU,2026-05-08,126.8,USD,true

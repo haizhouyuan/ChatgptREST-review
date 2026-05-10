@@ -1,0 +1,10 @@
+{
+  "record_type": "EvidenceItem",
+  "evidence_item_id": "EI-CNINFO-20260507-001",
+  "source_route_id": "SR-CN-CNINFO",
+  "status": "blocked",
+  "block_reason": "region_restricted",
+  "published_at": "2026-05-07T00:00:00Z",
+  "available_at": "2026-05-07T00:01:00Z",
+  "text": "This blocked fetch is incorrectly being written as evidence."
+}

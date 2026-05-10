@@ -1,0 +1,7 @@
+{
+  "record_type": "SignalAlert",
+  "alert_id": "ALERT-SM-001",
+  "source_route_id": "SR-US-OPENBB",
+  "alert_type": "research_review_alert",
+  "text": "Buy this stock after the filing."
+}

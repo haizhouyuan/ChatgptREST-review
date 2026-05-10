@@ -1,0 +1,48 @@
+{
+  "mode": "dry_run",
+  "policy_version": "WRITE_SCOPE_POLICY_v1",
+  "company_kind": "finbot_engineering_company",
+  "path_rules": {
+    "canonicalize_realpath": true,
+    "reject_relative_escape": true,
+    "reject_symlink_escape": true,
+    "denylist_precedence": "deny_over_allow",
+    "pre_post_snapshot_required": true,
+    "reject_existing_hardlink_alias": true
+  },
+  "allowed_write_roots": [
+    "/vol1/1000/projects/toyresearch/paperclip_finbot_engineering_company"
+  ],
+  "forbidden_write_roots": [
+    "/vol1/maint",
+    "<REDACTED_LOCAL_HOME>/.config/superpowers/worktrees/toyresearch/paperclip-company-os-autonomy-v1",
+    "/vol1/1000/projects/ChatgptREST",
+    "/vol1/1000/projects/codexread",
+    "/vol1/1000/projects/finagent",
+    "/vol1/1000/projects/finchat",
+    "<REDACTED_LOCAL_HOME>/.hermes",
+    "<REDACTED_LOCAL_HOME>/.config",
+    "<REDACTED_LOCAL_HOME>/.local/share"
+  ],
+  "forbidden_actions": [
+    "production_kernel_write",
+    "paperclip_company_apply",
+    "hermes_skill_edit",
+    "runtime_router_edit",
+    "broker_access",
+    "trading_advice",
+    "production_watchlist",
+    "live_market_fetch",
+    "cron_or_daemon",
+    "mcp_activation",
+    "skill_install_or_edit",
+    "durable_external_memory_write",
+    "git_push",
+    "package_publish"
+  ],
+  "requires_user_approval_for": [
+    "paperclip_company_apply",
+    "production_kernel_bridge",
+    "any_write_outside_allowed_root"
+  ]
+}

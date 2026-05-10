@@ -1,0 +1,53 @@
+{
+  "version": "FINBOT-CURRENT-TRUTH-v2.1",
+  "generated_at": "2026-05-07T08:20:00+08:00",
+  "overall_status": "closed_not_complete",
+  "allowed_lane": "Finbot v2.1 repair and hardening execution",
+  "forbidden_lanes": [
+    "full_finbot_company_build",
+    "production_watchlist",
+    "live_signal_queue",
+    "investment_decision_queue",
+    "automated_opportunity_promotion",
+    "broker_or_trading_api",
+    "provider_durable_memory_writes"
+  ],
+  "go_boundaries": {
+    "material_recovery": "go",
+    "connector_spikes": "go",
+    "minimal_gatekeeper": "go",
+    "executable_validators": "go",
+    "single_historical_replay": "conditional_go_after_a0_a1_evidence",
+    "memory_real_scenario_slice": "conditional_go_without_financial_decision_memory"
+  },
+  "no_go_boundaries": {
+    "full_finbot_company": "no_go",
+    "production_watchlist": "no_go",
+    "live_signal_queue": "no_go",
+    "opportunity_candidate_queue": "no_go",
+    "kol_only_evidence_promotion": "no_go"
+  },
+  "current_blockers": [
+    {
+      "blocker_id": "B-FUZONG-MATERIAL",
+      "status": "open",
+      "detail": "Fu Zong material layer is not ready: 1/15 blocked items has ASR transcript, 1/15 OCR-only, 8 Bilibili items missing, 5 Douyin URLs placeholder/unverified."
+    },
+    {
+      "blocker_id": "B-CONNECTORS",
+      "status": "open",
+      "detail": "Official connectors are contract-only; A-share/HK/KR routes have not produced raw artifacts and checksums."
+    },
+    {
+      "blocker_id": "B-VALIDATORS",
+      "status": "open",
+      "detail": "validator_rules_v1_2 exists as JSON but executable validators were not implemented before this v2.1 slice."
+    },
+    {
+      "blocker_id": "B-MEMORY",
+      "status": "open",
+      "detail": "Memory control plane is not integrated into a real Finbot preflight-execute-closeout-readback job."
+    }
+  ],
+  "false_completion_guard": "No artifact in this repository may describe Finbot as complete, operational, production-ready, or company-ready until all v2.1 gates pass and a Pro re-review approves the status change."
+}

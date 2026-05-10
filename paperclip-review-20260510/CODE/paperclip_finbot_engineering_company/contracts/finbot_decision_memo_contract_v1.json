@@ -1,0 +1,25 @@
+{
+  "schema": "finbot.decision_memo_contract.v1",
+  "allowed_decision_status": [
+    "continue_research",
+    "park",
+    "reject",
+    "needs_user_review"
+  ],
+  "forbidden_status": [
+    "buy",
+    "sell",
+    "hold",
+    "add",
+    "trim"
+  ],
+  "required_fields": [
+    "case_id",
+    "thesis",
+    "source_alpha_rationale",
+    "primary_evidence",
+    "counter_evidence",
+    "open_questions",
+    "decision_status"
+  ]
+}

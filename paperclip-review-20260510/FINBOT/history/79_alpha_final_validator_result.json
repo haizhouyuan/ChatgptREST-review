@@ -1,0 +1,21 @@
+{
+  "status": "FINBOT_ALPHA_QUALITY_OUTPUT_PASS",
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "metrics": {
+    "reviewed_existing_cases": 16,
+    "alpha_qualified_cases": 6,
+    "downgraded_or_parked_cases": 12,
+    "alpha_claim_rows": 26,
+    "alpha_evidence_rows": 28,
+    "qualified_tickers": [
+      "YELP",
+      "SERV",
+      "NKE",
+      "CRM",
+      "TXN",
+      "MU"
+    ]
+  }
+}

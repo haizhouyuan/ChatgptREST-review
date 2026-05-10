@@ -1,0 +1,9 @@
+{
+  "fixture_id": "broker_action",
+  "expected_error": "BROKER_ACTION_FORBIDDEN",
+  "decision_memo": {
+    "case_id": "alpha-yelp-20260509",
+    "decision_status": "needs_user_review",
+    "broker_action": "submit_order"
+  }
+}

@@ -1,0 +1,29 @@
+[project]
+name = "paperclip-runtime-allocator"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2",
+  "pydantic-settings",
+  "pyyaml",
+  "httpx",
+  "fastapi",
+  "uvicorn",
+  "prometheus-client",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["runtime_allocator/tests"]
+addopts = "-q"
+markers = [
+  "unit: fast deterministic unit tests",
+  "integration: fake-provider integration tests",
+  "contract: planning interaction contract tests",
+  "e2e: service-level tests",
+]

@@ -1,0 +1,20 @@
+{
+  "gate_id": "FINBOT-ENG-APPLY-REGISTER-GATE-v0",
+  "apply_allowed": false,
+  "register_allowed": false,
+  "required_before_apply": [
+    "artifacts/kimi_smoke/KIMI_SMOKE_RESULT.json status=pass",
+    "contracts/WRITE_SCOPE_POLICY.json strict validator passed",
+    "tools/validate_issue_closeout.py strict validator passed",
+    "no_mcp_profile_used_for_kimi_smoke",
+    "no_live_data_no_advice_no_broker_audit passed",
+    "source_code_evidence_pack_complete"
+  ],
+  "current_blockers": [
+    "KIMI_SMOKE_BLOCKED",
+    "NO_KIMI_SMOKE_RESULT",
+    "NO_APPLY_TRANSITION_POLICY",
+    "VALIDATOR_SOURCE_NOT_IN_REVIEW_PACKET"
+  ]
+}
+

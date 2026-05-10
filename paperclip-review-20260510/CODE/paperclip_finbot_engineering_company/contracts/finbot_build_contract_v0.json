@@ -1,0 +1,26 @@
+{
+  "contract_id": "FINBOT-BUILD-CONTRACT-v0",
+  "status": "contract_only",
+  "no_go_guard": {
+    "real_data_fetch": false,
+    "production_watchlist": false,
+    "trade_signal_execution": false,
+    "broker_access": false,
+    "investment_advice": false
+  },
+  "allowed_objects": [
+    "OpportunityCase",
+    "EvidenceItem",
+    "SignalRuleContract",
+    "DataContract",
+    "ReplayFixture",
+    "GateVerdict",
+    "HumanReviewDecision"
+  ],
+  "initial_replay_samples": [
+    "CPO",
+    "AI energy",
+    "storage cycle"
+  ]
+}
+

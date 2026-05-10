@@ -1,0 +1,9 @@
+{
+  "fixture_id": "production_watchlist",
+  "expected_error": "PRODUCTION_WATCHLIST_FORBIDDEN",
+  "alert": {
+    "case_id": "alpha-yelp-20260509",
+    "alert_scope": "production_watchlist",
+    "alert_type": "buy_signal"
+  }
+}

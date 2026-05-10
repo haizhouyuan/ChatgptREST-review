@@ -1,0 +1,115 @@
+{
+  "schema": "paperclip.overnight.blocker_board.v1",
+  "generated_at": "2026-05-10T09:17:25+08:00",
+  "status": "no_target_p0_p1_blockers_after_explicit_carrier_gap_record",
+  "blockers": [
+    {
+      "id": "B-FINBOT-RUNNER-ACTIVE",
+      "status": "resolved",
+      "owner": "Finbot Research",
+      "evidence": "runtime_summary.json"
+    },
+    {
+      "id": "B-LIVE-ISSUE-FINAL-READBACK",
+      "status": "resolved_with_explicit_carrier_gaps",
+      "owner": "All company carrier agents",
+      "evidence": "15_live_paperclip_readback.json"
+    },
+    {
+      "id": "B-CONNECTOR-CANDIDATES",
+      "status": "not_blocking",
+      "owner": "Governance",
+      "next_action": "Readwise/Zotero/Alpaca/Daloopa/Quartr/Binance stay candidate unless workflow proof exists"
+    },
+    {
+      "id": "B-PROVIDER-QUARANTINE",
+      "status": "not_blocking",
+      "owner": "Governance",
+      "next_action": "MiniMax/DeepSeek/Tavily/Brave remain no-production-use"
+    }
+  ],
+  "carrier_gaps": [
+    {
+      "role": "skill_mcp",
+      "identifier": "PEC-20",
+      "issueId": "32bc9375-183d-4afa-81d5-96349134f714",
+      "title": "Skill MCP overnight readiness readback",
+      "assigneeAgentId": "0170a003-4096-472e-979f-3a9981502ea9",
+      "carrierStatus": "done",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [
+        {
+          "runId": "acbca4dd-2dee-437a-b423-b4815ab30e56",
+          "status": "succeeded",
+          "startedAt": "2026-05-10T00:45:16.699Z",
+          "finishedAt": "2026-05-10T00:46:12.504Z"
+        }
+      ],
+      "commentCount": 1,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    },
+    {
+      "role": "runtime",
+      "identifier": "PAP-53",
+      "issueId": "97aaec40-fb61-447c-98f9-ceafa42d39b1",
+      "title": "Runtime overnight fallback matrix readback",
+      "assigneeAgentId": "b32456b6-9507-4da6-9039-145f31406796",
+      "carrierStatus": "backlog",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [],
+      "commentCount": 0,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    },
+    {
+      "role": "learning_research",
+      "identifier": "PAPAA-16",
+      "issueId": "3dd69654-7470-48a9-8d8a-5de66c36d080",
+      "title": "Learning Research overnight roadmap readback",
+      "assigneeAgentId": "726864d8-88e0-4d83-8589-535f86acdd03",
+      "carrierStatus": "backlog",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [],
+      "commentCount": 0,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    },
+    {
+      "role": "local_llm",
+      "identifier": "LOC-5",
+      "issueId": "550f4f40-25b9-4e3a-a93d-2727dafb969d",
+      "title": "Local LLM research-only overnight readback",
+      "assigneeAgentId": "0a5e71d1-c0fe-4093-852c-4bbeebd40f78",
+      "carrierStatus": "backlog",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [],
+      "commentCount": 0,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    },
+    {
+      "role": "labebe",
+      "identifier": "LABA-13",
+      "issueId": "cd4b9800-1ecb-4f69-8de1-81aa154f2091",
+      "title": "Labebe AI Transformation overnight closeout readback",
+      "assigneeAgentId": "19f88a52-0983-4aa4-a00c-2eb3a1c41cfe",
+      "carrierStatus": "backlog",
+      "accepted": false,
+      "gapType": "carrier_issue_present_but_no_succeeded_bound_comment",
+      "reason": "No current readback found with succeeded run, agent-authored comment, createdByRunId binding and overnight pass token.",
+      "latestRuns": [],
+      "commentCount": 0,
+      "artifactRoot": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "unblockAction": "Agent must complete this carrier issue with a succeeded run and comment containing the pass token; failed/cancelled runs remain rejected."
+    }
+  ]
+}

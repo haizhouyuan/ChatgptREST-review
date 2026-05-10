@@ -1,0 +1,77 @@
+{
+  "schema": "paperclip.overnight.company_execution_matrix.v1",
+  "generated_at": "2026-05-10T09:17:25+08:00",
+  "status": "PAPERCLIP_OVERNIGHT_ALL_COMPANY_OPS_PASS",
+  "companies": [
+    {
+      "company": "finbot_research",
+      "status": "live_accepted",
+      "local_closeout": true,
+      "live_issue_status": "accepted_succeeded_run",
+      "required_followup": "none"
+    },
+    {
+      "company": "finbot_engineering",
+      "status": "live_accepted",
+      "local_closeout": true,
+      "live_issue_status": "accepted_succeeded_run",
+      "required_followup": "none"
+    },
+    {
+      "company": "planning",
+      "status": "live_accepted",
+      "local_closeout": true,
+      "live_issue_status": "accepted_succeeded_run",
+      "required_followup": "none"
+    },
+    {
+      "company": "governance",
+      "status": "live_accepted",
+      "local_closeout": true,
+      "live_issue_status": "accepted_succeeded_run",
+      "required_followup": "none"
+    },
+    {
+      "company": "memory",
+      "status": "live_accepted",
+      "local_closeout": true,
+      "live_issue_status": "accepted_succeeded_run",
+      "required_followup": "none"
+    },
+    {
+      "company": "skill_mcp",
+      "status": "carrier_gap_recorded",
+      "local_closeout": true,
+      "live_issue_status": "explicit_carrier_gap",
+      "required_followup": "agent must create succeeded bound comment on carrier issue"
+    },
+    {
+      "company": "runtime",
+      "status": "carrier_gap_recorded",
+      "local_closeout": true,
+      "live_issue_status": "explicit_carrier_gap",
+      "required_followup": "agent must create succeeded bound comment on carrier issue"
+    },
+    {
+      "company": "learning_research",
+      "status": "carrier_gap_recorded",
+      "local_closeout": true,
+      "live_issue_status": "explicit_carrier_gap",
+      "required_followup": "agent must create succeeded bound comment on carrier issue"
+    },
+    {
+      "company": "local_llm",
+      "status": "carrier_gap_recorded",
+      "local_closeout": true,
+      "live_issue_status": "explicit_carrier_gap",
+      "required_followup": "agent must create succeeded bound comment on carrier issue"
+    },
+    {
+      "company": "labebe",
+      "status": "carrier_gap_recorded",
+      "local_closeout": true,
+      "live_issue_status": "explicit_carrier_gap",
+      "required_followup": "agent must create succeeded bound comment on carrier issue"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "schema": "paperclip.overnight.company_closeout.v1",
+  "generated_at": "2026-05-10T09:17:07+08:00",
+  "status": "live_closeout_complete",
+  "companies": {
+    "planning": [
+      {
+        "artifact": "company_packets/planning/overnight_execution_queue.md",
+        "company": "planning",
+        "generated_at": "2026-05-10T01:56:46+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "overnight execution queue and Finbot cadence retro"
+      },
+      {
+        "artifact": "company_packets/planning/cross_company_priority_board.md",
+        "company": "planning",
+        "generated_at": "2026-05-10T05:10:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "Governance/Memory/Skill-MCP coordination board"
+      },
+      {
+        "artifact": "company_packets/planning/overnight_execution_queue.md",
+        "company": "planning",
+        "generated_at": "2026-05-10T07:10:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "overnight execution queue and Finbot cadence retro"
+      }
+    ],
+    "governance": [
+      {
+        "artifact": "company_packets/governance/company_architecture_correction.md",
+        "company": "governance",
+        "generated_at": "2026-05-10T02:10:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "company architecture correction and false-pass suite"
+      },
+      {
+        "artifact": "company_packets/governance/false_pass_12_class_validation.md",
+        "company": "governance",
+        "generated_at": "2026-05-10T05:30:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "12 false-pass class validation record"
+      },
+      {
+        "artifact": "company_packets/governance/company_architecture_correction.md",
+        "company": "governance",
+        "generated_at": "2026-05-10T07:30:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "company architecture correction and false-pass suite"
+      }
+    ],
+    "memory": [
+      {
+        "artifact": "company_packets/memory/memory_research_and_replay_packet.md",
+        "company": "memory",
+        "generated_at": "2026-05-10T02:30:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "memory research comparison and replay packet"
+      },
+      {
+        "artifact": "company_packets/memory/memory_layering_policy.md",
+        "company": "memory",
+        "generated_at": "2026-05-10T05:50:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "current truth vs authority vs verbatim vs rationale policy"
+      }
+    ],
+    "skill_mcp": [
+      {
+        "artifact": "company_packets/skill_mcp/skill_mcp_readiness_matrix.md",
+        "company": "skill_mcp",
+        "generated_at": "2026-05-10T02:50:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "skill/MCP/plugin readiness matrix and enablement backlog"
+      },
+      {
+        "artifact": "company_packets/skill_mcp/codex2_superpowers_readiness.md",
+        "company": "skill_mcp",
+        "generated_at": "2026-05-10T06:10:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "Codex2 skills and Superpowers readiness audit"
+      }
+    ],
+    "runtime": [
+      {
+        "artifact": "company_packets/runtime/runtime_fallback_matrix.md",
+        "company": "runtime",
+        "generated_at": "2026-05-10T03:10:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "runtime capability and fallback matrix refresh"
+      },
+      {
+        "artifact": "company_packets/runtime/kimi_acp_and_advisor_paths.md",
+        "company": "runtime",
+        "generated_at": "2026-05-10T06:30:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "Kimi Code ACP and advisor runtime path"
+      }
+    ],
+    "learning_research": [
+      {
+        "artifact": "company_packets/learning_research/learning_research_roadmap.md",
+        "company": "learning_research",
+        "generated_at": "2026-05-10T03:30:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "learning research executable roadmap"
+      }
+    ],
+    "local_llm": [
+      {
+        "artifact": "company_packets/local_llm/local_llm_research_only_packet.md",
+        "company": "local_llm",
+        "generated_at": "2026-05-10T03:50:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "local LLM research-only cost/risk matrix"
+      }
+    ],
+    "labebe": [
+      {
+        "artifact": "company_packets/labebe/labebe_transformation_packet.md",
+        "company": "labebe",
+        "generated_at": "2026-05-10T04:10:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "toy company AI transformation loop"
+      },
+      {
+        "artifact": "company_packets/labebe/design_commerce_backlog.md",
+        "company": "labebe",
+        "generated_at": "2026-05-10T06:50:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "Design Studio content/commerce candidate backlog"
+      }
+    ],
+    "finbot_engineering": [
+      {
+        "artifact": "company_packets/finbot_engineering/capability_lab_extension.md",
+        "company": "finbot_engineering",
+        "generated_at": "2026-05-10T04:30:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "capability lab boundary repair and adapter-smoke extension"
+      }
+    ],
+    "finbot_research": [
+      {
+        "artifact": "company_packets/finbot_research/open_alpha_backlog_extension.md",
+        "company": "finbot_research",
+        "generated_at": "2026-05-10T04:50:16+08:00",
+        "status": "local_artifact_complete_pending_live_readback",
+        "task": "open-ended alpha backlog expansion without advice"
+      }
+    ]
+  }
+}

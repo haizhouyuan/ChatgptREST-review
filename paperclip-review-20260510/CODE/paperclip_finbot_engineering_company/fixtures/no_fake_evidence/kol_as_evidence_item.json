@@ -1,0 +1,11 @@
+{
+  "record_type": "EvidenceItem",
+  "evidence_item_id": "EI-FUZONG-20260117-001",
+  "source_account_id": "SA-D-FUZONG",
+  "raw_path": "artifacts/fuzong/transcript.srt",
+  "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "published_at": "2026-01-17T12:00:00Z",
+  "available_at": "2026-01-17T12:05:00Z",
+  "access_tag": "research_only",
+  "text": "This KOL claim is incorrectly being written as evidence."
+}

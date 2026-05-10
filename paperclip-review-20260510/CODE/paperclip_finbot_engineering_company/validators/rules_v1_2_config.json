@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "FINBOT-VALIDATOR-RULES-v1.2",
+  "title": "Finbot v1.2 Hard-Fail Validator Rules — Executable Config",
+  "date": "2026-05-07",
+  "version": "1.2",
+  "description": "Machine-readable hard-fail rules for the Finbot repair-pass validator. Any violation causes the artifact to be rejected.",
+  "rules": [
+    {
+      "rule_id": "EV_BLOCKED_EVIDENCE_PSEUDO",
+      "code": "EV_BLOCKED_EVIDENCE_PSEUDO",
+      "severity": "HARD_FAIL",
+      "description": "blocked fetch cannot be stored as EvidenceItem",
+      "applies_to": ["EvidenceItem"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "KOL_CLAIM_NOT_EVIDENCE_ITEM",
+      "code": "KOL_CLAIM_NOT_EVIDENCE_ITEM",
+      "severity": "HARD_FAIL",
+      "description": "KOL / D-tier / SourceAccount content cannot emit EvidenceItem",
+      "applies_to": ["EvidenceItem"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "EV_MISSING_RAW_OR_SHA",
+      "code": "EV_MISSING_RAW_OR_SHA",
+      "severity": "HARD_FAIL",
+      "description": "EvidenceItem requires raw_path, sha256, published_at, available_at",
+      "applies_to": ["EvidenceItem"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "EV_BAD_SHA256",
+      "code": "EV_BAD_SHA256",
+      "severity": "HARD_FAIL",
+      "description": "sha256 must be 64 hex characters",
+      "applies_to": ["EvidenceItem"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "D_ONLY_DEEP_REVIEW_FORBIDDEN",
+      "code": "D_ONLY_DEEP_REVIEW_FORBIDDEN",
+      "severity": "HARD_FAIL",
+      "description": "D-only / KOL-only case cannot enter deep_research_review or timing window",
+      "applies_to": ["OpportunityCase", "SignalWindow"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "BAD_WINDOW_LABEL",
+      "code": "BAD_WINDOW_LABEL",
+      "severity": "HARD_FAIL",
+      "description": "window_label must be one of allowed review labels",
+      "applies_to": ["OpportunityCase", "SignalWindow"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "BAD_SIGNAL_WINDOW_STATE",
+      "code": "BAD_SIGNAL_WINDOW_STATE",
+      "severity": "HARD_FAIL",
+      "description": "signal_window_state must be one of allowed states",
+      "applies_to": ["OpportunityCase", "SignalWindow"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "FORBIDDEN_TRADING_LANGUAGE",
+      "code": "FORBIDDEN_TRADING_LANGUAGE",
+      "severity": "HARD_FAIL",
+      "description": "no buy/sell/long/short/position/trade/target-price/order language",
+      "applies_to": ["*"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "FUTURE_DATED_EVIDENCE",
+      "code": "FUTURE_DATED_EVIDENCE",
+      "severity": "HARD_FAIL",
+      "description": "published_at / available_at / fetched_at cannot be in the future",
+      "applies_to": ["EvidenceItem", "FetchAttempt", "ContentItem", "Claim"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "SOURCE_NAMESPACE_MISMATCH",
+      "code": "SOURCE_NAMESPACE_MISMATCH",
+      "severity": "HARD_FAIL",
+      "description": "SourceRoute, SourceAccount, ContentItem, EvidenceItem, Claim, FetchAttempt IDs must use the frozen namespace",
+      "applies_to": ["EvidenceItem", "FetchAttempt", "ContentItem", "Claim", "SourceRoute", "SourceAccount"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "CLAIM_MISSING_SOURCE_TRACE",
+      "code": "CLAIM_MISSING_SOURCE_TRACE",
+      "severity": "HARD_FAIL",
+      "description": "Claim requires content_item_id, source_account_id or source_route_id, published_at, available_at, source_span",
+      "applies_to": ["Claim"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "KOL_CLAIM_WITHOUT_EVIDENCE_GAP",
+      "code": "KOL_CLAIM_WITHOUT_EVIDENCE_GAP",
+      "severity": "HARD_FAIL",
+      "description": "KOL claim must have evidence_gap_ids or evidence_status explaining official corroboration need",
+      "applies_to": ["Claim"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "SIGNAL_WINDOW_BUY_SIGNAL_FORBIDDEN",
+      "code": "SIGNAL_WINDOW_BUY_SIGNAL_FORBIDDEN",
+      "severity": "HARD_FAIL",
+      "description": "alert_type cannot be buy_signal / sell_signal / trade_signal",
+      "applies_to": ["SignalWindow", "SignalRule", "AlertCondition"],
+      "blocked_reason": null
+    },
+    {
+      "rule_id": "BACKTEST_PIT_MISSING",
+      "code": "BACKTEST_PIT_MISSING",
+      "severity": "HARD_FAIL",
+      "description": "backtest or signal rule artifacts must include point-in-time fields or be marked not_backtest_safe",
+      "applies_to": ["SignalRule"],
+      "blocked_reason": null
+    }
+  ],
+  "enums": {
+    "window_label": ["20D", "60D", "120D", "live", null],
+    "signal_window_state": [
+      "not_ready_missing_primary_evidence",
+      "early_research_window",
+      "watch_for_primary_catalyst",
+      "technical_context_review",
+      "deep_research_review_alert"
+    ],
+    "alert_type_allowed": ["research_review_alert", "deep_research_review_alert", "technical_context_review"],
+    "alert_type_forbidden": ["buy_signal", "sell_signal", "trade_signal", "position_signal"]
+  },
+  "allowed_forbidden_language": [
+    "buy", "sell", "long", "short", "position", "trade",
+    "target price", "target-price", "overweight", "underweight",
+    "market order", "limit order", "stop-loss", "stop loss",
+    "take-profit", "take profit", "add", "reduce", "exit",
+    "买入", "卖出", "做多", "做空", "加仓", "减仓",
+    "清仓", "仓位", "目标价", "止损", "止盈", "下单"
+  ],
+  "validator_config": {
+    "fail_on_HARD_FAIL_only": false,
+    "treat_ERROR_as_HARD_FAIL": true,
+    "schema_version": "FINBOT-VALIDATOR-RULES-v1.2"
+  }
+}

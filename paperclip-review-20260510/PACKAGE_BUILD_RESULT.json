@@ -1,0 +1,20 @@
+{
+  "package_root": "$REVIEW_REPO/paperclip-review-20260510",
+  "generated_at": "2026-05-10T15:48:02+08:00",
+  "initial_content_commit": "d2e24f8",
+  "included_rows": 198,
+  "missing_rows": 0,
+  "excluded_or_redacted_rows": 3138,
+  "secret_scan_risky_unresolved": 0,
+  "large_files_over_5MiB": [],
+  "final_commit_note": "The package git commit is intentionally not embedded in this tracked file because a Git commit hash cannot self-reference file content. Use `git -C $PACKAGE_ROOT log -1 --format=%H` for the exact final local commit.",
+  "finbot_engineering_addendum_files": 86,
+  "published_to": "https://github.com/haizhouyuan/ChatgptREST-review/tree/review-20260506-085232/paperclip-review-20260510",
+  "target_repo_path": "$REVIEW_REPO",
+  "target_repo_url": "https://github.com/haizhouyuan/ChatgptREST-review",
+  "target_repo_branch": "review-20260506-085232",
+  "target_remote_verified": true,
+  "baseline_package_commit": "263efe1ee15e2df3fc3c8519fd55325575b3a9bc",
+  "upload_record": "UPLOAD_RECORD.md",
+  "publication_generated_at": "2026-05-10T16:17:57+08:00"
+}

@@ -1,0 +1,10 @@
+{
+  "record_type": "EvidenceItem",
+  "evidence_item_id": "EI-SEC-20990101-FUTURE",
+  "source_route_id": "SR-US-SEC",
+  "raw_path": "artifacts/sec/future.htm",
+  "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "published_at": "2099-01-01T00:00:00Z",
+  "available_at": "2099-01-01T00:01:00Z",
+  "text": "Future dated evidence must fail."
+}

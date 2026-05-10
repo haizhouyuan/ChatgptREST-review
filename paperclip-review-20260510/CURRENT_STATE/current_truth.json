@@ -1,0 +1,51 @@
+{
+  "schema": "paperclip.overnight.current_truth.v1",
+  "generated_at": "2026-05-10T09:17:25+08:00",
+  "status": "PAPERCLIP_OVERNIGHT_ALL_COMPANY_OPS_PASS",
+  "complete_allowed": true,
+  "run_root": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+  "runtime": {
+    "started_at": "2026-05-10T00:26:36+08:00",
+    "finished_at": "2026-05-10T08:26:36+08:00",
+    "wall_clock_hours": 8.00007076356146,
+    "cycles_completed": 12,
+    "counts": {
+      "cycles": 12,
+      "sources": 148,
+      "themes": 56,
+      "opportunity_candidates": 185,
+      "alpha_qualified_cases": 56,
+      "full_decision_memos": 20,
+      "top_surprising_opportunities": 20,
+      "evidence_rows": 48,
+      "claim_rows": 68,
+      "valuation_ranges": 56,
+      "risk_qa_rows": 56
+    }
+  },
+  "effective_cycle_counts": {
+    "finbot_effective": 11,
+    "finbot_total": 12,
+    "global_effective": 17,
+    "global_total": 18
+  },
+  "live_readback": {
+    "status": "PASS_LIVE_READBACK",
+    "mode": "accepted_runs_plus_explicit_carrier_gaps",
+    "accepted_roles": [
+      "finbot_engineering",
+      "finbot_research",
+      "governance",
+      "memory",
+      "planning"
+    ],
+    "carrier_gap_roles": [
+      "labebe",
+      "learning_research",
+      "local_llm",
+      "runtime",
+      "skill_mcp"
+    ]
+  },
+  "boundary": "research-only; no investment advice, no buy/sell/hold, no target price recommendation, no position sizing, no trade signal, no broker action, no production watchlist"
+}

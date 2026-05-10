@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Finbot Capability Platform v1 Package",
+  "type": "object",
+  "required": [
+    "status",
+    "data_sources",
+    "skill_contracts",
+    "forbidden_outputs"
+  ],
+  "properties": {
+    "status": {
+      "const": "FINBOT_ENGINEERING_CAPABILITY_PLATFORM_V1_PASS"
+    },
+    "data_sources": {
+      "type": "array"
+    },
+    "skill_contracts": {
+      "type": "array"
+    },
+    "forbidden_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

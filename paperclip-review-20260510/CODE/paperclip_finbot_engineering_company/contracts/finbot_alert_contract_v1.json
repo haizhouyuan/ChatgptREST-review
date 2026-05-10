@@ -1,0 +1,19 @@
+{
+  "schema": "finbot.alert_contract.v1",
+  "allowed_alert_scope": "human_review_alert",
+  "forbidden_alert_types": [
+    "trade_signal",
+    "buy_signal",
+    "sell_signal",
+    "production_watchlist"
+  ],
+  "required_fields": [
+    "alert_id",
+    "case_id",
+    "alert_scope",
+    "alert_type",
+    "trigger_reason",
+    "evidence_ids",
+    "human_review_question"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "finbot.valuation_range_contract.v1",
+  "required_fields": [
+    "range_type",
+    "method",
+    "assumptions",
+    "bear",
+    "base",
+    "bull",
+    "evidence_ids",
+    "invalidation",
+    "no_advice_label"
+  ],
+  "range_type": "research_estimate_range",
+  "forbidden_fields": [
+    "target_price",
+    "recommendation",
+    "buy_sell_hold",
+    "position_size"
+  ]
+}
