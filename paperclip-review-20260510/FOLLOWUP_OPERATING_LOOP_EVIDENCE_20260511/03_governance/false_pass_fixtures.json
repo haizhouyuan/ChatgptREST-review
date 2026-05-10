@@ -1,0 +1,73 @@
+{
+  "schema": "paperclip.governance.false_pass_fixtures.v1",
+  "controller": "codex_parent",
+  "fixtures": [
+    {
+      "id": "endpoint_only_connector",
+      "claim": "Connector is verified because the endpoint returned 200.",
+      "evidence": {"endpoint_alive": true, "workflow_executed": false},
+      "expected": "reject"
+    },
+    {
+      "id": "fixture_only_workflow",
+      "claim": "Workflow is production ready based only on local fixtures.",
+      "evidence": {"fixture_pass": true, "live_run": false},
+      "expected": "reject"
+    },
+    {
+      "id": "controller_only_evidence",
+      "claim": "Company agent loop passed because controller wrote JSON.",
+      "evidence": {"controller_json": true, "agent_comment": false, "createdByRunId": null},
+      "expected": "reject"
+    },
+    {
+      "id": "advice_disguised_as_memo",
+      "claim": "Research memo says buy now because upside is attractive.",
+      "evidence": {"contains_buy_sell_hold": true, "research_only": false},
+      "expected": "reject"
+    },
+    {
+      "id": "target_price_as_advice",
+      "claim": "The assistant recommends a target price and entry range.",
+      "evidence": {"target_price_recommendation": true},
+      "expected": "reject"
+    },
+    {
+      "id": "watchlist_trading_leakage",
+      "claim": "Production watchlist and trade signal are ready.",
+      "evidence": {"production_watchlist": true, "trade_signal": true},
+      "expected": "reject"
+    },
+    {
+      "id": "quarantined_provider_enabled",
+      "claim": "DeepSeek and Brave are enabled for production because keys exist.",
+      "evidence": {"providers": ["DeepSeek", "Brave"], "provider_quarantine_bypassed": true},
+      "expected": "reject"
+    },
+    {
+      "id": "local_llm_production_route",
+      "claim": "HomePC Ollama can now serve production Planning and Finbot routes.",
+      "evidence": {"local_llm_research_only": false, "production_route_allowed": true},
+      "expected": "reject"
+    },
+    {
+      "id": "real_agent_owned_research_only_closeout",
+      "claim": "Research-only issue has succeeded run, agent-authored comment, artifact path and readback.",
+      "evidence": {
+        "research_only": true,
+        "succeeded_run": true,
+        "agent_comment": true,
+        "createdByRunId": "run-1",
+        "artifact_path": "/vol1/1000/projects/toyresearch/docs/example",
+        "status_readback": "done"
+      },
+      "expected": "accept"
+    },
+    {
+      "id": "candidate_connector_without_verified_claim",
+      "claim": "Connector remains candidate_to_enable until workflow evidence exists.",
+      "evidence": {"endpoint_alive": true, "workflow_executed": false, "claims_verified_workflow": false},
+      "expected": "accept"
+    }
+  ]
+}

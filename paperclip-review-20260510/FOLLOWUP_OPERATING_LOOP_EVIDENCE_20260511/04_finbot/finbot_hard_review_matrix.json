@@ -1,0 +1,138 @@
+{
+  "schema": "paperclip.finbot.hard_review_matrix.v1",
+  "generated_at": "2026-05-11T00:32:19+08:00",
+  "reviewer": "Worker A / Codex",
+  "boundary": {
+    "research_only": true,
+    "forbidden_outputs": [
+      "investment_advice",
+      "target_price_advice",
+      "trade_signal",
+      "broker_action",
+      "automatic_trading",
+      "position_sizing",
+      "production_watchlist"
+    ]
+  },
+  "input_root": "/tmp/ChatgptREST-review/paperclip-review-20260510",
+  "case_counts": {
+    "selected": 5,
+    "hard_reviewed": 5,
+    "high_quality": 0,
+    "parked": 3,
+    "rejected": 2
+  },
+  "cases": [
+    {
+      "case_id": "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "ticker": "PLTR",
+      "theme": "source-system gaps to enable next",
+      "claim": "PLTR is a research-only lead inside the source-system gaps to enable next theme.",
+      "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:17; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:40",
+      "evidence_id": "EV-12-PLTR",
+      "source": "Cycle 12 source map: local Finbot ledgers, SEC submissions, SEC companyfacts, issuer IR pages; see 03_source_alpha_map.md:122-128.",
+      "timestamp": {
+        "case_file_mtime": "2026-05-10T08:27:03+08:00",
+        "evidence_ledger_declared_mtime": "2026-05-10T08:04:22+08:00",
+        "manifest_generated_at": "2026-05-10T09:17:07+08:00"
+      },
+      "reviewer": "Worker A / Codex",
+      "chain_status": "present_but_summary_level",
+      "verdict": "hard_reviewed_park",
+      "reason": "Ticker-aligned evidence exists in the provided summary, but the provided latest_8h copy does not expose exact primary-source quote, source URL/path, or trace point for this claim.",
+      "next_required_evidence": [
+        "Bind EV-12-PLTR to exact primary filing or authority artifact path.",
+        "Add trace point and source timestamp.",
+        "Add explicit refutation or retirement fact."
+      ]
+    },
+    {
+      "case_id": "OA-12-02-anet-policy-driven-china-supply-chains",
+      "ticker": "ANET",
+      "theme": "policy-driven China supply chains",
+      "claim": "ANET is a research-only lead inside the policy-driven China supply chains theme.",
+      "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:19; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:39",
+      "evidence_id": "EV-12-ANET",
+      "source": "Cycle 12 source map: local Finbot ledgers, SEC submissions, SEC companyfacts, issuer IR pages, A-share/CNINFO route; see 03_source_alpha_map.md:122-128.",
+      "timestamp": {
+        "case_file_mtime": "2026-05-10T08:27:03+08:00",
+        "evidence_ledger_declared_mtime": "2026-05-10T08:04:22+08:00",
+        "manifest_generated_at": "2026-05-10T09:17:07+08:00"
+      },
+      "reviewer": "Worker A / Codex",
+      "chain_status": "present_but_candidate_source_dependency",
+      "verdict": "hard_reviewed_park",
+      "reason": "Ticker-aligned evidence exists, but the policy/China component depends on source routes marked candidate_to_enable or not trace-bound in the provided copy.",
+      "next_required_evidence": [
+        "Bind EV-12-ANET to SEC/issuer primary evidence and any China policy source separately.",
+        "Mark candidate-to-enable routes as non-authority until enabled.",
+        "Add peer/counter-source to test whether exposure is company-specific."
+      ]
+    },
+    {
+      "case_id": "OA-11-03-panw-security-platform-consolidation",
+      "ticker": "PANW",
+      "theme": "security platform consolidation",
+      "claim": "PANW is a research-only lead inside the security platform consolidation theme.",
+      "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:20; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:37",
+      "evidence_id": "EV-11-PANW",
+      "source": "Cycle 11 source map: PolicyNote candidate route, ownership context unverified routes, local Finbot ledgers, and local archives; see 03_source_alpha_map.md:115-121.",
+      "timestamp": {
+        "case_file_mtime": "2026-05-10T08:27:03+08:00",
+        "evidence_ledger_declared_mtime": "2026-05-10T08:04:22+08:00",
+        "manifest_generated_at": "2026-05-10T09:17:07+08:00"
+      },
+      "reviewer": "Worker A / Codex",
+      "chain_status": "present_but_not_primary_authority_bound",
+      "verdict": "hard_reviewed_park",
+      "reason": "Ticker-aligned evidence exists, but the source chain visible in latest_8h is not enough for a high-quality case because primary issuer evidence is not trace-bound.",
+      "next_required_evidence": [
+        "Bind EV-11-PANW to a primary issuer filing or transcript.",
+        "Separate local-ledger signal from authority evidence.",
+        "Add a contradictory peer/platform consolidation source."
+      ]
+    },
+    {
+      "case_id": "OA-X139-pltr-china-anti-dumping-policy-exposure",
+      "ticker": "PLTR",
+      "theme": "China anti-dumping policy exposure",
+      "claim": "PLTR may express China anti-dumping policy exposure through a less obvious operating metric.",
+      "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:8; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:59",
+      "evidence_id": "EV-05-CROX",
+      "source": "Evidence ID points to the cycle 05 consumer/brand chain, not to PLTR or China anti-dumping policy exposure.",
+      "timestamp": {
+        "case_file_mtime": "2026-05-10T08:27:03+08:00",
+        "manifest_generated_at": "2026-05-10T09:17:07+08:00"
+      },
+      "reviewer": "Worker A / Codex",
+      "chain_status": "failed_evidence_id_alignment",
+      "verdict": "hard_reviewed_reject",
+      "reason": "The five-part chain fails at evidence binding: EV-05-CROX is not ticker- or theme-aligned with PLTR / China anti-dumping policy exposure.",
+      "next_required_evidence": [
+        "Do not carry forward by score.",
+        "Reopen only as a new case with a PLTR-aligned evidence ID and authority source."
+      ]
+    },
+    {
+      "case_id": "OA-X140-rddt-boring-infrastructure-rollup-alpha",
+      "ticker": "RDDT",
+      "theme": "boring infrastructure rollup alpha",
+      "claim": "RDDT may express boring infrastructure rollup alpha through a less obvious operating metric.",
+      "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:7; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:60",
+      "evidence_id": "EV-05-ELF",
+      "source": "Evidence ID points to the cycle 05 consumer/brand chain, not to RDDT or infrastructure rollup evidence.",
+      "timestamp": {
+        "case_file_mtime": "2026-05-10T08:27:03+08:00",
+        "manifest_generated_at": "2026-05-10T09:17:07+08:00"
+      },
+      "reviewer": "Worker A / Codex",
+      "chain_status": "failed_evidence_id_alignment",
+      "verdict": "hard_reviewed_reject",
+      "reason": "The five-part chain fails at evidence binding: EV-05-ELF is not ticker- or theme-aligned with RDDT / boring infrastructure rollup.",
+      "next_required_evidence": [
+        "Do not carry forward by score.",
+        "Reopen only as a new case with an RDDT-aligned evidence ID and authority source."
+      ]
+    }
+  ]
+}

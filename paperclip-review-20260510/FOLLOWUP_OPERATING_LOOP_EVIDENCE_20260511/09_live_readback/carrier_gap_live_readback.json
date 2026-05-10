@@ -1,0 +1,174 @@
+{
+  "schema": "paperclip.codex_parent_8h.carrier_readback.v1",
+  "generated_at": "2026-05-11T00:50:59+08:00",
+  "controller": "codex_parent",
+  "status": "pass",
+  "required_status": "CODEX_PARENT_8H_OPERATING_PROGRAM_CARRIER_PASS",
+  "accepted_count": 5,
+  "gap_count": 0,
+  "wakes": [
+    {
+      "role": "skill_mcp",
+      "identifier": "PEC-20",
+      "runId": "009c7332-2b3a-41e7-9bb3-efe4e5d45f93",
+      "wokenAt": "2026-05-11T00:39:48+08:00"
+    },
+    {
+      "role": "runtime",
+      "identifier": "PAP-53",
+      "runId": "0b90f985-d281-4a67-b67b-01969a168adb",
+      "wokenAt": "2026-05-11T00:42:08+08:00"
+    },
+    {
+      "role": "learning_research",
+      "identifier": "PAPAA-16",
+      "runId": "9e345bcc-38ad-4499-a960-44c2bfa9d75d",
+      "wokenAt": "2026-05-11T00:43:29+08:00"
+    },
+    {
+      "role": "local_llm",
+      "identifier": "LOC-5",
+      "runId": "948e12af-2209-459f-8858-be98d76028bc",
+      "wokenAt": "2026-05-11T00:45:49+08:00"
+    },
+    {
+      "role": "labebe",
+      "identifier": "LABA-13",
+      "runId": "08fe7989-61e5-469a-9c78-fb321625a74f",
+      "wokenAt": "2026-05-11T00:49:29+08:00"
+    }
+  ],
+  "issues": [
+    {
+      "role": "skill_mcp",
+      "identifier": "PEC-20",
+      "issueId": "32bc9375-183d-4afa-81d5-96349134f714",
+      "accepted": true,
+      "issueStatus": "done",
+      "acceptedRun": {
+        "id": "009c7332-2b3a-41e7-9bb3-efe4e5d45f93",
+        "status": "succeeded",
+        "agentId": "0170a003-4096-472e-979f-3a9981502ea9",
+        "startedAt": "2026-05-10T16:39:48.520Z",
+        "finishedAt": "2026-05-10T16:41:58.713Z",
+        "logRef": null
+      },
+      "acceptedComment": {
+        "id": "2c590eb5-367b-4022-a1eb-7817fd19089a",
+        "authorAgentId": "0170a003-4096-472e-979f-3a9981502ea9",
+        "createdByRunId": "009c7332-2b3a-41e7-9bb3-efe4e5d45f93",
+        "createdAt": "2026-05-10T16:41:58.679Z",
+        "bodyHead": "Runtime completed this issue.\n\nCanary written to `planning/20260428_pecl_full_implementation_prd/stage_artifacts/PECL-RUNTIME-AGENTS-001/skill_mcp_governance_canary_20260503.md`.\n\nAll four carrier-gap checks pass:\n- No endpoint-only or fixture-only evidence is treated as verified workflow.\n- Skill/MCP tiers are correctly classified as verified_workflow, candidate, or blocked.\n- MiniMax/DeepSeek/Tavily/Brave are absent from the adapter registry and remain quarantined.\n- No native runtime/MCP/skill config mutation is present in the snapshot.\n\n**CODEX_PARENT_8H_OPERATING_PROGRAM_CARRIER_PASS**"
+      },
+      "artifactPaths": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/03_governance/false_pass_gate_result.json",
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/07_runtime_skill_mcp/skill_mcp_readiness_matrix.json"
+      ]
+    },
+    {
+      "role": "runtime",
+      "identifier": "PAP-53",
+      "issueId": "97aaec40-fb61-447c-98f9-ceafa42d39b1",
+      "accepted": true,
+      "issueStatus": "done",
+      "acceptedRun": {
+        "id": "0b90f985-d281-4a67-b67b-01969a168adb",
+        "status": "succeeded",
+        "agentId": "b32456b6-9507-4da6-9039-145f31406796",
+        "startedAt": "2026-05-10T16:42:08.852Z",
+        "finishedAt": "2026-05-10T16:43:25.112Z",
+        "logRef": null
+      },
+      "acceptedComment": {
+        "id": "8633bda9-5ad2-48bc-a632-c28146ce48cf",
+        "authorAgentId": "b32456b6-9507-4da6-9039-145f31406796",
+        "createdByRunId": "0b90f985-d281-4a67-b67b-01969a168adb",
+        "createdAt": "2026-05-10T16:43:18.835Z",
+        "bodyHead": "Runtime overnight fallback matrix readback complete.\n\nAll required checks confirmed:\n\n1. **Runtime pass not based on cli --help / python --version** — `cli_help_or_python_version_counts_as_runtime_pass: false`; both patterns listed in `acceptance.must_reject`.\n2. **Local LLM remains research-only** — `local_llm_production_route_allowed: false`; research contract excludes production routing, governance, memory authority, and trading.\n3. **Provider key rotation not a blocker; quarantined providers no-production-use** — `provider_key_rotation_is_goal_blocker: false`; `quarantined_provider_production_use_allowed: false`; claudemi, claudegac, claudeminmax quarantined with documented reasons.\n4. **Fallback matrix names evidence requirements** — `fallback_requires` specifies runtime identity, scope boundary, failure mode, evidence path, governance decision. Each matrix row includes `evidence_required`.\n\nArtifacts reviewed:\n- `runtime_preflight_fallback_matrix.json`\n- `local_llm_research_contract.md`\n\nCODEX_PARENT_8H_OPERATING_PROGRAM_CARRIER_PASS"
+      },
+      "artifactPaths": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/07_runtime_skill_mcp/runtime_preflight_fallback_matrix.json",
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_research_contract.md"
+      ]
+    },
+    {
+      "role": "learning_research",
+      "identifier": "PAPAA-16",
+      "issueId": "3dd69654-7470-48a9-8d8a-5de66c36d080",
+      "accepted": true,
+      "issueStatus": "done",
+      "acceptedRun": {
+        "id": "9e345bcc-38ad-4499-a960-44c2bfa9d75d",
+        "status": "succeeded",
+        "agentId": "726864d8-88e0-4d83-8589-535f86acdd03",
+        "startedAt": "2026-05-10T16:43:29.087Z",
+        "finishedAt": "2026-05-10T16:45:39.837Z",
+        "logRef": null
+      },
+      "acceptedComment": {
+        "id": "9d6fc808-abc5-4f5e-8736-3d98ae6dc65c",
+        "authorAgentId": "726864d8-88e0-4d83-8589-535f86acdd03",
+        "createdByRunId": "9e345bcc-38ad-4499-a960-44c2bfa9d75d",
+        "createdAt": "2026-05-10T16:45:22.433Z",
+        "bodyHead": "## Carrier Pass — Learning Research\n\nAll four required checks confirmed:\n\n- **Research/production boundary**: Learning Research does not own production decisions for other companies. Confirmed in `learning_research_boundary_closeout.md`.\n- **Authority memory**: Memory providers (Graphiti, Supermemory, GBrain, MemPalace) remain candidate/challenger unless Governance promotes authority. No promotion requested in this round.\n- **Local LLM benchmark**: `local_llm_benchmark_summary.json` — status pass, `production_route_allowed: false`, `authority_memory_allowed: false`, `quarantined_provider_use: false`. Research-only.\n- **Skill/MCP/runtime**: Promotion requires workflow proof and preflight/fallback proof. Cannot bypass provider quarantine. Confirmed via governance fixtures.\n\nGovernance false-pass gate: 10/10 fixtures passed, zero forbidden completion claims present. All boundary conditions hold.\n\n`CODEX_PARENT_8H_OPERATING_PROGRAM_CARRIER_PASS`"
+      },
+      "artifactPaths": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/08_memory_labebe/learning_research_boundary_closeout.md",
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_summary.json",
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/03_governance/false_pass_gate_result.json"
+      ]
+    },
+    {
+      "role": "local_llm",
+      "identifier": "LOC-5",
+      "issueId": "550f4f40-25b9-4e3a-a93d-2727dafb969d",
+      "accepted": true,
+      "issueStatus": "done",
+      "acceptedRun": {
+        "id": "948e12af-2209-459f-8858-be98d76028bc",
+        "status": "succeeded",
+        "agentId": "0a5e71d1-c0fe-4093-852c-4bbeebd40f78",
+        "startedAt": "2026-05-10T16:45:49.375Z",
+        "finishedAt": "2026-05-10T16:49:27.097Z",
+        "logRef": null
+      },
+      "acceptedComment": {
+        "id": "2261dd08-29b8-4fef-9e88-ab250f7c210e",
+        "authorAgentId": "0a5e71d1-c0fe-4093-852c-4bbeebd40f78",
+        "createdByRunId": "948e12af-2209-459f-8858-be98d76028bc",
+        "createdAt": "2026-05-10T16:49:08.974Z",
+        "bodyHead": "CODEX_PARENT_8H_OPERATING_PROGRAM_CARRIER_PASS\n\n## Acceptance Checks — All Pass\n\n- Row count: 36 rows confirmed (>= 36 required)\n- Production route: production_route_allowed=false — no mutation occurred\n- Authority memory: authority_memory_allowed=false — no promotion occurred\n- Future enablement: Benchmark notes confirm requires Governance approval + rollback plan\n\n## Artifact Summary\n\n- Models: gemma3n:e4b, qwen3.5:27b, qwen3.6:35b-a3b-q4_K_M\n- Tasks: digest, structured_extraction, contradiction_risk, followup_queue\n- Rows: 36/36 completed, 22/36 strict JSON\n\n## Artifacts\n\n- Rows: 06_local_llm/local_llm_benchmark_rows.jsonl\n- Summary: 06_local_llm/local_llm_benchmark_summary.json\n- Contract: 06_local_llm/local_llm_research_contract.md\n\n**Status:** Research benchmark accepted. Local models remain quarantined from production routing and authority memory. Future enablement requires explicit Governance approval and rollback plan."
+      },
+      "artifactPaths": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_research_contract.md",
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_summary.json",
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_rows.jsonl"
+      ]
+    },
+    {
+      "role": "labebe",
+      "identifier": "LABA-13",
+      "issueId": "cd4b9800-1ecb-4f69-8de1-81aa154f2091",
+      "accepted": true,
+      "issueStatus": "done",
+      "acceptedRun": {
+        "id": "08fe7989-61e5-469a-9c78-fb321625a74f",
+        "status": "succeeded",
+        "agentId": "19f88a52-0983-4aa4-a00c-2eb3a1c41cfe",
+        "startedAt": "2026-05-10T16:49:29.760Z",
+        "finishedAt": "2026-05-10T16:50:57.098Z",
+        "logRef": null
+      },
+      "acceptedComment": {
+        "id": "f1c094ec-2a45-4657-b4e5-69b81baed1e3",
+        "authorAgentId": "19f88a52-0983-4aa4-a00c-2eb3a1c41cfe",
+        "createdByRunId": "08fe7989-61e5-469a-9c78-fb321625a74f",
+        "createdAt": "2026-05-10T16:50:49.549Z",
+        "bodyHead": "Carrier readback completed and `CODEX_PARENT_8H_OPERATING_PROGRAM_CARRIER_PASS` issued. All three checks confirmed: scoped to transformation lane, no production commerce/external actions requested, Finbot/Planning capacity exclusion confirmed. Issue closed."
+      },
+      "artifactPaths": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/08_memory_labebe/labebe_transformation_closeout.md"
+      ]
+    }
+  ]
+}

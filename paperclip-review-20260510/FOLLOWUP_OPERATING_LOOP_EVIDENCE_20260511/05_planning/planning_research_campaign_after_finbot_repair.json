@@ -1,0 +1,71 @@
+{
+  "schema": "paperclip.planning_research_campaign_after_finbot_repair.v1",
+  "generated_at": "2026-05-11T00:50:00+08:00",
+  "controller": "codex_parent",
+  "status": "ready_for_agent_readback",
+  "boundary": {
+    "supervised_research_only": true,
+    "investment_advice": false,
+    "target_price_advice": false,
+    "trade_signal": false,
+    "broker_action": false,
+    "automatic_trading": false,
+    "production_watchlist": false
+  },
+  "cases": [
+    {
+      "case_id": "OA-02-01-vrt-data-center-power-bottleneck",
+      "ticker": "VRT",
+      "theme": "data center power bottleneck",
+      "research_score_band": {"bear": 52, "base": 69, "bull": 87, "unit": "fundamental_scenario_score_0_100"},
+      "next_action": "Continue or park a power/thermal equipment evidence sprint."
+    },
+    {
+      "case_id": "OA-10-03-ferg-specialty-contractor-rollups",
+      "ticker": "FERG",
+      "theme": "specialty contractor rollups",
+      "research_score_band": {"bear": 62, "base": 79, "bull": 97, "unit": "fundamental_scenario_score_0_100"},
+      "next_action": "Continue or park contractor/supplier graph validation."
+    },
+    {
+      "case_id": "OA-11-02-zs-identity-and-zero-trust-spend",
+      "ticker": "ZS",
+      "theme": "identity and zero-trust spend",
+      "research_score_band": {"bear": 62, "base": 79, "bull": 97, "unit": "fundamental_scenario_score_0_100"},
+      "next_action": "Continue or park identity/security spend validation."
+    },
+    {
+      "case_id": "OA-11-03-panw-security-platform-consolidation",
+      "ticker": "PANW",
+      "theme": "security platform consolidation",
+      "research_score_band": {"bear": 63, "base": 80, "bull": 98, "unit": "fundamental_scenario_score_0_100"},
+      "next_action": "Continue or park platform consolidation validation."
+    },
+    {
+      "case_id": "OA-12-02-anet-policy-driven-china-supply-chains",
+      "ticker": "ANET",
+      "theme": "policy-driven China supply chains",
+      "research_score_band": {"bear": 63, "base": 80, "bull": 98, "unit": "fundamental_scenario_score_0_100"},
+      "next_action": "Continue or park supply-chain/policy counter-evidence validation."
+    },
+    {
+      "case_id": "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "ticker": "PLTR",
+      "theme": "source-system gaps to enable next",
+      "research_score_band": {"bear": 64, "base": 81, "bull": 99, "unit": "fundamental_scenario_score_0_100"},
+      "next_action": "Continue or park source-system and customer evidence validation."
+    }
+  ],
+  "user_decision_options": [
+    "choose_first_sprint_theme",
+    "continue_all_six_as_research_only",
+    "park_cases_until_counter_evidence_added",
+    "retire_any_case_without_theme_specific_primary_trace"
+  ],
+  "agent_actions": [
+    "Add one counter-evidence source per case.",
+    "Add one management/issuer quote or primary filing trace per case.",
+    "Retire any case whose next authority source does not support the theme.",
+    "Keep evidence-mismatch rejected cases out unless rebuilt with aligned evidence."
+  ]
+}

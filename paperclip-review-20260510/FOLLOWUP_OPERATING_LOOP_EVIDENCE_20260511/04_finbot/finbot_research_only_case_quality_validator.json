@@ -1,0 +1,101 @@
+{
+  "schema": "paperclip.finbot.research_only_case_quality_validator.v1",
+  "generated_at": "2026-05-11T00:36:46+08:00",
+  "reviewer": "Worker B / Codex",
+  "validated_files": [
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_hard_review_matrix_v2.json",
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_high_quality_candidate_register.md",
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_research_only_case_quality_validator.json"
+  ],
+  "boundary": {
+    "research_only": true,
+    "forbidden_outputs_checked": [
+      "investment_advice",
+      "target_price_advice",
+      "trade_signal",
+      "broker_action",
+      "automatic_trading",
+      "position_sizing",
+      "production_watchlist"
+    ],
+    "forbidden_outputs_present": false
+  },
+  "counts": {
+    "required_minimum_hard_reviewed_cases": 10,
+    "actual_hard_reviewed_cases": 10,
+    "required_minimum_conditional_high_quality_candidates": 5,
+    "actual_conditional_high_quality_candidates": 6,
+    "actual_current_high_quality_cases": 0,
+    "parked_cases": 8,
+    "rejected_cases": 2
+  },
+  "case_id_sets": {
+    "hard_reviewed": [
+      "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "OA-12-02-anet-policy-driven-china-supply-chains",
+      "OA-11-03-panw-security-platform-consolidation",
+      "OA-X139-pltr-china-anti-dumping-policy-exposure",
+      "OA-X140-rddt-boring-infrastructure-rollup-alpha",
+      "OA-12-01-tsm-a-share-official-disclosure-backlog",
+      "OA-11-01-crwd-ai-attack-surface",
+      "OA-11-02-zs-identity-and-zero-trust-spend",
+      "OA-10-03-ferg-specialty-contractor-rollups",
+      "OA-02-01-vrt-data-center-power-bottleneck"
+    ],
+    "conditional_high_quality_candidates": [
+      "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "OA-12-02-anet-policy-driven-china-supply-chains",
+      "OA-11-03-panw-security-platform-consolidation",
+      "OA-11-02-zs-identity-and-zero-trust-spend",
+      "OA-10-03-ferg-specialty-contractor-rollups",
+      "OA-02-01-vrt-data-center-power-bottleneck"
+    ],
+    "parked": [
+      "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "OA-12-02-anet-policy-driven-china-supply-chains",
+      "OA-11-03-panw-security-platform-consolidation",
+      "OA-12-01-tsm-a-share-official-disclosure-backlog",
+      "OA-11-01-crwd-ai-attack-surface",
+      "OA-11-02-zs-identity-and-zero-trust-spend",
+      "OA-10-03-ferg-specialty-contractor-rollups",
+      "OA-02-01-vrt-data-center-power-bottleneck"
+    ],
+    "rejected": [
+      "OA-X139-pltr-china-anti-dumping-policy-exposure",
+      "OA-X140-rddt-boring-infrastructure-rollup-alpha"
+    ]
+  },
+  "gate_results": [
+    {
+      "gate": "research_only_boundary",
+      "status": "pass",
+      "evidence": "All outputs carry a research-only boundary and forbidden-output list."
+    },
+    {
+      "gate": "minimum_10_hard_reviewed",
+      "status": "pass",
+      "evidence": "Matrix contains 10 case objects with hard_review_verdict values."
+    },
+    {
+      "gate": "minimum_5_conditional_candidates",
+      "status": "pass",
+      "evidence": "Candidate register lists 6 conditional candidates."
+    },
+    {
+      "gate": "current_high_quality_honesty",
+      "status": "pass",
+      "evidence": "No case is promoted to high_quality because theme-level primary evidence and concrete counter-evidence are incomplete."
+    },
+    {
+      "gate": "mismatched_evidence_rejected",
+      "status": "pass",
+      "evidence": "PLTR/CROX and RDDT/ELF evidence-id mismatches are rejected, not parked as candidates."
+    }
+  ],
+  "jq_validation_commands": [
+    "jq '.' /vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_hard_review_matrix_v2.json",
+    "jq '.' /vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_research_only_case_quality_validator.json",
+    "jq '.case_counts.hard_reviewed, .case_counts.high_quality, .case_counts.high_quality_candidate_if_reworked, .case_counts.parked, .case_counts.rejected' /vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_hard_review_matrix_v2.json"
+  ],
+  "final_status": "PASS_RESEARCH_ONLY_HARD_REVIEW_EXPANDED_WITH_NO_HIGH_QUALITY_PROMOTION"
+}

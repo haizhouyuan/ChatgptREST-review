@@ -1,0 +1,81 @@
+{
+  "schema": "paperclip.governance.false_pass_gate_result.v1",
+  "generated_at": "2026-05-11T00:33:09+08:00",
+  "controller": "codex_parent",
+  "status": "pass",
+  "fixture_count": 10,
+  "passed_count": 10,
+  "errors": [],
+  "results": [
+    {
+      "id": "endpoint_only_connector",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "id": "fixture_only_workflow",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "id": "controller_only_evidence",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "id": "advice_disguised_as_memo",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "id": "target_price_as_advice",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "id": "watchlist_trading_leakage",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "id": "quarantined_provider_enabled",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "id": "local_llm_production_route",
+      "expected": "reject",
+      "actual": "reject",
+      "passed": true
+    },
+    {
+      "id": "real_agent_owned_research_only_closeout",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    },
+    {
+      "id": "candidate_connector_without_verified_claim",
+      "expected": "accept",
+      "actual": "accept",
+      "passed": true
+    }
+  ],
+  "forbidden_completion_claims": [
+    "endpoint-only verified workflow",
+    "fixture-only production readiness",
+    "controller-only real agent loop",
+    "investment advice disguised as memo",
+    "target-price-as-advice",
+    "production watchlist/trade signal/broker action",
+    "quarantined provider enablement",
+    "local LLM production route"
+  ]
+}

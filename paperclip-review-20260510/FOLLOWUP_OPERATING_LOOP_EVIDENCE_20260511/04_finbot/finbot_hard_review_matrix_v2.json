@@ -1,0 +1,538 @@
+{
+  "schema": "paperclip.finbot.hard_review_matrix.v2",
+  "generated_at": "2026-05-11T00:36:46+08:00",
+  "reviewer": "Worker B / Codex",
+  "boundary": {
+    "research_only": true,
+    "forbidden_outputs": [
+      "investment_advice",
+      "target_price_advice",
+      "trade_signal",
+      "broker_action",
+      "automatic_trading",
+      "position_sizing",
+      "production_watchlist"
+    ]
+  },
+  "scope": {
+    "write_scope": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot",
+    "input_packet": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h",
+    "manifest_linked_run_root": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+    "pro_digest": "/tmp/ChatgptREST-review/paperclip-review-20260510/PRO_ANSWER_DIGEST.md",
+    "next_execution_plan": "/tmp/ChatgptREST-review/paperclip-review-20260510/NEXT_EXECUTION_PLAN.md"
+  },
+  "method": {
+    "hard_review_gate": [
+      "one research-only claim unit",
+      "inspectable evidence file or queryable evidence id",
+      "named source and source authority status",
+      "source or artifact timestamp",
+      "reviewer decision"
+    ],
+    "high_quality_gate": [
+      "ticker and theme align with evidence id",
+      "primary or authority evidence is present",
+      "primary evidence trace point supports the theme, not only ticker data availability",
+      "risk and counter-evidence are explicit",
+      "no advice, trade, target-price, broker, automatic-trading, position-sizing or production-watchlist output"
+    ],
+    "high_quality_policy": "A case is not promoted when the primary evidence only proves that SEC/companyfacts material exists but does not trace-bind the specific research theme."
+  },
+  "case_counts": {
+    "selected": 10,
+    "hard_reviewed": 10,
+    "high_quality": 0,
+    "high_quality_candidate_if_reworked": 6,
+    "parked": 8,
+    "rejected": 2,
+    "research_only_boundary_preserved": true
+  },
+  "cases": [
+    {
+      "case_id": "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "ticker": "PLTR",
+      "theme": "source-system gaps to enable next",
+      "evidence_id": "EV-12-PLTR",
+      "claim": "PLTR is a research-only lead inside the source-system gaps to enable next theme.",
+      "five_tuple": {
+        "claim": "PLTR is a research-only lead inside the source-system gaps to enable next theme.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:17; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:40; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-12-PLTR",
+        "source": "SEC submissions and SEC companyfacts for CIK0001321655; source map marks SEC submissions/companyfacts workflow_verified primary sources.",
+        "timestamp": "latest_primary_filing.filing_date=2026-05-05; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired",
+        "authority_level": "primary",
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001321655.json",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001321655.json",
+        "sec_cache_files": [
+          "sec_cache/submissions_CIK0001321655.json",
+          "sec_cache/companyfacts_CIK0001321655.json"
+        ],
+        "latest_primary_filing": {
+          "form": "10-Q",
+          "filing_date": "2026-05-05",
+          "accession": "0001321655-26-000028"
+        },
+        "metric_trace_available": [
+          "revenue_fact",
+          "operating_income_fact",
+          "cash_fact"
+        ]
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-12-03-pltr-source-system-gaps-to-enable-next",
+        "risk": "Latest filings may show weaker conversion than the lead narrative implies.",
+        "counter_evidence_route": "The source signal may be crowded, stale, promotional, jurisdiction-limited or contradicted by management disclosures.",
+        "minimum_gaps": [
+          "latest filing segment/KPI evidence",
+          "peer evidence or policy/channel corroboration",
+          "explicit invalidation trigger"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_park",
+      "high_quality_status": "candidate_if_reworked_not_promoted",
+      "promotion_blockers": [
+        "Primary evidence proves ticker-level SEC/companyfacts availability, but not the source-system gaps theme.",
+        "No exact primary-source excerpt or trace point is bound to the theme.",
+        "Counter-evidence is generic and needs a concrete peer or management-disclosure contradiction."
+      ]
+    },
+    {
+      "case_id": "OA-12-02-anet-policy-driven-china-supply-chains",
+      "ticker": "ANET",
+      "theme": "policy-driven China supply chains",
+      "evidence_id": "EV-12-ANET",
+      "claim": "ANET is a research-only lead inside the policy-driven China supply chains theme.",
+      "five_tuple": {
+        "claim": "ANET is a research-only lead inside the policy-driven China supply chains theme.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:19; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:39; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-12-ANET",
+        "source": "SEC submissions and SEC companyfacts for CIK0001596532; China/A-share routes remain candidate_to_enable and cannot be authority evidence yet.",
+        "timestamp": "latest_primary_filing.filing_date=2026-05-06; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired",
+        "authority_level": "primary",
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001596532.json",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001596532.json",
+        "sec_cache_files": [
+          "sec_cache/submissions_CIK0001596532.json",
+          "sec_cache/companyfacts_CIK0001596532.json"
+        ],
+        "latest_primary_filing": {
+          "form": "10-Q",
+          "filing_date": "2026-05-06",
+          "accession": "0001596532-26-000078"
+        },
+        "metric_trace_available": [
+          "revenue_fact",
+          "operating_income_fact",
+          "cash_fact"
+        ]
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-12-02-anet-policy-driven-china-supply-chains",
+        "risk": "Latest filings may show weaker conversion than the lead narrative implies.",
+        "counter_evidence_route": "The source signal may be crowded, stale, promotional, jurisdiction-limited or contradicted by management disclosures.",
+        "minimum_gaps": [
+          "latest filing segment/KPI evidence",
+          "peer evidence or policy/channel corroboration",
+          "explicit invalidation trigger"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_park",
+      "high_quality_status": "candidate_if_reworked_not_promoted",
+      "promotion_blockers": [
+        "China policy/supply-chain component is not bound to a workflow-verified authority source.",
+        "A-share/CNINFO route is candidate_to_enable in the source map.",
+        "Needs a concrete policy or peer contradiction source before promotion."
+      ]
+    },
+    {
+      "case_id": "OA-11-03-panw-security-platform-consolidation",
+      "ticker": "PANW",
+      "theme": "security platform consolidation",
+      "evidence_id": "EV-11-PANW",
+      "claim": "PANW is a research-only lead inside the security platform consolidation theme.",
+      "five_tuple": {
+        "claim": "PANW is a research-only lead inside the security platform consolidation theme.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:20; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:37; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-11-PANW",
+        "source": "SEC submissions and SEC companyfacts for CIK0001327567; cycle 11 also includes local Finbot ledgers but policy/ownership routes are not authority evidence.",
+        "timestamp": "latest_primary_filing.filing_date=2026-04-13; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired",
+        "authority_level": "primary",
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001327567.json",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001327567.json",
+        "sec_cache_files": [
+          "sec_cache/submissions_CIK0001327567.json",
+          "sec_cache/companyfacts_CIK0001327567.json"
+        ],
+        "latest_primary_filing": {
+          "form": "8-K",
+          "filing_date": "2026-04-13",
+          "accession": "0001193125-26-151637"
+        },
+        "metric_trace_available": [
+          "revenue_fact",
+          "operating_income_fact",
+          "cash_fact"
+        ]
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-11-03-panw-security-platform-consolidation",
+        "risk": "Latest filings may show weaker conversion than the lead narrative implies.",
+        "counter_evidence_route": "The source signal may be crowded, stale, promotional, jurisdiction-limited or contradicted by management disclosures.",
+        "minimum_gaps": [
+          "latest filing segment/KPI evidence",
+          "peer evidence or policy/channel corroboration",
+          "explicit invalidation trigger"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_park",
+      "high_quality_status": "candidate_if_reworked_not_promoted",
+      "promotion_blockers": [
+        "Primary evidence is ticker-bound but not trace-bound to platform consolidation.",
+        "Cycle 11 policy and ownership routes are candidate/unverified context.",
+        "Needs concrete peer/platform counter-evidence or management disclosure contradiction."
+      ]
+    },
+    {
+      "case_id": "OA-X139-pltr-china-anti-dumping-policy-exposure",
+      "ticker": "PLTR",
+      "theme": "China anti-dumping policy exposure",
+      "evidence_id": "EV-05-CROX",
+      "claim": "PLTR may express China anti-dumping policy exposure through a less obvious operating metric.",
+      "five_tuple": {
+        "claim": "PLTR may express China anti-dumping policy exposure through a less obvious operating metric.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:8; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:59; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-05-CROX",
+        "source": "EV-05-CROX is primary evidence for CROX, not PLTR.",
+        "timestamp": "mismatched_evidence_latest_primary_filing.filing_date=2026-04-30; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired_for_wrong_ticker",
+        "authority_level": "primary",
+        "mapped_ticker": "CROX",
+        "expected_ticker": "PLTR",
+        "latest_primary_filing": {
+          "form": "10-Q",
+          "filing_date": "2026-04-30",
+          "accession": "0001334036-26-000032"
+        }
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-X139-pltr-china-anti-dumping-policy-exposure",
+        "risk": "Primary filings may not show revenue, margin, backlog or cash-flow sensitivity to this theme.",
+        "counter_evidence_route": "The market narrative may already discount the theme, or peer disclosures may contradict company-specific exposure.",
+        "minimum_gaps": [
+          "latest primary evidence exposure check",
+          "peer contradiction scan",
+          "human review decision on continue_research vs park"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_reject",
+      "high_quality_status": "not_candidate",
+      "promotion_blockers": [
+        "Evidence id fails ticker alignment.",
+        "Authority evidence points to CROX, not PLTR.",
+        "Do not carry forward without a new PLTR-aligned evidence id."
+      ]
+    },
+    {
+      "case_id": "OA-X140-rddt-boring-infrastructure-rollup-alpha",
+      "ticker": "RDDT",
+      "theme": "boring infrastructure rollup alpha",
+      "evidence_id": "EV-05-ELF",
+      "claim": "RDDT may express boring infrastructure rollup alpha through a less obvious operating metric.",
+      "five_tuple": {
+        "claim": "RDDT may express boring infrastructure rollup alpha through a less obvious operating metric.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:7; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:60; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-05-ELF",
+        "source": "EV-05-ELF is primary evidence for ELF, not RDDT.",
+        "timestamp": "mismatched_evidence_latest_primary_filing.filing_date=2026-02-13; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired_for_wrong_ticker",
+        "authority_level": "primary",
+        "mapped_ticker": "ELF",
+        "expected_ticker": "RDDT",
+        "latest_primary_filing": {
+          "form": "8-K",
+          "filing_date": "2026-02-13",
+          "accession": "0001600033-26-000009"
+        }
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-X140-rddt-boring-infrastructure-rollup-alpha",
+        "risk": "Primary filings may not show revenue, margin, backlog or cash-flow sensitivity to this theme.",
+        "counter_evidence_route": "The market narrative may already discount the theme, or peer disclosures may contradict company-specific exposure.",
+        "minimum_gaps": [
+          "latest primary evidence exposure check",
+          "peer contradiction scan",
+          "human review decision on continue_research vs park"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_reject",
+      "high_quality_status": "not_candidate",
+      "promotion_blockers": [
+        "Evidence id fails ticker alignment.",
+        "Authority evidence points to ELF, not RDDT.",
+        "Do not carry forward without a new RDDT-aligned evidence id."
+      ]
+    },
+    {
+      "case_id": "OA-12-01-tsm-a-share-official-disclosure-backlog",
+      "ticker": "TSM",
+      "theme": "A-share official-disclosure backlog",
+      "evidence_id": "EV-12-TSM",
+      "claim": "TSM is a research-only lead inside the A-share official-disclosure backlog theme.",
+      "five_tuple": {
+        "claim": "TSM is a research-only lead inside the A-share official-disclosure backlog theme.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:22; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:38; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-12-TSM",
+        "source": "SEC submissions and SEC companyfacts for CIK0001046179; A-share/CNINFO route is candidate_to_enable.",
+        "timestamp": "sec_cache/submissions_CIK0001046179.json.mtime=2026-05-10T08:04:06+08:00; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired",
+        "authority_level": "primary",
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001046179.json",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001046179.json",
+        "sec_cache_files": [
+          "sec_cache/submissions_CIK0001046179.json",
+          "sec_cache/companyfacts_CIK0001046179.json"
+        ],
+        "latest_primary_filing": null,
+        "metric_trace_available": []
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-12-01-tsm-a-share-official-disclosure-backlog",
+        "risk": "Latest filings may show weaker conversion than the lead narrative implies.",
+        "counter_evidence_route": "The source signal may be crowded, stale, promotional, jurisdiction-limited or contradicted by management disclosures.",
+        "minimum_gaps": [
+          "latest filing segment/KPI evidence",
+          "peer evidence or policy/channel corroboration",
+          "explicit invalidation trigger"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_park",
+      "high_quality_status": "not_candidate_until_primary_detail_exists",
+      "promotion_blockers": [
+        "latest_primary_filing is null in the evidence ledger.",
+        "No revenue, operating income or cash trace is present in the evidence row.",
+        "A-share official-disclosure theme still relies on candidate-to-enable route."
+      ]
+    },
+    {
+      "case_id": "OA-11-01-crwd-ai-attack-surface",
+      "ticker": "CRWD",
+      "theme": "AI attack surface",
+      "evidence_id": "EV-11-CRWD",
+      "claim": "CRWD is a research-only lead inside the AI attack surface theme.",
+      "five_tuple": {
+        "claim": "CRWD is a research-only lead inside the AI attack surface theme.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:26; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:35; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-11-CRWD",
+        "source": "SEC submissions and SEC companyfacts for CIK0001535527; cycle 11 security filings plus incident/reversal QA.",
+        "timestamp": "latest_primary_filing.filing_date=2026-04-21; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired",
+        "authority_level": "primary",
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001535527.json",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001535527.json",
+        "sec_cache_files": [
+          "sec_cache/submissions_CIK0001535527.json",
+          "sec_cache/companyfacts_CIK0001535527.json"
+        ],
+        "latest_primary_filing": {
+          "form": "8-K",
+          "filing_date": "2026-04-21",
+          "accession": "0001535527-26-000018"
+        },
+        "metric_trace_available": [
+          "operating_income_fact",
+          "cash_fact"
+        ],
+        "missing_metric_trace": [
+          "revenue_fact"
+        ]
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-11-01-crwd-ai-attack-surface",
+        "risk": "Latest filings may show weaker conversion than the lead narrative implies.",
+        "counter_evidence_route": "The source signal may be crowded, stale, promotional, jurisdiction-limited or contradicted by management disclosures.",
+        "minimum_gaps": [
+          "latest filing segment/KPI evidence",
+          "peer evidence or policy/channel corroboration",
+          "explicit invalidation trigger"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_park",
+      "high_quality_status": "not_candidate_until_revenue_trace_exists",
+      "promotion_blockers": [
+        "Theme-specific AI attack surface claim is not trace-bound to a primary source excerpt.",
+        "Evidence row lacks revenue_fact.",
+        "Needs concrete incident, peer or management counter-evidence."
+      ]
+    },
+    {
+      "case_id": "OA-11-02-zs-identity-and-zero-trust-spend",
+      "ticker": "ZS",
+      "theme": "identity and zero-trust spend",
+      "evidence_id": "EV-11-ZS",
+      "claim": "ZS is a research-only lead inside the identity and zero-trust spend theme.",
+      "five_tuple": {
+        "claim": "ZS is a research-only lead inside the identity and zero-trust spend theme.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:23; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:36; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-11-ZS",
+        "source": "SEC submissions and SEC companyfacts for CIK0001713683; cycle 11 security filings plus incident/reversal QA.",
+        "timestamp": "latest_primary_filing.filing_date=2026-04-16; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired",
+        "authority_level": "primary",
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001713683.json",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001713683.json",
+        "sec_cache_files": [
+          "sec_cache/submissions_CIK0001713683.json",
+          "sec_cache/companyfacts_CIK0001713683.json"
+        ],
+        "latest_primary_filing": {
+          "form": "8-K",
+          "filing_date": "2026-04-16",
+          "accession": "0001713683-26-000082"
+        },
+        "metric_trace_available": [
+          "revenue_fact",
+          "operating_income_fact",
+          "cash_fact"
+        ]
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-11-02-zs-identity-and-zero-trust-spend",
+        "risk": "Latest filings may show weaker conversion than the lead narrative implies.",
+        "counter_evidence_route": "The source signal may be crowded, stale, promotional, jurisdiction-limited or contradicted by management disclosures.",
+        "minimum_gaps": [
+          "latest filing segment/KPI evidence",
+          "peer evidence or policy/channel corroboration",
+          "explicit invalidation trigger"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_park",
+      "high_quality_status": "candidate_if_reworked_not_promoted",
+      "promotion_blockers": [
+        "Primary evidence is ticker-bound but not trace-bound to identity/zero-trust spend.",
+        "Needs case-specific spending, customer or product evidence from primary/authority source.",
+        "Needs concrete peer or management counter-evidence."
+      ]
+    },
+    {
+      "case_id": "OA-10-03-ferg-specialty-contractor-rollups",
+      "ticker": "FERG",
+      "theme": "specialty contractor rollups",
+      "evidence_id": "EV-10-FERG",
+      "claim": "FERG is a research-only lead inside the specialty contractor rollups theme.",
+      "five_tuple": {
+        "claim": "FERG is a research-only lead inside the specialty contractor rollups theme.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/06_top_surprising_opportunities.md:24; /tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:34; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-10-FERG",
+        "source": "SEC submissions and SEC companyfacts for CIK0002011641; cycle 10 filings plus supplier and contractor source graph.",
+        "timestamp": "latest_primary_filing.filing_date=2026-05-05; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired",
+        "authority_level": "primary",
+        "submissions_url": "https://data.sec.gov/submissions/CIK0002011641.json",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002011641.json",
+        "sec_cache_files": [
+          "sec_cache/submissions_CIK0002011641.json",
+          "sec_cache/companyfacts_CIK0002011641.json"
+        ],
+        "latest_primary_filing": {
+          "form": "10-Q",
+          "filing_date": "2026-05-05",
+          "accession": "0002011641-26-000030"
+        },
+        "metric_trace_available": [
+          "revenue_fact",
+          "operating_income_fact",
+          "cash_fact"
+        ]
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-10-03-ferg-specialty-contractor-rollups",
+        "risk": "Latest filings may show weaker conversion than the lead narrative implies.",
+        "counter_evidence_route": "The source signal may be crowded, stale, promotional, jurisdiction-limited or contradicted by management disclosures.",
+        "minimum_gaps": [
+          "latest filing segment/KPI evidence",
+          "peer evidence or policy/channel corroboration",
+          "explicit invalidation trigger"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_park",
+      "high_quality_status": "candidate_if_reworked_not_promoted",
+      "promotion_blockers": [
+        "Specialty contractor rollup thesis is not trace-bound to an authority excerpt.",
+        "Full decision memo is false in the casebook.",
+        "Needs concrete supplier/contractor peer evidence and contradiction route."
+      ]
+    },
+    {
+      "case_id": "OA-02-01-vrt-data-center-power-bottleneck",
+      "ticker": "VRT",
+      "theme": "data center power bottleneck",
+      "evidence_id": "EV-02-VRT",
+      "claim": "VRT is a research-only lead inside the data center power bottleneck theme.",
+      "five_tuple": {
+        "claim": "VRT is a research-only lead inside the data center power bottleneck theme.",
+        "evidence_file": "/tmp/ChatgptREST-review/paperclip-review-20260510/FINBOT/latest_8h/07_alpha_qualified_casebook.md:8; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/08_full_decision_memo_pack.json#OA-02-01-vrt-data-center-power-bottleneck; /vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json#EV-02-VRT",
+        "source": "SEC submissions and SEC companyfacts for CIK0001674101; cycle 2 SEC filings plus industrial capacity chain.",
+        "timestamp": "latest_primary_filing.filing_date=2026-04-27; evidence_manifest.generated_at=2026-05-10T09:17:07+08:00",
+        "reviewer": "Worker B / Codex"
+      },
+      "authority_evidence": {
+        "status": "primary_evidence_acquired",
+        "authority_level": "primary",
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001674101.json",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001674101.json",
+        "sec_cache_files": [
+          "sec_cache/submissions_CIK0001674101.json",
+          "sec_cache/companyfacts_CIK0001674101.json"
+        ],
+        "latest_primary_filing": {
+          "form": "8-K",
+          "filing_date": "2026-04-27",
+          "accession": "0001628280-26-027297"
+        },
+        "metric_trace_available": [
+          "revenue_fact",
+          "operating_income_fact",
+          "cash_fact"
+        ]
+      },
+      "risk_counter_evidence": {
+        "risk_file": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/11_risk_reversal_qa_pack.json#OA-02-01-vrt-data-center-power-bottleneck",
+        "risk": "Latest filings may show weaker conversion than the lead narrative implies.",
+        "counter_evidence_route": "The source signal may be crowded, stale, promotional, jurisdiction-limited or contradicted by management disclosures.",
+        "minimum_gaps": [
+          "latest filing segment/KPI evidence",
+          "peer evidence or policy/channel corroboration",
+          "explicit invalidation trigger"
+        ]
+      },
+      "hard_review_verdict": "hard_reviewed_park",
+      "high_quality_status": "candidate_if_reworked_not_promoted",
+      "promotion_blockers": [
+        "Full decision memo exists, but primary evidence is still not excerpt-bound to the power bottleneck theme.",
+        "Needs industrial capacity or peer corroboration from an authority route.",
+        "Needs concrete invalidation trigger."
+      ]
+    }
+  ]
+}

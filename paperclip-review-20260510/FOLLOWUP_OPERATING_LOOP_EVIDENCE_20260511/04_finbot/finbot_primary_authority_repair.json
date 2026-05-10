@@ -1,0 +1,772 @@
+{
+  "schema": "paperclip.finbot.primary_authority_repair.v1",
+  "generated_at": "2026-05-11T00:48:24+08:00",
+  "controller": "codex_parent",
+  "status": "pass",
+  "high_quality_count": 6,
+  "case_count": 6,
+  "cases": [
+    {
+      "case_id": "OA-02-01-vrt-data-center-power-bottleneck",
+      "ticker": "VRT",
+      "theme": "data center power bottleneck",
+      "status": "high_quality",
+      "claim": "VRT is a research-only case for the data center power bottleneck theme; this is not an investment recommendation.",
+      "five_tuple": {
+        "claim": "VRT research-only theme case: data center power bottleneck",
+        "evidence_file": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+        "source": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026026556/vrt-20260331.htm",
+        "timestamp": {
+          "filing_date": "2026-04-22",
+          "retrieved_at": "2026-05-11T00:48:02+08:00"
+        },
+        "reviewer": "codex_parent"
+      },
+      "primary_authority": {
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001674101.json",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026026556/vrt-20260331.htm",
+        "form": "10-Q",
+        "filing_date": "2026-04-22",
+        "accession": "0001628280-26-026556",
+        "primary_document": "vrt-20260331.htm",
+        "evidence_id": "EV-02-VRT",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001674101.json"
+      },
+      "companyfacts_metric_evidence": {
+        "revenue_fact": {
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "val": 2649500000,
+          "accn": "0001628280-26-026556",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-04-22",
+          "frame": "CY2026Q1"
+        },
+        "operating_income_fact": {
+          "tag": "OperatingIncomeLoss",
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "val": 440100000,
+          "accn": "0001628280-26-026556",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-04-22",
+          "frame": "CY2026Q1"
+        },
+        "cash_fact": {
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "end": "2026-03-31",
+          "val": 2150600000,
+          "accn": "0001628280-26-026556",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-04-22",
+          "frame": "CY2026Q1I"
+        }
+      },
+      "theme_snippets": [
+        {
+          "term": "data center",
+          "offset": 33284,
+          "snippet": "Condensed Consolidated Financial Statements (Unaudited) (Dollars in millions, except per share amounts) (1) DESCRIPTION OF BUSINESS Vertiv Holdings Co (“Holdings Co”, and together with its majority-owned subsidiaries, “Vertiv”, “we”, “our”, or “the Company”), provides mission-critical digital infrastructure technologies and life cycle services primarily for data centers, communication networks, and commercial and industrial environments. Vertiv’s offerings include AC and DC power management, thermal management, low/medium voltage switchgear, busbar, air cooled and liquid cooled thermal management products, integrated modular solutions, racks, single phase UPS, rack power distribution, rack thermal systems, configurable in"
+        },
+        {
+          "term": "power",
+          "offset": 33403,
+          "snippet": " OF BUSINESS Vertiv Holdings Co (“Holdings Co”, and together with its majority-owned subsidiaries, “Vertiv”, “we”, “our”, or “the Company”), provides mission-critical digital infrastructure technologies and life cycle services primarily for data centers, communication networks, and commercial and industrial environments. Vertiv’s offerings include AC and DC power management, thermal management, low/medium voltage switchgear, busbar, air cooled and liquid cooled thermal management products, integrated modular solutions, racks, single phase UPS, rack power distribution, rack thermal systems, configurable integrated solutions, energy storage solutions, hardware, software for managing IT equipment, management systems fo"
+        },
+        {
+          "term": "thermal",
+          "offset": 33421,
+          "snippet": "v Holdings Co (“Holdings Co”, and together with its majority-owned subsidiaries, “Vertiv”, “we”, “our”, or “the Company”), provides mission-critical digital infrastructure technologies and life cycle services primarily for data centers, communication networks, and commercial and industrial environments. Vertiv’s offerings include AC and DC power management, thermal management, low/medium voltage switchgear, busbar, air cooled and liquid cooled thermal management products, integrated modular solutions, racks, single phase UPS, rack power distribution, rack thermal systems, configurable integrated solutions, energy storage solutions, hardware, software for managing IT equipment, management systems for monitoring and con"
+        },
+        {
+          "term": "capacity",
+          "offset": 94051,
+          "snippet": "ns, input costs, fuel and transportation costs, customer demand, capital markets and foreign exchange rates. We continue to actively manage these risks through supply chain diversification, regional sourcing strategies, pricing actions, financial hedging, and ongoing evaluation of alternative manufacturing, financial and procurement approaches. • Growth and Capacity Expansion : We continue to see very robust growth in demand for data centers supporting artificial intelligence (\"AI\") and high-performance compute applications and have strategically invested in expanding our global capacity in response to current and anticipated customer demand across key infrastructure segments. For the quarter, our capital investments w"
+        }
+      ],
+      "risk_or_counter_snippets": [
+        {
+          "term": "risk",
+          "offset": 25005,
+          "snippet": " 4 Condensed Consolidated Statements of Cash Flows 5 Condensed Consolidated Statements of Changes in Shareholders’ Equity (Deficit) 6 Notes to Condensed Consolidated Financial Statements (Unaudited) 7 Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations 21 Item 3. Quantitative and Qualitative Disclosures About Market Risk 27 Item 4. Controls and Procedures 27 Part II - Other Information Item 1. Legal Proceedings 29 Item 1A. Risk Factors 29 Item 2. Unregistered Sales of Equity Securities and Use of Proceeds 30 Item 3. Defaults Upon Senior Securities 30 Item 4. Mine Safety Disclosures 31 Item 5. Other Information 31 Item 6. Exhibits 32 SIGNATURES 33 1 Table of contents PART I."
+        },
+        {
+          "term": "competition",
+          "offset": 88643,
+          "snippet": "able placing or cancelling of customer orders; failure to realize sales expected from our backlog of orders and contracts, disruption of or consolidation in our customer’s markets or categorical shifts in customer technology spending; less leverage with large customer contract terms; failure to mitigate risks associated with long-term fixed price contracts; competition in the industry in which we operate; failure to obtain performance and other guarantees from financial institutions; risks associated with governmental contracts; failure to properly manage production cost changes and supply chain; failure to anticipate market change and competition in the infrastructure technologies; risks associated with information techn"
+        },
+        {
+          "term": "customers",
+          "offset": 43811,
+          "snippet": "ncluding the final working capital adjustments and amounts allocated to intangible assets. The Company expects to complete this process no later than twelve months after the closing of this acquisition. (4) REVENUE The Company recognizes revenue from the sale of manufactured products and services when control of promised goods or services are transferred to customers in an amount that reflects the consideration the Company expects to be entitled to receive in exchange for those goods or services. Disaggregation of Revenues The following table disaggregates revenue by business segment, product and service offering and timing of transfer of control: Three months ended March 31, 2026 Americas Asia Pacific Europe, Middle Ea"
+        },
+        {
+          "term": "supply chain",
+          "offset": 35662,
+          "snippet": "lable information. Changes in facts and circumstances may result in revised estimates. Results for these interim periods are not necessarily indicative of results to be expected for the full year due to, among other reasons, the continued uncertainty of general economic conditions that have impacted, and may continue to impact, the Company's sales channels, supply chain, manufacturing operations, workforce, or other key aspects of the Company’s operations. The notes included herein should be read in conjunction with the Company’s audited consolidated financial statements included in the Company’s Annual Report on Form 10-K for the year ended December 31, 2025, filed with the SEC on February 13, 2026. Recently Issued Accoun"
+        }
+      ],
+      "research_estimate_range": {
+        "type": "research_estimate_range",
+        "bear": 52,
+        "base": 69,
+        "bull": 87,
+        "unit": "fundamental_scenario_score_0_100",
+        "notes": "Qualitative scenario score from prior Finbot pack; not a price target, not advice."
+      },
+      "human_review_question": "Should Finbot continue researching VRT under the data center power bottleneck theme, or park it until a stronger counter-evidence route is added?",
+      "invalidation_trigger": "Park or reject if the next authority source does not support the theme-specific exposure or if counter-evidence dominates the primary trace.",
+      "boundary": {
+        "research_only": true,
+        "investment_advice": false,
+        "target_price_advice": false,
+        "trade_signal": false,
+        "broker_action": false,
+        "automatic_trading": false,
+        "production_watchlist": false
+      }
+    },
+    {
+      "case_id": "OA-10-03-ferg-specialty-contractor-rollups",
+      "ticker": "FERG",
+      "theme": "specialty contractor rollups",
+      "status": "high_quality",
+      "claim": "FERG is a research-only case for the specialty contractor rollups theme; this is not an investment recommendation.",
+      "five_tuple": {
+        "claim": "FERG research-only theme case: specialty contractor rollups",
+        "evidence_file": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+        "source": "https://www.sec.gov/Archives/edgar/data/2011641/000201164126000030/ferg-20260331.htm",
+        "timestamp": {
+          "filing_date": "2026-05-05",
+          "retrieved_at": "2026-05-11T00:48:05+08:00"
+        },
+        "reviewer": "codex_parent"
+      },
+      "primary_authority": {
+        "submissions_url": "https://data.sec.gov/submissions/CIK0002011641.json",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/2011641/000201164126000030/ferg-20260331.htm",
+        "form": "10-Q",
+        "filing_date": "2026-05-05",
+        "accession": "0002011641-26-000030",
+        "primary_document": "ferg-20260331.htm",
+        "evidence_id": "EV-10-FERG",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002011641.json"
+      },
+      "companyfacts_metric_evidence": {
+        "revenue_fact": {
+          "tag": "Revenues",
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "val": 7472000000,
+          "accn": "0002011641-26-000030",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-05",
+          "frame": "CY2026Q1"
+        },
+        "operating_income_fact": {
+          "tag": "OperatingIncomeLoss",
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "val": 612000000,
+          "accn": "0002011641-26-000030",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-05",
+          "frame": "CY2026Q1"
+        },
+        "cash_fact": {
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "end": "2026-03-31",
+          "val": 820000000,
+          "accn": "0002011641-26-000030",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-05",
+          "frame": "CY2026Q1I"
+        }
+      },
+      "theme_snippets": [
+        {
+          "term": "acquisition",
+          "offset": 18463,
+          "snippet": "ace violence; • unsuccessful execution of our operational strategies, including the failure to quickly adapt our strategy to emerging technologies; • failure to attract, retain and motivate key associates; • exposure of associates, contractors, customers, suppliers and other individuals to health and safety risks and fleet incidents; • risks associated with acquisitions, partnerships, joint ventures and other business combinations, dispositions or strategic transactions; • risks associated with sales of private label products, including regulatory, product liability and reputational risks and the adverse impact such sales may have on supplier relationships and rebates; • the failure to achieve and maintain a high level of"
+        },
+        {
+          "term": "acquisitions",
+          "offset": 18463,
+          "snippet": "ace violence; • unsuccessful execution of our operational strategies, including the failure to quickly adapt our strategy to emerging technologies; • failure to attract, retain and motivate key associates; • exposure of associates, contractors, customers, suppliers and other individuals to health and safety risks and fleet incidents; • risks associated with acquisitions, partnerships, joint ventures and other business combinations, dispositions or strategic transactions; • risks associated with sales of private label products, including regulatory, product liability and reputational risks and the adverse impact such sales may have on supplier relationships and rebates; • the failure to achieve and maintain a high level of "
+        },
+        {
+          "term": "contractor",
+          "offset": 18335,
+          "snippet": "ur facilities and inventory or to prevent personal injury to customers, suppliers or associates, including as a result of workplace violence; • unsuccessful execution of our operational strategies, including the failure to quickly adapt our strategy to emerging technologies; • failure to attract, retain and motivate key associates; • exposure of associates, contractors, customers, suppliers and other individuals to health and safety risks and fleet incidents; • risks associated with acquisitions, partnerships, joint ventures and other business combinations, dispositions or strategic transactions; • risks associated with sales of private label products, including regulatory, product liability and reputational risks and th"
+        },
+        {
+          "term": "branch",
+          "offset": 17839,
+          "snippet": " theft; • privacy and protection of sensitive data failures, including failures due to data corruption, cybersecurity incidents, network security breaches or the use of AI; • ineffectiveness of or disruption in our domestic or international supply chain or our fulfillment network, including delays in inventory availability at our distribution facilities and branches, increased delivery costs or lack of availability due to loss of key suppliers; 1 • failure to effectively manage and protect our facilities and inventory or to prevent personal injury to customers, suppliers or associates, including as a result of workplace violence; • unsuccessful execution of our operational strategies, including the failure to quickly"
+        }
+      ],
+      "risk_or_counter_snippets": [
+        {
+          "term": "risk",
+          "offset": 3517,
+          "snippet": "0002011641 us-gaap:OperatingSegmentsMember 2025-12-31 0002011641 us-gaap:CorporateNonSegmentMember 2026-03-31 0002011641 us-gaap:CorporateNonSegmentMember 2025-12-31 0002011641 country:US 2026-03-31 0002011641 country:US 2025-12-31 0002011641 country:CA 2026-03-31 0002011641 country:CA 2025-12-31 0002011641 ferg:WaterworksMember us-gaap:CustomerConcentrationRiskMember us-gaap:SalesRevenueSegmentMember 2026-01-01 2026-03-31 0002011641 ferg:WaterworksMember us-gaap:CustomerConcentrationRiskMember us-gaap:SalesRevenueSegmentMember 2025-01-01 2025-03-31 0002011641 ferg:FergusonHomeMember us-gaap:CustomerConcentrationRiskMember us-gaap:SalesRevenueSegmentMember 2026-01-01 2026-03-31 0002011641 ferg:FergusonHomeMember us"
+        },
+        {
+          "term": "competition",
+          "offset": 17132,
+          "snippet": "ed with new or upgraded information technology systems or our ability to timely deploy new omni-channel capabilities; • decreased demand for our products as a result of operating in highly competitive industries and the impact of declines in the residential and non-residential markets and our ability to effectively manage inventory as a result; • changes in competition, including as a result of market consolidation, new entrants, vertical integration or competitors responding more quickly to emerging technologies (such as generative or agentic artificial intelligence (“AI”)); • failure of a key information technology system or process as well as payment-related risks, including exposure to fraud or theft; • privacy and pr"
+        },
+        {
+          "term": "customers",
+          "offset": 16683,
+          "snippet": " which we operate and the macroeconomic impact of factors beyond our control (including, among others, inflation/deflation, recession, labor and wage pressures, trade restrictions such as tariffs, sanctions and retaliatory countermeasures, interest rates, and geopolitical conditions); • failure to rapidly identify or effectively respond to direct and/or end customers’ wants, expectations or trends, including costs and potential problems associated with new or upgraded information technology systems or our ability to timely deploy new omni-channel capabilities; • decreased demand for our products as a result of operating in highly competitive industries and the impact of declines in the residential and non-residential ma"
+        },
+        {
+          "term": "supply chain",
+          "offset": 14846,
+          "snippet": "not historical facts and include, without limitation, statements or guidance regarding or relating to our future financial position, results of operations and growth, plans and objectives for the future including our capabilities and priorities, risks associated with changes in global and regional economic, market and political conditions, ability to manage supply chain challenges, ability to manage the impact of product price fluctuations, our financial condition and liquidity, legal or regulatory changes, and other statements concerning the success of our business and strategies. Forward-looking statements can be identified by the use of forward-looking terminology, including terms such as “believes,” “estimates,” “antic"
+        }
+      ],
+      "research_estimate_range": {
+        "type": "research_estimate_range",
+        "bear": 62,
+        "base": 79,
+        "bull": 97,
+        "unit": "fundamental_scenario_score_0_100",
+        "notes": "Qualitative scenario score from prior Finbot pack; not a price target, not advice."
+      },
+      "human_review_question": "Should Finbot continue researching FERG under the specialty contractor rollups theme, or park it until a stronger counter-evidence route is added?",
+      "invalidation_trigger": "Park or reject if the next authority source does not support the theme-specific exposure or if counter-evidence dominates the primary trace.",
+      "boundary": {
+        "research_only": true,
+        "investment_advice": false,
+        "target_price_advice": false,
+        "trade_signal": false,
+        "broker_action": false,
+        "automatic_trading": false,
+        "production_watchlist": false
+      }
+    },
+    {
+      "case_id": "OA-11-02-zs-identity-and-zero-trust-spend",
+      "ticker": "ZS",
+      "theme": "identity and zero-trust spend",
+      "status": "high_quality",
+      "claim": "ZS is a research-only case for the identity and zero-trust spend theme; this is not an investment recommendation.",
+      "five_tuple": {
+        "claim": "ZS research-only theme case: identity and zero-trust spend",
+        "evidence_file": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+        "source": "https://www.sec.gov/Archives/edgar/data/1713683/000171368326000048/zs-20260131.htm",
+        "timestamp": {
+          "filing_date": "2026-02-26",
+          "retrieved_at": "2026-05-11T00:48:09+08:00"
+        },
+        "reviewer": "codex_parent"
+      },
+      "primary_authority": {
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001713683.json",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/1713683/000171368326000048/zs-20260131.htm",
+        "form": "10-Q",
+        "filing_date": "2026-02-26",
+        "accession": "0001713683-26-000048",
+        "primary_document": "zs-20260131.htm",
+        "evidence_id": "EV-11-ZS",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001713683.json"
+      },
+      "companyfacts_metric_evidence": {
+        "revenue_fact": {
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "start": "2025-11-01",
+          "end": "2026-01-31",
+          "val": 815751000,
+          "accn": "0001713683-26-000048",
+          "fy": 2026,
+          "fp": "Q2",
+          "form": "10-Q",
+          "filed": "2026-02-26",
+          "frame": "CY2025Q4"
+        },
+        "operating_income_fact": {
+          "tag": "OperatingIncomeLoss",
+          "start": "2025-11-01",
+          "end": "2026-01-31",
+          "val": -51773000,
+          "accn": "0001713683-26-000048",
+          "fy": 2026,
+          "fp": "Q2",
+          "form": "10-Q",
+          "filed": "2026-02-26",
+          "frame": "CY2025Q4"
+        },
+        "cash_fact": {
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "end": "2026-01-31",
+          "val": 1202751000,
+          "accn": "0001713683-26-000048",
+          "fy": 2026,
+          "fp": "Q2",
+          "form": "10-Q",
+          "filed": "2026-02-26",
+          "frame": "CY2025Q4I"
+        }
+      },
+      "theme_snippets": [
+        {
+          "term": "zero trust",
+          "offset": 48544,
+          "snippet": "Inc. (\"Zscaler,\" the \"Company,\" \"we,\" \"us,\" or \"our\") is a cloud security company that developed a platform incorporating core security functionalities needed to enable fast and secure access to cloud resources based on identity, context and an organization’s policies. Our solution is a purpose-built, multi-tenant, distributed cloud platform that implements Zero Trust principles to securely connect users, devices, applications and workloads (including AI agents) without relying on traditional network-based security. We deliver our solutions using a software-as-a-service (\"SaaS\") business model and sell subscriptions to customers to access our cloud platform, together with related support services. Our ever-evolving platf"
+        },
+        {
+          "term": "identity",
+          "offset": 48404,
+          "snippet": "nsed Consolidated Financial Statements Note 1. Business and Summary of Significant Accounting Policies Description of the Business Zscaler, Inc. (\"Zscaler,\" the \"Company,\" \"we,\" \"us,\" or \"our\") is a cloud security company that developed a platform incorporating core security functionalities needed to enable fast and secure access to cloud resources based on identity, context and an organization’s policies. Our solution is a purpose-built, multi-tenant, distributed cloud platform that implements Zero Trust principles to securely connect users, devices, applications and workloads (including AI agents) without relying on traditional network-based security. We deliver our solutions using a software-as-a-service (\"SaaS\") bu"
+        },
+        {
+          "term": "security",
+          "offset": 33108,
+          "snippet": " operating expenses (including changes in sales and marketing, research and development and general and administrative expenses) and our ability to achieve, and maintain, future profitability; • market acceptance of our cloud platform; • the effects of increased competition in our markets and our ability to compete effectively; • our ability to maintain the security and availability of our cloud platform; • our ability to maintain and expand our customer base, including by attracting new customers; • our ability to develop new solutions or enhancements to our existing solutions, including artificial intelligence and machine learning capabilities, and bring them to market in a timely manner; • market acceptance of any n"
+        },
+        {
+          "term": "platform",
+          "offset": 32974,
+          "snippet": "; • our future financial performance, including our expectations regarding our revenue, cost of revenue, gross profit or gross margin, operating expenses (including changes in sales and marketing, research and development and general and administrative expenses) and our ability to achieve, and maintain, future profitability; • market acceptance of our cloud platform; • the effects of increased competition in our markets and our ability to compete effectively; • our ability to maintain the security and availability of our cloud platform; • our ability to maintain and expand our customer base, including by attracting new customers; • our ability to develop new solutions or enhancements to our existing solutions, includin"
+        }
+      ],
+      "risk_or_counter_snippets": [
+        {
+          "term": "risk",
+          "offset": 3001,
+          "snippet": " 2024-07-31 0001713683 us-gaap:CommonStockMember 2024-08-01 2025-01-31 0001713683 us-gaap:AdditionalPaidInCapitalMember 2024-08-01 2025-01-31 0001713683 us-gaap:AccumulatedOtherComprehensiveIncomeMember 2024-08-01 2025-01-31 0001713683 us-gaap:RetainedEarningsMember 2024-08-01 2025-01-31 0001713683 zs:SubscriptionAndSupportMember us-gaap:ProductConcentrationRiskMember us-gaap:SalesRevenueNetMember us-gaap:TransferredOverTimeMember 2025-08-01 2026-01-31 0001713683 zs:SubscriptionAndSupportMember us-gaap:ProductConcentrationRiskMember us-gaap:SalesRevenueNetMember us-gaap:TransferredOverTimeMember 2025-11-01 2026-01-31 0001713683 zs:SubscriptionAndSupportMember us-gaap:ProductConcentrationRiskMember us-gaap:SalesReve"
+        },
+        {
+          "term": "competition",
+          "offset": 33011,
+          "snippet": " including our expectations regarding our revenue, cost of revenue, gross profit or gross margin, operating expenses (including changes in sales and marketing, research and development and general and administrative expenses) and our ability to achieve, and maintain, future profitability; • market acceptance of our cloud platform; • the effects of increased competition in our markets and our ability to compete effectively; • our ability to maintain the security and availability of our cloud platform; • our ability to maintain and expand our customer base, including by attracting new customers; • our ability to develop new solutions or enhancements to our existing solutions, including artificial intelligence and machine le"
+        },
+        {
+          "term": "customers",
+          "offset": 6502,
+          "snippet": "CustomerConcentrationRiskMember us-gaap:SalesRevenueNetMember 2024-11-01 2025-01-31 0001713683 zs:ChannelPartnersMember us-gaap:CustomerConcentrationRiskMember us-gaap:SalesRevenueNetMember 2025-08-01 2026-01-31 0001713683 zs:ChannelPartnersMember us-gaap:CustomerConcentrationRiskMember us-gaap:SalesRevenueNetMember 2024-08-01 2025-01-31 0001713683 zs:DirectCustomersMember us-gaap:CustomerConcentrationRiskMember us-gaap:SalesRevenueNetMember 2025-11-01 2026-01-31 0001713683 zs:DirectCustomersMember us-gaap:CustomerConcentrationRiskMember us-gaap:SalesRevenueNetMember 2024-11-01 2025-01-31 0001713683 zs:DirectCustomersMember us-gaap:CustomerConcentrationRiskMember us-gaap:SalesRevenueNetMember 2025-08-01 2026-01-31 00017"
+        },
+        {
+          "term": "supply chain",
+          "offset": 259279,
+          "snippet": "cial engineering attacks (such as deep fakes), targeted phishing attacks, distributed denial-of-service attacks, advanced attacks conducted or sponsored by nation-states, AI enabled attacks or attacks targeting and exploiting AI and ML systems and applications, advanced persistent threat intrusions, ransomware and other malware, attacks on their vendors and supply chains, and theft or misuse of intellectual property or business or personal data, including by disgruntled or negligent, current or former employees or contractors. No security solution, including our cloud platform, can address all possible security threats, which are becoming increasingly frequent and sophisticated with the development of AI and ML, or block a"
+        }
+      ],
+      "research_estimate_range": {
+        "type": "research_estimate_range",
+        "bear": 62,
+        "base": 79,
+        "bull": 97,
+        "unit": "fundamental_scenario_score_0_100",
+        "notes": "Qualitative scenario score from prior Finbot pack; not a price target, not advice."
+      },
+      "human_review_question": "Should Finbot continue researching ZS under the identity and zero-trust spend theme, or park it until a stronger counter-evidence route is added?",
+      "invalidation_trigger": "Park or reject if the next authority source does not support the theme-specific exposure or if counter-evidence dominates the primary trace.",
+      "boundary": {
+        "research_only": true,
+        "investment_advice": false,
+        "target_price_advice": false,
+        "trade_signal": false,
+        "broker_action": false,
+        "automatic_trading": false,
+        "production_watchlist": false
+      }
+    },
+    {
+      "case_id": "OA-11-03-panw-security-platform-consolidation",
+      "ticker": "PANW",
+      "theme": "security platform consolidation",
+      "status": "high_quality",
+      "claim": "PANW is a research-only case for the security platform consolidation theme; this is not an investment recommendation.",
+      "five_tuple": {
+        "claim": "PANW research-only theme case: security platform consolidation",
+        "evidence_file": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+        "source": "https://www.sec.gov/Archives/edgar/data/1327567/000132756726000005/panw-20260131.htm",
+        "timestamp": {
+          "filing_date": "2026-02-18",
+          "retrieved_at": "2026-05-11T00:48:15+08:00"
+        },
+        "reviewer": "codex_parent"
+      },
+      "primary_authority": {
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001327567.json",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/1327567/000132756726000005/panw-20260131.htm",
+        "form": "10-Q",
+        "filing_date": "2026-02-18",
+        "accession": "0001327567-26-000005",
+        "primary_document": "panw-20260131.htm",
+        "evidence_id": "EV-11-PANW",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001327567.json"
+      },
+      "companyfacts_metric_evidence": {
+        "revenue_fact": {
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "start": "2025-11-01",
+          "end": "2026-01-31",
+          "val": 2594000000,
+          "accn": "0001327567-26-000005",
+          "fy": 2026,
+          "fp": "Q2",
+          "form": "10-Q",
+          "filed": "2026-02-18",
+          "frame": "CY2025Q4"
+        },
+        "operating_income_fact": {
+          "tag": "OperatingIncomeLoss",
+          "start": "2025-11-01",
+          "end": "2026-01-31",
+          "val": 397000000,
+          "accn": "0001327567-26-000005",
+          "fy": 2026,
+          "fp": "Q2",
+          "form": "10-Q",
+          "filed": "2026-02-18",
+          "frame": "CY2025Q4"
+        },
+        "cash_fact": {
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "end": "2026-01-31",
+          "val": 4158000000,
+          "accn": "0001327567-26-000005",
+          "fy": 2026,
+          "fp": "Q2",
+          "form": "10-Q",
+          "filed": "2026-02-18",
+          "frame": "CY2025Q4I"
+        }
+      },
+      "theme_snippets": [
+        {
+          "term": "platform",
+          "offset": 46211,
+          "snippet": "ial Statements (Unaudited) 1. Description of Business and Summary of Significant Accounting Policies Description of Business Palo Alto Networks, Inc. (the “Company,” “we,” “us,” or “our”), headquartered in Santa Clara, California, was incorporated in March 2005 under the laws of the State of Delaware and commenced operations in April 2005. Our cybersecurity platforms and services help enterprises, organizations, service providers, and government entities to secure their users, networks, clouds, and endpoints by delivering comprehensive cybersecurity backed by artificial intelligence and automation. Basis of Presentation and Principles of Consolidation The accompanying condensed consolidated financial statements have be"
+        },
+        {
+          "term": "consolidation",
+          "offset": 46497,
+          "snippet": "ate of Delaware and commenced operations in April 2005. Our cybersecurity platforms and services help enterprises, organizations, service providers, and government entities to secure their users, networks, clouds, and endpoints by delivering comprehensive cybersecurity backed by artificial intelligence and automation. Basis of Presentation and Principles of Consolidation The accompanying condensed consolidated financial statements have been prepared in conformity with U.S. generally accepted accounting principles (“U.S. GAAP”), consistent in all material respects with those applied in our Annual Report on Form 10-K for the fiscal year ended July 31, 2025, filed with the Securities and Exchange Commission (“SEC”) on August 2"
+        },
+        {
+          "term": "security",
+          "offset": 31896,
+          "snippet": "rformanceStockUnitsPSUsMember 2024-11-01 2025-01-31 0001327567 panw:RestrictedStockUnitsRSUsandPerformanceStockUnitsPSUsMember 2025-08-01 2026-01-31 0001327567 panw:RestrictedStockUnitsRSUsandPerformanceStockUnitsPSUsMember 2024-08-01 2025-01-31 0001327567 panw:CyberArkSoftwareLtd.Member us-gaap:SubsequentEventMember 2026-02-11 2026-02-11 0001327567 panw:KoiSecurityLtdMember us-gaap:SubsequentEventMember 2026-02-16 2026-02-16 0001327567 panw:DipakGolechhaMember 2025-11-01 2026-01-31 0001327567 panw:LeeKlarichMember 2025-11-01 2026-01-31 0001327567 panw:DipakGolechhaMember 2026-01-31 0001327567 panw:LeeKlarichMember 2026-01-31 Table of Contents UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 ____"
+        },
+        {
+          "term": "customers",
+          "offset": 55468,
+          "snippet": "tion — — 212 212 — — 238 238 Total other long-term liabilities — — 212 212 — — 238 238 Total liabilities measured at fair value $ — $ 4 $ 369 $ 373 $ — $ 4 $ 514 $ 518 As part of our acquisition of certain QRadar assets from International Business Machines Corporation (“IBM”) on August 31, 2024, we agreed to make post-closing payments to IBM contingent upon customers entering into qualified new transactions through June 30, 2028. Payments related to the contingent consideration liability commenced in the fiscal quarter ended October 2025 and are expected to continue through the fiscal quarter ending October 2028. The estimated range of undiscounted contingent consideration is between $ 0.4 billion and $ 0.6 billion. The"
+        }
+      ],
+      "risk_or_counter_snippets": [
+        {
+          "term": "risk",
+          "offset": 23232,
+          "snippet": "aap:CashEquivalentsMember 2024-08-01 2025-01-31 0001327567 us-gaap:MoneyMarketFundsMember us-gaap:CashEquivalentsMember 2025-08-01 2026-01-31 0001327567 us-gaap:MoneyMarketFundsMember us-gaap:CashEquivalentsMember 2024-11-01 2025-01-31 0001327567 us-gaap:MoneyMarketFundsMember us-gaap:CashEquivalentsMember 2025-11-01 2026-01-31 0001327567 panw:InternalCreditRiskRating1To4Member 2026-01-31 0001327567 panw:InternalCreditRiskRating1To4Member 2025-07-31 0001327567 panw:InternalCreditRiskRating5To6Member 2026-01-31 0001327567 panw:InternalCreditRiskRating5To6Member 2025-07-31 0001327567 panw:InternalCreditRiskRating7To10Member 2026-01-31 0001327567 panw:InternalCreditRiskRating7To10Member 2025-07-31 0001327567 us-gaap:F"
+        },
+        {
+          "term": "competition",
+          "offset": 90223,
+          "snippet": "ate companies and assets and expectations and intentions with respect to the assets, products and technologies that we acquire, including with respect to our acquisition of CyberArk Software Ltd. and our expectations regarding the benefits and synergies of the acquisition; expectations regarding contingent consideration obligations; statements regarding our competition, including the expanded scope of our competitors as a result of acquisitions; the timing and amount of capital expenditures and share repurchases; the effects of worldwide economic and geopolitical conditions, including but not limited to hostilities in Israel and the surrounding regions, inflation, interest rate levels, public or administration policies, t"
+        },
+        {
+          "term": "customers",
+          "offset": 55468,
+          "snippet": "tion — — 212 212 — — 238 238 Total other long-term liabilities — — 212 212 — — 238 238 Total liabilities measured at fair value $ — $ 4 $ 369 $ 373 $ — $ 4 $ 514 $ 518 As part of our acquisition of certain QRadar assets from International Business Machines Corporation (“IBM”) on August 31, 2024, we agreed to make post-closing payments to IBM contingent upon customers entering into qualified new transactions through June 30, 2028. Payments related to the contingent consideration liability commenced in the fiscal quarter ended October 2025 and are expected to continue through the fiscal quarter ending October 2028. The estimated range of undiscounted contingent consideration is between $ 0.4 billion and $ 0.6 billion. The"
+        },
+        {
+          "term": "supply chain",
+          "offset": 106243,
+          "snippet": "ndition. Significant changes in U.S. or global trade policy, including further expansion of U.S. export/imports controls and tariffs, as well as retaliatory actions by other countries, may materially and adversely affect our business. Further, economic conditions, including inflation, high interest rates, slow growth, fluctuations in foreign exchange rates, supply chain disruptions, such as a memory or other component shortage, impacts of trade regulations or international trade disputes, and other conditions, may adversely affect our results of operations and financial performance. The hostilities in Israel and the surrounding region have continued to result in economic and political uncertainty. While we have business op"
+        }
+      ],
+      "research_estimate_range": {
+        "type": "research_estimate_range",
+        "bear": 63,
+        "base": 80,
+        "bull": 98,
+        "unit": "fundamental_scenario_score_0_100",
+        "notes": "Qualitative scenario score from prior Finbot pack; not a price target, not advice."
+      },
+      "human_review_question": "Should Finbot continue researching PANW under the security platform consolidation theme, or park it until a stronger counter-evidence route is added?",
+      "invalidation_trigger": "Park or reject if the next authority source does not support the theme-specific exposure or if counter-evidence dominates the primary trace.",
+      "boundary": {
+        "research_only": true,
+        "investment_advice": false,
+        "target_price_advice": false,
+        "trade_signal": false,
+        "broker_action": false,
+        "automatic_trading": false,
+        "production_watchlist": false
+      }
+    },
+    {
+      "case_id": "OA-12-02-anet-policy-driven-china-supply-chains",
+      "ticker": "ANET",
+      "theme": "policy-driven China supply chains",
+      "status": "high_quality",
+      "claim": "ANET is a research-only case for the policy-driven China supply chains theme; this is not an investment recommendation.",
+      "five_tuple": {
+        "claim": "ANET research-only theme case: policy-driven China supply chains",
+        "evidence_file": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+        "source": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000078/anet-20260331.htm",
+        "timestamp": {
+          "filing_date": "2026-05-06",
+          "retrieved_at": "2026-05-11T00:48:20+08:00"
+        },
+        "reviewer": "codex_parent"
+      },
+      "primary_authority": {
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001596532.json",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000078/anet-20260331.htm",
+        "form": "10-Q",
+        "filing_date": "2026-05-06",
+        "accession": "0001596532-26-000078",
+        "primary_document": "anet-20260331.htm",
+        "evidence_id": "EV-12-ANET",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001596532.json"
+      },
+      "companyfacts_metric_evidence": {
+        "revenue_fact": {
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "val": 2709000000,
+          "accn": "0001596532-26-000078",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-06",
+          "frame": "CY2026Q1"
+        },
+        "operating_income_fact": {
+          "tag": "OperatingIncomeLoss",
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "val": 1157800000,
+          "accn": "0001596532-26-000078",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-06",
+          "frame": "CY2026Q1"
+        },
+        "cash_fact": {
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "end": "2026-03-31",
+          "val": 2789500000,
+          "accn": "0001596532-26-000078",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-06",
+          "frame": "CY2026Q1I"
+        }
+      },
+      "theme_snippets": [
+        {
+          "term": "supply chain",
+          "offset": 39965,
+          "snippet": "8.8 Future estimated amortization expense related to acquisition-related intangible assets is as follows (in millions): Future Amortization Expense Remainder of 2026 $ 46.0 2027 57.4 2028 54.0 2029 23.6 2030 and thereafter 92.5 Total $ 273.5 11 Table of Contents 5. Commitments and Contingencies Purchase Commitments We outsource most of our manufacturing and supply chain management operations to third-party contract manufacturers, who procure components and assemble products on our behalf. A significant portion of our purchase orders for finished goods and strategic components, including integrated circuits consigned to contract manufacturers, consists of non-cancellable commitments. Our purchase obligations also encompass "
+        },
+        {
+          "term": "China",
+          "offset": 92095,
+          "snippet": "tive data, or otherwise negatively impact our business. 23 Table of Contents Risks Related to Accounting, Compliance, Regulation and Tax • foreign investment laws and regulations, and other trade or regulatory barriers, may have a negative effect on global economic conditions, financial markets and our business; • enhanced U.S. trade restrictions, affecting China and other countries, as well as countermeasures taken by affected countries may negatively affect our business; • failure to maintain effective internal control over financial reporting could adversely affect the accuracy and timing of our financial reporting; • if our critical accounting policies are based on incorrect assumptions, our results of operation"
+        },
+        {
+          "term": "manufacturing",
+          "offset": 39947,
+          "snippet": "3 $ ( 201.5 ) $ 288.8 Future estimated amortization expense related to acquisition-related intangible assets is as follows (in millions): Future Amortization Expense Remainder of 2026 $ 46.0 2027 57.4 2028 54.0 2029 23.6 2030 and thereafter 92.5 Total $ 273.5 11 Table of Contents 5. Commitments and Contingencies Purchase Commitments We outsource most of our manufacturing and supply chain management operations to third-party contract manufacturers, who procure components and assemble products on our behalf. A significant portion of our purchase orders for finished goods and strategic components, including integrated circuits consigned to contract manufacturers, consists of non-cancellable commitments. Our purchase obligation"
+        },
+        {
+          "term": "inventory",
+          "offset": 9149,
+          "snippet": "er 2026-03-31 0001596532 us-gaap:AgencySecuritiesMember us-gaap:FairValueInputsLevel1Member 2025-12-31 0001596532 us-gaap:AgencySecuritiesMember us-gaap:FairValueInputsLevel2Member 2025-12-31 0001596532 us-gaap:AgencySecuritiesMember us-gaap:FairValueInputsLevel3Member 2025-12-31 0001596532 us-gaap:AgencySecuritiesMember 2025-12-31 0001596532 anet:EvaluationInventoryMember 2026-03-31 0001596532 anet:EvaluationInventoryMember 2025-12-31 0001596532 us-gaap:LandMember 2026-03-31 0001596532 us-gaap:LandMember 2025-12-31 0001596532 us-gaap:MachineryAndEquipmentMember 2026-03-31 0001596532 us-gaap:MachineryAndEquipmentMember 2025-12-31 0001596532 anet:ComputerHardwareandSoftwareMember 2026-03-31 0001596532 anet:ComputerHardwa"
+        }
+      ],
+      "risk_or_counter_snippets": [
+        {
+          "term": "risk",
+          "offset": 15880,
+          "snippet": "Three Months Ended March 31, 2026 and 2025 4 Condensed Consolidated Statements of Cash Flows for the Three Months Ended March 31, 2026 and 2025 5 Notes to Condensed Consolidated Financial Statements 6 Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations 15 Item 3. Quantitative and Qualitative Disclosures About Market Risk 21 Item 4. Controls and Procedures 22 PART II. OTHER INFORMATION Item 1. Legal Proceedings 22 Item 1A. Risk Factors 22 Item 2. Unregistered Sales of Equity Securities and Use of Proceeds 54 Item 3. Defaults Upon Senior Securities 54 Item 4. Mine Safety Disclosures 55 Item 5. Other Information 55 Item 6. Exhibits 56 Signatures 57 Table of Contents PART I. FI"
+        },
+        {
+          "term": "competition",
+          "offset": 53393,
+          "snippet": "oss margin will fluctuate over time and the factors influencing such expectation; our plans to invest in the business, including in research and development; market trends, including our expectation that large system vendors will continue to combine cloud-focused hardware and software solutions as an alternative to our products; our expectation of increased competition and our ability to compete effectively; our expectation that our business will continue to be subject to new and changing legal and regulatory obligations, particularly related to AI, privacy, data protection, cybersecurity and the environment; our belief that no potential litigation-related liabilities are likely to have a material adverse effect on our fi"
+        },
+        {
+          "term": "customers",
+          "offset": 37082,
+          "snippet": "ing amounts recognized during the period 2,090.7 715.7 Deferred revenue, ending balance $ 6,198.7 $ 3,088.8 Other Performance Obligations Other performance obligations totaling $ 1.2 billion as of March 31, 2026 include unbilled multi-year PCS and service contract amounts of $ 264.6 million, and $ 968.4 million of binding contractual agreements with certain customers that are primarily related to future product shipments. Revenue from Total Remaining Performance Obligations T otal revenue from our contract liabilities, deferred revenue and other performance obligations that is expected to be recognized in future periods amounts to $ 7.7 billion as of March 31, 2026 . A pproximately 91 % of this future revenue is expecte"
+        },
+        {
+          "term": "supply chain",
+          "offset": 39965,
+          "snippet": "8.8 Future estimated amortization expense related to acquisition-related intangible assets is as follows (in millions): Future Amortization Expense Remainder of 2026 $ 46.0 2027 57.4 2028 54.0 2029 23.6 2030 and thereafter 92.5 Total $ 273.5 11 Table of Contents 5. Commitments and Contingencies Purchase Commitments We outsource most of our manufacturing and supply chain management operations to third-party contract manufacturers, who procure components and assemble products on our behalf. A significant portion of our purchase orders for finished goods and strategic components, including integrated circuits consigned to contract manufacturers, consists of non-cancellable commitments. Our purchase obligations also encompass "
+        }
+      ],
+      "research_estimate_range": {
+        "type": "research_estimate_range",
+        "bear": 63,
+        "base": 80,
+        "bull": 98,
+        "unit": "fundamental_scenario_score_0_100",
+        "notes": "Qualitative scenario score from prior Finbot pack; not a price target, not advice."
+      },
+      "human_review_question": "Should Finbot continue researching ANET under the policy-driven China supply chains theme, or park it until a stronger counter-evidence route is added?",
+      "invalidation_trigger": "Park or reject if the next authority source does not support the theme-specific exposure or if counter-evidence dominates the primary trace.",
+      "boundary": {
+        "research_only": true,
+        "investment_advice": false,
+        "target_price_advice": false,
+        "trade_signal": false,
+        "broker_action": false,
+        "automatic_trading": false,
+        "production_watchlist": false
+      }
+    },
+    {
+      "case_id": "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "ticker": "PLTR",
+      "theme": "source-system gaps to enable next",
+      "status": "high_quality",
+      "claim": "PLTR is a research-only case for the source-system gaps to enable next theme; this is not an investment recommendation.",
+      "five_tuple": {
+        "claim": "PLTR research-only theme case: source-system gaps to enable next",
+        "evidence_file": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+        "source": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000028/pltr-20260331.htm",
+        "timestamp": {
+          "filing_date": "2026-05-05",
+          "retrieved_at": "2026-05-11T00:48:24+08:00"
+        },
+        "reviewer": "codex_parent"
+      },
+      "primary_authority": {
+        "submissions_url": "https://data.sec.gov/submissions/CIK0001321655.json",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000028/pltr-20260331.htm",
+        "form": "10-Q",
+        "filing_date": "2026-05-05",
+        "accession": "0001321655-26-000028",
+        "primary_document": "pltr-20260331.htm",
+        "evidence_id": "EV-12-PLTR",
+        "companyfacts_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001321655.json"
+      },
+      "companyfacts_metric_evidence": {
+        "revenue_fact": {
+          "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "val": 1632583000,
+          "accn": "0001321655-26-000028",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-05",
+          "frame": "CY2026Q1"
+        },
+        "operating_income_fact": {
+          "tag": "OperatingIncomeLoss",
+          "start": "2026-01-01",
+          "end": "2026-03-31",
+          "val": 753998000,
+          "accn": "0001321655-26-000028",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-05",
+          "frame": "CY2026Q1"
+        },
+        "cash_fact": {
+          "tag": "CashAndCashEquivalentsAtCarryingValue",
+          "end": "2026-03-31",
+          "val": 2291631000,
+          "accn": "0001321655-26-000028",
+          "fy": 2026,
+          "fp": "Q1",
+          "form": "10-Q",
+          "filed": "2026-05-05",
+          "frame": "CY2026Q1I"
+        }
+      },
+      "theme_snippets": [
+        {
+          "term": "artificial intelligence",
+          "offset": 66538,
+          "snippet": "tions regarding litigation and legal and regulatory matters; • our expectations regarding our ability to meet existing performance obligations and maintain the operability of our products; • our expectations regarding the effects of existing and developing laws and regulations, including with respect to taxation, privacy, data protection, cybersecurity, and artificial intelligence (“AI”); • our expectations regarding new and evolving markets, such as AI; • our ability to develop and protect our brand; • our ability to maintain the security and availability of our platforms, including preventing and mitigating any product bugs or defects, as well as any cybersecurity or similar incidents; • our expectations and management of future gr"
+        },
+        {
+          "term": "platform",
+          "offset": 27760,
+          "snippet": "gral part of these condensed consolidated financial statements. 7 Table of contents Palantir Technologies Inc. Notes to Unaudited Condensed Consolidated Financial Statements 1. Organization Palantir Technologies Inc. (including its subsidiaries, “Palantir” or the “Company”) was incorporated in Delaware on May 6, 2003. The Company builds and deploys software platforms that serve as the central operating systems for its customers. 2 . Significant Accounting Policies Basis of Presentation and Consolidation The accompanying unaudited condensed consolidated financial statements have been prepared in accordance with United States (“U.S.”) generally accepted accounting principles (“GAAP”) and applicable rules and regulations "
+        },
+        {
+          "term": "software",
+          "offset": 27751,
+          "snippet": "e an integral part of these condensed consolidated financial statements. 7 Table of contents Palantir Technologies Inc. Notes to Unaudited Condensed Consolidated Financial Statements 1. Organization Palantir Technologies Inc. (including its subsidiaries, “Palantir” or the “Company”) was incorporated in Delaware on May 6, 2003. The Company builds and deploys software platforms that serve as the central operating systems for its customers. 2 . Significant Accounting Policies Basis of Presentation and Consolidation The accompanying unaudited condensed consolidated financial statements have been prepared in accordance with United States (“U.S.”) generally accepted accounting principles (“GAAP”) and applicable rules and reg"
+        },
+        {
+          "term": "commercial",
+          "offset": 11877,
+          "snippet": "RSMember 2026-01-01 2026-03-31 0001321655 us-gaap:StockAppreciationRightsSARSMember 2025-01-01 2025-03-31 0001321655 us-gaap:OperatingSegmentsMember pltr:GovernmentOperatingSegmentMember 2026-01-01 2026-03-31 0001321655 us-gaap:OperatingSegmentsMember pltr:GovernmentOperatingSegmentMember 2025-01-01 2025-03-31 0001321655 us-gaap:OperatingSegmentsMember pltr:CommercialOperatingSegmentMember 2026-01-01 2026-03-31 0001321655 us-gaap:OperatingSegmentsMember pltr:CommercialOperatingSegmentMember 2025-01-01 2025-03-31 0001321655 us-gaap:OperatingSegmentsMember 2026-01-01 2026-03-31 0001321655 us-gaap:OperatingSegmentsMember 2025-01-01 2025-03-31 0001321655 us-gaap:MaterialReconcilingItemsMember 2026-01-01 2026-03-31 0001321655"
+        }
+      ],
+      "risk_or_counter_snippets": [
+        {
+          "term": "risk",
+          "offset": 3167,
+          "snippet": "2025-03-31 0001321655 us-gaap:AdditionalPaidInCapitalMember 2025-03-31 0001321655 us-gaap:AccumulatedOtherComprehensiveIncomeMember 2025-03-31 0001321655 us-gaap:RetainedEarningsMember 2025-03-31 0001321655 us-gaap:ParentMember 2025-03-31 0001321655 us-gaap:NoncontrollingInterestMember 2025-03-31 0001321655 2025-03-31 0001321655 us-gaap:CustomerConcentrationRiskMember pltr:CustomerIMember pltr:AccountsReceivableBenchmarkMember 2026-01-01 2026-03-31 0001321655 us-gaap:CustomerConcentrationRiskMember pltr:CustomerIMember pltr:AccountsReceivableBenchmarkMember 2025-01-01 2025-12-31 0001321655 2025-04-01 2026-03-31 0001321655 2026-04-01 2026-03-31 0001321655 2026-04-01 srt:MinimumMember 2026-03-31 0001321655 2026-04-01"
+        },
+        {
+          "term": "competition",
+          "offset": 123376,
+          "snippet": "sonnel and resources to meet customer demand; • we may be unable to successfully build, expand, and deploy our marketing and sales organization; • our platforms are complex and may have a lengthy implementation process; • exclusive arrangements or unique terms with customers or partners may result in significant risks or liabilities to us; • we face intense competition in our markets; • our platforms must operate with third-party products and services; • the market for our platforms and services may develop more slowly than we expect; 33 Table of contents • we may be unable to maintain or properly manage our culture as we grow; • we may not enter into relationships with potential customers if we consider their activities "
+        },
+        {
+          "term": "customers",
+          "offset": 27822,
+          "snippet": ". 7 Table of contents Palantir Technologies Inc. Notes to Unaudited Condensed Consolidated Financial Statements 1. Organization Palantir Technologies Inc. (including its subsidiaries, “Palantir” or the “Company”) was incorporated in Delaware on May 6, 2003. The Company builds and deploys software platforms that serve as the central operating systems for its customers. 2 . Significant Accounting Policies Basis of Presentation and Consolidation The accompanying unaudited condensed consolidated financial statements have been prepared in accordance with United States (“U.S.”) generally accepted accounting principles (“GAAP”) and applicable rules and regulations of the Securities and Exchange Commission (“SEC”) regarding int"
+        },
+        {
+          "term": "supply chain",
+          "offset": 240907,
+          "snippet": "ble to a heightened risk of, and have been exposed to, cybersecurity attacks, phishing attacks, supply-chain attacks, viruses, malware, ransomware, hacking or similar breaches and incidents, including increasingly sophisticated threats, from nation-state actors or affiliated actors, including attacks that could materially disrupt our systems and operations, supply chain, and ability to produce, sell, and distribute our products and services. While we have security measures in place to protect our information and our customers’ information and to prevent data loss and other security breaches and incidents, we have not always been able to do so and there can be no assurance that in the future we will be able to anticipate or"
+        }
+      ],
+      "research_estimate_range": {
+        "type": "research_estimate_range",
+        "bear": 64,
+        "base": 81,
+        "bull": 99,
+        "unit": "fundamental_scenario_score_0_100",
+        "notes": "Qualitative scenario score from prior Finbot pack; not a price target, not advice."
+      },
+      "human_review_question": "Should Finbot continue researching PLTR under the source-system gaps to enable next theme, or park it until a stronger counter-evidence route is added?",
+      "invalidation_trigger": "Park or reject if the next authority source does not support the theme-specific exposure or if counter-evidence dominates the primary trace.",
+      "boundary": {
+        "research_only": true,
+        "investment_advice": false,
+        "target_price_advice": false,
+        "trade_signal": false,
+        "broker_action": false,
+        "automatic_trading": false,
+        "production_watchlist": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "schema": "paperclip.skill_mcp_readiness_matrix.v1",
+  "generated_at": "2026-05-11T00:34:15+08:00",
+  "controller": "codex_parent",
+  "source_docs": [
+    "/vol1/1000/projects/toyresearch/docs/PAPERCLIP_SKILLS_MCP_RUNTIME_RECONCILED_20260506.md",
+    "/tmp/ChatgptREST-review/paperclip-review-20260510/PRO_ANSWER_DIGEST.md",
+    "/tmp/ChatgptREST-review/paperclip-review-20260510/NEXT_EXECUTION_PLAN.md"
+  ],
+  "policy": {
+    "endpoint_only_is_verified_workflow": false,
+    "fixture_only_is_verified_workflow": false,
+    "native_config_mutation_allowed": false,
+    "quarantined_providers_no_production_use": [
+      "MiniMax",
+      "DeepSeek",
+      "Tavily",
+      "Brave"
+    ]
+  },
+  "tiers": [
+    {
+      "tier": "verified_workflow",
+      "items": [
+        {
+          "name": "chatgptrest_mcp_for_advisory_review",
+          "evidence": "Prior Pro consultation through ChatgptREST was completed and archived, but it remains advisory only.",
+          "limitations": "Not an autonomous acceptance gate; malformed Pro JSON must not be silently normalized."
+        },
+        {
+          "name": "gitnexus_read_only_code_intelligence",
+          "evidence": "Registered in runtime MCP configs and used as code intelligence only.",
+          "limitations": "Must not replace source-file inspection or validator evidence."
+        }
+      ]
+    },
+    {
+      "tier": "candidate",
+      "items": [
+        {
+          "name": "Readwise",
+          "reason": "Potential research intake source; needs connector workflow proof and privacy review."
+        },
+        {
+          "name": "Zotero",
+          "reason": "Potential literature/reference store; needs local API proof and citation workflow validation."
+        },
+        {
+          "name": "Alpaca",
+          "reason": "Market data candidate; read-only only, no broker/trading action."
+        },
+        {
+          "name": "Daloopa",
+          "reason": "Fundamental KPI candidate; requires source-link verification and cost boundary."
+        },
+        {
+          "name": "Quartr",
+          "reason": "First-party IR data candidate; requires workflow proof and citation capture."
+        },
+        {
+          "name": "Binance",
+          "reason": "Public crypto market data candidate; Finbot currently not authorized for trading signals."
+        },
+        {
+          "name": "Superpowers skills",
+          "reason": "Workflow skills available locally; they guide planning/execution but are not MCP tools."
+        }
+      ]
+    },
+    {
+      "tier": "blocked_or_quarantined",
+      "items": [
+        {
+          "name": "MiniMax",
+          "reason": "Quarantined/no-production-use in current Paperclip goal; no rotation available."
+        },
+        {
+          "name": "DeepSeek",
+          "reason": "Quarantined/no-production-use in current Paperclip goal; no rotation available."
+        },
+        {
+          "name": "Tavily",
+          "reason": "Quarantined/no-production-use in current Paperclip goal; no rotation available."
+        },
+        {
+          "name": "Brave",
+          "reason": "Quarantined/no-production-use in current Paperclip goal; no rotation available."
+        }
+      ]
+    }
+  ],
+  "acceptance": {
+    "status": "ready_for_agent_readback",
+    "must_reject": [
+      "endpoint-only verified workflow claims",
+      "fixture-only production readiness claims",
+      "provider quarantine bypass",
+      "native runtime/MCP/skill config mutation without Governance approval and rollback"
+    ]
+  }
+}

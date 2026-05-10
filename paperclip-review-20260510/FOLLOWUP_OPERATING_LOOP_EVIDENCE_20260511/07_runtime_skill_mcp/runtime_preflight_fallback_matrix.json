@@ -1,0 +1,92 @@
+{
+  "schema": "paperclip.runtime_preflight_fallback_matrix.v1",
+  "generated_at": "2026-05-11T00:34:15+08:00",
+  "controller": "codex_parent",
+  "source_docs": [
+    "/vol1/1000/projects/toyresearch/docs/PAPERCLIP_RUNTIME_INVENTORY_20260506.md",
+    "/vol1/1000/projects/toyresearch/docs/PAPERCLIP_SKILLS_MCP_RUNTIME_RECONCILED_20260506.md",
+    "/vol1/1000/projects/toyresearch/docs/LOCAL_MODEL_HANDOVER_20260506.md"
+  ],
+  "preflight_policy": {
+    "provider_key_rotation_is_goal_blocker": false,
+    "quarantined_provider_production_use_allowed": false,
+    "local_llm_production_route_allowed": false,
+    "cli_help_or_python_version_counts_as_runtime_pass": false,
+    "fallback_requires": [
+      "runtime identity",
+      "scope boundary",
+      "failure mode",
+      "evidence path",
+      "governance decision"
+    ]
+  },
+  "effective_pool": [
+    {
+      "runtime": "codex1",
+      "role": "controller, architecture, critical implementation and verification",
+      "status": "active_controller"
+    },
+    {
+      "runtime": "claudekimi",
+      "role": "complex orchestration with bounded task contract",
+      "status": "candidate_active_when_quota_available"
+    },
+    {
+      "runtime": "claudeds",
+      "role": "coding/reasoning fallback",
+      "status": "candidate_no_production_claim"
+    },
+    {
+      "runtime": "kimicode",
+      "role": "Paperclip native ACP/Kimi candidate",
+      "status": "candidate_smoke_before_route"
+    }
+  ],
+  "excluded_or_quarantined": [
+    {
+      "runtime": "claudemi",
+      "reason": "User stated credits exhausted; do not consider effective runtime."
+    },
+    {
+      "runtime": "claudegac",
+      "reason": "User stated credits exhausted; do not consider effective runtime."
+    },
+    {
+      "runtime": "claudeminmax",
+      "reason": "Provider quarantined/no-production-use in current goal despite historical value for repetitive work."
+    },
+    {
+      "runtime": "HomePC Ollama",
+      "reason": "Research-only benchmark lane; not production Paperclip runtime."
+    }
+  ],
+  "fallback_matrix": [
+    {
+      "task": "controller-critical implementation",
+      "primary": "codex1",
+      "fallback": "none_without_user_or_governance_reassignment",
+      "evidence_required": "commit or artifact plus validator"
+    },
+    {
+      "task": "bounded long-form research",
+      "primary": "codex1_or_claudekimi",
+      "fallback": "claudeds_or_kimicode_candidate",
+      "evidence_required": "task contract, output artifact, readback"
+    },
+    {
+      "task": "local digest/extraction experiments",
+      "primary": "HomePC Ollama research-only",
+      "fallback": "skip_and_record_blocker_if_unreachable",
+      "evidence_required": "benchmark rows, scorer summary, no-production-route decision"
+    }
+  ],
+  "acceptance": {
+    "status": "ready_for_agent_readback",
+    "must_reject": [
+      "runtime pass based only on cli --help",
+      "runtime pass based only on python --version",
+      "local model promotion to production route",
+      "quarantined provider use"
+    ]
+  }
+}

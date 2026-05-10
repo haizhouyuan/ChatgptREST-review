@@ -1,0 +1,75 @@
+{
+  "schema": "paperclip.finbot.path_to_10_hard_reviewed_5_high_quality.v1",
+  "generated_at": "2026-05-11T00:32:19+08:00",
+  "reviewer": "Worker A / Codex",
+  "current_state": {
+    "hard_reviewed_cases": 5,
+    "high_quality_cases": 0,
+    "parked_cases": 3,
+    "rejected_cases": 2,
+    "research_only_boundary_preserved": true
+  },
+  "next_hard_review_batch": [
+    {
+      "case_id": "OA-12-01-tsm-a-share-official-disclosure-backlog",
+      "expected_evidence_id": "EV-12-TSM",
+      "reason": "Top/human-review queue case with ticker-aligned evidence ID."
+    },
+    {
+      "case_id": "OA-11-01-crwd-ai-attack-surface",
+      "expected_evidence_id": "EV-11-CRWD",
+      "reason": "Top/human-review queue case with ticker-aligned evidence ID."
+    },
+    {
+      "case_id": "OA-11-02-zs-identity-and-zero-trust-spend",
+      "expected_evidence_id": "EV-11-ZS",
+      "reason": "Top/human-review queue case with ticker-aligned evidence ID."
+    },
+    {
+      "case_id": "OA-10-03-ferg-specialty-contractor-rollups",
+      "expected_evidence_id": "EV-10-FERG",
+      "reason": "Top/human-review queue case with ticker-aligned evidence ID."
+    },
+    {
+      "case_id": "OA-02-01-vrt-data-center-power-bottleneck",
+      "expected_evidence_id": "EV-02-VRT",
+      "reason": "Earlier alpha-qualified case with ticker-aligned evidence ID and primary-evidence gap to test."
+    }
+  ],
+  "hard_review_acceptance_gate": [
+    "Claim is one conclusion unit.",
+    "Evidence file and line or trace point are inspectable.",
+    "Source is named with status and authority level.",
+    "Timestamp comes from the source artifact or manifest.",
+    "Reviewer records park/reject/continue-research decision."
+  ],
+  "high_quality_acceptance_gate": [
+    "Ticker and theme align with the evidence ID.",
+    "At least one primary or authority source is workflow_verified or otherwise explicitly enabled.",
+    "The exact primary-source artifact and trace point are available, not just a summary evidence ID.",
+    "Counter-evidence or invalidation trigger is recorded.",
+    "Output stays research-only and contains no advice, trade signal, target-price advice, broker action, automatic trading, or production watchlist."
+  ],
+  "promotion_candidates_after_rework": [
+    "OA-12-03-pltr-source-system-gaps-to-enable-next",
+    "OA-12-02-anet-policy-driven-china-supply-chains",
+    "OA-12-01-tsm-a-share-official-disclosure-backlog",
+    "OA-11-01-crwd-ai-attack-surface",
+    "OA-11-02-zs-identity-and-zero-trust-spend"
+  ],
+  "blocked_until": [
+    "Raw evidence rows or source cards expose exact primary-source paths, trace points, and timestamps.",
+    "Candidate-to-enable source routes are separated from authority evidence.",
+    "Rejected score-driven cases are prevented from reappearing without new evidence IDs."
+  ],
+  "target_label_after_next_batch_if_successful": "10_hard_reviewed_0_to_5_high_quality_research_only",
+  "non_goals": [
+    "production_ready_claim",
+    "investment_advice",
+    "target_price_advice",
+    "trade_signal",
+    "broker_action",
+    "automatic_trading",
+    "production_watchlist"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "paperclip.planning_followup_queue.v1",
+  "generated_at": "2026-05-11T00:34:15+08:00",
+  "controller": "codex_parent",
+  "status": "ready_for_agent_readback",
+  "boundary": {
+    "research_only": true,
+    "investment_advice": false,
+    "target_price_advice": false,
+    "trade_signal": false,
+    "broker_action": false,
+    "automatic_trading": false,
+    "production_watchlist": false
+  },
+  "user_decisions": [
+    {
+      "id": "PLA-FIN-001",
+      "case_id": "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "decision": "continue_research_or_park",
+      "reason": "Summary-level source binding only."
+    },
+    {
+      "id": "PLA-FIN-002",
+      "case_id": "OA-12-02-anet-policy-driven-china-supply-chains",
+      "decision": "continue_research_or_retire_theme",
+      "reason": "Candidate source routes and no exact primary trace."
+    },
+    {
+      "id": "PLA-FIN-003",
+      "case_id": "OA-11-03-panw-security-platform-consolidation",
+      "decision": "continue_research_or_park",
+      "reason": "No trace-bound primary issuer evidence."
+    }
+  ],
+  "evidence_gaps": [
+    {
+      "id": "PLA-GAP-001",
+      "case_id": "OA-12-03-pltr-source-system-gaps-to-enable-next",
+      "gap": "Bind EV-12-PLTR to exact primary filing or authority artifact path, source timestamp and trace point.",
+      "owner": "Finbot Research"
+    },
+    {
+      "id": "PLA-GAP-002",
+      "case_id": "OA-12-02-anet-policy-driven-china-supply-chains",
+      "gap": "Add authority source for the policy/supply-chain claim and at least one counter-source.",
+      "owner": "Finbot Research"
+    },
+    {
+      "id": "PLA-GAP-003",
+      "case_id": "OA-11-03-panw-security-platform-consolidation",
+      "gap": "Add issuer filing/transcript trace and refutation route.",
+      "owner": "Finbot Research"
+    },
+    {
+      "id": "PLA-GAP-004",
+      "case_id": "OA-X139-pltr-china-anti-dumping-policy-exposure",
+      "gap": "Rejected evidence mismatch; do not reuse EV-05-CROX.",
+      "owner": "Finbot Research"
+    },
+    {
+      "id": "PLA-GAP-005",
+      "case_id": "OA-X140-rddt-boring-infrastructure-rollup-alpha",
+      "gap": "Rejected evidence mismatch; do not reuse EV-05-ELF.",
+      "owner": "Finbot Research"
+    }
+  ],
+  "agent_followups": [
+    {
+      "id": "PLA-ACT-001",
+      "action": "Expand Finbot hard review to 10 cases and require exact five-tuples.",
+      "done_criteria": "04_finbot/finbot_hard_review_matrix_v2.json exists and validates."
+    },
+    {
+      "id": "PLA-ACT-002",
+      "action": "Promote only cases with primary/authority evidence, counter-evidence and human-review action.",
+      "done_criteria": "04_finbot/finbot_high_quality_candidate_register.md names at least 5 high-quality candidates or explains why not."
+    },
+    {
+      "id": "PLA-ACT-003",
+      "action": "Keep rejected cases out of top opportunity surfaces unless rebuilt with new aligned evidence.",
+      "done_criteria": "Rejected register references OA-X139 and OA-X140 as non-reusable by score alone."
+    }
+  ]
+}
