@@ -1,0 +1,9 @@
+id	priority	lane	task	evidence_input	acceptance_gate	owner	status
+Q1	P0	Governance	Define false-pass gates for next operating-loop replay	PRO_ANSWER_DIGEST.md; CODEX2_INDEPENDENT_ASSESSMENT.md	Negative fixtures reject endpoint-only, fixture-only, advice/trading, target-price-as-advice, controller-only evidence	Governance Company	ready
+Q2	P0	Finbot Research	Select small case set and enforce claim-level primary evidence	FINBOT/history/*; CURRENT_STATE/*	No Tier A/high case without primary/authority evidence and contradiction/risk QA	Finbot Research	ready
+Q3	P0	Planning	Convert Finbot cases into human follow-up queue	Finbot casebook/current state	Each item has user decision, evidence gap, or agent follow-up action	Planning Work Assistant	ready
+Q4	P0	Finbot Engineering	Run capability lab validators against no-advice/no-trading and readiness categories	CODE/paperclip_finbot_engineering_company/tools/*	Hard validator fails false readiness and advice/trading outputs	Finbot Engineering	ready
+Q5	P1	Learning Research	Review mock Graphiti and memory evidence boundary	CODE/paperclip_company_os/arm_graphiti/*	Mock/challenger evidence cannot promote to authority without Governance approval	Learning Research	ready
+Q6	P1	Runtime/Governance	Verify live issue/run evidence readback for in-scope lanes	CURRENT_STATE/15_live_paperclip_readback.json	Succeeding run IDs and agent-authored comments match accepted evidence	Governance Company	ready
+Q7	P1	Public Review	Publish concise follow-up operating-loop evidence packet	This package plus next live evidence	Package contains behavior evidence, not only historical inventory	Codex2	blocked_on_next_run
+Q8	P2	ChatGPTREST	Keep Pro consultation route regression tests	Incident report and successful quick_ask jobs	not-DeepResearch prompt cannot compile to deep_research=true	ChatGPTREST maintainer	done_for_current_incident
