@@ -1,19 +1,19 @@
 {
   "schema": "paperclip.codex_parent_8h.validation_result.v1",
-  "generated_at": "2026-05-11T02:30:17+08:00",
+  "generated_at": "2026-05-11T04:29:12+08:00",
   "controller": "codex_parent",
   "status": "fail",
   "require_8h": true,
   "start_at": "2026-05-11T00:27:10+08:00",
-  "elapsed_seconds": 7387,
+  "elapsed_seconds": 14522,
   "errors": [
     {
       "code": "wall_clock_below_8h",
-      "detail": "7387"
+      "detail": "14522"
     },
     {
       "code": "insufficient_hourly_progress_audits",
-      "detail": "3"
+      "detail": "5"
     }
   ],
   "warnings": [],
@@ -25,11 +25,17 @@
     "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0001.md",
     "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0002.md",
     "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0003.md",
-    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0004.md"
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0004.md",
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0005.md",
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0006.md",
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0007.md",
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_loop_0008.md"
   ],
   "progress_audits": [
     "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/02_progress_audits/progress_audit_loop_0000.md",
     "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/02_progress_audits/progress_audit_loop_0002.md",
-    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/02_progress_audits/progress_audit_loop_0004.md"
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/02_progress_audits/progress_audit_loop_0004.md",
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/02_progress_audits/progress_audit_loop_0006.md",
+    "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/02_progress_audits/progress_audit_loop_0008.md"
   ]
 }

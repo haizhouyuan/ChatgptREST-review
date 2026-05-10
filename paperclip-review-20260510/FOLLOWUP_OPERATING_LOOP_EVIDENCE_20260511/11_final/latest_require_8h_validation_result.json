@@ -3,11 +3,11 @@
   "errors": [
     {
       "code": "wall_clock_below_8h",
-      "detail": "7309"
+      "detail": "14510"
     },
     {
       "code": "insufficient_hourly_progress_audits",
-      "detail": "3"
+      "detail": "5"
     }
   ],
   "warnings": [],
