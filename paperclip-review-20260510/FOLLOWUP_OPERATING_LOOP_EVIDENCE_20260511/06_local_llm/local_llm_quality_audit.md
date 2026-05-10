@@ -14,7 +14,8 @@ However, this is not a production-route pass:
   models because content went into the `thinking` field.
 - Corrected run with `think:false` improved strict JSON results to `22 / 36`.
 - JSON-mode run with `num_predict=800` improved strict JSON results to `33 / 36`.
-- `3 / 36` rows still require parser/scorer hardening before any automation use.
+- Targeted compact-schema repair fixed the remaining `3 / 36` rows to `3 / 3`
+  strict JSON.
 
 ## Evidence
 
@@ -25,6 +26,9 @@ However, this is not a production-route pass:
 - Prior JSON-mode 220-token run:
   `/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_summary_json_mode_220_tokens.json`
   `/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_rows_json_mode_220_tokens.jsonl`
+- Targeted repair:
+  `/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_targeted_json_repair_summary.json`
+  `/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_targeted_json_repair_rows.jsonl`
 - Preserved initial thinking-trap evidence:
   `/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_summary_initial_thinking_trap.json`
   `/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_rows_initial_thinking_trap.jsonl`
@@ -33,8 +37,9 @@ However, this is not a production-route pass:
 
 Status: `research_only_continue`.
 
-Allowed next step: improve prompt/scorer/parser around the remaining 3 non-strict
-rows and rerun a controlled benchmark.
+Allowed next step: keep compact schema / JSON mode as the only future local-model
+structured-output benchmark path, then run larger samples before any production
+proposal.
 
 Forbidden next step: production route mutation, Finbot/Planning/Governance
 authority use, memory authority promotion, or autonomous task execution.

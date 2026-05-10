@@ -16,9 +16,9 @@ not a new Pro request and not a production-ready claim.
   research-only cases.
 - Planning converted Finbot outputs into supervised follow-up decisions and
   evidence actions.
-- Local LLM research ran repeated 36-row HomePC benchmarks and preserved the
-  remaining quality gap: current best strict JSON result is `33 / 36`, so no
-  production route is allowed.
+- Local LLM research ran repeated 36-row HomePC benchmarks. Current best full
+  run is `33 / 36` strict JSON and targeted compact-schema repair fixed the
+  remaining `3 / 3`; no production route is allowed.
 - Memory deltas remain candidate-only/no-write.
 
 ## Key Evidence Paths

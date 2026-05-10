@@ -1,18 +1,13 @@
 {
   "schema": "paperclip.codex_parent_8h.validation_result.v1",
-  "generated_at": "2026-05-11T01:05:29+08:00",
+  "generated_at": "2026-05-11T01:08:00+08:00",
   "controller": "codex_parent",
   "status": "pass",
   "require_8h": false,
   "start_at": "2026-05-11T00:27:10+08:00",
-  "elapsed_seconds": 2299,
+  "elapsed_seconds": 2450,
   "errors": [],
-  "warnings": [
-    {
-      "code": "local_llm_json_quality_gap",
-      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_summary.json"
-    }
-  ],
+  "warnings": [],
   "heartbeats": [
     "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_0000.md",
     "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/01_heartbeats/heartbeat_0030.md",

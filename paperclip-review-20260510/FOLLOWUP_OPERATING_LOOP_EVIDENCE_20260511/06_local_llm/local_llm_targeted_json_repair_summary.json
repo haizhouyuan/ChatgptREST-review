@@ -1,0 +1,11 @@
+{
+  "schema": "paperclip.local_llm_targeted_json_repair.v1",
+  "generated_at": "2026-05-11T01:07:25+08:00",
+  "controller": "codex_parent",
+  "status": "pass",
+  "original_gap_count": 3,
+  "repaired_strict_json_count": 3,
+  "production_route_allowed": false,
+  "authority_memory_allowed": false,
+  "rows_path": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_targeted_json_repair_rows.jsonl"
+}
