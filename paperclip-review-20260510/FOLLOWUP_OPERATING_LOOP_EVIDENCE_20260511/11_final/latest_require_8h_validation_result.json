@@ -1,0 +1,20 @@
+{
+  "status": "fail",
+  "errors": [
+    {
+      "code": "wall_clock_below_8h",
+      "detail": "1732"
+    },
+    {
+      "code": "insufficient_hourly_progress_audits",
+      "detail": "1"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "local_llm_json_quality_gap",
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_summary.json"
+    }
+  ],
+  "returncode": 1
+}

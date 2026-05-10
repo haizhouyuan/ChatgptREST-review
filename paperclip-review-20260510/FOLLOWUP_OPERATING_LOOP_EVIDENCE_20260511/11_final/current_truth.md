@@ -19,8 +19,8 @@ operation. The goal is still active.
 - Finbot has 10 hard-reviewed research-only cases.
 - Finbot has 6 high-quality research-only cases after primary-authority repair.
 - Planning has an actionable follow-up queue and research campaign.
-- Local LLM Research completed a 36-row HomePC Ollama benchmark and kept the
-  result research-only.
+- Local LLM Research completed repeated 36-row HomePC Ollama benchmarks. The
+  current best run is `33 / 36` strict JSON; the result remains research-only.
 - Skill/MCP, Runtime, Learning Research, Local LLM and Labebe carrier gaps have
   live accepted Paperclip run/comment/readback evidence.
 - Memory deltas are candidate-only/no-write.

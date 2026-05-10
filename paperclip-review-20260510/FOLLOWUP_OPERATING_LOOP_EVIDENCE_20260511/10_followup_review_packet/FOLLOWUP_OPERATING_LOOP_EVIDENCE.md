@@ -16,8 +16,9 @@ not a new Pro request and not a production-ready claim.
   research-only cases.
 - Planning converted Finbot outputs into supervised follow-up decisions and
   evidence actions.
-- Local LLM research ran a 36-row HomePC benchmark and preserved a quality gap:
-  corrected strict JSON result is `22 / 36`, so no production route is allowed.
+- Local LLM research ran repeated 36-row HomePC benchmarks and preserved the
+  remaining quality gap: current best strict JSON result is `33 / 36`, so no
+  production route is allowed.
 - Memory deltas remain candidate-only/no-write.
 
 ## Key Evidence Paths
@@ -53,3 +54,11 @@ Current status: `P1_CORE_PASS_CONTINUE_8H_WORK_STEALING`.
 
 Goal completion remains forbidden until the 8-hour wall-clock rule is satisfied
 and this packet is refreshed with final anti-idle and false-pass audits.
+
+## Loop Refresh 0000
+
+Refreshed: 2026-05-11T00:55:39+08:00
+
+## Loop Refresh 0000
+
+Refreshed: 2026-05-11T00:56:02+08:00

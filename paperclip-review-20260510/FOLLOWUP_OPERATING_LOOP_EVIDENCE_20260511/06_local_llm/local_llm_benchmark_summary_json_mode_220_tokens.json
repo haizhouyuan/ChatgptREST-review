@@ -1,6 +1,6 @@
 {
   "schema": "paperclip.local_llm_research_benchmark.v1",
-  "generated_at": "2026-05-11T01:04:45+08:00",
+  "generated_at": "2026-05-11T00:59:52+08:00",
   "controller": "codex_parent",
   "status": "pass",
   "production_route_allowed": false,
@@ -25,7 +25,7 @@
   ],
   "row_count": 36,
   "completed_count": 36,
-  "strict_json_count": 33,
+  "strict_json_count": 22,
   "rows_path": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/local_llm_benchmark_rows.jsonl",
   "notes": [
     "This is a research-only benchmark for future automation routing decisions.",
