@@ -12,7 +12,7 @@
     "phase7_operator_review": "pass",
     "phase8_controlled_autonomy": "pass"
   },
-  "public_review_commit": "122ca7a4b69b",
+  "public_review_commit": "branch_head_after_sync",
   "boundaries": {
     "finbot_research_only": true,
     "investment_advice": false,

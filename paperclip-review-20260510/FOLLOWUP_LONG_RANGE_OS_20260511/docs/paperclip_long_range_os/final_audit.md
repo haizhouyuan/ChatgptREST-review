@@ -22,7 +22,7 @@ Status: `phase0_to_phase8_pass`
 
 - Repo: `/tmp/ChatgptREST-review`
 - Branch: `review-20260506-085232`
-- Commit: `122ca7a4b69b`
+- Commit: branch head after sync; see final `git rev-parse` / pushed commit.
 - Packet: `/tmp/ChatgptREST-review/paperclip-review-20260510/FOLLOWUP_LONG_RANGE_OS_20260511`
 - Safety: secret scan, large-file check, forbidden-path check, and SHA256 check passed.
 
