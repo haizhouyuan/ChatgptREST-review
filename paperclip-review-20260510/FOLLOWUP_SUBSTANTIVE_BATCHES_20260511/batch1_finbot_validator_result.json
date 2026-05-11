@@ -1,0 +1,8 @@
+{
+  "schema": "paperclip.finbot_research_quality_batch.validator.v1",
+  "status": "pass",
+  "reviewed_count": 24,
+  "high_quality_count": 12,
+  "parked_or_rejected_count": 12,
+  "errors": []
+}

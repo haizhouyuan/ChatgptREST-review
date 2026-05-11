@@ -1,0 +1,6 @@
+{
+  "schema": "paperclip.governance_skill_mcp_batch.validator.v1",
+  "status": "pass",
+  "capability_count": 14,
+  "errors": []
+}

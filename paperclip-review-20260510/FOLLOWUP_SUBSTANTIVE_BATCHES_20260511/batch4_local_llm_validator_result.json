@@ -1,0 +1,6 @@
+{
+  "schema": "paperclip.local_llm_research_benchmark_v2.validator.v1",
+  "status": "pass",
+  "row_count": 60,
+  "errors": []
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "paperclip.substantive_batches.execution_matrix.v1",
+  "generated_at": "2026-05-11T10:20:00+08:00",
+  "controller": "codex_parent",
+  "batches": [
+    {
+      "batch": "Batch 1 Finbot research quality",
+      "status": "pass",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/validator_result.json",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/closeout.md",
+      "commit": "a52818781"
+    },
+    {
+      "batch": "Batch 2 Planning real loop",
+      "status": "pass",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/execution_evidence.md",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/validator_result.json",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/closeout.md",
+      "commit": "26b12556e"
+    },
+    {
+      "batch": "Batch 3 Governance Skill-MCP",
+      "status": "pass",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch3_governance_skill_mcp/capability_matrix.json",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch3_governance_skill_mcp/validator_result.json",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch3_governance_skill_mcp/closeout.md",
+      "commit": "44afe87e3"
+    },
+    {
+      "batch": "Batch 4 Local LLM benchmark v2",
+      "status": "pass",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch4_local_llm_v2/scoring_summary.json",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch4_local_llm_v2/validator_result.json",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch4_local_llm_v2/closeout.md",
+      "commit": "641d8c791"
+    },
+    {
+      "batch": "Batch 5 Integration",
+      "status": "pass",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch5_integration/FOLLOWUP_BEHAVIOR_EVIDENCE.md",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch5_integration/validator_result.json",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch5_integration/final_audit.md",
+      "commit": "pending_current_commit"
+    }
+  ]
+}
