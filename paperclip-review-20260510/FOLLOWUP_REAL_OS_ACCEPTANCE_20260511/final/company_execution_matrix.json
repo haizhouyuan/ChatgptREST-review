@@ -1,0 +1,18 @@
+{
+  "status": "L3_BLOCKED_WITH_EVIDENCE",
+  "lanes": [
+    "baseline",
+    "live_kernel",
+    "governance",
+    "finbot_engineering",
+    "finbot_research",
+    "planning",
+    "memory",
+    "local_llm",
+    "repeatable_ops",
+    "public_review"
+  ],
+  "blockers": [
+    "local_llm_research_benchmark_v3 failed: strict_json_success_count 19 does not equal benchmark row_count 80"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "paperclip.real_os.l3_acceptance_audit.v1",
+  "generated_at": "2026-05-11T04:40:06Z",
+  "status": "L3_BLOCKED_WITH_EVIDENCE",
+  "errors": [
+    "local_llm_research_benchmark_v3 failed: strict_json_success_count 19 does not equal benchmark row_count 80"
+  ],
+  "fresh_live_issue_count": 9,
+  "fresh_succeeded_agent_run_count": 9,
+  "planning_real_intake_count": 10,
+  "finbot_high_quality_case_count": 12,
+  "finbot_new_deep_dive_count": 6,
+  "finbot_useful_surprise_count": 3,
+  "governance_false_pass_regression_count": 12,
+  "verified_workflow_capability_count": 5,
+  "fresh_agent_blind_test_count": 3,
+  "local_llm_research_rows_minimum": 80,
+  "public_packet_safety": "pass",
+  "forbidden_output_count": 0,
+  "unexplained_blocker_count": 1,
+  "controller_authored_domain_artifact_count": 0,
+  "evidence_paths": {
+    "root": "/vol1/1000/projects/toyresearch/docs/paperclip_real_os_acceptance_20260511",
+    "public_packet": "/tmp/ChatgptREST-review/paperclip-review-20260510/FOLLOWUP_REAL_OS_ACCEPTANCE_20260511"
+  }
+}
