@@ -41,7 +41,8 @@
       "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch5_integration/FOLLOWUP_BEHAVIOR_EVIDENCE.md",
       "validator_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch5_integration/validator_result.json",
       "closeout_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch5_integration/final_audit.md",
-      "commit": "pending_current_commit"
+      "public_packet_safety_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch5_integration/public_packet_safety_result.json",
+      "commit": "662640691"
     }
   ]
 }
