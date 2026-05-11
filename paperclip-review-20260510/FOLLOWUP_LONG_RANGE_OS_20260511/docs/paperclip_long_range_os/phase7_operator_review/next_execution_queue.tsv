@@ -1,0 +1,4 @@
+priority	company	action	stop_condition
+P0	Governance	Run all long-range validators	all pass
+P1	Planning	Convert validator gaps into next user decisions	queue updated
+P1	Finbot	Deepen high-quality cases only	no advice and case validator pass

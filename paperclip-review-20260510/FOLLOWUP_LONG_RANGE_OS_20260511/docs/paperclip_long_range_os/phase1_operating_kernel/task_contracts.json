@@ -1,0 +1,85 @@
+{
+  "schema": "paperclip.long_range.phase1.contracts.v1",
+  "contracts": [
+    {
+      "company": "Planning Work Assistant",
+      "agent": "Planning Orchestrator",
+      "objective": "Company-owned long-range operating kernel evidence for PLA-83",
+      "inputs": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/execution_evidence.md"
+      ],
+      "allowed_writes": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase1_operating_kernel"
+      ],
+      "forbidden_outputs": [
+        "investment_advice",
+        "target_price_recommendation",
+        "trade_signal",
+        "automatic_trading",
+        "production_watchlist"
+      ],
+      "validator": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/validator_result.json",
+      "closeout_required": true
+    },
+    {
+      "company": "Finbot Investment Research",
+      "agent": "Finbot Research Analyst",
+      "objective": "Company-owned long-range operating kernel evidence for FIN-40",
+      "inputs": [
+        "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/07_alpha_qualified_casebook.json"
+      ],
+      "allowed_writes": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase1_operating_kernel"
+      ],
+      "forbidden_outputs": [
+        "investment_advice",
+        "target_price_recommendation",
+        "trade_signal",
+        "automatic_trading",
+        "production_watchlist"
+      ],
+      "validator": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/20_final_validation.json",
+      "closeout_required": true
+    },
+    {
+      "company": "Paperclip Governance Company",
+      "agent": "Governance Gatekeeper",
+      "objective": "Company-owned long-range operating kernel evidence for PAPA-53",
+      "inputs": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch3_governance_skill_mcp/capability_matrix.json"
+      ],
+      "allowed_writes": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase1_operating_kernel"
+      ],
+      "forbidden_outputs": [
+        "investment_advice",
+        "target_price_recommendation",
+        "trade_signal",
+        "automatic_trading",
+        "production_watchlist"
+      ],
+      "validator": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch3_governance_skill_mcp/validator_result.json",
+      "closeout_required": true
+    },
+    {
+      "company": "Finbot Engineering Capability Lab",
+      "agent": "Finbot Engineering Agent",
+      "objective": "Company-owned long-range operating kernel evidence for FIN-41",
+      "inputs": [
+        "/vol1/1000/projects/toyresearch/docs/finbot_engineering_capability_platform_v1/2026-05-09_capability_platform/14_final_validation.json"
+      ],
+      "allowed_writes": [
+        "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase1_operating_kernel"
+      ],
+      "forbidden_outputs": [
+        "investment_advice",
+        "target_price_recommendation",
+        "trade_signal",
+        "automatic_trading",
+        "production_watchlist"
+      ],
+      "validator": "/vol1/1000/projects/toyresearch/docs/finbot_engineering_capability_platform_v1/2026-05-09_capability_platform/14_final_validation.json",
+      "closeout_required": true
+    }
+  ]
+}

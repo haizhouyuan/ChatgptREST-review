@@ -1,0 +1,2 @@
+{"policy_relevance": "output_gated_execution", "source": "user_current_session", "text": "不是继续追求时长，而是改成实质工作批次", "verbatim_id": "VB-001"}
+{"policy_relevance": "finbot_boundary", "source": "user_goal_contract", "text": "Finbot 禁止投资建议/目标价建议/交易信号/自动交易/production watchlist", "verbatim_id": "VB-002"}

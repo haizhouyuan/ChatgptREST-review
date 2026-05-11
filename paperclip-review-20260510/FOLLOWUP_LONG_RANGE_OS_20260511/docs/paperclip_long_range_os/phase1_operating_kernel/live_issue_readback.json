@@ -1,0 +1,45 @@
+{
+  "schema": "paperclip.long_range.phase1.live_readback.v1",
+  "readbacks": [
+    {
+      "issue_identifier": "PLA-83",
+      "issue_id": "e3e297cc-7c73-4b75-aa1b-df047285a1fa",
+      "status": "done",
+      "assigneeAgentId": "67dca5ac-a3ff-4d06-a01e-83c4aa50bc7e",
+      "succeeded_run_id": "e4615be9-eb00-4f1c-88bd-9de84d4efab4",
+      "agent_authored_comment_id": "b4944c6b-2653-46a2-85ce-78aaef5ff091",
+      "authorAgentId": "67dca5ac-a3ff-4d06-a01e-83c4aa50bc7e",
+      "createdByRunId": "e4615be9-eb00-4f1c-88bd-9de84d4efab4"
+    },
+    {
+      "issue_identifier": "FIN-40",
+      "issue_id": "8fb9ce48-0973-4154-af8f-90e445c5407f",
+      "status": "done",
+      "assigneeAgentId": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+      "succeeded_run_id": "77bb08a3-8b95-4f0a-91ec-99755e2735a7",
+      "agent_authored_comment_id": "cd31bceb-a12a-4d3e-a530-560984367667",
+      "authorAgentId": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+      "createdByRunId": "77bb08a3-8b95-4f0a-91ec-99755e2735a7"
+    },
+    {
+      "issue_identifier": "PAPA-53",
+      "issue_id": "552ff87e-da33-4a3b-9eac-44d8bf94c115",
+      "status": "done",
+      "assigneeAgentId": "11858cbd-02dd-4f43-9d00-553189dbd1bc",
+      "succeeded_run_id": "a4da918d-8fba-4ea3-8e3c-c062bb29915d",
+      "agent_authored_comment_id": "abc628e9-b9b8-423b-b9cc-380632567821",
+      "authorAgentId": "11858cbd-02dd-4f43-9d00-553189dbd1bc",
+      "createdByRunId": "a4da918d-8fba-4ea3-8e3c-c062bb29915d"
+    },
+    {
+      "issue_identifier": "FIN-41",
+      "issue_id": "4f8eb296-7c6d-4d4a-acb9-5abffb85a57f",
+      "status": "done",
+      "assigneeAgentId": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+      "succeeded_run_id": "41f04f26-ede7-4dd4-bcc8-512564cb94e0",
+      "agent_authored_comment_id": "8b549019-6010-4297-822c-99ed94397152",
+      "authorAgentId": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+      "createdByRunId": "41f04f26-ede7-4dd4-bcc8-512564cb94e0"
+    }
+  ]
+}

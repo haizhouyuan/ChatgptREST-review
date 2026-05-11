@@ -1,0 +1,20 @@
+{
+  "schema": "paperclip.long_range.phase2.human_review_queue.v1",
+  "items": [
+    {
+      "case_id": "OA-02-01-vrt-data-center-power-bottleneck",
+      "question": "Should the next research action for VRT prioritize peer disclosure, counter-source review, or next-filing update?",
+      "decision_type": "next_research_action"
+    },
+    {
+      "case_id": "OA-10-03-ferg-specialty-contractor-rollups",
+      "question": "Should the next research action for FERG prioritize peer disclosure, counter-source review, or next-filing update?",
+      "decision_type": "next_research_action"
+    },
+    {
+      "case_id": "OA-11-02-zs-identity-and-zero-trust-spend",
+      "question": "Should the next research action for ZS prioritize peer disclosure, counter-source review, or next-filing update?",
+      "decision_type": "next_research_action"
+    }
+  ]
+}

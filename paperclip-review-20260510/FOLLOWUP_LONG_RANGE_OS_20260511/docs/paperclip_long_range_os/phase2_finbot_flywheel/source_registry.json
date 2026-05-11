@@ -1,0 +1,9 @@
+{
+  "schema": "paperclip.long_range.phase2.source_registry.v1",
+  "sources": [
+    "SEC EDGAR",
+    "SEC companyfacts",
+    "local evidence tree",
+    "prior casebook"
+  ]
+}

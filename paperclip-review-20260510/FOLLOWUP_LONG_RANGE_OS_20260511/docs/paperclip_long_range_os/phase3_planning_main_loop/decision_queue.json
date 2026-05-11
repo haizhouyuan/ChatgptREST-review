@@ -1,0 +1,32 @@
+{
+  "schema": "paperclip.long_range.phase3.decisions.v1",
+  "decisions": [
+    {
+      "intake_id": "PLR-INTAKE-001",
+      "topic": "Paperclip roadmap correction",
+      "user_decision_needed": "Confirm whether Phase 0/1 should become the next CLI goal after this parent-run evidence package.",
+      "evidence_gap": "Need fresh Paperclip live readback after long-range role map is accepted.",
+      "next_agent_action": "Governance agent validates company role map and false-pass boundaries.",
+      "stop_condition": "Role map validator passes and current truth is updated.",
+      "candidate_memory_delta_id": "MEM-CAND-PLR-001"
+    },
+    {
+      "intake_id": "PLR-INTAKE-002",
+      "topic": "Finbot research follow-up",
+      "user_decision_needed": "Pick whether Finbot next cycle should deepen current top cases or explore new source themes.",
+      "evidence_gap": "Need user choice on preferred research campaign style.",
+      "next_agent_action": "Finbot Research prepares case-specific next evidence actions only.",
+      "stop_condition": "Human review queue has concrete next research actions and no advice.",
+      "candidate_memory_delta_id": "MEM-CAND-PLR-002"
+    },
+    {
+      "intake_id": "PLR-INTAKE-003",
+      "topic": "Governance capability enablement",
+      "user_decision_needed": "Decide which candidate connector deserves first read-only workflow proof.",
+      "evidence_gap": "Readwise/Zotero/Alpaca/Daloopa/Quartr/Binance still lack verified workflow proof.",
+      "next_agent_action": "Governance creates one bounded enablement issue for the selected connector.",
+      "stop_condition": "Endpoint-only status is not promoted and rollback/no-use boundary is documented.",
+      "candidate_memory_delta_id": "MEM-CAND-PLR-003"
+    }
+  ]
+}

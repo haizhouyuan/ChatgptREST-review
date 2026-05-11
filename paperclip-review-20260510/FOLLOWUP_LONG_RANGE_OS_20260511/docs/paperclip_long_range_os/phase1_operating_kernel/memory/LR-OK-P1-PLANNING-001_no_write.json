@@ -1,0 +1,7 @@
+{
+  "schema": "paperclip.long_range_os.phase1.memory_closeout.v1",
+  "issue_id": "LR-OK-P1-PLANNING-001",
+  "disposition": "no_write_reason",
+  "reason": "No live Planning agent run occurred; no domain output or candidate memory delta was produced.",
+  "authority_promotion": false
+}

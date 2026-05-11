@@ -1,0 +1,20 @@
+{
+  "schema": "paperclip.long_range.phase3.followups.v1",
+  "followups": [
+    {
+      "intake_id": "PLR-INTAKE-001",
+      "agent_action": "Governance agent validates company role map and false-pass boundaries.",
+      "stop_condition": "Role map validator passes and current truth is updated."
+    },
+    {
+      "intake_id": "PLR-INTAKE-002",
+      "agent_action": "Finbot Research prepares case-specific next evidence actions only.",
+      "stop_condition": "Human review queue has concrete next research actions and no advice."
+    },
+    {
+      "intake_id": "PLR-INTAKE-003",
+      "agent_action": "Governance creates one bounded enablement issue for the selected connector.",
+      "stop_condition": "Endpoint-only status is not promoted and rollback/no-use boundary is documented."
+    }
+  ]
+}

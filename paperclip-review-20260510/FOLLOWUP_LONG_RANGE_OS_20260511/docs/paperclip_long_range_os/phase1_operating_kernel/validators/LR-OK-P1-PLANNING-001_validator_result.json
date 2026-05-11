@@ -1,0 +1,15 @@
+{
+  "schema": "paperclip.long_range_os.phase1.issue_validator_result.v1",
+  "issue_id": "LR-OK-P1-PLANNING-001",
+  "status": "pass",
+  "validation_scope": "contract_and_governance_accepted_no_run_blocker",
+  "live_run_claimed": false,
+  "checks": [
+    "contract_present",
+    "artifact_present",
+    "memory_no_write_present",
+    "closeout_present",
+    "no_controller_authored_domain_output_claim"
+  ],
+  "errors": []
+}

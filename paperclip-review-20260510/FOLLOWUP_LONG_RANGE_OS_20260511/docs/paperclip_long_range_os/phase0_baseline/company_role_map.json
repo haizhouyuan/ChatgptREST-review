@@ -1,0 +1,61 @@
+{
+  "governance_capability_company": {
+    "owns": [
+      "company_governance",
+      "false_pass_gates",
+      "memory_governance",
+      "skill_mcp_governance",
+      "runtime_readiness",
+      "provider_quarantine",
+      "local_llm_promotion_gates"
+    ],
+    "does_not_own": [
+      "finbot_domain_research",
+      "planning_user_work",
+      "labebe_business_outputs"
+    ]
+  },
+  "planning_work_assistant": {
+    "owns": [
+      "user_intake",
+      "decision_queue",
+      "agent_followups",
+      "meeting_followups",
+      "candidate_memory_deltas"
+    ]
+  },
+  "finbot_investment_research": {
+    "owns": [
+      "research_only_opportunity_cases",
+      "claim_ledgers",
+      "evidence_ledgers",
+      "risk_qa",
+      "human_review_prompts"
+    ]
+  },
+  "finbot_engineering_capability_lab": {
+    "owns": [
+      "read_only_source_capability",
+      "schemas",
+      "validators",
+      "decision_memo_tooling",
+      "alert_prototypes"
+    ],
+    "requires_governance_approval_before_research_use": true
+  },
+  "learning_research_company": {
+    "owns": [
+      "memory_research",
+      "local_llm_research",
+      "external_skill_research",
+      "methodology_experiments"
+    ]
+  },
+  "labebe_ai_transformation": {
+    "owns": [
+      "toy_company_ai_transformation_research",
+      "demo_evidence",
+      "claim_safe_business_outputs"
+    ]
+  }
+}

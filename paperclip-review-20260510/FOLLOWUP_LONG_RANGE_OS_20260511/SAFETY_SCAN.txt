@@ -1,0 +1,9 @@
+large_files<<EOF
+
+EOF
+forbidden_paths<<EOF
+
+EOF
+secret_hits<<EOF
+
+EOF

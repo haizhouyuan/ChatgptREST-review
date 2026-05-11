@@ -1,0 +1,141 @@
+{
+  "schema": "paperclip.long_range.phase4.capability_registry.v1",
+  "capabilities": [
+    {
+      "name": "SEC EDGAR submissions",
+      "kind": "data_source",
+      "status": "verified_workflow",
+      "proof_level": "workflow_artifact",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+      "allowed_use": "primary company filing evidence binding for supervised research"
+    },
+    {
+      "name": "SEC companyfacts",
+      "kind": "data_source",
+      "status": "verified_workflow",
+      "proof_level": "workflow_artifact",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+      "allowed_use": "primary XBRL metric context for supervised research"
+    },
+    {
+      "name": "Local evidence tree",
+      "kind": "local_docs",
+      "status": "verified_workflow",
+      "proof_level": "workflow_artifact",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/execution_evidence.md",
+      "allowed_use": "handoff, current truth, closeout, and historical evidence lookup"
+    },
+    {
+      "name": "Readwise",
+      "kind": "app_connector",
+      "status": "candidate",
+      "proof_level": "tool_namespace_only",
+      "evidence_path": "tool_search exposed Readwise tools in the current session; no private account read/write smoke was run",
+      "allowed_use": "read-only search/list or create-in-test-document workflow with privacy review and artifact path"
+    },
+    {
+      "name": "Zotero",
+      "kind": "skill_or_local_api",
+      "status": "candidate",
+      "proof_level": "plugin_or_skill_inventory_only",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/finbot_research_os_v1/2026-05-09_integrated_history_capability_and_mvp/04_provider_quarantine_register.md",
+      "allowed_use": "local Zotero API live proof plus read-only search/export evidence"
+    },
+    {
+      "name": "Alpaca",
+      "kind": "app_connector",
+      "status": "candidate",
+      "proof_level": "plugin_inventory_only",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/finbot_engineering_capability_platform_v1/2026-05-09_capability_platform/02_data_source_readiness_matrix.json",
+      "allowed_use": "read-only market data workflow with no account, order, or trading permission"
+    },
+    {
+      "name": "Daloopa",
+      "kind": "app_connector",
+      "status": "candidate",
+      "proof_level": "plugin_inventory_only",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/finbot_engineering_capability_platform_v1/2026-05-09_capability_platform/02_data_source_readiness_matrix.json",
+      "allowed_use": "company KPI lookup tied to an evidence ledger row"
+    },
+    {
+      "name": "Quartr",
+      "kind": "app_connector",
+      "status": "candidate",
+      "proof_level": "plugin_inventory_only",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/finbot_engineering_capability_platform_v1/2026-05-09_capability_platform/02_data_source_readiness_matrix.json",
+      "allowed_use": "IR material or transcript lookup tied to an evidence ledger row"
+    },
+    {
+      "name": "Binance",
+      "kind": "app_connector",
+      "status": "blocked",
+      "proof_level": "startup_failed",
+      "evidence_path": "current session Binance public read-only call failed MCP startup handshake against https://chatgpt.com/backend-api/wham/apps",
+      "allowed_use": "public read-only market data call succeeds and is scoped to crypto/macro context only"
+    },
+    {
+      "name": "MiniMax",
+      "kind": "provider",
+      "status": "quarantined",
+      "proof_level": "governance_quarantine",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/finbot_research_os_v1/2026-05-09_integrated_history_capability_and_mvp/04_provider_quarantine_register.md",
+      "allowed_use": "separate governance reactivation issue; not in this batch"
+    },
+    {
+      "name": "DeepSeek",
+      "kind": "provider",
+      "status": "quarantined",
+      "proof_level": "governance_quarantine",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/finbot_research_os_v1/2026-05-09_integrated_history_capability_and_mvp/04_provider_quarantine_register.md",
+      "allowed_use": "separate governance reactivation issue; not in this batch"
+    },
+    {
+      "name": "Tavily",
+      "kind": "search_provider",
+      "status": "quarantined",
+      "proof_level": "governance_quarantine",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/finbot_research_os_v1/2026-05-09_integrated_history_capability_and_mvp/04_provider_quarantine_register.md",
+      "allowed_use": "separate query privacy and reactivation issue; not in this batch"
+    },
+    {
+      "name": "Brave",
+      "kind": "search_provider",
+      "status": "quarantined",
+      "proof_level": "governance_quarantine",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/finbot_research_os_v1/2026-05-09_integrated_history_capability_and_mvp/04_provider_quarantine_register.md",
+      "allowed_use": "separate query privacy and reactivation issue; not in this batch"
+    },
+    {
+      "name": "HomePC Ollama",
+      "kind": "local_model_runtime",
+      "status": "research_only",
+      "proof_level": "research_only_prior_benchmark",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/06_local_llm/",
+      "allowed_use": "research benchmark v2 plus governance decision; never production route in this batch"
+    },
+    {
+      "name": "runtime adapters",
+      "kind": "capability",
+      "status": "verified_workflow",
+      "proof_level": "workflow_artifact",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches",
+      "allowed_use": "bounded read-only workflow"
+    },
+    {
+      "name": "SEC EDGAR",
+      "kind": "capability",
+      "status": "verified_workflow",
+      "proof_level": "workflow_artifact",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches",
+      "allowed_use": "bounded read-only workflow"
+    },
+    {
+      "name": "local evidence tree",
+      "kind": "capability",
+      "status": "verified_workflow",
+      "proof_level": "workflow_artifact",
+      "evidence_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches",
+      "allowed_use": "bounded read-only workflow"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "paperclip.long_range.phase4.false_pass.v1",
+  "cases": [
+    {
+      "case_id": "endpoint_only_as_verified",
+      "result": "rejected"
+    },
+    {
+      "case_id": "fixture_only_as_live",
+      "result": "rejected"
+    },
+    {
+      "case_id": "controller_only_as_company_owned",
+      "result": "rejected"
+    },
+    {
+      "case_id": "advice_disguised_as_memo",
+      "result": "rejected"
+    },
+    {
+      "case_id": "target_price_as_advice",
+      "result": "rejected"
+    },
+    {
+      "case_id": "production_watchlist_leakage",
+      "result": "rejected"
+    },
+    {
+      "case_id": "local_model_production_route",
+      "result": "rejected"
+    },
+    {
+      "case_id": "quarantined_provider_enablement",
+      "result": "rejected"
+    }
+  ]
+}

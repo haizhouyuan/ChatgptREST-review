@@ -1,0 +1,7 @@
+{
+  "schema": "paperclip.long_range_os.phase1.memory_closeout.v1",
+  "issue_id": "LR-OK-P1-GOV-001",
+  "disposition": "no_write_reason",
+  "reason": "Governance recorded a local no-run blocker acceptance only; no authority memory promotion was made.",
+  "authority_promotion": false
+}

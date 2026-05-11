@@ -1,0 +1,166 @@
+{
+  "schema": "paperclip.long_range.phase7.review_manifest.v1",
+  "generated_at": "2026-05-11T03:46:13Z",
+  "artifacts": [
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase0_baseline/blocker_board.md",
+      "role": "phase0_baseline"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase0_baseline/company_role_map.json",
+      "role": "phase0_baseline"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase0_baseline/current_truth.md",
+      "role": "phase0_baseline"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase1_operating_kernel/closeout.md",
+      "role": "phase1_operating_kernel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase1_operating_kernel/company_owned_evidence_matrix.json",
+      "role": "phase1_operating_kernel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase1_operating_kernel/live_issue_readback.json",
+      "role": "phase1_operating_kernel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase1_operating_kernel/task_contracts.json",
+      "role": "phase1_operating_kernel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase2_finbot_flywheel/case_deep_dive_register.json",
+      "role": "phase2_finbot_flywheel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase2_finbot_flywheel/closeout.md",
+      "role": "phase2_finbot_flywheel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase2_finbot_flywheel/human_review_queue.json",
+      "role": "phase2_finbot_flywheel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase2_finbot_flywheel/risk_reversal_ledger.jsonl",
+      "role": "phase2_finbot_flywheel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase2_finbot_flywheel/source_registry.json",
+      "role": "phase2_finbot_flywheel"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase3_planning_main_loop/agent_followup_queue.json",
+      "role": "phase3_planning_main_loop"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase3_planning_main_loop/decision_queue.json",
+      "role": "phase3_planning_main_loop"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase3_planning_main_loop/fresh_agent_replay.md",
+      "role": "phase3_planning_main_loop"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase3_planning_main_loop/intake_register.jsonl",
+      "role": "phase3_planning_main_loop"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase3_planning_main_loop/memory_delta_candidates.jsonl",
+      "role": "phase3_planning_main_loop"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase4_governance_capability/capability_registry.json",
+      "role": "phase4_governance_capability"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase4_governance_capability/closeout.md",
+      "role": "phase4_governance_capability"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase4_governance_capability/enablement_decisions.jsonl",
+      "role": "phase4_governance_capability"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase4_governance_capability/false_pass_regression_result.json",
+      "role": "phase4_governance_capability"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase4_governance_capability/runtime_fallback_preflight.md",
+      "role": "phase4_governance_capability"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase5_memory_substrate/authority_ledger.jsonl",
+      "role": "phase5_memory_substrate"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase5_memory_substrate/current_truth_ledger.jsonl",
+      "role": "phase5_memory_substrate"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase5_memory_substrate/fresh_agent_blind_test.md",
+      "role": "phase5_memory_substrate"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase5_memory_substrate/memory_layer_contract.md",
+      "role": "phase5_memory_substrate"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase5_memory_substrate/verbatim_registry.jsonl",
+      "role": "phase5_memory_substrate"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase6_learning_local_llm/governance_decision.md",
+      "role": "phase6_learning_local_llm"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase6_learning_local_llm/local_llm_benchmark_v3_rows.jsonl",
+      "role": "phase6_learning_local_llm"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase6_learning_local_llm/local_llm_scorer_result.json",
+      "role": "phase6_learning_local_llm"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase6_learning_local_llm/memory_system_comparison.md",
+      "role": "phase6_learning_local_llm"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase6_learning_local_llm/research_agenda.md",
+      "role": "phase6_learning_local_llm"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase7_operator_review/next_execution_queue.tsv",
+      "role": "phase7_operator_review"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase7_operator_review/operator_dashboard.md",
+      "role": "phase7_operator_review"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase7_operator_review/public_packet_safety_result.json",
+      "role": "phase7_operator_review"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase7_operator_review/review_packet_manifest.json",
+      "role": "phase7_operator_review"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase8_controlled_autonomy/autonomy_policy.md",
+      "role": "phase8_controlled_autonomy"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase8_controlled_autonomy/autonomy_trial_runs.jsonl",
+      "role": "phase8_controlled_autonomy"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase8_controlled_autonomy/final_readiness_audit.md",
+      "role": "phase8_controlled_autonomy"
+    },
+    {
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_long_range_os/phase8_controlled_autonomy/human_interrupt_log.jsonl",
+      "role": "phase8_controlled_autonomy"
+    }
+  ]
+}

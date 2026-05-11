@@ -1,0 +1,114 @@
+{
+  "schema": "paperclip.long_range.phase2.case_register.v1",
+  "mode": "supervised_research_only",
+  "cases": [
+    {
+      "case_id": "OA-02-01-vrt-data-center-power-bottleneck",
+      "company_or_theme": "VRT / data center power bottleneck",
+      "source_thesis": "VRT may express a less obvious operating exposure to data center power bottleneck; supervised research only.",
+      "primary_evidence": [
+        {
+          "type": "primary_filing",
+          "path_or_url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026026556/vrt-20260331.htm",
+          "timestamp": "2026-04-22"
+        },
+        {
+          "type": "companyfacts",
+          "path_or_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001674101.json",
+          "timestamp": "2026-04-22"
+        },
+        {
+          "type": "local_evidence_excerpt",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json#OA-02-01-vrt-data-center-power-bottleneck; revenue=2649500000 filed=2026-04-22; operating_income=440100000 filed=2026-04-22; cash=2150600000 filed=2026-04-22",
+          "timestamp": "2026-04-22"
+        }
+      ],
+      "secondary_evidence": [
+        {
+          "type": "prior_casebook",
+          "path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json"
+        }
+      ],
+      "variant_perception": "The primary filing confirms company-level exposure signals while prior source-alpha work suggests a theme-specific angle that still needs peer and counter-evidence testing.",
+      "why_it_may_work": "The primary evidence confirms a real company-level exposure signal, while the theme remains under active supervised research.",
+      "why_it_may_fail": "Retire the case if the next filing, peer comparison, or management disclosure weakens the theme exposure or shows poor conversion.",
+      "risk_reversal_or_kill_condition": "Retire the case if the next filing, peer comparison, or management disclosure weakens the theme exposure or shows poor conversion.",
+      "research_estimate_range_non_advice": "Research-only qualitative scenario band 52/69/87 on a 0-100 evidence score scale; not investment advice; not a recommendation. Explicit label: non-advice research estimate.",
+      "next_evidence_action": "Add one peer disclosure and one counter-source before expanding to a full research memo.",
+      "human_review_question": "Should the next research action for VRT prioritize peer disclosure, counter-source review, or next-filing update?",
+      "status": "research_only_continue"
+    },
+    {
+      "case_id": "OA-10-03-ferg-specialty-contractor-rollups",
+      "company_or_theme": "FERG / specialty contractor rollups",
+      "source_thesis": "FERG may express a less obvious operating exposure to specialty contractor rollups; supervised research only.",
+      "primary_evidence": [
+        {
+          "type": "primary_filing",
+          "path_or_url": "https://www.sec.gov/Archives/edgar/data/2011641/000201164126000030/ferg-20260331.htm",
+          "timestamp": "2026-05-05"
+        },
+        {
+          "type": "companyfacts",
+          "path_or_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0002011641.json",
+          "timestamp": "2026-05-05"
+        },
+        {
+          "type": "local_evidence_excerpt",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json#OA-10-03-ferg-specialty-contractor-rollups; revenue=7472000000 filed=2026-05-05; operating_income=612000000 filed=2026-05-05; cash=820000000 filed=2026-05-05",
+          "timestamp": "2026-05-05"
+        }
+      ],
+      "secondary_evidence": [
+        {
+          "type": "prior_casebook",
+          "path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json"
+        }
+      ],
+      "variant_perception": "The primary filing confirms company-level exposure signals while prior source-alpha work suggests a theme-specific angle that still needs peer and counter-evidence testing.",
+      "why_it_may_work": "The primary evidence confirms a real company-level exposure signal, while the theme remains under active supervised research.",
+      "why_it_may_fail": "Retire the case if the next filing, peer comparison, or management disclosure weakens the theme exposure or shows poor conversion.",
+      "risk_reversal_or_kill_condition": "Retire the case if the next filing, peer comparison, or management disclosure weakens the theme exposure or shows poor conversion.",
+      "research_estimate_range_non_advice": "Research-only qualitative scenario band 62/79/97 on a 0-100 evidence score scale; not investment advice; not a recommendation. Explicit label: non-advice research estimate.",
+      "next_evidence_action": "Add one peer disclosure and one counter-source before expanding to a full research memo.",
+      "human_review_question": "Should the next research action for FERG prioritize peer disclosure, counter-source review, or next-filing update?",
+      "status": "research_only_continue"
+    },
+    {
+      "case_id": "OA-11-02-zs-identity-and-zero-trust-spend",
+      "company_or_theme": "ZS / identity and zero-trust spend",
+      "source_thesis": "ZS may express a less obvious operating exposure to identity and zero-trust spend; supervised research only.",
+      "primary_evidence": [
+        {
+          "type": "primary_filing",
+          "path_or_url": "https://www.sec.gov/Archives/edgar/data/1713683/000171368326000048/zs-20260131.htm",
+          "timestamp": "2026-02-26"
+        },
+        {
+          "type": "companyfacts",
+          "path_or_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001713683.json",
+          "timestamp": "2026-02-26"
+        },
+        {
+          "type": "local_evidence_excerpt",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json#OA-11-02-zs-identity-and-zero-trust-spend; revenue=815751000 filed=2026-02-26; operating_income=-51773000 filed=2026-02-26; cash=1202751000 filed=2026-02-26",
+          "timestamp": "2026-02-26"
+        }
+      ],
+      "secondary_evidence": [
+        {
+          "type": "prior_casebook",
+          "path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json"
+        }
+      ],
+      "variant_perception": "The primary filing confirms company-level exposure signals while prior source-alpha work suggests a theme-specific angle that still needs peer and counter-evidence testing.",
+      "why_it_may_work": "The primary evidence confirms a real company-level exposure signal, while the theme remains under active supervised research.",
+      "why_it_may_fail": "Retire the case if the next filing, peer comparison, or management disclosure weakens the theme exposure or shows poor conversion.",
+      "risk_reversal_or_kill_condition": "Retire the case if the next filing, peer comparison, or management disclosure weakens the theme exposure or shows poor conversion.",
+      "research_estimate_range_non_advice": "Research-only qualitative scenario band 62/79/97 on a 0-100 evidence score scale; not investment advice; not a recommendation. Explicit label: non-advice research estimate.",
+      "next_evidence_action": "Add one peer disclosure and one counter-source before expanding to a full research memo.",
+      "human_review_question": "Should the next research action for ZS prioritize peer disclosure, counter-source review, or next-filing update?",
+      "status": "research_only_continue"
+    }
+  ]
+}

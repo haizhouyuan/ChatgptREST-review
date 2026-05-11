@@ -1,0 +1,8 @@
+{
+  "schema": "paperclip.long_range.phase7.public_safety.v1",
+  "status": "pass",
+  "secret_scan": "pass",
+  "large_file_check": "pass",
+  "forbidden_path_check": "pass",
+  "hash_manifest_check": "pass"
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "paperclip.long_range.phase1.matrix.v1",
+  "rows": [
+    {
+      "issue_id": "PLA-83",
+      "company": "Planning Work Assistant",
+      "agent": "Planning Orchestrator",
+      "status": "done",
+      "succeeded_run_id": "e4615be9-eb00-4f1c-88bd-9de84d4efab4",
+      "agent_authored_comment_id": "b4944c6b-2653-46a2-85ce-78aaef5ff091",
+      "artifact_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/execution_evidence.md",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/validator_result.json",
+      "memory_delta_or_no_write": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/memory_delta_candidate.jsonl",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch2_planning_loop/closeout.md",
+      "controller_authored_domain_output": false
+    },
+    {
+      "issue_id": "FIN-40",
+      "company": "Finbot Investment Research",
+      "agent": "Finbot Research Analyst",
+      "status": "done",
+      "succeeded_run_id": "77bb08a3-8b95-4f0a-91ec-99755e2735a7",
+      "agent_authored_comment_id": "cd31bceb-a12a-4d3e-a530-560984367667",
+      "artifact_path": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/07_alpha_qualified_casebook.json",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/20_final_validation.json",
+      "memory_delta_or_no_write": "no_write_research_only_casebook",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/22_closeout.md",
+      "controller_authored_domain_output": false
+    },
+    {
+      "issue_id": "PAPA-53",
+      "company": "Paperclip Governance Company",
+      "agent": "Governance Gatekeeper",
+      "status": "done",
+      "succeeded_run_id": "a4da918d-8fba-4ea3-8e3c-c062bb29915d",
+      "agent_authored_comment_id": "abc628e9-b9b8-423b-b9cc-380632567821",
+      "artifact_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch3_governance_skill_mcp/capability_matrix.json",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch3_governance_skill_mcp/validator_result.json",
+      "memory_delta_or_no_write": "no_write_policy_snapshot_only",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch3_governance_skill_mcp/closeout.md",
+      "controller_authored_domain_output": false
+    },
+    {
+      "issue_id": "FIN-41",
+      "company": "Finbot Engineering Capability Lab",
+      "agent": "Finbot Engineering Agent",
+      "status": "done",
+      "succeeded_run_id": "41f04f26-ede7-4dd4-bcc8-512564cb94e0",
+      "agent_authored_comment_id": "8b549019-6010-4297-822c-99ed94397152",
+      "artifact_path": "/vol1/1000/projects/toyresearch/docs/finbot_engineering_capability_platform_v1/2026-05-09_capability_platform/14_final_validation.json",
+      "validator_path": "/vol1/1000/projects/toyresearch/docs/finbot_engineering_capability_platform_v1/2026-05-09_capability_platform/14_final_validation.json",
+      "memory_delta_or_no_write": "no_write_capability_lab_handoff",
+      "closeout_path": "/vol1/1000/projects/toyresearch/docs/finbot_engineering_capability_platform_v1/2026-05-09_capability_platform/15_closeout.md",
+      "controller_authored_domain_output": false
+    }
+  ]
+}
