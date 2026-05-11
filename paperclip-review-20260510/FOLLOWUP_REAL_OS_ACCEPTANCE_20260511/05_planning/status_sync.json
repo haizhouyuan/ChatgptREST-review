@@ -1,0 +1,49 @@
+{
+  "schema": "paperclip.real_os.planning.status_sync.v1",
+  "generated_at": "2026-05-11T12:00:00+08:00",
+  "task": "Task 5: Planning Main Assistant Loop",
+  "plan_started_at": "2026-05-11T04:11:08Z",
+  "status": "task5_packet_ready_for_validator",
+  "counts": {"real_user_intake_items":10,"decisions_or_non_decisions":10,"agent_followup_actions":10,"stop_conditions":10,"candidate_memory_deltas_or_no_write_reasons":10,"planning_issue_references_or_parent_readback_todos":3},
+  "live_planning_issue_refs": [
+    {"paperclip_issue_identifier":"PLA-84","paperclip_issue_id":"1c15d063-16a3-4d40-9e3b-3ba814fdbfae","created_at":"2026-05-11T04:11:08.359Z","agent":"Strategy Agent","readback_status":"referenced_from_fresh_live_kernel_contract","readback_source":"docs/paperclip_real_os_acceptance_20260511/01_live_kernel/task_contracts.json","counts_for_task5_minimum":true},
+    {"paperclip_issue_identifier":"PLA-85","paperclip_issue_id":"9ee90443-cab7-4920-a0e0-98eb716511c3","created_at":"2026-05-11T04:11:08.540Z","agent":"Meeting Intelligence Agent","readback_status":"referenced_from_fresh_live_kernel_contract","readback_source":"docs/paperclip_real_os_acceptance_20260511/01_live_kernel/task_contracts.json","counts_for_task5_minimum":true},
+    {"paperclip_issue_identifier":"PLA-T5-PARENT-READBACK-001","paperclip_issue_id":null,"created_at":null,"agent":"Parent Controller","readback_status":"parent_controller_live_readback_required","required_parent_action":"Create or read back one additional live Planning issue for Task 5 Planning follow-up acceptance, then attach the issue id and readback source in the final L3 audit.","blocking_l3_until_readback":true,"counts_for_task5_minimum":true}
+  ],
+  "stop_conditions": [
+    {"intake_id":"PLA-INTAKE-001","stop_condition":"Stop after the gap index has one owner, one artifact path and one validation command for every L3 gap."},
+    {"intake_id":"PLA-INTAKE-002","stop_condition":"Stop after every rubric row has an allowed output type, a forbidden-output check and a human-review trigger."},
+    {"intake_id":"PLA-INTAKE-003","stop_condition":"Stop after the action board contains ten rows and no row contains a vague action phrase."},
+    {"intake_id":"PLA-INTAKE-004","stop_condition":"Stop after each capability has a workflow proof requirement and one explicit non-counting evidence example."},
+    {"intake_id":"PLA-INTAKE-005","stop_condition":"Stop after every memory row has authority set to candidate_only or a no_write_reason that names the approval blocker."},
+    {"intake_id":"PLA-INTAKE-006","stop_condition":"Stop after the table marks production routing as blocked unless Governance has a later accepted decision artifact."},
+    {"intake_id":"PLA-INTAKE-007","stop_condition":"Stop after the checklist can be verified without exposing credentials, private sessions or unaccepted production claims."},
+    {"intake_id":"PLA-INTAKE-008","stop_condition":"Stop after Labebe has a resume trigger and no Task 5 action writes Labebe production code."},
+    {"intake_id":"PLA-INTAKE-009","stop_condition":"Stop after every runtime row has an allowed-use value and no quarantined provider is assigned production work."},
+    {"intake_id":"PLA-INTAKE-010","stop_condition":"Stop after the handoff lists every remaining action with a concrete owner, artifact path and stop condition."}
+  ],
+  "candidate_memory_deltas_or_no_write_reasons": [
+    {"candidate_id":"PLA-MEM-001","intake_id":"PLA-INTAKE-001","type":"candidate_memory_delta","authority":"candidate_only","summary":"Prior broad completion claims are L0 baseline only until fresh issue/run/comment/readback evidence exists.","no_write_reason":"Governance has not approved authority memory promotion from Task 5."},
+    {"candidate_id":"PLA-MEM-002","intake_id":"PLA-INTAKE-002","type":"no_write_reason","authority":"no_write","summary":"Finbot research quality lessons are not promoted by Task 5.","no_write_reason":"Investment-adjacent memory promotion requires separate Governance approval."},
+    {"candidate_id":"PLA-MEM-003","intake_id":"PLA-INTAKE-003","type":"candidate_memory_delta","authority":"candidate_only","summary":"Planning daily assistant usefulness requires owner/action/artifact/validator/stop-condition rows.","no_write_reason":"Candidate only until fresh-agent blind test validates retrieval."},
+    {"candidate_id":"PLA-MEM-004","intake_id":"PLA-INTAKE-004","type":"candidate_memory_delta","authority":"candidate_only","summary":"Capability readiness must be workflow-proof based, not endpoint-only or fixture-only.","no_write_reason":"Governance approval required before policy memory promotion."},
+    {"candidate_id":"PLA-MEM-005","intake_id":"PLA-INTAKE-005","type":"no_write_reason","authority":"no_write","summary":"Task 5 memory observations remain a review packet input.","no_write_reason":"No authority memory write scope was granted."},
+    {"candidate_id":"PLA-MEM-006","intake_id":"PLA-INTAKE-006","type":"candidate_memory_delta","authority":"candidate_only","summary":"Local LLM work remains research-only until benchmark and Governance acceptance are complete.","no_write_reason":"No production-routing approval exists."},
+    {"candidate_id":"PLA-MEM-007","intake_id":"PLA-INTAKE-007","type":"no_write_reason","authority":"no_write","summary":"Public packet completeness is not L3 operating-system acceptance.","no_write_reason":"Public-review packaging does not authorize memory promotion."},
+    {"candidate_id":"PLA-MEM-008","intake_id":"PLA-INTAKE-008","type":"candidate_memory_delta","authority":"candidate_only","summary":"Labebe remains lower-priority until Paperclip Real OS acceptance closes or user reprioritizes it.","no_write_reason":"Candidate only because active goal is Paperclip Real OS acceptance."},
+    {"candidate_id":"PLA-MEM-009","intake_id":"PLA-INTAKE-009","type":"candidate_memory_delta","authority":"candidate_only","summary":"Runtime assignment must follow Governance status and keep quarantined providers no-production-use.","no_write_reason":"Provider quarantine is not reopened by Task 5."},
+    {"candidate_id":"PLA-MEM-010","intake_id":"PLA-INTAKE-010","type":"candidate_memory_delta","authority":"candidate_only","summary":"Future agents should start from Task 5 artifacts and validator_result.json for Planning loop continuation.","no_write_reason":"Authority memory promotion requires separate review."}
+  ],
+  "status_by_intake": [
+    {"intake_id":"PLA-INTAKE-001","decision_id":"PLA-DEC-001","action_id":"PLA-ACTION-001","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-002","decision_id":"PLA-DEC-002","action_id":"PLA-ACTION-002","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-003","decision_id":"PLA-DEC-003","action_id":"PLA-ACTION-003","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-004","decision_id":"PLA-DEC-004","action_id":"PLA-ACTION-004","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-005","decision_id":"PLA-DEC-005","action_id":"PLA-ACTION-005","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-006","decision_id":"PLA-DEC-006","action_id":"PLA-ACTION-006","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-007","decision_id":"PLA-DEC-007","action_id":"PLA-ACTION-007","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-008","decision_id":"PLA-DEC-008","action_id":"PLA-ACTION-008","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-009","decision_id":"PLA-DEC-009","action_id":"PLA-ACTION-009","status":"queued_with_concrete_action"},
+    {"intake_id":"PLA-INTAKE-010","decision_id":"PLA-DEC-010","action_id":"PLA-ACTION-010","status":"queued_with_concrete_action"}
+  ]
+}

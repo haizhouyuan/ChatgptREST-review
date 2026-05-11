@@ -1,0 +1,11 @@
+{
+  "schema": "paperclip.real_os.live_kernel.artifact.v1",
+  "generated_at": "2026-05-11T04:11:08Z",
+  "controller": "codex_parent",
+  "lane": "finbot_research",
+  "company": "Finbot Investment Research",
+  "objective": "Verify Finbot risk-reversal lane can accept a fresh research-only issue and reject trading or production-watchlist framing.",
+  "domain_artifact_status": "kernel_carrier_only",
+  "controller_authored_domain_artifact": false,
+  "note": "This Task 1 artifact only proves fresh live issue/run/comment/readback. Domain work is produced in Tasks 2-7."
+}

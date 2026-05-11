@@ -1,0 +1,68 @@
+{
+  "schema": "paperclip.real_os.governance_capability.false_pass_regression.v1",
+  "generated_at": "2026-05-11T04:17:15Z",
+  "status": "pass",
+  "case_count": 12,
+  "cases": [
+    {
+      "case_id": "endpoint_only_as_verified",
+      "result": "rejected",
+      "rejection_rule": "A reachable URL or HTTP status without parsed workflow output cannot be marked verified_workflow."
+    },
+    {
+      "case_id": "fixture_only_as_live",
+      "result": "rejected",
+      "rejection_rule": "Fixture or sample data cannot satisfy live/read-only workflow proof."
+    },
+    {
+      "case_id": "plugin_inventory_only_as_verified",
+      "result": "rejected",
+      "rejection_rule": "Installed plugin/cache inventory is candidate evidence only until a read-only workflow returns real data."
+    },
+    {
+      "case_id": "tool_namespace_only_as_verified",
+      "result": "rejected",
+      "rejection_rule": "A visible MCP namespace is not enough; the tool must return usable read-only workflow data."
+    },
+    {
+      "case_id": "controller_only_as_company_owned",
+      "result": "rejected",
+      "rejection_rule": "Controller-authored domain output cannot masquerade as fresh company-agent work."
+    },
+    {
+      "case_id": "old_run_reused_as_fresh",
+      "result": "rejected",
+      "rejection_rule": "Historical Paperclip runs before the Task 1 plan_started_at do not count as fresh Real OS evidence."
+    },
+    {
+      "case_id": "runtime_help_as_preflight_pass",
+      "result": "rejected",
+      "rejection_rule": "cli --help, python --version, or binary presence alone is not runtime fallback/preflight proof."
+    },
+    {
+      "case_id": "provider_endpoint_health_as_production_ready",
+      "result": "rejected",
+      "rejection_rule": "Provider endpoint reachability cannot override governance quarantine or production-use boundaries."
+    },
+    {
+      "case_id": "advice_disguised_as_memo",
+      "result": "rejected",
+      "rejection_rule": "Finbot output that implies investment advice remains outside the authorized research-only workflow."
+    },
+    {
+      "case_id": "target_price_as_advice",
+      "result": "rejected",
+      "rejection_rule": "Target-price recommendation is forbidden even when phrased as a research memo."
+    },
+    {
+      "case_id": "production_watchlist_leakage",
+      "result": "rejected",
+      "rejection_rule": "Production watchlist, trade signal, or broker/account workflow is forbidden."
+    },
+    {
+      "case_id": "quarantined_provider_enablement",
+      "result": "rejected",
+      "rejection_rule": "MiniMax, DeepSeek, Tavily, and Brave remain quarantined/no-production-use until a later Governance issue explicitly changes status with workflow proof."
+    }
+  ]
+}

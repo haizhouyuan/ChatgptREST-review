@@ -1,0 +1,315 @@
+{
+  "schema": "paperclip.real_os.task4.finbot_research.rejected_or_parked_register.v1",
+  "generated_at": "2026-05-11T12:00:00+08:00",
+  "mode": "supervised_research_only",
+  "count": 18,
+  "items": [
+    {
+      "register_id": "PARK-T4-01",
+      "case_id": "FINBOT-T4-013",
+      "ticker": "DDOG",
+      "theme": "observability AI margin reset",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Bind usage metrics, margin commentary, and one cloud peer source.",
+      "non_advice_research_estimate": {
+        "low": 45,
+        "mid": 61,
+        "high": 78,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-02",
+      "case_id": "FINBOT-T4-014",
+      "ticker": "NET",
+      "theme": "edge security AI routing",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Check latest revenue mix, enterprise customer metrics, and one security peer.",
+      "non_advice_research_estimate": {
+        "low": 46,
+        "mid": 62,
+        "high": 79,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-03",
+      "case_id": "FINBOT-T4-015",
+      "ticker": "CROX",
+      "theme": "consumer brand inventory reset",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Compare inventory days, gross margin, and one footwear peer.",
+      "non_advice_research_estimate": {
+        "low": 42,
+        "mid": 58,
+        "high": 75,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-04",
+      "case_id": "FINBOT-T4-016",
+      "ticker": "ELF",
+      "theme": "beauty channel durability",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Bind latest filing, retail scanner proxy, and one competitor disclosure.",
+      "non_advice_research_estimate": {
+        "low": 43,
+        "mid": 60,
+        "high": 77,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-05",
+      "case_id": "FINBOT-T4-017",
+      "ticker": "ONON",
+      "theme": "premium footwear channel shift",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Check filing, channel mix, and one athletic peer.",
+      "non_advice_research_estimate": {
+        "low": 44,
+        "mid": 61,
+        "high": 78,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-06",
+      "case_id": "FINBOT-T4-018",
+      "ticker": "NKE",
+      "theme": "direct-channel margin quality",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Compare segment notes, inventory, and one channel data source.",
+      "non_advice_research_estimate": {
+        "low": 40,
+        "mid": 57,
+        "high": 74,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-07",
+      "case_id": "FINBOT-T4-019",
+      "ticker": "DASH",
+      "theme": "local commerce order quality",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Bind order metrics, contribution margin, and one peer source.",
+      "non_advice_research_estimate": {
+        "low": 45,
+        "mid": 62,
+        "high": 80,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-08",
+      "case_id": "FINBOT-T4-020",
+      "ticker": "RDDT",
+      "theme": "data licensing operating leverage",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Read filing revenue categories, platform data agreements, and one counter-source.",
+      "non_advice_research_estimate": {
+        "low": 48,
+        "mid": 65,
+        "high": 83,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-09",
+      "case_id": "FINBOT-T4-021",
+      "ticker": "ISRG",
+      "theme": "robotic procedure mix",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Check procedure growth, installed base, and one hospital capex source.",
+      "non_advice_research_estimate": {
+        "low": 47,
+        "mid": 64,
+        "high": 82,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-10",
+      "case_id": "FINBOT-T4-022",
+      "ticker": "TMO",
+      "theme": "bioprocessing normalization",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Bind segment growth, order commentary, and one life-science peer.",
+      "non_advice_research_estimate": {
+        "low": 41,
+        "mid": 58,
+        "high": 76,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-11",
+      "case_id": "FINBOT-T4-023",
+      "ticker": "AXON",
+      "theme": "public safety cloud attach",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Check ARR metrics, retention, and one public-sector budget source.",
+      "non_advice_research_estimate": {
+        "low": 47,
+        "mid": 65,
+        "high": 84,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-12",
+      "case_id": "FINBOT-T4-024",
+      "ticker": "HWM",
+      "theme": "aerospace forging capacity",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Bind backlog, capacity commentary, and one aerospace peer.",
+      "non_advice_research_estimate": {
+        "low": 46,
+        "mid": 64,
+        "high": 82,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-13",
+      "case_id": "FINBOT-T4-025",
+      "ticker": "PTC",
+      "theme": "industrial software subscriptions",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Compare ARR, renewal metrics, and one industrial software peer.",
+      "non_advice_research_estimate": {
+        "low": 39,
+        "mid": 56,
+        "high": 73,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-14",
+      "case_id": "FINBOT-T4-026",
+      "ticker": "TT",
+      "theme": "electrification HVAC controls",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Read segment disclosure, order backlog, and one building systems peer.",
+      "non_advice_research_estimate": {
+        "low": 46,
+        "mid": 63,
+        "high": 81,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-15",
+      "case_id": "FINBOT-T4-027",
+      "ticker": "URI",
+      "theme": "rental fleet discipline",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Check utilization, fleet age, and one construction activity source.",
+      "non_advice_research_estimate": {
+        "low": 38,
+        "mid": 55,
+        "high": 72,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-16",
+      "case_id": "FINBOT-T4-028",
+      "ticker": "TDG",
+      "theme": "aerospace aftermarket cash conversion",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Bind segment cash metrics, aftermarket disclosure, and one aerospace peer.",
+      "non_advice_research_estimate": {
+        "low": 49,
+        "mid": 66,
+        "high": 84,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-17",
+      "case_id": "FINBOT-T4-029",
+      "ticker": "CSL",
+      "theme": "building products repair demand",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Check segment margin, renovation data, and one peer disclosure.",
+      "non_advice_research_estimate": {
+        "low": 37,
+        "mid": 54,
+        "high": 71,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "register_id": "PARK-T4-18",
+      "case_id": "FINBOT-T4-030",
+      "ticker": "FIX",
+      "theme": "nonresidential maintenance services",
+      "status": "parked_for_more_evidence",
+      "research_only": true,
+      "reason": "Candidate lacks either primary evidence depth, explicit contradiction source, or a concrete next filing route for this round.",
+      "unpark_condition": "Bind backlog, margin, and one facility-services peer.",
+      "non_advice_research_estimate": {
+        "low": 36,
+        "mid": 53,
+        "high": 70,
+        "unit": "evidence_score_0_100"
+      },
+      "boundary_label": "research-only; non-advice research estimate"
+    }
+  ],
+  "boundary_label": "research-only; non-advice research estimate"
+}

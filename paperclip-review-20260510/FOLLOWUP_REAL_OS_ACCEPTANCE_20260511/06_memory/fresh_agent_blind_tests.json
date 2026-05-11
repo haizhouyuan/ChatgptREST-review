@@ -1,0 +1,134 @@
+{
+  "schema": "paperclip.real_os.memory.fresh_agent_blind_tests.v1",
+  "generated_at": "2026-05-11T12:45:00+08:00",
+  "task": "Task 6: Memory substrate with fresh-agent blind tests",
+  "packet_files": [
+    "memory_layer_contract.md",
+    "current_truth_ledger.jsonl",
+    "authority_ledger.jsonl",
+    "verbatim_registry.jsonl"
+  ],
+  "tests": [
+    {
+      "test_id": "FRESH-MEM-001",
+      "scenario": "A fresh agent receives MEM-21 and older provider-evaluation notes that say a blind recovery passed. It must decide the next Task 6 action.",
+      "uses_full_chat_history": false,
+      "allowed_input_files": [
+        "memory_layer_contract.md",
+        "current_truth_ledger.jsonl",
+        "authority_ledger.jsonl",
+        "verbatim_registry.jsonl"
+      ],
+      "forbidden_inputs": [
+        "full_chat_history",
+        "private session transcript",
+        "provider durable memory write"
+      ],
+      "no_memory_baseline": {
+        "next_action": "Promote the best-scoring memory provider because blind recovery passed in an older H7 packet.",
+        "correct": false,
+        "score": 0.25,
+        "failure_modes": [
+          "historical_run_reused_as_fresh",
+          "provider_promotion_without_governance"
+        ]
+      },
+      "memory_packet_result": {
+        "correct_next_action": "Use MEM-21 as the fresh issue identity, run Task 6 blind tests from the memory/current-truth packet, keep every provider no-write/not-promoted, then run python3 scripts/real_os_acceptance_validate_memory.py.",
+        "correct": true,
+        "score": 1.0,
+        "cited_ids": [
+          "CT-001",
+          "CT-003",
+          "AUTH-001",
+          "AUTH-002",
+          "VB-002",
+          "VB-003"
+        ]
+      },
+      "improved_over_no_memory_baseline": true
+    },
+    {
+      "test_id": "FRESH-MEM-002",
+      "scenario": "A fresh agent sees Task 5 Planning candidate memory rows and asks whether to append them to AuthorityLedger before final acceptance.",
+      "uses_full_chat_history": false,
+      "allowed_input_files": [
+        "memory_layer_contract.md",
+        "current_truth_ledger.jsonl",
+        "authority_ledger.jsonl",
+        "verbatim_registry.jsonl"
+      ],
+      "forbidden_inputs": [
+        "full_chat_history",
+        "chat-only recap",
+        "unreviewed Planning candidate promotion"
+      ],
+      "no_memory_baseline": {
+        "next_action": "Copy useful Planning deltas into authority memory because they are fresh and concrete.",
+        "correct": false,
+        "score": 0.35,
+        "failure_modes": [
+          "candidate_memory_promoted",
+          "no_governance_review"
+        ]
+      },
+      "memory_packet_result": {
+        "correct_next_action": "Keep Task 5 rows as candidate_only or no_write, cite the review requirement, and route any durable promotion request to a later Governance issue with evidence and rollback plan.",
+        "correct": true,
+        "score": 1.0,
+        "cited_ids": [
+          "CT-006",
+          "AUTH-003",
+          "AUTH-004",
+          "VB-004",
+          "VB-005"
+        ]
+      },
+      "improved_over_no_memory_baseline": true
+    },
+    {
+      "test_id": "FRESH-MEM-003",
+      "scenario": "A fresh agent is asked to continue Finbot/local-LLM-related memory work and must pick the next action without producing financial or production-routing claims.",
+      "uses_full_chat_history": false,
+      "allowed_input_files": [
+        "memory_layer_contract.md",
+        "current_truth_ledger.jsonl",
+        "authority_ledger.jsonl",
+        "verbatim_registry.jsonl"
+      ],
+      "forbidden_inputs": [
+        "full_chat_history",
+        "live market action",
+        "local model production route"
+      ],
+      "no_memory_baseline": {
+        "next_action": "Keep Finbot research-only, but leave provider and local-model memory boundaries unstated.",
+        "correct": true,
+        "score": 0.7,
+        "failure_modes": [
+          "incomplete_boundary_recall"
+        ]
+      },
+      "memory_packet_result": {
+        "correct_next_action": "Continue only with supervised research evidence or benchmark comparison, reject investment advice/watchlists/trading/local-model production routing, and record any memory output as candidate or no-write unless Governance approves promotion.",
+        "correct": true,
+        "score": 0.95,
+        "cited_ids": [
+          "CT-004",
+          "CT-005",
+          "AUTH-005",
+          "AUTH-006",
+          "VB-006"
+        ]
+      },
+      "improved_over_no_memory_baseline": true
+    }
+  ],
+  "acceptance_summary": {
+    "fresh_agent_blind_test_count": 3,
+    "all_use_memory_current_truth_packet_only": true,
+    "all_correct_next_action": true,
+    "improved_over_no_memory_baseline_count": 3,
+    "authority_promotion_count": 0
+  }
+}

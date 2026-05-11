@@ -1,0 +1,31 @@
+{
+  "issue_identifier": "PLA-85",
+  "issue_title": "Real OS L3 kernel: Planning meeting/action extraction proof",
+  "lane": "planning",
+  "agent": "Meeting Intelligence Agent (claudekimi_local)",
+  "run_id": "7a268e5b-59aa-4d2c-988c-93b075447d64",
+  "input_context_used": "Live-kernel proof issue with no external meeting transcript or source context. Objective: verify Planning meeting lane can accept a fresh issue and produce an agent-owned closeout marker without claiming ASR production readiness.",
+  "concise_work_product": "Agent produced artifact and closeout marker for lane-verification kernel proof.",
+  "decisions_actions": [
+    {
+      "item": "Accept proof issue into Planning lane",
+      "owner": "Meeting Intelligence Agent",
+      "status": "completed"
+    },
+    {
+      "item": "Produce structured planning artifact at required artifact path",
+      "owner": "Meeting Intelligence Agent",
+      "status": "completed"
+    },
+    {
+      "item": "Produce agent-owned closeout marker at required closeout path",
+      "owner": "Meeting Intelligence Agent",
+      "status": "completed"
+    }
+  ],
+  "blockers": [],
+  "validator_result": "PASS — lane mechanics verified; artifact and closeout paths populated by agent.",
+  "memory_disposition": "no_write_reason — kernel proof only; no persistent business facts extracted.",
+  "paperclip_readback_expectation": "Controller will sync status after artifact validation.",
+  "next_action": "Submit closeout marker with REAL_OS_LIVE_KERNEL_PASS token."
+}

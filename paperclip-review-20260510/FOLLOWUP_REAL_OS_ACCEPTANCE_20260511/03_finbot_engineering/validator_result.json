@@ -1,0 +1,41 @@
+{
+  "schema": "paperclip.real_os_acceptance.finbot_engineering.validator_result.v1",
+  "generated_at": "2026-05-11T04:36:45Z",
+  "status": "pass",
+  "pass_token": "FINBOT_ENGINEERING_REAL_SOURCE_WORKFLOW_PASS",
+  "acceptance": {
+    "read_only_source_workflows_verified": 3,
+    "negative_fixtures_rejected": 2,
+    "decision_memos_accepted": 1,
+    "broker_account_trading_permissions": 0
+  },
+  "metrics": {
+    "read_only_source_workflows_verified": 3,
+    "negative_fixtures_rejected": 2,
+    "decision_memos_accepted": 1,
+    "broker_account_trading_permissions": 0
+  },
+  "negative_fixture_results": [
+    {
+      "fixture_id": "negative_broker_action_permission",
+      "expected_error": "BROKER_ACTION_FORBIDDEN",
+      "rejected": true,
+      "errors": [
+        "ACCOUNT_PERMISSION_FORBIDDEN",
+        "BROKER_ACTION_FORBIDDEN",
+        "BROKER_PERMISSION_FORBIDDEN",
+        "TRADING_PERMISSION_FORBIDDEN"
+      ]
+    },
+    {
+      "fixture_id": "negative_production_watchlist_trade_signal",
+      "expected_error": "PRODUCTION_WATCHLIST_FORBIDDEN",
+      "rejected": true,
+      "errors": [
+        "PRODUCTION_WATCHLIST_FORBIDDEN",
+        "TRADE_SIGNAL_FORBIDDEN"
+      ]
+    }
+  ],
+  "errors": []
+}

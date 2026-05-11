@@ -1,0 +1,12 @@
+{
+  "status": "fail",
+  "errors": [
+    "strict_json_success_count 19 does not equal benchmark row_count 80"
+  ],
+  "row_count": 80,
+  "total_row_count_with_canaries": 82,
+  "strict_json_success_count": 19,
+  "model_count": 3,
+  "task_class_count": 5,
+  "l3_pass_allowed": false
+}

@@ -1,0 +1,852 @@
+{
+  "schema": "paperclip.real_os.task4.finbot_research.opportunity_board.v1",
+  "generated_at": "2026-05-11T12:00:00+08:00",
+  "mode": "supervised_research_only",
+  "candidate_count": 30,
+  "high_quality_count": 12,
+  "deep_dive_new_count": 6,
+  "useful_surprise_count": 3,
+  "boundary_label": "research-only; non-advice research estimate; human review required",
+  "candidates": [
+    {
+      "case_id": "FINBOT-T4-001",
+      "ticker": "VRT",
+      "theme": "data center power bottleneck",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 52,
+        "mid": 69,
+        "high": 87,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 91,
+      "useful_surprise": true,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": true,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "SEC filing route shows mission-critical data-center power and thermal exposure; the less obvious angle is whether power balance-of-plant, not GPUs alone, becomes the bottleneck.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If backlog converts slowly, customer concentration rises, or supply chain language worsens, the bottleneck thesis weakens.",
+      "next_research_action": "Check next 10-Q backlog language, one electrical equipment peer filing, and one hyperscaler capex commentary source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-002",
+      "ticker": "FERG",
+      "theme": "specialty contractor rollups",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 62,
+        "mid": 79,
+        "high": 97,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 88,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": true,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "Distributor scale may surface as a less obvious rollup and renovation-services route rather than a simple housing-cycle read.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If branch productivity, renovation demand, or acquisition disclosure fails to support the route, park the case.",
+      "next_research_action": "Compare Ferguson filing language with one building-products peer and one housing repair dataset.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-003",
+      "ticker": "ZS",
+      "theme": "identity and zero-trust spend",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 62,
+        "mid": 79,
+        "high": 97,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 86,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": true,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "Identity and zero-trust spend may shift from tool sprawl into platform-level network enforcement demand.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If operating loss expands without evidence of durable platform adoption, the quality claim weakens.",
+      "next_research_action": "Read the next issuer filing for customer metrics, then compare PANW and CRWD disclosure around platform consolidation.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-004",
+      "ticker": "PANW",
+      "theme": "security platform consolidation",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 63,
+        "mid": 80,
+        "high": 98,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 85,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": true,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "Security budgets may consolidate around platforms, creating a variant route separate from point-tool growth.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If billings quality, deferred revenue, or customer retention language deteriorates, the consolidation route weakens.",
+      "next_research_action": "Compare latest filing, investor presentation, and one independent security spending survey.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-005",
+      "ticker": "ANET",
+      "theme": "policy-driven China supply-chain routing",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 63,
+        "mid": 80,
+        "high": 98,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 84,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "Networking supply-chain routing may become an operating advantage if policy and customer requirements favor diversified manufacturing.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If customer concentration or lead-time disclosure worsens, the policy-routing thesis weakens.",
+      "next_research_action": "Bind latest 10-Q supply-chain text to one peer disclosure and one policy timeline source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-006",
+      "ticker": "PLTR",
+      "theme": "source-system gaps enabling workflow automation",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 64,
+        "mid": 81,
+        "high": 99,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 90,
+      "useful_surprise": true,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": true,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "The useful surprise is that enterprise source-system gaps may be the adoption wedge, not only model capability headlines.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If customer expansion slows or disclosure fails to show operational system-of-record depth, downgrade the case.",
+      "next_research_action": "Compare customer expansion metrics, government/commercial mix, and one counter-source on implementation friction.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-007",
+      "ticker": "TXN",
+      "theme": "analog chips policy shock",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 51,
+        "mid": 68,
+        "high": 86,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 82,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "Analog capacity, policy friction, and auto/industrial demand can create a non-obvious cycle signal.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If inventory normalization or utilization language contradicts policy-driven tightness, park the case.",
+      "next_research_action": "Check latest utilization commentary, one analog peer, and one policy source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-008",
+      "ticker": "MU",
+      "theme": "memory cycle investigative signal",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 52,
+        "mid": 69,
+        "high": 87,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 83,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "Memory cycle strength may be distorted by HBM mix and source-led channel signals that need primary confirmation.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If cash, inventory, or gross-margin disclosures refute the channel signal, park the case.",
+      "next_research_action": "Compare latest 10-Q metrics with one HBM peer and one independent channel note.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-009",
+      "ticker": "YELP",
+      "theme": "local advertising AI efficiency surprise",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 70,
+        "high": 88,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 89,
+      "useful_surprise": true,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "The useful surprise is a local-ad data asset and review corpus route that may be missed in broad AI infrastructure maps.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If local advertiser count or monetization disclosure fails to improve, the AI efficiency route weakens.",
+      "next_research_action": "Bind next filing metrics, one local commerce peer, and one counter-source before selecting it for a later deep-dive memo.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-010",
+      "ticker": "ETN",
+      "theme": "grid equipment backlog",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 70,
+        "high": 88,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 81,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "Grid equipment backlog may express AI power demand through industrial electrical systems instead of direct compute vendors.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If order quality or margin conversion weakens, the backlog route loses force.",
+      "next_research_action": "Check backlog disclosures, one electrical peer, and one utility interconnection data source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-011",
+      "ticker": "PWR",
+      "theme": "nuclear restart and power scarcity",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 54,
+        "mid": 71,
+        "high": 89,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 87,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": true,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "Power scarcity may create work for grid services and nuclear restart infrastructure, a less direct AI-enablement route.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If project timing, permitting, or labor constraints dominate, the thesis should be parked.",
+      "next_research_action": "Read latest backlog/project disclosure, one utility capex plan, and one permitting timeline source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-012",
+      "ticker": "LRCX",
+      "theme": "HBM supply-chain tooling",
+      "research_status": "high_quality_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 71,
+        "high": 89,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 80,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-BATCH1-CASEBOOK"
+      ],
+      "variant_hypothesis": "AI memory demand may surface through less visible process tooling and service revenue sensitivity.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If wafer-fab equipment spending or customer mix disclosures do not support the exposure, park the case.",
+      "next_research_action": "Compare latest filing with one memory producer disclosure and one equipment peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-013",
+      "ticker": "DDOG",
+      "theme": "observability AI margin reset",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 45,
+        "mid": 61,
+        "high": 78,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 73,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "AI workloads may change observability usage intensity, but evidence is not yet deep enough.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If usage expansion is offset by platform cost, the case remains parked.",
+      "next_research_action": "Bind usage metrics, margin commentary, and one cloud peer source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-014",
+      "ticker": "NET",
+      "theme": "edge security AI routing",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 46,
+        "mid": 62,
+        "high": 79,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 74,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Edge network control may matter for AI application routing, pending stronger issuer proof.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If customer growth does not show enterprise routing depth, keep parked.",
+      "next_research_action": "Check latest revenue mix, enterprise customer metrics, and one security peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-015",
+      "ticker": "CROX",
+      "theme": "consumer brand inventory reset",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 42,
+        "mid": 58,
+        "high": 75,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 67,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Brand inventory reset may create a cleaner read on demand, but current evidence is thinner.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If promotional intensity remains high, park.",
+      "next_research_action": "Compare inventory days, gross margin, and one footwear peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-016",
+      "ticker": "ELF",
+      "theme": "beauty channel durability",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 43,
+        "mid": 60,
+        "high": 77,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 70,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Beauty channel share gains may be durable, but source triangulation is incomplete.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If retailer channel data weakens, park.",
+      "next_research_action": "Bind latest filing, retail scanner proxy, and one competitor disclosure.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-017",
+      "ticker": "ONON",
+      "theme": "premium footwear channel shift",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 44,
+        "mid": 61,
+        "high": 78,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 71,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Premium footwear channel mix may carry margin insight, pending cleaner primary data.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If wholesale mix or inventory growth contradicts channel quality, park.",
+      "next_research_action": "Check filing, channel mix, and one athletic peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-018",
+      "ticker": "NKE",
+      "theme": "direct-channel margin quality",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 40,
+        "mid": 57,
+        "high": 74,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 69,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Direct-channel reset may be more complex than headline brand recovery.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If direct-channel economics remain unclear, park.",
+      "next_research_action": "Compare segment notes, inventory, and one channel data source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-019",
+      "ticker": "DASH",
+      "theme": "local commerce order quality",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 45,
+        "mid": 62,
+        "high": 80,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 72,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Local commerce quality may improve through category mix, but evidence requires more issuer detail.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If contribution margin or frequency disclosure fails to improve, park.",
+      "next_research_action": "Bind order metrics, contribution margin, and one peer source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-020",
+      "ticker": "RDDT",
+      "theme": "data licensing operating leverage",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 48,
+        "mid": 65,
+        "high": 83,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 78,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Data licensing may create a second revenue route beyond advertising, but evidence is early.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If data licensing remains small or non-repeatable, park.",
+      "next_research_action": "Read filing revenue categories, platform data agreements, and one counter-source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-021",
+      "ticker": "ISRG",
+      "theme": "robotic procedure mix",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 47,
+        "mid": 64,
+        "high": 82,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 75,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Procedure mix and system utilization may reveal quality beyond device shipment headlines.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If procedure growth or system utilization weakens, park.",
+      "next_research_action": "Check procedure growth, installed base, and one hospital capex source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-022",
+      "ticker": "TMO",
+      "theme": "bioprocessing normalization",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 41,
+        "mid": 58,
+        "high": 76,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 68,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Bioprocessing demand normalization may be gradual; current evidence is not enough.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If order recovery lags, park.",
+      "next_research_action": "Bind segment growth, order commentary, and one life-science peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-023",
+      "ticker": "AXON",
+      "theme": "public safety cloud attach",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 47,
+        "mid": 65,
+        "high": 84,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 77,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Hardware installed base may support cloud attach, but margin and retention evidence need work.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If cloud attach or retention disclosure is weak, park.",
+      "next_research_action": "Check ARR metrics, retention, and one public-sector budget source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-024",
+      "ticker": "HWM",
+      "theme": "aerospace forging capacity",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 46,
+        "mid": 64,
+        "high": 82,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 76,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Aerospace forging capacity may be a bottleneck route, pending primary capacity evidence.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If capacity additions outrun demand or pricing weakens, park.",
+      "next_research_action": "Bind backlog, capacity commentary, and one aerospace peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-025",
+      "ticker": "PTC",
+      "theme": "industrial software subscriptions",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 39,
+        "mid": 56,
+        "high": 73,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 66,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Industrial software subscriptions may show durable conversion, but current evidence lacks contrast.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If subscription conversion or retention language weakens, park.",
+      "next_research_action": "Compare ARR, renewal metrics, and one industrial software peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-026",
+      "ticker": "TT",
+      "theme": "electrification HVAC controls",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 46,
+        "mid": 63,
+        "high": 81,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 74,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Electrification and controls demand may be hidden in HVAC mix, pending segment proof.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If commercial HVAC demand slows or controls mix is not visible, park.",
+      "next_research_action": "Read segment disclosure, order backlog, and one building systems peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-027",
+      "ticker": "URI",
+      "theme": "rental fleet discipline",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 38,
+        "mid": 55,
+        "high": 72,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 65,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Rental fleet discipline may buffer cycle risk, but source evidence is thin.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If utilization or used-equipment proceeds weaken, park.",
+      "next_research_action": "Check utilization, fleet age, and one construction activity source.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-028",
+      "ticker": "TDG",
+      "theme": "aerospace aftermarket cash conversion",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 49,
+        "mid": 66,
+        "high": 84,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 79,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Aftermarket parts may create durable cash conversion, but valuation-independent evidence needs updating.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If aftermarket mix or cash conversion weakens, park.",
+      "next_research_action": "Bind segment cash metrics, aftermarket disclosure, and one aerospace peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-029",
+      "ticker": "CSL",
+      "theme": "building products repair demand",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 37,
+        "mid": 54,
+        "high": 71,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 64,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Repair demand may support building products, but the current line is too generic.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If renovation indicators or segment margins weaken, park.",
+      "next_research_action": "Check segment margin, renovation data, and one peer disclosure.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    },
+    {
+      "case_id": "FINBOT-T4-030",
+      "ticker": "FIX",
+      "theme": "nonresidential maintenance services",
+      "research_status": "candidate_research_only",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 36,
+        "mid": 53,
+        "high": 70,
+        "unit": "evidence_score_0_100"
+      },
+      "surprise_score": 63,
+      "useful_surprise": false,
+      "fresh_task4_candidate": true,
+      "deep_dive_selected": false,
+      "source_ids": [
+        "SRC-SEC-SUBMISSIONS",
+        "SRC-SEC-COMPANYFACTS",
+        "SRC-OPEN-ALPHA-BOARD"
+      ],
+      "variant_hypothesis": "Maintenance services may be resilient, but evidence depth is insufficient.",
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If backlog or labor availability language weakens, park.",
+      "next_research_action": "Bind backlog, margin, and one facility-services peer.",
+      "allowed_output": "research memo only",
+      "human_review_required": true
+    }
+  ]
+}

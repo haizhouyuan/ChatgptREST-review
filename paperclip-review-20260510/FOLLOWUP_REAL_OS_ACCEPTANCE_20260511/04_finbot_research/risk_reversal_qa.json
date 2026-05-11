@@ -1,0 +1,225 @@
+{
+  "schema": "paperclip.real_os.task4.finbot_research.risk_reversal_qa.v1",
+  "generated_at": "2026-05-11T12:00:00+08:00",
+  "mode": "supervised_research_only",
+  "high_quality_case_count": 12,
+  "items": [
+    {
+      "case_id": "FINBOT-T4-001",
+      "ticker": "VRT",
+      "theme": "data center power bottleneck",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 52,
+        "mid": 69,
+        "high": 87,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If backlog converts slowly, customer concentration rises, or supply chain language worsens, the bottleneck thesis weakens.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-002",
+      "ticker": "FERG",
+      "theme": "specialty contractor rollups",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 62,
+        "mid": 79,
+        "high": 97,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If branch productivity, renovation demand, or acquisition disclosure fails to support the route, park the case.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-003",
+      "ticker": "ZS",
+      "theme": "identity and zero-trust spend",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 62,
+        "mid": 79,
+        "high": 97,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If operating loss expands without evidence of durable platform adoption, the quality claim weakens.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-004",
+      "ticker": "PANW",
+      "theme": "security platform consolidation",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 63,
+        "mid": 80,
+        "high": 98,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If billings quality, deferred revenue, or customer retention language deteriorates, the consolidation route weakens.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-005",
+      "ticker": "ANET",
+      "theme": "policy-driven China supply-chain routing",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 63,
+        "mid": 80,
+        "high": 98,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If customer concentration or lead-time disclosure worsens, the policy-routing thesis weakens.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-006",
+      "ticker": "PLTR",
+      "theme": "source-system gaps enabling workflow automation",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 64,
+        "mid": 81,
+        "high": 99,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If customer expansion slows or disclosure fails to show operational system-of-record depth, downgrade the case.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-007",
+      "ticker": "TXN",
+      "theme": "analog chips policy shock",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 51,
+        "mid": 68,
+        "high": 86,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If inventory normalization or utilization language contradicts policy-driven tightness, park the case.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-008",
+      "ticker": "MU",
+      "theme": "memory cycle investigative signal",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 52,
+        "mid": 69,
+        "high": 87,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If cash, inventory, or gross-margin disclosures refute the channel signal, park the case.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-009",
+      "ticker": "YELP",
+      "theme": "local advertising AI efficiency surprise",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 70,
+        "high": 88,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If local advertiser count or monetization disclosure fails to improve, the AI efficiency route weakens.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-010",
+      "ticker": "ETN",
+      "theme": "grid equipment backlog",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 70,
+        "high": 88,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If order quality or margin conversion weakens, the backlog route loses force.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-011",
+      "ticker": "PWR",
+      "theme": "nuclear restart and power scarcity",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 54,
+        "mid": 71,
+        "high": 89,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If project timing, permitting, or labor constraints dominate, the thesis should be parked.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "case_id": "FINBOT-T4-012",
+      "ticker": "LRCX",
+      "theme": "HBM supply-chain tooling",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 71,
+        "high": 89,
+        "unit": "evidence_score_0_100"
+      },
+      "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+      "risk_reversal": "If wafer-fab equipment spending or customer mix disclosures do not support the exposure, park the case.",
+      "minimum_counter_sources": 1,
+      "human_review_required": true,
+      "qa_status": "ready_for_supervised_review",
+      "boundary_label": "research-only; non-advice research estimate"
+    }
+  ],
+  "boundary_label": "research-only; non-advice research estimate"
+}

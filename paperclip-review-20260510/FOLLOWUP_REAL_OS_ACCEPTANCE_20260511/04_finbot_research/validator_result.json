@@ -1,0 +1,19 @@
+{
+  "schema": "paperclip.real_os.task4.finbot_research.validator_result.v1",
+  "status": "pass",
+  "root": "/vol1/1000/projects/toyresearch/docs/paperclip_real_os_acceptance_20260511/04_finbot_research",
+  "counts": {
+    "opportunity_candidates": 30,
+    "high_quality_research_only_cases": 12,
+    "new_deep_dive_memos": 6,
+    "useful_surprise_cases": 3,
+    "claim_evidence_rows": 36,
+    "human_review_items": 12,
+    "parked_or_rejected_items": 18
+  },
+  "labels": [
+    "research-only",
+    "non-advice research estimate"
+  ],
+  "errors": []
+}

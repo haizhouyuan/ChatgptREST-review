@@ -1,0 +1,366 @@
+{
+  "generated_at": "2026-05-11T04:40:06Z",
+  "artifact_count": 72,
+  "artifacts": [
+    {
+      "relative_path": "00_baseline/previous_claim_reclassification.md",
+      "sha256": "958449dab38233b09b5da4dca4a0a895fc32d68cbc02a8b4f807cd1a24534d4d",
+      "bytes": 366
+    },
+    {
+      "relative_path": "00_baseline/validator_result.json",
+      "sha256": "f561779247ccc8fe3c3ecf04fe09091f420eb0448f5b7798bc4aa359620c54bc",
+      "bytes": 39
+    },
+    {
+      "relative_path": "00_baseline/acceptance_levels.json",
+      "sha256": "3cc0ecdbe7ecdae370e5d65a22a2bf8c27f8e4c3cb16db76f9e57b1b4e8482bb",
+      "bytes": 2135
+    },
+    {
+      "relative_path": "00_baseline/current_truth.md",
+      "sha256": "f31c0ecbd85290a8c241ab41b523f2b7e07957ecafe827452857e1c3ba7cc97c",
+      "bytes": 1093
+    },
+    {
+      "relative_path": "01_live_kernel/task_contracts.json",
+      "sha256": "53b1542a352572d161448f0ed745b6de37e8167c2a44e553923c4ef1f177c00d",
+      "bytes": 12766
+    },
+    {
+      "relative_path": "01_live_kernel/company_owned_matrix.json",
+      "sha256": "fd4a03b5e9d4b4c164a30c3cf73736275f4eea591b7d6444fcf9169410e040c2",
+      "bytes": 31667
+    },
+    {
+      "relative_path": "01_live_kernel/live_issue_readback.json",
+      "sha256": "44c555985baa7d5c483b0993a6c41d8ca0dc70ce0a15c2864d62ace1163232d1",
+      "bytes": 31536
+    },
+    {
+      "relative_path": "01_live_kernel/validator_result.json",
+      "sha256": "a2423ba9b26af7ec8cef53544ea976826afb4caee8abf3b67144b6430019796c",
+      "bytes": 524
+    },
+    {
+      "relative_path": "01_live_kernel/closeout.md",
+      "sha256": "1533cba5be79baf77fb3a940d7d578bdce10f5b50562946fbc1c5e3557bee57d",
+      "bytes": 208
+    },
+    {
+      "relative_path": "01_live_kernel/comments/01_planning_pass_token_repair.md",
+      "sha256": "1a63a62fbf710e78c4682a5cafb8b551de5bcb304d3203e12985a3c429b1d7f0",
+      "bytes": 729
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/05_governance_artifact.json",
+      "sha256": "4b769083088fb4cddc5e4011083c17a7b9a6f077051b13a3060ea45f6d14f89b",
+      "bytes": 560
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/03_finbot_research_artifact.json",
+      "sha256": "1712d50be25b900689e4958e351709a6338d98ab21cbbd34024bd84f6d564dc9",
+      "bytes": 568
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/07_finbot_engineering_artifact.json",
+      "sha256": "086426a4744fd83814710e9d13811f2fa31d967a935c182ef1cb641a47fc9518",
+      "bytes": 873
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/08_memory_artifact.json",
+      "sha256": "8895340eec4464e65cf1a4cc72c38332fbbad69033bddd6d42347939ab10e857",
+      "bytes": 550
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/01_planning_artifact.json",
+      "sha256": "818344b65800c5684d49f632f9996a58145ed4e917d51b6f33ed902116c3d896",
+      "bytes": 2679
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/04_finbot_research_artifact.json",
+      "sha256": "08d0c79ce900e4be99834afc8d07581c4cea91875d6033d2e2c170eb889d02b6",
+      "bytes": 570
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/06_governance_artifact.json",
+      "sha256": "835bdeb195b43c780fd222873f5fc244302a08c285c683e5cbc55ffde912dd6f",
+      "bytes": 562
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/02_planning_artifact.json",
+      "sha256": "b2bebae8a5e3a25931037d5543adbcd48a79de496ce348aa23674debbedf86d3",
+      "bytes": 1521
+    },
+    {
+      "relative_path": "01_live_kernel/artifacts/09_learning_research_artifact.json",
+      "sha256": "0f78c48d8b9db77d768d89b0042cfd43e3458866415c24b3a04194aaed57371f",
+      "bytes": 368
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/08_memory_closeout.md",
+      "sha256": "6e314ae33e7793ef262abe85898668622d33d931318d14efa46b66bc42f7ded2",
+      "bytes": 313
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/04_finbot_research_closeout.md",
+      "sha256": "1bcb2939a7f7ce30c914a517d51f9167653254e4acdd1c45901a1e15c02e204d",
+      "bytes": 322
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/02_planning_closeout.md",
+      "sha256": "6a67116b1f386ccfaedd830dabf7ee18c5816557b957bee4946eacf74c413686",
+      "bytes": 315
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/01_planning_closeout.md",
+      "sha256": "d5732e4e607d35b089a09d14ad321705aa65afda0a04248000d1e2cd3ec87ae5",
+      "bytes": 315
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/07_finbot_engineering_closeout.md",
+      "sha256": "6242d227f12add4f2a4629cc4daf976ca84ff5ec842a4e47015495beb4fcc408",
+      "bytes": 325
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/06_governance_closeout.md",
+      "sha256": "03374afe355756a5436dbb111ee7c0a6c56a136807e13f08c5c30ba3a85b41f2",
+      "bytes": 318
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/03_finbot_research_closeout.md",
+      "sha256": "37fe802dee5f69fe4498f80fcd57363c2ac672d59d303ae529eeea0a7b9fb688",
+      "bytes": 322
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/09_learning_research_closeout.md",
+      "sha256": "9703168ab913ac4aeafd11b5afd5dd7e663fa5eef1c0701cb708a3165d4e592c",
+      "bytes": 326
+    },
+    {
+      "relative_path": "01_live_kernel/closeouts/05_governance_closeout.md",
+      "sha256": "e9d43a5bd2d27173cadc14bb683c0aed4499dcf4c4b11c440b3857497a6afea5",
+      "bytes": 318
+    },
+    {
+      "relative_path": "02_governance_capability/capability_registry.json",
+      "sha256": "78bf1ca324a368a7f6a7bdc63052367bbf6f046750f90b5e2f741864a391d54c",
+      "bytes": 7546
+    },
+    {
+      "relative_path": "02_governance_capability/false_pass_regression.json",
+      "sha256": "c627f2509e7a2ddcaffea050be5b323f7ea9934b7319215b1f64c9570ef45f0d",
+      "bytes": 2730
+    },
+    {
+      "relative_path": "02_governance_capability/runtime_preflight.json",
+      "sha256": "82b40e994f1c296d5b301e28f24bba1925b52b752c2cf9657f907bea47b6cb60",
+      "bytes": 4409
+    },
+    {
+      "relative_path": "02_governance_capability/validator_result.json",
+      "sha256": "a181cfc756e5fc13821626bf9d1dc0bd96ca247a4da285538700ced074dcabb1",
+      "bytes": 301
+    },
+    {
+      "relative_path": "02_governance_capability/workflow_proofs.jsonl",
+      "sha256": "7bf3daf0088eb1578f3b6a4e0002d723b10b7d91c72c91155a07a92f39b4359b",
+      "bytes": 5349
+    },
+    {
+      "relative_path": "02_governance_capability/closeout.md",
+      "sha256": "952d33392db4c86814d2f3d0ef1c7a6d70b11757826961e10ba64cedafc1bf12",
+      "bytes": 1243
+    },
+    {
+      "relative_path": "03_finbot_engineering/schema_contracts.json",
+      "sha256": "700a89660040360b5566465387dd14f54c3fa37ecf5d1f736bf821c14dac1b1e",
+      "bytes": 3906
+    },
+    {
+      "relative_path": "03_finbot_engineering/decision_memo_tool_result.json",
+      "sha256": "7f3759fb604650a2673cca4818a69892498e905ac8d5549000202c6c590aae7f",
+      "bytes": 2573
+    },
+    {
+      "relative_path": "03_finbot_engineering/validator_result.json",
+      "sha256": "00facab90e54ff6cf742a76001114d1997cc85a9081f6442179891f07ee3d4b5",
+      "bytes": 1215
+    },
+    {
+      "relative_path": "03_finbot_engineering/source_adapter_proofs.jsonl",
+      "sha256": "dfb64e51f64f79c17cf4813b301d742bdcc20bef053639cc819b677a64000b47",
+      "bytes": 3799
+    },
+    {
+      "relative_path": "03_finbot_engineering/closeout.md",
+      "sha256": "f862ccd293d00fd1154fe7d66a324d8a8d028c4020a3ad52f455c1e0dd03f13d",
+      "bytes": 1333
+    },
+    {
+      "relative_path": "04_finbot_research/claim_evidence_ledger.jsonl",
+      "sha256": "077c234d53f005a65249991fe1f89efdb6bf9aea1244021c2f6d86288219f787",
+      "bytes": 23725
+    },
+    {
+      "relative_path": "04_finbot_research/source_registry.json",
+      "sha256": "86ece458756272820a14d9e88551da35f852fc42228d0ec1b45d9db00b351039",
+      "bytes": 3435
+    },
+    {
+      "relative_path": "04_finbot_research/rejected_or_parked_register.json",
+      "sha256": "31ee9d76c52c76efe2a1a990ebb410efae61926b4845df4941731454e4287e10",
+      "bytes": 12555
+    },
+    {
+      "relative_path": "04_finbot_research/validator_result.json",
+      "sha256": "06761a68d911feefc0f422a507fdce680233830c03c191641d6382a7c9351b75",
+      "bytes": 551
+    },
+    {
+      "relative_path": "04_finbot_research/deep_dive_memos.json",
+      "sha256": "536d79c333fa27d659eae1cf7804e5d80596b692a4694d782f0a2ff9ce2a4cdb",
+      "bytes": 18416
+    },
+    {
+      "relative_path": "04_finbot_research/risk_reversal_qa.json",
+      "sha256": "005947f31fa816c9e528ec95215c2d7ec0432751da88163321b94976180ecec4",
+      "bytes": 9789
+    },
+    {
+      "relative_path": "04_finbot_research/opportunity_board.json",
+      "sha256": "5c891e4e6555630db2526cc4adadf5935826a3b77219c51d5c454da5737984a7",
+      "bytes": 36593
+    },
+    {
+      "relative_path": "04_finbot_research/closeout.md",
+      "sha256": "30c3a91adcf7e7c0ba420d21c9de0458b176a42a7bec6c9fc2b802968716240e",
+      "bytes": 1972
+    },
+    {
+      "relative_path": "04_finbot_research/human_review_queue.json",
+      "sha256": "bc260d43c2fe0ecdad64d4df96c7cfb6368b6d8e5802fb8dd0d233a7e2fd93fa",
+      "bytes": 9104
+    },
+    {
+      "relative_path": "05_planning/agent_followup_queue.json",
+      "sha256": "8078f528f287a089d15b22c6c4e1a887c2620836cf02dfdbe7a825b2eb9adbaa",
+      "bytes": 10102
+    },
+    {
+      "relative_path": "05_planning/status_sync.json",
+      "sha256": "ac98d3458b778bb39b2fb5f60d00493941fd63ca0aa3b9666b28dc0cc596998b",
+      "bytes": 7757
+    },
+    {
+      "relative_path": "05_planning/validator_result.json",
+      "sha256": "7f5a79ad315e7a4e6a66ddc32188678adb3a558289500fb8389a02b39c15b6b8",
+      "bytes": 337
+    },
+    {
+      "relative_path": "05_planning/intake_register.jsonl",
+      "sha256": "9cb3df0b7f1c2bdced3b47eecff3d6168acca84d35c9cfb062d989250ddd8018",
+      "bytes": 11143
+    },
+    {
+      "relative_path": "05_planning/decision_queue.json",
+      "sha256": "69caed7cedc60160c24447a6ae1865683b1b5035cea266ad995b58489fd307f5",
+      "bytes": 4722
+    },
+    {
+      "relative_path": "05_planning/closeout.md",
+      "sha256": "51c716cc3da230a87a28877078b819f12e01956aa55e5e331aac3f3c46fa75e6",
+      "bytes": 1381
+    },
+    {
+      "relative_path": "06_memory/memory_layer_contract.md",
+      "sha256": "4721b84c031b90471a15d2b44efb9e92b33c55724223c9b39f819d521e9dcbf1",
+      "bytes": 2378
+    },
+    {
+      "relative_path": "06_memory/validator_result.json",
+      "sha256": "f6f7e4b5800fd4a7de2b3a5897eb273ed2f0684a0415f067b357c9534d297f5a",
+      "bytes": 409
+    },
+    {
+      "relative_path": "06_memory/verbatim_registry.jsonl",
+      "sha256": "7591c56545f77b0d28af2057e89461c963bc42cbfef59c14090109af856b9e2a",
+      "bytes": 2541
+    },
+    {
+      "relative_path": "06_memory/authority_ledger.jsonl",
+      "sha256": "2c70ec4dbd9eae9aaf282f5e84a798627ce7be5dc283e59e11479df6789cb155",
+      "bytes": 3880
+    },
+    {
+      "relative_path": "06_memory/fresh_agent_blind_tests.json",
+      "sha256": "7de360792748490818869bf87a8ad4d8a6f6c040bab8c538e60eecc8128e323b",
+      "bytes": 4808
+    },
+    {
+      "relative_path": "06_memory/current_truth_ledger.jsonl",
+      "sha256": "5548c25372d633e9e32f75ee7769b3c02bb4e2948b9c22a921a0260b1fd3c74d",
+      "bytes": 4524
+    },
+    {
+      "relative_path": "06_memory/closeout.md",
+      "sha256": "98d9adef597cef56c4ecae514dd08ff3053bfa3758cbb831c9706374959dd0ad",
+      "bytes": 1299
+    },
+    {
+      "relative_path": "07_local_llm/governance_decision.md",
+      "sha256": "ca96186e59d8c9a8f7b65fa27fbdbacb0955ebda93ed4b79b1ee0142d465009b",
+      "bytes": 270
+    },
+    {
+      "relative_path": "07_local_llm/benchmark_rows.jsonl",
+      "sha256": "8db1a96d62360082bc3ac2b9e3958a6eb1ca8390f97cf28f35d52e820d2fd4fc",
+      "bytes": 70899
+    },
+    {
+      "relative_path": "07_local_llm/scoring_summary.json",
+      "sha256": "06c6a34ed33aaa2b50aad6ba6f84624945cdea7ade856fe0f2fc878a95536234",
+      "bytes": 353
+    },
+    {
+      "relative_path": "07_local_llm/validator_result.json",
+      "sha256": "f1eafba568449fd48611dd1a586baaa1b726b1efc86f30328d8f2126bb865c6d",
+      "bytes": 281
+    },
+    {
+      "relative_path": "07_local_llm/research_contract.md",
+      "sha256": "f59a671f0af70f8f6bc94c891bc82220fdbd1e8a253178cdfe70111cab410e80",
+      "bytes": 365
+    },
+    {
+      "relative_path": "07_local_llm/closeout.md",
+      "sha256": "df7cee966a0871552aee479d5daf2c3aa612b73632bb326f84a5bc5a95318570",
+      "bytes": 140
+    },
+    {
+      "relative_path": "07_local_llm/homepc_reachability.json",
+      "sha256": "9b27b12aabc19266ab1781ef7be2f555f33ffcffe22e2b07104007ebe156681d",
+      "bytes": 2913
+    },
+    {
+      "relative_path": "08_repeatable_ops/status_sync.json",
+      "sha256": "f19e10b7db6aa1a3da7cc28626fd0b8e45617a7bfd019479b16b7d30fcbe9189",
+      "bytes": 183
+    },
+    {
+      "relative_path": "08_repeatable_ops/cycle_register.jsonl",
+      "sha256": "c201ccd0212aa29a30b265f6b794191733233385d94d82bdd539a05bd1d05946",
+      "bytes": 1653
+    },
+    {
+      "relative_path": "08_repeatable_ops/anti_idle_audit.json",
+      "sha256": "bd1ccc716bf03afe85a8c6c633423be86a58c68911bcaf80d1f051e4c069339c",
+      "bytes": 249
+    },
+    {
+      "relative_path": "08_repeatable_ops/closeout.md",
+      "sha256": "919ae95138feed8b70e73e48b0842f48ee307b930009cf795c986ff61c299f2c",
+      "bytes": 119
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "cycle_count": 3,
+  "heartbeat_only_cycles": 0,
+  "unexplained_idle_cycles": 0,
+  "substantive_deltas": [
+    "fresh live kernel accepted",
+    "domain lane validators passed",
+    "local llm blocker surfaced honestly"
+  ]
+}

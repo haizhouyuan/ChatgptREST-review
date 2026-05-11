@@ -1,0 +1,136 @@
+{
+  "schema": "paperclip.real_os_acceptance.finbot_engineering.schema_contracts.v1",
+  "generated_at": "2026-05-11T12:17:02+08:00",
+  "task_id": "REAL-OS-T3-FINBOT-ENGINEERING",
+  "mode": "research_only_source_workflow",
+  "acceptance": {
+    "minimum_read_only_source_workflows": 3,
+    "negative_fixtures_to_reject": 2,
+    "decision_memos_to_accept": 1,
+    "broker_account_trading_permission_count": 0,
+    "pass_token": "FINBOT_ENGINEERING_REAL_SOURCE_WORKFLOW_PASS"
+  },
+  "source_adapter_contract": {
+    "required_schema": "paperclip.real_os_acceptance.finbot_engineering.source_adapter_proof.v1",
+    "required_status": "pass",
+    "required_proof_level": "workflow_verified",
+    "required_read_only": true,
+    "required_writes_performed": false,
+    "required_artifact_checks": [
+      "artifact_exists",
+      "sha256_match",
+      "parseable_source_payload",
+      "no_broker_account_trading_permissions"
+    ],
+    "allowed_source_ids": [
+      "sec_companyfacts",
+      "sec_submissions",
+      "local_docs_manifest"
+    ]
+  },
+  "decision_memo_contract": {
+    "required_schema": "paperclip.real_os_acceptance.finbot_engineering.decision_memo_tool_result.v1",
+    "allowed_decision_status": [
+      "continue_research",
+      "park",
+      "reject",
+      "needs_user_review"
+    ],
+    "forbidden_decision_status": [
+      "buy",
+      "sell",
+      "hold",
+      "add",
+      "trim",
+      "reduce",
+      "exit"
+    ],
+    "required_fields": [
+      "memo_id",
+      "case_id",
+      "research_only",
+      "decision_status",
+      "source_workflow_ids",
+      "primary_evidence",
+      "counter_evidence",
+      "open_questions",
+      "operator_next_step"
+    ]
+  },
+  "permission_policy": {
+    "broker": false,
+    "account": false,
+    "trading": false,
+    "orders": false,
+    "broker_action": false,
+    "account_action": false,
+    "automated_execution": false,
+    "production_watchlist": false
+  },
+  "forbidden_output_policy": {
+    "investment_advice": false,
+    "target_price_recommendation": false,
+    "trade_signal": false,
+    "broker_action": false,
+    "production_watchlist": false
+  },
+  "negative_fixtures": [
+    {
+      "fixture_id": "negative_broker_action_permission",
+      "expected_error": "BROKER_ACTION_FORBIDDEN",
+      "payload": {
+        "schema": "paperclip.real_os_acceptance.finbot_engineering.decision_memo_tool_result.v1",
+        "memo_id": "NEG-BROKER-001",
+        "case_id": "negative-broker-action",
+        "research_only": true,
+        "decision_status": "continue_research",
+        "source_workflow_ids": [
+          "REALOS-T3-SRC-001"
+        ],
+        "primary_evidence": [
+          "REALOS-T3-SRC-001"
+        ],
+        "counter_evidence": [
+          "negative fixture"
+        ],
+        "open_questions": [
+          "negative fixture"
+        ],
+        "operator_next_step": "negative fixture",
+        "broker_action": "place_order",
+        "permissions": {
+          "broker": true,
+          "account": true,
+          "trading": true,
+          "orders": true
+        }
+      }
+    },
+    {
+      "fixture_id": "negative_production_watchlist_trade_signal",
+      "expected_error": "PRODUCTION_WATCHLIST_FORBIDDEN",
+      "payload": {
+        "schema": "paperclip.real_os_acceptance.finbot_engineering.decision_memo_tool_result.v1",
+        "memo_id": "NEG-WATCHLIST-001",
+        "case_id": "negative-production-watchlist",
+        "research_only": true,
+        "decision_status": "buy",
+        "source_workflow_ids": [
+          "REALOS-T3-SRC-002"
+        ],
+        "primary_evidence": [
+          "REALOS-T3-SRC-002"
+        ],
+        "counter_evidence": [
+          "negative fixture"
+        ],
+        "open_questions": [
+          "negative fixture"
+        ],
+        "operator_next_step": "negative fixture",
+        "production_watchlist": true,
+        "trade_signal": "buy_signal"
+      }
+    }
+  ]
+}

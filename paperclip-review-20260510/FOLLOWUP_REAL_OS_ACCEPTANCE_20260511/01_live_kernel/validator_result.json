@@ -1,0 +1,22 @@
+{
+  "status": "pass",
+  "errors": [],
+  "fresh_issue_count": 9,
+  "fresh_succeeded_agent_run_count": 9,
+  "company_counts": {
+    "Planning Work Assistant": 2,
+    "Finbot Investment Research": 2,
+    "Paperclip Governance Company": 2,
+    "Finbot Engineering Capability Lab": 1,
+    "Memory Research Lab": 1,
+    "Paperclip Learning Research Company": 1
+  },
+  "lane_counts": {
+    "planning": 2,
+    "finbot_research": 2,
+    "governance": 2,
+    "finbot_engineering": 1,
+    "memory": 1,
+    "learning_research": 1
+  }
+}

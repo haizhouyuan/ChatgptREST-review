@@ -1,0 +1,59 @@
+{
+  "schema": "paperclip.real_os.task4.finbot_research.source_registry.v1",
+  "generated_at": "2026-05-11T12:00:00+08:00",
+  "mode": "supervised_research_only",
+  "required_labels": [
+    "research-only",
+    "non-advice research estimate"
+  ],
+  "sources": [
+    {
+      "source_id": "SRC-SEC-SUBMISSIONS",
+      "name": "SEC submissions and filing archive route",
+      "source_class": "public_primary_authority",
+      "access_route": "https://data.sec.gov/submissions/ and https://www.sec.gov/Archives/",
+      "use_rule": "Use only for issuer filings, forms, dates, accession routes, and primary text checks.",
+      "research_boundary": "research-only; non-advice research estimate; no account or execution workflow."
+    },
+    {
+      "source_id": "SRC-SEC-COMPANYFACTS",
+      "name": "SEC companyfacts XBRL route",
+      "source_class": "public_primary_metrics",
+      "access_route": "https://data.sec.gov/api/xbrl/companyfacts/",
+      "use_rule": "Use for revenue, operating income, cash, segment, and filing-date evidence when available.",
+      "research_boundary": "research-only; non-advice research estimate; evidence must stay qualitative."
+    },
+    {
+      "source_id": "SRC-OPS-PRIMARY-REPAIR",
+      "name": "Paperclip 2026-05-11 primary authority repair pack",
+      "source_class": "repo_existing_history_material",
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+      "use_rule": "Use as local evidence binding for existing high-quality Finbot cases, then re-check primary routes before any later memo expansion.",
+      "research_boundary": "research-only; non-advice research estimate; human review required before continuation."
+    },
+    {
+      "source_id": "SRC-BATCH1-CASEBOOK",
+      "name": "Paperclip substantive batch 1 Finbot casebook",
+      "source_class": "repo_existing_casebook_material",
+      "path": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+      "use_rule": "Use for prior case identifiers, qualitative score bands, and evidence lineage; do not treat as fresh primary proof.",
+      "research_boundary": "research-only; non-advice research estimate; contradiction check is mandatory."
+    },
+    {
+      "source_id": "SRC-OPEN-ALPHA-BOARD",
+      "name": "Open alpha opportunity board and evidence ledgers",
+      "source_class": "repo_existing_exploration_material",
+      "path": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery",
+      "use_rule": "Use for candidate breadth and surprise themes; re-bind any promoted case to primary evidence and counter-evidence.",
+      "research_boundary": "research-only; non-advice research estimate; do not promote exploratory rows into user-facing action."
+    },
+    {
+      "source_id": "SRC-PUBLIC-COMMON",
+      "name": "Public common knowledge theme map",
+      "source_class": "public_common_knowledge",
+      "access_route": "Known issuer disclosures, sector structures, and industry taxonomy as of the current research date.",
+      "use_rule": "Use only to frame hypotheses and next research routes, not to assert a final conclusion.",
+      "research_boundary": "research-only; non-advice research estimate; verify before any later decision memo."
+    }
+  ]
+}

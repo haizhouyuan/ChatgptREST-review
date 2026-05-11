@@ -1,0 +1,25 @@
+{
+  "schema": "paperclip.real_os.local_llm.homepc_reachability.v1",
+  "generated_at": "2026-05-11T04:37:48Z",
+  "status": "reachable",
+  "selected_host": "192.168.1.17",
+  "probes": [
+    {
+      "host": "192.168.31.38",
+      "command": "ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new yuanhaizhou@192.168.31.38 hostname && curl -sS --max-time 5 http://127.0.0.1:11434/api/tags",
+      "returncode": 255,
+      "elapsed_s": 5.015,
+      "output_head": "ssh: connect to host 192.168.31.38 port 22: Connection timed out\n",
+      "reachable": false
+    },
+    {
+      "host": "192.168.1.17",
+      "command": "ssh -o BatchMode=yes -o ConnectTimeout=5 -o StrictHostKeyChecking=accept-new yuanhaizhou@192.168.1.17 hostname && curl -sS --max-time 5 http://127.0.0.1:11434/api/tags",
+      "returncode": 0,
+      "elapsed_s": 0.537,
+      "output_head": "yuanhaizhou-home\n{\"models\":[{\"name\":\"nomic-embed-text:latest\",\"model\":\"nomic-embed-text:latest\",\"modified_at\":\"2026-04-21T17:17:27.453075378+08:00\",\"size\":274302450,\"digest\":\"0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f\",\"details\":{\"parent_model\":\"\",\"format\":\"gguf\",\"family\":\"nomic-bert\",\"families\":[\"nomic-bert\"],\"parameter_size\":\"137M\",\"quantization_level\":\"F16\"}},{\"name\":\"qwen3.6:35b-a3b-q4_K_M\",\"model\":\"qwen3.6:35b-a3b-q4_K_M\",\"modified_at\":\"2026-04-20T02:13:14.501321434+08:00\",\"size\":23938333577,\"digest\":\"07d35212591fc27746f0a317c975a6d68754fb38e9053d82e25f06057af28522\",\"details\":{\"parent_model\":\"\",\"format\":\"gguf\",\"family\":\"qwen35moe\",\"families\":[\"qwen35moe\"],\"parameter_size\":\"36.0B\",\"quantization_level\":\"Q4_K_M\"}},{\"name\":\"gemma3n:e4b\",\"model\":\"gemma3n:e4b\",\"modified_at\":\"2026-04-20T01:49:59.206462382+08:00\",\"size\":7547589116,\"digest\":\"15cb39fd9394fd2549f6df9081cfc84dd134ecf2c9c5be911e5629920489ac32\",\"details\":{\"parent_model\":\"\",\"format\":\"gguf\",\"family\":\"gemma3n\",\"families\":[\"gemma3n\"],\"parameter_size\":\"6.9B\",\"quantization_level\":\"Q4_K_M\"}},{\"name\":\"gemma3:27b\",\"model\":\"gemma3:27b\",\"modified_at\":\"2026-04-20T01:39:55.844133607+08:00\",\"size\":17396936941,\"digest\":\"a418f5838eaf7fe2cfe0a3046c8384b68ba43a4435542c942f9db00a5f342203\",\"details\":{\"parent_model\":\"\",\"format\":\"gguf\",\"family\":\"gemma3\",\"families\":[\"gemma3\"],\"parameter_size\":\"27.4B\",\"quantization_level\":\"Q4_K_M\"}},{\"name\":\"qwen3.5:27b\",\"model\":\"qwen3.5:27b\",\"modified_at\":\"2026-03-04T09:55:58.28502985+08:00\",\"size\":17420432728,\"digest\":\"7653528ba5cba4dd8e19da24aaddc7f4d0b5ecd93571c0825dfd4137958ec06e\",\"details\":{\"parent_model\":\"\",\"format\":\"gguf\",\"family\":\"qwen35\",\"families\":[\"qwen35\"],\"parameter_size\":\"27.8B\",\"quantization_level\":\"Q4_K_M\"}}]}",
+      "reachable": true
+    }
+  ],
+  "l3_pass_allowed": true
+}

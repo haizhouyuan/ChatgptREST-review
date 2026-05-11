@@ -1,0 +1,317 @@
+{
+  "schema": "paperclip.real_os.task4.finbot_research.deep_dive_memos.v1",
+  "generated_at": "2026-05-11T12:00:00+08:00",
+  "mode": "supervised_research_only",
+  "memo_count": 6,
+  "new_this_round_count": 6,
+  "useful_surprise_count": 2,
+  "boundary_label": "research-only; non-advice research estimate",
+  "memos": [
+    {
+      "memo_id": "MEMO-T4-01",
+      "case_id": "FINBOT-T4-001",
+      "ticker": "VRT",
+      "theme": "data center power bottleneck",
+      "new_this_round": true,
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 52,
+        "mid": 69,
+        "high": 87,
+        "unit": "evidence_score_0_100"
+      },
+      "useful_surprise": true,
+      "variant_hypothesis": "SEC filing route shows mission-critical data-center power and thermal exposure; the less obvious angle is whether power balance-of-plant, not GPUs alone, becomes the bottleneck.",
+      "why_useful": "It converts a broad market narrative into a testable company-specific research question with primary evidence and a refutation route.",
+      "evidence": [
+        {
+          "evidence_id": "T4E-001-A",
+          "source_id": "SRC-SEC-SUBMISSIONS",
+          "path_or_url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026026556/vrt-20260331.htm",
+          "evidence_type": "primary_filing_route",
+          "research_use": "issuer-authored primary route exists for next manual verification"
+        },
+        {
+          "evidence_id": "T4E-001-B",
+          "source_id": "SRC-BATCH1-CASEBOOK",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+          "evidence_type": "repo_lineage",
+          "research_use": "prior research packet supplies theme, score band, and next evidence route"
+        },
+        {
+          "evidence_id": "T4E-001-C",
+          "source_id": "SRC-PUBLIC-COMMON",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+          "evidence_type": "counter_evidence_route",
+          "research_use": "If backlog converts slowly, customer concentration rises, or supply chain language worsens, the bottleneck thesis weakens."
+        }
+      ],
+      "contradiction_or_risk_reversal": {
+        "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+        "risk_reversal": "If backlog converts slowly, customer concentration rises, or supply chain language worsens, the bottleneck thesis weakens.",
+        "retire_condition": "If backlog converts slowly, customer concentration rises, or supply chain language worsens, the bottleneck thesis weakens."
+      },
+      "next_research_actions": [
+        "Check next 10-Q backlog language, one electrical equipment peer filing, and one hyperscaler capex commentary source.",
+        "Open the next issuer filing and extract the exact management language tied to this theme.",
+        "Add one peer disclosure and one explicit counter-source to the claim ledger before expanding the memo."
+      ],
+      "human_review_question": "Should VRT / data center power bottleneck receive another supervised research pass after the three listed evidence actions are completed?"
+    },
+    {
+      "memo_id": "MEMO-T4-02",
+      "case_id": "FINBOT-T4-002",
+      "ticker": "FERG",
+      "theme": "specialty contractor rollups",
+      "new_this_round": true,
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 62,
+        "mid": 79,
+        "high": 97,
+        "unit": "evidence_score_0_100"
+      },
+      "useful_surprise": false,
+      "variant_hypothesis": "Distributor scale may surface as a less obvious rollup and renovation-services route rather than a simple housing-cycle read.",
+      "why_useful": "It converts a broad market narrative into a testable company-specific research question with primary evidence and a refutation route.",
+      "evidence": [
+        {
+          "evidence_id": "T4E-002-A",
+          "source_id": "SRC-SEC-SUBMISSIONS",
+          "path_or_url": "https://www.sec.gov/Archives/edgar/data/2011641/000201164126000030/ferg-20260331.htm",
+          "evidence_type": "primary_filing_route",
+          "research_use": "issuer-authored primary route exists for next manual verification"
+        },
+        {
+          "evidence_id": "T4E-002-B",
+          "source_id": "SRC-BATCH1-CASEBOOK",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+          "evidence_type": "repo_lineage",
+          "research_use": "prior research packet supplies theme, score band, and next evidence route"
+        },
+        {
+          "evidence_id": "T4E-002-C",
+          "source_id": "SRC-PUBLIC-COMMON",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+          "evidence_type": "counter_evidence_route",
+          "research_use": "If branch productivity, renovation demand, or acquisition disclosure fails to support the route, park the case."
+        }
+      ],
+      "contradiction_or_risk_reversal": {
+        "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+        "risk_reversal": "If branch productivity, renovation demand, or acquisition disclosure fails to support the route, park the case.",
+        "retire_condition": "If branch productivity, renovation demand, or acquisition disclosure fails to support the route, park the case."
+      },
+      "next_research_actions": [
+        "Compare Ferguson filing language with one building-products peer and one housing repair dataset.",
+        "Open the next issuer filing and extract the exact management language tied to this theme.",
+        "Add one peer disclosure and one explicit counter-source to the claim ledger before expanding the memo."
+      ],
+      "human_review_question": "Should FERG / specialty contractor rollups receive another supervised research pass after the three listed evidence actions are completed?"
+    },
+    {
+      "memo_id": "MEMO-T4-03",
+      "case_id": "FINBOT-T4-003",
+      "ticker": "ZS",
+      "theme": "identity and zero-trust spend",
+      "new_this_round": true,
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 62,
+        "mid": 79,
+        "high": 97,
+        "unit": "evidence_score_0_100"
+      },
+      "useful_surprise": false,
+      "variant_hypothesis": "Identity and zero-trust spend may shift from tool sprawl into platform-level network enforcement demand.",
+      "why_useful": "It converts a broad market narrative into a testable company-specific research question with primary evidence and a refutation route.",
+      "evidence": [
+        {
+          "evidence_id": "T4E-003-A",
+          "source_id": "SRC-SEC-SUBMISSIONS",
+          "path_or_url": "https://www.sec.gov/Archives/edgar/data/1713683/000171368326000048/zs-20260131.htm",
+          "evidence_type": "primary_filing_route",
+          "research_use": "issuer-authored primary route exists for next manual verification"
+        },
+        {
+          "evidence_id": "T4E-003-B",
+          "source_id": "SRC-BATCH1-CASEBOOK",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+          "evidence_type": "repo_lineage",
+          "research_use": "prior research packet supplies theme, score band, and next evidence route"
+        },
+        {
+          "evidence_id": "T4E-003-C",
+          "source_id": "SRC-PUBLIC-COMMON",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+          "evidence_type": "counter_evidence_route",
+          "research_use": "If operating loss expands without evidence of durable platform adoption, the quality claim weakens."
+        }
+      ],
+      "contradiction_or_risk_reversal": {
+        "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+        "risk_reversal": "If operating loss expands without evidence of durable platform adoption, the quality claim weakens.",
+        "retire_condition": "If operating loss expands without evidence of durable platform adoption, the quality claim weakens."
+      },
+      "next_research_actions": [
+        "Read the next issuer filing for customer metrics, then compare PANW and CRWD disclosure around platform consolidation.",
+        "Open the next issuer filing and extract the exact management language tied to this theme.",
+        "Add one peer disclosure and one explicit counter-source to the claim ledger before expanding the memo."
+      ],
+      "human_review_question": "Should ZS / identity and zero-trust spend receive another supervised research pass after the three listed evidence actions are completed?"
+    },
+    {
+      "memo_id": "MEMO-T4-04",
+      "case_id": "FINBOT-T4-004",
+      "ticker": "PANW",
+      "theme": "security platform consolidation",
+      "new_this_round": true,
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 63,
+        "mid": 80,
+        "high": 98,
+        "unit": "evidence_score_0_100"
+      },
+      "useful_surprise": false,
+      "variant_hypothesis": "Security budgets may consolidate around platforms, creating a variant route separate from point-tool growth.",
+      "why_useful": "It converts a broad market narrative into a testable company-specific research question with primary evidence and a refutation route.",
+      "evidence": [
+        {
+          "evidence_id": "T4E-004-A",
+          "source_id": "SRC-SEC-SUBMISSIONS",
+          "path_or_url": "https://www.sec.gov/Archives/edgar/data/1327567/000132756726000005/panw-20260131.htm",
+          "evidence_type": "primary_filing_route",
+          "research_use": "issuer-authored primary route exists for next manual verification"
+        },
+        {
+          "evidence_id": "T4E-004-B",
+          "source_id": "SRC-BATCH1-CASEBOOK",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+          "evidence_type": "repo_lineage",
+          "research_use": "prior research packet supplies theme, score band, and next evidence route"
+        },
+        {
+          "evidence_id": "T4E-004-C",
+          "source_id": "SRC-PUBLIC-COMMON",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+          "evidence_type": "counter_evidence_route",
+          "research_use": "If billings quality, deferred revenue, or customer retention language deteriorates, the consolidation route weakens."
+        }
+      ],
+      "contradiction_or_risk_reversal": {
+        "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+        "risk_reversal": "If billings quality, deferred revenue, or customer retention language deteriorates, the consolidation route weakens.",
+        "retire_condition": "If billings quality, deferred revenue, or customer retention language deteriorates, the consolidation route weakens."
+      },
+      "next_research_actions": [
+        "Compare latest filing, investor presentation, and one independent security spending survey.",
+        "Open the next issuer filing and extract the exact management language tied to this theme.",
+        "Add one peer disclosure and one explicit counter-source to the claim ledger before expanding the memo."
+      ],
+      "human_review_question": "Should PANW / security platform consolidation receive another supervised research pass after the three listed evidence actions are completed?"
+    },
+    {
+      "memo_id": "MEMO-T4-05",
+      "case_id": "FINBOT-T4-006",
+      "ticker": "PLTR",
+      "theme": "source-system gaps enabling workflow automation",
+      "new_this_round": true,
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 64,
+        "mid": 81,
+        "high": 99,
+        "unit": "evidence_score_0_100"
+      },
+      "useful_surprise": true,
+      "variant_hypothesis": "The useful surprise is that enterprise source-system gaps may be the adoption wedge, not only model capability headlines.",
+      "why_useful": "It converts a broad market narrative into a testable company-specific research question with primary evidence and a refutation route.",
+      "evidence": [
+        {
+          "evidence_id": "T4E-006-A",
+          "source_id": "SRC-SEC-SUBMISSIONS",
+          "path_or_url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000028/pltr-20260331.htm",
+          "evidence_type": "primary_filing_route",
+          "research_use": "issuer-authored primary route exists for next manual verification"
+        },
+        {
+          "evidence_id": "T4E-006-B",
+          "source_id": "SRC-BATCH1-CASEBOOK",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+          "evidence_type": "repo_lineage",
+          "research_use": "prior research packet supplies theme, score band, and next evidence route"
+        },
+        {
+          "evidence_id": "T4E-006-C",
+          "source_id": "SRC-PUBLIC-COMMON",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_ops_runs/2026-05-11_codex_parent_8h_operating_program/04_finbot/finbot_primary_authority_repair.json",
+          "evidence_type": "counter_evidence_route",
+          "research_use": "If customer expansion slows or disclosure fails to show operational system-of-record depth, downgrade the case."
+        }
+      ],
+      "contradiction_or_risk_reversal": {
+        "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+        "risk_reversal": "If customer expansion slows or disclosure fails to show operational system-of-record depth, downgrade the case.",
+        "retire_condition": "If customer expansion slows or disclosure fails to show operational system-of-record depth, downgrade the case."
+      },
+      "next_research_actions": [
+        "Compare customer expansion metrics, government/commercial mix, and one counter-source on implementation friction.",
+        "Open the next issuer filing and extract the exact management language tied to this theme.",
+        "Add one peer disclosure and one explicit counter-source to the claim ledger before expanding the memo."
+      ],
+      "human_review_question": "Should PLTR / source-system gaps enabling workflow automation receive another supervised research pass after the three listed evidence actions are completed?"
+    },
+    {
+      "memo_id": "MEMO-T4-06",
+      "case_id": "FINBOT-T4-011",
+      "ticker": "PWR",
+      "theme": "nuclear restart and power scarcity",
+      "new_this_round": true,
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 54,
+        "mid": 71,
+        "high": 89,
+        "unit": "evidence_score_0_100"
+      },
+      "useful_surprise": false,
+      "variant_hypothesis": "Power scarcity may create work for grid services and nuclear restart infrastructure, a less direct AI-enablement route.",
+      "why_useful": "It converts a broad market narrative into a testable company-specific research question with primary evidence and a refutation route.",
+      "evidence": [
+        {
+          "evidence_id": "T4E-011-A",
+          "source_id": "SRC-SEC-SUBMISSIONS",
+          "path_or_url": "https://data.sec.gov/submissions/CIK0001050915.json",
+          "evidence_type": "primary_filing_route",
+          "research_use": "issuer-authored primary route exists for next manual verification"
+        },
+        {
+          "evidence_id": "T4E-011-B",
+          "source_id": "SRC-OPEN-ALPHA-BOARD",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/finbot_open_alpha_discovery_20260510/2026-05-10_8h_open_ended_alpha_discovery/09_evidence_ledger.json",
+          "evidence_type": "repo_lineage",
+          "research_use": "prior research packet supplies theme, score band, and next evidence route"
+        },
+        {
+          "evidence_id": "T4E-011-C",
+          "source_id": "SRC-PUBLIC-COMMON",
+          "path_or_url": "/vol1/1000/projects/toyresearch/docs/paperclip_substantive_batches/2026-05-11_batch1_finbot_quality/opportunity_casebook.json",
+          "evidence_type": "counter_evidence_route",
+          "research_use": "If project timing, permitting, or labor constraints dominate, the thesis should be parked."
+        }
+      ],
+      "contradiction_or_risk_reversal": {
+        "contradiction_test": "The case must be contradicted against next filing text, one peer disclosure, and one explicit refutation source before any stronger conclusion.",
+        "risk_reversal": "If project timing, permitting, or labor constraints dominate, the thesis should be parked.",
+        "retire_condition": "If project timing, permitting, or labor constraints dominate, the thesis should be parked."
+      },
+      "next_research_actions": [
+        "Read latest backlog/project disclosure, one utility capex plan, and one permitting timeline source.",
+        "Open the next issuer filing and extract the exact management language tied to this theme.",
+        "Add one peer disclosure and one explicit counter-source to the claim ledger before expanding the memo."
+      ],
+      "human_review_question": "Should PWR / nuclear restart and power scarcity receive another supervised research pass after the three listed evidence actions are completed?"
+    }
+  ]
+}

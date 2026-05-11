@@ -1,0 +1,90 @@
+{
+  "schema": "paperclip.real_os.governance_capability.runtime_preflight.v1",
+  "generated_at": "2026-05-11T04:17:15Z",
+  "workflow_id": "runtime_fallback_preflight",
+  "status": "pass",
+  "no_config_mutation": true,
+  "preflight_scope": "Identity, boundary, fallback, and quarantine governance only. This file does not launch delegated model work or change MCP/runtime config.",
+  "verified_workflow_capability_id": "runtime_fallback_preflight",
+  "fallback_decision": "enable_preflight_not_autonomous_production_routing",
+  "ordered_runtime_lanes": [
+    {
+      "lane": "codex1",
+      "role": "primary controller",
+      "path": "/home/yuanhaizhou/.local/bin/codex1",
+      "path_status": "executable",
+      "identity_probe": "codex-cli 0.130.0",
+      "production_routing_status": "controller_only",
+      "scope_boundary": "Critical implementation, validation, and final review under explicit user/task contract.",
+      "failure_mode": "If unavailable, do not silently substitute a quarantined provider; move to codex2 or stop with preflight failure."
+    },
+    {
+      "lane": "codex2",
+      "role": "fallback controller",
+      "path": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.local/bin/codex2",
+      "path_status": "executable",
+      "identity_probe": "codex-cli 0.130.0",
+      "production_routing_status": "fallback_controller_only",
+      "scope_boundary": "Fallback for controller tasks after config/MCP sanity check; not a provider dequarantine path.",
+      "failure_mode": "If MCP config is missing after relogin, stop and repair config explicitly rather than continuing blind."
+    },
+    {
+      "lane": "claude_code_base",
+      "role": "bounded external runtime candidate",
+      "path": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.local/bin/claude",
+      "path_status": "executable",
+      "identity_probe": "2.1.59 (Claude Code)",
+      "production_routing_status": "contract_required",
+      "scope_boundary": "May be used only with a bounded task contract, explicit write scope, evidence artifact, and no quarantined provider route.",
+      "failure_mode": "If wrapper/provider identity is ambiguous, treat as candidate and do not delegate production-critical work."
+    },
+    {
+      "lane": "gemini_cli",
+      "role": "second-opinion candidate",
+      "path": "/vol1/1000/home-yuanhaizhou/.home-codex-official/.local/bin/gemini",
+      "path_status": "executable",
+      "identity_probe": "timeout_exit_124 on --version probe",
+      "production_routing_status": "not_enabled_for_this_workflow",
+      "scope_boundary": "Second-opinion only after a clean preflight; not counted as a verified fallback in this task.",
+      "failure_mode": "Timeout keeps Gemini out of verified fallback ordering until a later clean probe."
+    }
+  ],
+  "fail_closed_rules": [
+    "A runtime cannot pass on binary presence, --help, or python --version alone.",
+    "A runtime cannot pass by routing through MiniMax, DeepSeek, Tavily, or Brave while they are quarantined.",
+    "A runtime task must name objective, read scope, write scope, forbidden actions, evidence artifact, validator, and stop condition.",
+    "Local model benchmark results are research-only and cannot become production routing proof."
+  ],
+  "quarantined_providers": [
+    {
+      "name": "MiniMax",
+      "status": "quarantined",
+      "production_use": "no-production-use",
+      "reactivation_requirement": "Later Governance issue plus workflow proof; not reopened by Task 2."
+    },
+    {
+      "name": "DeepSeek",
+      "status": "quarantined",
+      "production_use": "no-production-use",
+      "reactivation_requirement": "Later Governance issue plus workflow proof; not reopened by Task 2."
+    },
+    {
+      "name": "Tavily",
+      "status": "quarantined",
+      "production_use": "no-production-use",
+      "reactivation_requirement": "Later Governance issue plus workflow proof; not reopened by Task 2."
+    },
+    {
+      "name": "Brave",
+      "status": "quarantined",
+      "production_use": "no-production-use",
+      "reactivation_requirement": "Later Governance issue plus workflow proof; not reopened by Task 2."
+    }
+  ],
+  "non_claims": [
+    "No provider key rotation was attempted or required.",
+    "No production model routing was enabled.",
+    "No MCP/runtime/native config was mutated.",
+    "No endpoint-only or fixture-only proof was counted as verified_workflow."
+  ]
+}

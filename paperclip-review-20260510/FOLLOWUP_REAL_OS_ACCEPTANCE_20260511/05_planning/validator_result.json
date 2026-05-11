@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "errors": [],
+  "counts": {
+    "intake_items": 10,
+    "decisions_or_non_decisions": 10,
+    "agent_followup_actions": 10,
+    "stop_conditions": 10,
+    "candidate_memory_deltas_or_no_write_reasons": 10,
+    "planning_issue_refs_or_parent_readback_todos": 3
+  },
+  "parent_controller_readback_required": true
+}

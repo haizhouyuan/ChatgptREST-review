@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "synced_lanes": [
+    "planning",
+    "finbot_research",
+    "governance",
+    "memory",
+    "learning_research"
+  ],
+  "local_llm_status": "blocked_for_l3"
+}

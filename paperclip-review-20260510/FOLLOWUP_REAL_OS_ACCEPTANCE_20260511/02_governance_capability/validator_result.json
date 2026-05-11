@@ -1,0 +1,14 @@
+{
+  "schema": "paperclip.real_os.governance_capability.validator.v1",
+  "status": "pass",
+  "verified_workflow_capability_count": 5,
+  "workflow_proof_count": 5,
+  "false_pass_case_count": 12,
+  "quarantined_providers": [
+    "Brave",
+    "DeepSeek",
+    "MiniMax",
+    "Tavily"
+  ],
+  "errors": []
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "paperclip.real_os.live_kernel.artifact.v1",
+  "generated_at": "2026-05-11T04:11:10Z",
+  "controller": "codex_parent",
+  "lane": "memory",
+  "company": "Memory Research Lab",
+  "objective": "Verify Memory Research can accept a fresh blind-test issue and keep candidate memory separate from authority promotion.",
+  "domain_artifact_status": "kernel_carrier_only",
+  "controller_authored_domain_artifact": false,
+  "note": "This Task 1 artifact only proves fresh live issue/run/comment/readback. Domain work is produced in Tasks 2-7."
+}

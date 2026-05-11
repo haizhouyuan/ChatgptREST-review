@@ -1,0 +1,161 @@
+{
+  "schema": "paperclip.real_os.governance_capability.registry.v1",
+  "generated_at": "2026-05-11T04:17:15Z",
+  "task": "Task 2: Governance/Skill-MCP/Runtime capability enablement",
+  "acceptance_target": "L3_SUPERVISED_USEFUL_OPERATING_SYSTEM_PASS",
+  "status": "pass",
+  "verified_workflow_capability_count": 5,
+  "weak_proof_levels_rejected": [
+    "endpoint_only",
+    "fixture_only",
+    "plugin_inventory_only",
+    "tool_namespace_only",
+    "startup_or_help_only",
+    "old_run_reused_as_fresh"
+  ],
+  "verified_workflow_capability_ids": [
+    "sec_edgar_submissions",
+    "sec_companyfacts",
+    "local_evidence_tree",
+    "gitnexus_read_only_inventory",
+    "runtime_fallback_preflight"
+  ],
+  "capabilities": [
+    {
+      "id": "sec_edgar_submissions",
+      "name": "SEC EDGAR submissions",
+      "kind": "data_source",
+      "status": "verified_workflow",
+      "proof_level": "live_read_only_workflow_artifact",
+      "proof_id": "wf-sec-submissions-apple-20260511",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/02_governance_capability/workflow_proofs.jsonl#wf-sec-submissions-apple-20260511",
+      "observed_workflow": "Fetched SEC submissions JSON for CIK0000320193 and parsed entity identity, recent forms, and accession numbers.",
+      "allowed_use": "Supervised research evidence binding for company filing intake; read-only and source-attributed.",
+      "forbidden_as_proof": [
+        "endpoint reachable with no parsed filing content",
+        "fixture file",
+        "historical Paperclip packet only"
+      ],
+      "governance_decision": "enable_read_only_supervised_research"
+    },
+    {
+      "id": "sec_companyfacts",
+      "name": "SEC companyfacts",
+      "kind": "data_source",
+      "status": "verified_workflow",
+      "proof_level": "live_read_only_workflow_artifact",
+      "proof_id": "wf-sec-companyfacts-apple-20260511",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/02_governance_capability/workflow_proofs.jsonl#wf-sec-companyfacts-apple-20260511",
+      "observed_workflow": "Fetched SEC XBRL companyfacts JSON for CIK0000320193 and parsed taxonomy/concept coverage.",
+      "allowed_use": "Supervised research metric context; never an investment recommendation by itself.",
+      "forbidden_as_proof": [
+        "endpoint reachable with no parsed XBRL facts",
+        "fixture-only companyfacts sample",
+        "local model summary of unverified metrics"
+      ],
+      "governance_decision": "enable_read_only_supervised_research"
+    },
+    {
+      "id": "local_evidence_tree",
+      "name": "Local evidence tree",
+      "kind": "local_docs",
+      "status": "verified_workflow",
+      "proof_level": "local_workflow_artifact",
+      "proof_id": "wf-local-evidence-tree-20260511",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/02_governance_capability/workflow_proofs.jsonl#wf-local-evidence-tree-20260511",
+      "observed_workflow": "Enumerated the Real OS acceptance tree and found baseline plus live-kernel artifacts and validator outputs.",
+      "allowed_use": "Fresh-agent continuation, evidence lookup, validator discovery, and closeout traceability.",
+      "forbidden_as_proof": [
+        "chat-only recap",
+        "unread file path list",
+        "old run reused as fresh workflow"
+      ],
+      "governance_decision": "enable_local_read_only_evidence_lookup"
+    },
+    {
+      "id": "gitnexus_read_only_inventory",
+      "name": "GitNexus read-only repository inventory",
+      "kind": "local_app_mcp_workflow",
+      "status": "verified_workflow",
+      "proof_level": "mcp_read_only_workflow_artifact",
+      "proof_id": "wf-gitnexus-list-repos-20260511",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/02_governance_capability/workflow_proofs.jsonl#wf-gitnexus-list-repos-20260511",
+      "observed_workflow": "Called the GitNexus MCP list_repos workflow and received indexed repository names, paths, timestamps, and graph stats.",
+      "allowed_use": "Read-only local app/MCP inventory and code-intelligence lookup when an indexed repo is present.",
+      "forbidden_as_proof": [
+        "tool namespace visible only",
+        "plugin cache file present only",
+        "write or mutation workflow"
+      ],
+      "governance_decision": "enable_read_only_local_app_workflow"
+    },
+    {
+      "id": "runtime_fallback_preflight",
+      "name": "Runtime fallback/preflight workflow",
+      "kind": "runtime_governance",
+      "status": "verified_workflow",
+      "proof_level": "preflight_workflow_artifact",
+      "proof_id": "wf-runtime-fallback-preflight-20260511",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/02_governance_capability/runtime_preflight.json",
+      "observed_workflow": "Checked executable identity for primary/fallback controller lanes and recorded fail-closed fallback policy without mutating runtime config.",
+      "allowed_use": "Controller/fallback preflight only; model task delegation still requires a bounded task contract and evidence path.",
+      "forbidden_as_proof": [
+        "cli --help only",
+        "python --version",
+        "provider endpoint-only health check",
+        "quarantined provider production routing"
+      ],
+      "governance_decision": "enable_preflight_not_autonomous_production_routing"
+    },
+    {
+      "id": "provider_minimax",
+      "name": "MiniMax",
+      "kind": "provider",
+      "status": "quarantined",
+      "proof_level": "governance_quarantine",
+      "production_use": "no-production-use",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/00_baseline/current_truth.md",
+      "allowed_use": "None for production until a later Governance issue explicitly changes this status with workflow proof."
+    },
+    {
+      "id": "provider_deepseek",
+      "name": "DeepSeek",
+      "kind": "provider",
+      "status": "quarantined",
+      "proof_level": "governance_quarantine",
+      "production_use": "no-production-use",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/00_baseline/current_truth.md",
+      "allowed_use": "None for production until a later Governance issue explicitly changes this status with workflow proof."
+    },
+    {
+      "id": "provider_tavily",
+      "name": "Tavily",
+      "kind": "search_provider",
+      "status": "quarantined",
+      "proof_level": "governance_quarantine",
+      "production_use": "no-production-use",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/00_baseline/current_truth.md",
+      "allowed_use": "None for production until a later Governance issue explicitly changes this status with workflow proof."
+    },
+    {
+      "id": "provider_brave",
+      "name": "Brave",
+      "kind": "search_provider",
+      "status": "quarantined",
+      "proof_level": "governance_quarantine",
+      "production_use": "no-production-use",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/00_baseline/current_truth.md",
+      "allowed_use": "None for production until a later Governance issue explicitly changes this status with workflow proof."
+    },
+    {
+      "id": "homepc_ollama",
+      "name": "HomePC Ollama",
+      "kind": "local_model_runtime",
+      "status": "research_only",
+      "proof_level": "research_boundary",
+      "production_use": "no-production-use",
+      "evidence_path": "docs/paperclip_real_os_acceptance_20260511/00_baseline/acceptance_levels.json",
+      "allowed_use": "Research-only benchmark or scorer comparison; not production routing proof."
+    }
+  ]
+}

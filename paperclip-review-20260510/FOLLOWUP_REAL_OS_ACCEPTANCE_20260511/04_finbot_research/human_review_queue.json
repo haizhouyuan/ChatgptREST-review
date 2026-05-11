@@ -1,0 +1,219 @@
+{
+  "schema": "paperclip.real_os.task4.finbot_research.human_review_queue.v1",
+  "generated_at": "2026-05-11T12:00:00+08:00",
+  "mode": "supervised_research_only",
+  "queue_count": 12,
+  "allowed_decision_family": [
+    "deepen evidence",
+    "seek counter-source",
+    "park pending next filing",
+    "merge with adjacent memo"
+  ],
+  "items": [
+    {
+      "review_id": "HRQ-T4-01",
+      "case_id": "FINBOT-T4-001",
+      "ticker": "VRT",
+      "priority": "P0",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 52,
+        "mid": 69,
+        "high": 87,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for VRT / data center power bottleneck: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Check next 10-Q backlog language, one electrical equipment peer filing, and one hyperscaler capex commentary source.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-02",
+      "case_id": "FINBOT-T4-002",
+      "ticker": "FERG",
+      "priority": "P0",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 62,
+        "mid": 79,
+        "high": 97,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for FERG / specialty contractor rollups: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Compare Ferguson filing language with one building-products peer and one housing repair dataset.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-03",
+      "case_id": "FINBOT-T4-003",
+      "ticker": "ZS",
+      "priority": "P0",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 62,
+        "mid": 79,
+        "high": 97,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for ZS / identity and zero-trust spend: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Read the next issuer filing for customer metrics, then compare PANW and CRWD disclosure around platform consolidation.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-04",
+      "case_id": "FINBOT-T4-004",
+      "ticker": "PANW",
+      "priority": "P0",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 63,
+        "mid": 80,
+        "high": 98,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for PANW / security platform consolidation: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Compare latest filing, investor presentation, and one independent security spending survey.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-05",
+      "case_id": "FINBOT-T4-005",
+      "ticker": "ANET",
+      "priority": "P1",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 63,
+        "mid": 80,
+        "high": 98,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for ANET / policy-driven China supply-chain routing: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Bind latest 10-Q supply-chain text to one peer disclosure and one policy timeline source.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-06",
+      "case_id": "FINBOT-T4-006",
+      "ticker": "PLTR",
+      "priority": "P0",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 64,
+        "mid": 81,
+        "high": 99,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for PLTR / source-system gaps enabling workflow automation: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Compare customer expansion metrics, government/commercial mix, and one counter-source on implementation friction.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-07",
+      "case_id": "FINBOT-T4-007",
+      "ticker": "TXN",
+      "priority": "P1",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 51,
+        "mid": 68,
+        "high": 86,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for TXN / analog chips policy shock: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Check latest utilization commentary, one analog peer, and one policy source.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-08",
+      "case_id": "FINBOT-T4-008",
+      "ticker": "MU",
+      "priority": "P1",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 52,
+        "mid": 69,
+        "high": 87,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for MU / memory cycle investigative signal: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Compare latest 10-Q metrics with one HBM peer and one independent channel note.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-09",
+      "case_id": "FINBOT-T4-009",
+      "ticker": "YELP",
+      "priority": "P0",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 70,
+        "high": 88,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for YELP / local advertising AI efficiency surprise: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Bind next filing metrics, one local commerce peer, and one counter-source on advertiser churn.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-10",
+      "case_id": "FINBOT-T4-010",
+      "ticker": "ETN",
+      "priority": "P1",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 70,
+        "high": 88,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for ETN / grid equipment backlog: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Check backlog disclosures, one electrical peer, and one utility interconnection data source.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-11",
+      "case_id": "FINBOT-T4-011",
+      "ticker": "PWR",
+      "priority": "P0",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 54,
+        "mid": 71,
+        "high": 89,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for PWR / nuclear restart and power scarcity: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Read latest backlog/project disclosure, one utility capex plan, and one permitting timeline source.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    },
+    {
+      "review_id": "HRQ-T4-12",
+      "case_id": "FINBOT-T4-012",
+      "ticker": "LRCX",
+      "priority": "P1",
+      "research_only": true,
+      "non_advice_research_estimate": {
+        "low": 53,
+        "mid": 71,
+        "high": 89,
+        "unit": "evidence_score_0_100"
+      },
+      "review_question": "Choose the next research branch for LRCX / HBM supply-chain tooling: primary filing extraction, peer comparison, or counter-source review.",
+      "next_research_action": "Compare latest filing with one memory producer disclosure and one equipment peer.",
+      "requires_human_before_user_output": true,
+      "boundary_label": "research-only; non-advice research estimate"
+    }
+  ],
+  "boundary_label": "research-only; non-advice research estimate"
+}

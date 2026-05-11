@@ -1,0 +1,15 @@
+{
+  "schema": "paperclip.real_os.memory.validator_result.v1",
+  "status": "pass",
+  "errors": [],
+  "counts": {
+    "current_truth_rows": 7,
+    "authority_rows": 6,
+    "verbatim_rows": 6,
+    "fresh_agent_blind_tests": 3,
+    "correct_next_action_tests": 3,
+    "improved_over_no_memory_baseline_tests": 3
+  },
+  "authority_ledger_governance_rules_only": true,
+  "candidate_or_sandbox_promotion_count": 0
+}

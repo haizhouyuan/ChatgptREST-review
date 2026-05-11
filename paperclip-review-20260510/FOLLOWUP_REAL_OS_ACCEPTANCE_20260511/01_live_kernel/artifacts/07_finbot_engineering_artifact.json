@@ -1,0 +1,17 @@
+{
+  "schema": "paperclip.real_os.live_kernel.artifact.v1",
+  "generated_at": "2026-05-11T04:11:09Z",
+  "updated_at": "2026-05-11T12:11:00Z",
+  "controller": "codex_parent",
+  "lane": "finbot_engineering",
+  "company": "Finbot Engineering Capability Lab",
+  "objective": "Verify the Finbot Engineering capability lane has a fresh live carrier issue for source workflow and schema-tooling proof.",
+  "domain_artifact_status": "kernel_carrier_live_readback_success",
+  "controller_authored_domain_artifact": false,
+  "live_run_id": "088d33c9-4ee6-47e5-a197-3a7dbc1c88da",
+  "live_agent_id": "ede1270f-8cce-433b-bcf8-e6b313f68ff7",
+  "live_comment_pass_token": "REAL_OS_LIVE_KERNEL_PASS",
+  "pytest_result": "7 passed",
+  "smoke_result": "pass (13 checks)",
+  "note": "This Task 1 artifact proves fresh live issue/run/comment/readback. Domain work is produced in Tasks 2-7."
+}

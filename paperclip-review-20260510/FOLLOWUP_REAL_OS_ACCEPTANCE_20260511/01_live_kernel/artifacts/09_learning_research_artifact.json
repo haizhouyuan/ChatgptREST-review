@@ -1,0 +1,9 @@
+{
+  "schema": "paperclip.real_os.live_kernel.artifact.v1",
+  "controller": "codex_parent",
+  "lane": "learning_research",
+  "company": "Paperclip Learning Research Company",
+  "domain_artifact_status": "kernel_carrier_only",
+  "controller_authored_domain_artifact": false,
+  "note": "Replacement fresh issue for stuck MEM-21 kernel run; domain work remains Task 6."
+}

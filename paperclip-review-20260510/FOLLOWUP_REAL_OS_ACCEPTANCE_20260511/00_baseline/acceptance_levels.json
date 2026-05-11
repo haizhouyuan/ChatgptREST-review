@@ -1,0 +1,51 @@
+{
+  "schema": "paperclip.real_os.acceptance_levels.v1",
+  "generated_at": "2026-05-11T00:00:00+08:00",
+  "previous_commit": "17b9a28d0",
+  "previous_commit_reclassification": "L0_EVIDENCE_PACKAGE_PASS",
+  "final_target": "L3_SUPERVISED_USEFUL_OPERATING_SYSTEM_PASS",
+  "levels": [
+    {
+      "level": "L0",
+      "name": "Evidence package pass",
+      "meaning": "Files exist, validators pass, packet safe.",
+      "current_state": "mostly_achieved_by_17b9a28d0"
+    },
+    {
+      "level": "L1",
+      "name": "Real company-owned loop pass",
+      "meaning": "Fresh live Paperclip issues after this plan start, assigned agents, succeeded runs, accepted comments, artifacts, closeouts.",
+      "current_state": "must_be_re_run_fresh"
+    },
+    {
+      "level": "L2",
+      "name": "Repeatable supervised operations",
+      "meaning": "Multiple cycles across Planning, Finbot, Governance, Finbot Engineering, Memory, Skill-MCP and Runtime with no false-pass or idle-only completion.",
+      "current_state": "not_yet_accepted"
+    },
+    {
+      "level": "L3",
+      "name": "Supervised useful operating system",
+      "meaning": "Planning handles real user work; Finbot generates high-quality supervised research; Governance enables capabilities safely; memory improves fresh-agent continuation.",
+      "current_state": "target_milestone"
+    },
+    {
+      "level": "L4",
+      "name": "Controlled autonomy experiment",
+      "meaning": "Low-risk scheduler starts approved tasks and stop gates block risky output.",
+      "current_state": "experimental_after_l3_only"
+    }
+  ],
+  "non_counting_evidence": [
+    "old Paperclip runs created before this plan starts",
+    "controller-authored domain output presented as company-agent work",
+    "local files without live issue/run/comment/readback when claiming live execution",
+    "validator pass that checks only file presence",
+    "public review packet completeness",
+    "Pro or ChatGPT answer",
+    "elapsed time or heartbeat count",
+    "endpoint-only connector status",
+    "fixture-only connector status",
+    "local model benchmark used as production routing proof"
+  ]
+}
