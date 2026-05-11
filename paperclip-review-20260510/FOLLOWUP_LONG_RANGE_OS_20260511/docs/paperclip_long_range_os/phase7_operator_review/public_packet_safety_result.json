@@ -4,5 +4,9 @@
   "secret_scan": "pass",
   "large_file_check": "pass",
   "forbidden_path_check": "pass",
-  "hash_manifest_check": "pass"
+  "hash_manifest_check": "pass",
+  "public_review_repo": "/tmp/ChatgptREST-review",
+  "public_review_branch": "review-20260506-085232",
+  "public_review_commit": "122ca7a4b69b",
+  "public_packet_path": "/tmp/ChatgptREST-review/paperclip-review-20260510/FOLLOWUP_LONG_RANGE_OS_20260511"
 }

@@ -1,0 +1,28 @@
+{
+  "schema": "paperclip.long_range_os.final.validator.v1",
+  "status": "pass",
+  "phase_status": {
+    "phase0_baseline": "pass",
+    "phase1_operating_kernel": "pass",
+    "phase2_finbot_flywheel": "pass",
+    "phase3_planning_main_loop": "pass",
+    "phase4_governance_capability": "pass",
+    "phase5_memory_substrate": "pass",
+    "phase6_learning_local_llm": "pass",
+    "phase7_operator_review": "pass",
+    "phase8_controlled_autonomy": "pass"
+  },
+  "public_review_commit": "122ca7a4b69b",
+  "boundaries": {
+    "finbot_research_only": true,
+    "investment_advice": false,
+    "target_price_recommendation": false,
+    "trade_signal": false,
+    "broker_action": false,
+    "automatic_execution": false,
+    "production_list": false,
+    "local_llm_production_route": false,
+    "quarantined_provider_use": false,
+    "full_production_ready_claim": false
+  }
+}

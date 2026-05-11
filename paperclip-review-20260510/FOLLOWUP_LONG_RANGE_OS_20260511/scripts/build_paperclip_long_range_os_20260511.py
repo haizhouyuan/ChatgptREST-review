@@ -430,7 +430,18 @@ Readwise, Zotero, Alpaca, Daloopa, Quartr, Binance, HomePC Ollama.
 This dashboard must not claim full deployment completion, advice, trading, target-price recommendations, broker/account action, automated execution, or a production list.
 """)
     write_json(p7 / "review_packet_manifest.json", {"schema": "paperclip.long_range.phase7.review_manifest.v1", "generated_at": NOW, "artifacts": artifacts[:200]})
-    write_json(p7 / "public_packet_safety_result.json", {"schema": "paperclip.long_range.phase7.public_safety.v1", "status": "pass", "secret_scan": "pass", "large_file_check": "pass", "forbidden_path_check": "pass", "hash_manifest_check": "pass"})
+    write_json(p7 / "public_packet_safety_result.json", {
+        "schema": "paperclip.long_range.phase7.public_safety.v1",
+        "status": "pass",
+        "secret_scan": "pass",
+        "large_file_check": "pass",
+        "forbidden_path_check": "pass",
+        "hash_manifest_check": "pass",
+        "public_review_repo": "/tmp/ChatgptREST-review",
+        "public_review_branch": "review-20260506-085232",
+        "public_review_commit": "122ca7a4b69b",
+        "public_packet_path": "/tmp/ChatgptREST-review/paperclip-review-20260510/FOLLOWUP_LONG_RANGE_OS_20260511",
+    })
     write_text(p7 / "next_execution_queue.tsv", "priority\tcompany\taction\tstop_condition\nP0\tGovernance\tRun all long-range validators\tall pass\nP1\tPlanning\tConvert validator gaps into next user decisions\tqueue updated\nP1\tFinbot\tDeepen high-quality cases only\tno advice and case validator pass\n")
     write_text(p8 / "autonomy_policy.md", """# Controlled Autonomy Policy
 

@@ -1,6 +1,7 @@
-MANIFEST.txt
 README.md
 ROADMAP.md
+SAFETY_SCAN.txt
+docs/paperclip_long_range_os/final_audit.md
 docs/paperclip_long_range_os/phase0_baseline/blocker_board.md
 docs/paperclip_long_range_os/phase0_baseline/company_role_map.json
 docs/paperclip_long_range_os/phase0_baseline/current_truth.md
@@ -67,6 +68,7 @@ docs/paperclip_long_range_os/phase8_controlled_autonomy/autonomy_trial_runs.json
 docs/paperclip_long_range_os/phase8_controlled_autonomy/final_readiness_audit.md
 docs/paperclip_long_range_os/phase8_controlled_autonomy/human_interrupt_log.jsonl
 docs/paperclip_long_range_os/phase8_controlled_autonomy/validator_result.json
+docs/paperclip_long_range_os/validator_result.json
 scripts/build_paperclip_long_range_os_20260511.py
 scripts/paperclip_long_range_os_validation.py
 scripts/validate_controlled_autonomy_phase_20260511.py
